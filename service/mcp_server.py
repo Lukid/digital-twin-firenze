@@ -14,7 +14,7 @@ DESC = {
     "list_destinations": "Destinazioni (scuole, fermate) con ID e ingressi e stato di verifica. Usarlo per ottenere il destination_id: non scegliere mai per nome.",
     "compute_walk_access": "Accessibilità pedonale dai civici SIT di Z2 verso UNA destinazione (destination_id esatto). Restituisce job_id, dataset, parametri, metriche e limiti; il risultato è in cache se già calcolato.",
     "get_job_status": "Stato e parametri di un job già eseguito.", "get_result_manifest": "Manifest completo (metodo, dataset, metriche, limiti, asset) di un job.",
-    "compute_shadow": "NON ANCORA DISPONIBILE: restituisce outside_capability.", "create_local_scenario": "NON ANCORA DISPONIBILE: restituisce outside_capability.",
+    "compute_shadow": "Ombra geometrica su percorsi (route_id campione come R01, o geometrie) per data e orari locali Europe/Rome: frazione in ombra e minuti al sole camminando, con intervalli di sensibilità. Calcolo solo sulla baseline (niente scenari). Orari con sole sotto 5 gradi hanno stato esplicito e nessun numero. Job lungo: tenere basso il numero di orari.", "create_local_scenario": "NON ANCORA DISPONIBILE: restituisce outside_capability.",
     "compare_scenarios": "NON ANCORA DISPONIBILE: restituisce outside_capability."}
 server = Server("dt-pisa", instructions="Calcoli deterministici sul pilota Z2 di Pisa. Non dire di aver calcolato nulla se non c'è un job riuscito; riporta job_id, dataset, parametri e limiti. Se una destinazione è ambigua, chiedi all'utente.")
 

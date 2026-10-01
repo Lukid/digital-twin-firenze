@@ -4,7 +4,7 @@ Ogni input è validato contro contracts/schemas/mcp.schema.json prima di qualunq
 funzioni deterministiche di analysis/ (compute_walk_access). job_id = hash dell'input canonico (ADR-T02): se il manifest
 esiste nella cache si restituisce quello, senza ricalcolare. Nessun SQL, nessun codice libero.
 Risposta: sempre un dict, risultato oppure {"error": {code, message, ...}}."""
-import json, os, pathlib, re, sys, tempfile
+import hashlib, json, os, pathlib, re, sys, tempfile
 from functools import lru_cache
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -13,10 +13,9 @@ CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache")  
 BASELINE_ID, AOI_ID = "bas_z2_20261001", "aoi_z2"
 ID_DEST = re.compile(r"^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$")
 ENGINE_ORIGINS = "civici_sit_z2"
-TOOLS_FUTURI = {"compute_shadow": "il motore d'ombra (T09) non è ancora disponibile",
-                "create_local_scenario": "gli scenari locali (T10) non sono ancora disponibili",
+TOOLS_FUTURI = {"create_local_scenario": "gli scenari locali (T10) non sono ancora disponibili",
                 "compare_scenarios": "il confronto fra scenari (T10) non è ancora disponibile"}
-TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "get_job_status", "get_result_manifest", *TOOLS_FUTURI]
+TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", *TOOLS_FUTURI]
 THEMES = {  # tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso)
     "edifici": ["src_rt_unita_volumetriche", "src_rt_dbt10k_pisa", "src_sit_edifici_scolastici", "src_osm_pisa"],
     "quote": ["src_rt_dsm2021", "src_rt_dtm10"], "rete_pedonale": ["src_osm_pisa", "src_rt_iternet"],
@@ -150,7 +149,7 @@ def _paths(job_id):
 
 def _read_job(job_id, what):
     """Cerca prima nella cache del servizio, poi tra i manifest già prodotti da analysis/ (T06)."""
-    for d in (CACHE, ROOT / "analysis/manifest"):
+    for d in (CACHE, ROOT / "analysis/manifest", ROOT / "shadow/manifest"):
         p = d / f"{job_id}.{what}.json"
         if p.exists(): return _load(p)
     return None
@@ -230,6 +229,89 @@ def _esegui(kw, store=True, out_dir=None):
 def compute_walk_access(a):
     kw = _risolvi_walk(a)
     return kw if "error" in kw else _esegui(kw)
+
+
+SHADOW_MAX_COMBINAZIONI = 1500   # ricevitori x orari x casi: circa 90 s di calcolo (T09: 2058 combinazioni = 2 minuti)
+
+
+def _percorso_campione(rid):
+    import shapely.ops
+    from pyproj import Transformer
+    from shapely.geometry import mapping, shape
+    from shapely import set_precision
+    fs = {f["properties"]["id"]: f for f in _load(ROOT / "network/percorsi_campione.geojson")["features"] if f["properties"].get("stato") == "reachable" and "geometry" in f and f["geometry"]["type"] == "LineString"}
+    if rid not in fs: return None, sorted(fs)
+    to = Transformer.from_crs(4326, 7791, always_xy=True)
+    g = shapely.ops.transform(lambda x, y, z=None: to.transform(x, y), shape(fs[rid]["geometry"]))
+    return {"receiver_id": f"pth_t04_{rid}", "kind": "path", "geometry": mapping(set_precision(g, 0.01))}, sorted(fs)
+
+
+def _risolvi_shadow(a):
+    """Argomenti validati -> argomenti di ombre.compute_shadow (percorsi campione espansi), o errore."""
+    if a["baseline_id"] != BASELINE_ID: return err("incompatible_baseline", f"Baseline disponibile: {BASELINE_ID}.", candidates=[BASELINE_ID])
+    if a.get("scenario_id") or a["method"]["obstacles"] == "buildings_and_scenario":
+        return err("outside_capability", "Gli scenari locali (T10) non sono ancora disponibili: calcolo possibile solo sulla baseline (documented_buildings_only o buildings_and_trees).")
+    rec = []
+    for r in a["receivers"]:
+        if "route_id" in r:
+            g, cand = _percorso_campione(r["route_id"])
+            if not g: return err("unknown_id", f"Percorso campione sconosciuto: {r['route_id']}.", candidates=cand)
+            rec.append(g)
+        else: rec.append(r)
+    ids = [r["receiver_id"] for r in rec]
+    if len(set(ids)) != len(ids): return err("invalid_params", "receiver_id duplicati.")
+    return {"baseline_id": a["baseline_id"], "receivers": rec, "when": a["when"], "method": a["method"], "walk_speed_m_s": a.get("walk_speed_m_s", 1.2)}
+
+
+def _alias_key(O, kw):
+    g = O.GPKG.stat()
+    return hashlib.sha256(canon({"kw": kw, "versione": O.VERSIONE, "gpkg": [g.st_size, g.st_mtime_ns]}).encode()).hexdigest()[:16]
+
+
+def _risposta_shadow(job, man, extra, cached, casi):
+    return {"job_id": job["job_id"], "status": job["status"], "result_manifest_id": man["manifest_id"], "headline_metrics": man["metrics"], "cached": cached,
+            "datasets": [{k: d[k] for k in ("snapshot_id", "source_id", "sha256", "license_state")} for d in man["datasets"]], "params": man["params"], "limits": man["limits"],
+            "method": f"{man['method']['name']} {man['method']['version']}", "cases": casi, **extra}
+
+
+def _esegui_shadow(kw, store=True):
+    sys.path.insert(0, str(ROOT / "shadow"))
+    import ombre as O
+    ak = CACHE / "alias" / f"{_alias_key(O, kw)}.json"
+    if store and ak.exists():
+        jid = _load(ak)["job_id"]; jp, mp = _paths(jid)
+        if jp.exists() and mp.exists(): return _risposta_shadow(_load(jp), _load(mp), _load(CACHE / f"{jid}.summary.json"), True, _load(ak)["cases"])
+    try: res = O.compute_shadow(kw["baseline_id"], kw["receivers"], kw["when"], kw["method"], walk_speed_m_s=kw["walk_speed_m_s"])
+    except O.OraInesistente as e: return err("invalid_params", f"Ora inesistente: {str(e).split(' (')[0]} (salto dell'ora legale). Indicare un orario diverso.")
+    except O.OraAmbigua as e: return err("invalid_params", f"Ora ambigua: {str(e).split(':')[0]} (fine ora legale). Chiedere all'utente se intende la prima (ora legale) o la seconda (ora solare), oppure scegliere un altro orario.")
+    except ValueError as e: return err("invalid_params", str(e))
+    job, man = res["job"], res["manifest"]; rows = res["righe"]; casi = job["params"]["casi"]
+    extra = {"sun_state_counts": {s: sum(1 for r in rows if r["stato"] == s) for s in sorted({r["stato"] for r in rows})}, "summary": res["sintesi"]}
+    if store:
+        jid = job["job_id"]; _write(CACHE / f"{jid}.summary.json", extra); _write(_paths(jid)[1], man); _write(_paths(jid)[0], job)
+        _write(ak, {"job_id": jid, "cases": casi})
+    return _risposta_shadow(job, man, extra, False, casi)
+
+
+def _limite_shadow(a):
+    """Costo = ricevitori x orari x casi. Oltre il limite: errore con la richiesta più piccola praticabile (stessi campi dell'input)."""
+    sys.path.insert(0, str(ROOT / "shadow"))
+    import ombre as O
+    n_casi = len(O.CASI_PER_OSTACOLI[a["method"]["obstacles"]]); times = a["when"]["times"]; recs = a["receivers"]
+    comb = len(recs) * len(times) * n_casi
+    if comb <= SHADOW_MAX_COMBINAZIONI: return None
+    passo = -(-comb // SHADOW_MAX_COMBINAZIONI); small = {**a, "when": {**a["when"], "times": times[::passo]}}
+    if len(recs) * len(small["when"]["times"]) * n_casi > SHADOW_MAX_COMBINAZIONI:
+        small["receivers"] = recs[:max(1, SHADOW_MAX_COMBINAZIONI // (n_casi * len(small["when"]["times"])))]
+    return err("limit_exceeded", f"{len(recs)} ricevitori x {len(times)} orari x {n_casi} casi = {comb} combinazioni, oltre il limite di {SHADOW_MAX_COMBINAZIONI}. "
+               f"Ridurre gli orari (uno ogni {passo}) o i percorsi.", smaller_request=small)
+
+
+def compute_shadow(a):
+    e = _limite_shadow(a)
+    if e: return e
+    kw = _risolvi_shadow(a)
+    return kw if "error" in kw else _esegui_shadow(kw)
 
 
 def _fuori(msg): return err("outside_capability", msg + ". Nessun risultato numerico disponibile per questa richiesta.")

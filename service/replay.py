@@ -14,11 +14,15 @@ def _input_da_manifest(m):
 def replay(job_id):
     m = core._read_job(job_id, "manifest")
     if not m: return core.err("unknown_id", f"Nessun manifest per {job_id}.")
-    if m["tool"] != "compute_walk_access": return core.err("outside_capability", f"Replay non disponibile per {m['tool']}.")
-    args = _input_da_manifest(m); kw = core._risolvi_walk(args)
-    if "error" in kw: return kw
-    with tempfile.TemporaryDirectory(dir=core.ROOT / "service") as td:   # sotto ROOT: i percorsi degli asset sono relativi a ROOT
-        r = core._esegui(kw, store=False, out_dir=pathlib.Path(td))
+    if m["tool"] not in ("compute_walk_access", "compute_shadow"): return core.err("outside_capability", f"Replay non disponibile per {m['tool']}.")
+    if m["tool"] == "compute_shadow":
+        p = m["params"]   # geometrie, orari e metodo sono nei parametri del job: nessun dato esterno
+        r = core._esegui_shadow({"baseline_id": m["baseline_id"], "receivers": p["receivers"], "when": p["when"], "method": p["method"], "walk_speed_m_s": p["walk_speed_m_s"]}, store=False)
+    else:
+        args = _input_da_manifest(m); kw = core._risolvi_walk(args)
+        if "error" in kw: return kw
+        with tempfile.TemporaryDirectory(dir=core.ROOT / "service") as td:   # sotto ROOT: i percorsi degli asset sono relativi a ROOT
+            r = core._esegui(kw, store=False, out_dir=pathlib.Path(td))
     if "error" in r: return r
     old = {x["metric_id"]: x for x in m["metrics"]}; new = {x["metric_id"]: x for x in r["headline_metrics"]}
     diffs = [f"metrica {k}: {old.get(k, {}).get('value')} -> {new.get(k, {}).get('value')}" for k in sorted(set(old) | set(new)) if old.get(k) != new.get(k)]

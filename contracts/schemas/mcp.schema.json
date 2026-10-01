@@ -574,27 +574,45 @@
      "minItems": 1,
      "maxItems": 50,
      "items": {
-      "type": "object",
-      "required": [
-       "receiver_id",
-       "kind",
-       "geometry"
-      ],
-      "additionalProperties": false,
-      "properties": {
-       "receiver_id": {
-        "$ref": "common.schema.json#/$defs/id_feature"
+      "oneOf": [
+       {
+        "type": "object",
+        "required": [
+         "receiver_id",
+         "kind",
+         "geometry"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "receiver_id": {
+          "$ref": "common.schema.json#/$defs/id_feature"
+         },
+         "kind": {
+          "enum": [
+           "path",
+           "surface"
+          ]
+         },
+         "geometry": {
+          "$ref": "common.schema.json#/$defs/geometry"
+         }
+        }
        },
-       "kind": {
-        "enum": [
-         "path",
-         "surface"
-        ]
-       },
-       "geometry": {
-        "$ref": "common.schema.json#/$defs/geometry"
+       {
+        "type": "object",
+        "required": [
+         "route_id"
+        ],
+        "additionalProperties": false,
+        "description": "Percorso campione per ID (network/percorsi_campione.geojson, es. R01), espanso dal servizio nella sua geometria sull'asse della rete.",
+        "properties": {
+         "route_id": {
+          "type": "string",
+          "pattern": "^R[0-9]{2}$"
+         }
+        }
        }
-      }
+      ]
      }
     },
     "when": {
@@ -648,8 +666,10 @@
       "obstacles": {
        "enum": [
         "documented_buildings_only",
-        "buildings_and_scenario"
-       ]
+        "buildings_and_scenario",
+        "buildings_and_trees"
+       ],
+       "description": "buildings_and_trees: edifici documentati più chiome idealizzate in tre casi (minimo, tipico, massimo), stimate per classe."
       }
      }
     },
@@ -695,6 +715,125 @@
        "type": "number",
        "minimum": 0,
        "maximum": 1
+      },
+      "cached": {
+       "type": "boolean",
+       "description": "true se il risultato viene dalla cache (stesso job_id già eseguito)."
+      },
+      "datasets": {
+       "type": "array",
+       "description": "Snapshot usati, con checksum e licenza.",
+       "items": {
+        "type": "object",
+        "required": [
+         "snapshot_id",
+         "source_id",
+         "sha256",
+         "license_state"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "snapshot_id": {
+          "$ref": "common.schema.json#/$defs/id_snapshot"
+         },
+         "source_id": {
+          "$ref": "common.schema.json#/$defs/id_source"
+         },
+         "sha256": {
+          "$ref": "common.schema.json#/$defs/sha256"
+         },
+         "license_state": {
+          "$ref": "common.schema.json#/$defs/license_state"
+         }
+        }
+       }
+      },
+      "params": {
+       "type": "object",
+       "description": "Parametri risolti del job (default compresi): quelli che entrano nell'hash."
+      },
+      "limits": {
+       "type": "array",
+       "description": "Limiti del risultato (stessi del manifest).",
+       "items": {
+        "$ref": "common.schema.json#/$defs/limit"
+       }
+      },
+      "method": {
+       "type": "string",
+       "description": "Nome e versione del metodo."
+      },
+      "cases": {
+       "type": "array",
+       "description": "Casi calcolati: base e sensibilità altezze, più alberi min/tipico/max se gli ostacoli includono le chiome.",
+       "items": {
+        "enum": [
+         "base",
+         "base_h_min",
+         "base_h_max",
+         "alberi_min",
+         "alberi_tipico",
+         "alberi_max",
+         "alberi_tipico_cilindro"
+        ]
+       }
+      },
+      "sun_state_counts": {
+       "type": "object",
+       "description": "Conteggio delle righe (ricevitore, ora, caso) per stato del sole: ok, sole sotto l'orizzonte, sole basso fuori dal supporto del modello (sotto 5 gradi). Gli ultimi due non hanno risultato numerico.",
+       "propertyNames": {
+        "enum": [
+         "ok",
+         "sole_sotto_orizzonte",
+         "sole_basso_fuori_supporto"
+        ]
+       },
+       "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+       }
+      },
+      "summary": {
+       "type": "array",
+       "description": "Medie per ricevitore, caso e fascia oraria (solo istanti con sole supportato).",
+       "items": {
+        "type": "object",
+        "required": [
+         "receiver_id",
+         "caso",
+         "fascia",
+         "n_orari",
+         "n_orari_calcolati",
+         "stati"
+        ],
+        "properties": {
+         "receiver_id": {
+          "$ref": "common.schema.json#/$defs/id_feature"
+         },
+         "caso": {
+          "type": "string"
+         },
+         "fascia": {
+          "type": "string"
+         },
+         "n_orari": {
+          "type": "integer"
+         },
+         "n_orari_calcolati": {
+          "type": "integer"
+         },
+         "stati": {
+          "type": "array",
+          "items": {
+           "enum": [
+            "ok",
+            "sole_sotto_orizzonte",
+            "sole_basso_fuori_supporto"
+           ]
+          }
+         }
+        }
+       }
       }
      },
      "allOf": [
