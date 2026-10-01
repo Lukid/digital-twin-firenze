@@ -24,12 +24,13 @@ select,button{font:inherit;padding:6px;max-width:100%}
 #scheda{border:1px solid var(--line);padding:8px 10px;background:#f6f6f6}
 #scheda dl{margin:6px 0 0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}
 #scheda dt{color:var(--mut)}#scheda dd{margin:0;overflow-wrap:anywhere}
+.lg{list-style:none;margin:0 0 6px 22px;padding:0;font-size:13px;color:var(--mut)}.lg i{display:inline-block;width:12px;height:12px;border:1px solid #000;margin-right:6px;vertical-align:-1px}.etic{background:#fff;color:#b00000;border:2px solid #b00000;padding:1px 6px;font-weight:700;font-size:13px}
 .cls{font-weight:700}
 @media(max-width:760px){main{flex-direction:column}aside{width:auto;max-height:45vh;border-left:0;border-top:1px solid var(--line)}}
 </style>
 </head>
 <body>
-<div id="banner" role="alert">Anteprima tecnica, dati dell'audit del 1 ottobre 2026, nessuna analisi eseguita, ingressi e percorsi non verificati
+<div id="banner" role="alert">Anteprima tecnica, dati del 1 ottobre 2026. Percorsi calcolati sul grafo, non ancora verificati sul posto. Chiome stimate. Nessuna analisi di accessibilità o d'ombra eseguita.
 <small>Non è T08: il motore grafico (MapLibre) è usato solo per questa anteprima e non è una scelta definitiva.</small></div>
 <main>
 <div id="map" aria-label="Mappa 3D della zona Z2, Stazione, Sant'Antonio, Corso Italia"></div>
@@ -37,13 +38,19 @@ select,button{font:inherit;padding:6px;max-width:100%}
 <h1>Z2 · Stazione / Sant'Antonio / Corso Italia</h1>
 <p id="errore" hidden></p>
 <fieldset><legend>Livelli</legend>
-<label><input type="checkbox" data-l="edifici" checked><span class="sw" style="background:#b8a99a"></span>Edifici (altezza uv_av, volo 2010)</label>
-<label><input type="checkbox" data-l="rete" checked><span class="sw" style="background:#0b5cad"></span>Rete pedonale OSM</label>
-<label><input type="checkbox" data-l="attr" checked><span class="sw" style="background:#fff;border-radius:50%;border:3px solid #c2410c"></span>Attraversamenti OSM</label>
+<label><input type="checkbox" data-l="edifici" checked><span class="sw" style="background:#9a9a9a"></span>Edifici</label>
+<ul class="lg"><li><i style="background:#9a9a9a"></i>misurato (unità volumetriche 2010)</li><li><i style="background:#d9a066"></i>derivato (OSM + DSM 2021)</li><li><i style="background:#c62828"></i>demolizione probabile</li><li><i style="background:#1565c0"></i>DSM più alto</li><li><i style="background:#00897b"></i>DSM più basso</li><li><i style="background:#f9a825"></i>altro flag DSM</li></ul>
+<label><input type="checkbox" data-l="alberi" checked><span class="sw" style="background:#2e7d32;border-radius:50%"></span>Alberi, chioma stimata</label>
+<ul class="lg"><li><i style="background:#2e7d32"></i>solo OSM</li><li><i style="background:#e08600"></i>solo DBT10K 2010</li><li><i style="background:#00acc1"></i>entrambe</li></ul>
+<label><input type="checkbox" data-l="rete" checked><span class="sw" style="background:#0b5cad"></span>Rete pedonale (grafo T04)</label>
+<ul class="lg"><li><i style="background:#1b7f3b"></i>marciapiede presente</li><li><i style="background:#0b5cad"></i>separato</li><li><i style="background:#c62828"></i>assente</li><li><i style="background:#6b6b6b"></i>ignoto</li><li><i style="background:#b0b0b0"></i>non applicabile (sentieri, scale)</li><li><i style="background:#e65100"></i>attraversamento</li></ul>
+<label><input type="checkbox" data-l="percorsi" checked><span class="sw" style="background:#111"></span>Percorsi campione (R01-R09 neri, V01 rosso tratteggiato)</label>
 <label><input type="checkbox" data-l="scuola" checked><span class="sw" style="background:#7b1fa2"></span>Scuola Battisti e ingressi</label>
+<ul class="lg"><li><i style="background:#7b1fa2;border:3px solid #7b1fa2"></i>probabile ingresso scuola</li><li><i style="background:#fff;border:3px solid #7b1fa2"></i>probabile edificio contiguo</li></ul>
 <label><input type="checkbox" data-l="fermate" checked><span class="sw" style="background:#00796b;border-radius:50%"></span>Fermate GTFS (per corse del giorno)</label>
-<label><input type="checkbox" data-l="alberi" checked><span class="sw" style="background:#2e7d32;border-radius:50%"></span>Alberi OSM</label>
 </fieldset>
+<label for="perc">Evidenzia un percorso</label>
+<select id="perc"><option value="">Tutti</option></select>
 <label for="vai">Vai a un elemento (tastiera)</label>
 <select id="vai"><option value="">Scegli...</option></select>
 <h2>Scheda elemento</h2>
@@ -51,7 +58,7 @@ select,button{font:inherit;padding:6px;max-width:100%}
 <h2>Classificazione</h2>
 <p><b>Misurato</b>: valore rilevato da fonte ufficiale. <b>Stimato</b>: valore di ripiego. <b>Da verificare</b>: dato di comunità o candidato, non controllato in campo.</p>
 <h2>Fonti</h2>
-<p>© OpenStreetMap contributors (base, rete, attraversamenti, ingressi, alberi). Regione Toscana - DB topografico (edifici, unità volumetriche, volo 2010). Autolinee Toscane GTFS (fermate, corse del 1 ottobre 2026).</p>
+<p>© OpenStreetMap contributors (base, rete, ingressi, alberi). Regione Toscana - DB topografico (edifici, unità volumetriche, volo 2010), DBT10K Regione Toscana (alberi), DSM 2021 Regione Toscana (altezze derivate e confronto). Quota base: dal dato (z_base) quando presente, altrimenti 0; la base cartografica è piatta, quindi gli edifici possono apparire sollevati di alcuni metri. Autolinee Toscane GTFS (fermate, corse del 1 ottobre 2026).</p>
 </aside>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
@@ -59,46 +66,69 @@ select,button{font:inherit;padding:6px;max-width:100%}
 const OSM='© OpenStreetMap contributors', RT='Regione Toscana - DB topografico', AT='Autolinee Toscane GTFS';
 const D=n=>'data/'+n+'.geojson';
 const src=(n,a)=>({type:'geojson',data:D(n),attribution:a});
-const map=new maplibregl.Map({container:'map',center:[10.4035,43.7082],zoom:17,pitch:58,pitch:58,bearing:-25,maxPitch:75,
+const mpp10=78271.517*Math.cos(43.708*Math.PI/180)/1024; // m/pixel a zoom 10
+const chioma=['interpolate',['exponential',2],['zoom'],10,['/',['get','chioma_d'],2*mpp10],22,['*',4096,['/',['get','chioma_d'],2*mpp10]]];
+const FL=['get','flag'];
+const colEdif=['case',['==',FL,'demolizione_probabile'],'#c62828',['==',FL,'dsm_piu_alto'],'#1565c0',['==',FL,'dsm_piu_basso'],'#00897b',
+ ['all',['!=',FL,''],['!=',FL,'non_confrontato']],'#f9a825',['==',['get','classe_h'],'derived'],'#d9a066','#9a9a9a'];
+const colAlb=['match',['get','fonti'],'osm','#2e7d32','dbt10k_2010','#e08600','#00acc1'];
+const map=new maplibregl.Map({container:'map',center:[10.3985,43.7085],zoom:17,pitch:58,bearing:-25,maxPitch:75,
  style:{version:8,sources:{osm:{type:'raster',tiles:['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],tileSize:256,maxzoom:19,attribution:OSM},
-  edifici:src('edifici',RT),rete:src('rete_pedonale',OSM),attr:src('attraversamenti',OSM),scuola:src('scuola',OSM),ingressi:src('ingressi',OSM),
-  fermate:src('fermate',AT),alberi:src('alberi',OSM)},
+  edifici:src('edifici',RT+', DSM 2021 Regione Toscana'),rete:src('rete',OSM),percorsi:src('percorsi',OSM),scuola:src('scuola',OSM),ingressi:src('ingressi',OSM),
+  fermate:src('fermate',AT),alberi:src('alberi','DBT10K Regione Toscana, '+OSM)},
  layers:[{id:'osm',type:'raster',source:'osm',paint:{'raster-saturation':-0.6,'raster-opacity':0.85}},
-  {id:'edifici',type:'fill-extrusion',source:'edifici',paint:{'fill-extrusion-height':['get','h'],'fill-extrusion-base':0,'fill-extrusion-color':'#b8a99a','fill-extrusion-opacity':0.92}},
-  {id:'rete',type:'line',source:'rete',paint:{'line-color':'#0b5cad','line-width':['interpolate',['linear'],['zoom'],14,1,19,4]}},
-  {id:'alberi',type:'circle',source:'alberi',paint:{'circle-color':'#2e7d32','circle-radius':['interpolate',['linear'],['zoom'],14,1.5,19,6],'circle-stroke-color':'#fff','circle-stroke-width':0.5}},
-  {id:'attr',type:'circle',source:'attr',paint:{'circle-color':'#fff','circle-stroke-color':'#c2410c','circle-stroke-width':2.5,'circle-radius':['interpolate',['linear'],['zoom'],14,2,19,7]}},
+  {id:'edifici',type:'fill-extrusion',source:'edifici',paint:{'fill-extrusion-height':['+',['get','z_base'],['get','h']],'fill-extrusion-base':['coalesce',['get','z_base'],0],'fill-extrusion-color':colEdif,'fill-extrusion-opacity':0.92}},
+  {id:'rete',type:'line',source:'rete',filter:['!=',['get','tipo'],'attraversamento'],paint:{'line-color':['match',['get','marciapiede'],'presente','#1b7f3b','separato','#0b5cad','assente','#c62828','ignoto','#6b6b6b','#b0b0b0'],'line-width':['interpolate',['linear'],['zoom'],14,1,19,4]}},
+  {id:'attr',type:'line',source:'rete',filter:['==',['get','tipo'],'attraversamento'],paint:{'line-color':'#e65100','line-dasharray':[1,1],'line-width':['interpolate',['linear'],['zoom'],14,1.5,19,5]}},
+  {id:'alberi',type:'circle',source:'alberi',paint:{'circle-color':colAlb,'circle-opacity':0.45,'circle-radius':chioma,'circle-pitch-alignment':'map','circle-pitch-scale':'map','circle-stroke-color':colAlb,'circle-stroke-width':1.2,'circle-stroke-opacity':0.9}},
+  {id:'perc_ombra',type:'line',source:'percorsi',paint:{'line-color':'#fff','line-width':['interpolate',['linear'],['zoom'],14,3,19,9],'line-opacity':0.9}},
+  {id:'perc_ok',type:'line',source:'percorsi',filter:['!=',['get','stato'],'forbidden'],paint:{'line-color':'#111','line-width':['interpolate',['linear'],['zoom'],14,1.5,19,5]}},
+  {id:'perc_v',type:'line',source:'percorsi',filter:['==',['get','stato'],'forbidden'],paint:{'line-color':'#d50000','line-dasharray':[2,1.5],'line-width':['interpolate',['linear'],['zoom'],14,2,19,5]}},
   {id:'fermate',type:'circle',source:'fermate',paint:{'circle-color':'#00796b','circle-opacity':0.8,'circle-stroke-color':'#fff','circle-stroke-width':1.5,
     'circle-radius':['interpolate',['linear'],['get','corse'],0,4,250,8,500,13,1000,18]}},
   {id:'scuola',type:'circle',source:'scuola',paint:{'circle-color':'#7b1fa2','circle-radius':11,'circle-stroke-color':'#fff','circle-stroke-width':2}},
-  {id:'ingressi',type:'circle',source:'ingressi',paint:{'circle-color':'#fff','circle-stroke-color':'#7b1fa2','circle-stroke-width':3,'circle-radius':6}}]}});
+  {id:'ingressi',type:'circle',source:'ingressi',paint:{'circle-color':['match',['get','classe'],'probabile_ingresso_scuola','#7b1fa2','#fff'],'circle-stroke-color':'#7b1fa2','circle-stroke-width':3,'circle-radius':['match',['get','classe'],'probabile_ingresso_scuola',8,6]}}]}});
 map.addControl(new maplibregl.NavigationControl());
 map.addControl(new maplibregl.ScaleControl());
 map.on('error',e=>{const p=document.getElementById('errore');p.hidden=false;p.textContent='Errore di caricamento: '+(e.error&&e.error.message||e)});
-const GR={edifici:['edifici'],rete:['rete'],attr:['attr'],scuola:['scuola','ingressi'],fermate:['fermate'],alberi:['alberi']};
+const GR={edifici:['edifici'],rete:['rete','attr'],percorsi:['perc_ombra','perc_ok','perc_v'],scuola:['scuola','ingressi'],fermate:['fermate'],alberi:['alberi']};
+const PL=['perc_ombra','perc_ok','perc_v'];
 document.querySelectorAll('[data-l]').forEach(c=>c.addEventListener('change',()=>GR[c.dataset.l].forEach(l=>map.setLayoutProperty(l,'visibility',c.checked?'visible':'none'))));
 // scheda
-const T={edifici:p=>({titolo:'Unità volumetrica',cls:p.h_nota==='misurato'?'misurato':'stimato',fonte:RT+', unità volumetriche',data:'volo '+p.volo.replace(/(\d{4})(\d\d)(\d\d)/,'$3/$2/$1'),r:[['Identificativo',p.id],['Altezza',p.h+' m (uv_av)'],['Uso',p.uso]]}),
- rete:p=>({titolo:'Percorso pedonale',cls:'da verificare',fonte:OSM,data:'1 ottobre 2026 (estrazione)',r:[['Tipo',p.tipo],['Nome',p.nome||'-'],['Superficie',p.superficie||'-'],['Identificativo',p.id]]}),
- attr:p=>({titolo:'Attraversamento pedonale',cls:'da verificare',fonte:OSM,data:'1 ottobre 2026 (estrazione)',r:[['Tipo',p.tipo||'-'],['Segnaletica',p.segnaletica||'-'],['Identificativo',p.id]]}),
+const FLAG={demolizione_probabile:'demolizione probabile (DSM molto più basso delle unità volumetriche)',dsm_piu_alto:'DSM più alto (possibile sopraelevazione)',dsm_piu_basso:'DSM più basso',non_confrontato:'non confrontato (sotto 40 m²)',scarto_con_vegetazione:'scarto con vegetazione',sotto_2_5m:'altezza sotto 2,5 m',dsm_non_attendibile:'DSM non attendibile',vegetazione_possibile:'vegetazione possibile'};
+const m1=v=>(+v).toFixed(1).replace('.',',')+' m';
+const T={edifici:p=>({titolo:{volume_uv:'Unità volumetrica',volume_derivato:'Volume derivato',copertura_osm:'Copertura OSM'}[p.tipo]||'Edificio',cls:p.classe_h==='measured'?'misurato':'derivato',fonte:p.fonte==='uv_rt_2010'?RT+', unità volumetriche 2010':'OSM + DSM 2021 Regione Toscana, meno DTM',data:String(p.anno),r:[['Identificativo',p.id],['Altezza',m1(p.h)],['Intervallo',m1(p.h_min)+' - '+m1(p.h_max)],['Quota base',m1(p.z_base)+' (dal dato)'],['Classe',p.classe_h],['Flag DSM',FLAG[p.flag]||'nessuno'],['Portico / volume sospeso','ignoto']]}),
+ rete:p=>({titolo:'Tratto del grafo T04',cls:'da verificare',fonte:OSM+', grafo T04',data:'1 ottobre 2026',r:[['Tipo',p.tipo],['Classe OSM',p.highway],['Nome',p.nome||'-'],['Marciapiede',p.marciapiede.replace('_',' ')],['Lunghezza',m1(p.m)],['Identificativo',p.id]]}),
+ percorsi:p=>p.stato==='forbidden'?{titolo:'V01 vietato (access=private)',cls:'da verificare',fonte:'Grafo T04',data:'1 ottobre 2026',r:[['Percorso',p.descrizione],['Esito','nessun percorso sul grafo verificato'],['Lunghezza sul grafo di controllo',m1(p.permissivo_lunghezza_m)+' (tratteggio rosso, non percorribile)'],['Restrizioni',(p.restrizioni||[]).join(', ')]]}:{titolo:p.id+' percorso campione',cls:'da verificare',fonte:'Grafo T04 (calcolato, non verificato sul posto)',data:'1 ottobre 2026',r:[['Percorso',p.descrizione],['Lunghezza',m1(p.lunghezza_totale_m)],['Attraversamenti',p.attraversamenti],['Marciapiede ignoto',m1(p.m_marciapiede_ignoto)],['Scale / sottopassi',p.scale+' / '+p.sottopassi]]},
  scuola:p=>({titolo:'Scuola primaria C. Battisti',cls:'da verificare',fonte:OSM+' (candidato)',data:'1 ottobre 2026 (estrazione)',r:[['Indirizzo',p.indirizzo],['Identificativo',p.id]]}),
- ingressi:p=>({titolo:'Ingresso della scuola',cls:'da verificare',fonte:OSM,data:'1 ottobre 2026 (estrazione)',r:[['Tipo',p.tipo],['Indirizzo',p.indirizzo||'-'],['Identificativo',p.id]]}),
+ ingressi:p=>({titolo:p.classe==='probabile_ingresso_scuola'?'Probabile ingresso scuola':'Probabile edificio contiguo',cls:'da verificare',fonte:OSM+', classificazione T04 dalla geometria',data:'1 ottobre 2026',r:[['Distanza di raccordo',m1(p.raccordo_m)],['Identificativo',p.id]]}),
  fermate:p=>({titolo:'Fermata '+p.nome,cls:'misurato',fonte:AT,data:'corse del 1 ottobre 2026',r:[['Codice',p.id],['Corse del giorno',p.corse],['Linee',p.linee]]}),
- alberi:p=>({titolo:'Albero',cls:'da verificare',fonte:OSM,data:p.data?'ultima modifica '+p.data:'1 ottobre 2026',r:[['Identificativo',p.id],['Specie e altezza','non disponibili']]})};
+ alberi:p=>({titolo:'Albero (chioma stimata)',cls:'stimato',fonte:{osm:'OSM','dbt10k_2010':'DBT10K Regione Toscana 2010','dbt10k_2010,osm':'DBT10K 2010 + OSM'}[p.fonti],data:'posizione: misurata; dimensioni: stimate',r:[['Diametro chioma stimato',m1(p.chioma_d_min)+' / '+m1(p.chioma_d)+' / '+m1(p.chioma_d_max)+' (min / tipico / max)'],['Altezza stimata',m1(p.h_min)+' / '+m1(p.h)+' / '+m1(p.h_max)],['Classe altezza',p.h_cls],['Identificativo',p.id]]})};
 const sch=document.getElementById('scheda');
 function show(layer,p){const t=T[layer](p),dl=document.createElement('dl');
  sch.replaceChildren();const h=document.createElement('strong');h.textContent=t.titolo;sch.append(h);
  [['Classificazione',t.cls],['Fonte',t.fonte],['Data',t.data],...t.r].forEach(([k,v])=>{const a=document.createElement('dt'),b=document.createElement('dd');a.textContent=k;b.textContent=v;if(k==='Classificazione')b.className='cls';dl.append(a,b)});
  sch.append(dl)}
-const ORDER=['ingressi','scuola','fermate','attr','alberi','rete','edifici'];
-map.on('click',e=>{const f=map.queryRenderedFeatures(e.point,{layers:ORDER.filter(l=>map.getLayoutProperty(l,'visibility')!=='none')})[0];if(f)show(f.layer.id,f.properties)});
+const ORDER=['ingressi','scuola','fermate','perc_v','perc_ok','attr','alberi','rete','edifici'];
+const LID={perc_v:'percorsi',perc_ok:'percorsi',attr:'rete'};
+map.on('click',e=>{const f=map.queryRenderedFeatures(e.point,{layers:ORDER.filter(l=>map.getLayoutProperty(l,'visibility')!=='none')})[0];if(f)show(LID[f.layer.id]||f.layer.id,f.properties)});
 ORDER.forEach(l=>{map.on('mouseenter',l,()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave',l,()=>map.getCanvas().style.cursor='')});
 // elenco per tastiera
 const vai=document.getElementById('vai'),idx=[];
 Promise.all(['scuola','ingressi','fermate'].map(n=>fetch(D(n)).then(r=>r.json()).then(g=>g.features.forEach(f=>idx.push([n,f]))))).then(()=>{
  idx.sort((a,b)=>ORDER.indexOf(a[0])-ORDER.indexOf(b[0]));
- idx.forEach(([n,f],i)=>{const o=document.createElement('option');o.value=i;const p=f.properties;o.textContent=(n==='fermate'?'Fermata ':n==='ingressi'?'Ingresso ':'')+(p.nome||p.indirizzo||p.tipo)+(n==='ingressi'?' ('+p.tipo+')':'');vai.append(o)})});
+ idx.forEach(([n,f],i)=>{const o=document.createElement('option');o.value=i;const p=f.properties;o.textContent=(n==='fermate'?'Fermata ':n==='ingressi'?'Ingresso ':'')+(n==='ingressi'?(p.classe==='probabile_ingresso_scuola'?'probabile ingresso scuola':'probabile edificio contiguo'):(p.nome||p.indirizzo));vai.append(o)})});
 vai.addEventListener('change',()=>{if(vai.value==='')return;const [n,f]=idx[vai.value];map.flyTo({center:f.geometry.coordinates,zoom:18,duration:800});show(n,f.properties)});
+// percorsi: selettore e etichetta V01
+const perc=document.getElementById('perc');let PF=[];
+fetch(D('percorsi')).then(r=>r.json()).then(g=>{PF=g.features;PF.forEach(f=>{const o=document.createElement('option');o.value=f.properties.id;o.textContent=f.properties.id+(f.properties.stato==='forbidden'?' vietato (access=private)':' '+m1(f.properties.lunghezza_totale_m));perc.append(o)});
+ const v=PF.find(f=>f.properties.stato==='forbidden'),c=v.geometry.coordinates,mid=c[Math.floor(c.length/2)];
+ const el=document.createElement('div');el.className='etic';el.textContent='vietato (access=private)';new maplibregl.Marker({element:el}).setLngLat(mid).addTo(map)});
+perc.addEventListener('change',()=>{const id=perc.value;
+ PL.forEach(l=>map.setPaintProperty(l,'line-opacity',id?['case',['==',['get','id'],id],1,0.15]:1));
+ map.setPaintProperty('perc_ok','line-width',id?['case',['==',['get','id'],id],6,1.5]:['interpolate',['linear'],['zoom'],14,1.5,19,5]);
+ if(!id)return;const f=PF.find(x=>x.properties.id===id),b=new maplibregl.LngLatBounds();f.geometry.coordinates.forEach(c=>b.extend(c));
+ map.fitBounds(b,{padding:{top:60,bottom:60,left:60,right:140},duration:800,pitch:30,bearing:0,maxZoom:18});show('percorsi',f.properties)});
 </script>
 </body>
 </html>
