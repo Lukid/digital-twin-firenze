@@ -1,6 +1,6 @@
 # Pisa Digital Twin
 
-Prototipo su una zona di Pisa per analizzare accessibilità pedonale e confrontare scenari di ombreggiamento, con città 3D riconoscibile e interrogazione dei dati tramite MCP.
+Prototipo, primo pilota su una zona di Pisa e nuovo pilota a Firenze (Novoli - Firenze Nova, decisione D12), per analizzare accessibilità pedonale e confrontare scenari di ombreggiamento, con città 3D riconoscibile e interrogazione dei dati tramite MCP.
 
 Pilota Z2 (Stazione / Sant'Antonio / Corso Italia) in locale: dati, rete, accessibilità, ombre, scenari, scena e server MCP con test. Manca la verifica sul posto. **Stato e prossimi passi: [docs/STATO.md](docs/STATO.md).**
 

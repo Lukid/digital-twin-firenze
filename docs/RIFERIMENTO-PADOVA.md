@@ -85,6 +85,10 @@ Dati per quartiere (scaricati dal portale, licenza CC BY 4.0):
 
 Il censimento degli alberi (82.235) ha specie e circonferenza, non altezza né chioma: servono DSM 2023 o CHM. Per l'area di Firenze Nova (quartiere 5) c'è in più il dataset Life Escapos con parametri strutturali degli alberi.
 
+### Decisione e riquadro candidato
+
+Il 1 ottobre 2026 l'utente ha scelto Firenze, area Novoli - Firenze Nova (D12). Riquadro candidato, da confermare in F01: lon 11,213-11,229, lat 43,796-43,808 (1,72 km²). Dentro: 1.614 alberi censiti, 1.164 civici, 30 barriere censite, tutti i 50 alberi Life Escapos, nessun rifugio climatico. Destinazioni ancora da contare.
+
 ## 6. Cosa riprendere e cosa no
 
 Riprendere:

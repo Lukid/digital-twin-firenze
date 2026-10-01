@@ -1,6 +1,6 @@
 # Specifica del pilota: accessibilità, ombra e strumenti MCP
 
-Revisione 1, 1 ottobre 2026. Requisiti del [piano](PIANO.md); nomi di campi e strumenti proposti per l'implementazione, non API già disponibili. Quote, precisione, servizi e pesi finali seguono l'audit. Le scelte numeriche sotto sono parametri iniziali di esperimento, non dati osservati su Pisa.
+Revisione 1, 1 ottobre 2026. Requisiti del [piano](PIANO.md); nomi di campi e strumenti proposti per l'implementazione, non API già disponibili. Quote, precisione, servizi e pesi finali seguono l'audit. Le scelte numeriche sotto sono parametri iniziali di esperimento, non dati osservati su Pisa. Dal 1 ottobre 2026 la specifica vale anche per il nuovo pilota di Firenze (D12): a Firenze gli alberi sono censiti e le altezze vengono dal LiDAR 2023, quindi le chiome passano da stimate a misurate dove il rilievo lo permette.
 
 ## 1. Caso A — accessibilità pedonale
 

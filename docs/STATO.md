@@ -1,12 +1,12 @@
 # Stato del progetto
 
-Aggiornato al 1 ottobre 2026, fine della seconda sessione (T12 chiuso, commit 8d94082). Punto di ripartenza per la prossima sessione.
+Aggiornato al 1 ottobre 2026, fine della seconda sessione. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
-Pilota Z2 (Stazione / Sant'Antonio / Corso Italia): dati, rete, accessibilità, ombre, scenari, scena e server MCP funzionano in locale e hanno test; verifica delle domande in linguaggio naturale fatta (T12); manca la verifica sul posto (T11) e la demo (T13).
+Nuovo pilota a Firenze, area Novoli - Firenze Nova, costruito dai dati del portale regionale e sul modello di presentazione di Padova. Il primo pilota su Pisa Z2 è consegnato (dati, rete, accessibilità, ombre, scenari, scena, MCP e verifica NL, con test; sopralluogo solo preparato) e ne riusiamo motori, servizio e scena.
 
-## Fatto (ogni consegna ha un REPORT.md e un test rieseguito dall'integratore)
+## Fatto sul primo pilota, Pisa Z2 (ogni consegna ha un REPORT.md e un test rieseguito dall'integratore)
 
 | Task | Dove | Controllo |
 |---|---|---|
@@ -43,14 +43,14 @@ Anteprima storica: `preview/` (superata da `scene/`).
 8. Quali difetti aperti di T12 correggere prima della demo (vedi Prossimi passi, punto 1).
 9. Riferimento visivo indicato dall'utente il 1/10/2026: https://padova-digital-twin.ekore.tech/ («il risultato a cui vorrei arrivare»). Da decidere: estendere la scena oltre Z2 e quali livelli (D11 nel piano, task T15 nel backlog; vedi Prossimi passi, punto 0).
 
-## Risultati principali (non validati sul posto)
+## Risultati principali su Pisa (non validati sul posto)
 
 - Accessibilità a 1,2 m/s su 2.224 civici: Battisti 52,5% entro 10 min (p50 9,7 min); fermata Pellico 66,3%. 21 civici vietati (accesso privato), 55 con dati insufficienti.
 - Ombra su R01 Pellico → Battisti, 15 settembre: 91% in ombra all'ingresso, 46% all'uscita (12:30-13:30). Il lato del marciapiede cambia fino a 20 punti: è l'incertezza dominante.
 - Scenari: filare S1 -0,58 min di sole a mezzogiorno su R01 (intervallo fino a -0,12), quasi nullo sul lato opposto; pensilina S2 utile solo sull'area di attesa (ombra da 0 a 31%).
 - La scelta dell'ingresso della scuola è il parametro che sposta di più l'accessibilità.
 
-## Limiti noti trasversali
+## Limiti noti su Pisa
 
 - Rete solo OSM, lato del marciapiede ignoto, ingressi da verificare.
 - Altezze edifici del 2010 (post-2010 da DSM 2021), datum verticale non confermato, portici ignoti.
@@ -60,18 +60,13 @@ Anteprima storica: `preview/` (superata da `scene/`).
 
 ## Prossimi passi
 
-0. **Obiettivo di presentazione (Padova)**. Il gemello di Padova è un atlante di tutta la città: edifici con tetti colorati, verde 3D, nomi dei luoghi, ricerca per via, civico e particella catastale, parcheggi, ferrovia e tram, temperatura delle superfici da satellite (Landsat, 100 m, per data, con confronto fra giornate), qualità dell'aria ARPAV, webcam. Motore 3D proprio, città divisa in riquadri a due livelli di dettaglio. Non mostra calcoli di accessibilità o scenari. Rispetto a Pisa: noi abbiamo il motore di analisi e MCP, ci mancano la qualità della scena, l'estensione oltre Z2 e i livelli informativi. L'utente vuole riprenderne anche stack e approccio, mostrare i dati ARPAT e costruire dai dati del portale regionale (gestito da Net7) con il server MCP CKAN. Analisi completa in `docs/RIFERIMENTO-PADOVA.md`; nuovi task T15 (scena), T16 (ARPAT), T17 (portale regionale). Domattina: fissare D11 (estensione, livelli), rifare il confronto di ADR-T08 con la via di Padova, chiedere ad ARPAT il consenso per proxy e dati. L'utente valuta anche di cambiare territorio verso un comune con più dati sul portale regionale: confronto in `docs/RIFERIMENTO-PADOVA.md`, sezione 5 (Firenze quartiere, Siena, Arezzo). Il 1/10 sera l'utente ha proposto di passare a un quartiere di Firenze; a Firenze esistono già il Digital Twin del Comune e quello di DISIT/Snap4City (sezione 5 del documento): cambio da confermare dopo aver visto la sovrapposizione, prima di riscrivere piano e backlog.
-1. **Correzioni da T12 prima della demo** (dettaglio in `nl/REPORT.md`, Difetti aperti). Ordine consigliato, da confermare (decisione 8):
-   - tool `list_scenarios`: oggi il client non trova filare e pensilina senza che l'utente gli dia gli ID. Piccolo: legge `scenarios/scn_*.json`.
-   - ombra per orario nell'output di `compute_shadow`: oggi solo medie e min/max, la mappa invece ha i valori per orario. Medio.
-   - accessibilità verso "almeno una" di più destinazioni (caso stazione, 9 fermate): oggi lo schema accetta 20 destinazioni ma il motore una. Medio, tocca `analysis/`.
-   - dopo la demo: campo per l'ora ambigua, conteggio dei civici raggiunti, replay via MCP, differenza 7.606/2.224 civici in `inspect_dataset`.
-   Dopo ogni correzione: `service/test_service.py`, `nl/test_nl.py`, e ripetere le domande 6, 9, 12 e 13 con un client nuovo.
-2. **T11 validazione**: sopralluogo con `fieldwork/scheda.html`, import esiti, correzioni separate dalle verifiche, report con tolleranze. Serve prima la decisione 4.
-3. **T13 demo e consegna**: dopo T11 e il punto 1. Il GTFS congelato scade il 21/10/2026: se la demo è dopo, va rigenerato lo snapshot.
-4. Eventuale T14 (chat web) solo dopo decisione D09.
+1. **F01 audit di Firenze** (`docs/BACKLOG.md`, ciclo Firenze): fissare il riquadro (candidato in `docs/RIFERIMENTO-PADOVA.md`, sezione 5), contare le destinazioni (scuole, università di Novoli, fermate del tram, eventualmente Careggi), inventario delle fonti con il server MCP CKAN, licenze, confronto con i gemelli di Comune e DISIT.
+2. F02 contratti a più aree, poi F03 acquisizione, poi F04 rete e F05 edifici e verde (altezze da DSM 2023, verifica sui 50 alberi Life Escapos).
+3. Analisi, servizio MCP e scena sul nuovo riquadro, riusando i motori di Pisa.
+4. In parallelo, da decidere: approccio di scena di Padova (T15, rifare il confronto di ADR-T08), dati ARPAT di Firenze (T16, consenso ARPAT), fonti dal portale (T17).
+5. Su Pisa resta aperto solo ciò che serve a chiudere il primo pilota: difetti di T12 utili anche a Firenze (elenco scenari, ombra per orario, più destinazioni) e, se si vuole, il sopralluogo T11.
 
-Nota per la ripartenza: il client MCP rilegge le descrizioni dei tool all'avvio della sessione; i manifest dei job di T12 sono versionati in `nl/manifest/`, la cache `service/cache/` no.
+Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
 
 ## Come lavora la sessione
 
