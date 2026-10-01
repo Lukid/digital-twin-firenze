@@ -4,7 +4,7 @@ Prototipo su una zona di Pisa per analizzare accessibilità pedonale e confronta
 
 Pilota Z2 (Stazione / Sant'Antonio / Corso Italia) in locale: dati, rete, accessibilità, ombre, scenari, scena e server MCP con test. Manca la verifica sul posto. **Stato e prossimi passi: [docs/STATO.md](docs/STATO.md).**
 
-Riferimento di presentazione indicato dall'utente: il [gemello di Padova](https://padova-digital-twin.ekore.tech/) (decisione D11 nel piano).
+Riferimento di presentazione indicato dall'utente: il [gemello di Padova](https://padova-digital-twin.ekore.tech/) (decisione D11 nel piano, analisi in [docs/RIFERIMENTO-PADOVA.md](docs/RIFERIMENTO-PADOVA.md)).
 
 ## Documenti operativi
 

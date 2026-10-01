@@ -76,3 +76,5 @@ Poi http://127.0.0.1:8791/index.html (non funziona da `file://`; servono rete pe
 ## Riferimento Padova (1 ottobre 2026)
 
 L'utente ha indicato il gemello di Padova come risultato a cui arrivare (D11 nel piano). Quella demo usa un motore 3D generico, non una libreria cartografica, con la città in riquadri a due livelli di dettaglio, tetti e verde 3D su tutta la città. Questa ADR resta una proposta: le misure sopra valgono per Z2 (1.522 solidi) e non dicono come scala la scelta su tutta Pisa. Se D11 estende la scena oltre Z2, ripetere il confronto su un campione più grande (centro storico) e con i tetti, prima di T15.
+
+L'utente vuole riprendere anche l'approccio di Padova ([RIFERIMENTO-PADOVA.md](../docs/RIFERIMENTO-PADOVA.md)): motore 3D generico (three.js), scena precotta offline in riquadri con due livelli di dettaglio, geometrie già pronte per la GPU, sito statico senza server di tile. Il nuovo confronto deve mettere a paragone questa via con la libreria cartografica attuale sullo stesso campione, misurando prima vista, peso, memoria e fps, e la fatica di tenere allineati scena e modello analitico.
