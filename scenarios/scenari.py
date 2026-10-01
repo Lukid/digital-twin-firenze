@@ -203,6 +203,8 @@ def _segnalazioni(scn):
         usati = [eid for geom, eid in c["usati"] if geom.distance(g) <= (0.5 if t == "tree" else PASSAGGIO_SEMILARGHEZZA_M)]
         if usati: w.append({"code": "su_arco_molto_usato", "op_id": op["op_id"], "severity": "warning",
                             "text": f"L'impronta tocca un arco fra i più usati da T06 ({usati[:2]}): passaggio libero e larghezza non modellati, da verificare."})
+        if t == "tree" and any(o["op_id"] == op["op_id"] and o["n_tipica"] for o in sovrapposizioni_alberi_esistenti(scn)):
+            w.append({"code": "chioma_su_chioma_esistente", "op_id": op["op_id"], "severity": "info", "text": "La chioma in proiezione si sovrappone a quella di un albero esistente (T05, chioma tipica): il beneficio marginale nel contesto con alberi esistenti è minore."})
         x0, y0, x1, y1 = c["z2"]
         px, py = g.centroid.x, g.centroid.y
         if not (x0 <= px <= x1 and y0 <= py <= y1): w.append({"code": "fuori_z2", "op_id": op["op_id"], "severity": "warning", "text": "Fuori dall'area pilota Z2."})
@@ -241,6 +243,20 @@ def carica(scenario_id):
     return json.loads(p.read_text())
 
 
+def sovrapposizioni_alberi_esistenti(scn):
+    """Per ogni albero di scenario, gli alberi esistenti (T05) la cui chioma in proiezione si sovrappone: distanza fra i centri < somma dei raggi,
+    con chioma esistente tipica e massima. Ritorna lista di {op_id, vicino_m, n_tipica, n_max, ids_tipica}."""
+    a = O.dati()["a"]; out = []
+    if a.empty: return out
+    x, y, r_t, r_m = a.geometry.x.values, a.geometry.y.values, a["chioma_d"].values / 2, a["chioma_d_max"].values / 2
+    for op in scn["operations"]:
+        if op["target_type"] != "tree": continue
+        p = shape(op["geometry"]); r = op["dimensions"]["crown_diameter_m"]["value"] / 2; d = np.hypot(x - p.x, y - p.y)
+        t, m = d < r + r_t, d < r + r_m
+        out.append({"op_id": op["op_id"], "vicino_m": round(float(d.min()), 2), "n_tipica": int(t.sum()), "n_max": int(m.sum()), "ids_tipica": [str(i) for i in a["id"].values[t]][:5]})
+    return out
+
+
 def riepilogo_interventi(scn):
     n = {"tree": 0, "shelter": 0}; area = {"tree": 0.0, "shelter": 0.0}
     for op in scn["operations"]:
@@ -264,10 +280,17 @@ def volumi_scenario(scn):
     return prismi, alberi
 
 
-def calcola_ombra(scn, rec, cond, casi=None, fasce=None, asset_times=(), asset_casi=("base",), asset_bbox=None, out_dir=None, walk_speed_m_s=None):
+CONTESTI = ("solo_edifici", "con_alberi_esistenti")
+CASI_CONTESTO = {"solo_edifici": ("base", "base_h_min", "base_h_max"), "con_alberi_esistenti": ("alberi_tipico", "alberi_min", "alberi_max")}   # centrale, estremi
+
+
+def calcola_ombra(scn, rec, cond, casi=None, fasce=None, asset_times=(), asset_casi=("base",), asset_bbox=None, out_dir=None, walk_speed_m_s=None, contesto="solo_edifici"):
     """Ombra della baseline più gli interventi dello scenario. Senza interventi: solo edifici documentati (stessi numeri della baseline)."""
     vol, alb = volumi_scenario(scn)
-    method = {**cond["method"], "obstacles": "buildings_and_scenario" if (vol or alb) else "documented_buildings_only"}
+    if contesto not in CONTESTI: raise ScenarioError("invalid_params", f"contesto ammesso: {list(CONTESTI)}")
+    if contesto == "con_alberi_esistenti":   # edifici + alberi T05 (chioma tipica, min e max come intervallo), più gli interventi; baseline invariata
+        method = {**cond["method"], "obstacles": "buildings_and_trees"}; casi = casi or list(CASI_CONTESTO[contesto])
+    else: method = {**cond["method"], "obstacles": "buildings_and_scenario" if (vol or alb) else "documented_buildings_only"}
     when = {"date": cond["date"], "timezone": "Europe/Rome", "times": cond["times"]}
     r = O.compute_shadow(scn["baseline_id"], rec, when, method, scenario_id=scn["scenario_id"], scenario_volumes=vol or None, scenario_trees=alb or None,
                          walk_speed_m_s=walk_speed_m_s or cond["walk_speed_m_s"], casi=casi, fasce=fasce if fasce is not None else cond["fasce"],
@@ -279,21 +302,21 @@ def calcola_ombra(scn, rec, cond, casi=None, fasce=None, asset_times=(), asset_c
     return r
 
 
-def _chiave_cache(scn, rec, cond, casi, fasce, asset_times, asset_casi, asset_bbox):
+def _chiave_cache(scn, rec, cond, casi, fasce, asset_times, asset_casi, asset_bbox, contesto="solo_edifici"):
     g = O.dati()["gpkg_sha256"]
     return sha_obj({"scn": {k: v for k, v in scn.items() if k != "created_at"}, "rec": [(r["receiver_id"], r["geometry"]) for r in rec], "cond": cond, "casi": casi, "fasce": fasce,
-                    "assets": [list(asset_times), list(asset_casi), asset_bbox], "ombre": O.VERSIONE, "gpkg": g, "t10": VERSIONE})[:20]
+                    "assets": [list(asset_times), list(asset_casi), asset_bbox], "ombre": O.VERSIONE, "gpkg": g, "t10": VERSIONE, **({"contesto": contesto} if contesto != "solo_edifici" else {})})[:20]
 
 
-def ombra_con_cache(scn, rec=None, cond=None, casi=None, asset_times=(), asset_casi=("base",), asset_bbox=None, asset=False):
+def ombra_con_cache(scn, rec=None, cond=None, casi=None, asset_times=(), asset_casi=("base",), asset_bbox=None, asset=False, contesto="solo_edifici"):
     """calcola_ombra con cache in data/norm/scenarios/jobs. Ritorna {job, manifest, sintesi, cached}. Con asset=True scrive i GeoJSON 4326 delle ombre in scenarios/out
     (nome ombre_<scenario>_<data>_<hhmm>.geojson, con scenario_id nelle proprietà)."""
-    rec = rec or ricevitori(); cond = cond or condizioni(); k = _chiave_cache(scn, rec, cond, casi, cond["fasce"], asset_times, asset_casi, asset_bbox)
+    rec = rec or ricevitori(); cond = cond or condizioni(); k = _chiave_cache(scn, rec, cond, casi, cond["fasce"], asset_times, asset_casi, asset_bbox, contesto)
     p = JOBS / f"{k}.json"
     if p.exists():
         c = json.loads(p.read_text())
         if all((ROOT / a["path"]).exists() for a in c["manifest"]["assets"] if a["role"] == "result_geometry"): return {**c, "cached": True}
-    r = calcola_ombra(scn, rec, cond, casi=casi, asset_times=asset_times if asset else (), asset_casi=asset_casi, asset_bbox=asset_bbox, out_dir=OUT if asset else None)
+    r = calcola_ombra(scn, rec, cond, casi=casi, asset_times=asset_times if asset else (), asset_casi=asset_casi, asset_bbox=asset_bbox, out_dir=OUT if asset else None, contesto=contesto)
     man = r["manifest"]
     for a in man["assets"]:   # nomi per scenario invece che per job; scenario_id nelle proprietà
         if a["role"] != "result_geometry": continue

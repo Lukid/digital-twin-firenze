@@ -140,4 +140,17 @@ for sid in ("scn_z2_s0_baseline", "scn_z2_s1_filare_r01", "scn_z2_s2_pensilina_p
         pt = shape(fc["features"][0]["geometry"]).representative_point(); assert 10.3 < pt.x < 10.5 and 43.6 < pt.y < 43.8
 assert S.stato_baseline() == st0
 print("ok 10 asset di scena")
+# 11. contesto con alberi esistenti: l'ombra è un'unione, quindi il beneficio di un nuovo albero non supera quello a soli edifici (stesso ricevitore, ora, estremo)
+ca = S.CASI_CONTESTO["con_alberi_esistenti"]; cs = S.CASI_CONTESTO["solo_edifici"]
+ea = S.calcola_ombra(un_albero, rec, leggero, contesto="con_alberi_esistenti"); e0 = S.calcola_ombra(vuoto, rec, leggero, contesto="con_alberi_esistenti")
+assert ea["job"]["params"]["method"]["obstacles"] == "buildings_and_trees" and ea["job"]["job_id"] != ra["job"]["job_id"] and S.verifica_baseline() == []
+ix = lambda r: {(x["receiver_id"], x["time_local"], x["caso"]): x for x in r["righe"]}
+Ra, Rz, Ea, E0 = ix(ra), ix(rz), ix(ea), ix(e0); n = 0
+for (rid, t, caso), x in Ea.items():
+    if "shade_fraction" not in x or caso != "alberi_tipico": continue
+    d_alb = x["shade_fraction"] - E0[(rid, t, caso)]["shade_fraction"]; d_ed = Ra[(rid, t, "base")]["shade_fraction"] - Rz[(rid, t, "base")]["shade_fraction"]
+    assert -1e-9 <= d_alb <= d_ed + 1e-9, (rid, t, d_alb, d_ed); n += 1
+assert n > 0
+assert S.sovrapposizioni_alberi_esistenti(base_scn) and all({"op_id", "n_tipica", "n_max"} <= set(o) for o in S.sovrapposizioni_alberi_esistenti(base_scn))
+print("ok 11 contesto con alberi esistenti")
 print("TUTTO OK")

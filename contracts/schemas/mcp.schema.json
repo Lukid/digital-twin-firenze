@@ -1048,6 +1048,14 @@
          "minimum": 0
         }
        }
+      },
+      "context": {
+       "enum": [
+        "solo_edifici",
+        "con_alberi_esistenti",
+        "entrambi"
+       ],
+       "description": "Contesto delle ombre: solo_edifici (baseline: edifici documentati, default), con_alberi_esistenti (edifici + alberi esistenti T05 a chioma tipica, min e max come intervallo) o entrambi (delta in tutti e due i contesti, metriche del secondo con suffisso _alb). Ombra unione: il beneficio di un albero nuovo con alberi esistenti non supera quello a soli edifici."
       }
      }
     }
@@ -1187,6 +1195,10 @@
       "ranking": {
        "type": "object",
        "description": "Presente solo se il decisore ha dato i pesi; riporta pesi, punteggi e ordine con l'avvertenza che dipendono dai pesi."
+      },
+      "indicators_con_alberi_esistenti": {
+       "type": "object",
+       "description": "Indicatori scalari nel contesto con alberi esistenti (presente se il contesto lo richiede)."
       }
      }
     },
