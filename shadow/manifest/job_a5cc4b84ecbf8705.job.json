@@ -1,10 +1,10 @@
 {
- "job_id": "job_955a02d0f50ccc2d",
+ "job_id": "job_a5cc4b84ecbf8705",
  "tool": "compute_shadow",
  "status": "succeeded",
- "created_at": "2026-10-01T18:49:44Z",
- "started_at": "2026-10-01T18:49:44Z",
- "finished_at": "2026-10-01T18:51:48Z",
+ "created_at": "2026-10-01T19:05:56Z",
+ "started_at": "2026-10-01T19:05:56Z",
+ "finished_at": "2026-10-01T19:08:11Z",
  "inputs": {
   "baseline_id": "bas_z2_20261001",
   "snapshot_ids": [
@@ -1110,7 +1110,7 @@
    }
   ],
   "when": {
-   "date": "2026-06-21",
+   "date": "2026-10-01",
    "timezone": "Europe/Rome",
    "times": [
     "07:45",
@@ -1206,8 +1206,8 @@
    "tronco": "trascurato",
    "parametri": "geometry/parametri_chiome.json"
   },
-  "sospesi": "nessuno: campo sospeso ignoto nella fonte, volumi trattati come pieni",
-  "method_version": "0.1.0"
+  "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni",
+  "method_version": "0.2.0"
  },
  "limits": {
   "max_area_km2": 4,
@@ -1219,5 +1219,5 @@
   "fraction": 1.0,
   "message": "completato"
  },
- "result_manifest_id": "man_955a02d0f50ccc2d"
+ "result_manifest_id": "man_a5cc4b84ecbf8705"
 }
