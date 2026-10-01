@@ -1,0 +1,1645 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-01T13:45:59Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1117293053,
+  "lat": 43.7068235,
+  "lon": 10.4362600,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 1209810715,
+  "lat": 43.7073393,
+  "lon": 10.4307905,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855562,
+  "lat": 43.7072300,
+  "lon": 10.4383967,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Martin Lutero 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "ref": "B4255",
+    "route_ref": "13;150;1+",
+    "shelter": "yes",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855588,
+  "lat": 43.7098772,
+  "lon": 10.4262430,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Cisanello 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "B4060",
+    "route_ref": "150;LAM Rossa",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892233,
+  "lat": 43.7071268,
+  "lon": 10.4260086,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Parigi 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892243,
+  "lat": 43.7040971,
+  "lon": 10.4305490,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Mariscoglio 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892253,
+  "lat": 43.7091403,
+  "lon": 10.4387056,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Paradisa 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892261,
+  "lat": 43.7103621,
+  "lon": 10.4364579,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "covered": "no",
+    "highway": "bus_stop",
+    "name": "Paradisa 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892267,
+  "lat": 43.7139194,
+  "lon": 10.4323943,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pungilupo 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "4324",
+    "route_ref": "13",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892269,
+  "lat": 43.7054638,
+  "lon": 10.4321200,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Basilicata",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "ref": "4014",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892273,
+  "lat": 43.7127212,
+  "lon": 10.4283878,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Padule 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892274,
+  "lat": 43.7138172,
+  "lon": 10.4274023,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "De Ruggiero 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892276,
+  "lat": 43.7035114,
+  "lon": 10.4365742,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Torri 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892280,
+  "lat": 43.7055199,
+  "lon": 10.4294675,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Parigi 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892285,
+  "lat": 43.7150842,
+  "lon": 10.4296140,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pungilupo 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "ref": "4323",
+    "route_ref": "13",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892290,
+  "lat": 43.7063333,
+  "lon": 10.4278188,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Parigi 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892291,
+  "lat": 43.7033461,
+  "lon": 10.4367170,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Torri 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892314,
+  "lat": 43.7037350,
+  "lon": 10.4323865,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Tealdi",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892315,
+  "lat": 43.7121754,
+  "lon": 10.4346799,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Caduti di El Alamein",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "13",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892316,
+  "lat": 43.7144989,
+  "lon": 10.4283741,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Padule 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892331,
+  "lat": 43.7152155,
+  "lon": 10.4295668,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pungilupo 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "route_ref": "22",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892332,
+  "lat": 43.7131025,
+  "lon": 10.4344721,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pungilupo 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "22",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892345,
+  "lat": 43.7047893,
+  "lon": 10.4389227,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "S. Biagio 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892350,
+  "lat": 43.7068276,
+  "lon": 10.4262775,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Maccatella",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892353,
+  "lat": 43.7036463,
+  "lon": 10.4350148,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Pizzarello",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892370,
+  "lat": 43.7136602,
+  "lon": 10.4275201,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "De Ruggiero 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892373,
+  "lat": 43.7042542,
+  "lon": 10.4284247,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Mariscoglio 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1675048488,
+  "lat": 43.7095129,
+  "lon": 10.4326296,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Bargagna 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "4012",
+    "route_ref": "14",
+    "shelter": "no",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1675048541,
+  "lat": 43.7088350,
+  "lon": 10.4346210,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Bargagna 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "14;22",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1675082307,
+  "lat": 43.7108087,
+  "lon": 10.4290240,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Bargagna 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "14",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1947417269,
+  "lat": 43.7071019,
+  "lon": 10.4332791,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2497947322,
+  "lat": 43.7093903,
+  "lon": 10.4255778,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2654047766,
+  "lat": 43.7055835,
+  "lon": 10.4280364,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Via Venezia Giulia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 2689097293,
+  "lat": 43.7079316,
+  "lon": 10.4301258,
+  "tags": {
+    "entrance": "main",
+    "level": "0"
+  }
+},
+{
+  "type": "node",
+  "id": 2689097312,
+  "lat": 43.7074957,
+  "lon": 10.4295471,
+  "tags": {
+    "entrance": "exit",
+    "level": "0",
+    "locked": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4541698742,
+  "lat": 43.7069598,
+  "lon": 10.4410686,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 4940712401,
+  "lat": 43.7051187,
+  "lon": 10.4281807,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 4940712422,
+  "lat": 43.7056480,
+  "lon": 10.4288233,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 4940712425,
+  "lat": 43.7054316,
+  "lon": 10.4293784,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "3",
+    "addr:postcode": "56124",
+    "addr:street": "Via di Parigi",
+    "barrier": "gate",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5068142231,
+  "lat": 43.7050885,
+  "lon": 10.4393093,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Giovannetti",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5068142232,
+  "lat": 43.7056720,
+  "lon": 10.4407352,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Ospedale Cisanello - Luzi",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "ref": "B4034",
+    "route_ref": "13;150;160",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5071759358,
+  "lat": 43.7101423,
+  "lon": 10.4261018,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Cisanello 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "route_ref": "150;LAM Rossa",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 5071794460,
+  "lat": 43.7059267,
+  "lon": 10.4416141,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Ospedale Cisanello",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "route_ref": "14;140;150;160;22;LR",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5071799792,
+  "lat": 43.7088217,
+  "lon": 10.4298783,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "name": "Cisanello 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "150;LAM Rossa",
+    "shelter": "yes",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 5547720303,
+  "lat": 43.7100483,
+  "lon": 10.4335285,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5682466424,
+  "lat": 43.7073304,
+  "lon": 10.4386899,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Martin Lutero 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "route_ref": "14;1+",
+    "shelter": "yes",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 5763988586,
+  "lat": 43.7139899,
+  "lon": 10.4311203,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5763988592,
+  "lat": 43.7139269,
+  "lon": 10.4300486,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5985440935,
+  "lat": 43.7131443,
+  "lon": 10.4328597,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5985440953,
+  "lat": 43.7136754,
+  "lon": 10.4328454,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6013026919,
+  "lat": 43.7102274,
+  "lon": 10.4418164,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6046427260,
+  "lat": 43.7067165,
+  "lon": 10.4261896,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6046427261,
+  "lat": 43.7063140,
+  "lon": 10.4258992,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6528635340,
+  "lat": 43.7125645,
+  "lon": 10.4318251,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Umberto Viale",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7239666981,
+  "lat": 43.7059181,
+  "lon": 10.4424279,
+  "tags": {
+    "entrance": "main",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7239666984,
+  "lat": 43.7057445,
+  "lon": 10.4423171,
+  "tags": {
+    "barrier": "gate",
+    "name": "Ingresso 2"
+  }
+},
+{
+  "type": "node",
+  "id": 7247763695,
+  "lat": 43.7056043,
+  "lon": 10.4279793,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7248019352,
+  "lat": 43.7099801,
+  "lon": 10.4266013,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7250926983,
+  "lat": 43.7131882,
+  "lon": 10.4254343,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7291790131,
+  "lat": 43.7040629,
+  "lon": 10.4419627,
+  "tags": {
+    "emergency": "emergency_ward_entrance",
+    "emergency_ward_entrance": "all",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7545268065,
+  "lat": 43.7100259,
+  "lon": 10.4292306,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "2",
+    "addr:postcode": "56124",
+    "addr:street": "Via Italo Bargagna",
+    "emergency": "emergency_ward_entrance",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8150227050,
+  "lat": 43.7073912,
+  "lon": 10.4321506,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8150227060,
+  "lat": 43.7072091,
+  "lon": 10.4313794,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8150238390,
+  "lat": 43.7084221,
+  "lon": 10.4251135,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8426033190,
+  "lat": 43.7084434,
+  "lon": 10.4297670,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8772871193,
+  "lat": 43.7101193,
+  "lon": 10.4260751,
+  "tags": {
+    "bus": "yes",
+    "name": "Cisanello 4",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8794551418,
+  "lat": 43.7081857,
+  "lon": 10.4312033,
+  "tags": {
+    "bus": "yes",
+    "name": "Cisanello 2",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8795626159,
+  "lat": 43.7072667,
+  "lon": 10.4387275,
+  "tags": {
+    "bus": "yes",
+    "name": "Martin Lutero 4",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8795626174,
+  "lat": 43.7072866,
+  "lon": 10.4384312,
+  "tags": {
+    "bus": "yes",
+    "name": "Martin Lutero 1",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8811741613,
+  "lat": 43.7059233,
+  "lon": 10.4414913,
+  "tags": {
+    "bus": "yes",
+    "name": "Ospedale Cisanello",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8824398202,
+  "lat": 43.7050981,
+  "lon": 10.4430787,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8865774933,
+  "lat": 43.7087758,
+  "lon": 10.4298247,
+  "tags": {
+    "bus": "yes",
+    "name": "Cisanello 3",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8874799116,
+  "lat": 43.7119817,
+  "lon": 10.4347202,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Frascani",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "22",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 9547063198,
+  "lat": 43.7133252,
+  "lon": 10.4428301,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9610679536,
+  "lat": 43.7066914,
+  "lon": 10.4323626,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9610679537,
+  "lat": 43.7067575,
+  "lon": 10.4321330,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9764296189,
+  "lat": 43.7098220,
+  "lon": 10.4327850,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 9950516229,
+  "lat": 43.7026572,
+  "lon": 10.4400374,
+  "tags": {
+    "access": "yes",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9950516237,
+  "lat": 43.7035349,
+  "lon": 10.4405498,
+  "tags": {
+    "access": "yes",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10120539563,
+  "lat": 43.7133084,
+  "lon": 10.4431443,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10120539564,
+  "lat": 43.7142343,
+  "lon": 10.4435698,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128269463,
+  "lat": 43.7168496,
+  "lon": 10.4305331,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128291615,
+  "lat": 43.7125418,
+  "lon": 10.4326666,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128316423,
+  "lat": 43.7124564,
+  "lon": 10.4329086,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128316453,
+  "lat": 43.7120317,
+  "lon": 10.4345991,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128316454,
+  "lat": 43.7131558,
+  "lon": 10.4340226,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128379986,
+  "lat": 43.7054749,
+  "lon": 10.4300975,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128380006,
+  "lat": 43.7066559,
+  "lon": 10.4306420,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128380014,
+  "lat": 43.7067322,
+  "lon": 10.4306783,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128385130,
+  "lat": 43.7074408,
+  "lon": 10.4307888,
+  "tags": {
+    "entrance": "yes",
+    "level": "0"
+  }
+},
+{
+  "type": "node",
+  "id": 10583953846,
+  "lat": 43.7053621,
+  "lon": 10.4417784,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10583953847,
+  "lat": 43.7054597,
+  "lon": 10.4418322,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10886183658,
+  "lat": 43.7081139,
+  "lon": 10.4431127,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11051022903,
+  "lat": 43.7049568,
+  "lon": 10.4395860,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11051028812,
+  "lat": 43.7060929,
+  "lon": 10.4403237,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11368327466,
+  "lat": 43.7035245,
+  "lon": 10.4310762,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11368327467,
+  "lat": 43.7039916,
+  "lon": 10.4317338,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11368342874,
+  "lat": 43.7038010,
+  "lon": 10.4322267,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11412918614,
+  "lat": 43.7142705,
+  "lon": 10.4281982,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11412918616,
+  "lat": 43.7143368,
+  "lon": 10.4274522,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12012959306,
+  "lat": 43.7067240,
+  "lon": 10.4417138,
+  "tags": {
+    "access": "yes",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12400076058,
+  "lat": 43.7045686,
+  "lon": 10.4272812,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12400084007,
+  "lat": 43.7036955,
+  "lon": 10.4324946,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12400084016,
+  "lat": 43.7018778,
+  "lon": 10.4332312,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12400084017,
+  "lat": 43.7052583,
+  "lon": 10.4313682,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12594230144,
+  "lat": 43.7075518,
+  "lon": 10.4306994,
+  "tags": {
+    "entrance": "yes",
+    "level": "1"
+  }
+},
+{
+  "type": "node",
+  "id": 12594230155,
+  "lat": 43.7075789,
+  "lon": 10.4300867,
+  "tags": {
+    "entrance": "yes",
+    "level": "1"
+  }
+},
+{
+  "type": "node",
+  "id": 12964827629,
+  "lat": 43.7153353,
+  "lon": 10.4324563,
+  "tags": {
+    "barrier": "gate",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13011599673,
+  "lat": 43.7139204,
+  "lon": 10.4298442,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 13190418809,
+  "lat": 43.7057256,
+  "lon": 10.4417151,
+  "tags": {
+    "alt_name": "Ingresso Ospedale",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Piazza Nuovo S. Chiara",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13679249403,
+  "lat": 43.7065511,
+  "lon": 10.4403279,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "San Biagio",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 13990975778,
+  "lat": 43.7052224,
+  "lon": 10.4333897,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "way",
+  "id": 211388929,
+  "bounds": {
+    "minlat": 43.7123362,
+    "minlon": 10.4313139,
+    "maxlat": 43.7132665,
+    "maxlon": 10.4330608
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "16",
+    "addr:postcode": "56124",
+    "addr:street": "Via Umberto Viale",
+    "amenity": "school",
+    "check_date": "2025-07-27",
+    "email": "gereschi@icvgalileipisa.gov.it",
+    "isced:level": "1",
+    "name": "Scuola Elementare \"Livia Gereschi\"",
+    "operator": "I.C. Vincenzo Galilei",
+    "operator:wikidata": "Q52913435",
+    "phone": "+39 050 581284",
+    "wikidata": "Q52831343"
+  }
+},
+{
+  "type": "way",
+  "id": 211388931,
+  "bounds": {
+    "minlat": 43.7125723,
+    "minlon": 10.4316312,
+    "maxlat": 43.7129699,
+    "maxlon": 10.4325434
+  },
+  "tags": {
+    "building": "school",
+    "building:levels": "2"
+  }
+},
+{
+  "type": "way",
+  "id": 249637246,
+  "bounds": {
+    "minlat": 43.7143709,
+    "minlon": 10.4276760,
+    "maxlat": 43.7146401,
+    "maxlon": 10.4281162
+  },
+  "tags": {
+    "building": "school",
+    "building:levels": "1"
+  }
+},
+{
+  "type": "way",
+  "id": 249637248,
+  "bounds": {
+    "minlat": 43.7135999,
+    "minlon": 10.4267884,
+    "maxlat": 43.7151444,
+    "maxlon": 10.4282474
+  },
+  "tags": {
+    "alt_name": "Scuola primaria Vincenzo Galilei",
+    "amenity": "school",
+    "name": "Scuola Media Inferiore Galilei",
+    "operator": "IC Galilei",
+    "operator:wikidata": "Q52913435",
+    "wikidata": "Q52840849"
+  }
+},
+{
+  "type": "way",
+  "id": 249637250,
+  "bounds": {
+    "minlat": 43.7140691,
+    "minlon": 10.4270687,
+    "maxlat": 43.7148639,
+    "maxlon": 10.4277406
+  },
+  "tags": {
+    "building": "school",
+    "building:levels": "2"
+  }
+},
+{
+  "type": "way",
+  "id": 253320059,
+  "bounds": {
+    "minlat": 43.7051504,
+    "minlon": 10.4286514,
+    "maxlat": 43.7055349,
+    "maxlon": 10.4291783
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 259943756,
+  "bounds": {
+    "minlat": 43.7050131,
+    "minlon": 10.4298138,
+    "maxlat": 43.7053264,
+    "maxlon": 10.4302271
+  },
+  "tags": {
+    "amenity": "kindergarten",
+    "building": "kindergarten",
+    "building:levels": "1",
+    "name": "Scuola dell'infanzia Giacomo Puccini",
+    "operator": "IC Galilei",
+    "operator:wikidata": "Q52913435",
+    "preschool": "yes",
+    "wikidata": "Q52815515"
+  }
+},
+{
+  "type": "way",
+  "id": 259943757,
+  "bounds": {
+    "minlat": 43.7049811,
+    "minlon": 10.4300687,
+    "maxlat": 43.7051971,
+    "maxlon": 10.4303442
+  },
+  "tags": {
+    "building": "school",
+    "building:levels": "1"
+  }
+},
+{
+  "type": "way",
+  "id": 259943759,
+  "bounds": {
+    "minlat": 43.7053149,
+    "minlon": 10.4300906,
+    "maxlat": 43.7056152,
+    "maxlon": 10.4305105
+  },
+  "tags": {
+    "amenity": "kindergarten",
+    "building": "kindergarten",
+    "building:levels": "1",
+    "preschool": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 359629765,
+  "bounds": {
+    "minlat": 43.7081082,
+    "minlon": 10.4310854,
+    "maxlat": 43.7081850,
+    "maxlon": 10.4312401
+  },
+  "tags": {
+    "bin": "yes",
+    "bus": "yes",
+    "covered": "yes",
+    "departures_board": "timetable",
+    "foot": "yes",
+    "highway": "platform",
+    "name": "Cisanello 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "ref": "B4061",
+    "shelter": "yes",
+    "surface": "paved",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 359736360,
+  "bounds": {
+    "minlat": 43.7087817,
+    "minlon": 10.4297925,
+    "maxlat": 43.7088209,
+    "maxlon": 10.4298987
+  },
+  "tags": {
+    "name": "Cisanello 3",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 376284130,
+  "bounds": {
+    "minlat": 43.7058791,
+    "minlon": 10.4415866,
+    "maxlat": 43.7059901,
+    "maxlon": 10.4416533
+  },
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "check_date:shelter": "2025-08-31",
+    "departures_board": "realtime",
+    "lit": "no",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 376670346,
+  "bounds": {
+    "minlat": 43.7101370,
+    "minlon": 10.4260621,
+    "maxlat": 43.7101781,
+    "maxlon": 10.4261662
+  },
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "platform",
+    "name": "Cisanello 4",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 503816714,
+  "bounds": {
+    "minlat": 43.7046952,
+    "minlon": 10.4282832,
+    "maxlat": 43.7057262,
+    "maxlon": 10.4296372
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "3",
+    "addr:postcode": "56124",
+    "addr:street": "Via di Parigi",
+    "amenity": "school",
+    "education": "school",
+    "email": "parmini@icvgalileipisa.gov.it",
+    "isced:level": "1",
+    "name": "Scuola Primaria \"Giovanni Parmini\"",
+    "operator": "I.C. Vincenzo Galilei",
+    "operator:wikidata": "Q52913435",
+    "phone": "+39 050 576560",
+    "wikidata": "Q52837104"
+  }
+}
+
+  ]
+}

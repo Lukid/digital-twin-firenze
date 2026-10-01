@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wfs:WFS_Capabilities xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:ms="http://mapserver.gis.umn.edu/mapserver" xmlns="http://www.opengis.net/wfs/2.0" version="2.0.0" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd">
+  <ows:ServiceIdentification>
+    <ows:Title>Geoscopio_wfs EDIFICATO</ows:Title>
+    <ows:Abstract>Servizio OGC di tipo WFS fornito da Regione Toscana-SIPT (Sistema Informativo e Pianificazione del Territorio) dedicato specificamente ai dataset sull' edificato</ows:Abstract>
+    <ows:Keywords>
+      <ows:Keyword>toponimo</ows:Keyword>
+      <ows:Keyword>toscana</ows:Keyword>
+    </ows:Keywords>
+    <ows:ServiceType codeSpace="OGC">WFS</ows:ServiceType>
+    <ows:ServiceTypeVersion>2.0.0</ows:ServiceTypeVersion>
+    <ows:Fees>none</ows:Fees>
+    <ows:AccessConstraints>none</ows:AccessConstraints>
+  </ows:ServiceIdentification>
+  <ows:ServiceProvider>
+    <ows:ProviderName>Regione Toscana - Direzione Urbanistica</ows:ProviderName>
+    <ows:ProviderSite xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;"/>
+    <ows:ServiceContact>
+      <ows:IndividualName>Sistema Informativo e Pianificazione del Territorio</ows:IndividualName>
+      <ows:PositionName>custodian</ows:PositionName>
+      <ows:ContactInfo>
+        <ows:Phone>
+          <ows:Voice>039-055-4383968</ows:Voice>
+          <ows:Facsimile>039-055-4383570</ows:Facsimile>
+        </ows:Phone>
+        <ows:Address>
+          <ows:DeliveryPoint>Via di Novoli, 26</ows:DeliveryPoint>
+          <ows:City>Firenze</ows:City>
+          <ows:AdministrativeArea>Regione Toscana</ows:AdministrativeArea>
+          <ows:PostalCode>50127</ows:PostalCode>
+          <ows:Country>English</ows:Country>
+          <ows:ElectronicMailAddress>infrastruttura.geografica@regione.toscana.it</ows:ElectronicMailAddress>
+        </ows:Address>
+        <ows:OnlineResource xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;"/>
+        <ows:HoursOfService>00-24</ows:HoursOfService>
+        <ows:ContactInstructions>send email</ows:ContactInstructions>
+      </ows:ContactInfo>
+      <ows:Role>...</ows:Role>
+    </ows:ServiceContact>
+  </ows:ServiceProvider>
+  <ows:OperationsMetadata>
+    <ows:Operation name="GetCapabilities">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="AcceptVersions">
+        <ows:AllowedValues>
+          <ows:Value>2.0.0</ows:Value>
+          <ows:Value>1.1.0</ows:Value>
+          <ows:Value>1.0.0</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+      <ows:Parameter name="AcceptFormats">
+        <ows:AllowedValues>
+          <ows:Value>text/xml</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+      <ows:Parameter name="Sections">
+        <ows:AllowedValues>
+          <ows:Value>ServiceIdentification</ows:Value>
+          <ows:Value>ServiceProvider</ows:Value>
+          <ows:Value>OperationsMetadata</ows:Value>
+          <ows:Value>FeatureTypeList</ows:Value>
+          <ows:Value>Filter_Capabilities</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="DescribeFeatureType">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="outputFormat">
+        <ows:AllowedValues>
+          <ows:Value>application/gml+xml; version=3.2</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.2.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="GetFeature">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="outputFormat">
+        <ows:AllowedValues>
+          <ows:Value>application/gml+xml; version=3.2</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.2.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+          <ows:Value>application/shapefile</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="GetPropertyValue">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+        </ows:HTTP>
+      </ows:DCP>
+      <ows:Parameter name="outputFormat">
+        <ows:AllowedValues>
+          <ows:Value>application/gml+xml; version=3.2</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.2.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+          <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+        </ows:AllowedValues>
+      </ows:Parameter>
+    </ows:Operation>
+    <ows:Operation name="ListStoredQueries">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Operation name="DescribeStoredQueries">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+          <ows:Post xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Parameter name="version">
+      <ows:AllowedValues>
+        <ows:Value>2.0.0</ows:Value>
+        <ows:Value>1.1.0</ows:Value>
+        <ows:Value>1.0.0</ows:Value>
+      </ows:AllowedValues>
+    </ows:Parameter>
+    <ows:Constraint name="ImplementsBasicWFS">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsTransactionalWFS">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsLockingWFS">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="KVPEncoding">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="XMLEncoding">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="SOAPEncoding">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsInheritance">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsRemoteResolve">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsResultPaging">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsStandardJoins">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsSpatialJoins">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsTemporalJoins">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsFeatureVersioning">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ManageStoredQueries">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="PagingIsTransactionSafe">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="CountDefault">
+      <ows:NoValues/>
+      <ows:DefaultValue>3000</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="QueryExpressions">
+      <ows:AllowedValues>
+        <ows:Value>wfs:Query</ows:Value>
+        <ows:Value>wfs:StoredQuery</ows:Value>
+      </ows:AllowedValues>
+    </ows:Constraint>
+  </ows:OperationsMetadata>
+  <FeatureTypeList>
+    <FeatureType>
+      <Name>ms:rt_edif.unitavolumetriche</Name>
+      <Title>Unita volumetriche</Title>
+      <Abstract>E' la porzione elementare di edificato avente altezza omogenea (all'interno della tolleranza di acquisizione), con base a terra. E' presente l'unita' volumetrica anche nel caso del portico, mentre non fanno parte di questa classe i corpi aggettanti. Porzioni di edificato con altezza e copertura diversa danno luogo a diverse unita' volumetriche, anche quando siano comprese all'interno di una copertura volumetrica piu' ampia (ad esempio mansarde o terrazze a tasca)</Abstract>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3003</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3004</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::6706</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::6707</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::6708</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::7791</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::6709</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23032</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23033</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23034</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25832</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25833</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4265</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4806</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32632</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32633</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/shapefile</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.452011 42.081221</ows:LowerCorner>
+        <ows:UpperCorner>12.577133 44.702311</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;request=GetMetadata&amp;layer=rt_edif.unitavolumetriche"/>
+    </FeatureType>
+    <FeatureType>
+      <Name>ms:rt_edif.centri_matrice.poly</Name>
+      <Title>Centri matrice della Toscana</Title>
+      <Abstract>Dataset dei 'Centri matrice derivati dai sedimi edilizi con geometria di tipo areale. La copertura 'centri matrice della toscana' e' stata prodotta dal LCart/DIDA, Laboratorio di Cartografia del Dipartimento di Architettura dell'Universita' degli Studi di Firenze, allo scopo di rappresentare cartograficamente l'estensione dei centri e nuclei storici nella 'Carta dei caratteri del paesaggio', in scala 1/50000 contenuta nel repertorio del PIT con valenza di Piano Paesaggistico della Regione Toscana.&#13;
+All'archivio e' stato successivamente associato un attributo TPI ricavato da confronto con il modello altimetrico della regione, per discriminare i centri matrice in base alla localizzazione in fondovalle, in pianura, su versante o su crinale. Il dataset e' rilasciato con licenza CC-BY-SA 4.0 con obbligo di citazione delle fonti: 'Fonti dati: Regione Toscana e LCart/DIDA, Laboratorio di Cartografia del Dipartimento di Architettura della Universita' degli Studi di Firenze'. I poligoni che costituiscono la copertura sono stati ottenuti attraverso l'elaborazione della 'banca dati dei sedimi edificati della Toscana' (scaricabile dal Portale Geoscopio Cartoteca), attraverso i passaggi descritti di seguito. Preliminarmente sono stati selezionati i sedimi edificati documentati nelle mappe dei catasti preunitari toscani; per le comunita' per le quali la documentazione storica non fosse disponibile, sono stati selezionati i sedimi documentati al 1954. I poligoni descrittivi dei sedimi cosi' selezionati sono stati elaborati attraverso l'algoritmo ESRI Aggregate Polygons, dai ricercatori del Laboratorio di Architettura, utilizzando i seguenti criteri: distanza massima di aggregazione pari a 50 m, dimensione massima dell'agglomerato maggiore o uguale a 0,5 ha; questa elaborazione individua pertanto gli aggregati edilizi composti da edifici reciprocamente distanti non piu' di 50 metri ed estesi oltre 5000 metri quadrati. Le forme dei poligoni cosi' ottenuti sono state semplificate per la rappresentazione cartografica attraverso l'algoritmo ESRI Bend Simplify con tolleranza di 100m. Ciascun poligono e' stato infine identificato attraverso un toponimo; l'attribuzione e' stata ottenuta attraverso la valutazione della prossimita' spaziale rispetto alla banca dati toponomastica della Carta Tecnica Regionale scala 1:10.000: ciascun poligono e' stato associato al toponimo piu' prossimo. Eventuali conflitti di attribuzione sono stati emendati in seguito a una valutazione critica. Con successiva elaborazione e' stato popolato l'attributo TPI che indica se il centro matrice ricade in un contesto di fondovalle (0), pianura (1), versante (2) o crinale (3).</Abstract>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::3003</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3004</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::6706</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::6707</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::6708</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::7791</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::6709</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23032</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23033</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::23034</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25832</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25833</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4230</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4265</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4806</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32632</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32633</OtherCRS>
+      <OutputFormats>
+        <Format>application/gml+xml; version=3.2</Format>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>text/xml; subtype=gml/3.1.1</Format>
+        <Format>text/xml; subtype=gml/2.1.2</Format>
+        <Format>application/shapefile</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox dimensions="2">
+        <ows:LowerCorner>9.452011 42.081221</ows:LowerCorner>
+        <ows:UpperCorner>12.577133 44.702311</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <MetadataURL xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;language=ita&amp;request=GetMetadata&amp;layer=rt_edif.centri_matrice.poly"/>
+    </FeatureType>
+  </FeatureTypeList>
+  <fes:Filter_Capabilities>
+    <fes:Conformance>
+      <fes:Constraint name="ImplementsQuery">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsAdHocQuery">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsFunctions">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsResourceId">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinStandardFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsStandardFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinSpatialFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsSpatialFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinTemporalFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsTemporalFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsVersionNav">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsSorting">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsExtendedOperators">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinimumXPath">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsSchemaElementFunc">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+    </fes:Conformance>
+    <fes:Id_Capabilities>
+      <fes:ResourceIdentifier name="fes:ResourceId"/>
+    </fes:Id_Capabilities>
+    <fes:Scalar_Capabilities>
+      <fes:LogicalOperators/>
+      <fes:ComparisonOperators>
+        <fes:ComparisonOperator name="PropertyIsEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsNotEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsLessThan"/>
+        <fes:ComparisonOperator name="PropertyIsGreaterThan"/>
+        <fes:ComparisonOperator name="PropertyIsLessThanOrEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsGreaterThanOrEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsLike"/>
+        <fes:ComparisonOperator name="PropertyIsBetween"/>
+      </fes:ComparisonOperators>
+    </fes:Scalar_Capabilities>
+    <fes:Spatial_Capabilities>
+      <fes:GeometryOperands>
+        <fes:GeometryOperand name="gml:Point"/>
+        <fes:GeometryOperand name="gml:MultiPoint"/>
+        <fes:GeometryOperand name="gml:LineString"/>
+        <fes:GeometryOperand name="gml:MultiLineString"/>
+        <fes:GeometryOperand name="gml:Curve"/>
+        <fes:GeometryOperand name="gml:MultiCurve"/>
+        <fes:GeometryOperand name="gml:Polygon"/>
+        <fes:GeometryOperand name="gml:MultiPolygon"/>
+        <fes:GeometryOperand name="gml:Surface"/>
+        <fes:GeometryOperand name="gml:MultiSurface"/>
+        <fes:GeometryOperand name="gml:Box"/>
+        <fes:GeometryOperand name="gml:Envelope"/>
+      </fes:GeometryOperands>
+      <fes:SpatialOperators>
+        <fes:SpatialOperator name="Equals"/>
+        <fes:SpatialOperator name="Disjoint"/>
+        <fes:SpatialOperator name="Touches"/>
+        <fes:SpatialOperator name="Within"/>
+        <fes:SpatialOperator name="Overlaps"/>
+        <fes:SpatialOperator name="Crosses"/>
+        <fes:SpatialOperator name="Intersects"/>
+        <fes:SpatialOperator name="Contains"/>
+        <fes:SpatialOperator name="DWithin"/>
+        <fes:SpatialOperator name="Beyond"/>
+        <fes:SpatialOperator name="BBOX"/>
+      </fes:SpatialOperators>
+    </fes:Spatial_Capabilities>
+    <fes:Temporal_Capabilities>
+      <fes:TemporalOperands>
+        <fes:TemporalOperand name="gml:TimePeriod"/>
+        <fes:TemporalOperand name="gml:TimeInstant"/>
+      </fes:TemporalOperands>
+      <fes:TemporalOperators>
+        <fes:TemporalOperator name="During"/>
+      </fes:TemporalOperators>
+    </fes:Temporal_Capabilities>
+  </fes:Filter_Capabilities>
+</wfs:WFS_Capabilities>

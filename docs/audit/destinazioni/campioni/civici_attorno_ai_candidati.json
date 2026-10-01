@@ -1,0 +1,18 @@
+{
+ "Z1": {
+  "civici_entro_500m": 3031,
+  "civici_entro_1000m": 7523
+ },
+ "Z2": {
+  "civici_entro_500m": 1873,
+  "civici_entro_1000m": 6768
+ },
+ "Z3": {
+  "civici_entro_500m": 333,
+  "civici_entro_1000m": 1437
+ },
+ "Z4": {
+  "civici_entro_500m": 1926,
+  "civici_entro_1000m": 7176
+ }
+}

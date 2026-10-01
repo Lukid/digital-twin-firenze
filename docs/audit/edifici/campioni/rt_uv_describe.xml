@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding="UTF-8" ?>
+<schema
+   targetNamespace="http://mapserver.gis.umn.edu/mapserver" 
+   xmlns:ms="http://mapserver.gis.umn.edu/mapserver" 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.w3.org/2001/XMLSchema"
+   xmlns:gml="http://www.opengis.net/gml/3.2"
+   elementFormDefault="qualified" version="0.1" >
+
+  <import namespace="http://www.opengis.net/gml/3.2"
+          schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" />
+
+  <element name="rt_edif.unitavolumetriche" 
+           type="ms:rt_edif.unitavolumetricheType" 
+           substitutionGroup="gml:AbstractFeature" />
+
+  <complexType name="rt_edif.unitavolumetricheType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="GEOMETRY" type="gml:MultiSurfacePropertyType" minOccurs="0" maxOccurs="1"/>
+          <element name="featureid" minOccurs="0" type="integer"/>
+          <element name="uv_pk" minOccurs="0" type="integer"/>
+          <element name="uv_id" minOccurs="0" type="string"/>
+          <element name="edi_min_id" minOccurs="0" type="string"/>
+          <element name="edifc_id" minOccurs="0" type="string"/>
+          <element name="uv_av" minOccurs="0" type="double"/>
+          <element name="uv_qe" minOccurs="0" type="double"/>
+          <element name="uv_qs" minOccurs="0" type="double"/>
+          <element name="uv_por" minOccurs="0" type="string"/>
+          <element name="uv_dpor" minOccurs="0" type="string"/>
+          <element name="uv_cl" minOccurs="0" type="string"/>
+          <element name="edifc_ty" minOccurs="0" type="string"/>
+          <element name="edifc_dty" minOccurs="0" type="string"/>
+          <element name="edifc_uso" minOccurs="0" type="string"/>
+          <element name="edifc_duso" minOccurs="0" type="string"/>
+          <element name="edifc_mon" minOccurs="0" type="string"/>
+          <element name="edifc_dmon" minOccurs="0" type="string"/>
+          <element name="edifc_stat" minOccurs="0" type="string"/>
+          <element name="edifc_dstat" minOccurs="0" type="string"/>
+          <element name="edifc_sot" minOccurs="0" type="string"/>
+          <element name="edifc_dsot" minOccurs="0" type="string"/>
+          <element name="edi_min_ty" minOccurs="0" type="string"/>
+          <element name="edi_min_dty" minOccurs="0" type="string"/>
+          <element name="edi_min_pr" minOccurs="0" type="string"/>
+          <element name="edi_min_dpr" minOccurs="0" type="string"/>
+          <element name="edi_min_st" minOccurs="0" type="string"/>
+          <element name="edi_min_dst" minOccurs="0" type="string"/>
+          <element name="dtvolo" minOccurs="0" type="string"/>
+          <element name="anno" minOccurs="0" type="string"/>
+          <element name="dbt_prov" minOccurs="0" type="string"/>
+          <element name="scala" minOccurs="0" type="string"/>
+          <element name="ditta_id" minOccurs="0" type="integer"/>
+          <element name="pop2011" minOccurs="0" type="double"/>
+          <element name="classe" minOccurs="0" type="integer"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+</schema>

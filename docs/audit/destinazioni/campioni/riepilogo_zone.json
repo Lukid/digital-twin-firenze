@@ -1,0 +1,85 @@
+{
+ "conc_fermate": {
+  "Z1": {
+   "gtfs_fermate_nel_cerchio": 21,
+   "con_osm_entro_40m": 20,
+   "con_servizio_oggi": 20
+  },
+  "Z2": {
+   "gtfs_fermate_nel_cerchio": 45,
+   "con_osm_entro_40m": 44,
+   "con_servizio_oggi": 44
+  },
+  "Z3": {
+   "gtfs_fermate_nel_cerchio": 21,
+   "con_osm_entro_40m": 21,
+   "con_servizio_oggi": 20
+  },
+  "Z4": {
+   "gtfs_fermate_nel_cerchio": 44,
+   "con_osm_entro_40m": 42,
+   "con_servizio_oggi": 42
+  }
+ },
+ "civici": {
+  "Z1": {
+   "civici": 2949,
+   "sezioni_distinte": 127,
+   "ambito": {
+    "TERRITORIO URBANIZZATO": 2948,
+    "0-MUNICIPIO*": 1
+   },
+   "dt_agg_max": "2024-01-25"
+  },
+  "Z2": {
+   "civici": 3649,
+   "sezioni_distinte": 113,
+   "ambito": {
+    "TERRITORIO URBANIZZATO": 3647,
+    "null": 2
+   },
+   "dt_agg_max": "2025-05-28"
+  },
+  "Z3": {
+   "civici": 712,
+   "sezioni_distinte": 30,
+   "ambito": {
+    "TERRITORIO URBANIZZATO": 704,
+    "null": 8
+   },
+   "dt_agg_max": "2023-12-01"
+  },
+  "Z4": {
+   "civici": 2509,
+   "sezioni_distinte": 129,
+   "ambito": {
+    "TERRITORIO URBANIZZATO": 2508,
+    "null": 1
+   },
+   "dt_agg_max": "2024-03-15"
+  }
+ },
+ "n_sit_scuole_zone": {
+  "Z2": 15,
+  "Z3": 10,
+  "Z1": 6,
+  "Z4": 12
+ },
+ "n_osm_istruzione": {
+  "Z1": 38,
+  "Z2": 23,
+  "Z3": 3,
+  "Z4": 34
+ },
+ "n_mim_pisa": {
+  "statali": 88,
+  "paritarie": 17
+ },
+ "n_provincia_pisa": 24,
+ "n_sit_edifici": {
+  "Z1": 6,
+  "Z4": 15,
+  "Z3": 9,
+  "Z2": 16
+ }
+}

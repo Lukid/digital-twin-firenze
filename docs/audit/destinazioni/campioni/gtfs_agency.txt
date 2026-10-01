@@ -1,0 +1,44 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang,agency_phone,agency_fare_url,agency_email,agency_sort_order
+UFI,"at - Firenze urbano",https://www.at-bus.it,Europe/Rome,it,,,,10
+UCVE,"at - Colle Val d'Elsa urbano",https://www.at-bus.it,Europe/Rome,it,,,,20
+UEMP,"at - Empoli urbano",https://www.at-bus.it,Europe/Rome,it,,,,30
+UCER,"at - Certaldo urbano",https://www.at-bus.it,Europe/Rome,it,,,,40
+EXFI,"at - Firenze extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,50
+EXCEV,"at - Empoli extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,60
+UAR,"at - Arezzo urbano",https://www.at-bus.it,Europe/Rome,it,,,,70
+UMIV,"at - MIV urbano",https://www.at-bus.it,Europe/Rome,it,,,,80
+EXAR,"at - Arezzo extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,90
+UGR,"at - Grosseto urbano",https://www.at-bus.it,Europe/Rome,it,,,,100
+UFOL,"at - Follonica urbano",https://www.at-bus.it,Europe/Rome,it,,,,110
+EXGR,"at - Grosseto extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,120
+ULI,"at - Livorno urbano",https://www.at-bus.it,Europe/Rome,it,,,,130
+UCEC,"at - Cecina urbano",https://www.at-bus.it,Europe/Rome,it,,,,140
+UPIO,"at - Piombino urbano",https://www.at-bus.it,Europe/Rome,it,,,,150
+UPFE,"at - Portoferraio urbano",https://www.at-bus.it,Europe/Rome,it,,,,160
+UROS,"at - Rosignano urbano",https://www.at-bus.it,Europe/Rome,it,,,,170
+EXLI,"at - Livorno extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,180
+ULU,"at - Lucca urbano",https://www.at-bus.it,Europe/Rome,it,,,,190
+UVIA,"at - Viareggio urbano",https://www.at-bus.it,Europe/Rome,it,,,,200
+EXLU,"at - Lucca extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,210
+UCA,"at - Carrara urbano",https://www.at-bus.it,Europe/Rome,it,,,,220
+UMA,"at - Massa urbano",https://www.at-bus.it,Europe/Rome,it,,,,230
+UMC,"at - Massa Carrara urbano",https://www.at-bus.it,Europe/Rome,it,,,,240
+EXMS,"at - Massa Carrara extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,250
+UPI,"at - Pisa urbano",https://www.at-bus.it,Europe/Rome,it,,,,260
+UVOL,"at - Volterra urbano",https://www.at-bus.it,Europe/Rome,it,,,,280
+EXPI,"at - Pisa extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,290
+UPO,"at - Prato urbano",https://www.at-bus.it,Europe/Rome,it,,,,300
+EXPO,"at - Prato extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,310
+UPT,"at - Pistoia urbano",https://www.at-bus.it,Europe/Rome,it,,,,320
+UCHI,"at - Chiusi urbano",https://www.at-bus.it,Europe/Rome,it,,,,330
+UMON,"at - Montecatini urbano",https://www.at-bus.it,Europe/Rome,it,,,,340
+UCTE,"at - Chianciano Terme urbano",https://www.at-bus.it,Europe/Rome,it,,,,350
+UPES,"at - Pescia urbano",https://www.at-bus.it,Europe/Rome,it,,,,360
+EXPT,"at - Pistoia extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,370
+UMPU,"at - Montepulciano urbano",https://www.at-bus.it,Europe/Rome,it,,,,380
+USI,"at - Siena urbano",https://www.at-bus.it,Europe/Rome,it,,,,390
+UPOG,"at - Poggibonsi urbano",https://www.at-bus.it,Europe/Rome,it,,,,400
+USGM,"at - San Gimignano urbano",https://www.at-bus.it,Europe/Rome,it,,,,410
+EXSI,"at - Siena extraurbano",https://www.at-bus.it,Europe/Rome,it,,,,420
+R,"at - Regionali",https://www.at-bus.it,Europe/Rome,it,,,,430
+FUN,"at - Funicolari",https://www.at-bus.it,Europe/Rome,it,,,,450

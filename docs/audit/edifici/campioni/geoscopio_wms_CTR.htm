@@ -1,0 +1,1334 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CTR</title><style>
+  	.break { page-break-before: always; }
+	.mapImage
+	{
+	    border: 1px solid #000;
+	    position: relative;
+	    height: 335px;
+	}
+	
+	.map
+	{
+	    border: 0px solid #f00;
+	    position: relative;
+	    z-index: 2;
+	}
+	
+	.sfondo
+	{
+	    border: 0px solid #0f0;
+	    position: relative;
+	    z-index: 3;
+	    top: -335px;
+	    left: 0px;
+	}
+  </style></head><body><table width="100%" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td align="left"><img src="CTR_files/logo_rt_1.jpg" alt="Logo Regione Toscana" title="Home Page Regione Toscana"></td><td align="right"><img src="CTR_files/logo_geoscopio_wms.png" alt="Logo Geoscopio_WMS"></td></tr><tr><td colspan="2" align="center"><font size="+1"><b>Scheda di servizio WMS</b></font></td></tr><tr><td colspan="2"></td></tr><tr><td colspan="2"></td></tr></tbody></table><hr><table cellspacing="2" cellpadding="2" border="0"><tbody><tr><td rowspan="1" colspan="1" width="100px" valign="top" align="left">
+			Servizio:
+		</td><td rowspan="1" colspan="1" valign="top" align="justify"><b>Geoscopio_wms CTR</b><br><br></td></tr><tr><td colspan="2"></td></tr></tbody></table><table cellspacing="2" cellpadding="2" border="0"><tbody><tr><td rowspan="1" colspan="1" width="100px" valign="top" align="left">
+			Descrizione:
+		</td><td rowspan="1" colspan="1" valign="top" align="justify">Servizio
+ OGC di tipo WMS fornito da Regione Toscana-SIPT (Sistema Informativo e 
+Pianificazione del Territorio) dedicato specificamente alla 
+consultazione della Cartografia Tecnica Regionale (CTR) mediante clients
+ WMS. I datasets disponibili sono proposti sia come aggregazione di 
+dataset per la completa copertura del territorio regionale che 
+singolamente per anno di volo. Ogni annualita' copre una porzione piu' o
+ meno grande del territorio regionale. Per conoscere le annualita' 
+disponibili su una determinata zona sono disponibili specifici dataset 
+denominati 'quadri di unione' (prefisso qu). Questi dataset di tipo 
+poligonale delimitano le aree dove e' disponibile la CTR per tale 
+annualita'. La Cartografia Tecnica Regionale e' una carta a due colori 
+(bianco e nero). Il livello di dettaglio puo' essere scala 1:10.000 
+(ctr10k) oppure scala 1:2.000 (ctr2k). La cartografia 10K copre 
+interamente il territorio regionale. La cartografia 2k copre le aree 
+piu' urbanizzate oltre a alcune aree ritenute rilevanti a tale 
+dettaglio. L'impiego delle mappe risultanti da questo servizio wms e' 
+subordinato alla citazione della fonte sia nei prodotti che nelle 
+pubblicazioni risultanti.</td></tr><tr><td colspan="2"></td></tr></tbody></table><table cellspacing="2" cellpadding="2" border="0"><tbody><tr><td rowspan="3" colspan="1" width="100px" valign="top" align="left">
+			Contatto:
+		</td><td rowspan="1" colspan="1" valign="top" align="left">Sistema Informativo e Pianificazione del Territorio</td></tr><tr><td colspan="1" valign="top" align="left">Regione Toscana - Direzione Urbanistica<br><br></td></tr><tr><td colspan="1" valign="top" align="left">
+			email: infrastruttura.geografica@regione.toscana.it</td></tr><tr><td colspan="2"></td></tr></tbody></table><table cellspacing="2" cellpadding="2" border="0"><tbody><tr><td rowspan="2" colspan="1" width="100px" valign="top" align="left">
+			Risorsa online:
+		</td><td rowspan="1" colspan="1" valign="top" align="left">https://www502.regione.toscana.it/ows_ctr/com.rt.wms.RTmap/ows?map=owsctr&amp;</td></tr></tbody></table><hr><table cellspacing="2" cellpadding="2" border="0"><tbody><tr><td rowspan="1" colspan="1" width="100px" valign="top" align="left">
+			Strati:
+		</td><td rowspan="1" colspan="1" valign="top" align="left"><hr xmlns="" class="break">
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Punti geodetici da CTR10K</b> ( rt_ctr.idpgeodet.10k.rt )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita 1:1 - 1:5.000.000. dataset 'Punti geodetici da CTR10K'</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_046.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_019.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Punti geodetici raffittimento 7km</b> ( rt_ctr.idpgeodet.raf7km.rt )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita 1:1 - 1:5.000.000. dataset 'Punti geodetici raffittimento 7km'</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_007.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_050.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K. Dataset coordinato</b> ( rt_ctr.10k )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:5.000.000. Dettaglio 1:10000. 
+Copertura tutta Toscana realizzata attraverso la mosaicatura delle 
+sezioni. Il dataset e' derivato dal mix degli aggiornamenti piu' recenti
+ disponibili. Per conoscere l'anno di volo in ogni porzione si puo' fare
+ riferimento al corrispondente quadro di unione.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_058.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR 10K greylight. Dataset coordinato</b> ( rt_ctr.10k_greylight )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:100.000. Dettaglio 1:10000. 
+Copertura tutta Toscana realizzata attraverso la mosaicatura delle 
+sezioni. Immagini bianco/grigia. Il dataset rappresenta l'impianto della
+ CTR10k basato sulle date di volo 1993,1994,1995,1996,1998. Per la 
+delimitazione delle aree per anno di volo, si puo' consultare lo strato 
+del corrispondente quadro di unione.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_018.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K. Dataset di Impianto</b> ( rt_ctr.10k_impianto )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:5.000.000. Dettaglio 1:10000. 
+Copertura tutta Toscana realizzata attraverso la mosaicatura delle 
+sezioni. Immagini bianco-nero. Il dataset rappresenta l'impianto della 
+CTR10k basato sulle date di volo 1993,1994,1995,1996,1998. Per la 
+delimitazione delle aree per anno di volo, si puo' consultare lo strato 
+del corrispondente quadro di unione.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_016.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR 10K greylight. Dataset di Impianto</b> ( rt_ctr.10k_impianto_greylight )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:100.000. Dettaglio 1:10000. 
+Copertura tutta Toscana realizzata attraverso la mosaicatura delle 
+sezioni. Immagini bianco/grigia. Il dataset rappresenta l'impianto della
+ CTR10k basato sulle date di volo 1993,1994,1995,1996,1998. Per la 
+delimitazione delle aree per anno di volo, si puo' consultare lo strato 
+del corrispondente quadro di unione.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_055.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K Quadro di unione di Impianto</b> ( rt_ctr.10k_impianto.qu )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Quadro di unione 
+del dataset CTR10K di Impianto. Il campo ANNO rappresenta l'anno del 
+volo usato per la specifica sezione. Gli anni sono: 
+1993,1994,1995,1996,1998.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">gruppo_qu_10k_1: 
+						<img src="CTR_files/ows_031.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_004.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K. Aggiornamento 2016</b> ( rt_ctr.10k_agg2016 )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:5.000.000. Dettaglio 1:10000. 
+Copertura parziale Toscana realizzata attraverso la mosaicatura delle 
+sezioni. Immagini bianco-nero. Il dataset rappresenta l'aggiornamento 
+2016 della CTR10k basato su aggiornamenti nativi in CTR e derivati da 
+DBT sul medesimo anno. Per la delimitazione delle aree vedasi il 
+corrispondente quadro di unione.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_054.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K Quadro di unione agg. 2016</b> ( rt_ctr.10k_agg2016.qu )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Quadro di unione del dataset CTR10K di aggiornamento 2016.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">gruppo_qu_10k_1: 
+						<img src="CTR_files/ows_017.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_065.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K. Aggiornamento 2010</b> ( rt_ctr.10k_agg2010 )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:5.000.000. Dettaglio 1:10000. 
+Copertura parziale Toscana realizzata attraverso la mosaicatura delle 
+sezioni. Immagini bianco-nero. Il dataset rappresenta l'aggiornamento 
+2010 della CTR10k basato su aggiornamenti nativi in CTR e derivati da 
+DBT sul medesimo anno. Per la delimitazione delle aree vedasi il 
+corrispondente quadro di unione.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_036.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K Quadro di unione agg. 2010</b> ( rt_ctr.10k_agg2010.qu )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Quadro di unione del dataset CTR10K di aggiornamento 2010.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">gruppo_qu_10k_1: 
+						<img src="CTR_files/ows_044.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_026.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K Situazione aggiornamenti</b> ( rt_ctr.ctr10k.agg )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita 1:1 - 1:5.000.000. Dataset per visualizzare lo stato di aggiornamento della CTR10K.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_056.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_041.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K In programmazione</b> ( rt_ctr.ctr10k.prog )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita 1:1 - 1:5.000.000. Dataset per visualizzare la programmazione degli aggiornamenti della CTR10K.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_062.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_002.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR5K continuum territoriale</b> ( rt_ctr.5k )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita' 1:1 - 1:128.000. Dettaglio 1:5000. 
+Copertura parziale realizzata attraverso la mosaicatura delle sezioni 
+realizzate dal 1974 al 2000 (produzione dismessa). Immagini bianco-nero</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_015.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR5K Quadro di unione</b> ( rt_ctr.5k.qu )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Quadro di unione del dataset CTR5K per elementi del territorio coperto</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_049.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_042.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR5K Situazione aggiornamenti</b> ( rt_ctr.ctr5k.agg )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita 1:1 - 1:5.000.000. Dataset per visualizzare lo stato di aggiornamento della CTR5K.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_025.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_053.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K dataset coordinato - liv.4</b> ( rt_ctr.2k.liv4 )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:30.000. Dettaglio 1:2000. Dataset
+ realizzato attraverso la mosaicatura delle sezioni piu' recenti 
+disponibili a livello 4 della CTR2K. Copertura parziale della toscana. 
+Si veda lo strato quadro di unione (qu) per la porzione coperta.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_064.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K Liv.4 Q.U.</b> ( rt_ctr.2k.liv4.qu )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Quadro di unione 
+per fogli 2k del territorio coperto nell'anno di volo indicato nel 
+titolo. L'etichetta con il nome del foglio e l'anno di volo compare alla
+ scala 1:100.000</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_029.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_057.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K continuum territoriale - liv.4 - 2021</b> ( rt_ctr.2k.liv4.2021 )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:30.000. Dettaglio 1:2000. Livello
+ CTR 4. Volo 2021. Copertura una porzione della toscana. Si veda lo 
+strato quadro di unione (qu) per la porzione coperta. Immagini 
+bianco-nero</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_033.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K Liv.4 Q.U. - 2021</b> ( rt_ctr.2k.liv4.2021.qu )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Quadro di unione 
+per fogli 2k del territorio coperto nell'anno di volo indicato nel 
+titolo. L'etichetta con il nome del foglio e l'anno di volo compare alla
+ scala 1:100.000</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_014.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_021.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K continuum territoriale - liv.4 - 2019</b> ( rt_ctr.2k.liv4.2019 )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:30.000. Dettaglio 1:2000. Livello
+ CTR 4. Volo 2019. Copertura una porzione della toscana. Si veda lo 
+strato quadro di unione (qu) per la porzione coperta. Immagini 
+bianco-nero</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_022.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K Liv.4 Q.U. - 2019</b> ( rt_ctr.2k.liv4.2019.qu )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Quadro di unione 
+per fogli 2k del territorio coperto nell'anno di volo indicato nel 
+titolo. L'etichetta con il nome del foglio e l'anno di volo compare alla
+ scala 1:100.000</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_020.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_040.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K continuum territoriale - liv.4.2 - 2010</b> ( rt_ctr.2k.liv4.2.2010 )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:30.000. Dettaglio 1:2000. Livello
+ CTR 4. Copertura una porzione della toscana. Si veda lo strato quadro 
+di unione (qu) per la porzione coperta. Immagini bianco-nero</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_045.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K Liv.4.2 Q.U.</b> ( rt_ctr.2k.liv4.2.2010.qu )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Quadro di unione 
+per fogli 2k del territorio coperto nell'anno di volo indicato nel 
+titolo. L'etichetta con il nome del foglio e l'anno di volo compare alla
+ scala 1:100.000</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_012.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_047.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K continuum territoriale - liv.3</b> ( rt_ctr.2k.liv3 )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale - liv.3. Scala di visibilita 1:1 - 1:10.000. Dettaglio 1:2000.
+ Copertura una porzione della toscana. Immagini bianco-nero</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_052.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K continuum territoriale - liv.2</b> ( rt_ctr.2k.liv2.any )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Carta Tecnica 
+Regionale. Scala di visibilita 1:1 - 1:10.000. Dettaglio 1:2000. 
+Copertura una porzione della toscana. Si veda lo strato quadro di unione
+ (qu) per la porzione coperta. Immagini bianco-nero</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_067.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>C.T.R. 2k Liv.2 Q.U</b> ( rt_ctr.2k.liv2.any.qu )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Quadro di unione 
+per fogli 2k del territorio coperto nell'anno di volo indicato nel 
+titolo. L'etichetta con il nome del foglio e l'anno di volo compare alla
+ scala 1:100.000</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_034.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_037.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR2K Aggiornamenti</b> ( rt_ctr.ctr2k.agg )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita 1:1 - 1:5.000.000. Dataset per visualizzare lo stato di aggiornamento della CTR2K.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_008.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_003.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>CTR10K In programmazione</b> ( rt_ctr.ctr2k.prog )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita 1:1 - 1:5.000.000. Dataset per visualizzare la programmazione degli aggiornamenti della CTR10K.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_038.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_059.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Inquadr. CTR 2K (fogli)</b> ( rt_ctr.inq.ctr.2k )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita da 1:1 a 1:5.000.000. Dataset 'Inquadramento CTR 2K - fogli'</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_030.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Inquadr. CTR 5K (elementi)</b> ( rt_ctr.inq.ctr.5k )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita da 1:1 a 1:5.000.000. Dataset 'Inquadramento CTR 5K - elementi'</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_006.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_027.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Inquadr. CTR 10K (sezioni)</b> ( rt_ctr.inq.ctr.10k )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita da 1:1 a 1:5.000.000. Dataset 'Inquadramento CTR 10K - sezioni'</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_035.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_051.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Inquadr. IGM 100K (fogli)</b> ( rt_ctr.inq.igm.f100k )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita da 1:1 a 1:5.000.000. Dataset 'Inquadramento IGM 100K - fogli'</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_005.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_023.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Inquadr. IGM 50K (fogli)</b> ( rt_ctr.inq.igm.f50k )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita da 1:1 a 1:5.000.000. Dataset 'Inquadramento IGM 50K - fogli'</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_032.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_024.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Inquadr. IGM 25K (sezioni)</b> ( rt_ctr.inq.igm.s25k )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita da 1:1 a 1:5.000.000. Dataset 'Inquadramento IGM 25K - sezioni'</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">con_etichette: 
+						<img src="CTR_files/ows_028.png" border="1" align="top"><br>senza_etichette: 
+						<img src="CTR_files/ows_009.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_010.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Inquadr. IGM 25K (quadranti)</b> ( rt_ctr.inq.igm.q25k )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Scala di visibilita da 1:1 a 1:5.000.000. Dataset 'Inquadramento IGM 25K - quadranti'</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">si</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">con_etichette: 
+						<img src="CTR_files/ows_066.png" border="1" align="top"><br>senza_etichette: 
+						<img src="CTR_files/ows_039.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_011.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Mosaico Catastale 5k raster</b> ( rt_ctr.5k.mosaico_catastale.rt )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Mosaico Catastale 5k. Immagine a livelli di grigio.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_063.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Paralleli</b> ( rt_ctr.paralleli )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Paralleli</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_013.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_061.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>Meridiani</b> ( rt_ctr.meridiani )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">Medidiani</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">default: 
+						<img src="CTR_files/ows_048.png" border="1" align="top"><br>
+</td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_043.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl>
+<dl xmlns="">
+<dd><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="3" valign="top" align="left">
+<b>IGM Quadranti 25k</b> ( rt_ctr.igm.q25 )
+						</td></tr>
+<tr>
+<td colspan="2" valign="top" align="left"><table width="100%" cellspacing="5" cellpadding="5" border="0">
+<tbody><tr><td colspan="2" valign="top" align="left">.</td></tr>
+<tr>
+<td width="20%" valign="top" align="left">
+											Interrogabile:
+									</td>
+<td width="80%" valign="top" align="left">no</td>
+</tr>
+<tr>
+<td valign="top" align="left">
+											Stili:
+									</td>
+<td valign="top" align="left">
+													no stili
+												    </td>
+</tr>
+</tbody></table></td>
+<td colspan="1" rowspan="3" valign="top" align="right"><table width="310px" cellspacing="5" cellpadding="5" border="0"><tbody><tr><td valign="top" align="right"><div class="mapImage">
+<img src="CTR_files/ows_060.png" class="map" width="307" height="335" border="1"><img src="CTR_files/wms.png" class="sfondo" width="307" height="335" border="1">
+</div></td></tr></tbody></table></td>
+</tr>
+</tbody></table></dd>
+<br><hr class="break">
+</dl></td></tr></tbody></table>
+</body></html>

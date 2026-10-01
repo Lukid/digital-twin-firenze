@@ -1,0 +1,45 @@
+1	https://dati.toscana.it/api/3/action	alberi	28
+2	https://dati.toscana.it/api/3/action	albero	6
+3	https://dati.toscana.it/api/3/action	alberate	0
+4	https://dati.toscana.it/api/3/action	alberature	2
+5	https://dati.toscana.it/api/3/action	censimento arboreo	1
+6	https://dati.toscana.it/api/3/action	patrimonio arboreo	0
+7	https://dati.toscana.it/api/3/action	verde urbano	9
+8	https://dati.toscana.it/api/3/action	verde pubblico	25
+9	https://dati.toscana.it/api/3/action	chiome	0
+10	https://dati.toscana.it/api/3/action	tree cover	0
+11	https://dati.toscana.it/api/3/action	copertura arborea	0
+12	https://dati.toscana.it/api/3/action	uso del suolo	1927
+13	https://dati.toscana.it/api/3/action	uso suolo	327
+14	https://dati.toscana.it/api/3/action	LiDAR	80
+15	https://dati.toscana.it/api/3/action	canopy	0
+16	https://dati.toscana.it/api/3/action	Pisa alberi	1
+17	https://dati.toscana.it/api/3/action	Pisa verde	0
+18	https://dati.toscana.it/api/3/action	Pisa alberature	0
+19	https://dati.toscana.it/api/3/action	comune di Pisa verde pubblico	25
+20	https://www.dati.gov.it/opendata/api/3/action	alberi	95
+21	https://www.dati.gov.it/opendata/api/3/action	albero	22
+22	https://www.dati.gov.it/opendata/api/3/action	alberate	7
+23	https://www.dati.gov.it/opendata/api/3/action	alberature	8
+24	https://www.dati.gov.it/opendata/api/3/action	censimento arboreo	2
+25	https://www.dati.gov.it/opendata/api/3/action	patrimonio arboreo	4
+26	https://www.dati.gov.it/opendata/api/3/action	verde urbano	71
+27	https://www.dati.gov.it/opendata/api/3/action	verde pubblico	82
+28	https://www.dati.gov.it/opendata/api/3/action	chiome	3
+29	https://www.dati.gov.it/opendata/api/3/action	tree cover	2
+30	https://www.dati.gov.it/opendata/api/3/action	copertura arborea	6
+31	https://www.dati.gov.it/opendata/api/3/action	uso del suolo	3352
+32	https://www.dati.gov.it/opendata/api/3/action	uso suolo	599
+33	https://www.dati.gov.it/opendata/api/3/action	LiDAR	361
+34	https://www.dati.gov.it/opendata/api/3/action	canopy	1
+35	https://www.dati.gov.it/opendata/api/3/action	Pisa alberi	1
+36	https://www.dati.gov.it/opendata/api/3/action	Pisa verde	0
+37	https://www.dati.gov.it/opendata/api/3/action	Pisa alberature	0
+38	https://www.dati.gov.it/opendata/api/3/action	comune di Pisa verde pubblico	69
+101	dati.toscana.it	DTM Pisa	1
+102	dati.toscana.it	DSM	26
+103	dati.toscana.it	modello digitale del terreno	24
+104	dati.toscana.it	modello digitale di superficie	452
+105	dati.toscana.it	CHM	0
+106	dati.toscana.it	ortofoto Pisa	2
+107	dati.toscana.it	dbtopografico Pisa	0

@@ -1,0 +1,4629 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="ltr" dir="ltr" lang="it-IT">
+
+<head>
+    <title>Open Geodata - GeoBlog - Regione Toscana</title>
+
+    <link rel="stylesheet" href="/o/regione-generic-theme/js//tooltipster/dist/css/tooltipster.bundle.min.css">
+    <link rel="stylesheet" href="/o/regione-generic-theme/js//magnific-popup/magnific-popup.css">
+    <link rel="stylesheet"
+          href="/o/regione-generic-theme/js//tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css">
+
+    <meta content="initial-scale=1.0, width=device-width" name="viewport"/>
+    <link rel="Favicon" href="<%= themeDisplay.getPathThemeImage() %>/favicon.ico"/>
+
+        <style>
+            body {
+             --main-color: #C64301;
+                --main-color-dark: #9F3F10;
+                --main-color-light: #FF9059;
+                --main-color-disabled: rgba(228, 77, 1, 0.6);
+                --main-color-disabled-2: rgba(228, 77, 1, 0.9);
+                --main-color-gradient-2: #CF4710;
+            }
+        </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+
+
+
+
+
+
+
+
+
+<meta content="servizio" lang="it-IT" name="keywords" />
+
+
+<script type="importmap">{"imports":{"react-dom":"/o/frontend-js-react-web/__liferay__/exports/react-dom.js","@clayui/breadcrumb":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$breadcrumb.js","@clayui/form":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$form.js","@clayui/popover":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$popover.js","@clayui/charts":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$charts.js","@clayui/shared":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$shared.js","@clayui/localized-input":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$localized-input.js","@clayui/modal":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$modal.js","@clayui/empty-state":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$empty-state.js","react":"/o/frontend-js-react-web/__liferay__/exports/react.js","@clayui/color-picker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$color-picker.js","@clayui/navigation-bar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$navigation-bar.js","@clayui/pagination":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$pagination.js","@clayui/icon":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$icon.js","@clayui/table":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$table.js","@clayui/autocomplete":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$autocomplete.js","@clayui/slider":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$slider.js","@clayui/management-toolbar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$management-toolbar.js","@clayui/multi-select":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$multi-select.js","@clayui/nav":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$nav.js","@clayui/time-picker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$time-picker.js","@clayui/provider":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$provider.js","@clayui/upper-toolbar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$upper-toolbar.js","@clayui/loading-indicator":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$loading-indicator.js","@clayui/panel":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$panel.js","@clayui/drop-down":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$drop-down.js","@clayui/list":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$list.js","@clayui/date-picker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$date-picker.js","@clayui/label":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$label.js","@clayui/data-provider":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$data-provider.js","@liferay/frontend-js-api/data-set":"/o/frontend-js-dependencies-web/__liferay__/exports/@liferay$js-api$data-set.js","@clayui/core":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$core.js","@clayui/pagination-bar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$pagination-bar.js","@clayui/layout":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$layout.js","@clayui/multi-step-nav":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$multi-step-nav.js","@liferay/frontend-js-api":"/o/frontend-js-dependencies-web/__liferay__/exports/@liferay$js-api.js","@clayui/css":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$css.js","@clayui/toolbar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$toolbar.js","@clayui/alert":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$alert.js","@clayui/badge":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$badge.js","@clayui/link":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$link.js","@clayui/card":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$card.js","@clayui/progress-bar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$progress-bar.js","@clayui/tooltip":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$tooltip.js","@clayui/button":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$button.js","@clayui/tabs":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$tabs.js","@clayui/sticker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$sticker.js"},"scopes":{}}</script><script data-senna-track="temporary">var Liferay = window.Liferay || {};Liferay.Icons = Liferay.Icons || {};Liferay.Icons.controlPanelSpritemap = 'https://geoblog.regione.toscana.it/o/admin-theme/images/clay/icons.svg'; Liferay.Icons.spritemap = 'https://geoblog.regione.toscana.it/o/regione-generic-theme/images/clay/icons.svg';</script>
+<script data-senna-track="permanent" src="/combo?browserId=other&minifierType=js&languageId=it_IT&t=1790615368630&/o/frontend-js-jquery-web/jquery/jquery.min.js&/o/frontend-js-jquery-web/jquery/init.js&/o/frontend-js-jquery-web/jquery/ajax.js&/o/frontend-js-jquery-web/jquery/bootstrap.bundle.min.js&/o/frontend-js-jquery-web/jquery/collapsible_search.js&/o/frontend-js-jquery-web/jquery/fm.js&/o/frontend-js-jquery-web/jquery/form.js&/o/frontend-js-jquery-web/jquery/popper.min.js&/o/frontend-js-jquery-web/jquery/side_navigation.js" type="text/javascript"></script>
+<script data-senna-track="permanent" type="text/javascript">window.Liferay = window.Liferay || {}; window.Liferay.CSP = {nonce: ''};</script>
+<link data-senna-track="temporary" href="https://geoblog.regione.toscana.it/-/open-geodata" rel="canonical" />
+<link data-senna-track="temporary" href="https://geoblog.regione.toscana.it/-/open-geodata" hreflang="it-IT" rel="alternate" />
+<link data-senna-track="temporary" href="https://geoblog.regione.toscana.it/en/-/open-geodata" hreflang="en-US" rel="alternate" />
+<link data-senna-track="temporary" href="https://geoblog.regione.toscana.it/-/open-geodata" hreflang="x-default" rel="alternate" />
+
+<meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="GeoBlog">
+<meta property="og:title" content="Open Geodata - GeoBlog - Regione Toscana">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://geoblog.regione.toscana.it/-/open-geodata">
+
+
+<link href="https://geoblog.regione.toscana.it/o/regione-generic-theme/images/favicon.ico" rel="apple-touch-icon" />
+<link href="https://geoblog.regione.toscana.it/o/regione-generic-theme/images/favicon.ico" rel="icon" />
+
+
+
+<link class="lfr-css-file" data-senna-track="temporary" href="https://geoblog.regione.toscana.it/o/regione-generic-theme/css/clay.css?browserId=other&amp;themeId=regionegeneric_WAR_regionegenerictheme&amp;minifierType=css&amp;languageId=it_IT&amp;t=1790326820000" id="liferayAUICSS" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+	<link href="/combo?browserId=other&amp;minifierType=css&amp;themeId=regionegeneric_WAR_regionegenerictheme&amp;languageId=it_IT&amp;com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW:%2Fo%2Fasset-publisher-web%2Fcss%2Fmain.css&amp;com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE__site_footer_1:%2Fo%2Fjournal-content-web%2Fcss%2Fmain.css&amp;com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch:%2Fo%2Fportal-search-web%2Fcss%2Fmain.css&amp;com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet:%2Fo%2Fproduct-navigation-product-menu-web%2Fcss%2Fmain.css&amp;com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet:%2Fo%2Fsite-navigation-menu-web%2Fcss%2Fmain.css&amp;it_regione_toscana_common_cookie_consent_CookieConsentPortlet:%2Fo%2Fit.regione.toscana.common.cookie.consent.web%2Fcss%2Fcookieconsent.css&amp;it_regione_toscana_common_cookie_consent_CookieConsentPortlet:%2Fo%2Fit.regione.toscana.common.cookie.consent.web%2Fcss%2Fmain.css&amp;t=1790326820000" rel="stylesheet" type="text/css"
+ data-senna-track="temporary" id="62b3491a" />
+
+
+
+
+
+
+
+
+<script type="text/javascript" data-senna-track="temporary">
+	// <![CDATA[
+		var Liferay = Liferay || {};
+
+		Liferay.Browser = {
+			acceptsGzip: function() {
+				return false;
+			},
+
+			
+
+			getMajorVersion: function() {
+				return 0;
+			},
+
+			getRevision: function() {
+				return '';
+			},
+			getVersion: function() {
+				return '';
+			},
+
+			
+
+			isAir: function() {
+				return false;
+			},
+			isChrome: function() {
+				return false;
+			},
+			isEdge: function() {
+				return false;
+			},
+			isFirefox: function() {
+				return false;
+			},
+			isGecko: function() {
+				return false;
+			},
+			isIe: function() {
+				return false;
+			},
+			isIphone: function() {
+				return false;
+			},
+			isLinux: function() {
+				return false;
+			},
+			isMac: function() {
+				return false;
+			},
+			isMobile: function() {
+				return false;
+			},
+			isMozilla: function() {
+				return true;
+			},
+			isOpera: function() {
+				return false;
+			},
+			isRtf: function() {
+				return false;
+			},
+			isSafari: function() {
+				return false;
+			},
+			isSun: function() {
+				return false;
+			},
+			isWebKit: function() {
+				return false;
+			},
+			isWindows: function() {
+				return false;
+			}
+		};
+
+		Liferay.Data = Liferay.Data || {};
+
+		Liferay.Data.ICONS_INLINE_SVG = true;
+
+		Liferay.Data.NAV_SELECTOR = '#navigation';
+
+		Liferay.Data.NAV_SELECTOR_MOBILE = '#navigationCollapse';
+
+		Liferay.Data.isCustomizationView = function() {
+			return false;
+		};
+
+		Liferay.Data.notices = [
+			
+		];
+
+		(function () {
+			var available = {};
+
+			var direction = {};
+
+			
+
+				available['it_IT'] = 'italiano\x20\x28Italia\x29';
+				direction['it_IT'] = 'ltr';
+
+			
+
+				available['en_US'] = 'inglese\x20\x28Stati\x20Uniti\x29';
+				direction['en_US'] = 'ltr';
+
+			
+
+			Liferay.Language = {
+				available,
+				direction,
+				get: function(key) {
+					return key;
+				}
+			};
+		})();
+
+		var featureFlags = {"LPD-11018":false,"LPD-10964":false,"LPD-10887":false,"LPS-193884":false,"LPD-11218":false,"LPS-178642":false,"LPD-11253":false,"LPD-16469":false,"LPS-193005":false,"LPS-187284":false,"LPS-187285":false,"LPD-11377":false,"LPD-10562":false,"LPD-11179":false,"LPS-114786":false,"LPS-192957":false,"COMMERCE-8087":false,"LRAC-10757":false,"LPS-180090":false,"LPS-178052":false,"LPS-189856":false,"LPD-19465":false,"LPS-187436":false,"LPS-182184":false,"LPS-185892":false,"LPS-186620":false,"LPS-184404":false,"LPS-198183":false,"LPS-171364":false,"LPD-6378":false,"LPS-153714":false,"LPS-96845":false,"LPS-170670":false,"LPS-141392":false,"LPS-169981":false,"LPS-153839":false,"LPD-11165":false,"LPS-187793":false,"LPS-177027":false,"LPD-10793":false,"LPD-11003":false,"LPS-196847":false,"LPS-114700":false,"LPS-135430":false,"LPS-134060":false,"LPS-164563":false,"LPS-122920":false,"LPS-199086":false,"LPS-203351":false,"LPD-10588":false,"LPD-10862":false,"LPD-11313":false,"LPD-6368":false,"LPD-10701":false,"LPD-10703":false,"LPS-202104":false,"LPS-187142":false,"LPD-15596":false,"LPS-196935":true,"LPS-187854":false,"LPS-176691":false,"LPS-197909":false,"LPD-23210":false,"LPD-29516":false,"COMMERCE-8949":false,"LPS-153813":false,"LPS-174455":false,"LPD-10856":false,"COMMERCE-13024":false,"LPS-165482":false,"LPD-10855":false,"LPS-193551":false,"LPS-197477":false,"LPD-17965":false,"LPS-174816":false,"LPS-186360":false,"LPS-153332":false,"LPS-179669":false,"LPS-174417":false,"LPD-18730":false,"LPD-11147":false,"LPS-155284":false,"LRAC-15017":false,"LPD-19870":false,"LPS-200108":false,"LPS-159643":false,"LPS-161033":false,"LPS-164948":false,"LPD-11070":false,"LPS-188058":false,"LPS-129412":false,"LPS-169837":false,"LPD-20213":false};
+
+		Liferay.FeatureFlags = Object.keys(featureFlags).reduce(
+			(acc, key) => ({
+				...acc, [key]: featureFlags[key] === 'true' || featureFlags[key] === true
+			}), {}
+		);
+
+		Liferay.PortletKeys = {
+			DOCUMENT_LIBRARY: 'com_liferay_document_library_web_portlet_DLPortlet',
+			DYNAMIC_DATA_MAPPING: 'com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet',
+			ITEM_SELECTOR: 'com_liferay_item_selector_web_portlet_ItemSelectorPortlet'
+		};
+
+		Liferay.PropsValues = {
+			JAVASCRIPT_SINGLE_PAGE_APPLICATION_TIMEOUT: 0,
+			UPLOAD_SERVLET_REQUEST_IMPL_MAX_SIZE: 104857600000
+		};
+
+		Liferay.ThemeDisplay = {
+
+			
+
+			
+				getLayoutId: function() {
+					return '2';
+				},
+
+				
+
+				getLayoutRelativeControlPanelURL: function() {
+					return '/group/geoblog/~/control_panel/manage?p_p_id=com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW';
+				},
+
+				getLayoutRelativeURL: function() {
+					return '/notizie';
+				},
+				getLayoutURL: function() {
+					return 'https://geoblog.regione.toscana.it/notizie';
+				},
+				getParentLayoutId: function() {
+					return '0';
+				},
+				isControlPanel: function() {
+					return false;
+				},
+				isPrivateLayout: function() {
+					return 'false';
+				},
+				isVirtualLayout: function() {
+					return false;
+				},
+			
+
+			getBCP47LanguageId: function() {
+				return 'it-IT';
+			},
+			getCanonicalURL: function() {
+
+				
+
+				return 'https\x3a\x2f\x2fgeoblog\x2eregione\x2etoscana\x2eit\x2f-\x2fopen-geodata';
+			},
+			getCDNBaseURL: function() {
+				return 'https://geoblog.regione.toscana.it';
+			},
+			getCDNDynamicResourcesHost: function() {
+				return '';
+			},
+			getCDNHost: function() {
+				return '';
+			},
+			getCompanyGroupId: function() {
+				return '10192';
+			},
+			getCompanyId: function() {
+				return '10154';
+			},
+			getDefaultLanguageId: function() {
+				return 'it_IT';
+			},
+			getDoAsUserIdEncoded: function() {
+				return '';
+			},
+			getLanguageId: function() {
+				return 'it_IT';
+			},
+			getParentGroupId: function() {
+				return '11974914';
+			},
+			getPathContext: function() {
+				return '';
+			},
+			getPathImage: function() {
+				return '/image';
+			},
+			getPathJavaScript: function() {
+				return '/o/frontend-js-web';
+			},
+			getPathMain: function() {
+				return '/c';
+			},
+			getPathThemeImages: function() {
+				return 'https://geoblog.regione.toscana.it/o/regione-generic-theme/images';
+			},
+			getPathThemeRoot: function() {
+				return '/o/regione-generic-theme';
+			},
+			getPlid: function() {
+				return '11974922';
+			},
+			getPortalURL: function() {
+				return 'https://geoblog.regione.toscana.it';
+			},
+			getRealUserId: function() {
+				return '10158';
+			},
+			getRemoteAddr: function() {
+				return '95.228.48.254';
+			},
+			getRemoteHost: function() {
+				return '95.228.48.254';
+			},
+			getScopeGroupId: function() {
+				return '11974914';
+			},
+			getScopeGroupIdOrLiveGroupId: function() {
+				return '11974914';
+			},
+			getSessionId: function() {
+				return '';
+			},
+			getSiteAdminURL: function() {
+				return 'https://geoblog.regione.toscana.it/group/geoblog/~/control_panel/manage?p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view';
+			},
+			getSiteGroupId: function() {
+				return '11974914';
+			},
+			getURLControlPanel: function() {
+				return '/group/control_panel?refererPlid=11974922';
+			},
+			getURLHome: function() {
+				return 'https\x3a\x2f\x2fgeoblog\x2eregione\x2etoscana\x2eit\x2fweb\x2fguest';
+			},
+			getUserEmailAddress: function() {
+				return '';
+			},
+			getUserId: function() {
+				return '10158';
+			},
+			getUserName: function() {
+				return '';
+			},
+			isAddSessionIdToURL: function() {
+				return false;
+			},
+			isImpersonated: function() {
+				return false;
+			},
+			isSignedIn: function() {
+				return false;
+			},
+
+			isStagedPortlet: function() {
+				
+					
+						return true;
+					
+					
+			},
+
+			isStateExclusive: function() {
+				return false;
+			},
+			isStateMaximized: function() {
+				return false;
+			},
+			isStatePopUp: function() {
+				return false;
+			}
+		};
+
+		var themeDisplay = Liferay.ThemeDisplay;
+
+		Liferay.AUI = {
+
+			
+
+			getCombine: function() {
+				return true;
+			},
+			getComboPath: function() {
+				return '/combo/?browserId=other&minifierType=&languageId=it_IT&t=1790326791183&';
+			},
+			getDateFormat: function() {
+				return '%d/%m/%Y';
+			},
+			getEditorCKEditorPath: function() {
+				return '/o/frontend-editor-ckeditor-web';
+			},
+			getFilter: function() {
+				var filter = 'raw';
+
+				
+					
+						filter = 'min';
+					
+					
+
+				return filter;
+			},
+			getFilterConfig: function() {
+				var instance = this;
+
+				var filterConfig = null;
+
+				if (!instance.getCombine()) {
+					filterConfig = {
+						replaceStr: '.js' + instance.getStaticResourceURLParams(),
+						searchExp: '\\.js$'
+					};
+				}
+
+				return filterConfig;
+			},
+			getJavaScriptRootPath: function() {
+				return '/o/frontend-js-web';
+			},
+			getPortletRootPath: function() {
+				return '/html/portlet';
+			},
+			getStaticResourceURLParams: function() {
+				return '?browserId=other&minifierType=&languageId=it_IT&t=1790326791183';
+			}
+		};
+
+		Liferay.authToken = 'cY7cBd9a';
+
+		
+
+		Liferay.currentURL = '\x2f-\x2fopen-geodata';
+		Liferay.currentURLEncoded = '\x252F-\x252Fopen-geodata';
+	// ]]>
+</script>
+
+<script data-senna-track="temporary" type="text/javascript">window.__CONFIG__= {basePath: '',combine: true, defaultURLParams: null, explainResolutions: false, exposeGlobal: false, logLevel: 'warn', moduleType: 'module', namespace:'Liferay', nonce: '', reportMismatchedAnonymousModules: 'warn', resolvePath: '/o/js_resolve_modules', url: '/combo/?browserId=other&minifierType=js&languageId=it_IT&t=1790326791183&', waitTimeout: 60000};</script><script data-senna-track="permanent" src="/o/frontend-js-loader-modules-extender/loader.js?&mac=9WaMmhziBCkScHZwrrVcOR7VZF4=&browserId=other&languageId=it_IT&minifierType=js" type="text/javascript"></script><script data-senna-track="permanent" src="/combo?browserId=other&minifierType=js&languageId=it_IT&t=1790326791183&/o/frontend-js-aui-web/aui/aui/aui-min.js&/o/frontend-js-aui-web/liferay/modules.js&/o/frontend-js-aui-web/liferay/aui_sandbox.js&/o/frontend-js-aui-web/aui/attribute-base/attribute-base-min.js&/o/frontend-js-aui-web/aui/attribute-complex/attribute-complex-min.js&/o/frontend-js-aui-web/aui/attribute-core/attribute-core-min.js&/o/frontend-js-aui-web/aui/attribute-observable/attribute-observable-min.js&/o/frontend-js-aui-web/aui/attribute-extras/attribute-extras-min.js&/o/frontend-js-aui-web/aui/event-custom-base/event-custom-base-min.js&/o/frontend-js-aui-web/aui/event-custom-complex/event-custom-complex-min.js&/o/frontend-js-aui-web/aui/oop/oop-min.js&/o/frontend-js-aui-web/aui/aui-base-lang/aui-base-lang-min.js&/o/frontend-js-aui-web/liferay/dependency.js&/o/frontend-js-aui-web/liferay/util.js&/o/frontend-js-web/liferay/dom_task_runner.js&/o/frontend-js-web/liferay/events.js&/o/frontend-js-web/liferay/lazy_load.js&/o/frontend-js-web/liferay/liferay.js&/o/frontend-js-web/liferay/global.bundle.js&/o/frontend-js-web/liferay/portlet.js&/o/frontend-js-web/liferay/workflow.js&/o/oauth2-provider-web/js/liferay.js" type="text/javascript"></script>
+<script data-senna-track="temporary" type="text/javascript">window.Liferay = Liferay || {}; window.Liferay.OAuth2 = {getAuthorizeURL: function() {return 'https://geoblog.regione.toscana.it/o/oauth2/authorize';}, getBuiltInRedirectURL: function() {return 'https://geoblog.regione.toscana.it/o/oauth2/redirect';}, getIntrospectURL: function() { return 'https://geoblog.regione.toscana.it/o/oauth2/introspect';}, getTokenURL: function() {return 'https://geoblog.regione.toscana.it/o/oauth2/token';}, getUserAgentApplication: function(externalReferenceCode) {return Liferay.OAuth2._userAgentApplications[externalReferenceCode];}, _userAgentApplications: {}}</script><script data-senna-track="temporary" type="text/javascript">try {var MODULE_MAIN='@liferay/frontend-js-react-web@5.0.41/index';var MODULE_PATH='/o/frontend-js-react-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			react: {
+				// eslint-disable-next-line
+				mainModule: MODULE_MAIN,
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='@liferay/frontend-js-state-web@1.0.21/index';var MODULE_PATH='/o/frontend-js-state-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			state: {
+				// eslint-disable-next-line
+				mainModule: MODULE_MAIN,
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='exportimport-web@5.0.85/index';var MODULE_PATH='/o/exportimport-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			exportimportweb: {
+				base: MODULE_PATH + '/js/legacy/',
+				combine: Liferay.AUI.getCombine(),
+				filter: Liferay.AUI.getFilterConfig(),
+				modules: {
+					'liferay-export-import-export-import': {
+						path: 'main.js',
+						requires: [
+							'aui-datatype',
+							'aui-dialog-iframe-deprecated',
+							'aui-modal',
+							'aui-parse-content',
+							'aui-toggler',
+							'liferay-portlet-base',
+							'liferay-util-window',
+						],
+					},
+				},
+				root: MODULE_PATH + '/js/legacy/',
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='@liferay/document-library-web@6.0.182/index';var MODULE_PATH='/o/document-library-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			dl: {
+				base: MODULE_PATH + '/js/legacy/',
+				combine: Liferay.AUI.getCombine(),
+				filter: Liferay.AUI.getFilterConfig(),
+				modules: {
+					'document-library-upload-component': {
+						path: 'DocumentLibraryUpload.js',
+						requires: [
+							'aui-component',
+							'aui-data-set-deprecated',
+							'aui-overlay-manager-deprecated',
+							'aui-overlay-mask-deprecated',
+							'aui-parse-content',
+							'aui-progressbar',
+							'aui-template-deprecated',
+							'liferay-search-container',
+							'querystring-parse-simple',
+							'uploader',
+						],
+					},
+				},
+				root: MODULE_PATH + '/js/legacy/',
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='staging-processes-web@5.0.57/index';var MODULE_PATH='/o/staging-processes-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			stagingprocessesweb: {
+				base: MODULE_PATH + '/js/legacy/',
+				combine: Liferay.AUI.getCombine(),
+				filter: Liferay.AUI.getFilterConfig(),
+				modules: {
+					'liferay-staging-processes-export-import': {
+						path: 'main.js',
+						requires: [
+							'aui-datatype',
+							'aui-dialog-iframe-deprecated',
+							'aui-modal',
+							'aui-parse-content',
+							'aui-toggler',
+							'liferay-portlet-base',
+							'liferay-util-window',
+						],
+					},
+				},
+				root: MODULE_PATH + '/js/legacy/',
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='contacts-web@5.0.58/index';var MODULE_PATH='/o/contacts-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			contactscenter: {
+				base: MODULE_PATH + '/js/legacy/',
+				combine: Liferay.AUI.getCombine(),
+				filter: Liferay.AUI.getFilterConfig(),
+				modules: {
+					'liferay-contacts-center': {
+						path: 'main.js',
+						requires: [
+							'aui-io-plugin-deprecated',
+							'aui-toolbar',
+							'autocomplete-base',
+							'datasource-io',
+							'json-parse',
+							'liferay-portlet-base',
+							'liferay-util-window',
+						],
+					},
+				},
+				root: MODULE_PATH + '/js/legacy/',
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='portal-workflow-kaleo-designer-web@5.0.131/index';var MODULE_PATH='/o/portal-workflow-kaleo-designer-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			'kaleo-designer': {
+				base: MODULE_PATH + '/designer/js/legacy/',
+				combine: Liferay.AUI.getCombine(),
+				filter: Liferay.AUI.getFilterConfig(),
+				modules: {
+					'liferay-kaleo-designer-autocomplete-util': {
+						path: 'autocomplete_util.js',
+						requires: ['autocomplete', 'autocomplete-highlighters'],
+					},
+					'liferay-kaleo-designer-definition-diagram-controller': {
+						path: 'definition_diagram_controller.js',
+						requires: [
+							'liferay-kaleo-designer-field-normalizer',
+							'liferay-kaleo-designer-utils',
+						],
+					},
+					'liferay-kaleo-designer-dialogs': {
+						path: 'dialogs.js',
+						requires: ['liferay-util-window'],
+					},
+					'liferay-kaleo-designer-editors': {
+						path: 'editors.js',
+						requires: [
+							'aui-ace-editor',
+							'aui-ace-editor-mode-xml',
+							'aui-base',
+							'aui-datatype',
+							'aui-node',
+							'liferay-kaleo-designer-autocomplete-util',
+							'liferay-kaleo-designer-utils',
+						],
+					},
+					'liferay-kaleo-designer-field-normalizer': {
+						path: 'field_normalizer.js',
+						requires: ['liferay-kaleo-designer-remote-services'],
+					},
+					'liferay-kaleo-designer-nodes': {
+						path: 'nodes.js',
+						requires: [
+							'aui-datatable',
+							'aui-datatype',
+							'aui-diagram-builder',
+							'liferay-kaleo-designer-editors',
+							'liferay-kaleo-designer-utils',
+						],
+					},
+					'liferay-kaleo-designer-remote-services': {
+						path: 'remote_services.js',
+						requires: ['aui-io'],
+					},
+					'liferay-kaleo-designer-templates': {
+						path: 'templates.js',
+						requires: ['aui-tpl-snippets-deprecated'],
+					},
+					'liferay-kaleo-designer-utils': {
+						path: 'utils.js',
+						requires: [],
+					},
+					'liferay-kaleo-designer-xml-definition': {
+						path: 'xml_definition.js',
+						requires: [
+							'aui-base',
+							'aui-component',
+							'dataschema-xml',
+							'datatype-xml',
+						],
+					},
+					'liferay-kaleo-designer-xml-definition-serializer': {
+						path: 'xml_definition_serializer.js',
+						requires: ['escape', 'liferay-kaleo-designer-xml-util'],
+					},
+					'liferay-kaleo-designer-xml-util': {
+						path: 'xml_util.js',
+						requires: ['aui-base'],
+					},
+					'liferay-portlet-kaleo-designer': {
+						path: 'main.js',
+						requires: [
+							'aui-ace-editor',
+							'aui-ace-editor-mode-xml',
+							'aui-tpl-snippets-deprecated',
+							'dataschema-xml',
+							'datasource',
+							'datatype-xml',
+							'event-valuechange',
+							'io-form',
+							'liferay-kaleo-designer-autocomplete-util',
+							'liferay-kaleo-designer-editors',
+							'liferay-kaleo-designer-nodes',
+							'liferay-kaleo-designer-remote-services',
+							'liferay-kaleo-designer-utils',
+							'liferay-kaleo-designer-xml-util',
+							'liferay-util-window',
+						],
+					},
+				},
+				root: MODULE_PATH + '/designer/js/legacy/',
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='portal-search-web@6.0.133/index';var MODULE_PATH='/o/portal-search-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			search: {
+				base: MODULE_PATH + '/js/',
+				combine: Liferay.AUI.getCombine(),
+				filter: Liferay.AUI.getFilterConfig(),
+				modules: {
+					'liferay-search-date-facet': {
+						path: 'date_facet.js',
+						requires: ['aui-form-validator'],
+					},
+				},
+				root: MODULE_PATH + '/js/',
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='frontend-js-components-web@2.0.67/index';var MODULE_PATH='/o/frontend-js-components-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			components: {
+				// eslint-disable-next-line
+				mainModule: MODULE_MAIN,
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='frontend-editor-alloyeditor-web@5.0.48/index';var MODULE_PATH='/o/frontend-editor-alloyeditor-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			alloyeditor: {
+				base: MODULE_PATH + '/js/legacy/',
+				combine: Liferay.AUI.getCombine(),
+				filter: Liferay.AUI.getFilterConfig(),
+				modules: {
+					'liferay-alloy-editor': {
+						path: 'alloyeditor.js',
+						requires: [
+							'aui-component',
+							'liferay-portlet-base',
+							'timers',
+						],
+					},
+					'liferay-alloy-editor-source': {
+						path: 'alloyeditor_source.js',
+						requires: [
+							'aui-debounce',
+							'liferay-fullscreen-source-editor',
+							'liferay-source-editor',
+							'plugin',
+						],
+					},
+				},
+				root: MODULE_PATH + '/js/legacy/',
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='dynamic-data-mapping-web@5.0.103/index';var MODULE_PATH='/o/dynamic-data-mapping-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	const LiferayAUI = Liferay.AUI;
+
+	AUI().applyConfig({
+		groups: {
+			ddm: {
+				base: MODULE_PATH + '/js/legacy/',
+				combine: Liferay.AUI.getCombine(),
+				filter: LiferayAUI.getFilterConfig(),
+				modules: {
+					'liferay-ddm-form': {
+						path: 'ddm_form.js',
+						requires: [
+							'aui-base',
+							'aui-datatable',
+							'aui-datatype',
+							'aui-image-viewer',
+							'aui-parse-content',
+							'aui-set',
+							'aui-sortable-list',
+							'json',
+							'liferay-form',
+							'liferay-map-base',
+							'liferay-translation-manager',
+							'liferay-util-window',
+						],
+					},
+					'liferay-portlet-dynamic-data-mapping': {
+						condition: {
+							trigger: 'liferay-document-library',
+						},
+						path: 'main.js',
+						requires: [
+							'arraysort',
+							'aui-form-builder-deprecated',
+							'aui-form-validator',
+							'aui-map',
+							'aui-text-unicode',
+							'json',
+							'liferay-menu',
+							'liferay-translation-manager',
+							'liferay-util-window',
+							'text',
+						],
+					},
+					'liferay-portlet-dynamic-data-mapping-custom-fields': {
+						condition: {
+							trigger: 'liferay-document-library',
+						},
+						path: 'custom_fields.js',
+						requires: ['liferay-portlet-dynamic-data-mapping'],
+					},
+				},
+				root: MODULE_PATH + '/js/legacy/',
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='calendar-web@5.0.93/index';var MODULE_PATH='/o/calendar-web';/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+(function () {
+	AUI().applyConfig({
+		groups: {
+			calendar: {
+				base: MODULE_PATH + '/js/legacy/',
+				combine: Liferay.AUI.getCombine(),
+				filter: Liferay.AUI.getFilterConfig(),
+				modules: {
+					'liferay-calendar-a11y': {
+						path: 'calendar_a11y.js',
+						requires: ['calendar'],
+					},
+					'liferay-calendar-container': {
+						path: 'calendar_container.js',
+						requires: [
+							'aui-alert',
+							'aui-base',
+							'aui-component',
+							'liferay-portlet-base',
+						],
+					},
+					'liferay-calendar-date-picker-sanitizer': {
+						path: 'date_picker_sanitizer.js',
+						requires: ['aui-base'],
+					},
+					'liferay-calendar-interval-selector': {
+						path: 'interval_selector.js',
+						requires: ['aui-base', 'liferay-portlet-base'],
+					},
+					'liferay-calendar-interval-selector-scheduler-event-link': {
+						path: 'interval_selector_scheduler_event_link.js',
+						requires: ['aui-base', 'liferay-portlet-base'],
+					},
+					'liferay-calendar-list': {
+						path: 'calendar_list.js',
+						requires: [
+							'aui-template-deprecated',
+							'liferay-scheduler',
+						],
+					},
+					'liferay-calendar-message-util': {
+						path: 'message_util.js',
+						requires: ['liferay-util-window'],
+					},
+					'liferay-calendar-recurrence-converter': {
+						path: 'recurrence_converter.js',
+						requires: [],
+					},
+					'liferay-calendar-recurrence-dialog': {
+						path: 'recurrence.js',
+						requires: [
+							'aui-base',
+							'liferay-calendar-recurrence-util',
+						],
+					},
+					'liferay-calendar-recurrence-util': {
+						path: 'recurrence_util.js',
+						requires: ['aui-base', 'liferay-util-window'],
+					},
+					'liferay-calendar-reminders': {
+						path: 'calendar_reminders.js',
+						requires: ['aui-base'],
+					},
+					'liferay-calendar-remote-services': {
+						path: 'remote_services.js',
+						requires: [
+							'aui-base',
+							'aui-component',
+							'liferay-calendar-util',
+							'liferay-portlet-base',
+						],
+					},
+					'liferay-calendar-session-listener': {
+						path: 'session_listener.js',
+						requires: ['aui-base', 'liferay-scheduler'],
+					},
+					'liferay-calendar-simple-color-picker': {
+						path: 'simple_color_picker.js',
+						requires: ['aui-base', 'aui-template-deprecated'],
+					},
+					'liferay-calendar-simple-menu': {
+						path: 'simple_menu.js',
+						requires: [
+							'aui-base',
+							'aui-template-deprecated',
+							'event-outside',
+							'event-touch',
+							'widget-modality',
+							'widget-position',
+							'widget-position-align',
+							'widget-position-constrain',
+							'widget-stack',
+							'widget-stdmod',
+						],
+					},
+					'liferay-calendar-util': {
+						path: 'calendar_util.js',
+						requires: [
+							'aui-datatype',
+							'aui-io',
+							'aui-scheduler',
+							'aui-toolbar',
+							'autocomplete',
+							'autocomplete-highlighters',
+						],
+					},
+					'liferay-scheduler': {
+						path: 'scheduler.js',
+						requires: [
+							'async-queue',
+							'aui-datatype',
+							'aui-scheduler',
+							'dd-plugin',
+							'liferay-calendar-a11y',
+							'liferay-calendar-message-util',
+							'liferay-calendar-recurrence-converter',
+							'liferay-calendar-recurrence-util',
+							'liferay-calendar-util',
+							'liferay-scheduler-event-recorder',
+							'liferay-scheduler-models',
+							'promise',
+							'resize-plugin',
+						],
+					},
+					'liferay-scheduler-event-recorder': {
+						path: 'scheduler_event_recorder.js',
+						requires: [
+							'dd-plugin',
+							'liferay-calendar-util',
+							'resize-plugin',
+						],
+					},
+					'liferay-scheduler-models': {
+						path: 'scheduler_models.js',
+						requires: [
+							'aui-datatype',
+							'dd-plugin',
+							'liferay-calendar-util',
+						],
+					},
+				},
+				root: MODULE_PATH + '/js/legacy/',
+			},
+		},
+	});
+})();
+} catch(error) {console.error(error);}</script>
+
+
+
+
+<script type="text/javascript" data-senna-track="temporary">
+	// <![CDATA[
+		
+			
+				
+		
+
+		
+	// ]]>
+</script>
+
+
+
+
+
+	
+		
+
+			
+
+			
+		
+		
+
+
+
+	
+		
+
+			
+
+			
+				<!-- Matomo -->
+<script type="text/javascript" data-senna-track="permanent">
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://ingestion.webanalytics.italia.it/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', 'VgqPQrv02a']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+			
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="/combo?browserId=other&amp;minifierType=js&amp;themeId=regionegeneric_WAR_regionegenerictheme&amp;languageId=it_IT&amp;it_regione_toscana_common_cookie_consent_CookieConsentPortlet:%2Fo%2Fit.regione.toscana.common.cookie.consent.web%2Fjs%2Fcookieconsent.js&amp;it_regione_toscana_common_cookie_consent_CookieConsentPortlet:%2Fo%2Fit.regione.toscana.common.cookie.consent.web%2Fjs%2Fjs.cookie.js&amp;t=1790326820000" type="text/javascript" data-senna-track="temporary"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<link data-senna-track="temporary" href="/o/social-bookmarks-taglib/css/main.css?browserId=other&themeId=regionegeneric_WAR_regionegenerictheme&minifierType=css&languageId=it_IT&t=1790326820000" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+
+<link class="lfr-css-file" data-senna-track="temporary" href="https://geoblog.regione.toscana.it/o/regione-generic-theme/css/main.css?browserId=other&amp;themeId=regionegeneric_WAR_regionegenerictheme&amp;minifierType=css&amp;languageId=it_IT&amp;t=1790326820000" id="liferayThemeCSS" rel="stylesheet" type="text/css" />
+
+
+
+
+	<style data-senna-track="temporary" type="text/css">
+		#portlet_it_regione_toscana_common_cookie_consent_CookieConsentPortlet {
+	visibility:hidden;
+        height: 0;
+width: 0;
+}
+	</style>
+
+
+
+
+
+	<style data-senna-track="temporary" type="text/css">
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW_ .portlet-content {
+
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE__site_footer_2_ .portlet-content {
+
+}
+section.rt-footer__infos {
+    border-top: 1px solid #ececec;
+}
+
+
+
+				
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_ .portlet-content {
+
+}
+.input-group.search-bar-simple .input-group-inset-item.input-group-inset-item-after {
+    border-color: #fff;
+}
+
+
+
+				
+
+			
+
+		
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_ .portlet-content {
+
+}
+
+
+
+
+				
+
+			
+
+		
+
+			
+
+		
+
+	</style>
+
+
+<script data-senna-track="temporary">var Liferay = window.Liferay || {}; Liferay.CommerceContext = {"commerceAccountGroupIds":[],"accountEntryAllowedTypes":["person"],"commerceChannelId":"0","showUnselectableOptions":false,"currency":{"currencyId":"244305886","currencyCode":"USD"},"showSeparateOrderItems":false,"commerceSiteType":0};</script><link href="/o/commerce-frontend-js/styles/main.css" rel="stylesheet" type="text/css" />
+<style data-senna-track="temporary" type="text/css">
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+Liferay.on(
+	'ddmFieldBlur', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'fieldBlurred',
+				'Form',
+				{
+					fieldName: event.fieldName,
+					focusDuration: event.focusDuration,
+					formId: event.formId,
+					formPageTitle: event.formPageTitle,
+					page: event.page,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFieldFocus', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'fieldFocused',
+				'Form',
+				{
+					fieldName: event.fieldName,
+					formId: event.formId,
+					formPageTitle: event.formPageTitle,
+					page: event.page,
+					title:event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFormPageShow', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'pageViewed',
+				'Form',
+				{
+					formId: event.formId,
+					formPageTitle: event.formPageTitle,
+					page: event.page,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFormSubmit', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'formSubmitted',
+				'Form',
+				{
+					formId: event.formId,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFormView', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'formViewed',
+				'Form',
+				{
+					formId: event.formId,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+</script><script>
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" data-senna-track="temporary">
+	if (window.Analytics) {
+		window._com_liferay_document_library_analytics_isViewFileEntry = false;
+	}
+</script>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body class="other controls-visible  yui3-skin-sam signed-out public-page site">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<nav aria-label="Collegamenti Veloci" class="bg-dark cadmin quick-access-nav text-center text-white" id="hntx_quickAccessNav">
+		
+			
+				<a class="d-block p-2 sr-only sr-only-focusable text-reset" href="#main-content">
+		Skip to Main Content
+	</a>
+			
+			
+	</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pt-0 rt-portal-content" id="wrapper">
+
+    <a id="skip-to-menu" accesskey="2" href="#RtMainNavigation">Salta al menu</a>
+    <a id="skip-to-footer" accesskey="3" href="#footer">Salta al Footer</a>
+
+    <header class="rt-header" id="banner">
+        <div class="rt-navbar navbar navbar-classic navbar-top py-3">
+            <div class="rt-container rt-header__top-area user-personal-bar">
+
+                <div class="align-items-center autofit-row">
+
+                    <a accesskey="H" class="logo custom-logo rt-header__site-logo d-md-inline-flex d-sm-none d-none"
+                       href="http://www.regione.toscana.it/home"
+                       title="Vai a ">
+                        <img alt="GeoBlog" src="/image/layout_set_logo?img_id=60172591&amp;t=1790860466991"/>
+                    </a>
+
+                    <a class="logo rt-logo-blog"
+                       href="https://geoblog.regione.toscana.it"
+                       title="Vai a GeoBlog"
+                    >
+                        <img alt="" src="/o/regione-generic-theme/images/geoblog@2x.png"/>
+                    </a>
+
+
+                    <div class="autofit-col autofit-col-expand rt-header__social">
+                        <!-- Header secondary nav -->
+                        <div class="rt-secondary-menu">
+                            <ul class="rt-secondary-menu__list">
+                                <li class="rt-secondary-menu__item"><a tabindex="0" title="Vai alla pagina Chi siamo"
+                                                                       href="/chi-siamo">Chi siamo</a></li>
+                                <li class="rt-secondary-menu__item"><a tabindex="0" title="Vai alla pagina Scrivici"
+                                                                       href="/contatti">Scrivici</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <button id="search-toggle-scroll" class="rt-btn rt-btn-light rt-search-toggle rt-search-toggle--scroll">
+            <i aria-hidden="true" class="far fa-search"></i><span class="rt-btn-accessible-label">Apri la ricerca</span>
+        </button>
+    </header>
+    <!-- END // Header -->
+
+
+    <!-- Header bottom area -->
+    <div class="rt-header__bottom-area">
+        <div class="rt-container">
+
+
+
+<div class="rt-navigation">
+ 
+    <div class="rt-responsive-header">
+        <a title="Vai alla Home Page di Regione Toscana" class="logo custom-logo align-items-center d-inline-flex d-md-none logo-xs" href="https://geoblog.regione.toscana.it" rel="nofollow">
+            <img alt="GeoBlog" src="/image/layout_set_logo?img_id=60172591&amp;t=1790860466991">
+        </a>
+
+        <button aria-controls="navigationMain" aria-expanded="false" aria-label="Toggle navigation" class="rt-navbar-toggle navbar-toggler" data-target="#navigationMain" data-toggle="collapse" type="button">
+            <i aria-hidden="true" class="fas fa-bars is-visible"></i>
+            <i aria-hidden="true" class="far fa-times is-hidden"></i>
+            <span class="rt-btn-accessible-label">Visualizza/chiudi menu mobile</span>
+        </button>
+
+        <a class="rt-logo-blog--responsive"
+            href="https://geoblog.regione.toscana.it" title="Vai a ">
+            <img alt="" src="/o/regione-generic-theme/images/geoblog@2x.png" />
+        </a>
+               
+
+        <button id="search-toggle-mobile" class="rt-btn rt-btn-light rt-search-toggle">
+            <i aria-hidden="true" class="far fa-search"></i>
+            <span class="rt-btn-accessible-label">Apri la ricerca</span>
+        </button>
+    </div>
+
+    <div aria-expanded="false" class="rt-main-navigation-container" id="navigationMain" role="navigation">
+        <!--<div class="rt-container">-->
+            <div class="rt-main-navigation-panel">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	<div class="portlet-boundary portlet-boundary_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_  portlet-static portlet-static-end portlet-barebone portlet-navigation " id="p_p_id_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_">
+		<span id="p_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet"></span>
+
+
+
+
+	
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+<section class="portlet" id="portlet_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet">
+
+
+	<div class="portlet-content">
+
+
+		
+			<div class=" portlet-content-container">
+				
+
+
+	<div class="portlet-body">
+
+
+
+	
+		
+			
+				
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+	
+
+				
+
+				
+					
+						
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+
+		
+			
+				
+
+    <div id="navbar_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet">
+        <ul aria-label="Pagine Sito" class="rt-main-navigation" role="menubar" id="">
+        
+                
+                <li class="lfr-nav-item rt-main-navigation__item " id="" role="presentation">
+
+                    <a tabindex="0" title="" aria-label="Vai a Home" class="nav-link" href="https://geoblog.regione.toscana.it/home" role="menuitem" id="">
+                        Home
+                        
+                    </a>
+                    
+                </li>
+                
+                <li class="lfr-nav-item rt-main-navigation__item " id="" role="presentation">
+
+                    <a tabindex="0" title="" aria-label="Vai a Notizie" class="nav-link" href="https://geoblog.regione.toscana.it/notizie" role="menuitem" id="">
+                        Notizie
+                        
+                    </a>
+                    
+                </li>
+                
+                <li class="lfr-nav-item rt-main-navigation__item has-submenu" id="" role="presentation">
+
+                    <a tabindex="0" title="" aria-label="Vai a Aree Tematiche" class="nav-link" href="" role="menuitem" id="">
+                        Aree Tematiche
+                            <i aria-hidden="true" class="far fa-chevron-down"></i>
+                            <i aria-hidden="true" class="far fa-chevron-right"></i>
+                        
+                    </a>
+                    
+                        <div class="rt-main-navigation__dropdown">
+                            <div class="rt-container">
+
+                                <a tabindex="0" title="" aria-label="" id="60174530" class="rt-main-navigation__tab is-active" href="#">Aree Tematiche</a>
+
+                                <ul data-id="60174530" class="rt-main-navigation__tab-content is-active">
+                                     <li class="rt-mobile-back">
+                                        <a tabindex="0" title="" aria-label="" href="">
+                                            <i aria-hidden="true" class="far fa-chevron-left"></i>
+                                            Aree Tematiche
+                                        </a>
+                                    </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Uso e copertura del suolo" class="nav-link" href="https://geoblog.regione.toscana.it/uso-e-copertura-del-suolo" role="menuitem" id="">
+                                                Uso e copertura del suolo
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Open GeoData" class="nav-link" href="http://geoblog.regione.toscana.it/-/open-geodata" role="menuitem" id="">
+                                                Open GeoData
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Il progetto H2020 FREEWAT" class="nav-link" href="http://www.freewat.eu/" role="menuitem" id="">
+                                                Il progetto H2020 FREEWAT
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Geologia" class="nav-link" href="https://geoblog.regione.toscana.it/geologia" role="menuitem" id="">
+                                                Geologia
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Statistiche di scarico OpenGeoDati" class="nav-link" href="http://geoblog.regione.toscana.it/-/statistiche-di-scarico-degli-opengeodati-dell-infrastruttura-geografica" role="menuitem" id="">
+                                                Statistiche di scarico OpenGeoDati
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Cartografia catastale" class="nav-link" href="https://geoblog.regione.toscana.it/cartografia-catastale" role="menuitem" id="">
+                                                Cartografia catastale
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Accordi e convenzioni" class="nav-link" href="https://geoblog.regione.toscana.it/accordi-e-convenzioni" role="menuitem" id="">
+                                                Accordi e convenzioni
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Pedologia" class="nav-link" href="https://geoblog.regione.toscana.it/pedologia" role="menuitem" id="">
+                                                Pedologia
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Openness" class="nav-link" href="http://geoblog.regione.toscana.it/-/open" role="menuitem" id="">
+                                                Openness
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Open Source" class="nav-link" href="http://geoblog.regione.toscana.it/-/open-source" role="menuitem" id="">
+                                                Open Source
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Risorse" class="nav-link" href="https://geoblog.regione.toscana.it/risorse" role="menuitem" id="">
+                                                Risorse
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Foto aeree" class="nav-link" href="https://geoblog.regione.toscana.it/foto-aeree" role="menuitem" id="">
+                                                Foto aeree
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Banche dati tematiche" class="nav-link" href="https://geoblog.regione.toscana.it/banche-dati-tematiche" role="menuitem" id="">
+                                                Banche dati tematiche
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Documenti" class="nav-link" href="https://geoblog.regione.toscana.it/documenti" role="menuitem" id="">
+                                                Documenti
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Statistiche di utilizzo dei servizi" class="nav-link" href="http://geoblog.regione.toscana.it/-/statistiche-di-utilizzo-dei-servizi-inspire-dell-infrastruttura-geografica" role="menuitem" id="">
+                                                Statistiche di utilizzo dei servizi
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Il progetto GeoBasi - Database Geochimico Regionale" class="nav-link" href="http://geoblog.regione.toscana.it/-/workshop-geobasi" role="menuitem" id="">
+                                                Il progetto GeoBasi - Database Geochimico Regionale
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Infrastruttura geografica" class="nav-link" href="https://geoblog.regione.toscana.it/infrastruttura-geografica" role="menuitem" id="">
+                                                Infrastruttura geografica
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Cartografie storiche" class="nav-link" href="https://geoblog.regione.toscana.it/cartografie-storiche" role="menuitem" id="">
+                                                Cartografie storiche
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Infrastrutture e servizi" class="nav-link" href="https://geoblog.regione.toscana.it/infrastrutture-e-servizi" role="menuitem" id="">
+                                                Infrastrutture e servizi
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Open Formats" class="nav-link" href="http://geoblog.regione.toscana.it/-/open-formats" role="menuitem" id="">
+                                                Open Formats
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Vincoli territoriali" class="nav-link" href="https://geoblog.regione.toscana.it/vincoli-territoriali" role="menuitem" id="">
+                                                Vincoli territoriali
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0" title="" aria-label="Cartografia topografica" class="nav-link" href="https://geoblog.regione.toscana.it/cartografia-topografica" role="menuitem" id="">
+                                                Cartografia topografica
+                                            </a>
+                                        </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                </li>
+                
+                <li class="lfr-nav-item rt-main-navigation__item " id="" role="presentation">
+
+                    <a tabindex="0" title="" aria-label="Vai a Domande frequenti" class="nav-link" href="https://geoblog.regione.toscana.it/domande-frequenti" role="menuitem" id="">
+                        Domande frequenti
+                        
+                    </a>
+                    
+                </li>
+                
+                <li class="lfr-nav-item rt-main-navigation__item " id="" role="presentation">
+
+                    <a tabindex="0" title="" aria-label="Vai a Link" class="nav-link" href="https://geoblog.regione.toscana.it/link" role="menuitem" id="">
+                        Link
+                        
+                    </a>
+                    
+                </li>
+
+        </ul>
+    </div>
+
+			
+			
+		
+	
+	
+	
+	
+
+
+	
+	
+					
+				
+			
+		
+	
+	
+
+
+	</div>
+
+			</div>
+		
+	</div>
+</section>
+	
+
+		
+		
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+                <div class="rt-responsive-container">
+                     <!-- Header secondary nav and social share -->
+						
+						<!-- END // Header secondary nav and social share -->
+                </div>
+            </div>
+        <!--</div>-->
+
+        <div class="rt-mobile-overlay"></div>
+    </div>
+</div>
+            <div class="rt-search-bar" role="search">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	<div class="portlet-boundary portlet-boundary_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_  portlet-static portlet-static-end portlet-barebone portlet-search-bar " id="p_p_id_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_">
+		<span id="p_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch"></span>
+
+
+
+
+	
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+<section class="portlet" id="portlet_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch">
+
+
+	<div class="portlet-content">
+
+
+		
+			<div class=" portlet-content-container">
+				
+
+
+	<div class="portlet-body">
+
+
+
+	
+		
+			
+				
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+	
+
+				
+
+				
+					
+						
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		<form action="https://geoblog.regione.toscana.it/search" id="dkrk___fm" method="get" name="dkrk___fm">
+			
+
+			
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+					
+						<div id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_reactSearchBar">
+							<div id="rzxx"></div><script type="module">
+import {ReactSearchBar as componentModule} from '/o/portal-search-web/__liferay__/index.js';
+import {render} from '/o/portal-template-react-renderer-impl/__liferay__/index.js';
+{
+render(componentModule, {"isSearchExperiencesSupported":true,"letUserChooseScope":false,"componentId":null,"selectedEverythingSearchScope":false,"retainFacetSelections":false,"scopeParameterStringEverything":"everything","locale":{"ISO3Country":"ITA","ISO3Language":"ita","country":"IT","displayCountry":"Italy","displayLanguage":"Italian","displayName":"Italian (Italy)","displayScript":"","displayVariant":"","extensionKeys":[],"language":"it","script":"","unicodeLocaleAttributes":[],"unicodeLocaleKeys":[],"variant":""},"suggestionsDisplayThreshold":2,"isDXP":true,"scopeParameterStringCurrentSite":"this-site","suggestionsContributorConfiguration":"[{\"contributorName\":\"basic\",\"displayGroupName\":\"suggestions\",\"size\":5}]","destinationFriendlyURL":"\/search","emptySearchEnabled":false,"scopeParameterName":"scope","keywordsParameterName":"q","portletId":"com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch","paginationStartParameterName":"","searchURL":"https:\/\/geoblog.regione.toscana.it\/search","suggestionsURL":"\/o\/portal-search-rest\/v1.0\/suggestions","initialKeywords":"","portletNamespace":"_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_"}, 'rzxx');
+}
+
+</script>
+						</div>
+					
+					
+				
+			
+		</form>
+
+		<script type="module">
+import {SearchBar as ComponentModule} from '/o/portal-search-web/__liferay__/index.js';
+{
+Liferay.component('__UNNAMED_COMPONENT__de7b9e50-bedd-ef1a-970c-0b3a26795ce7', new ComponentModule({"formId":"dkrk___fm","namespace":"_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_","spritemap":"https:\/\/geoblog.regione.toscana.it\/o\/regione-generic-theme\/images\/clay\/icons.svg","initialKeywords":"","retainFacetSelections":false}), { destroyOnNavigate: true, portletId: 'com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch'});
+}
+
+</script>
+	
+
+
+	
+	
+					
+				
+			
+		
+	
+	
+
+
+	</div>
+
+			</div>
+		
+	</div>
+</section>
+	
+
+		
+		
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+            </div>
+
+            <button id="search-toggle-tablet" class="rt-btn rt-btn-light rt-search-toggle rt-search-toggle--tablet"><i
+                        aria-hidden="true" class="far fa-search"></i><span class="rt-btn-accessible-label">Apri la ricerca</span>
+            </button>
+        </div>
+    </div>
+    <!-- END // Header bottom area -->
+    <p aria-hidden="true" tabindex="-1" class="rt-print-logo">
+        <img alt="Logo Regione Toscana" src="/image/layout_set_logo?img_id=60172591&amp;t=1790860466991"/>
+    </p>
+    <p class="rt-print-logo rt-print-logo--blog">
+        <img alt="Agricoltura, il blog: Agricoltura, sociale, agriturismo e non solo" src="/o/regione-generic-theme/images/geoblog@2x.png"/>
+    </p>
+
+    <section class="" id="content" tabindex="-1" accesskey="1">
+        <h1 class="sr-only">Open Geodata - GeoBlog</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		<style type="text/css">
+			.master-layout-fragment .portlet-header {
+				display: none;
+			}
+		</style>
+
+		
+
+		
+<div class="dettaglio-regione-toscana rt-layout-sidebar" id="main-content" role="main">
+<div class="portlet-layout">
+	<div class="portlet-column portlet-column-only" id="column-1">
+		<div class="portlet-dropzone portlet-column-content portlet-column-content-only" id="layout-column_column-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	<div class="portlet-boundary portlet-boundary_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_  portlet-static portlet-static-end portlet-barebone portlet-asset-publisher " id="p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW_">
+		<span id="p_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW"></span>
+
+
+
+
+	
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+<section class="portlet" id="portlet_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW">
+
+
+	<div class="portlet-content">
+
+
+		
+			<div class=" portlet-content-container">
+				
+
+
+	<div class="portlet-body">
+
+
+
+	
+		
+			
+				
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+	
+
+				
+
+				
+					
+						
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="asset-full-content clearfix mb-5 default-asset-publisher show-asset-title " data-fragments-editor-item-id="10108-60162937" data-fragments-editor-item-type="fragments-editor-mapped-item" >
+
+	
+
+	
+
+	
+		<div class="align-items-center d-flex mb-2">
+			<p class="component-title h4">
+				
+					<a class="header-back-to lfr-portal-tooltip" href="https://geoblog.regione.toscana.it/notizie/-/asset_publisher/LBeJNj0iHkRW/?p_r_p_assetEntryId=60162951" title="Indietro" aria-label="Indietro" ><svg class="lexicon-icon lexicon-icon-angle-left" role="presentation" viewBox="0 0 512 512" ><use xlink:href="https://geoblog.regione.toscana.it/o/regione-generic-theme/images/clay/icons.svg#angle-left" /></svg></a>
+				
+
+				
+					<span class="asset-title d-inline">
+						Open Geodata
+					</span>
+				
+			</p>
+
+			
+				
+			
+		</div>
+	
+
+	<span class="asset-anchor lfr-asset-anchor" id="60162951"></span>
+
+	
+
+	<div class="asset-content mb-3">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		<div class="journal-content-article " data-analytics-asset-id="23122279" data-analytics-asset-title="Open Geodata" data-analytics-asset-type="web-content" data-analytics-web-content-resource-pk="60162937">
+			
+
+			
+
+
+<style>
+.header-title{
+    display:none;
+}
+.header-back-to{
+    display:none;
+}
+
+.hide-content{
+    visibility:hidden;
+    height : 0;
+    padding: 0px !important;
+}
+</style>
+
+<div class="rt-subheader rt-subheader--no-bg rt-subheader--updates">
+    <div class="rt-subheader__wrapper">
+        <div class="rt-container">
+            <div class="rt-subheader__content">
+				
+
+                <h2 class="rt-subheader__title">Open Geodata  </h2>
+                <div class="rt-subheader__text"></div>
+                
+            </div>
+        </div>
+    </div>
+</div>    
+
+<section class="container rt-content" id="content">
+    <div class="row">
+        <div class="col-md-8 portlet-column portlet-column-first" id="column-2">
+            <div class="rt-page__content rt-page-content--left">
+                <div class="rt-page__content-text">
+					
+
+
+                        <p>La apertura, la documentazione e l'accessibilità del patrimonio conoscitivo sono la base per favorirne sia il riuso da parte degli altri soggetti pubblici (per una coerenza dei diversi processi decisionali, basati sulle stesse informazioni, e per i processi di copianificazione), sia l'utilizzo da parte dei cittadini nei processi partecipativi e per favorire la massima trasparenza dei processi decisionali e dell'attività amministrativa.</p>
+
+<div class="content_para">
+<p>Già la Convenzione di <a href="http://www.regione.toscana.it/documents/10180/1060591/Convenzione+di+Aarhus.pdf/d27ec148-7a23-42f5-b574-67329303e9ab?t=1385020899289" target="_blank">Aarhus</a> <em>(pdf)</em>, allo scopo di perseguire la tutela ed il miglioramento dello stato dell'ambiente e di assicurare uno sviluppo sostenibile e senza rischi per l'ambiente (vedi anche il sito <em><a href="http://europa.eu/legislation_summaries/environment/general_provisions/l28056_it.htm" target="_blank">"Sintesi della legislazione dell'UE"</a></em>, stabilisce che per <em>"contribuire a tutelare il diritto di ogni persona, nelle generazioni presenti e future, a vivere in un ambiente atto ad assicurare la sua salute e il suo benessere, ciascuna Parte garantisce il diritto di accesso alle informazioni, di partecipazione del pubblico ai processi decisionali e di accesso alla giustizia in materia ambientale in conformità delle disposizioni della presente convenzione.</em>"<br />
+<br />
+Tali direttrici sono state poi ulteriormente coniugate da tutte le altre Direttive Europee in materia di informazione geografica e di gestione dell'ambiente (si richiamano in particolare la Direttiva 2003/4/CE, sull'<a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2003:041:0026:0026:IT:PDF" target="_blank">accesso del pubblico all'informazione ambientale</a> <em>(pdf)</em>, la Direttiva 2003/35/CE che prevede la partecipazione del pubblico nell'elaborazione di <a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2003:156:0017:0024:IT:PDF" target="_blank">taluni piani e programmi in materia ambientale</a> <em>(pdf)</em>, la <a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2003:345:0090:0096:IT:PDF" target="_blank">Direttiva 2003/98/CE</a> <em>(pdf)</em> relativa al riutilizzo dell'informazione del settore pubblico, la <a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2007:108:0001:0014:it:PDF" target="_blank">Direttiva 2007/2/CE</a> <em>(pdf)</em> che istituisce un'Infrastruttura per l'informazione territoriale nella Comunità europea.</p>
+
+<p>A queste si aggiungono le recenti indicazioni in materia di <a href="http://ec.europa.eu/digital-agenda/en/open-data-0" target="_blank">Open Data dell'Agenda Digitale Europea</a> e di <a href="http://www.digitpa.gov.it/dati-pubblici/open-data" target="_blank">Agenda Digitale Italiana</a></p>
+
+<p>Si segnala inoltre il sito della <a href="http://okfn.org/opendata/" target="_blank">Open Knowledge Foundation sugli Open Data</a></p>
+
+<p>La Regione Toscana ha deciso di consentire la visualizzazione e lo scarico dei dati cartografici con licenze Creative Commons CC-BY o CC-BY-SA&nbsp; come previsto dall'<a href="http://web.rete.toscana.it/attinew/?LO=00000001a6b7c8d9000000030000003200008be539829a920000000000012b8000000000000000000000000000000000000000000000000000000000000000000000000000000000&amp;MItypeObj=application/pdf" target="_blank">Atto di Indirizzo 2013</a> <em>(pdf)</em>&nbsp; (approvato con <a href="http://web.rete.toscana.it/attinew/?LO=00000001a6b7c8d90000000300000031000084dc39829a0f0000000000012b8000000000000000000000000000000000000000000000000000000000000000000000000000000000&amp;MItypeObj=application/pdf" target="_blank">Delibera della Giunta Regionale n.291 del 22/04/2013</a> <em>(pdf)</em> e dal <a href="http://www.regione.toscana.it/documents/10180/492172/Decreto-2014_02_25n663.pdf/162db905-95fd-4b5e-bc41-88a629b5a3e5?t=1393834417285" id="aui_3_4_0_1_2169" target="_blank">Decreto Dirigenziale n.663/2014</a> <em>(pdf)</em> <em>"Individuazione delle tipologie di licenze Creative Commons da assegnare ai dati geocartografici prodotti dalla Regione Toscana e diffusi a mezzo servizi web o ceduti in copia".</em></p>
+
+<p>Di seguito alcuni archivi liberamente scaricabili:</p>
+
+<ul>
+	<li><a href="http://dati.toscana.it/dataset/amb-amm/resource/e1c39362-b0cd-4cf5-a1ec-55f7aa000f76" target="_blank">Ambiti amministrativi</a><em> (zip)</em> e <a href="http://www.regione.toscana.it/documents/10180/1166746/Gli+ambiti+amministrativi+della+Toscana%3B+Specifiche+tecniche+per+l%E2%80%99acquisizione+in+formato+digitale+di+dati+geografici+tematici.+Decreto+7+settembre+2005+n.+5094+e+Decreto+10+Ottobre+2007+n.4840.pdf/c7639c79-d9e1-45ed-8e97-9c3269c7693d?t=1373558226294" target="_blank">relative specifiche</a> <em>(pdf)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/top10k/resource/38ff955f-739c-4a2a-853e-7cbc4a3c2d89" target="_blank">Toponomastica CTR10K </a><em>(zip)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/arprot/resource/c3c00744-d5d7-42ce-ad00-ee03fb6a652d" target="_blank">Aree protette</a> <em>(zip)</em> e <a href="http://www.regione.toscana.it/documents/10180/1166746/Le+Aree+naturali+protette+della+Toscana%3B+Specifiche+tecniche+per+l%E2%80%99acquisizione+in+formato+digitale+di+dati+geografici+tematici.+Decreto+7+giugno+2005+n.+3212+e+Decreto+10+Ottobre+2007+n.4840.pdf/cae640e7-0235-46cf-abba-106c9c7d4698?t=1373558227870" target="_blank">relative specifiche</a> <em>(pdf)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/arprot/resource/522248c6-ea64-48b3-a1c0-5e44e165563f" target="_blank"><em>Alberi monumentali (zip)</em></a></li>
+	<li><a href="http://dati.toscana.it/dataset/sir" target="_blank">Siti di interesse regionale e Natura 2000</a> <em>(zip)</em> e <a href="http://www.regione.toscana.it/documents/10180/1166746/Le+Aree+naturali+protette+della+Toscana%3B+Specifiche+tecniche+per+l%E2%80%99acquisizione+in+formato+digitale+di+dati+geografici+tematici.+Decreto+7+giugno+2005+n.+3212+e+Decreto+10+Ottobre+2007+n.4840.pdf/cae640e7-0235-46cf-abba-106c9c7d4698?t=1373558227870" target="_blank">relative specifiche</a> <em>(pdf)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/tematici/zone_prod_vini/zone_prod_vini_21a6200c2d53cb83cb9ac383d0683e62.zip" target="_blank">Zone di produzione dei vini</a> <em>(zip) </em>e <a href="http://www.regione.toscana.it/documents/10180/1166746/Specifiche+tecniche+per+l%27acquisizione+in+formato+digitale+di+dati+geografici+tematici+3.+Decreto+10+ottobre+2007+n.4840.pdf/2bd4ac15-040c-47a1-acb8-05d418da4ba0?t=1373558229271" target="_blank">relative specifiche</a> <em>(pdf)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/zonedopigp/resource/6c66d4cf-cc29-471b-b69b-d1773adbd47a" target="_blank">Zone DOP e IGP</a> <em>(zip)</em>&nbsp; e <a href="http://www.regione.toscana.it/documents/10180/1166746/Specifiche+tecniche+per+l%27acquisizione+in+formato+digitale+di+dati+geografici+tematici+3.+Decreto+10+ottobre+2007+n.4840.pdf/2bd4ac15-040c-47a1-acb8-05d418da4ba0?t=1373558229271" target="_blank">relative specifiche</a> <em>(pdf)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/pcca/resource/7d7b3ea0-526a-46c5-8b86-aa5854c8b6f6" target="_blank">Piani Comunali di Classificazione acustica</a> <em>(zip)</em> e <a href="http://www.regione.toscana.it/documents/10180/1166746/Specifiche+tecniche+per+l%27acquisizione+in+formato+digitale+di+dati+geografici+tematici+2.+Decreto+24+marzo+2005+n.+1654+e+Decreto+10+Ottobre+2007+n.4840+di+modifica+di+parti+del+precedente.pdf/44a7ef32-5aa9-42ad-9cd5-9bd7e2913b91?t=1373558228791" target="_blank">relative specifiche</a> <em>(pdf)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/AR_dtm10x10_epsg3003_md5_048074ecebb7231669be262276d91f4e.zip" target="_blank">DTM 10x10 m - Provincia di Arezzo</a> <em>(zip)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/FI_dtm10x10_epsg3003_md5_1114fe6c18083e865ce05eb357836bab.zip" target="_blank">DTM 10x10 m - Provincia di Firenze</a> <em>(zip)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/GR_dtm10x10_epsg3003_md5_0fdf991016ca7c4c6cdfcbca77768749.zip" target="_blank">DTM 10x10 m - Provincia di Grosseto</a> <em>(zip)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/LI_dtm10x10_epsg3003_md5_8f7c150288c172355b62d82f25806370.zip" target="_blank">DTM 10x10 m - Provincia di Livorno</a> <em>(zip)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/LU_dtm10x10_epsg3003_md5_da6bf64d5cca2ee3e491adaafaac54cf.zip" target="_blank">DTM 10x10 m - Provincia di Lucca</a> <em>(zip)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/MS_dtm10x10_epsg3003_md5_f691fc7fe3e6cdcb89d6dd82f65bb408.zip" target="_blank">DTM 10x10 m - Provincia di Massa-Carrara</a> <em>(zip)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/PI_dtm10x10_epsg3003_md5_869a2405c5261c122f226f6502eeec5e.zip" target="_blank">DTM 10x10 m - Provincia di Pisa</a> <em>(zip)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/PT_dtm10x10_epsg3003_md5_35203e3a75bc0b7701b6a351dc310334.zip" target="_blank">DTM 10x10 m - Provincia di Pistoia </a><em>(zip)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/PO_dtm10x10_epsg3003_md5_236d2d44360af3e2dac0dbb13b1764b2.zip" target="_blank">DTM 10x10 m - Provincia di Prato</a> <em>(zip)</em></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/altimetria/da_ctr10k/gb/dtm10x10/SI_dtm10x10_epsg3003_md5_63a96e09c04ef766e2201fdeb8fbfb95.zip" target="_blank">DTM 10x10 m - Provincia di Siena</a> <em>(zip)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/dem10mt/resource/f1a9beb5-ae96-4e7b-a704-da5808159e97" target="_blank">DTM 10x10 m - Intera regione (zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/dem10mt/resource/af01b90f-5c96-4ffc-ab8c-20f71ab4dedf" target="_blank">DTM 10x10 m - Idrologico - Intera regione (zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/dem10mt/resource/0bbb71e7-223c-4c57-ac18-49ddd7075eb3" target="_blank">Aspect (esposizione) da DTM 10x10m - Idrologico - Intera regione (zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/dem10mt/resource/b35647fc-b4c2-4f8c-8280-d720c10872af" target="_blank">Slope (pendenza) da DTM 10x10m - Idrologico - Intera regione (zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/lidar/resource/b057f578-cb63-49bc-b050-75fcb808d1d2" target="_blank">Rilievi Lidar (DTM/DSM/RAW) con passo 1 o 2 metri (Ascii Grid/ALL)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/dbg">DataBase Geologico in scala 1:10.000 (aggiornamento del precedente Continuum)</a> (zip<em>)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/costa2010/resource/082ed6c5-b497-468d-af05-5e159418809f" target="_blank">Linea di costa - Anno 2010</a> <em>(zip)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/alluvioni_bacreg/resource/c3f3647b-8da9-40cc-87af-a2ead696fe9d" target="_blank">Piano di gestione della direttiva alluvioni (Bacini regionali)</a> <em>(zip)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/ramsar/resource/63224952-211c-4975-8e8f-4e82318dd69a" target="_blank">Aree RAMSAR</a> <em>(zip)</em> e <a href="http://www.regione.toscana.it/documents/10180/1060591/Le+Aree+naturali+protette+della+Toscana%3B+Specifiche+tecniche+per+l%E2%80%99acquisizione+in+formato+digitale+di+dati+geografici+tematici.+Decreto+7+giugno+2005+n.+3212+e+Decreto+10+Ottobre+2007.pdf/074ad894-3b48-4e66-8841-d46e3252ba06?t=1387283137508" target="_blank">relative specifiche</a> <em>(pdf)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/inqctr/resource/cc876de7-e8c1-48b8-a483-e29c090ada73" target="_blank">Reticoli di inquadramento della Cartografia Tecnica Regionale</a> <em>(zip)</em></li>
+	<li><a href="http://dati.toscana.it/dataset/dbt2k/resource/3c33be5c-c03d-4868-87db-2d03249d69f8" target="_blank">DataBase Topografico in scala 1:2.000 (pacchetti aggiornati al 2016/02/12)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/dbt10k-li-pi-pt-po-si" target="_blank">DataBase Topografico in scala 1:10.000</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ctr2k/resource/537ea9a7-88ed-41ee-8198-b40be6411d1d" target="_blank">CTR2K formato SHP</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ctr2k/resource/1a7dc2ab-3ab1-4981-9716-f1a92dd717ad" target="_blank">CTR2K formato TIFF</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ctr2k/resource/4791d15a-d21f-48e0-bbb0-37fb2ffbd6a5" target="_blank">CTR2K formato DXF</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ctr2k/resource/b31b3351-ac3f-4795-a7cd-6f5f0b5de785" target="_blank">CTR2K formato DXF Vestiti</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ctr10k/resource/9765efcf-5f6a-4765-86fe-5610cd1b0bd7" target="_blank">CTR10K formato SHP</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ctr10k/resource/cfb399f5-a823-4cbb-afea-2ef04eb5cd93" target="_blank">CTR10K formato TIFF</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ctr10k/resource/63cb7abf-f374-4d0b-a3e8-de3c65fbae46" target="_blank">CTR10K formato TIFF con legenda&nbsp;</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ctr10k/resource/8bff9e50-89f0-4b81-bb4d-74a897703fb1" target="_blank">CTR10K formato DXF</a></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4YwXA2qYOQC4HsQGEAWBTEBrGAaAhmMALYIAm6YARAK4B2IG2A8nBgE4DOVu6dc7AJ6QADLirs4AfRD5JCOJnwA6RAAcEAc3b4AZgEtZAVhFYeARnGSp%2BYgCMZfTspB8B%2BqXRogANug8ATCLm5jwBVtIgAsrmpjwAzBFSnLoIdGQIyqj6Pj7cALq4Ggg%2BkFQASgAqyACCVcyVAKK1PBWVNQCyAEIAkpU9yI0AcgDKAKp1Pa1VyJXl05UjAGLMQwAizFT5AL7bO0AA%3D%3D&amp;x=664355.56&amp;y=4802362.75&amp;scale=1055832.2731144577" target="_blank">CTopo50K formato TIFF</a></li>
+	<li><a href="http://dati.toscana.it/dataset/carg/resource/726c314e-8505-4098-bf7a-cf0d1b5ee743" target="_blank">Carta Geologica Regionale formato SHP</a></li>
+	<li><a href="http://dati.toscana.it/dataset/carg/resource/1fe78d22-d3fc-49e7-a3fc-39de1a00e0ff" target="_blank">Carta Geologica Regionale formato TIFF</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ortofotocarta2k/resource/51a95c2b-41a7-4590-8f7e-4bdabea3dfc9" target="_blank">Ortofotocarta in scala 1:2.000 formato TIFF (3 o 4 bande)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/grafo-civici/resource/07ebfc93-ff38-404a-8f2f-1f3dffe0b280" target="_blank">Grafo stradale, numeri civici, cippi, grafo ferroviario, stazioni e sali (zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/ucs" target="_blank">Uso e Copertura del Suolo - Intera regione, anni 2007, 2010 e 2013 (zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/pitpae" target="_blank">PIT con valenza di Piano Paesaggistico (zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/pitpae/resource/df200609-1545-4af9-acd6-2ddbfbab36bf" target="_blank">Carta morfotipi rurali 1:250.000 da piano paesaggistico (zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/pitpae/resource/d8a98764-2685-42a0-bdd1-e77d99286101" target="_blank">Patrimonio territoriale: struttura idro-geomorfologica, struttura ecosistemica, struttura insediativa (zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/dbped" target="_blank">Data Base Pedologico in scala 1:10.000 (.zip)</a></li>
+	<li><a href="http://dati.toscana.it/dataset/istat" target="_blank">DataBase dei Censimenti ISTAT (Popolazione ed Industria 2001 e 2011)</a></li>
+	<li><a href="http://www502.regione.toscana.it/geoscopio/download/tematici/repertorio_toponomastico_regionale/REpertorioTOponomasticoREgionale.zip" target="_blank">RETORE - REpertorio TOponomastico REgionale (toponimi ed idronomi dalle diverse fonti cartografiche)</a></li>
+</ul>
+
+<p><br />
+Altri archivi, organizzati in più parti quali la Carta Tecnica Regionale, possono essere individuati e scaricati dal Portale Geoscopio (<a href="http://www502.regione.toscana.it/geoscopio/cartoteca.html" target="_blank">http://www502.regione.toscana.it/geoscopio/cartoteca.html</a>)per la visualizzazione della cartografia e lo scarico dei dati geografici - <a href="http://www502.regione.toscana.it/cartografia/geoscopio/documenti/guida_uso/pdf/geoscopio_help_page.pdf" target="_blank">Manuale di utilizzo del sistema Geoscopio</a> <em>(pdf)</em> o dalla <a href="http://www502.regione.toscana.it/geoscopio/servizi/wfs/html/comuni.html" target="_blank">pagina dei Comuni</a></p>
+
+<p>Si segnala anche il sito del <a href="http://www.centrointerregionale-gis.it/" target="_blank">CISIS-CPSG</a> dove è disponibile il database "Strati prioritari 10k" (DB Prior 10k nazionale) e i link ai Geoportali delle diverse Regioni</p>
+
+<p>I dati territoriali ed ambientali della Regione Toscana sono anche fruibili tramite i <a href="http://www.regione.toscana.it/-/geoscopio-wms">servizi web dell'Infrastruttura Geografica Regionale</a></p>
+
+<p>Si segnala infine il sito ufficiale degli <a href="http://dati.toscana.it/" target="_blank">Open Data della Toscana</a></p>
+
+<p>Ulteriori argomenti relativi agli Open Geodata disponibili alla pagina <a href="http://www.regione.toscana.it/web/geoblog/open-geodata">http://www.regione.toscana.it/web/geoblog/open-geodata</a></p>
+</div>
+
+<p>&nbsp;</p>
+                </div>
+            </div>
+
+            <!-- TODO : INSERIRE PARTE MANCANTE -->
+        </div>
+
+        <div class="col-md-4 portlet-column portlet-column-last" id="column-3">        
+            <div class="rt-sidebar-widget rt-sidebar-widget--print">
+                <a class="rt-sidebar-widget__button-print" onclick="window.print();" href="javascript:void(0);" title="Stampa l'articolo">
+					<i aria-hidden="true" class="far fa-print"></i>
+					<span>Stampa l'articolo</span>
+				</a>
+            </div>
+        </div>
+
+        
+		
+
+	
+
+
+	
+
+		
+    </div>
+
+</section>
+
+
+
+
+			
+		</div>
+
+		
+
+	
+
+
+
+
+
+	</div>
+
+	
+
+	
+
+	
+
+	
+
+		
+
+		<div class="asset-links mb-4">
+			
+		</div>
+	
+
+	
+
+	
+		<hr class="separator" />
+
+		<div class="autofit-row autofit-float autofit-row-center asset-details">
+			
+
+			
+
+			
+
+			
+
+			
+				<div class="autofit-col">
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="taglib-social-bookmarks" id="ykmt_column_2d_1_0_socialBookmarks">
+	
+		
+		
+			<ul class="list-unstyled inline">
+
+				
+
+					<li class="taglib-social-bookmark taglib-social-bookmark-facebook">
+						
+
+
+
+
+
+
+
+
+
+
+
+<div><a class="btn btn-outline-borderless btn-monospaced btn-sm btn-outline-secondary lfr-portal-tooltip" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fgeoblog.regione.toscana.it%2F-%2Fopen-geodata" title="Facebook" aria-label="Facebook" ><svg class="lexicon-icon lexicon-icon-social-facebook" role="presentation" viewBox="0 0 512 512" ><use xlink:href="https://geoblog.regione.toscana.it/o/regione-generic-theme/images/clay/icons.svg#social-facebook" /></svg></a><div id="olpq"></div></div>
+					</li>
+
+				
+
+					<li class="taglib-social-bookmark taglib-social-bookmark-twitter">
+						
+
+
+
+
+
+
+
+
+
+
+
+<div><a class="btn btn-outline-borderless btn-monospaced btn-sm btn-outline-secondary lfr-portal-tooltip" href="https://twitter.com/intent/tweet?text=Open+Geodata&amp;tw_p=tweetbutton&amp;url=https://geoblog.regione.toscana.it/-/open-geodata" title="Twitter" aria-label="Twitter" ><svg class="lexicon-icon lexicon-icon-twitter-x" role="presentation" viewBox="0 0 512 512" ><use xlink:href="https://geoblog.regione.toscana.it/o/regione-generic-theme/images/clay/icons.svg#twitter-x" /></svg></a><div id="bmin"></div></div>
+					</li>
+
+				
+
+			</ul>
+
+			
+		
+	
+</div>
+				</div>
+			
+		</div>
+	
+
+	
+
+	
+
+	
+</div>
+	
+	
+
+
+
+
+
+
+	
+	
+					
+				
+			
+		
+	
+	
+
+
+	</div>
+
+			</div>
+		
+	</div>
+</section>
+	
+
+		
+		
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+</div>
+	</div>
+</div>
+</div>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	<div class="portlet-boundary portlet-boundary_it_regione_toscana_common_cookie_consent_CookieConsentPortlet_  portlet-static portlet-static-end portlet-decorate  " id="p_p_id_it_regione_toscana_common_cookie_consent_CookieConsentPortlet_">
+		<span id="p_it_regione_toscana_common_cookie_consent_CookieConsentPortlet"></span>
+
+
+
+
+	
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+<section class="portlet" id="portlet_it_regione_toscana_common_cookie_consent_CookieConsentPortlet">
+
+
+	<div class="portlet-content">
+
+			<div class="autofit-float autofit-row portlet-header">
+
+					<div class="autofit-col autofit-col-expand">
+						<h2 class="portlet-title-text">EU Cookie Consent</h2>
+					</div>
+
+			</div>
+
+		
+			<div class=" portlet-content-container">
+				
+
+
+	<div class="portlet-body">
+
+
+
+	
+		
+			
+				
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+	
+
+				
+
+				
+					
+						
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+
+		var cc = initCookieConsent();
+		var logo = '';
+		var cookie = '';
+		
+		// run plugin with config object
+		cc.run({
+		    current_lang : 'it',
+		    autoclear_cookies : true,                   // default: false
+		    theme_css: '/o/it.regione.toscana.common.cookie.consent.web/css/cookieconsent.css',
+		    cookie_name: 'cc_cookie_11974914',    // default: 'cc_cookie'
+		    cookie_expiration : 182, // default: 182
+		    page_scripts: true,                         // default: false
+		
+			gui_options: {
+		        consent_modal: {
+		            layout: 'box',                      // box,cloud,bar
+		            position: 'bottom right',           // bottom,middle,top + left,right,center
+		            transition: 'slide'                 // zoom,slide
+		        },
+		        settings_modal: {
+		            layout: 'box',                      // box,bar
+		            // position: 'left',                // right,left (available only if bar layout selected)
+		            transition: 'slide'                 // zoom,slide
+		        }
+		    },
+		
+		    onAccept: function (cookie) {
+		        // location.reload();
+		    },
+		    
+		    onFirstAction: function(user_preferences, cookie){
+		    	location.reload();
+		    },
+		
+		    onChange: function (cookie, changed_preferences) {
+		    	
+		    	location.reload();
+		    },
+		    languages: {
+		        'it': {
+		            consent_modal: {
+		                title: 'Usiamo i cookie!',
+		                description: 'Questo sito web utilizza cookie essenziali per garantire il suo corretto funzionamento ed eventuali cookie di tracciamento per capire come interagisci con esso. Questi ultimi saranno impostati solo dopo il consenso. <br/><button type="button" data-cc="c-settings" class="cc-link">Fammi scegliere</button>',
+		                primary_btn: {
+		                    text: 'Accetta tutti',
+		                    role: 'accept_all'              // 'accept_selected' or 'accept_all'
+		                },
+		                secondary_btn: {
+		                    text: 'Rifiuta tutti',
+		                    role: 'accept_necessary'        // 'settings' or 'accept_necessary'
+		                }
+		            },
+		            settings_modal: {
+		                title: "Impostazioni dei cookie",
+		                save_settings_btn: 'Salva le scelte',
+		                accept_all_btn: 'Accetta tutti',
+		                reject_all_btn: 'Rifiuta tutti',
+		                close_btn_label: 'Close',
+		                cookie_table_headers: [
+		                    {col1: 'Nome'},
+		                    {col2: 'Dominio'},
+		                    {col3: 'Breve descrizione'}
+		                ],
+		                blocks: [{"description":"Questo sito utilizza i cookie per migliorare la tua esperienza di navigazione. I cookie indicati come necessari sono memorizzati nel tuo browser, poiché sono essenziali per le funzionalità base del sito. Usiamo anche cookie di terze parti che ci permettono di analizzare e capire come utilizzi questo sito. Questi cookie saranno memorizzati nel tuo browser solo con il tuo consenso. Hai anche l'opzione di non aderire a questi cookie. Ciò potrebbe comportare conseguenze nella tua esperienza di navigazione.","title":"Panoramica sulla privacy"},{"description":"I cookie necessari sono assolutamente essenziali per il corretto funzionamento del sito web. Questi cookie garantiscono le funzionalità di base e le caratteristiche di sicurezza del sito web, in modo anonimo.","toggle":{"readonly":true,"value":"necessary","enabled":true},"title":"Necessari"},{"description":"I cookie di terze parti sono quei cookie rilasciati non direttamente dal sito ma da sistemi terzi utilizzati all'interno del sito, per esempio l'inclusione in pagina di un video della piattaforma YouTube","toggle":{"readonly":false,"value":"third-party","enabled":false},"title":"Terze Parti"}]
+		            }
+		        }
+		    }
+		});
+		
+		/*document.getElementById('btnCookies').addEventListener('click', function (e) {
+			e.preventDefault();
+            cc.showSettings(0);
+        });*/
+        
+        
+        function delete_cookie( name, path, domain ) {
+		  if( get_cookie( name ) ) {
+		    document.cookie = name + "=" +
+		      ((path) ? ";path="+path:"")+
+		      ((domain)?";domain="+domain:"") +
+		      ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+		  }
+		}
+        
+        function get_cookie(name){
+		    return document.cookie.split(';').some(c => {
+		        return c.trim().startsWith(name + '=');
+		    });
+		}
+		
+	
+
+</script><script>
+
+</script>
+	
+	
+	<a id="btnCookies" class="btn btn-secondary" role="button" href="javascript:cc.showSettings(0);">Preferenze dei cookie</a>
+
+
+
+	
+	
+					
+				
+			
+		
+	
+	
+
+
+	</div>
+
+			</div>
+		
+	</div>
+</section>
+	
+
+		
+		
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+<form action="#" aria-hidden="true" class="hide" id="hrefFm" method="post" name="hrefFm"><span></span><button hidden type="submit">Nascosta</button></form>
+
+	
+    </section>
+
+    <footer accesskey="F" tabindex="0" class="rt-footer" id="footer" role="contentinfo">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	<div class="portlet-boundary portlet-boundary_com_liferay_journal_content_web_portlet_JournalContentPortlet_  portlet-static portlet-static-end portlet-barebone portlet-journal-content " id="p_p_id_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE__site_footer_1_">
+		<span id="p_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE__site_footer_1"></span>
+
+
+
+
+	
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+<section class="portlet" id="portlet_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE__site_footer_1">
+
+
+	<div class="portlet-content">
+
+			<div class="autofit-float autofit-row portlet-header">
+
+
+					<div class="autofit-col autofit-col-end">
+						<div class="autofit-section">
+							<div class="visible-interaction">
+
+	
+
+	
+</div>
+						</div>
+					</div>
+			</div>
+
+		
+			<div class=" portlet-content-container">
+				
+
+
+	<div class="portlet-body">
+
+
+
+	
+		
+			
+				
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+	
+
+				
+
+				
+					
+						
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+			
+			
+				
+					
+					
+					
+					
+
+						
+
+						<div class="" data-fragments-editor-item-id="10108-60161862" data-fragments-editor-item-type="fragments-editor-mapped-item" >
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+		<div class="journal-content-article " data-analytics-asset-id="23122164" data-analytics-asset-title="Footer GeoBlog" data-analytics-asset-type="web-content" data-analytics-web-content-resource-pk="60161862">
+			
+
+			<section class="rt-footer__colored-area">
+<div class="rt-container">
+<div class="rt-footer__top-logo"><picture data-fileentryid="246717588"><source media="(max-width:128px)" srcset="/o/adaptive-media/image/246717588/Thumbnail-128x128/geoblog-footer%402x.png?t=1779780137271" /><source media="(max-width:650px) and (min-width:128px)" srcset="/o/adaptive-media/image/246717588/Thumbnail-650x0/geoblog-footer%402x.png?t=1779780137271" /><source media="(max-width:800px) and (min-width:650px)" srcset="/o/adaptive-media/image/246717588/Preview-1000x0/geoblog-footer%402x.png?t=1779780137271" /><source media="(max-width:800px) and (min-width:800px)" srcset="/o/adaptive-media/image/246717588/slider-1200/geoblog-footer%402x.png?t=1779780137271" /><source media="(max-width:800px) and (min-width:800px)" srcset="/o/adaptive-media/image/246717588/slider-1200-2x/geoblog-footer%402x.png?t=1779780137271" /><img alt="Geoblog Footer Image" src="/documents/d/geoblog/geoblog-footer-2x" /></picture></div>
+</div>
+</section>
+
+			
+		</div>
+
+		
+
+	
+
+
+
+						</div>
+					
+				
+			
+		
+	
+
+
+
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+
+	
+	
+					
+				
+			
+		
+	
+	
+
+
+	</div>
+
+			</div>
+		
+	</div>
+</section>
+	
+
+		
+		
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+        <nav class="rt-footer__navigation">
+            <div class="rt-container">
+
+                <ul class="rt-footer__navigation-list">
+                    <li class="rt-footer__navigation-item"><a tabindex="0" title="Vai alla pagina Accessibilità"
+                                                              href="https://www.regione.toscana.it/-/accessibilita-e-uso-del-sito">Accessibilità</a>
+                    </li>
+                    <li class="rt-footer__navigation-item"><a tabindex="0" title="Vai alla pagina Note legali"
+                                                              href="https://www.regione.toscana.it/note-legali">Note
+                            legali</a></li>
+                    <li class="rt-footer__navigation-item"><a tabindex="0"
+                                                              title="Vai alla pagina Amministrazione trasparente"
+                                                              href="https://www.regione.toscana.it/regione/amministrazione-trasparente">Amministrazione
+                            Trasparente</a></li>
+                    <li class="rt-footer__navigation-item"><a tabindex="0" title="Vai alla pagina Pubbblicità legale"
+                                                              href="https://www.regione.toscana.it/pubblicit%C3%A0-legale">Pubblicità
+                            legale</a></li>
+                    <li class="rt-footer__navigation-item"><a tabindex="0" title="Vai alla pagina Privacy"
+                                                              href="https://www.regione.toscana.it/privacy">Privacy</a>
+                    </li>
+                    <li class="rt-footer__navigation-item"><a tabindex="0" title="Vai alla pagina DPO/RPD"
+                                                              href="https://www.regione.toscana.it/data-protection-officer">DPO/RPD</a>
+                    </li>
+                    <li class="rt-footer__navigation-item"><a tabindex="0" title="Vai alla pagina Redazione web"
+                                                              href="https://www.regione.toscana.it/redazione-web">Redazione
+                            Web</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <section class="rt-footer__infos">
+            <div class="rt-container">
+                <span class="rt-footer__infos-info">Partita IVA 01386030488</span>
+                <div class="rt-footer__logo">
+                    <picture>
+                        <source srcset="https://geoblog.regione.toscana.it/o/regione-generic-theme/images/logo-regione-footer-mobile.png, https://geoblog.regione.toscana.it/o/regione-generic-theme/images/logo-regione-footer-mobile@2x.png 2x"
+                                media="(max-width: 767px)">
+                        <img alt="Logo Regione Toscana" src="https://geoblog.regione.toscana.it/o/regione-generic-theme/images/logo-regione-footer.png"
+                             srcset="https://geoblog.regione.toscana.it/o/regione-generic-theme/images/logo-regione-footer@2x.png 2x">
+                    </picture>
+                </div>
+            </div>
+        </section>
+    </footer>
+</div>
+
+<!-- social share overlay -->
+<div class="rt-social-share-overlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	
+		
+
+			
+
+			
+		
+	
+
+
+</script><script>
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+<script type="text/javascript">
+(function() {var $ = AUI.$;var _ = AUI._;
+	var onDestroyPortlet = function () {
+		Liferay.detach('messagePosted', onMessagePosted);
+		Liferay.detach('destroyPortlet', onDestroyPortlet);
+	};
+
+	Liferay.on('destroyPortlet', onDestroyPortlet);
+
+	var onMessagePosted = function (event) {
+		if (window.Analytics) {
+			const eventProperties = {
+				className: event.className,
+				classPK: event.classPK,
+				commentId: event.commentId,
+				text: event.text,
+			};
+
+			const blogNode = document.querySelector(
+				'[data-analytics-asset-id="' + event.classPK + '"]'
+			);
+
+			const dmNode = document.querySelector(
+				'[data-analytics-file-entry-id="' + event.classPK + '"]'
+			);
+
+			if (blogNode) {
+				eventProperties.title = blogNode.dataset.analyticsAssetTitle;
+			}
+			else if (dmNode) {
+				eventProperties.title = dmNode.dataset.analyticsFileEntryTitle;
+			}
+
+			Analytics.send('posted', 'Comment', eventProperties);
+		}
+	};
+
+	Liferay.on('messagePosted', onMessagePosted);
+})();
+(function() {var $ = AUI.$;var _ = AUI._;
+	var onVote = function (event) {
+		if (window.Analytics) {
+			let title = event.contentTitle;
+
+			if (!title) {
+				const dmNode = document.querySelector(
+					'[data-analytics-file-entry-id="' + event.classPK + '"]'
+				);
+
+				if (dmNode) {
+					title = dmNode.dataset.analyticsFileEntryTitle;
+				}
+			}
+
+			Analytics.send('VOTE', 'Ratings', {
+				className: event.className,
+				classPK: event.classPK,
+				ratingType: event.ratingType,
+				score: event.score,
+				title,
+			});
+		}
+	};
+
+	var onDestroyPortlet = function () {
+		Liferay.detach('ratings:vote', onVote);
+		Liferay.detach('destroyPortlet', onDestroyPortlet);
+	};
+
+	Liferay.on('ratings:vote', onVote);
+	Liferay.on('destroyPortlet', onDestroyPortlet);
+})();
+
+	function getValueByAttribute(node, attr) {
+		return (
+			node.dataset[attr] ||
+			(node.parentElement && node.parentElement.dataset[attr])
+		);
+	}
+
+	function sendDocumentDownloadedAnalyticsEvent(anchor) {
+		var fileEntryId = getValueByAttribute(
+			anchor,
+			'analyticsFileEntryId'
+		);
+		var title = getValueByAttribute(
+			anchor,
+			'analyticsFileEntryTitle'
+		);
+		var version = getValueByAttribute(
+			anchor,
+			'analyticsFileEntryVersion'
+		);
+
+		if (fileEntryId) {
+			Analytics.send('documentDownloaded', 'Document', {
+				groupId: themeDisplay.getScopeGroupId(),
+				fileEntryId,
+				preview: !!window._com_liferay_document_library_analytics_isViewFileEntry,
+				title,
+				version,
+			});
+		}
+	}
+
+	function handleDownloadClick(event) {
+		if (window.Analytics) {
+			if (event.target.nodeName.toLowerCase() === 'a') {
+				sendDocumentDownloadedAnalyticsEvent(
+					event.target
+				);
+			}
+			else if (
+				event.target.parentNode &&
+				event.target.parentNode.nodeName.toLowerCase() === 'a'
+			) {
+				sendDocumentDownloadedAnalyticsEvent(
+					event.target.parentNode
+				);
+			}
+			else {
+				var target = event.target;
+				var matchTextContent =
+					target.textContent &&
+					target.textContent.toLowerCase() ===
+						'scarica';
+				var matchTitle =
+					target.title && target.title.toLowerCase() === 'download';
+				var matchAction = target.action === 'download';
+				var matchLexiconIcon = !!target.querySelector(
+					'.lexicon-icon-download'
+				);
+				var matchLexiconClassName = target.classList.contains(
+					'lexicon-icon-download'
+				);
+				var matchParentTitle =
+					target.parentNode &&
+					target.parentNode.title &&
+					target.parentNode.title.toLowerCase() === 'download';
+				var matchParentLexiconClassName =
+					target.parentNode &&
+					target.parentNode.classList.contains('lexicon-icon-download');
+
+				if (
+					matchTextContent ||
+					matchTitle ||
+					matchParentTitle ||
+					matchAction ||
+					matchLexiconIcon ||
+					matchLexiconClassName ||
+					matchParentLexiconClassName
+				) {
+					var selectedFiles = document.querySelectorAll(
+						'.form .custom-control-input:checked'
+					);
+
+					selectedFiles.forEach(({value}) => {
+						var selectedFile = document.querySelector(
+							'[data-analytics-file-entry-id="' + value + '"]'
+						);
+
+						sendDocumentDownloadedAnalyticsEvent(
+							selectedFile
+						);
+					});
+				}
+			}
+		}
+	}
+
+	Liferay.once('destroyPortlet', () => {
+		document.body.removeEventListener(
+			'click',
+			handleDownloadClick
+		);
+	});
+
+	Liferay.once('portletReady', () => {
+		document.body.addEventListener(
+			'click',
+			handleDownloadClick
+		);
+	});
+
+(function() {var $ = AUI.$;var _ = AUI._;
+	var onShare = function (data) {
+		if (window.Analytics) {
+			Analytics.send('shared', 'SocialBookmarks', {
+				className: data.className,
+				classPK: data.classPK,
+				type: data.type,
+				url: data.url,
+			});
+		}
+	};
+
+	var onDestroyPortlet = function () {
+		Liferay.detach('socialBookmarks:share', onShare);
+		Liferay.detach('destroyPortlet', onDestroyPortlet);
+	};
+
+	Liferay.on('socialBookmarks:share', onShare);
+	Liferay.on('destroyPortlet', onDestroyPortlet);
+})();
+
+	if (window.svg4everybody && Liferay.Data.ICONS_INLINE_SVG) {
+		svg4everybody(
+			{
+				polyfill: true,
+				validate: function (src, svg, use) {
+					return !src || !src.startsWith('#');
+				}
+			}
+		);
+	}
+
+(function() {var $ = AUI.$;var _ = AUI._;
+	Liferay.Util.delegate(
+		document,
+		'focusin',
+		'.portlet',
+		function(event) {
+			event.delegateTarget.closest('.portlet').classList.add('open');
+		}
+	);
+
+	Liferay.Util.delegate(
+		document,
+		'focusout',
+		'.portlet',
+		function(event) {
+			event.delegateTarget.closest('.portlet').classList.remove('open');
+		}
+	);
+})();
+
+	// <![CDATA[
+
+		
+
+		Liferay.currentURL = '\x2f-\x2fopen-geodata';
+		Liferay.currentURLEncoded = '\x252F-\x252Fopen-geodata';
+
+	// ]]>
+
+
+		// <![CDATA[
+			
+				
+
+				
+
+				
+			
+		// ]]>
+	
+(function() {var $ = AUI.$;var _ = AUI._;
+		import(Liferay.ThemeDisplay.getPathContext() + '/o/frontend-js-web/__liferay__/index.js').then(
+			({openToast}) => {
+				AUI().use(
+					'liferay-session',
+					function() {
+						Liferay.Session = new Liferay.SessionBase(
+							{
+								autoExtend: true,
+								redirectOnExpire: false,
+								redirectUrl: 'https\x3a\x2f\x2fgeoblog\x2eregione\x2etoscana\x2eit\x2fweb\x2fguest',
+								sessionLength: 14400,
+								sessionTimeoutOffset: 70,
+								warningLength: 60
+							}
+						);
+
+						
+					}
+				);
+			}
+		)
+	})();
+
+	
+		Liferay.Portlet.register('it_regione_toscana_common_cookie_consent_CookieConsentPortlet');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_it_regione_toscana_common_cookie_consent_CookieConsentPortlet_',
+			portletId: 'it_regione_toscana_common_cookie_consent_CookieConsentPortlet',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d11974922\x26p_p_id\x3dit_regione_toscana_common_cookie_consent_CookieConsentPortlet\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dnull\x26p_p_col_pos\x3dnull\x26p_p_col_count\x3dnull\x26p_p_static\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F-\x252Fopen-geodata',
+			refreshURLData: {}
+		}
+	);
+
+
+	
+		Liferay.Portlet.register('com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE__site_footer_1');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE__site_footer_1_',
+			portletId: 'com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE__site_footer_1',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d11974922\x26p_p_id\x3dcom_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE__site_footer_1\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dnull\x26p_p_col_pos\x3dnull\x26p_p_col_count\x3dnull\x26p_p_static\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F-\x252Fopen-geodata',
+			refreshURLData: {}
+		}
+	);
+
+
+	
+		Liferay.Portlet.register('com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_',
+			portletId: 'com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d11974922\x26p_p_id\x3dcom_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dnull\x26p_p_col_pos\x3dnull\x26p_p_col_count\x3dnull\x26p_p_static\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F-\x252Fopen-geodata',
+			refreshURLData: {}
+		}
+	);
+
+
+	
+		Liferay.Portlet.register('com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_',
+			portletId: 'com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d11974922\x26p_p_id\x3dcom_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dnull\x26p_p_col_pos\x3dnull\x26p_p_col_count\x3dnull\x26p_p_static\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F-\x252Fopen-geodata',
+			refreshURLData: {}
+		}
+	);
+
+
+	
+		Liferay.Portlet.register('com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW');
+	
+
+	Liferay.Portlet.onLoad(
+		{
+			canEditTitle: false,
+			columnPos: 0,
+			isStatic: 'end',
+			namespacedId: 'p_p_id_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW_',
+			portletId: 'com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW',
+			refreshURL: '\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d11974922\x26p_p_id\x3dcom_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dcolumn-1\x26p_p_col_pos\x3d0\x26p_p_col_count\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252F-\x252Fopen-geodata',
+			refreshURLData: {"_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW_mvcPath":["\/view_content.jsp"],"_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW_type":["content"],"_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW_languageId":["it_IT"],"_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW_assetEntryId":["60162951"]}
+		}
+	);
+
+
+</script><script type="module">
+import {InfoItemActionHandler as ComponentModule} from '/o/layout-taglib/__liferay__/index.js';
+import {render} from '/o/portal-template-react-renderer-impl/__liferay__/index.js';
+import {OpenSocialBookmarkPropsTransformer as propsTransformer} from '/o/social-bookmarks-taglib/__liferay__/index.js';
+import {Link as componentModule} from '/o/frontend-taglib-clay/__liferay__/index.js';
+AUI().use(
+  'liferay-menu',
+function(A) {
+{
+Liferay.component('infoItemActionComponent', new ComponentModule({"executeInfoItemActionURL":"https:\/\/geoblog.regione.toscana.it\/c\/portal\/execute_info_item_action?p_l_mode=view&plid=11974922","namespace":"","spritemap":"https:\/\/geoblog.regione.toscana.it\/o\/regione-generic-theme\/images\/clay\/icons.svg"}), { destroyOnNavigate: true, portletId: ''});
+}
+(function() {
+var $ = AUI.$;var _ = AUI._;
+	new Liferay.Menu();
+
+	var liferayNotices = Liferay.Data.notices;
+
+	for (var i = 0; i < liferayNotices.length; i++) {
+		Liferay.Util.openToast(liferayNotices[i]);
+	}
+
+})();
+{
+render(componentModule, propsTransformer({"small":true,"componentId":null,"icon":"social-facebook","weight":null,"hasBodyContent":false,"additionalProps":{"postURL":"http:\/\/www.facebook.com\/sharer.php?u=https%3A%2F%2Fgeoblog.regione.toscana.it%2F-%2Fopen-geodata","classPK":"60162937","className":"com\\x2eliferay\\x2ejournal\\x2emodel\\x2eJournalArticle","type":"facebook","url":"https\\x3a\\x2f\\x2fgeoblog\\x2eregione\\x2etoscana\\x2eit\\x2f-\\x2fopen-geodata"},"title":"Facebook","locale":{"ISO3Country":"ITA","ISO3Language":"ita","country":"IT","displayCountry":"Italy","displayLanguage":"Italian","displayName":"Italian (Italy)","displayScript":"","displayVariant":"","extensionKeys":[],"language":"it","script":"","unicodeLocaleAttributes":[],"unicodeLocaleKeys":[],"variant":""},"button":true,"iconAfter":null,"displayType":"secondary","outline":true,"borderless":true,"cssClass":"lfr-portal-tooltip","portletId":"com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW","block":false,"fontSize":null,"monospaced":true,"id":null,"href":"http:\/\/www.facebook.com\/sharer.php?u=https%3A%2F%2Fgeoblog.regione.toscana.it%2F-%2Fopen-geodata","decoration":null,"aria-label":"Facebook","portletNamespace":"_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW_"}), 'olpq');
+}
+{
+render(componentModule, propsTransformer({"small":true,"componentId":null,"icon":"twitter-x","weight":null,"hasBodyContent":false,"additionalProps":{"postURL":"https:\/\/twitter.com\/intent\/tweet?text=Open+Geodata&tw_p=tweetbutton&url=https:\/\/geoblog.regione.toscana.it\/-\/open-geodata","classPK":"60162937","className":"com\\x2eliferay\\x2ejournal\\x2emodel\\x2eJournalArticle","type":"twitter","url":"https\\x3a\\x2f\\x2fgeoblog\\x2eregione\\x2etoscana\\x2eit\\x2f-\\x2fopen-geodata"},"title":"Twitter","locale":{"ISO3Country":"ITA","ISO3Language":"ita","country":"IT","displayCountry":"Italy","displayLanguage":"Italian","displayName":"Italian (Italy)","displayScript":"","displayVariant":"","extensionKeys":[],"language":"it","script":"","unicodeLocaleAttributes":[],"unicodeLocaleKeys":[],"variant":""},"button":true,"iconAfter":null,"displayType":"secondary","outline":true,"borderless":true,"cssClass":"lfr-portal-tooltip","portletId":"com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW","block":false,"fontSize":null,"monospaced":true,"id":null,"href":"https:\/\/twitter.com\/intent\/tweet?text=Open+Geodata&tw_p=tweetbutton&url=https:\/\/geoblog.regione.toscana.it\/-\/open-geodata","decoration":null,"aria-label":"Twitter","portletNamespace":"_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_LBeJNj0iHkRW_"}), 'bmin');
+}
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+<script src="https://geoblog.regione.toscana.it/o/regione-generic-theme/js/main.js?browserId=other&amp;minifierType=js&amp;languageId=it_IT&amp;t=1790326820000" type="text/javascript"></script>
+
+
+
+
+<script type="module">
+import {default as main} from '/o/frontend-js-tabs-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {default as main} from '/o/frontend-js-collapse-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {default as main} from '/o/frontend-js-tooltip-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {default as main} from '/o/frontend-js-alert-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {default as main} from '/o/frontend-js-dropdown-support-web/__liferay__/index.js';
+{
+main();
+}
+
+</script><script type="module">
+import {runThirdPartyCookiesInterval} from '/o/cookies-banner-web/__liferay__/index.js';
+{
+runThirdPartyCookiesInterval();
+}
+
+</script><script type="text/javascript">
+Liferay.CustomDialogs = {enabled: false};
+
+</script><script>
+
+</script>
+<script src="/o/regione-generic-theme/js//tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+<script src="/o/regione-generic-theme/js//magnific-popup/jquery.magnific-popup.js"></script>
+
+
+</body>
+
+</html>
+		
+	
+

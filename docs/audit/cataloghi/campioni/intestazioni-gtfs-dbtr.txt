@@ -1,0 +1,33 @@
+### GET(range 0-1023) https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs
+curl: (28) Operation timed out after 60001 milliseconds with 77601943 bytes received
+HTTP/1.1 200 OK
+Date: Thu, 01 Oct 2026 13:24:12 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=0;
+Content-Type: application/zip
+Content-Disposition: gtfs.zip
+X-Kong-Upstream-Latency: 99
+X-Kong-Proxy-Latency: 0
+Via: 1.1 kong/3.9.1
+X-Kong-Request-Id: 658c6d24f7bf59318a2deb3832c29c4f
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Transfer-Encoding: chunked
+
+code 200 dl 77601943
+### GET(range 0-1023) http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_050_PISA_2010_2010.7z
+HTTP/1.1 206 
+Date: Thu, 01 Oct 2026 13:25:12 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=0;
+Accept-Ranges: bytes
+ETag: W/"411509203-1760118111000"
+Last-Modified: Fri, 10 Oct 2025 17:41:51 GMT
+Content-Range: bytes 0-1023/411509203
+Content-Type: application/x-7z-compressed
+Content-Length: 1024
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization
+Connection: close

@@ -1,0 +1,2795 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-01T13:45:59Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 213847571,
+  "lat": 43.7107991,
+  "lon": 10.4012780,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "36",
+    "addr:postcode": "56125",
+    "addr:street": "Via Benedetto Croce",
+    "amenity": "school",
+    "check_date": "2025-09-24",
+    "contact:email": "pips02000a@istruzione.it",
+    "contact:fax": "+39 050 29220",
+    "contact:phone": "+39 050 20036;+39 050 28212",
+    "name": "Liceo scientifico \"Ulisse Dini\"",
+    "ref": "PIPS02000A",
+    "website": "https://www.liceodini.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 241507010,
+  "lat": 43.7107490,
+  "lon": 10.4021048,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "34",
+    "addr:postcode": "56125",
+    "addr:street": "Via Benedetto Croce",
+    "amenity": "school",
+    "contact:email": "piis00700e@istruzione.it;piis00700e@pec.istruzione.it",
+    "contact:phone": "+39 050 6200431",
+    "name": "Istituto Tecnico Commerciale \"Antonio Pacinotti\"",
+    "website": "https://iisgalileipacinotti.it/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 241507012,
+  "lat": 43.7106772,
+  "lon": 10.4028818,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "32",
+    "addr:postcode": "56125",
+    "addr:street": "Via Benedetto Croce",
+    "amenity": "school",
+    "contact:phone": "+39 050 23230",
+    "name": "Liceo Classico \"Galileo Galilei\"",
+    "website": "https://iisgalileipacinotti.it/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 285155961,
+  "lat": 43.7314143,
+  "lon": 10.4002316,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "XXIV Maggio 6",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 285155987,
+  "lat": 43.7264542,
+  "lon": 10.3998878,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Rindi 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285155991,
+  "lat": 43.7252433,
+  "lon": 10.4023940,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Bianchi 3",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285155998,
+  "lat": 43.7236239,
+  "lon": 10.4021916,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Bianchi 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285178836,
+  "lat": 43.7169542,
+  "lon": 10.3962799,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Santa Maria 3",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285178846,
+  "lat": 43.7165844,
+  "lon": 10.4000732,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Pacinotti 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285178859,
+  "lat": 43.7163463,
+  "lon": 10.4017267,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Pacinotti 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285178869,
+  "lat": 43.7157808,
+  "lon": 10.4008467,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-04-17",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Gambacorti 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285178900,
+  "lat": 43.7111466,
+  "lon": 10.3986614,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Vittorio Emanuele II",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285185665,
+  "lat": 43.7085665,
+  "lon": 10.3990352,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stazione FS 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "22",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285185677,
+  "lat": 43.7087661,
+  "lon": 10.3988595,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 285185681,
+  "lat": 43.7088013,
+  "lon": 10.3992802,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 6",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 285188660,
+  "lat": 43.7115165,
+  "lon": 10.3972357,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Crispi 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "22",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203249,
+  "lat": 43.7136187,
+  "lon": 10.3963394,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Crispi 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203252,
+  "lat": 43.7159975,
+  "lon": 10.4029937,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Mediceo 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203299,
+  "lat": 43.7218182,
+  "lon": 10.4045201,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "San Zeno 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203308,
+  "lat": 43.7221376,
+  "lon": 10.4018485,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Parlascio 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203320,
+  "lat": 43.7247967,
+  "lon": 10.4024903,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Bianchi 2",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203360,
+  "lat": 43.7289628,
+  "lon": 10.3996209,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Collodi 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203364,
+  "lat": 43.7301285,
+  "lon": 10.4001720,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "XXIV Maggio 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 339093139,
+  "lat": 43.7177172,
+  "lon": 10.3969459,
+  "tags": {
+    "amenity": "university",
+    "name": "Facoltà di Lettere"
+  }
+},
+{
+  "type": "node",
+  "id": 1409174429,
+  "lat": 43.7109081,
+  "lon": 10.3974504,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pisa Piazza Sant'Antonio",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 1652834974,
+  "lat": 43.7240082,
+  "lon": 10.4120725,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Park Paparelli 1",
+    "public_transport": "platform",
+    "ref": "4404",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652835006,
+  "lat": 43.7230683,
+  "lon": 10.4133615,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pratale 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 1652835043,
+  "lat": 43.7240195,
+  "lon": 10.4082669,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Largo San Zeno",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855543,
+  "lat": 43.7250427,
+  "lon": 10.4080177,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Lucchese 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "B4926",
+    "route_ref": "2"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855551,
+  "lat": 43.7099027,
+  "lon": 10.4004671,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Bonaini 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855558,
+  "lat": 43.7157307,
+  "lon": 10.3984073,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-04-17",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Gambacorti 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855562,
+  "lat": 43.7072300,
+  "lon": 10.4383967,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Martin Lutero 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "ref": "B4255",
+    "route_ref": "13;150;1+",
+    "shelter": "yes",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855573,
+  "lat": 43.7153549,
+  "lon": 10.3971638,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-04-17",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Gambacorti 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855579,
+  "lat": 43.7254559,
+  "lon": 10.4050016,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Lucchese 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "B4928",
+    "route_ref": "2"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855582,
+  "lat": 43.7218927,
+  "lon": 10.4116276,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Studiati",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "4575",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855592,
+  "lat": 43.7226429,
+  "lon": 10.4098594,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Tonelli",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855625,
+  "lat": 43.7248918,
+  "lon": 10.4084194,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Lucchese 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "B4246",
+    "route_ref": "2",
+    "shelter": "yes",
+    "waste_basket": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855627,
+  "lat": 43.7225051,
+  "lon": 10.4137475,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Battelli 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855637,
+  "lat": 43.7252584,
+  "lon": 10.4053136,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Lucchese 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "B4248",
+    "route_ref": "2"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855640,
+  "lat": 43.7148336,
+  "lon": 10.4035627,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Galilei 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878235,
+  "lat": 43.7290265,
+  "lon": 10.4064203,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Gello 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "ref": "B4175",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878248,
+  "lat": 43.7069187,
+  "lon": 10.3958970,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Fra' Mansueto",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878250,
+  "lat": 43.7082675,
+  "lon": 10.4011543,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Corridoni 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "website": "https://pisa.cttnord.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878251,
+  "lat": 43.7269901,
+  "lon": 10.4054055,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Gello 9",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "B4929",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878252,
+  "lat": 43.7054796,
+  "lon": 10.3965049,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Goletta",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878253,
+  "lat": 43.7053834,
+  "lon": 10.4024522,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Da Morrona",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878262,
+  "lat": 43.7073507,
+  "lon": 10.4037067,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Corridoni 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878279,
+  "lat": 43.7264590,
+  "lon": 10.4047510,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Gello 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "B4174",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878283,
+  "lat": 43.7050521,
+  "lon": 10.4014642,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Giusti 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878299,
+  "lat": 43.7058423,
+  "lon": 10.3994613,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Cappuccini",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878306,
+  "lat": 43.7287668,
+  "lon": 10.4056449,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Filzi 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878307,
+  "lat": 43.7081562,
+  "lon": 10.4011855,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Corridoni 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "website": "https://pisa.cttnord.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878310,
+  "lat": 43.7312560,
+  "lon": 10.4027817,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Giovanni Pisano",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878328,
+  "lat": 43.7288197,
+  "lon": 10.4032854,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Filzi 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892253,
+  "lat": 43.7091403,
+  "lon": 10.4387056,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Paradisa 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892261,
+  "lat": 43.7103621,
+  "lon": 10.4364579,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "covered": "no",
+    "highway": "bus_stop",
+    "name": "Paradisa 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892276,
+  "lat": 43.7035114,
+  "lon": 10.4365742,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Torri 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892291,
+  "lat": 43.7033461,
+  "lon": 10.4367170,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Torri 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892345,
+  "lat": 43.7047893,
+  "lon": 10.4389227,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "S. Biagio 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652892353,
+  "lat": 43.7036463,
+  "lon": 10.4350148,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Pizzarello",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652898894,
+  "lat": 43.7164523,
+  "lon": 10.3941671,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Fermi 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1671656752,
+  "lat": 43.7118549,
+  "lon": 10.3943170,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Zerboglio",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 1671656856,
+  "lat": 43.7125348,
+  "lon": 10.3923950,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Piazza San Paolo a Ripa D'Arno",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 1677276904,
+  "lat": 43.7206078,
+  "lon": 10.4026444,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "33",
+    "addr:postcode": "56127",
+    "addr:street": "Piazza Martiri della Libertà",
+    "amenity": "university",
+    "name": "Scuola Superiore Sant'Anna",
+    "phone": "+39 050 883111",
+    "website": "https://www.santannapisa.it/",
+    "wikidata": "Q774609",
+    "wikipedia": "it:Scuola superiore di studi universitari e di perfezionamento Sant'Anna"
+  }
+},
+{
+  "type": "node",
+  "id": 2260729811,
+  "lat": 43.7241894,
+  "lon": 10.4079404,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2636505817,
+  "lat": 43.7301845,
+  "lon": 10.4069362,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Gello 8",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2700695076,
+  "lat": 43.7221134,
+  "lon": 10.4045494,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "3",
+    "addr:postcode": "56123",
+    "addr:street": "Via San Zeno",
+    "amenity": "kindergarten",
+    "isced:level": "0",
+    "name": "Scuola dell’Infanzia \"Perodi\"",
+    "operator": "Istituto Comprensivo \"L. Strenta Tongiorgi\"",
+    "operator:wikidata": "Q52791018",
+    "wikidata": "Q52792481"
+  }
+},
+{
+  "type": "node",
+  "id": 2971922999,
+  "lat": 43.7117477,
+  "lon": 10.3921111,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Stampace",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 2977418264,
+  "lat": 43.7197258,
+  "lon": 10.4042269,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "S.Lorenzo",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3483952525,
+  "lat": 43.7166543,
+  "lon": 10.3988015,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "43",
+    "addr:postcode": "56126",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "amenity": "university",
+    "check_date": "2025-03-28",
+    "name": "Università di Pisa - Rettorato"
+  }
+},
+{
+  "type": "node",
+  "id": 3512110649,
+  "lat": 43.7117123,
+  "lon": 10.3921295,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "covered": "no",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stampace",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3583703537,
+  "lat": 43.7229542,
+  "lon": 10.4025695,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "name": "Bagni di Nerone 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3602022542,
+  "lat": 43.7086226,
+  "lon": 10.3994837,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stazione FS 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3663357121,
+  "lat": 43.7125349,
+  "lon": 10.3924246,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Piazza San Paolo a Ripa D'Arno",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3695848052,
+  "lat": 43.7175066,
+  "lon": 10.3963539,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "25",
+    "addr:postcode": "56126",
+    "addr:street": "Via Santa Maria",
+    "amenity": "university",
+    "contact:facebook": "almaartis.academy",
+    "contact:mobile": "+39 3775 251997",
+    "contact:phone": "+39 050 2200713",
+    "email": "info@almaartis.it",
+    "name": "Alma Artis Academy - Accademia di Belle Arti",
+    "website": "https://www.almaartis.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 3915046256,
+  "lat": 43.7076950,
+  "lon": 10.3963659,
+  "tags": {
+    "funicular": "yes",
+    "name": "Stazione Centrale",
+    "name:en": "Central Station",
+    "operator": "PisaMo",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "funicular",
+    "train": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4408732663,
+  "lat": 43.7187456,
+  "lon": 10.3986698,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "15",
+    "addr:postcode": "56126",
+    "addr:street": "Via Pasquale Paoli",
+    "amenity": "university",
+    "name": "Dipartimento di Civiltà e Forme del Sapere",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "node",
+  "id": 4408732667,
+  "lat": 43.7199674,
+  "lon": 10.3971558,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "85",
+    "addr:postcode": "56125",
+    "addr:street": "Via Santa Maria",
+    "amenity": "university",
+    "check_date": "2024-04-25",
+    "name": "Facoltà di Lingue e Letterature Straniere",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "node",
+  "id": 4702380316,
+  "lat": 43.7222484,
+  "lon": 10.4054329,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "31",
+    "addr:postcode": "56123",
+    "addr:street": "Via San Zeno",
+    "amenity": "university",
+    "internet_access": "yes",
+    "name": "Istituto di Fisiologia",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "node",
+  "id": 4885825399,
+  "lat": 43.7230797,
+  "lon": 10.4026339,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Bagni di Nerone 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4885834071,
+  "lat": 43.7243222,
+  "lon": 10.4079103,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Brennero San Zeno 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4894134515,
+  "lat": 43.7111703,
+  "lon": 10.3958157,
+  "tags": {
+    "amenity": "school",
+    "name": "Scuola di Musica"
+  }
+},
+{
+  "type": "node",
+  "id": 5068142231,
+  "lat": 43.7050885,
+  "lon": 10.4393093,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Giovannetti",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5068142232,
+  "lat": 43.7056720,
+  "lon": 10.4407352,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Ospedale Cisanello - Luzi",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "ref": "B4034",
+    "route_ref": "13;150;160",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5071794460,
+  "lat": 43.7059267,
+  "lon": 10.4416141,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Ospedale Cisanello",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "route_ref": "14;140;150;160;22;LR",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5071844451,
+  "lat": 43.7104822,
+  "lon": 10.3976267,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pellico",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 5084238734,
+  "lat": 43.7163347,
+  "lon": 10.3944115,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Fermi 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5129102162,
+  "lat": 43.7184524,
+  "lon": 10.3960131,
+  "tags": {
+    "amenity": "university",
+    "name": "Facoltà di Biologia"
+  }
+},
+{
+  "type": "node",
+  "id": 5153363486,
+  "lat": 43.7089644,
+  "lon": 10.3991507,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stazione 5",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5162808006,
+  "lat": 43.7189454,
+  "lon": 10.4030433,
+  "tags": {
+    "addr:housenumber": "23a",
+    "addr:street": "Via Santa Cecilia",
+    "amenity": "school",
+    "name": "CILT",
+    "phone": "+39 392 381 27 27",
+    "school": "language",
+    "website": "https://ciltsite.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5258131767,
+  "lat": 43.7217319,
+  "lon": 10.4081890,
+  "tags": {
+    "amenity": "university",
+    "check_date": "2025-08-27",
+    "name": "Aula magna / centro congressi"
+  }
+},
+{
+  "type": "node",
+  "id": 5258131768,
+  "lat": 43.7215361,
+  "lon": 10.4082668,
+  "tags": {
+    "amenity": "university",
+    "check_date": "2025-08-27",
+    "name": "Ufficio immatricolazioni Matricolandosi"
+  }
+},
+{
+  "type": "node",
+  "id": 5264003568,
+  "lat": 43.7231148,
+  "lon": 10.4072882,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "San Zeno 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5264003573,
+  "lat": 43.7225402,
+  "lon": 10.4070608,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Buonarroti 2",
+    "public_transport": "platform",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5264167248,
+  "lat": 43.7101352,
+  "lon": 10.3981083,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Battisti",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "4389",
+    "route_ref": "2;4;6;13;21;22;L/R;L/V",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5274122309,
+  "lat": 43.7093117,
+  "lon": 10.3988471,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Gramsci Stazione",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5278157573,
+  "lat": 43.7085253,
+  "lon": 10.3992855,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stazione FS 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5401108171,
+  "lat": 43.7239412,
+  "lon": 10.4103239,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pratale 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 5682466424,
+  "lat": 43.7073304,
+  "lon": 10.4386899,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Martin Lutero 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "route_ref": "14;1+",
+    "shelter": "yes",
+    "website": "https://www.at-bus.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 6224807341,
+  "lat": 43.7125385,
+  "lon": 10.3985220,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Mazzini 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6224807342,
+  "lat": 43.7149056,
+  "lon": 10.3988922,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Mazzini 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6487424586,
+  "lat": 43.7189717,
+  "lon": 10.3975463,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Santa Maria",
+    "amenity": "university",
+    "check_date": "2025-08-10",
+    "name": "Dipartimento di filologia, letteratura e linguistica",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "node",
+  "id": 6847039597,
+  "lat": 43.7239111,
+  "lon": 10.4120469,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Park Paparelli",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 6847039598,
+  "lat": 43.7238400,
+  "lon": 10.4120236,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Park Paparelli 2",
+    "public_transport": "platform",
+    "ref": "4402",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7714399272,
+  "lat": 43.7107068,
+  "lon": 10.3999821,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Croce 2",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7840645131,
+  "lat": 43.7162568,
+  "lon": 10.3973270,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Pacinotti 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7852588815,
+  "lat": 43.7104594,
+  "lon": 10.3975607,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Pellico",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 8821185681,
+  "lat": 43.7115115,
+  "lon": 10.3971964,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Crispi 1",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8900952058,
+  "lat": 43.7308844,
+  "lon": 10.4072629,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Gello 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "B4176",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 9283521973,
+  "lat": 43.7239814,
+  "lon": 10.4069680,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Brennero San Zeno 1",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 9283663977,
+  "lat": 43.7009369,
+  "lon": 10.4489232,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Pierdicino",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 9431724264,
+  "lat": 43.7103619,
+  "lon": 10.3964025,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Via Battisti",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10080040104,
+  "lat": 43.7178419,
+  "lon": 10.3966788,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Santa Maria 2",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11013991726,
+  "lat": 43.7087446,
+  "lon": 10.3992406,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 7",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11013991727,
+  "lat": 43.7087015,
+  "lon": 10.3992033,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 8",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11013991728,
+  "lat": 43.7086606,
+  "lon": 10.3991678,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 9",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11506877023,
+  "lat": 43.7283587,
+  "lon": 10.4059021,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Via di Gello 45 incrocio via Napoli",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11942857940,
+  "lat": 43.7190258,
+  "lon": 10.4032628,
+  "tags": {
+    "amenity": "university",
+    "name": "Scuola Superiore Sant'Anna - Palazzo Pilo Boyl",
+    "operator:wikidata": "Q774609",
+    "website": "https://www.santannapisa.it/it/sede/palazzo-pilo-boyl"
+  }
+},
+{
+  "type": "node",
+  "id": 12633170992,
+  "lat": 43.7078625,
+  "lon": 10.3983886,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "9",
+    "addr:street": "Piazza della Stazione",
+    "name": "Pisa Centrale",
+    "name:en": "Central Station of Pisa",
+    "name:zh": "比薩中央車站",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "station",
+    "railway": "station",
+    "short_name": "Pisa C.le",
+    "source": "https://github.com/trainline-eu/stations",
+    "train": "yes",
+    "uic_ref": "8306500",
+    "website": "https://www.rfi.it/it/stazioni/pisa-centrale.html",
+    "wheelchair": "yes",
+    "wikidata": "Q849256",
+    "wikimedia_commons": "Category:Pisa_Centrale_train_station",
+    "wikipedia": "it:Stazione di Pisa Centrale"
+  }
+},
+{
+  "type": "node",
+  "id": 13190418809,
+  "lat": 43.7057256,
+  "lon": 10.4417151,
+  "tags": {
+    "alt_name": "Ingresso Ospedale",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Piazza Nuovo S. Chiara",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13679249403,
+  "lat": 43.7065511,
+  "lon": 10.4403279,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "San Biagio",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 13925697439,
+  "lat": 43.7216633,
+  "lon": 10.4128670,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Battelli 1",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13961909884,
+  "lat": 43.7099663,
+  "lon": 10.3957894,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "yes",
+    "highway": "bus_stop",
+    "name": "Sesta Porta",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13961909885,
+  "lat": 43.7099749,
+  "lon": 10.3957360,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "yes",
+    "highway": "bus_stop",
+    "name": "Sesta Porta",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13961909886,
+  "lat": 43.7099853,
+  "lon": 10.3956720,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "yes",
+    "highway": "bus_stop",
+    "name": "Sesta Porta",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13961909887,
+  "lat": 43.7099951,
+  "lon": 10.3956111,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "yes",
+    "highway": "bus_stop",
+    "name": "Sesta Porta",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13966440501,
+  "lat": 43.7143271,
+  "lon": 10.3924772,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Simonelli - Arsenali",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "ref": "PI4365",
+    "route_ref": "25",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13968758317,
+  "lat": 43.7171636,
+  "lon": 10.3950545,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Roma 1",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13968758318,
+  "lat": 43.7194586,
+  "lon": 10.3956076,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Roma 2",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13968758319,
+  "lat": 43.7195267,
+  "lon": 10.3973816,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Santa Maria 1",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 92930420,
+  "center": {
+    "lat": 43.7201142,
+    "lon": 10.4011362
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "check_date": "2026-07-16",
+    "name": "Polo Carmignani",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 93145078,
+  "center": {
+    "lat": 43.7197982,
+    "lon": 10.3997155
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "university",
+    "name": "Palazzo dell'Orologio",
+    "name:ko": "시계 궁전",
+    "wikidata": "Q753046",
+    "wikipedia": "it:Palazzo dell'Orologio"
+  }
+},
+{
+  "type": "way",
+  "id": 106644872,
+  "center": {
+    "lat": 43.7215852,
+    "lon": 10.4069659
+  },
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Via Filippo Buonarroti",
+    "amenity": "school",
+    "check_date": "2025-08-27",
+    "name": "Centro Sociale Suore Immacolatine"
+  }
+},
+{
+  "type": "way",
+  "id": 156114855,
+  "center": {
+    "lat": 43.7130212,
+    "lon": 10.4015717
+  },
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via del Carmine",
+    "amenity": "kindergarten",
+    "building": "yes",
+    "name": "Scuola dell’infanzia Matilde Calandrini",
+    "phone": "+39 050 910731",
+    "wikidata": "Q52948292"
+  }
+},
+{
+  "type": "way",
+  "id": 174083473,
+  "center": {
+    "lat": 43.7128163,
+    "lon": 10.3948765
+  },
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via della Qualquonia",
+    "amenity": "school",
+    "check_date": "2025-03-23",
+    "isced:level": "2",
+    "name": "Scuola pubblica media \"Giuseppe Toniolo\"",
+    "operator": "Istituto Comprensivo \"G. Toniolo\"",
+    "operator:wikidata": "Q52749076",
+    "phone": "+39 050 26363",
+    "wikidata": "Q52750566"
+  }
+},
+{
+  "type": "way",
+  "id": 217538423,
+  "center": {
+    "lat": 43.7209454,
+    "lon": 10.4082873
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:postcode": "56127",
+    "addr:street": "Via Filippo Buonarroti",
+    "amenity": "university",
+    "name": "Polo Fibonacci",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 217910056,
+  "center": {
+    "lat": 43.7224324,
+    "lon": 10.4042500
+  },
+  "tags": {
+    "amenity": "school",
+    "isced:level": "3",
+    "name": "Liceo Giosuè Carducci",
+    "wikidata": "Q52807043"
+  }
+},
+{
+  "type": "way",
+  "id": 232482921,
+  "center": {
+    "lat": 43.7188481,
+    "lon": 10.3993530
+  },
+  "tags": {
+    "amenity": "school",
+    "isced:level": "3",
+    "name": "Liceo Artistico \"F. Russoli\"",
+    "website": "https://liceoartisticorussoli.edu.it/",
+    "wikidata": "Q52805632"
+  }
+},
+{
+  "type": "way",
+  "id": 238675978,
+  "center": {
+    "lat": 43.7266380,
+    "lon": 10.4099961
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "14",
+    "addr:postcode": "56123",
+    "addr:street": "Via Firenze",
+    "amenity": "kindergarten",
+    "name": "Scuola dell’Infanzia “Parmeggiani”",
+    "operator": "Istituto Comprensivo \"L. Strenta Tongiorgi\"",
+    "operator:type": "public",
+    "operator:wikidata": "Q52791018",
+    "phone": "+39 050 555 831",
+    "wikidata": "Q52796581"
+  }
+},
+{
+  "type": "way",
+  "id": 240399513,
+  "center": {
+    "lat": 43.7112132,
+    "lon": 10.4020872
+  },
+  "tags": {
+    "amenity": "school",
+    "education": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 253818103,
+  "center": {
+    "lat": 43.7181907,
+    "lon": 10.3978527
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "name": "Palazzo Matteucci",
+    "operator": "Università di Pisa",
+    "operator:wikidata": "Q645663",
+    "wikidata": "Q16586240",
+    "wikipedia": "it:Palazzo Matteucci"
+  }
+},
+{
+  "type": "way",
+  "id": 306667933,
+  "center": {
+    "lat": 43.7217113,
+    "lon": 10.4053190
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "4",
+    "addr:postcode": "56127",
+    "addr:street": "Piazza Santa Caterina",
+    "amenity": "school",
+    "denomination": "catholic",
+    "name": "Istituto Arcivescovile Paritario - Santa Caterina",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 368829395,
+  "center": {
+    "lat": 43.7131130,
+    "lon": 10.4025707
+  },
+  "tags": {
+    "addr:street": "Via Pietro Gori",
+    "amenity": "school",
+    "check_date": "2024-10-01",
+    "isced:level": "1",
+    "name": "Scuola Primaria \"E. Zerboglio\"",
+    "operator": "Istituto Comprensivo \"R. Fucini\"",
+    "operator:wikidata": "Q52903949",
+    "phone": "+39 050 910770",
+    "wikidata": "Q52856290"
+  }
+},
+{
+  "type": "way",
+  "id": 476755332,
+  "center": {
+    "lat": 43.7227068,
+    "lon": 10.4055308
+  },
+  "tags": {
+    "amenity": "university",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 547880008,
+  "center": {
+    "lat": 43.7062349,
+    "lon": 10.3973924
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via di Goletta",
+    "amenity": "school",
+    "check_date": "2026-05-04",
+    "name": "Scuola dell'infanzia San Francesco"
+  }
+},
+{
+  "type": "way",
+  "id": 592379357,
+  "center": {
+    "lat": 43.7129254,
+    "lon": 10.3953751
+  },
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Francesco Niosi",
+    "amenity": "school",
+    "name": "Scuola Primaria \"Cambini\"",
+    "operator": "Istituto Comprensivo \"G. Toniolo\"",
+    "operator:wikidata": "Q52749076",
+    "phone": "+39 050 24528",
+    "wikidata": "Q52747605"
+  }
+},
+{
+  "type": "way",
+  "id": 634725321,
+  "center": {
+    "lat": 43.7176410,
+    "lon": 10.4052398
+  },
+  "tags": {
+    "amenity": "kindergarten"
+  }
+},
+{
+  "type": "way",
+  "id": 656488090,
+  "center": {
+    "lat": 43.7213496,
+    "lon": 10.4138161
+  },
+  "tags": {
+    "amenity": "kindergarten",
+    "name": "Asilo nido Betti",
+    "operator": "Istituto comprensivo L. Fibonacci",
+    "operator:type": "public",
+    "operator:wikidata": "Q52828053",
+    "wikidata": "Q52830350"
+  }
+},
+{
+  "type": "way",
+  "id": 676049659,
+  "center": {
+    "lat": 43.7201492,
+    "lon": 10.4057247
+  },
+  "tags": {
+    "amenity": "school",
+    "name": "Collegio \"Tiziano Terzani\"",
+    "operator": "Scuola superiore di studi universitari e di perfezionamento Sant'Anna",
+    "operator:wikidata": "Q774609"
+  }
+},
+{
+  "type": "way",
+  "id": 701045439,
+  "center": {
+    "lat": 43.7206386,
+    "lon": 10.3931005
+  },
+  "tags": {
+    "alt_name": "Ospedale di Santa Chiara",
+    "amenity": "hospital",
+    "emergency": "no",
+    "healthcare": "hospital",
+    "name": "Polo Ospedaliero \"Santa Chiara\"",
+    "wikidata": "Q28670974",
+    "wikipedia": "it:Ospedale Santa Chiara"
+  }
+},
+{
+  "type": "way",
+  "id": 721900738,
+  "center": {
+    "lat": 43.7167933,
+    "lon": 10.3990535
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "university",
+    "name": "Dipartimento di Scienze Politiche",
+    "operator": "Università di Pisa",
+    "operator:wikidata": "Q645663",
+    "phone": "+39 050 2212464",
+    "website": "https://www.sp.unipi.it/"
+  }
+},
+{
+  "type": "way",
+  "id": 762196368,
+  "center": {
+    "lat": 43.7184706,
+    "lon": 10.4030107
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "name": "Scuola Superiore Sant'Anna - Palazzo Toscanelli",
+    "name:etymology:wikidata": "Q164294",
+    "operator": "Scuola Superiore Sant'Anna",
+    "operator:wikidata": "Q774609",
+    "operator:wikipedia": "Scuola superiore di studi universitari e di perfezionamento Sant'Anna"
+  }
+},
+{
+  "type": "way",
+  "id": 779992709,
+  "center": {
+    "lat": 43.7183312,
+    "lon": 10.3967720
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "name": "Dipartimento di Scienze della Terra",
+    "operator": "Università di Pisa",
+    "operator:wikidata": "Q645663",
+    "operator:wikipedia": "it:Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 779992710,
+  "center": {
+    "lat": 43.7190157,
+    "lon": 10.3972212
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "check_date": "2025-08-10",
+    "name": "Dipartimento di Anglistica",
+    "operator": "Università di Pisa",
+    "operator:type": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 798085977,
+  "center": {
+    "lat": 43.7203091,
+    "lon": 10.3948500
+  },
+  "tags": {
+    "amenity": "university",
+    "faculty": "medicine",
+    "name": "Scuola di Medicina",
+    "operator": "Università di Pisa",
+    "operator:type": "university",
+    "operator:wikidata": "Q645663"
+  }
+},
+{
+  "type": "way",
+  "id": 828432256,
+  "center": {
+    "lat": 43.7203564,
+    "lon": 10.4006562
+  },
+  "tags": {
+    "amenity": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 873158918,
+  "center": {
+    "lat": 43.7260953,
+    "lon": 10.4030312
+  },
+  "tags": {
+    "amenity": "kindergarten",
+    "building": "school",
+    "building:levels": "2",
+    "name": "L'isola delle farfalle",
+    "roof:levels": "0"
+  }
+},
+{
+  "type": "way",
+  "id": 1173691845,
+  "center": {
+    "lat": 43.7206737,
+    "lon": 10.4027214
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Scuola Superiore Sant'Anna"
+  }
+},
+{
+  "type": "relation",
+  "id": 1729449,
+  "center": {
+    "lat": 43.7173441,
+    "lon": 10.3993208
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:street": "Via Curtatone e Montanara",
+    "amenity": "university",
+    "building": "yes",
+    "building:levels": "3",
+    "faculty": "law",
+    "name": "Palazzo della Sapienza",
+    "name:ko": "사피엔차 대학교",
+    "roof:material": "roof_tiles",
+    "roof:shape": "gabled",
+    "type": "multipolygon",
+    "wikidata": "Q3891485",
+    "wikipedia": "it:Palazzo della Sapienza (Pisa)"
+  }
+},
+{
+  "type": "relation",
+  "id": 4032458,
+  "center": {
+    "lat": 43.7186534,
+    "lon": 10.4074917
+  },
+  "tags": {
+    "amenity": "school",
+    "isced:level": "0-2",
+    "name": "Istituto Leonardo Fibonacci",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 4421673,
+  "center": {
+    "lat": 43.7196572,
+    "lon": 10.4005684
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "7",
+    "addr:postcode": "56126",
+    "addr:street": "Piazza dei Cavalieri",
+    "amenity": "university",
+    "name": "Scuola Normale Superiore",
+    "type": "multipolygon",
+    "website": "https://www.sns.it/",
+    "wikidata": "Q672416",
+    "wikipedia": "it:Scuola normale superiore di Pisa"
+  }
+},
+{
+  "type": "relation",
+  "id": 9243476,
+  "center": {
+    "lat": 43.7052616,
+    "lon": 10.4421632
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "2",
+    "addr:postcode": "56124",
+    "addr:street": "Via Pietro Trivella",
+    "amenity": "hospital",
+    "emergency": "yes",
+    "healthcare": "hospital",
+    "name": "Ospedale Cisanello",
+    "phone": "+39 050 992111",
+    "type": "multipolygon",
+    "website": "https://www.ao-pisa.toscana.it/",
+    "wikidata": "Q17637804",
+    "wikipedia": "it:Ospedale Cisanello"
+  }
+},
+{
+  "type": "relation",
+  "id": 15966352,
+  "center": {
+    "lat": 43.7119034,
+    "lon": 10.4018624
+  },
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Simone Sancasciani",
+    "amenity": "school",
+    "name": "Succursale IC Fucini",
+    "operator": "I.C. Renato Fucini",
+    "operator:type": "public",
+    "operator:wikidata": "Q52903949",
+    "type": "multipolygon",
+    "wikidata": "Q52901576"
+  }
+}
+
+  ]
+}

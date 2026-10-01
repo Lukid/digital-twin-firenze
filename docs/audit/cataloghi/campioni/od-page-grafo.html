@@ -1,0 +1,633 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" dir="ltr">
+
+<head><meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+  <!--[if IE 7]>
+  	<script type="text/javascript" src="/sites/all/modules/spodata/metadata//js/json2.min.js"></script> 
+  <![endif]-->
+  <!--[if IE 8]> 
+  	<script type="text/javascript" src="/sites/all/modules/spodata/metadata//js/json2.min.js"></script>
+  <![endif]-->
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://opendata.comune.pisa.it/content/grafo-stradale" />
+<meta property="og:image" content="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/img/authors/stemma-comune-pisa.png" />
+<link rel="shortcut icon" href="https://opendata.comune.pisa.it/sites/default/files/favicon_1.png" type="image/png" />
+<meta property="og:title" content="Grafo stradale" />
+<meta property="og:site_name" content="Comune di Pisa" />
+<meta name="description" content="Grafo stradale. Rappresentazione geografica lineare delle strade nel territorio del" />
+<meta name="keywords" content="Trasporti,Strade,Comune di Pisa,Infrastrutture e Trasporti,open data, dati aperti, dati" />
+<title>Grafo stradale</title>
+<meta name="description" content="Rappresentazione geografica lineare delle strade nel territorio del comune di Pisa, corredata dai relativi attributi. Fonte originaria dei dati: Regione Toscana – “Stradario Iter.net”. Periodo di riferimento dei dati: Aprile 2015." />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="https://opendata.comune.pisa.it/content/grafo-stradale" />
+<link rel="shortlink" href="https://opendata.comune.pisa.it/node/477" />
+  <title>Grafo stradale</title>
+  
+  
+  <style type="text/css" media="all">
+@import url("https://opendata.comune.pisa.it/modules/system/system.base.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/modules/system/system.menus.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/modules/system/system.messages.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/modules/system/system.theme.css?prlp7p");
+</style>
+<style type="text/css" media="all">
+@import url("https://opendata.comune.pisa.it/sites/all/libraries/magnific-popup/magnific-popup.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/graph_viewer/css/graph_viewer.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/css/jquery.ui.filters.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/libraries/chosen/chosen.css?prlp7p");
+</style>
+<style type="text/css" media="all">
+@import url("https://opendata.comune.pisa.it/modules/comment/comment.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/modules/field/theme/field.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/modules/node/node.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/modules/search/search.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/modules/user/user.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/modules/forum/forum.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/views/css/views.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/ckeditor/css/ckeditor.css?prlp7p");
+</style>
+<style type="text/css" media="all">
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/style/spodata_jqtheme/jquery.ui.dialog.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/style/spodata_jqtheme/jquery.ui.all.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/ctools/css/ctools.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/fivestar/css/fivestar.css?prlp7p");
+</style>
+<style type="text/css" media="all">
+@import url("https://opendata.comune.pisa.it/sites/all/themes/statportal_pisa/css/layout.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/themes/statportal/css/style.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/default/files/less/SX8L0NbbY7RJ4BFYHQLila04-2csiTAKxyDWo56uFF4/sites/all/themes/statportal_pisa/css/colors.XcVzbo5GbrB4v7QVES377fts6uudS0o0YbaMpBamvPg.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/themes/statportal_pisa/css/custom.css?prlp7p");
+</style>
+<style type="text/css" media="print">
+@import url("https://opendata.comune.pisa.it/sites/all/themes/statportal/css/print.css?prlp7p");
+</style>
+<style type="text/css" media="all">
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/css/metadata.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/default/files/less/SX8L0NbbY7RJ4BFYHQLila04-2csiTAKxyDWo56uFF4/sites/all/themes/statportal_pisa/css/metadata_color.XcVzbo5GbrB4v7QVES377fts6uudS0o0YbaMpBamvPg.css?prlp7p");
+</style>
+
+<!--[if lte IE 7]>
+<link type="text/css" rel="stylesheet" href="https://opendata.comune.pisa.it/sites/all/themes/statportal_pisa/css/ie.css?prlp7p" media="all" />
+<![endif]-->
+
+<!--[if IE 6]>
+<link type="text/css" rel="stylesheet" href="https://opendata.comune.pisa.it/sites/all/themes/statportal_pisa/css/ie6.css?prlp7p" media="all" />
+<![endif]-->
+<style type="text/css" media="all">
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqGrid4.4.0/css/ui.jqgrid.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/style/spodata_jqtheme/jquery.ui.detail-level-button.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_ui/css/custom-theme/redmond/jquery-ui-1.8.18.custom.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/jquery.jqplot.min.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/ODataGrid/css/ui.ODataGrid.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/multiselect/jquery.multiselect.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/multidimensional_viewer/css/multidimensionalViewer.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/colorpicker/css/colorpicker.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/colorpicker/css/colorpicker_layout.css?prlp7p");
+@import url("https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/css/commons.css?prlp7p");
+</style>
+  
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-477 node-type-metadata i18n-it noscript" >
+	<script type="text/javascript">
+	(function(document) { document.getElementsByTagName('body')[0].className = 
+			  document.getElementsByTagName('body')[0].className.replace(' noscript', '');
+    })(document);
+	</script>
+	
+  
+  <!--  
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">< ?php print t('Skip to main content'); ?></a>
+  </div>-->
+    
+<div id="page-wrapper"><div id="page">
+
+  <div id="pre-header">
+	<div id="info-contacts">
+		  <div class="region region-pre-header-left">
+    <div id="block-block-3" class="block block-block">
+
+    
+  <div class="content">
+    <ul class="info-contatti"><li><strong>Call center:</strong> 800981212</li>
+<li><strong>PEC:</strong> <a href="mailto:comune.pisa@postacert.toscana.it">comune.pisa@postacert.toscana.it</a></li>
+<li><strong>E-Mail:</strong> <a href="mailto:opendata@comune.pisa.it">opendata@comune.pisa.it</a></li>
+<li><strong>Elenco tel:</strong> <a href="http://www.comune.pisa.it/new-site/it/list-uffici/id:11">Uffici</a></li>
+<li><strong>Skype:</strong> <a href="skype:centralino_comune.pisa.it?call"><img alt="icona skype" src="/sites/default/files/images/icon-skype.png" style="vertical-align: middle;" /></a></li>
+</ul>  </div>
+</div>
+  </div>
+	</div>
+	<div id="link-social">
+		  <div class="region region-pre-header-right">
+    <div id="block-block-4" class="block block-block">
+
+    
+  <div class="content">
+    <div class="link-social-twitter"><a href="https://twitter.com/PisaTurismoWITC" target="_blank"><img alt="" src="/sites/default/files/images/icon-twitter.png" /></a></div>
+<div class="link-social-facebook"><a href="http://www.facebook.com/pages/Comune-di-Pisa/65915678372"><img alt="" src="/sites/default/files/images/icon-facebook.png" /></a></div>
+<div class="link-social-youtube"><a href="https://www.youtube.com/user/ComunediPisa" target="_blank"><img alt="" src="/sites/default/files/images/icon-youtube.png" /></a></div>
+  </div>
+</div>
+  </div>
+	</div>
+  </div>
+  
+  <div id="header" class="with-secondary-menu"><div class="section clearfix">
+
+          <a href="/" title="Home" rel="home" id="logo">
+        <img src="https://opendata.comune.pisa.it/sites/default/files/open-data-pisa.png" alt="Home" />
+      </a>
+    	
+	
+          <div id="name-and-slogan">
+
+                              <div id="site-name">
+              <strong>
+                <a href="/" title="Home" rel="home"><span>Comune di Pisa</span></a>
+              </strong>
+            </div>
+                  
+                  <div id="site-slogan">
+            Open Data          </div>
+        
+      </div> <!-- /#name-and-slogan -->
+        <div id="language" class="language"> 
+ 
+</div> 
+
+    
+
+  </div></div> <!-- /.section, /#header -->
+
+
+          <div id="main-menu" class="navigation">
+	<div id="main-menu-wrapper">
+        <h2 class="element-invisible">Menu principale</h2><ul id="main-menu-links" class="links clearfix"><li class="menu-331 first"><a href="/">Home</a></li>
+<li class="menu-195"><a href="/catalogo-opendata" title="">Catalogo</a></li>
+<li class="menu-906"><a href="/content/cos%C3%A8-lopendata">Cos&#039;è L&#039;Opendata</a></li>
+<li class="menu-1284"><a href="/content/api">API</a></li>
+<li class="menu-933"><a href="/contact" title="">Contatti</a></li>
+<li class="menu-905 last"><a href="http://www.comune.pisa.it/" title="">Comune</a></li>
+</ul>        
+        	</div>
+      </div> <!-- /#main-menu -->
+        
+    
+  
+  
+    	<div id="main-wrapper" class="clearfix" vocab="http://schema.org/" typeof="ItemPage">
+    
+  
+  <div id="main" class="clearfix">
+  	<noscript>
+	<div id="no-script-message">Javascript &egrave; disabilitato nel tuo browser, abilitarlo per un utilizzo ottimale.</div>
+	</noscript>
+   <div id="content" class="column"><div class="section">
+            <a id="main-content"></a>
+              <div class="tabs">
+                  </div>
+            <div id="metadata-header" class="initial_metadata_loading" >
+	      	      
+    <div class="search-result-theme" >		    
+
+		<img src='https://opendata.comune.pisa.it/sites/default/files/cat-infrastrutture.jpg' alt='Infrastrutture e Trasporti' title='Infrastrutture e Trasporti'></img>	
+ 		
+    </div>
+  
+  	      
+	      	        
+	          			  	<h1 property="name" class="title" id="page-title" title="Grafo stradale">
+		          Grafo stradale		        </h1>
+			  	        <div id="sub-title">
+	        	<!-- <span id="author-subtitle-label">Fonte:</span><span id="author-subtitle">-</span>
+	        	<br /> -->
+	        	<span id="lastupdate-subtitle-label">Aggiornato al:</span><span id="lastupdate-subtitle">-</span>
+			</div>
+	      	  	      
+      </div>
+      
+            
+                    <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <div id="initial_viewer_loading" class="initial_viewer_loading"></div>
+<div id="detail-level-selector" class="detail-level-selector"></div>
+<div id="detail-level-selector-radio" class="detail-level-selector-radio"></div>
+
+	<div id="node-477" class="node node-metadata node-promoted node-full clearfix"  about="/content/grafo-stradale" typeof="sioc:Item foaf:Document">
+	
+	<div id="dataset-container" class="initial_metadata_loading" >
+		
+		<ul id="tab_parent_ul">
+			<li id="Descrizione" class="Descripton_img">
+				<span id="span_description_img" class="span_img" ></span>
+				<a href="#main-description">Descrizione</a>
+			</li>
+						<li id="Tabella" class="Table_img">
+				<span id="span_table_img" class="span_img" ></span>
+			<a href="/viewer/multidimensional/650e32c2-94ad-495a-8635-cc9698152ce3%40pisa/477">Tabella</a>			</li>
+			
+			<li id="Mappa" class="Map_img">
+				<span id="span_map_img" class="span_img" ></span>
+			<a href="/viewer/geo/650e32c2-94ad-495a-8635-cc9698152ce3%40pisa/477">Mappa</a>			</li>
+			
+						<li id="Grafico" class="Graphics_img">
+			<span id="span_graphics_img" class="span_img" ></span>
+			<a href="/viewer/graph/650e32c2-94ad-495a-8635-cc9698152ce3%40pisa/477">Grafico</a>		
+			</li>
+									<li id="Scarica" class="Download_img">
+				<span id="span_download_img" class="span_img" ></span>
+				<a href="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/blocks/download.php?_url=https://opendata.comune.pisa.it/metadata_download_page/676/shp/477/650e32c2-94ad-495a-8635-cc9698152ce3%40pisa">Scarica</a>			</li>
+						
+						
+								</ul>
+		
+		<div id="main-description" >
+			<div id="left-column">
+				<!-- autore -->
+									<div class="field metadata-author">
+									<div class='field-label'>
+						AUTORE					</div>
+										<a href="https://opendata.comune.pisa.it/catalogo-opendata/comune-pisa">
+													<span property="author" typeof="Organization">
+								<span id="field-author-label" property="name">Comune di Pisa </span>
+							</span>
+											</a><br />
+					<a href="http://www.comune.pisa.it/" class="author-website" rel="nofollow" target="_blank">Website</a>					
+				</div>
+				
+									 
+										<!--
+THIS FILE IS NOT USED AND IS HERE AS A STARTING POINT FOR CUSTOMIZATION ONLY.
+See http://api.drupal.org/api/function/theme_field/7 for details.
+After copying this file to your theme's folder and customizing it, remove this
+HTML comment.
+-->
+<div class="field field-name-metadata-fivestars field-type-fivestar field-label-above clearfix">
+      <div class="field-label">VOTO:&nbsp;</div>
+    <div class="field-items">
+          <div class="field-item even"><form class="fivestar-widget" action="/content/grafo-stradale" method="post" id="fivestar-custom-widget" accept-charset="UTF-8"><div><div  class="clearfix fivestar-average-text fivestar-average-stars fivestar-form-item fivestar-default"><div class="form-item form-type-fivestar form-item-vote">
+ <div class="form-item form-type-select form-item-vote">
+ <select id="edit-vote--2" name="vote" class="form-select"><option value="-">Select rating</option><option value="20">Give Grafo stradale 1/5</option><option value="40">Give Grafo stradale 2/5</option><option value="60">Give Grafo stradale 3/5</option><option value="80" selected="selected">Give Grafo stradale 4/5</option><option value="100">Give Grafo stradale 5/5</option></select>
+<div class="description"><div class="fivestar-summary fivestar-summary-average-count" property="aggregateRating"  typeof="AggregateRating" ><span class="average-rating">Media: <span property="ratingValue" ></span> <span class="total-votes">(<span property="reviewCount">4</span> voto/i)</span></div></div>
+</div>
+
+</div>
+</div><input class="fivestar-submit form-submit" type="submit" id="edit-fivestar-submit" name="op" value="Rate" /><input type="hidden" name="form_build_id" value="form-N-e1Opwvl5NrfLMP5RvNGldC3PWPyRAkKwWPT3gm1x4" />
+<input type="hidden" name="form_id" value="fivestar_custom_widget" />
+</div></form></div>
+      </div>
+</div>
+ 
+								
+				<!-- Dettaglio dato -->
+				<div class="metadata-details">
+					
+					<!-- Creation date -->
+					<div class="field metadata-last-change"> 
+						<div class='field-label'>
+							DATA DI CREAZIONE						</div>
+													<span id="creationdate" property="dateCreated">21/Dic/2015</span>											</div>
+					
+					<!-- Last update -->
+					<div class="field metadata-last-change"> 
+						<div class='field-label'>
+							AGGIORNATO IL						</div>
+						
+													<span id="lastupdate" property="dateModified">01/Feb/2016</span>											</div>
+					
+					<!-- Dataset updated to -->
+										
+					<!-- Numero allegati -->
+<!-- 					<div class="field metadata-attach-counter"> -->
+<!-- 						<div class="field-label"> -->
+							<!-- 						</div> -->
+						
+						<!-- 					</div> -->
+					
+					<!-- Categoria -->
+					<div class="field field-name-metadata-category field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">TEMA: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/categoria/infrastrutture-e-trasporti" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="" rel="nofollow">Infrastrutture e Trasporti</a></li></ul></div>					
+					<!-- Parole chiave -->
+					<div class="field field-name-metadata-type field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">PAROLE CHIAVE: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/parola-chiave/trasporti-0" property="keywords" rel="nofollow">Trasporti</a></li><li class="taxonomy-term-reference-1"><a href="/parola-chiave/strade-0" property="keywords" rel="nofollow">Strade</a></li></ul></div>					
+					<div class="field field-name-metadata-type field-type-taxonomy-term-reference field-label-above clearfix">
+						<h3 class="field-label">Mobilità del dato: </h3>
+						<span>Sconosciuta</span>
+					</div>
+					
+					<!-- Tipologia allegati -->
+										
+					
+				</div>
+
+			</div>
+			<div id="maind">
+				<div class="description">
+					<div class="field-label">
+						Nome:
+					</div>
+											<span>Grafo stradale</span>
+									</div>
+				
+				<div class="description">
+					<div class="field-label">
+						Descrizione:
+					</div>
+											<div property="description"><!--
+THIS FILE IS NOT USED AND IS HERE AS A STARTING POINT FOR CUSTOMIZATION ONLY.
+See http://api.drupal.org/api/function/theme_field/7 for details.
+After copying this file to your theme's folder and customizing it, remove this
+HTML comment.
+-->
+<div class="field field-name-body field-type-text-with-summary field-label-hidden clearfix">
+    <div class="field-items">
+          <div class="field-item even" property="content:encoded"><p>Rappresentazione geografica lineare delle strade nel territorio del comune di Pisa, corredata dai relativi attributi.</p>
+<p>Fonte originaria dei dati: Regione Toscana – “Stradario Iter.net”. Periodo di riferimento dei dati: Aprile 2015.</p>
+<p>Il dato &egrave; stato creato da <a href="@authorAlias">admin</a> il 21 Dicembre 2015</p></div>
+      </div>
+</div>
+</div>
+									</div>
+								
+				<div id="data-not-accessible-message" style="display: none;" class="infoForUser warning-background" >Al momento non &egrave; possibile visualizzare il dato.</div>
+				
+												
+								
+								
+									<div class="external-link">
+						<div class="field-label">
+						Altri links: 
+						</div>
+						<ul>
+							<li><a href="http://www502.regione.toscana.it/geoscopio/cartoteca.html#" target="_blank" rel="nofollow">Visualizza il sito origine</a></li><li><a href="http://www502.regione.toscana.it/geoscopio/download/grafo_stradale/iternet.zip" target="_blank" rel="nofollow">Scarica il dato origine</a></li>						</ul>
+						
+						
+					</div>
+						
+				
+					
+			</div>
+			<div id="right-column">
+				
+				<div class='field-label'>
+					PUBBLICATO DA				</div>
+				
+				<div class="metadata-publisher">
+									<p class="publisher-label">
+						<a href="/users/admin">admin admin</a>					</p>
+				</div>
+				
+								<!-- Licenza -->
+					<!--
+THIS FILE IS NOT USED AND IS HERE AS A STARTING POINT FOR CUSTOMIZATION ONLY.
+See http://api.drupal.org/api/function/theme_field/7 for details.
+After copying this file to your theme's folder and customizing it, remove this
+HTML comment.
+-->
+<div class="field field-name-metadata-license field-type-taxonomy-term-reference field-label-above clearfix">
+      <div class="field-label">LICENZA:&nbsp;</div>
+    <div class="field-items">
+          <div class="field-item even">
+      	      	<a rel="nofollow" href='http://creativecommons.org/licenses/by-sa/3.0' target="_blank">
+      		<img alt='Attribuzione - Condividi allo stesso modo' title='Attribuzione - Condividi allo stesso modo' src='https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/img/licences/CC_BY-SA_80x15.png'></img>
+      	</a>
+      </div>
+      </div>
+</div>				<!-- Datasource -->
+				<!-- <div class="field-datasource">
+				<div class="field field-name-metadata-datasources field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">Banca dati: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/banca-dati/comune-di-pisa-0" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">Comune di Pisa</a></li></ul></div>				</div> -->
+				
+				<!-- event statistics -->
+				<div class="field-event-statistics">
+										<div class='field-label'>
+						STATISTICHE						</div>
+						<table id="md-event-statistics">
+							<tbody>
+								<tr title="Visualizzato">
+									<td>Visualizzato</td>
+									<td>9802</td>
+								</tr>
+								<tr title="View count on catalog">
+									<td>Ricercato</td>
+									<td>2053</td>
+								</tr>
+								<tr title="Scaricato">
+									<td>Scaricato</td>
+									<td>93</td>
+								</tr>
+							</tbody>
+						</table>
+						
+								</div>
+				
+				<div class='field-label'>
+					OPENDATA SIMILI				</div>
+				<div class="related-metadata">
+					<ul>
+										</ul>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+			
+			<div id="show-complete-metadata">
+								
+				<!-- FINE RENDERIZZAZIONE INFO SULLA STRUTTURA/CONTENUTO DEL FILE -->
+														<a href="https://opendata.comune.pisa.it/content/grafo-stradale?metadati=showall#dettagli-sul-dato" title="Metadata link">
+						Maggiori dettagli su questo open data					</a>
+							</div>
+		</div>
+			</div>
+	
+	
+		
+	
+	</div>
+  </div>
+</div>
+  </div>
+      
+    </div></div> <!-- /.section, /#content -->
+
+  </div></div> <!-- /#main, /#main-wrapper -->
+
+  
+  <div id="footer-wrapper"><div class="section">
+
+    
+          <div id="footer" class="clearfix">
+          <div class="region region-footer">
+    <div id="block-block-11" class="block block-block">
+
+    
+  <div class="content">
+    <div class="info-footer">
+<div class="primo">
+<p><strong>Comune di Pisa</strong><br />
+Via degli Uffizzi, 1  56100  Pisa</p>
+</div>
+<div class="secondo">
+<p>Centralino: <a href="tel:050910111" target="_blank">050.910111</a><br />
+Fax: <a href="tel:050500242" target="_blank">050.500242</a></p>
+</div>
+<div class="terzo">
+<p>Mail: <a href="mailto:opendata@comune.pisa.it" target="_blank">opendata@comune.pisa.it</a><br /><a href="http://www.comune.pisa.it/it/default/4532/Privacy.html" target="_blank">Privacy</a></p>
+</div>
+</div>
+<div id="powered-by" style="clear: both; width: 100%; text-align: center;">Realizzato con la tecnologia Open Source <a href="http://www.opendata.statportal.it" target="_blank" title="StatPortal OpenData"><b>StatPortal OpenData ®</b></a></div>
+  </div>
+</div>
+  </div>
+      </div> <!-- /#footer -->
+    
+  </div></div> <!-- /.section, /#footer-wrapper -->
+
+</div></div> <!-- /#page, /#page-wrapper -->
+<script type="text/javascript">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/it_IT/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/js/jquery-1.7.1.min.js?prlp7p"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/js/drupal_core/jquery.form.js?prlp7p"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/js/ui/jquery.ui.core.min.js?prlp7p"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/misc/drupal.js?prlp7p"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/js/drupal_core/file.js?prlp7p"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/js/jquery-ui.min.js?v=1.0.0"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var StatPortalOpenData = StatPortalOpenData || {};StatPortalOpenData.UserLoggedIn = false;
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/js/jquery.easing.1.3.js?v=1.0.0"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function($) { $(document).ready(function() { 
+					$("#metadata-preview").magnificPopup({ 
+						delegate: "img", 
+						type: "image", 
+						gallery:{enabled:true}, 
+						callbacks: { 
+							elementParse: function(item) { item.src = item.el.attr("src"); }
+						},
+						removalDelay: 300,
+						mainClass: "mfp-fade"
+					}); });})(jQuery);
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/misc/jquery.cookie.js?v=1.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/misc/ajax.js?v=7.59"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/js/jquery.ui.filters.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/js/metadata.js?v=1.0.0"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var StatPortalOpenData = StatPortalOpenData || {};StatPortalOpenData.Enums = StatPortalOpenData.Enums || {};
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var StatPortalOpenData = StatPortalOpenData || {};StatPortalOpenData.Config = StatPortalOpenData.Config || {}; StatPortalOpenData.Config.srs = 'EPSG:900913'
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/libraries/magnific-popup/jquery.magnific-popup.min.js?v=1.0.0"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+		var StatPortalOpenData = StatPortalOpenData || {};
+		StatPortalOpenData.nodeInfo = {
+			odataId: '650e32c2-94ad-495a-8635-cc9698152ce3@pisa',
+			nid: 477
+		};
+		(function($) { $(document).ready(function() { 
+			$('#dataset-container').attr('data-id', StatPortalOpenData.nodeInfo.odataId); }); 
+		})(jQuery);
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/default/files/languages/it_VKf4BhK_vjoStR5dztXdNJe2F-r9i5YerLaZlslY5Eo.js?prlp7p"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+StatPortalOpenData.ODataServices = { FEDERATION_WS : "https://opendata.comune.pisa.it/FederationWS/services/FederationWS",ODATA4J_SERVICE : "https://opendata.comune.pisa.it/ODataProxy/",UTILITY_AND_MAP_SERVICE : "https://opendata.comune.pisa.it/ODataWS/services/ODataWS",OPENDATA_ETL : "https://opendata.comune.pisa.it/WSOpenDataETL/services/WSEtl",GEOSERVER_URL : "https://opendata.comune.pisa.it/geoserver/WSSpod/wms",GEOSERVER_REST_URL : "https://opendata.comune.pisa.it/ProxyServlet",PATH_FOR_DOWNLOAD_NODE_TABLE : "https://opendata.comune.pisa.it/sites/default/files/node_tables/",suggestSimilarData : "https://opendata.comune.pisa.it/true", RDF_BROWSER: 'http://opendata.comune.pisa.it/rdfbrowser/browser.php', GEO_VIEWER: 'https://opendata.comune.pisa.it/OpenDataGisViewer/GisViewer.html', initDataWithBestVisualization: true, customLabelForGraphBar: '', customColorForCustomLabelGraphBar: '' }
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/misc/progress.js?v=7.59"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/fivestar/js/fivestar.ajax.js?prlp7p"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/fivestar/js/fivestar.js?prlp7p"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/js/metadata.search.widget.js?prlp7p"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/earth_viewer/js/earth_viewer.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqGrid4.4.0/js/i18n/grid.locale-it.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/js/datajs-1.0.2.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/multidimensional_viewer/js/multidimensional_viewer.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqGrid4.4.0/js/jquery.jqGrid.src.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/xml2json/jquery.xml2json.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/ODataGrid/js/eventsManager.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/js/utility.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/js/ODataUtility.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/ODataGrid/js/jquery.ODataGrid.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/tmpl/jquery.tmpl.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/multiselect/jquery.multiselect.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/js/State.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/js/xml2json.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/js/soapclient.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/jquery.jqplot.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.canvasAxisTickRenderer.min.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.canvasTextRenderer.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.canvasAxisLabelRenderer.min.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.dateAxisRenderer.min.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.barRenderer.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.canvasOverlay.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.categoryAxisRenderer.min.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.pieRenderer.min.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.donutRenderer.min.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.highlighter.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.funnelRenderer.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/commons/jquery_plugins/jqPlot/plugins/jqplot.cursor.min.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/graph_viewer/js/graph_viewer.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/rdf_browser/js/rdf_browser.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/geo_viewer/js/geo_viewer.common.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/modules/spodata/metadata/viewer/geo_viewer/js/geo_viewer.js?v=1.0.0"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=REDACTED&amp;sensor=false&amp;v=1.0.0"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try { google.load("earth", "1"); } catch(e) {}
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://opendata.comune.pisa.it/sites/all/libraries/chosen/chosen.jquery.js?v=1.0.0"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+StatPortalOpenData.RESOURCE_PATH="MdData('650e32c2-94ad-495a-8635-cc9698152ce3@pisa')/DataRows"
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var StatPortalOpenData = StatPortalOpenData || {};
+		StatPortalOpenData.Enums = StatPortalOpenData.Enums || {};
+		StatPortalOpenData.Enums.AttachType = {
+			MD_DATA: 0, RAW: 1, WMS: 4, APPLICATION: 3, REPORT: 2
+		}
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery(document).ready(function(){ StatPortalOpenData.ODataUtility.loadStateCompleted = false; StatPortalOpenData.ODataUtility.loadState('650e32c2-94ad-495a-8635-cc9698152ce3@pisa', 1, null); });
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"statportal_pisa","theme_token":"7I4RjUHrgQbhRODeftwHW1W3g9WGRXdN1W2VJPJiK-w","js":{"misc\/jquery.js":1,"misc\/jquery.form.js":1,"misc\/jquery.once.js":1,"sites\/all\/modules\/spodata\/metadata\/js\/ui\/jquery.ui.core.min.js":1,"misc\/drupal.js":1,"modules\/file\/file.js":1,"sites\/all\/modules\/spodata\/metadata\/js\/jquery-ui.min.js":1,"0":1,"sites\/all\/modules\/spodata\/metadata\/js\/jquery.easing.1.3.js":1,"1":1,"misc\/jquery.cookie.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/spodata\/metadata\/js\/jquery.ui.filters.js":1,"sites\/all\/modules\/spodata\/metadata\/js\/metadata.js":1,"2":1,"3":1,"4":1,"sites\/all\/libraries\/magnific-popup\/jquery.magnific-popup.min.js":1,"5":1,"public:\/\/languages\/it_VKf4BhK_vjoStR5dztXdNJe2F-r9i5YerLaZlslY5Eo.js":1,"6":1,"misc\/progress.js":1,"sites\/all\/modules\/fivestar\/js\/fivestar.ajax.js":1,"sites\/all\/modules\/fivestar\/js\/fivestar.js":1,"sites\/all\/modules\/spodata\/metadata\/js\/metadata.search.widget.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/earth_viewer\/js\/earth_viewer.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqGrid4.4.0\/js\/i18n\/grid.locale-it.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/js\/datajs-1.0.2.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/multidimensional_viewer\/js\/multidimensional_viewer.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqGrid4.4.0\/js\/jquery.jqGrid.src.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/xml2json\/jquery.xml2json.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/ODataGrid\/js\/eventsManager.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/js\/utility.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/js\/ODataUtility.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/ODataGrid\/js\/jquery.ODataGrid.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/tmpl\/jquery.tmpl.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/multiselect\/jquery.multiselect.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/js\/State.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/js\/xml2json.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/js\/soapclient.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/jquery.jqplot.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.canvasAxisTickRenderer.min.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.canvasTextRenderer.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.canvasAxisLabelRenderer.min.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.dateAxisRenderer.min.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.barRenderer.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.canvasOverlay.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.categoryAxisRenderer.min.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.pieRenderer.min.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.donutRenderer.min.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.highlighter.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.funnelRenderer.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/plugins\/jqplot.cursor.min.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/graph_viewer\/js\/graph_viewer.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/rdf_browser\/js\/rdf_browser.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/geo_viewer\/js\/geo_viewer.common.js":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/geo_viewer\/js\/geo_viewer.js":1,"https:\/\/maps.googleapis.com\/maps\/api\/js?key=REDACTED\u0026sensor=false":1,"https:\/\/www.google.com\/jsapi":1,"7":1,"sites\/all\/libraries\/chosen\/chosen.jquery.js":1,"8":1,"9":1,"10":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/libraries\/magnific-popup\/magnific-popup.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/graph_viewer\/css\/graph_viewer.css":1,"sites\/all\/modules\/spodata\/metadata\/css\/jquery.ui.filters.css":1,"sites\/all\/libraries\/chosen\/chosen.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"modules\/forum\/forum.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/spodata\/metadata\/style\/spodata_jqtheme\/jquery.ui.dialog.css":1,"sites\/all\/modules\/spodata\/metadata\/style\/spodata_jqtheme\/jquery.ui.all.css":1,"sites\/all\/modules\/spodata\/metadata\/style\/spodata_jqtheme\/jquery-ui-1.8.18.custom.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/fivestar\/css\/fivestar.css":1,"sites\/all\/themes\/statportal_pisa\/css\/layout.css":1,"sites\/all\/themes\/statportal\/css\/style.css":1,"sites\/all\/themes\/statportal_pisa\/css\/colors.less":1,"sites\/all\/themes\/statportal_pisa\/css\/custom.css":1,"sites\/all\/themes\/statportal\/css\/print.css":1,"sites\/all\/modules\/spodata\/metadata\/css\/metadata.css":1,"sites\/all\/themes\/statportal_pisa\/css\/metadata_color.less":1,"sites\/all\/themes\/statportal_pisa\/css\/ie.css":1,"sites\/all\/themes\/statportal_pisa\/css\/ie6.css":1,"sites\/all\/themes\/statportal_pisa\/css\/noscript.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqGrid4.4.0\/css\/ui.jqgrid.css":1,"sites\/all\/modules\/spodata\/metadata\/style\/spodata_jqtheme\/jquery.ui.detail-level-button.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_ui\/css\/custom-theme\/redmond\/jquery-ui-1.8.18.custom.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/jqPlot\/jquery.jqplot.min.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/ODataGrid\/css\/ui.ODataGrid.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/multiselect\/jquery.multiselect.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/multidimensional_viewer\/css\/multidimensionalViewer.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/colorpicker\/css\/colorpicker.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/jquery_plugins\/colorpicker\/css\/colorpicker_layout.css":1,"sites\/all\/modules\/spodata\/metadata\/viewer\/commons\/css\/commons.css":1}},"currentUser":0,"directDownloadEnabled":false,"Metadata":{"nid":"477"},"ajax":{"edit-vote--2":{"callback":"fivestar_ajax_submit","event":"change","url":"\/system\/ajax","submit":{"_triggering_element_name":"vote"}}},"urlIsAjaxTrusted":{"\/system\/ajax":true,"\/content\/grafo-stradale":true}});
+//--><!]]>
+</script>
+</body>
+</html>

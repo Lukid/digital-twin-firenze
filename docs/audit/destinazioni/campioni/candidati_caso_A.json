@@ -1,0 +1,382 @@
+{
+ "Z1": {
+  "etichetta": "Liceo Artistico F. Russoli (via San Frediano 13)",
+  "osm": "way/232482921",
+  "nome_osm": "Liceo Artistico \"F. Russoli\"",
+  "centro_osm": [
+   43.718848,
+   10.399353
+  ],
+  "tag_osm": {
+   "amenity": "school",
+   "name": "Liceo Artistico \"F. Russoli\""
+  },
+  "ingressi_osm_nel_bbox": [
+   {
+    "id": 6261461127,
+    "lat": 43.7191368,
+    "lon": 10.3998223,
+    "tag": {
+     "entrance": "main"
+    }
+   },
+   {
+    "id": 6272528436,
+    "lat": 43.719142,
+    "lon": 10.3986561,
+    "tag": {
+     "entrance": "yes"
+    }
+   },
+   {
+    "id": 8504521310,
+    "lat": 43.7183721,
+    "lon": 10.3998764,
+    "tag": {
+     "addr:housenumber": "5",
+     "addr:street": "Via San Frediano",
+     "entrance": "yes"
+    }
+   }
+  ],
+  "fermate_gtfs_entro_300m": [
+   {
+    "codice": "PI4355",
+    "nome": "SANTA MARIA 1",
+    "dist_m": 176,
+    "corse_oggi": 54,
+    "linee": "23"
+   },
+   {
+    "codice": "PI4356",
+    "nome": "SANTA MARIA 2",
+    "dist_m": 248,
+    "corse_oggi": 27,
+    "linee": "23"
+   },
+   {
+    "codice": "PI4291",
+    "nome": "PACINOTTI 2",
+    "dist_m": 260,
+    "corse_oggi": 349,
+    "linee": "13 2 21 22 23 25 3+ 4 5"
+   }
+  ]
+ },
+ "Z2": {
+  "etichetta": "Scuola primaria C. Battisti (via Corridoni 42)",
+  "osm": "way/695634299",
+  "nome_osm": "Scuola Primaria “C. Battisti”",
+  "centro_osm": [
+   43.707369,
+   10.404627
+  ],
+  "tag_osm": {
+   "addr:housenumber": "42",
+   "addr:street": "Via Filippo Corridoni",
+   "amenity": "school",
+   "name": "Scuola Primaria “C. Battisti”"
+  },
+  "ingressi_osm_nel_bbox": [
+   {
+    "id": 5101368983,
+    "lat": 43.7070909,
+    "lon": 10.4040966,
+    "tag": {
+     "addr:housenumber": "35",
+     "addr:street": "Via Filippo Corridoni",
+     "entrance": "yes"
+    }
+   },
+   {
+    "id": 5101368984,
+    "lat": 43.7070446,
+    "lon": 10.404229,
+    "tag": {
+     "addr:housenumber": "33",
+     "addr:street": "Via Filippo Corridoni",
+     "entrance": "yes"
+    }
+   },
+   {
+    "id": 5101368985,
+    "lat": 43.706925,
+    "lon": 10.4045732,
+    "tag": {
+     "addr:housenumber": "29",
+     "addr:street": "Via Filippo Corridoni",
+     "entrance": "yes"
+    }
+   },
+   {
+    "id": 6532183886,
+    "lat": 43.7071206,
+    "lon": 10.4044383,
+    "tag": {
+     "entrance": "main"
+    }
+   },
+   {
+    "id": 13804118745,
+    "lat": 43.7078788,
+    "lon": 10.4042974,
+    "tag": {
+     "addr:housenumber": "35",
+     "addr:street": "Via Amerigo Vespucci",
+     "entrance": "yes"
+    }
+   },
+   {
+    "id": 13804118746,
+    "lat": 43.707893,
+    "lon": 10.4042575,
+    "tag": {
+     "addr:housenumber": "37",
+     "addr:street": "Via Amerigo Vespucci",
+     "entrance": "yes"
+    }
+   },
+   {
+    "id": 13804118752,
+    "lat": 43.7078442,
+    "lon": 10.404395,
+    "tag": {
+     "addr:housenumber": "31",
+     "addr:street": "Via Amerigo Vespucci",
+     "entrance": "staircase"
+    }
+   },
+   {
+    "id": 13804368962,
+    "lat": 43.7078768,
+    "lon": 10.4046157,
+    "tag": {
+     "addr:housenumber": "16",
+     "addr:street": "Via Amerigo Vespucci",
+     "entrance": "yes"
+    }
+   }
+  ],
+  "fermate_gtfs_entro_300m": [
+   {
+    "codice": "PI4074",
+    "nome": "CORRIDONI 1",
+    "dist_m": 71,
+    "corse_oggi": 203,
+    "linee": "12 15 16 21 3+ 5"
+   },
+   {
+    "codice": "PI4055",
+    "nome": "CATTANEO 1",
+    "dist_m": 210,
+    "corse_oggi": 201,
+    "linee": "1+ 12 16 160 190 50 8"
+   },
+   {
+    "codice": "PI4056",
+    "nome": "CATTANEO 2",
+    "dist_m": 219,
+    "corse_oggi": 86,
+    "linee": "160 190 50 8"
+   },
+   {
+    "codice": "PI4053",
+    "nome": "BONAINI 2",
+    "dist_m": 253,
+    "corse_oggi": 336,
+    "linee": "1+ 110 12 14 150 16 160 190 5 50 8"
+   },
+   {
+    "codice": "PI4089",
+    "nome": "DA MORRONA",
+    "dist_m": 285,
+    "corse_oggi": 35,
+    "linee": "12 16"
+   },
+   {
+    "codice": "PI4076",
+    "nome": "CORRIDONI 3",
+    "dist_m": 290,
+    "corse_oggi": 172,
+    "linee": "15 21 3+ 5"
+   },
+   {
+    "codice": "PI4075",
+    "nome": "CORRIDONI 2",
+    "dist_m": 298,
+    "corse_oggi": 203,
+    "linee": "12 15 16 21 3+ 5"
+   }
+  ]
+ },
+ "Z3": {
+  "etichetta": "Scuola primaria L. Gereschi (via U. Viale 16)",
+  "osm": "way/211388929",
+  "nome_osm": "Scuola Elementare \"Livia Gereschi\"",
+  "centro_osm": [
+   43.712801,
+   10.432187
+  ],
+  "tag_osm": {
+   "addr:housenumber": "16",
+   "addr:street": "Via Umberto Viale",
+   "amenity": "school",
+   "check_date": "2025-07-27",
+   "name": "Scuola Elementare \"Livia Gereschi\""
+  },
+  "ingressi_osm_nel_bbox": [
+   {
+    "id": 5985440935,
+    "lat": 43.7131443,
+    "lon": 10.4328597,
+    "tag": {
+     "entrance": "main"
+    }
+   },
+   {
+    "id": 6528635340,
+    "lat": 43.7125645,
+    "lon": 10.4318251,
+    "tag": {
+     "addr:housenumber": "16",
+     "addr:street": "Via Umberto Viale",
+     "entrance": "main"
+    }
+   }
+  ],
+  "fermate_gtfs_entro_300m": [
+   {
+    "codice": "PI4324",
+    "nome": "PUNGILUPO 2",
+    "dist_m": 127,
+    "corse_oggi": 58,
+    "linee": "13 18"
+   },
+   {
+    "codice": "PI4062",
+    "nome": "PUNGILUPO 3",
+    "dist_m": 189,
+    "corse_oggi": 9,
+    "linee": "22"
+   },
+   {
+    "codice": "PI4046",
+    "nome": "CADUTI DI EL ALAMEIN",
+    "dist_m": 212,
+    "corse_oggi": 58,
+    "linee": "13 18"
+   },
+   {
+    "codice": "PI4045",
+    "nome": "FRASCANI",
+    "dist_m": 230,
+    "corse_oggi": 9,
+    "linee": "22"
+   }
+  ]
+ },
+ "Z4": {
+  "etichetta": "Scuola secondaria I grado L. Fibonacci (via Lalli 4)",
+  "osm": "way/128401172",
+  "nome_osm": "Scuola Primaria di Secondo Grado \"Leonardo Fibonacci",
+  "centro_osm": [
+   43.717935,
+   10.408628
+  ],
+  "tag_osm": {
+   "building": "school",
+   "name": "Scuola Primaria di Secondo Grado \"Leonardo Fibonacci"
+  },
+  "ingressi_osm_nel_bbox": [
+   {
+    "id": 3081240280,
+    "lat": 43.7176268,
+    "lon": 10.4082063,
+    "tag": {
+     "entrance": "yes"
+    }
+   },
+   {
+    "id": 3081240282,
+    "lat": 43.7176831,
+    "lon": 10.4089891,
+    "tag": {
+     "entrance": "yes"
+    }
+   },
+   {
+    "id": 3779282861,
+    "lat": 43.7177414,
+    "lon": 10.408643,
+    "tag": {
+     "entrance": "yes"
+    }
+   }
+  ],
+  "fermate_gtfs_entro_300m": [
+   {
+    "codice": "PI4350",
+    "nome": "SAN FRANCESCO 2",
+    "dist_m": 85,
+    "corse_oggi": 96,
+    "linee": "18 2 22 4"
+   },
+   {
+    "codice": "PI4097",
+    "nome": "DE AMICIS",
+    "dist_m": 93,
+    "corse_oggi": 158,
+    "linee": "18 2 3+ 4"
+   },
+   {
+    "codice": "PI4103",
+    "nome": "DI SIMONE",
+    "dist_m": 109,
+    "corse_oggi": 165,
+    "linee": "2 22 3+ 4"
+   },
+   {
+    "codice": "PI4349",
+    "nome": "SAN FRANCESCO 1",
+    "dist_m": 125,
+    "corse_oggi": 96,
+    "linee": "18 2 22 4"
+   },
+   {
+    "codice": "PI4340",
+    "nome": "SANTA MARTA 2",
+    "dist_m": 144,
+    "corse_oggi": 156,
+    "linee": "2 3+ 4"
+   },
+   {
+    "codice": "PI4038",
+    "nome": "BUONARROTI 1",
+    "dist_m": 210,
+    "corse_oggi": 43,
+    "linee": "4"
+   },
+   {
+    "codice": "PI4346",
+    "nome": "SANTA BIBBIANA",
+    "dist_m": 221,
+    "corse_oggi": 165,
+    "linee": "2 22 3+ 4"
+   },
+   {
+    "codice": "PI4040",
+    "nome": "BUONARROTI 3",
+    "dist_m": 242,
+    "corse_oggi": 113,
+    "linee": "3+ 4"
+   },
+   {
+    "codice": "PI4015",
+    "nome": "BATTELLI 4",
+    "dist_m": 261,
+    "corse_oggi": 92,
+    "linee": "110 120 130 18 2 22"
+   }
+  ]
+ }
+}

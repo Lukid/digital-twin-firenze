@@ -1,0 +1,9461 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-01T13:43:56Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 213847571,
+  "lat": 43.7107991,
+  "lon": 10.4012780,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "36",
+    "addr:postcode": "56125",
+    "addr:street": "Via Benedetto Croce",
+    "amenity": "school",
+    "check_date": "2025-09-24",
+    "contact:email": "pips02000a@istruzione.it",
+    "contact:fax": "+39 050 29220",
+    "contact:phone": "+39 050 20036;+39 050 28212",
+    "name": "Liceo scientifico \"Ulisse Dini\"",
+    "ref": "PIPS02000A",
+    "website": "https://www.liceodini.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 241507010,
+  "lat": 43.7107490,
+  "lon": 10.4021048,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "34",
+    "addr:postcode": "56125",
+    "addr:street": "Via Benedetto Croce",
+    "amenity": "school",
+    "contact:email": "piis00700e@istruzione.it;piis00700e@pec.istruzione.it",
+    "contact:phone": "+39 050 6200431",
+    "name": "Istituto Tecnico Commerciale \"Antonio Pacinotti\"",
+    "website": "https://iisgalileipacinotti.it/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 241507012,
+  "lat": 43.7106772,
+  "lon": 10.4028818,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "32",
+    "addr:postcode": "56125",
+    "addr:street": "Via Benedetto Croce",
+    "amenity": "school",
+    "contact:phone": "+39 050 23230",
+    "name": "Liceo Classico \"Galileo Galilei\"",
+    "website": "https://iisgalileipacinotti.it/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 285178846,
+  "lat": 43.7165844,
+  "lon": 10.4000732,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Pacinotti 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285178859,
+  "lat": 43.7163463,
+  "lon": 10.4017267,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Pacinotti 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285178869,
+  "lat": 43.7157808,
+  "lon": 10.4008467,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-04-17",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Gambacorti 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285178880,
+  "lat": 43.7149042,
+  "lon": 10.3989207,
+  "tags": {
+    "bus": "yes",
+    "name": "Mazzini 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 285178900,
+  "lat": 43.7111466,
+  "lon": 10.3986614,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Vittorio Emanuele II",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285181856,
+  "lat": 43.7086013,
+  "lon": 10.3990488,
+  "tags": {
+    "bus": "yes",
+    "name": "Stazione FS 2",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 285185665,
+  "lat": 43.7085665,
+  "lon": 10.3990352,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stazione FS 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "22",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285185677,
+  "lat": 43.7087661,
+  "lon": 10.3988595,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 285185681,
+  "lat": 43.7088013,
+  "lon": 10.3992802,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 6",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 285188660,
+  "lat": 43.7115165,
+  "lon": 10.3972357,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Crispi 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "route_ref": "22",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203249,
+  "lat": 43.7136187,
+  "lon": 10.3963394,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Crispi 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203252,
+  "lat": 43.7159975,
+  "lon": 10.4029937,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Mediceo 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203259,
+  "lat": 43.7144543,
+  "lon": 10.4071609,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Mediceo 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 285203265,
+  "lat": 43.7150443,
+  "lon": 10.4090409,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "name": "S. Marta 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 292619104,
+  "lat": 43.7114161,
+  "lon": 10.4066741,
+  "tags": {
+    "access": "permissive",
+    "access:conditional": "no @ (Nov-Jan: Mo-Su,PH 00:00-08:00,17:00-24:00),  (Feb-Mar: Mo-Su,PH 00:00-08:00,17:30-24:00),  (Apr,Oct: Mo-Su,PH 00:00-08:00,19:00-24:00), (May,Sep: Mo-Su,PH 00:00-08:00,20:00-24:00), (Jun-Aug: Mo-Su,PH 08:00-20:30), (Jan 01: 00:00-24:00), (May 01: 00:",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 292619130,
+  "lat": 43.7113126,
+  "lon": 10.4077400,
+  "tags": {
+    "access": "permissive",
+    "access:conditional": "no @ (Nov-Jan: Mo-Su,PH 00:00-08:00,17:00-24:00),  (Feb-Mar: Mo-Su,PH 00:00-08:00,17:30-24:00),  (Apr,Oct: Mo-Su,PH 00:00-08:00,19:00-24:00), (May,Sep: Mo-Su,PH 00:00-08:00,20:00-24:00), (Jun-Aug: Mo-Su,PH 08:00-20:30), (Jan 01: 00:00-24:00), (May 01: 00:",
+    "barrier": "gate",
+    "foot": "destination"
+  }
+},
+{
+  "type": "node",
+  "id": 292619131,
+  "lat": 43.7126392,
+  "lon": 10.4077408,
+  "tags": {
+    "access": "permissive",
+    "access:conditional": "no @ (Nov-Jan: Mo-Su,PH 00:00-08:00,17:00-24:00),  (Feb-Mar: Mo-Su,PH 00:00-08:00,17:30-24:00),  (Apr,Oct: Mo-Su,PH 00:00-08:00,19:00-24:00), (May,Sep: Mo-Su,PH 00:00-08:00,20:00-24:00), (Jun-Aug: Mo-Su,PH 08:00-20:30), (Jan 01: 00:00-24:00), (May 01: 00:",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 417072504,
+  "lat": 43.7135419,
+  "lon": 10.4035749,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 1209353966,
+  "lat": 43.7084366,
+  "lon": 10.4000086,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 1209852025,
+  "lat": 43.7087524,
+  "lon": 10.3973909,
+  "tags": {
+    "barrier": "gate",
+    "bicycle": "permissive",
+    "foot": "permissive"
+  }
+},
+{
+  "type": "node",
+  "id": 1215869801,
+  "lat": 43.7149178,
+  "lon": 10.4073230,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 1226520960,
+  "lat": 43.7086681,
+  "lon": 10.3962724,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1409174429,
+  "lat": 43.7109081,
+  "lon": 10.3974504,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pisa Piazza Sant'Antonio",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 1419100971,
+  "lat": 43.7111658,
+  "lon": 10.4104268,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:postcode": "56124",
+    "addr:street": "Via Cosimo Ridolfi",
+    "amenity": "university",
+    "check_date": "2026-09-04",
+    "check_date:opening_hours": "2026-09-04",
+    "faculty": "economics",
+    "internet_access": "wlan",
+    "name": "Dipartimento di Economia e Management",
+    "opening_hours": "Mo-Fr 07:00-19:00",
+    "operator": "Università di Pisa",
+    "website": "https://www.ec.unipi.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1422857596,
+  "lat": 43.7085314,
+  "lon": 10.3985458,
+  "tags": {
+    "entrance": "main",
+    "railway": "train_station_entrance"
+  }
+},
+{
+  "type": "node",
+  "id": 1652834962,
+  "lat": 43.7127666,
+  "lon": 10.4096824,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Borghetto 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652834971,
+  "lat": 43.7148317,
+  "lon": 10.4091829,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Garibaldi 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652834996,
+  "lat": 43.7119175,
+  "lon": 10.4094283,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Buozzi",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855508,
+  "lat": 43.7096559,
+  "lon": 10.4045292,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Bonaini 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "ref": "B4053",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855521,
+  "lat": 43.7133840,
+  "lon": 10.4069670,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "covered": "no",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Galilei 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "passenger_information_display": "no",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855530,
+  "lat": 43.7105607,
+  "lon": 10.4077250,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Fibonacci",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855542,
+  "lat": 43.7099529,
+  "lon": 10.4110930,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Matteotti 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "website": "https://pisa.cttnord.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855551,
+  "lat": 43.7099027,
+  "lon": 10.4004671,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Bonaini 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855558,
+  "lat": 43.7157307,
+  "lon": 10.3984073,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-04-17",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Gambacorti 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855573,
+  "lat": 43.7153549,
+  "lon": 10.3971638,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-04-17",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Gambacorti 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855613,
+  "lat": 43.7096136,
+  "lon": 10.4120594,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Agnelli",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "website": "https://pisa.cttnord.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855621,
+  "lat": 43.7101384,
+  "lon": 10.4070143,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Da Sangallo 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "website": "https://pisa.cttnord.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652855640,
+  "lat": 43.7148336,
+  "lon": 10.4035627,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Galilei 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878248,
+  "lat": 43.7069187,
+  "lon": 10.3958970,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Fra' Mansueto",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878250,
+  "lat": 43.7082675,
+  "lon": 10.4011543,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Corridoni 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "website": "https://pisa.cttnord.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878252,
+  "lat": 43.7054796,
+  "lon": 10.3965049,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Goletta",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878253,
+  "lat": 43.7053834,
+  "lon": 10.4024522,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Da Morrona",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878256,
+  "lat": 43.7033860,
+  "lon": 10.3981137,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "S. Agostino 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878262,
+  "lat": 43.7073507,
+  "lon": 10.4037067,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Corridoni 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878274,
+  "lat": 43.7028234,
+  "lon": 10.4007956,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Aeroporto 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878281,
+  "lat": 43.7047038,
+  "lon": 10.3985254,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "SS. Efisio e Potito",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878283,
+  "lat": 43.7050521,
+  "lon": 10.4014642,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Giusti 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878289,
+  "lat": 43.7033987,
+  "lon": 10.4043103,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "S. Marco",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878299,
+  "lat": 43.7058423,
+  "lon": 10.3994613,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Cappuccini",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878307,
+  "lat": 43.7081562,
+  "lon": 10.4011855,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Corridoni 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "website": "https://pisa.cttnord.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878309,
+  "lat": 43.7028913,
+  "lon": 10.4006948,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Aeroporto 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878323,
+  "lat": 43.7027745,
+  "lon": 10.4047083,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Montanelli 2",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 1652878326,
+  "lat": 43.7049481,
+  "lon": 10.4015552,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Giusti 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1671656746,
+  "lat": 43.7080284,
+  "lon": 10.4071665,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Cattaneo 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1671656752,
+  "lat": 43.7118549,
+  "lon": 10.3943170,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Zerboglio",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 1671656790,
+  "lat": 43.7093312,
+  "lon": 10.3987919,
+  "tags": {
+    "bus": "yes",
+    "name": "Gramsci Stazione",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 1671656804,
+  "lat": 43.7060559,
+  "lon": 10.4085515,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Emilia 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1671656818,
+  "lat": 43.7077395,
+  "lon": 10.4072283,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Cattaneo 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1671656856,
+  "lat": 43.7125348,
+  "lon": 10.3923950,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Piazza San Paolo a Ripa D'Arno",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 1671656869,
+  "lat": 43.7061445,
+  "lon": 10.4090641,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Fiorentina 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2073437687,
+  "lat": 43.7111258,
+  "lon": 10.4005553,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2073437688,
+  "lat": 43.7114219,
+  "lon": 10.4006579,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2262637093,
+  "lat": 43.7130584,
+  "lon": 10.4099514,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2410169992,
+  "lat": 43.7098976,
+  "lon": 10.3928386,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2410171306,
+  "lat": 43.7098559,
+  "lon": 10.3928076,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2463186801,
+  "lat": 43.7125247,
+  "lon": 10.4056618,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2481403286,
+  "lat": 43.7031250,
+  "lon": 10.4053345,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2505346142,
+  "lat": 43.7146191,
+  "lon": 10.3970524,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2505346145,
+  "lat": 43.7146522,
+  "lon": 10.3974617,
+  "tags": {
+    "entrance": "park"
+  }
+},
+{
+  "type": "node",
+  "id": 2526548501,
+  "lat": 43.7082135,
+  "lon": 10.4051289,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2529180383,
+  "lat": 43.7092097,
+  "lon": 10.4056937,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2555488547,
+  "lat": 43.7113847,
+  "lon": 10.3980702,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2555495476,
+  "lat": 43.7104829,
+  "lon": 10.4042763,
+  "tags": {
+    "barrier": "gate",
+    "locked": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2555495479,
+  "lat": 43.7105091,
+  "lon": 10.4038197,
+  "tags": {
+    "barrier": "gate",
+    "locked": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2591019428,
+  "lat": 43.7128081,
+  "lon": 10.4014681,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2591019434,
+  "lat": 43.7129282,
+  "lon": 10.4015198,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 2591021861,
+  "lat": 43.7126883,
+  "lon": 10.4011248,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2705546207,
+  "lat": 43.7103546,
+  "lon": 10.4108919,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2875435858,
+  "lat": 43.7079931,
+  "lon": 10.3981841,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "5",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2971922999,
+  "lat": 43.7117477,
+  "lon": 10.3921111,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Stampace",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 3086164676,
+  "lat": 43.7165017,
+  "lon": 10.4055391,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "4",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ludovico Coccapani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3086164677,
+  "lat": 43.7165564,
+  "lon": 10.4055345,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "6",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ludovico Coccapani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3092246733,
+  "lat": 43.7166408,
+  "lon": 10.4054724,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "3",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ludovico Coccapani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3102313775,
+  "lat": 43.7104767,
+  "lon": 10.3947380,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 3118498344,
+  "lat": 43.7046556,
+  "lon": 10.4043784,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 3133937936,
+  "lat": 43.7164293,
+  "lon": 10.4058990,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "1",
+    "addr:postcode": "56127",
+    "addr:street": "Via Sant'Andrea",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3167864238,
+  "lat": 43.7099917,
+  "lon": 10.4119121,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 3167864240,
+  "lat": 43.7099864,
+  "lon": 10.4117299,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 3483952525,
+  "lat": 43.7166543,
+  "lon": 10.3988015,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "43",
+    "addr:postcode": "56126",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "amenity": "university",
+    "check_date": "2025-03-28",
+    "name": "Università di Pisa - Rettorato"
+  }
+},
+{
+  "type": "node",
+  "id": 3499473885,
+  "lat": 43.7051022,
+  "lon": 10.4096678,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 3512110649,
+  "lat": 43.7117123,
+  "lon": 10.3921295,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "covered": "no",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stampace",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3602022542,
+  "lat": 43.7086226,
+  "lon": 10.3994837,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stazione FS 4",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3663350211,
+  "lat": 43.7100493,
+  "lon": 10.4072362,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Da Sangallo 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "website": "http://www.cpt.pisa.it"
+  }
+},
+{
+  "type": "node",
+  "id": 3663357121,
+  "lat": 43.7125349,
+  "lon": 10.3924246,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Piazza San Paolo a Ripa D'Arno",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3689242962,
+  "lat": 43.7107876,
+  "lon": 10.3976020,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "2",
+    "addr:postcode": "56125",
+    "addr:street": "Via Silvio Pellico",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3689242971,
+  "lat": 43.7108269,
+  "lon": 10.3973100,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3726679040,
+  "lat": 43.7092158,
+  "lon": 10.3977775,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 3760170173,
+  "lat": 43.7087931,
+  "lon": 10.3976539,
+  "tags": {
+    "barrier": "gate",
+    "bicycle": "permissive",
+    "foot": "permissive",
+    "motor_vehicle": "no",
+    "railway": "train_station_entrance"
+  }
+},
+{
+  "type": "node",
+  "id": 4428982346,
+  "lat": 43.7070005,
+  "lon": 10.3933347,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 4872235548,
+  "lat": 43.7075813,
+  "lon": 10.3980743,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "12",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4894060571,
+  "lat": 43.7123617,
+  "lon": 10.3933619,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4894134515,
+  "lat": 43.7111703,
+  "lon": 10.3958157,
+  "tags": {
+    "amenity": "school",
+    "name": "Scuola di Musica"
+  }
+},
+{
+  "type": "node",
+  "id": 4897960811,
+  "lat": 43.7124894,
+  "lon": 10.3918326,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 4982860896,
+  "lat": 43.7098491,
+  "lon": 10.3955439,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 4982860897,
+  "lat": 43.7098407,
+  "lon": 10.3956015,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 4982860898,
+  "lat": 43.7098319,
+  "lon": 10.3956607,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 4982860899,
+  "lat": 43.7098228,
+  "lon": 10.3957221,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 4982860908,
+  "lat": 43.7101765,
+  "lon": 10.3955962,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5020542950,
+  "lat": 43.7054434,
+  "lon": 10.4083071,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via Giuseppe Saragat",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5022056648,
+  "lat": 43.7066161,
+  "lon": 10.4051139,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5022098660,
+  "lat": 43.7081005,
+  "lon": 10.4013168,
+  "tags": {
+    "addr:housenumber": "115",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5022098662,
+  "lat": 43.7081858,
+  "lon": 10.4010793,
+  "tags": {
+    "addr:housenumber": "117",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5071844451,
+  "lat": 43.7104822,
+  "lon": 10.3976267,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pellico",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 5100488601,
+  "lat": 43.7095498,
+  "lon": 10.3980018,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Via Pietro Mascagni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5100488615,
+  "lat": 43.7103187,
+  "lon": 10.3967380,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5100703719,
+  "lat": 43.7098590,
+  "lon": 10.3995321,
+  "tags": {
+    "addr:housenumber": "123",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5100792469,
+  "lat": 43.7090129,
+  "lon": 10.3990348,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5100804737,
+  "lat": 43.7093532,
+  "lon": 10.3996000,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368977,
+  "lat": 43.7073106,
+  "lon": 10.4034734,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368980,
+  "lat": 43.7072626,
+  "lon": 10.4036110,
+  "tags": {
+    "addr:housenumber": "43",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368981,
+  "lat": 43.7071912,
+  "lon": 10.4038142,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368982,
+  "lat": 43.7071379,
+  "lon": 10.4039647,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368983,
+  "lat": 43.7070909,
+  "lon": 10.4040966,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368984,
+  "lat": 43.7070446,
+  "lon": 10.4042290,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368985,
+  "lat": 43.7069250,
+  "lon": 10.4045732,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368986,
+  "lat": 43.7074105,
+  "lon": 10.4032317,
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368987,
+  "lat": 43.7074828,
+  "lon": 10.4030288,
+  "tags": {
+    "addr:housenumber": "55",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368992,
+  "lat": 43.7075672,
+  "lon": 10.4027891,
+  "tags": {
+    "addr:housenumber": "65",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368993,
+  "lat": 43.7076346,
+  "lon": 10.4025973,
+  "tags": {
+    "addr:housenumber": "75",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369004,
+  "lat": 43.7077863,
+  "lon": 10.4021681,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369008,
+  "lat": 43.7076998,
+  "lon": 10.4024128,
+  "tags": {
+    "addr:housenumber": "83",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369011,
+  "lat": 43.7077515,
+  "lon": 10.4022686,
+  "tags": {
+    "addr:housenumber": "91",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369014,
+  "lat": 43.7078362,
+  "lon": 10.4020257,
+  "tags": {
+    "addr:housenumber": "99",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369015,
+  "lat": 43.7078784,
+  "lon": 10.4019043,
+  "tags": {
+    "addr:housenumber": "103",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369016,
+  "lat": 43.7079284,
+  "lon": 10.4017573,
+  "tags": {
+    "addr:housenumber": "109",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369522,
+  "lat": 43.7080531,
+  "lon": 10.4018085,
+  "tags": {
+    "addr:housenumber": "78",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369523,
+  "lat": 43.7079904,
+  "lon": 10.4019733,
+  "tags": {
+    "addr:housenumber": "76",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5128229245,
+  "lat": 43.7084607,
+  "lon": 10.4108673,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5153363486,
+  "lat": 43.7089644,
+  "lon": 10.3991507,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stazione 5",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5162808007,
+  "lat": 43.7170607,
+  "lon": 10.4048473,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Cesare Beccaria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5264167248,
+  "lat": 43.7101352,
+  "lon": 10.3981083,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Battisti",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "ref": "4389",
+    "route_ref": "2;4;6;13;21;22;L/R;L/V",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5274122309,
+  "lat": 43.7093117,
+  "lon": 10.3988471,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Gramsci Stazione",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5278146593,
+  "lat": 43.7016255,
+  "lon": 10.4020570,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Antoni",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 5278146594,
+  "lat": 43.7028182,
+  "lon": 10.4038104,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Cerboni",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 5278157573,
+  "lat": 43.7085253,
+  "lon": 10.3992855,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stazione FS 3",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5293466103,
+  "lat": 43.7065235,
+  "lon": 10.3969384,
+  "tags": {
+    "entrance": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5489134816,
+  "lat": 43.7072619,
+  "lon": 10.3974387,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5607581293,
+  "lat": 43.7131861,
+  "lon": 10.3985153,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5607581313,
+  "lat": 43.7140488,
+  "lon": 10.3988086,
+  "tags": {
+    "addr:housenumber": "61",
+    "addr:street": "Via Giuseppe Mazzini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5656048349,
+  "lat": 43.7133821,
+  "lon": 10.3945470,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5758847490,
+  "lat": 43.7169311,
+  "lon": 10.4009930,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5954931536,
+  "lat": 43.7070032,
+  "lon": 10.3975217,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5954931720,
+  "lat": 43.7062607,
+  "lon": 10.3980342,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5955110243,
+  "lat": 43.7025299,
+  "lon": 10.4056679,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5955116809,
+  "lat": 43.7048239,
+  "lon": 10.4058292,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via San Marco",
+    "amenity": "school",
+    "name": "Accademia Estetista",
+    "website": "https://www.accademiaestetica.it"
+  }
+},
+{
+  "type": "node",
+  "id": 5955116810,
+  "lat": 43.7048360,
+  "lon": 10.4058018,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5955116818,
+  "lat": 43.7045964,
+  "lon": 10.4045232,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6044638882,
+  "lat": 43.7157431,
+  "lon": 10.3999533,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6070255539,
+  "lat": 43.7156988,
+  "lon": 10.3997556,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6221421399,
+  "lat": 43.7047612,
+  "lon": 10.4100075,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6224807341,
+  "lat": 43.7125385,
+  "lon": 10.3985220,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Mazzini 2",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6224807342,
+  "lat": 43.7149056,
+  "lon": 10.3988922,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Mazzini 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6272264202,
+  "lat": 43.7156874,
+  "lon": 10.4006370,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Lungarno Gambacorti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6272264205,
+  "lat": 43.7155907,
+  "lon": 10.4011894,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6274473846,
+  "lat": 43.7162960,
+  "lon": 10.3970365,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6386614418,
+  "lat": 43.7106688,
+  "lon": 10.4012275,
+  "tags": {
+    "barrier": "gate",
+    "locked": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6386614419,
+  "lat": 43.7106175,
+  "lon": 10.4020606,
+  "tags": {
+    "barrier": "gate",
+    "locked": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6386614420,
+  "lat": 43.7105641,
+  "lon": 10.4028885,
+  "tags": {
+    "barrier": "gate",
+    "locked": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6445917251,
+  "lat": 43.7089611,
+  "lon": 10.4101794,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6518642752,
+  "lat": 43.7127205,
+  "lon": 10.4017869,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6532183886,
+  "lat": 43.7071206,
+  "lon": 10.4044383,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6542418100,
+  "lat": 43.7069943,
+  "lon": 10.3936455,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6542418122,
+  "lat": 43.7058607,
+  "lon": 10.3928050,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6572985100,
+  "lat": 43.7089319,
+  "lon": 10.3991272,
+  "tags": {
+    "bus": "yes",
+    "name": "Stazione FS 5",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 6745765025,
+  "lat": 43.7160158,
+  "lon": 10.4042377,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6771549080,
+  "lat": 43.7166079,
+  "lon": 10.3988188,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6771821300,
+  "lat": 43.7168233,
+  "lon": 10.3991672,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Filippo Serafini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6771821301,
+  "lat": 43.7171060,
+  "lon": 10.3991876,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6771821302,
+  "lat": 43.7172985,
+  "lon": 10.3998135,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6771821303,
+  "lat": 43.7174010,
+  "lon": 10.3998135,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6828247008,
+  "lat": 43.7112174,
+  "lon": 10.4104145,
+  "tags": {
+    "barrier": "gate",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6929978963,
+  "lat": 43.7138048,
+  "lon": 10.4036308,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via San Martino",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6929978965,
+  "lat": 43.7138554,
+  "lon": 10.4035052,
+  "tags": {
+    "addr:housenumber": "43",
+    "addr:street": "Via San Martino",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6952238778,
+  "lat": 43.7145938,
+  "lon": 10.3962849,
+  "tags": {
+    "addr:housenumber": "40",
+    "addr:street": "Via La Maddalena",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6957487395,
+  "lat": 43.7141326,
+  "lon": 10.4046877,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6987022836,
+  "lat": 43.7125557,
+  "lon": 10.3913103,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Largo Degazia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6987022837,
+  "lat": 43.7126149,
+  "lon": 10.3914940,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Largo Degazia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6987022838,
+  "lat": 43.7127072,
+  "lon": 10.3916116,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6987022839,
+  "lat": 43.7127413,
+  "lon": 10.3917244,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447644,
+  "lat": 43.7132409,
+  "lon": 10.3935173,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447646,
+  "lat": 43.7122947,
+  "lon": 10.3926423,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447648,
+  "lat": 43.7124082,
+  "lon": 10.3937909,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447649,
+  "lat": 43.7123204,
+  "lon": 10.3928940,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447650,
+  "lat": 43.7123070,
+  "lon": 10.3927721,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447651,
+  "lat": 43.7123321,
+  "lon": 10.3930037,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447652,
+  "lat": 43.7123443,
+  "lon": 10.3931336,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447653,
+  "lat": 43.7123534,
+  "lon": 10.3932696,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992994512,
+  "lat": 43.7124574,
+  "lon": 10.3916772,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7019283139,
+  "lat": 43.7115814,
+  "lon": 10.4036040,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897738,
+  "lat": 43.7095415,
+  "lon": 10.3978626,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897739,
+  "lat": 43.7096642,
+  "lon": 10.3978905,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897741,
+  "lat": 43.7093608,
+  "lon": 10.3978258,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Pietro Mascagni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897746,
+  "lat": 43.7100599,
+  "lon": 10.3974845,
+  "tags": {
+    "addr:housenumber": "25",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897747,
+  "lat": 43.7100955,
+  "lon": 10.3972283,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7164470603,
+  "lat": 43.7017482,
+  "lon": 10.4029222,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7172233255,
+  "lat": 43.7111164,
+  "lon": 10.3989225,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Piazza Vittorio Emanuele II",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7172233257,
+  "lat": 43.7111006,
+  "lon": 10.3992136,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Piazza Vittorio Emanuele II",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7223413377,
+  "lat": 43.7117856,
+  "lon": 10.4057522,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7223413383,
+  "lat": 43.7119981,
+  "lon": 10.4058503,
+  "tags": {
+    "addr:housenumber": "25",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7223413384,
+  "lat": 43.7122519,
+  "lon": 10.4059703,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7223423685,
+  "lat": 43.7123530,
+  "lon": 10.4060186,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7223423686,
+  "lat": 43.7126915,
+  "lon": 10.4061762,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7223423687,
+  "lat": 43.7126577,
+  "lon": 10.4061605,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7415957568,
+  "lat": 43.7052304,
+  "lon": 10.4036767,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "8b",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7415983891,
+  "lat": 43.7050317,
+  "lon": 10.4035282,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "8a",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7452414722,
+  "lat": 43.7164465,
+  "lon": 10.4044616,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7452457043,
+  "lat": 43.7168525,
+  "lon": 10.4039877,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7452457044,
+  "lat": 43.7169241,
+  "lon": 10.4039725,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7452457045,
+  "lat": 43.7171902,
+  "lon": 10.4039789,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7452457046,
+  "lat": 43.7170431,
+  "lon": 10.4038067,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7532325899,
+  "lat": 43.7066715,
+  "lon": 10.4057055,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7532936079,
+  "lat": 43.7161822,
+  "lon": 10.3949900,
+  "tags": {
+    "addr:housenumber": "5",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7532936080,
+  "lat": 43.7163411,
+  "lon": 10.3952037,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Santa Lucia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7532955144,
+  "lat": 43.7168106,
+  "lon": 10.3962580,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7590171531,
+  "lat": 43.7146069,
+  "lon": 10.4090348,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Santa Marta",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7590171533,
+  "lat": 43.7144187,
+  "lon": 10.4089372,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Santa Marta",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7590171537,
+  "lat": 43.7141908,
+  "lon": 10.4089781,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Piazza San Silvestro",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7592895098,
+  "lat": 43.7135105,
+  "lon": 10.4092043,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7592895100,
+  "lat": 43.7138705,
+  "lon": 10.4087257,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7592895102,
+  "lat": 43.7137480,
+  "lon": 10.4089198,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7592895131,
+  "lat": 43.7131577,
+  "lon": 10.4097879,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Piazza Federico del Rosso",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7592895132,
+  "lat": 43.7132120,
+  "lon": 10.4093756,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7592895138,
+  "lat": 43.7132241,
+  "lon": 10.4096920,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Piazza Federico del Rosso",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7714382990,
+  "lat": 43.7057921,
+  "lon": 10.4087888,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Emilia 3 bis",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7714399271,
+  "lat": 43.7104387,
+  "lon": 10.4045971,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Croce 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7714399272,
+  "lat": 43.7107068,
+  "lon": 10.3999821,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Croce 2",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7733847635,
+  "lat": 43.7144377,
+  "lon": 10.4040891,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7832867008,
+  "lat": 43.7141000,
+  "lon": 10.4047765,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7832867009,
+  "lat": 43.7138731,
+  "lon": 10.4053140,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7832867010,
+  "lat": 43.7139927,
+  "lon": 10.4050272,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7832876069,
+  "lat": 43.7137204,
+  "lon": 10.4056503,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7840112115,
+  "lat": 43.7098542,
+  "lon": 10.3960249,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7840645131,
+  "lat": 43.7162568,
+  "lon": 10.3973270,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Pacinotti 1",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane",
+    "operator:wikidata": "Q108464704",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7843973009,
+  "lat": 43.7099217,
+  "lon": 10.3984649,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7843973010,
+  "lat": 43.7099296,
+  "lon": 10.3983975,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016006,
+  "lat": 43.7051837,
+  "lon": 10.4031208,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "10",
+    "addr:postcode": "56121",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016017,
+  "lat": 43.7051753,
+  "lon": 10.4026596,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016018,
+  "lat": 43.7052374,
+  "lon": 10.4024950,
+  "tags": {
+    "addr:housenumber": "53",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016019,
+  "lat": 43.7050041,
+  "lon": 10.4029762,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016032,
+  "lat": 43.7049636,
+  "lon": 10.4031086,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016033,
+  "lat": 43.7049187,
+  "lon": 10.4032350,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016034,
+  "lat": 43.7049227,
+  "lon": 10.4032973,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016035,
+  "lat": 43.7048955,
+  "lon": 10.4033705,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016036,
+  "lat": 43.7048411,
+  "lon": 10.4035071,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016037,
+  "lat": 43.7047866,
+  "lon": 10.4036395,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016039,
+  "lat": 43.7045730,
+  "lon": 10.4041225,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016040,
+  "lat": 43.7045340,
+  "lon": 10.4042994,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016043,
+  "lat": 43.7046967,
+  "lon": 10.4028691,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016045,
+  "lat": 43.7047762,
+  "lon": 10.4029183,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7852588815,
+  "lat": 43.7104594,
+  "lon": 10.3975607,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Pellico",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7852950417,
+  "lat": 43.7141267,
+  "lon": 10.4031654,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Flaminio dal Borgo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7852950418,
+  "lat": 43.7142853,
+  "lon": 10.4033848,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Piazza San Sepolcro",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7852950426,
+  "lat": 43.7148043,
+  "lon": 10.4033750,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7852950427,
+  "lat": 43.7146196,
+  "lon": 10.4033923,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Piazza San Sepolcro",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7884728433,
+  "lat": 43.7144079,
+  "lon": 10.4021882,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "77",
+    "addr:postcode": "56125",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7884728435,
+  "lat": 43.7143255,
+  "lon": 10.4023746,
+  "tags": {
+    "addr:housenumber": "75",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7884728465,
+  "lat": 43.7147953,
+  "lon": 10.4025208,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7953024297,
+  "lat": 43.7170608,
+  "lon": 10.3987562,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7953024304,
+  "lat": 43.7172537,
+  "lon": 10.3979220,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7953024313,
+  "lat": 43.7168644,
+  "lon": 10.3979145,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7953024336,
+  "lat": 43.7165654,
+  "lon": 10.3985471,
+  "tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7953024337,
+  "lat": 43.7164688,
+  "lon": 10.3979608,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7985806417,
+  "lat": 43.7126451,
+  "lon": 10.3999327,
+  "tags": {
+    "addr:housenumber": "108",
+    "addr:street": "Corso Italia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7985806420,
+  "lat": 43.7128179,
+  "lon": 10.4000079,
+  "tags": {
+    "addr:housenumber": "98",
+    "addr:street": "Corso Italia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7985815626,
+  "lat": 43.7127489,
+  "lon": 10.3969952,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "22",
+    "addr:postcode": "56100",
+    "addr:street": "Via Alessandro Manzoni",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7985815631,
+  "lat": 43.7118693,
+  "lon": 10.3971194,
+  "tags": {
+    "addr:housenumber": "89",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7985815633,
+  "lat": 43.7116461,
+  "lon": 10.3972101,
+  "tags": {
+    "addr:housenumber": "93",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7988601767,
+  "lat": 43.7165250,
+  "lon": 10.4013172,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "9",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8152533116,
+  "lat": 43.7107636,
+  "lon": 10.4096013,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8198925226,
+  "lat": 43.7152818,
+  "lon": 10.4001399,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8199006769,
+  "lat": 43.7127190,
+  "lon": 10.4021107,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356198,
+  "lat": 43.7106165,
+  "lon": 10.3947683,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356201,
+  "lat": 43.7106454,
+  "lon": 10.3931627,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356206,
+  "lat": 43.7106415,
+  "lon": 10.3927603,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356209,
+  "lat": 43.7106407,
+  "lon": 10.3926204,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356210,
+  "lat": 43.7106373,
+  "lon": 10.3923747,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356211,
+  "lat": 43.7107299,
+  "lon": 10.3920914,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321410509,
+  "lat": 43.7106481,
+  "lon": 10.3937339,
+  "tags": {
+    "barrier": "gate",
+    "maxwidth:physical": "1.2"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944285,
+  "lat": 43.7117681,
+  "lon": 10.3986002,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Massimo D'Azeglio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944290,
+  "lat": 43.7114160,
+  "lon": 10.3986305,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Massimo D'Azeglio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944304,
+  "lat": 43.7112229,
+  "lon": 10.3985258,
+  "tags": {
+    "addr:housenumber": "18a",
+    "addr:street": "Piazza Vittorio Emanuele II",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944305,
+  "lat": 43.7110761,
+  "lon": 10.3977320,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944306,
+  "lat": 43.7114887,
+  "lon": 10.3986231,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944307,
+  "lat": 43.7116836,
+  "lon": 10.3986061,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944308,
+  "lat": 43.7115672,
+  "lon": 10.3986162,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8528958099,
+  "lat": 43.7115542,
+  "lon": 10.3981558,
+  "tags": {
+    "addr:housenumber": "71",
+    "addr:street": "Via Giuseppe Mazzini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8528958100,
+  "lat": 43.7114218,
+  "lon": 10.3980898,
+  "tags": {
+    "addr:housenumber": "73",
+    "addr:street": "Via Giuseppe Mazzini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8528958101,
+  "lat": 43.7117248,
+  "lon": 10.3982400,
+  "tags": {
+    "addr:housenumber": "69",
+    "addr:street": "Via Giuseppe Mazzini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8528958104,
+  "lat": 43.7119165,
+  "lon": 10.3985862,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Massimo D'Azeglio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697748315,
+  "lat": 43.7155483,
+  "lon": 10.4048693,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781717,
+  "lat": 43.7154709,
+  "lon": 10.4050771,
+  "tags": {
+    "addr:housenumber": "25",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781718,
+  "lat": 43.7154316,
+  "lon": 10.4051743,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781720,
+  "lat": 43.7153670,
+  "lon": 10.4053245,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781721,
+  "lat": 43.7150945,
+  "lon": 10.4059267,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781722,
+  "lat": 43.7152167,
+  "lon": 10.4056580,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781723,
+  "lat": 43.7149575,
+  "lon": 10.4062373,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781724,
+  "lat": 43.7149032,
+  "lon": 10.4063667,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781725,
+  "lat": 43.7148688,
+  "lon": 10.4064519,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781726,
+  "lat": 43.7140948,
+  "lon": 10.4082589,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781737,
+  "lat": 43.7145836,
+  "lon": 10.4073877,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781738,
+  "lat": 43.7144716,
+  "lon": 10.4074525,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8712784059,
+  "lat": 43.7118674,
+  "lon": 10.4009444,
+  "tags": {
+    "access": "private",
+    "addr:city": "Pisa",
+    "addr:country": "IT",
+    "addr:housenumber": "35a",
+    "addr:postcode": "56125",
+    "addr:province": "PI",
+    "addr:street": "Via Filippo Turati",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8725786940,
+  "lat": 43.7064117,
+  "lon": 10.4081529,
+  "tags": {
+    "addr:housenumber": "138",
+    "addr:street": "Via Carlo Cattaneo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8725786944,
+  "lat": 43.7071529,
+  "lon": 10.4076261,
+  "tags": {
+    "addr:housenumber": "126",
+    "addr:street": "Via Carlo Cattaneo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8725786946,
+  "lat": 43.7072723,
+  "lon": 10.4075327,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8725786949,
+  "lat": 43.7075026,
+  "lon": 10.4075962,
+  "tags": {
+    "addr:housenumber": "113",
+    "addr:street": "Via Carlo Cattaneo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8725786999,
+  "lat": 43.7071415,
+  "lon": 10.4067249,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8725787005,
+  "lat": 43.7069707,
+  "lon": 10.4066534,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8731814215,
+  "lat": 43.7165445,
+  "lon": 10.3976490,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Piazza Francesco Carrara",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8731849623,
+  "lat": 43.7167235,
+  "lon": 10.3976034,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Piazza Francesco Carrara",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8731849624,
+  "lat": 43.7169706,
+  "lon": 10.3974370,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Piazza Francesco Carrara",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8815251403,
+  "lat": 43.7054561,
+  "lon": 10.4017002,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8821185681,
+  "lat": 43.7115115,
+  "lon": 10.3971964,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Crispi 1",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8821185685,
+  "lat": 43.7111679,
+  "lon": 10.3987336,
+  "tags": {
+    "bus": "yes",
+    "name": "Vittorio Emanuele II",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8821185686,
+  "lat": 43.7087533,
+  "lon": 10.3989298,
+  "tags": {
+    "bus": "yes",
+    "name": "Stazione FS 1",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8821185693,
+  "lat": 43.7086407,
+  "lon": 10.3994409,
+  "tags": {
+    "bus": "yes",
+    "name": "Stazione FS 4",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8838788703,
+  "lat": 43.7036520,
+  "lon": 10.4038027,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8838788704,
+  "lat": 43.7046924,
+  "lon": 10.4033144,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8862832965,
+  "lat": 43.7110237,
+  "lon": 10.4078003,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Lungarno Leonardo Fibonacci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8865774936,
+  "lat": 43.7109441,
+  "lon": 10.3974546,
+  "tags": {
+    "bus": "yes",
+    "name": "Pisa Piazza Sant'Antonio",
+    "operator": "Autolinee Toscane",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8875479568,
+  "lat": 43.7119196,
+  "lon": 10.4094669,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Buozzi",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8938476079,
+  "lat": 43.7150448,
+  "lon": 10.4090070,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "S. Marta 1",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8957791704,
+  "lat": 43.7081164,
+  "lon": 10.3919819,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Quarantola",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8957791714,
+  "lat": 43.7098661,
+  "lon": 10.3915354,
+  "tags": {
+    "addr:housenumber": "48",
+    "addr:street": "Via Quarantola",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 9039035174,
+  "lat": 43.7045491,
+  "lon": 10.4055460,
+  "tags": {
+    "access": "customers",
+    "addr:city": "Pisa",
+    "addr:country": "IT",
+    "addr:housenumber": "15",
+    "addr:postcode": "56121",
+    "addr:province": "PI",
+    "addr:street": "Via San Marco",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9039035175,
+  "lat": 43.7042498,
+  "lon": 10.4057978,
+  "tags": {
+    "access": "customers",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 9091058553,
+  "lat": 43.7095273,
+  "lon": 10.3958280,
+  "tags": {
+    "access": "private",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9091058554,
+  "lat": 43.7096823,
+  "lon": 10.3958919,
+  "tags": {
+    "access": "private",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9186871224,
+  "lat": 43.7023019,
+  "lon": 10.4007861,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Via dell'Aeroporto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 9186871225,
+  "lat": 43.7024577,
+  "lon": 10.4008282,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via dell'Aeroporto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 9186871226,
+  "lat": 43.7026803,
+  "lon": 10.4009382,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 9234830917,
+  "lat": 43.7142603,
+  "lon": 10.4025377,
+  "tags": {
+    "access": "customers",
+    "addr:city": "Pisa",
+    "addr:country": "IT",
+    "addr:housenumber": "71",
+    "addr:postcode": "56125",
+    "addr:province": "PI",
+    "addr:street": "Via San Martino",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9283411786,
+  "lat": 43.7099701,
+  "lon": 10.3957659,
+  "tags": {
+    "bus": "yes",
+    "name": "Sesta Porta",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 9283411787,
+  "lat": 43.7099799,
+  "lon": 10.3957050,
+  "tags": {
+    "bus": "yes",
+    "name": "Sesta Porta",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 9283411788,
+  "lat": 43.7099900,
+  "lon": 10.3956425,
+  "tags": {
+    "bus": "yes",
+    "name": "Sesta Porta",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 9283411789,
+  "lat": 43.7099987,
+  "lon": 10.3955888,
+  "tags": {
+    "bus": "yes",
+    "name": "Sesta Porta",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 9283759970,
+  "lat": 43.7099180,
+  "lon": 10.4110899,
+  "tags": {
+    "bus": "yes",
+    "name": "Matteotti 2",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 9285632499,
+  "lat": 43.7130433,
+  "lon": 10.4076170,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9285632500,
+  "lat": 43.7131524,
+  "lon": 10.4072914,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9285632501,
+  "lat": 43.7133755,
+  "lon": 10.4065176,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9285632503,
+  "lat": 43.7136033,
+  "lon": 10.4059005,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9285632504,
+  "lat": 43.7132679,
+  "lon": 10.4059953,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9308897047,
+  "lat": 43.7123545,
+  "lon": 10.4021653,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9431724264,
+  "lat": 43.7103619,
+  "lon": 10.3964025,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Via Battisti",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 9552067390,
+  "lat": 43.7104824,
+  "lon": 10.4047518,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9603303980,
+  "lat": 43.7065266,
+  "lon": 10.4057129,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9603303985,
+  "lat": 43.7066136,
+  "lon": 10.4058548,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9603303986,
+  "lat": 43.7065809,
+  "lon": 10.4059500,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9603303987,
+  "lat": 43.7065229,
+  "lon": 10.4061209,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9603303988,
+  "lat": 43.7063640,
+  "lon": 10.4065651,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9603303989,
+  "lat": 43.7064068,
+  "lon": 10.4064443,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9603303995,
+  "lat": 43.7064389,
+  "lon": 10.4063618,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9603303996,
+  "lat": 43.7065044,
+  "lon": 10.4063854,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "24",
+    "addr:postcode": "56125",
+    "addr:street": "Via Filippo Corridoni",
+    "amenity": "kindergarten",
+    "name": "Scuola Materna Sant'Antonio Da Padova",
+    "phone": "+39 339 7260735",
+    "preschool": "yes",
+    "website": "http://www.scuolasantonio.altervista.org/",
+    "wikidata": "Q52970196"
+  }
+},
+{
+  "type": "node",
+  "id": 9603304000,
+  "lat": 43.7062491,
+  "lon": 10.4068731,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9603304001,
+  "lat": 43.7062066,
+  "lon": 10.4070204,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9603304003,
+  "lat": 43.7065007,
+  "lon": 10.4054483,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9869199467,
+  "lat": 43.7100965,
+  "lon": 10.3980720,
+  "tags": {
+    "bus": "yes",
+    "name": "Battisti",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 9882762243,
+  "lat": 43.7103787,
+  "lon": 10.3975367,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9882796713,
+  "lat": 43.7143536,
+  "lon": 10.3997670,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 9889508779,
+  "lat": 43.7141992,
+  "lon": 10.4045832,
+  "tags": {
+    "addr:housenumber": "1614",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10021483783,
+  "lat": 43.7122610,
+  "lon": 10.4009856,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10021483789,
+  "lat": 43.7115782,
+  "lon": 10.4008621,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Filippo Turati",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10021483790,
+  "lat": 43.7114709,
+  "lon": 10.4008224,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Via Filippo Turati",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762171,
+  "lat": 43.7101696,
+  "lon": 10.3967619,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762172,
+  "lat": 43.7101790,
+  "lon": 10.3967010,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762173,
+  "lat": 43.7101970,
+  "lon": 10.3965853,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762174,
+  "lat": 43.7102309,
+  "lon": 10.3963578,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762175,
+  "lat": 43.7101501,
+  "lon": 10.3968823,
+  "tags": {
+    "addr:housenumber": "35/a",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762176,
+  "lat": 43.7097763,
+  "lon": 10.3968534,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762177,
+  "lat": 43.7096594,
+  "lon": 10.3968735,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762178,
+  "lat": 43.7095920,
+  "lon": 10.3971114,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10079828391,
+  "lat": 43.7149565,
+  "lon": 10.4072092,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Piazza Giuseppe Mazzini",
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10080040106,
+  "lat": 43.7162881,
+  "lon": 10.3973213,
+  "tags": {
+    "bus": "yes",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 10108325433,
+  "lat": 43.7141340,
+  "lon": 10.3960794,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10108325438,
+  "lat": 43.7139687,
+  "lon": 10.3961581,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10108325441,
+  "lat": 43.7143710,
+  "lon": 10.3957909,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10108325446,
+  "lat": 43.7146301,
+  "lon": 10.3965321,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10108745284,
+  "lat": 43.7137398,
+  "lon": 10.3963754,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10108745288,
+  "lat": 43.7136065,
+  "lon": 10.3964371,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10108745289,
+  "lat": 43.7135566,
+  "lon": 10.3964617,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10128546310,
+  "lat": 43.7141184,
+  "lon": 10.4006685,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128546314,
+  "lat": 43.7138398,
+  "lon": 10.4005457,
+  "tags": {
+    "addr:housenumber": "59",
+    "addr:street": "Corso Italia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10128563975,
+  "lat": 43.7125572,
+  "lon": 10.4000120,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128563982,
+  "lat": 43.7127517,
+  "lon": 10.4000924,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128563995,
+  "lat": 43.7130883,
+  "lon": 10.4001166,
+  "tags": {
+    "addr:housenumber": "88",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128564000,
+  "lat": 43.7134237,
+  "lon": 10.4002679,
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128904436,
+  "lat": 43.7145969,
+  "lon": 10.4009618,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128904437,
+  "lat": 43.7143710,
+  "lon": 10.4007036,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128904441,
+  "lat": 43.7143698,
+  "lon": 10.4007910,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10199231717,
+  "lat": 43.7165539,
+  "lon": 10.4011257,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10215207267,
+  "lat": 43.7166984,
+  "lon": 10.4000070,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10316928314,
+  "lat": 43.7093862,
+  "lon": 10.4064954,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10316928315,
+  "lat": 43.7094669,
+  "lon": 10.4067932,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10440340271,
+  "lat": 43.7103693,
+  "lon": 10.4002132,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10559470840,
+  "lat": 43.7062047,
+  "lon": 10.4095279,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Corte Tiezzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10559470841,
+  "lat": 43.7063420,
+  "lon": 10.4096355,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Corte Tiezzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10559470842,
+  "lat": 43.7063986,
+  "lon": 10.4096798,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Corte Tiezzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10621051284,
+  "lat": 43.7121495,
+  "lon": 10.3994344,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516039,
+  "lat": 43.7098846,
+  "lon": 10.4003840,
+  "tags": {
+    "addr:housenumber": "103",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516041,
+  "lat": 43.7098908,
+  "lon": 10.4006392,
+  "tags": {
+    "addr:housenumber": "93",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516048,
+  "lat": 43.7100106,
+  "lon": 10.4007588,
+  "tags": {
+    "addr:housenumber": "90",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516049,
+  "lat": 43.7100078,
+  "lon": 10.4006447,
+  "tags": {
+    "addr:housenumber": "92",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516067,
+  "lat": 43.7099058,
+  "lon": 10.4018651,
+  "tags": {
+    "addr:housenumber": "61",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516068,
+  "lat": 43.7099050,
+  "lon": 10.4017600,
+  "tags": {
+    "addr:housenumber": "65",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516069,
+  "lat": 43.7099040,
+  "lon": 10.4016129,
+  "tags": {
+    "addr:housenumber": "69",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516073,
+  "lat": 43.7099101,
+  "lon": 10.4021046,
+  "tags": {
+    "addr:housenumber": "57",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516077,
+  "lat": 43.7099098,
+  "lon": 10.4022750,
+  "tags": {
+    "addr:housenumber": "53",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516078,
+  "lat": 43.7100438,
+  "lon": 10.4020952,
+  "tags": {
+    "addr:housenumber": "50",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516079,
+  "lat": 43.7100371,
+  "lon": 10.4018123,
+  "tags": {
+    "addr:housenumber": "54",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516081,
+  "lat": 43.7100305,
+  "lon": 10.4016020,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516083,
+  "lat": 43.7099088,
+  "lon": 10.4024332,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516084,
+  "lat": 43.7099073,
+  "lon": 10.4025518,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516087,
+  "lat": 43.7099045,
+  "lon": 10.4026488,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "43",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516088,
+  "lat": 43.7098872,
+  "lon": 10.4027926,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516091,
+  "lat": 43.7100065,
+  "lon": 10.4028345,
+  "tags": {
+    "addr:housenumber": "38",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516097,
+  "lat": 43.7099443,
+  "lon": 10.4033150,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516098,
+  "lat": 43.7099187,
+  "lon": 10.4035078,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520505,
+  "lat": 43.7099585,
+  "lon": 10.4032087,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520506,
+  "lat": 43.7099643,
+  "lon": 10.4031598,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520509,
+  "lat": 43.7099080,
+  "lon": 10.4035891,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520510,
+  "lat": 43.7099015,
+  "lon": 10.4036363,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520513,
+  "lat": 43.7097344,
+  "lon": 10.4030254,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520517,
+  "lat": 43.7096770,
+  "lon": 10.4029790,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520524,
+  "lat": 43.7096319,
+  "lon": 10.4029322,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520525,
+  "lat": 43.7094182,
+  "lon": 10.4027047,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520531,
+  "lat": 43.7099071,
+  "lon": 10.4020736,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520537,
+  "lat": 43.7094352,
+  "lon": 10.4005982,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520538,
+  "lat": 43.7095346,
+  "lon": 10.4006669,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520541,
+  "lat": 43.7096539,
+  "lon": 10.4007487,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520546,
+  "lat": 43.7098161,
+  "lon": 10.4008589,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520548,
+  "lat": 43.7098393,
+  "lon": 10.4010119,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520556,
+  "lat": 43.7100121,
+  "lon": 10.4008399,
+  "tags": {
+    "addr:housenumber": "86",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520559,
+  "lat": 43.7100180,
+  "lon": 10.4011158,
+  "tags": {
+    "addr:housenumber": "76",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520563,
+  "lat": 43.7100227,
+  "lon": 10.4012872,
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520564,
+  "lat": 43.7100248,
+  "lon": 10.4013730,
+  "tags": {
+    "addr:housenumber": "66",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520565,
+  "lat": 43.7100239,
+  "lon": 10.4013374,
+  "tags": {
+    "addr:housenumber": "68",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719591396,
+  "lat": 43.7105657,
+  "lon": 10.4006122,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719591397,
+  "lat": 43.7105480,
+  "lon": 10.4008868,
+  "tags": {
+    "addr:housenumber": "97",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719591398,
+  "lat": 43.7105375,
+  "lon": 10.4010765,
+  "tags": {
+    "addr:housenumber": "91",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719591403,
+  "lat": 43.7105243,
+  "lon": 10.4013389,
+  "tags": {
+    "addr:housenumber": "79",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719592408,
+  "lat": 43.7104339,
+  "lon": 10.4026196,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719592409,
+  "lat": 43.7104517,
+  "lon": 10.4024016,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10766369828,
+  "lat": 43.7168762,
+  "lon": 10.4054489,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10802044448,
+  "lat": 43.7091849,
+  "lon": 10.4045170,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10802044451,
+  "lat": 43.7093023,
+  "lon": 10.4041109,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10802044452,
+  "lat": 43.7092254,
+  "lon": 10.4045392,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10829559325,
+  "lat": 43.7096672,
+  "lon": 10.4043219,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829559328,
+  "lat": 43.7096256,
+  "lon": 10.4045951,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829574045,
+  "lat": 43.7090249,
+  "lon": 10.4010815,
+  "tags": {
+    "addr:housenumber": "99",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829574046,
+  "lat": 43.7089366,
+  "lon": 10.4013416,
+  "tags": {
+    "addr:housenumber": "97",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575105,
+  "lat": 43.7088666,
+  "lon": 10.4015198,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575106,
+  "lat": 43.7088283,
+  "lon": 10.4016241,
+  "tags": {
+    "addr:housenumber": "93",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575107,
+  "lat": 43.7087495,
+  "lon": 10.4018355,
+  "tags": {
+    "addr:housenumber": "89",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575110,
+  "lat": 43.7085834,
+  "lon": 10.4020008,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575111,
+  "lat": 43.7083912,
+  "lon": 10.4018610,
+  "tags": {
+    "addr:housenumber": "38",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10877409715,
+  "lat": 43.7096581,
+  "lon": 10.3938652,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10906063364,
+  "lat": 43.7162131,
+  "lon": 10.3954162,
+  "tags": {
+    "access": "private",
+    "door": "double",
+    "entrance": "main",
+    "level": "0",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10906063365,
+  "lat": 43.7159440,
+  "lon": 10.3956426,
+  "tags": {
+    "access": "private",
+    "door": "double",
+    "entrance": "main",
+    "level": "0",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10906063366,
+  "lat": 43.7160742,
+  "lon": 10.3955029,
+  "tags": {
+    "door": "hinged",
+    "entrance": "secondary",
+    "level": "0",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10907512912,
+  "lat": 43.7163675,
+  "lon": 10.3956203,
+  "tags": {
+    "entrance": "main",
+    "level": "0"
+  }
+},
+{
+  "type": "node",
+  "id": 10907512913,
+  "lat": 43.7164261,
+  "lon": 10.3957603,
+  "tags": {
+    "entrance": "secondary",
+    "level": "0"
+  }
+},
+{
+  "type": "node",
+  "id": 10921522648,
+  "lat": 43.7099930,
+  "lon": 10.4114683,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10942240334,
+  "lat": 43.7108175,
+  "lon": 10.3961601,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10942240336,
+  "lat": 43.7109996,
+  "lon": 10.3928494,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881385,
+  "lat": 43.7048342,
+  "lon": 10.4005922,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via Guglielmo Marconi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881387,
+  "lat": 43.7051155,
+  "lon": 10.4005515,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881396,
+  "lat": 43.7048504,
+  "lon": 10.4009049,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881397,
+  "lat": 43.7047818,
+  "lon": 10.4010283,
+  "tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881399,
+  "lat": 43.7043128,
+  "lon": 10.4008911,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881401,
+  "lat": 43.7040610,
+  "lon": 10.4008264,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881403,
+  "lat": 43.7034577,
+  "lon": 10.4008240,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via dell'Aeroporto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11013991726,
+  "lat": 43.7087446,
+  "lon": 10.3992406,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 7",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11013991727,
+  "lat": 43.7087015,
+  "lon": 10.3992033,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 8",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11013991728,
+  "lat": 43.7086606,
+  "lon": 10.3991678,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Stazione FS 9",
+    "network": "Servizio Urbano Pisa",
+    "operator": "Autolinee Toscane S.p.A.",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11042358742,
+  "lat": 43.7118602,
+  "lon": 10.3996193,
+  "tags": {
+    "addr:housenumber": "138",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11042358745,
+  "lat": 43.7115757,
+  "lon": 10.3995174,
+  "tags": {
+    "addr:housenumber": "156",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11042358747,
+  "lat": 43.7134954,
+  "lon": 10.4003008,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11101383501,
+  "lat": 43.7127487,
+  "lon": 10.4077181,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11133620518,
+  "lat": 43.7136430,
+  "lon": 10.4004627,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026816,
+  "lat": 43.7106959,
+  "lon": 10.4020644,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026817,
+  "lat": 43.7107496,
+  "lon": 10.4012307,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026818,
+  "lat": 43.7106458,
+  "lon": 10.4028975,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026832,
+  "lat": 43.7105489,
+  "lon": 10.4031949,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026833,
+  "lat": 43.7105316,
+  "lon": 10.4033943,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381193,
+  "lat": 43.7105025,
+  "lon": 10.3914757,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381194,
+  "lat": 43.7104065,
+  "lon": 10.3914022,
+  "tags": {
+    "addr:housenumber": "56",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381195,
+  "lat": 43.7103484,
+  "lon": 10.3912537,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381196,
+  "lat": 43.7102313,
+  "lon": 10.3911928,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381197,
+  "lat": 43.7100888,
+  "lon": 10.3912308,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11186143727,
+  "lat": 43.7096839,
+  "lon": 10.4042010,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11222311667,
+  "lat": 43.7128496,
+  "lon": 10.3932140,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11241150644,
+  "lat": 43.7164939,
+  "lon": 10.4015073,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11241189872,
+  "lat": 43.7165963,
+  "lon": 10.4008392,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11307470732,
+  "lat": 43.7108992,
+  "lon": 10.3913037,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307529063,
+  "lat": 43.7108441,
+  "lon": 10.3911450,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307547961,
+  "lat": 43.7109475,
+  "lon": 10.3914034,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307553409,
+  "lat": 43.7109118,
+  "lon": 10.3913397,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307555403,
+  "lat": 43.7108586,
+  "lon": 10.3911867,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307561450,
+  "lat": 43.7109212,
+  "lon": 10.3913664,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11479442212,
+  "lat": 43.7103084,
+  "lon": 10.4045779,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11523685633,
+  "lat": 43.7106412,
+  "lon": 10.3945511,
+  "tags": {
+    "barrier": "gate",
+    "maxwidth:physical": "1.2"
+  }
+},
+{
+  "type": "node",
+  "id": 11523685637,
+  "lat": 43.7109426,
+  "lon": 10.3946606,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11523685638,
+  "lat": 43.7105295,
+  "lon": 10.3955369,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11523685641,
+  "lat": 43.7105486,
+  "lon": 10.3958468,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11724927141,
+  "lat": 43.7090181,
+  "lon": 10.4095364,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11769290613,
+  "lat": 43.7111923,
+  "lon": 10.4095623,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11769298346,
+  "lat": 43.7115480,
+  "lon": 10.4095539,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11769298347,
+  "lat": 43.7116788,
+  "lon": 10.4095576,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11769298348,
+  "lat": 43.7118084,
+  "lon": 10.4095602,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11769298351,
+  "lat": 43.7119732,
+  "lon": 10.4095643,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11769298356,
+  "lat": 43.7123203,
+  "lon": 10.4095611,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11769301316,
+  "lat": 43.7124258,
+  "lon": 10.4095595,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11769301325,
+  "lat": 43.7126290,
+  "lon": 10.4095564,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Lungarno Bruno Buozzi",
+    "entrance": "main",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11769301326,
+  "lat": 43.7126755,
+  "lon": 10.4098550,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Via del Borghetto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11777873724,
+  "lat": 43.7080664,
+  "lon": 10.4000027,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11781548254,
+  "lat": 43.7099265,
+  "lon": 10.4050195,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Piazza Francesco Domenico Guerrazzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11781548256,
+  "lat": 43.7100319,
+  "lon": 10.4050811,
+  "tags": {
+    "addr:housenumber": "22",
+    "addr:street": "Piazza Francesco Domenico Guerrazzi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11821260966,
+  "lat": 43.7094218,
+  "lon": 10.3977686,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11821271872,
+  "lat": 43.7098813,
+  "lon": 10.4001069,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "111",
+    "addr:postcode": "56125",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11821276489,
+  "lat": 43.7093306,
+  "lon": 10.3985505,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Viale Antonio Gramsci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11831449077,
+  "lat": 43.7087460,
+  "lon": 10.3963274,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11874102688,
+  "lat": 43.7035131,
+  "lon": 10.3982279,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11874102689,
+  "lat": 43.7033880,
+  "lon": 10.3981405,
+  "tags": {
+    "addr:housenumber": "155",
+    "addr:street": "Via Sant'Agostino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11874102690,
+  "lat": 43.7033341,
+  "lon": 10.3981026,
+  "tags": {
+    "addr:housenumber": "157",
+    "addr:street": "Via Sant'Agostino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11874102696,
+  "lat": 43.7030229,
+  "lon": 10.3982492,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 11889251147,
+  "lat": 43.7155912,
+  "lon": 10.3999021,
+  "tags": {
+    "entrance": "exit"
+  }
+},
+{
+  "type": "node",
+  "id": 11919413883,
+  "lat": 43.7159236,
+  "lon": 10.3946196,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Piazza Solferino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11919413888,
+  "lat": 43.7154914,
+  "lon": 10.3944105,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11919413890,
+  "lat": 43.7155633,
+  "lon": 10.3946708,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11919413911,
+  "lat": 43.7155370,
+  "lon": 10.3945762,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "garage"
+  }
+},
+{
+  "type": "node",
+  "id": 12000480218,
+  "lat": 43.7030257,
+  "lon": 10.4014943,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Carlo del Prete",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12035841364,
+  "lat": 43.7096692,
+  "lon": 10.3970951,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12035903416,
+  "lat": 43.7164028,
+  "lon": 10.4052033,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12035903437,
+  "lat": 43.7160646,
+  "lon": 10.4051893,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via della Scuola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265360,
+  "lat": 43.7105975,
+  "lon": 10.3916321,
+  "tags": {
+    "addr:housenumber": "143",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265361,
+  "lat": 43.7105535,
+  "lon": 10.3918647,
+  "tags": {
+    "addr:housenumber": "135",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265362,
+  "lat": 43.7105459,
+  "lon": 10.3920661,
+  "tags": {
+    "addr:housenumber": "131",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265363,
+  "lat": 43.7105403,
+  "lon": 10.3922966,
+  "tags": {
+    "addr:housenumber": "121",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265364,
+  "lat": 43.7105346,
+  "lon": 10.3924917,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265366,
+  "lat": 43.7105321,
+  "lon": 10.3926236,
+  "tags": {
+    "addr:housenumber": "111",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265367,
+  "lat": 43.7105299,
+  "lon": 10.3927627,
+  "tags": {
+    "addr:housenumber": "109",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265368,
+  "lat": 43.7105285,
+  "lon": 10.3929205,
+  "tags": {
+    "addr:housenumber": "107",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272769,
+  "lat": 43.7105275,
+  "lon": 10.3930781,
+  "tags": {
+    "addr:housenumber": "103",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272770,
+  "lat": 43.7105271,
+  "lon": 10.3932148,
+  "tags": {
+    "addr:housenumber": "101",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272771,
+  "lat": 43.7105259,
+  "lon": 10.3933617,
+  "tags": {
+    "addr:housenumber": "99",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272772,
+  "lat": 43.7105256,
+  "lon": 10.3933998,
+  "tags": {
+    "addr:housenumber": "97",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272773,
+  "lat": 43.7105240,
+  "lon": 10.3935154,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272774,
+  "lat": 43.7105217,
+  "lon": 10.3936672,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272775,
+  "lat": 43.7105194,
+  "lon": 10.3938119,
+  "tags": {
+    "addr:housenumber": "91",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272776,
+  "lat": 43.7105177,
+  "lon": 10.3939677,
+  "tags": {
+    "addr:housenumber": "97",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272777,
+  "lat": 43.7105156,
+  "lon": 10.3941296,
+  "tags": {
+    "addr:housenumber": "85",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272778,
+  "lat": 43.7105136,
+  "lon": 10.3942495,
+  "tags": {
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272779,
+  "lat": 43.7105052,
+  "lon": 10.3944182,
+  "tags": {
+    "addr:housenumber": "79",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272781,
+  "lat": 43.7104897,
+  "lon": 10.3946067,
+  "tags": {
+    "addr:housenumber": "75",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046292251,
+  "lat": 43.7100749,
+  "lon": 10.3917743,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302652,
+  "lat": 43.7102332,
+  "lon": 10.3939182,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302653,
+  "lat": 43.7101992,
+  "lon": 10.3943343,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302654,
+  "lat": 43.7100271,
+  "lon": 10.3942461,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302655,
+  "lat": 43.7102641,
+  "lon": 10.3946053,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302656,
+  "lat": 43.7104693,
+  "lon": 10.3947909,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302657,
+  "lat": 43.7102493,
+  "lon": 10.3946637,
+  "tags": {
+    "addr:housenumber": "73A",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046305175,
+  "lat": 43.7099662,
+  "lon": 10.3918747,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12046305183,
+  "lat": 43.7085822,
+  "lon": 10.3927040,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12046305184,
+  "lat": 43.7085019,
+  "lon": 10.3929397,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12046305204,
+  "lat": 43.7084601,
+  "lon": 10.3922292,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12046305206,
+  "lat": 43.7086884,
+  "lon": 10.3918069,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12046320771,
+  "lat": 43.7104212,
+  "lon": 10.3951244,
+  "tags": {
+    "addr:housenumber": "69",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046320772,
+  "lat": 43.7104112,
+  "lon": 10.3951952,
+  "tags": {
+    "addr:housenumber": "67",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485731,
+  "lat": 43.7082641,
+  "lon": 10.3982882,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "1",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485732,
+  "lat": 43.7082315,
+  "lon": 10.3982777,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "2",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485733,
+  "lat": 43.7081266,
+  "lon": 10.3982347,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "3",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485734,
+  "lat": 43.7080937,
+  "lon": 10.3982216,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "4",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485735,
+  "lat": 43.7079624,
+  "lon": 10.3981722,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "6",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485736,
+  "lat": 43.7078528,
+  "lon": 10.3981685,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "7",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485737,
+  "lat": 43.7078202,
+  "lon": 10.3981562,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "8",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485738,
+  "lat": 43.7077306,
+  "lon": 10.3981262,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "9",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485739,
+  "lat": 43.7076939,
+  "lon": 10.3981122,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "10",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055485740,
+  "lat": 43.7076183,
+  "lon": 10.3980823,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "11",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12055495228,
+  "lat": 43.7075055,
+  "lon": 10.3980454,
+  "tags": {
+    "name": "Pisa Centrale",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "railway:track_ref": "13",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12115205700,
+  "lat": 43.7114358,
+  "lon": 10.4067333,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12115211501,
+  "lat": 43.7115248,
+  "lon": 10.4067815,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12136553713,
+  "lat": 43.7111372,
+  "lon": 10.4060559,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12136553718,
+  "lat": 43.7111481,
+  "lon": 10.4055609,
+  "tags": {
+    "addr:housenumber": "5C",
+    "addr:street": "Piazza Giuseppe Toniolo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12154346742,
+  "lat": 43.7142581,
+  "lon": 10.4044583,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12154346743,
+  "lat": 43.7142856,
+  "lon": 10.4044001,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12154352711,
+  "lat": 43.7133073,
+  "lon": 10.4031090,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12154352712,
+  "lat": 43.7132699,
+  "lon": 10.4029976,
+  "tags": {
+    "entrance": "main",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12154352713,
+  "lat": 43.7133399,
+  "lon": 10.4029703,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12154367012,
+  "lat": 43.7131044,
+  "lon": 10.4043641,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:place": "Piazza San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12154367015,
+  "lat": 43.7132725,
+  "lon": 10.4045106,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12154367016,
+  "lat": 43.7133714,
+  "lon": 10.4043902,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via San Martino",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12169770832,
+  "lat": 43.7130764,
+  "lon": 10.3966839,
+  "tags": {
+    "addr:housenumber": "59",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12169770834,
+  "lat": 43.7129424,
+  "lon": 10.3967454,
+  "tags": {
+    "addr:housenumber": "61",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12169770837,
+  "lat": 43.7132327,
+  "lon": 10.3966160,
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12169770838,
+  "lat": 43.7133782,
+  "lon": 10.3965438,
+  "tags": {
+    "addr:housenumber": "43",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12182792180,
+  "lat": 43.7125640,
+  "lon": 10.4101173,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12182792182,
+  "lat": 43.7124954,
+  "lon": 10.4102782,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via del Borghetto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12345958364,
+  "lat": 43.7146447,
+  "lon": 10.4017761,
+  "tags": {
+    "addr:housenumber": "87",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12345958366,
+  "lat": 43.7145904,
+  "lon": 10.4018713,
+  "tags": {
+    "addr:housenumber": "83",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12345958372,
+  "lat": 43.7147834,
+  "lon": 10.4016458,
+  "tags": {
+    "addr:housenumber": "108",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12529437954,
+  "lat": 43.7081448,
+  "lon": 10.4071129,
+  "tags": {
+    "addr:housenumber": "69",
+    "addr:street": "Via Carlo Cattaneo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12529437970,
+  "lat": 43.7080703,
+  "lon": 10.4071652,
+  "tags": {
+    "addr:housenumber": "75",
+    "addr:street": "Via Carlo Cattaneo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12610829853,
+  "lat": 43.7114734,
+  "lon": 10.3908528,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Conte Fazio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12823793442,
+  "lat": 43.7102762,
+  "lon": 10.3913355,
+  "tags": {
+    "addr:housenumber": "54",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12830382249,
+  "lat": 43.7091491,
+  "lon": 10.4064163,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Carlo Cattaneo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12830382250,
+  "lat": 43.7090625,
+  "lon": 10.4064762,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Via Carlo Cattaneo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12830382253,
+  "lat": 43.7089478,
+  "lon": 10.4065560,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via Carlo Cattaneo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12864751412,
+  "lat": 43.7160532,
+  "lon": 10.4072026,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via Santa Bibbiana",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12864790500,
+  "lat": 43.7137103,
+  "lon": 10.3959351,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via San Paolo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12864791101,
+  "lat": 43.7137295,
+  "lon": 10.3956503,
+  "tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Via San Paolo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12864897119,
+  "lat": 43.7117699,
+  "lon": 10.4007820,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 12953848589,
+  "lat": 43.7041618,
+  "lon": 10.4012641,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via dell'Aeroporto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12953848590,
+  "lat": 43.7037957,
+  "lon": 10.4011902,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via dell'Aeroporto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12953848591,
+  "lat": 43.7036162,
+  "lon": 10.4011352,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via dell'Aeroporto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12953848592,
+  "lat": 43.7036306,
+  "lon": 10.4008652,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via dell'Aeroporto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12953848593,
+  "lat": 43.7037497,
+  "lon": 10.4008837,
+  "tags": {
+    "addr:housenumber": "22",
+    "addr:street": "Via dell'Aeroporto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12971997475,
+  "lat": 43.7036146,
+  "lon": 10.4055876,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 13031090338,
+  "lat": 43.7054571,
+  "lon": 10.4092867,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Emilia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13031090339,
+  "lat": 43.7053883,
+  "lon": 10.4093501,
+  "tags": {
+    "addr:housenumber": "55",
+    "addr:street": "Via Emilia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13152588814,
+  "lat": 43.7173088,
+  "lon": 10.4009622,
+  "tags": {
+    "addr:housenumber": "25",
+    "addr:street": "Via Domenico Cavalca",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13302373985,
+  "lat": 43.7148080,
+  "lon": 10.4012700,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13302377214,
+  "lat": 43.7146623,
+  "lon": 10.4010327,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13316283453,
+  "lat": 43.7131832,
+  "lon": 10.4002719,
+  "tags": {
+    "addr:housenumber": "79",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13316283454,
+  "lat": 43.7133045,
+  "lon": 10.4003228,
+  "tags": {
+    "addr:housenumber": "73",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13370707077,
+  "lat": 43.7035899,
+  "lon": 10.4032789,
+  "tags": {
+    "addr:housenumber": "104",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13370707078,
+  "lat": 43.7036073,
+  "lon": 10.4032465,
+  "tags": {
+    "addr:housenumber": "102",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13370707081,
+  "lat": 43.7034591,
+  "lon": 10.4034053,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13370719810,
+  "lat": 43.7086654,
+  "lon": 10.4051626,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via Francesco da Buti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13372177954,
+  "lat": 43.7130111,
+  "lon": 10.4062293,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13372177955,
+  "lat": 43.7128997,
+  "lon": 10.4061760,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13372177956,
+  "lat": 43.7128185,
+  "lon": 10.4061365,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13372177957,
+  "lat": 43.7125065,
+  "lon": 10.4059895,
+  "tags": {
+    "addr:housenumber": "40",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13372177958,
+  "lat": 43.7123878,
+  "lon": 10.4059332,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13421894743,
+  "lat": 43.7069828,
+  "lon": 10.3942932,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 13556633234,
+  "lat": 43.7120221,
+  "lon": 10.3904499,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Lungarno Bonaccorso da Padule",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13563715844,
+  "lat": 43.7031429,
+  "lon": 10.4012857,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Via Carlo del Prete",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13580466697,
+  "lat": 43.7151342,
+  "lon": 10.3938363,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13580466698,
+  "lat": 43.7152015,
+  "lon": 10.3939692,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13580491114,
+  "lat": 43.7153104,
+  "lon": 10.3941663,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13607304317,
+  "lat": 43.7172846,
+  "lon": 10.4025168,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 13607387521,
+  "lat": 43.7170406,
+  "lon": 10.3989936,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 13671207085,
+  "lat": 43.7123482,
+  "lon": 10.4053123,
+  "tags": {
+    "addr:housenumber": "22",
+    "addr:street": "Via Antonio Ceci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13671207086,
+  "lat": 43.7120696,
+  "lon": 10.4053021,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via Antonio Ceci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13671207087,
+  "lat": 43.7121636,
+  "lon": 10.4052607,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Antonio Ceci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13671207088,
+  "lat": 43.7119492,
+  "lon": 10.4053570,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via Antonio Ceci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13671207089,
+  "lat": 43.7117931,
+  "lon": 10.4054329,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Antonio Ceci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13671207090,
+  "lat": 43.7122159,
+  "lon": 10.4053666,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Antonio Ceci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13734483396,
+  "lat": 43.7089938,
+  "lon": 10.4053191,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Francesco da Buti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13734483397,
+  "lat": 43.7092372,
+  "lon": 10.4054500,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Francesco da Buti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13770188899,
+  "lat": 43.7109561,
+  "lon": 10.3938055,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 13770298501,
+  "lat": 43.7109978,
+  "lon": 10.3929090,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021212,
+  "lat": 43.7075735,
+  "lon": 10.4031565,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021213,
+  "lat": 43.7076477,
+  "lon": 10.4029424,
+  "tags": {
+    "addr:housenumber": "60",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021214,
+  "lat": 43.7076620,
+  "lon": 10.4029012,
+  "tags": {
+    "addr:housenumber": "62",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021215,
+  "lat": 43.7077434,
+  "lon": 10.4026666,
+  "tags": {
+    "addr:housenumber": "66",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021216,
+  "lat": 43.7078836,
+  "lon": 10.4022721,
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021217,
+  "lat": 43.7078152,
+  "lon": 10.4024597,
+  "tags": {
+    "addr:housenumber": "68",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021219,
+  "lat": 43.7079457,
+  "lon": 10.4021004,
+  "tags": {
+    "addr:housenumber": "74",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794932697,
+  "lat": 43.7081728,
+  "lon": 10.4014487,
+  "tags": {
+    "addr:housenumber": "86",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794932698,
+  "lat": 43.7082344,
+  "lon": 10.4012744,
+  "tags": {
+    "addr:housenumber": "90",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794932699,
+  "lat": 43.7082647,
+  "lon": 10.4011891,
+  "tags": {
+    "addr:housenumber": "94",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794932700,
+  "lat": 43.7083494,
+  "lon": 10.4009487,
+  "tags": {
+    "addr:housenumber": "104",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794933201,
+  "lat": 43.7083725,
+  "lon": 10.4008834,
+  "tags": {
+    "addr:housenumber": "108",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794933202,
+  "lat": 43.7084544,
+  "lon": 10.4006541,
+  "tags": {
+    "addr:housenumber": "112",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794933203,
+  "lat": 43.7085035,
+  "lon": 10.4005173,
+  "tags": {
+    "addr:housenumber": "118",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118732,
+  "lat": 43.7074039,
+  "lon": 10.4036250,
+  "tags": {
+    "addr:housenumber": "54",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118733,
+  "lat": 43.7076584,
+  "lon": 10.4036340,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118744,
+  "lat": 43.7079426,
+  "lon": 10.4041173,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118745,
+  "lat": 43.7078788,
+  "lon": 10.4042974,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118746,
+  "lat": 43.7078930,
+  "lon": 10.4042575,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118752,
+  "lat": 43.7078442,
+  "lon": 10.4043950,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368962,
+  "lat": 43.7078768,
+  "lon": 10.4046157,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368963,
+  "lat": 43.7080727,
+  "lon": 10.4040613,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368964,
+  "lat": 43.7080562,
+  "lon": 10.4041080,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368966,
+  "lat": 43.7079249,
+  "lon": 10.4044801,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368967,
+  "lat": 43.7079831,
+  "lon": 10.4043152,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368980,
+  "lat": 43.7074835,
+  "lon": 10.4053854,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368981,
+  "lat": 43.7074269,
+  "lon": 10.4055434,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983515,
+  "lat": 43.7082181,
+  "lon": 10.4038668,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983517,
+  "lat": 43.7082409,
+  "lon": 10.4035859,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983518,
+  "lat": 43.7082974,
+  "lon": 10.4034254,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983519,
+  "lat": 43.7083290,
+  "lon": 10.4033356,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983520,
+  "lat": 43.7083773,
+  "lon": 10.4031984,
+  "tags": {
+    "addr:housenumber": "38",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983521,
+  "lat": 43.7084216,
+  "lon": 10.4030726,
+  "tags": {
+    "addr:housenumber": "40",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983523,
+  "lat": 43.7085109,
+  "lon": 10.4028264,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983525,
+  "lat": 43.7085877,
+  "lon": 10.4026162,
+  "tags": {
+    "addr:housenumber": "46",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983526,
+  "lat": 43.7086415,
+  "lon": 10.4024685,
+  "tags": {
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983530,
+  "lat": 43.7081666,
+  "lon": 10.4035137,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983531,
+  "lat": 43.7082316,
+  "lon": 10.4033300,
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983532,
+  "lat": 43.7082647,
+  "lon": 10.4032364,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983535,
+  "lat": 43.7083368,
+  "lon": 10.4030313,
+  "tags": {
+    "addr:housenumber": "53A",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983536,
+  "lat": 43.7083832,
+  "lon": 10.4028985,
+  "tags": {
+    "addr:housenumber": "55",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983538,
+  "lat": 43.7084550,
+  "lon": 10.4026975,
+  "tags": {
+    "addr:housenumber": "63",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002207,
+  "lat": 43.7087692,
+  "lon": 10.4042338,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002208,
+  "lat": 43.7089965,
+  "lon": 10.4043887,
+  "tags": {
+    "addr:housenumber": "22",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002209,
+  "lat": 43.7090957,
+  "lon": 10.4044571,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002212,
+  "lat": 43.7091518,
+  "lon": 10.4044952,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002213,
+  "lat": 43.7089175,
+  "lon": 10.4044925,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13931537510,
+  "lat": 43.7034688,
+  "lon": 10.4028265,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 13958557557,
+  "lat": 43.7086895,
+  "lon": 10.3991546,
+  "tags": {
+    "bus": "yes",
+    "name": "Stazione FS 9",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 13958576182,
+  "lat": 43.7069316,
+  "lon": 10.3958490,
+  "tags": {
+    "bus": "yes",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 13958644283,
+  "lat": 43.7087323,
+  "lon": 10.3991885,
+  "tags": {
+    "bus": "yes",
+    "name": "Stazione FS 8",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 13958644284,
+  "lat": 43.7087764,
+  "lon": 10.3992233,
+  "tags": {
+    "bus": "yes",
+    "name": "Stazione FS 7",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 13960983305,
+  "lat": 43.7102947,
+  "lon": 10.3963816,
+  "tags": {
+    "bus": "yes",
+    "name": "Via Battisti",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 13961909884,
+  "lat": 43.7099663,
+  "lon": 10.3957894,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "yes",
+    "highway": "bus_stop",
+    "name": "Sesta Porta",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13961909885,
+  "lat": 43.7099749,
+  "lon": 10.3957360,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "yes",
+    "highway": "bus_stop",
+    "name": "Sesta Porta",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13961909886,
+  "lat": 43.7099853,
+  "lon": 10.3956720,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "yes",
+    "highway": "bus_stop",
+    "name": "Sesta Porta",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13961909887,
+  "lat": 43.7099951,
+  "lon": 10.3956111,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "yes",
+    "highway": "bus_stop",
+    "name": "Sesta Porta",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13966440501,
+  "lat": 43.7143271,
+  "lon": 10.3924772,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "Simonelli - Arsenali",
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "ref": "PI4365",
+    "route_ref": "25",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13997575405,
+  "lat": 43.7160918,
+  "lon": 10.4062865,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 14053459128,
+  "lat": 43.7020879,
+  "lon": 10.3981175,
+  "tags": {
+    "barrier": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 14058349078,
+  "lat": 43.7050735,
+  "lon": 10.4028177,
+  "tags": {
+    "addr:housenumber": "43",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14058349079,
+  "lat": 43.7048123,
+  "lon": 10.4026253,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14070040524,
+  "lat": 43.7148045,
+  "lon": 10.4094616,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Giuseppe Garibaldi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14070040526,
+  "lat": 43.7147737,
+  "lon": 10.4093104,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Via Giuseppe Garibaldi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14148891821,
+  "lat": 43.7043042,
+  "lon": 10.4019630,
+  "tags": {
+    "addr:housenumber": "62a",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "shop"
+  }
+},
+{
+  "type": "node",
+  "id": 14148891822,
+  "lat": 43.7043144,
+  "lon": 10.4019442,
+  "tags": {
+    "addr:housenumber": "62",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "shop"
+  }
+},
+{
+  "type": "node",
+  "id": 14148891823,
+  "lat": 43.7043324,
+  "lon": 10.4019114,
+  "tags": {
+    "addr:housenumber": "60",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "garage"
+  }
+},
+{
+  "type": "node",
+  "id": 14148891824,
+  "lat": 43.7043420,
+  "lon": 10.4018940,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14202304601,
+  "lat": 43.7077924,
+  "lon": 10.4050500,
+  "tags": {
+    "addr:housenumber": "43",
+    "addr:street": "Via Amerigo Vespucci",
+    "amenity": "university",
+    "check_date": "2026-09-21",
+    "education": "university",
+    "internet_access": "wlan",
+    "name": "Residenza Universitaria Artistica per Studenti"
+  }
+},
+{
+  "type": "node",
+  "id": 14232664390,
+  "lat": 43.7136107,
+  "lon": 10.4003518,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 110083622,
+  "bounds": {
+    "minlat": 43.7093488,
+    "minlon": 10.4007166,
+    "maxlat": 43.7096308,
+    "maxlon": 10.4010907
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:street": "Via Cristoforo Colombo",
+    "building": "university",
+    "name": "Dipartimento di Scienze politiche (sezione staccata)"
+  }
+},
+{
+  "type": "way",
+  "id": 127284351,
+  "bounds": {
+    "minlat": 43.7106404,
+    "minlon": 10.4011031,
+    "maxlat": 43.7114131,
+    "maxlon": 10.4030713
+  },
+  "tags": {
+    "building": "school",
+    "building:colour": "e6bd9d",
+    "building:levels": "4",
+    "building:material": "plaster",
+    "roof:material": "roof_tiles",
+    "roof:shape": "hipped"
+  }
+},
+{
+  "type": "way",
+  "id": 128393590,
+  "bounds": {
+    "minlat": 43.7113331,
+    "minlon": 10.4118942,
+    "maxlat": 43.7115649,
+    "maxlon": 10.4123053
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 146344392,
+  "bounds": {
+    "minlat": 43.7037534,
+    "minlon": 10.3985591,
+    "maxlat": 43.7041529,
+    "maxlon": 10.3992531
+  },
+  "tags": {
+    "addr:housenumber": "117",
+    "addr:postcode": "56121",
+    "addr:street": "Via Sant'Agostino",
+    "building": "school",
+    "building:levels": "2",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 155220668,
+  "bounds": {
+    "minlat": 43.7081871,
+    "minlon": 10.4112317,
+    "maxlat": 43.7087727,
+    "maxlon": 10.4119251
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 155220669,
+  "bounds": {
+    "minlat": 43.7078343,
+    "minlon": 10.4116587,
+    "maxlat": 43.7087387,
+    "maxlon": 10.4128210
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 155220804,
+  "bounds": {
+    "minlat": 43.7085891,
+    "minlon": 10.4116461,
+    "maxlat": 43.7090845,
+    "maxlon": 10.4127471
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 156114845,
+  "bounds": {
+    "minlat": 43.7128176,
+    "minlon": 10.4022141,
+    "maxlat": 43.7131703,
+    "maxlon": 10.4027318
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 156114847,
+  "bounds": {
+    "minlat": 43.7131055,
+    "minlon": 10.4024099,
+    "maxlat": 43.7133596,
+    "maxlon": 10.4027126
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 156114855,
+  "bounds": {
+    "minlat": 43.7128846,
+    "minlon": 10.4013826,
+    "maxlat": 43.7131579,
+    "maxlon": 10.4017608
+  },
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via del Carmine",
+    "amenity": "kindergarten",
+    "building": "yes",
+    "name": "Scuola dell’infanzia Matilde Calandrini",
+    "phone": "+39 050 910731",
+    "wikidata": "Q52948292"
+  }
+},
+{
+  "type": "way",
+  "id": 162910314,
+  "bounds": {
+    "minlat": 43.7070116,
+    "minlon": 10.3965963,
+    "maxlat": 43.7079470,
+    "maxlon": 10.4014400
+  },
+  "tags": {
+    "area": "yes",
+    "bench": "yes",
+    "bin": "yes",
+    "height": "0.55",
+    "highway": "footway",
+    "lit": "yes",
+    "public_transport": "platform",
+    "railway": "platform",
+    "shelter": "yes",
+    "surface": "paving_stones",
+    "tactile_paving": "yes",
+    "train": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 162910315,
+  "bounds": {
+    "minlat": 43.7068965,
+    "minlon": 10.3970682,
+    "maxlat": 43.7077530,
+    "maxlon": 10.4013998
+  },
+  "tags": {
+    "area": "yes",
+    "bench": "yes",
+    "bin": "yes",
+    "height": "0.55",
+    "highway": "footway",
+    "lit": "yes",
+    "public_transport": "platform",
+    "railway": "platform",
+    "shelter": "yes",
+    "surface": "paving_stones",
+    "tactile_paving": "yes",
+    "train": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 162910320,
+  "bounds": {
+    "minlat": 43.7080295,
+    "minlon": 10.3969169,
+    "maxlat": 43.7085590,
+    "maxlon": 10.3996686
+  },
+  "tags": {
+    "area": "yes",
+    "bench": "yes",
+    "bin": "yes",
+    "height": "0.55",
+    "highway": "footway",
+    "lit": "yes",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "platform",
+    "railway": "platform",
+    "ref": "1",
+    "shelter": "yes",
+    "surface": "paving_stones",
+    "tactile_paving": "yes",
+    "train": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 162910321,
+  "bounds": {
+    "minlat": 43.7077421,
+    "minlon": 10.3963827,
+    "maxlat": 43.7085520,
+    "maxlon": 10.4004557
+  },
+  "tags": {
+    "area": "yes",
+    "bench": "yes",
+    "bin": "yes",
+    "height": "0.55",
+    "highway": "footway",
+    "lit": "yes",
+    "public_transport": "platform",
+    "railway": "platform",
+    "shelter": "yes",
+    "surface": "paving_stones",
+    "tactile_paving": "yes",
+    "train": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 174083473,
+  "bounds": {
+    "minlat": 43.7126114,
+    "minlon": 10.3945522,
+    "maxlat": 43.7130213,
+    "maxlon": 10.3952008
+  },
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via della Qualquonia",
+    "amenity": "school",
+    "check_date": "2025-03-23",
+    "isced:level": "2",
+    "name": "Scuola pubblica media \"Giuseppe Toniolo\"",
+    "operator": "Istituto Comprensivo \"G. Toniolo\"",
+    "operator:wikidata": "Q52749076",
+    "phone": "+39 050 26363",
+    "wikidata": "Q52750566"
+  }
+},
+{
+  "type": "way",
+  "id": 192322263,
+  "bounds": {
+    "minlat": 43.7071497,
+    "minlon": 10.3964915,
+    "maxlat": 43.7082479,
+    "maxlon": 10.4019049
+  },
+  "tags": {
+    "area": "yes",
+    "bench": "yes",
+    "bin": "yes",
+    "height": "0.55",
+    "highway": "footway",
+    "lit": "yes",
+    "public_transport": "platform",
+    "railway": "platform",
+    "shelter": "yes",
+    "surface": "paving_stones",
+    "tactile_paving": "yes",
+    "train": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 192322264,
+  "bounds": {
+    "minlat": 43.7072557,
+    "minlon": 10.3959604,
+    "maxlat": 43.7081953,
+    "maxlon": 10.4008091
+  },
+  "tags": {
+    "area": "yes",
+    "bench": "yes",
+    "bin": "yes",
+    "height": "0.55",
+    "highway": "footway",
+    "lit": "yes",
+    "public_transport": "platform",
+    "railway": "platform",
+    "shelter": "yes",
+    "surface": "paving_stones",
+    "tactile_paving": "yes",
+    "train": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 192322265,
+  "bounds": {
+    "minlat": 43.7075855,
+    "minlon": 10.3963262,
+    "maxlat": 43.7084153,
+    "maxlon": 10.4005040
+  },
+  "tags": {
+    "area": "yes",
+    "bench": "yes",
+    "bin": "yes",
+    "height": "0.55",
+    "highway": "footway",
+    "lit": "yes",
+    "public_transport": "platform",
+    "railway": "platform",
+    "shelter": "yes",
+    "surface": "paving_stones",
+    "tactile_paving": "yes",
+    "train": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 232678794,
+  "bounds": {
+    "minlat": 43.7078013,
+    "minlon": 10.4106831,
+    "maxlat": 43.7092478,
+    "maxlon": 10.4132567
+  },
+  "tags": {
+    "amenity": "university",
+    "education": "university",
+    "faculty": "veterinary",
+    "name": "Dipartimento di Scienze Veterinarie",
+    "operator": "Università di Pisa",
+    "operator:type": "public",
+    "operator:wikidata": "Q645663",
+    "website": "https://www.vet.unipi.it/"
+  }
+},
+{
+  "type": "way",
+  "id": 240399513,
+  "bounds": {
+    "minlat": 43.7106404,
+    "minlon": 10.4011031,
+    "maxlat": 43.7117860,
+    "maxlon": 10.4030713
+  },
+  "tags": {
+    "amenity": "school",
+    "education": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 240402742,
+  "bounds": {
+    "minlat": 43.7024842,
+    "minlon": 10.4067510,
+    "maxlat": 43.7040334,
+    "maxlon": 10.4084070
+  },
+  "tags": {
+    "amenity": "school",
+    "name": "Istituto d’Istruzione Superiore “E. Santoni”",
+    "old_name": "ITAS Gambacorti"
+  }
+},
+{
+  "type": "way",
+  "id": 245798233,
+  "bounds": {
+    "minlat": 43.7126979,
+    "minlon": 10.3950515,
+    "maxlat": 43.7133659,
+    "maxlon": 10.3956602
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 253812706,
+  "bounds": {
+    "minlat": 43.7169584,
+    "minlon": 10.3990019,
+    "maxlat": 43.7170458,
+    "maxlon": 10.3991517
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 283174043,
+  "bounds": {
+    "minlat": 43.7102770,
+    "minlon": 10.4114392,
+    "maxlat": 43.7108897,
+    "maxlon": 10.4124940
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "3",
+    "name": "Polo didattico delle Piagge",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 306414315,
+  "bounds": {
+    "minlat": 43.7127235,
+    "minlon": 10.3947877,
+    "maxlat": 43.7129371,
+    "maxlon": 10.3951064
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 310539318,
+  "bounds": {
+    "minlat": 43.7016516,
+    "minlon": 10.4010245,
+    "maxlat": 43.7026676,
+    "maxlon": 10.4024463
+  },
+  "tags": {
+    "amenity": "school",
+    "contact:website": "https://comprensivofucinipisa.edu.it/",
+    "isced:level": "2",
+    "name": "Istituto Comprensivo Renato Fucini"
+  }
+},
+{
+  "type": "way",
+  "id": 353439043,
+  "bounds": {
+    "minlat": 43.7108921,
+    "minlon": 10.3973212,
+    "maxlat": 43.7109088,
+    "maxlon": 10.3975729
+  },
+  "tags": {
+    "operator": "Autolinee Toscane",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 354485963,
+  "bounds": {
+    "minlat": 43.7087666,
+    "minlon": 10.3991113,
+    "maxlat": 43.7088578,
+    "maxlon": 10.3993572
+  },
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "foot": "designated",
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "no",
+    "public_transport": "platform",
+    "shelter": "no",
+    "surface": "paving_stones",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 368829395,
+  "bounds": {
+    "minlat": 43.7127716,
+    "minlon": 10.4022141,
+    "maxlat": 43.7134544,
+    "maxlon": 10.4029274
+  },
+  "tags": {
+    "addr:street": "Via Pietro Gori",
+    "amenity": "school",
+    "check_date": "2024-10-01",
+    "isced:level": "1",
+    "name": "Scuola Primaria \"E. Zerboglio\"",
+    "operator": "Istituto Comprensivo \"R. Fucini\"",
+    "operator:wikidata": "Q52903949",
+    "phone": "+39 050 910770",
+    "wikidata": "Q52856290"
+  }
+},
+{
+  "type": "way",
+  "id": 508993093,
+  "bounds": {
+    "minlat": 43.7098458,
+    "minlon": 10.3955667,
+    "maxlat": 43.7101431,
+    "maxlon": 10.3956552
+  },
+  "tags": {
+    "bus": "yes",
+    "highway": "platform",
+    "public_transport": "platform",
+    "ref": "4",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 508993094,
+  "bounds": {
+    "minlat": 43.7098363,
+    "minlon": 10.3956310,
+    "maxlat": 43.7101339,
+    "maxlon": 10.3957128
+  },
+  "tags": {
+    "bus": "yes",
+    "highway": "platform",
+    "public_transport": "platform",
+    "ref": "3",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 508993095,
+  "bounds": {
+    "minlat": 43.7098269,
+    "minlon": 10.3956944,
+    "maxlat": 43.7101236,
+    "maxlon": 10.3957771
+  },
+  "tags": {
+    "bus": "yes",
+    "highway": "platform",
+    "public_transport": "platform",
+    "ref": "2",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 508993096,
+  "bounds": {
+    "minlat": 43.7098189,
+    "minlon": 10.3957484,
+    "maxlat": 43.7101150,
+    "maxlon": 10.3958308
+  },
+  "tags": {
+    "bus": "yes",
+    "highway": "platform",
+    "public_transport": "platform",
+    "ref": "1",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 522177168,
+  "bounds": {
+    "minlat": 43.7011868,
+    "minlon": 10.4040449,
+    "maxlat": 43.7019371,
+    "maxlon": 10.4051970
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Giovanni Conti",
+    "amenity": "kindergarten",
+    "isced:level": "0",
+    "name": "Asilo nido Rosati",
+    "phone": "+39 050 48539"
+  }
+},
+{
+  "type": "way",
+  "id": 547880008,
+  "bounds": {
+    "minlat": 43.7058327,
+    "minlon": 10.3967265,
+    "maxlat": 43.7066370,
+    "maxlon": 10.3980583
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via di Goletta",
+    "amenity": "school",
+    "check_date": "2026-05-04",
+    "name": "Scuola dell'infanzia San Francesco"
+  }
+},
+{
+  "type": "way",
+  "id": 580462112,
+  "bounds": {
+    "minlat": 43.7036266,
+    "minlon": 10.3984884,
+    "maxlat": 43.7042026,
+    "maxlon": 10.3993301
+  },
+  "tags": {
+    "addr:housenumber": "117",
+    "addr:street": "Via Sant'Agostino",
+    "amenity": "school",
+    "check_date": "2026-05-04",
+    "isced:level": "1",
+    "name": "Scuola Elementare \"N. Sauro\"",
+    "operator": "Istituto Comprensivo \"R. Fucini\"",
+    "operator:wikidata": "Q52903949",
+    "phone": "+39 050 29069",
+    "wikidata": "Q52857993"
+  }
+},
+{
+  "type": "way",
+  "id": 592074706,
+  "bounds": {
+    "minlat": 43.7013164,
+    "minlon": 10.4008102,
+    "maxlat": 43.7020457,
+    "maxlon": 10.4014352
+  },
+  "tags": {
+    "amenity": "kindergarten"
+  }
+},
+{
+  "type": "way",
+  "id": 592379357,
+  "bounds": {
+    "minlat": 43.7126581,
+    "minlon": 10.3950515,
+    "maxlat": 43.7131927,
+    "maxlon": 10.3956987
+  },
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Francesco Niosi",
+    "amenity": "school",
+    "name": "Scuola Primaria \"Cambini\"",
+    "operator": "Istituto Comprensivo \"G. Toniolo\"",
+    "operator:wikidata": "Q52749076",
+    "phone": "+39 050 24528",
+    "wikidata": "Q52747605"
+  }
+},
+{
+  "type": "way",
+  "id": 630721359,
+  "bounds": {
+    "minlat": 43.7100718,
+    "minlon": 10.4109770,
+    "maxlat": 43.7122275,
+    "maxlon": 10.4143784
+  },
+  "tags": {
+    "amenity": "university",
+    "education": "university",
+    "faculty": "agricultural_science",
+    "name": "Dipartimento di Scienze Agrarie, Alimentari e Agro-ambientali",
+    "operator": "Università di Pisa",
+    "website": "https://www.agr.unipi.it/"
+  }
+},
+{
+  "type": "way",
+  "id": 630736203,
+  "bounds": {
+    "minlat": 43.7022514,
+    "minlon": 10.4059248,
+    "maxlat": 43.7028972,
+    "maxlon": 10.4066399
+  },
+  "tags": {
+    "addr:street": "Via Italo Possenti",
+    "amenity": "school",
+    "isced:level": "1",
+    "name": "Scuola Primaria “O. Lorenzini”",
+    "operator": "Istituto Comprensivo \"R. Fucini\"",
+    "operator:wikidata": "Q52903949",
+    "wikidata": "Q52896452"
+  }
+},
+{
+  "type": "way",
+  "id": 691107898,
+  "bounds": {
+    "minlat": 43.7099909,
+    "minlon": 10.4112834,
+    "maxlat": 43.7110992,
+    "maxlon": 10.4127494
+  },
+  "tags": {
+    "alt_name": "Polo Piagge",
+    "amenity": "university",
+    "name": "Polo didattico delle Piagge",
+    "operator": "Università di Pisa",
+    "operator:type": "public",
+    "operator:wikidata": "Q645663"
+  }
+},
+{
+  "type": "way",
+  "id": 695634299,
+  "bounds": {
+    "minlat": 43.7069341,
+    "minlon": 10.4041804,
+    "maxlat": 43.7078029,
+    "maxlon": 10.4050736
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "42",
+    "addr:postcode": "56121",
+    "addr:street": "Via Filippo Corridoni",
+    "amenity": "school",
+    "isced:level": "1",
+    "name": "Scuola Primaria “C. Battisti”",
+    "operator": "Istituto Comprensivo \"R. Fucini\"",
+    "operator:wikidata": "Q52903949",
+    "phone": "+39 050 29310",
+    "wikidata": "Q52899615"
+  }
+},
+{
+  "type": "way",
+  "id": 721870995,
+  "bounds": {
+    "minlat": 43.7165898,
+    "minlon": 10.3986488,
+    "maxlat": 43.7168557,
+    "maxlon": 10.3989558
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "4",
+    "name": "Palazzo alla Giornata",
+    "wikidata": "Q3891131",
+    "wikipedia": "it:Palazzo alla Giornata"
+  }
+},
+{
+  "type": "way",
+  "id": 721900738,
+  "bounds": {
+    "minlat": 43.7166236,
+    "minlon": 10.3989204,
+    "maxlat": 43.7169631,
+    "maxlon": 10.3991867
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "university",
+    "name": "Dipartimento di Scienze Politiche",
+    "operator": "Università di Pisa",
+    "operator:wikidata": "Q645663",
+    "phone": "+39 050 2212464",
+    "website": "https://www.sp.unipi.it/"
+  }
+},
+{
+  "type": "way",
+  "id": 1220251685,
+  "bounds": {
+    "minlat": 43.7086397,
+    "minlon": 10.3990505,
+    "maxlat": 43.7087049,
+    "maxlon": 10.3991883
+  },
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "foot": "designated",
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "no",
+    "name": "6",
+    "public_transport": "platform",
+    "shelter": "no",
+    "surface": "paving_stones",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1220251686,
+  "bounds": {
+    "minlat": 43.7086829,
+    "minlon": 10.3990866,
+    "maxlat": 43.7087472,
+    "maxlon": 10.3992259
+  },
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "foot": "designated",
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "no",
+    "name": "4",
+    "public_transport": "platform",
+    "shelter": "no",
+    "surface": "paving_stones",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1220251687,
+  "bounds": {
+    "minlat": 43.7087263,
+    "minlon": 10.3991230,
+    "maxlat": 43.7087899,
+    "maxlon": 10.3992631
+  },
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "foot": "designated",
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "no",
+    "name": "2",
+    "public_transport": "platform",
+    "shelter": "no",
+    "surface": "paving_stones",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1461929681,
+  "bounds": {
+    "minlat": 43.7085275,
+    "minlon": 10.3942077,
+    "maxlat": 43.7090147,
+    "maxlon": 10.3972499
+  },
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "height": "0.55",
+    "highway": "footway",
+    "lit": "yes",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "platform",
+    "railway": "platform",
+    "ref": "1 Ovest;2 Ovest",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "train": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1461929684,
+  "bounds": {
+    "minlat": 43.7077423,
+    "minlon": 10.3996452,
+    "maxlat": 43.7081107,
+    "maxlon": 10.4010978
+  },
+  "tags": {
+    "area": "yes",
+    "bench": "yes",
+    "bin": "yes",
+    "highway": "footway",
+    "lit": "yes",
+    "operator": "Rete Ferroviaria Italiana",
+    "operator:short": "RFI",
+    "operator:wikidata": "Q1060049",
+    "public_transport": "platform",
+    "railway": "platform",
+    "ref": "1;1 Est",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "train": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1461929705,
+  "bounds": {
+    "minlat": 43.7076601,
+    "minlon": 10.3959880,
+    "maxlat": 43.7077195,
+    "maxlon": 10.3963546
+  },
+  "tags": {
+    "funicular": "yes",
+    "highway": "footway",
+    "public_transport": "platform",
+    "railway": "platform",
+    "tunnel": "building_passage"
+  }
+},
+{
+  "type": "relation",
+  "id": 1729449,
+  "bounds": {
+    "minlat": 43.7171048,
+    "minlon": 10.3988280,
+    "maxlat": 43.7175835,
+    "maxlon": 10.3998135
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:street": "Via Curtatone e Montanara",
+    "amenity": "university",
+    "building": "yes",
+    "building:levels": "3",
+    "faculty": "law",
+    "name": "Palazzo della Sapienza",
+    "name:ko": "사피엔차 대학교",
+    "roof:material": "roof_tiles",
+    "roof:shape": "gabled",
+    "type": "multipolygon",
+    "wikidata": "Q3891485",
+    "wikipedia": "it:Palazzo della Sapienza (Pisa)"
+  }
+},
+{
+  "type": "relation",
+  "id": 6635498,
+  "bounds": {
+    "minlat": 43.7018891,
+    "minlon": 10.4012029,
+    "maxlat": 43.7026131,
+    "maxlon": 10.4022405
+  },
+  "tags": {
+    "building": "school",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 15966352,
+  "bounds": {
+    "minlat": 43.7117220,
+    "minlon": 10.4014245,
+    "maxlat": 43.7120848,
+    "maxlon": 10.4023002
+  },
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Simone Sancasciani",
+    "amenity": "school",
+    "name": "Succursale IC Fucini",
+    "operator": "I.C. Renato Fucini",
+    "operator:type": "public",
+    "operator:wikidata": "Q52903949",
+    "type": "multipolygon",
+    "wikidata": "Q52901576"
+  }
+}
+
+  ]
+}

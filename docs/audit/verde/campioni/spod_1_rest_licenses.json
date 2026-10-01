@@ -1,0 +1,58 @@
+[
+  {
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Other (Attribution)",
+    "domain_data": false,
+    "is_okd_compliant": false,
+    "is_generic": false,
+    "url": "",
+    "is_osi_compliant": false,
+    "domain_content": true,
+    "domain_software": false,
+    "id": "other-at"
+  },
+  {
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Italian Open Data Licence (IODL) v. 2.0",
+    "domain_data": false,
+    "is_okd_compliant": false,
+    "is_generic": false,
+    "url": "http://www.dati.gov.it/iodl/2.0/",
+    "is_osi_compliant": false,
+    "domain_content": true,
+    "domain_software": false,
+    "id": "iodl-2.0"
+  },
+  {
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Creative Commons Attribution",
+    "domain_data": false,
+    "is_okd_compliant": false,
+    "is_generic": false,
+    "url": "http://www.opendefinition.org/licenses/cc-by",
+    "is_osi_compliant": false,
+    "domain_content": true,
+    "domain_software": false,
+    "id": "cc-by"
+  },
+  {
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Creative Commons CCZero",
+    "domain_data": true,
+    "is_okd_compliant": false,
+    "is_generic": false,
+    "url": "http://www.opendefinition.org/licenses/cc-zero",
+    "is_osi_compliant": false,
+    "domain_content": true,
+    "domain_software": false,
+    "id": "cc-zero"
+  }
+]

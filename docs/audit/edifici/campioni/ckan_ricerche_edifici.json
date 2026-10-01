@@ -1,0 +1,487 @@
+{
+ "toscana|edifici Pisa": {
+  "count": 1,
+  "top": [
+   [
+    "edifici-scolastici",
+    "Edifici Scolastici",
+    "Provincia di Pisa",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ]
+  ]
+ },
+ "toscana|altezza edifici": {
+  "count": 0,
+  "top": []
+ },
+ "toscana|unità volumetriche": {
+  "count": 80,
+  "top": [
+   [
+    "unita-volumetriche33",
+    "Unità volumetriche",
+    "Comune Livorno",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche2",
+    "Unità volumetriche",
+    "Comune di Siena",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche17",
+    "Unità volumetriche",
+    "Comune di Montemurlo",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche",
+    "Unità volumetriche",
+    "Comune di Poggibonsi",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche27",
+    "Unità volumetriche",
+    "Comune di Calenzano",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche24",
+    "Unità volumetriche",
+    "Comune di Fosdinovo",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche10",
+    "Unità volumetriche",
+    "Comune di Gavorrano",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche8",
+    "Unità volumetriche",
+    "Comune di Reggello",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ]
+  ]
+ },
+ "toscana|DSM DTM Pisa": {
+  "count": 2,
+  "top": [
+   [
+    "lidar",
+    "Regione Toscana - Rilievi Lidar",
+    "Regione Toscana",
+    "cc-by"
+   ],
+   [
+    "dem10mt",
+    "Altimetria 10 metri",
+    "Regione Toscana",
+    "cc-by"
+   ]
+  ]
+ },
+ "toscana|lidar": {
+  "count": 10,
+  "top": [
+   [
+    "lidar",
+    "Regione Toscana - Rilievi Lidar",
+    "Regione Toscana",
+    "cc-by"
+   ],
+   [
+    "dtm-lidar-2023",
+    "DTM 2023",
+    "Comune di Firenze",
+    "cc-by-4.0"
+   ],
+   [
+    "dsm-lidar-2023",
+    "DSM 2023",
+    "Comune di Firenze",
+    "cc-by-4.0"
+   ],
+   [
+    "dtm-2017",
+    "DTM 2017",
+    "Comune di Firenze",
+    "cc-by-4.0"
+   ],
+   [
+    "dsm-2017",
+    "DSM 2017",
+    "Comune di Firenze",
+    "cc-by-4.0"
+   ],
+   [
+    "dsm-2007",
+    "DSM 2007",
+    "Comune di Firenze",
+    "cc-by-4.0"
+   ],
+   [
+    "dtm_2007",
+    "DTM 2007",
+    "Comune di Firenze",
+    "cc-by-4.0"
+   ],
+   [
+    "dtm-hillshade",
+    "DTM_HILLSHADE",
+    "Comune di Firenze",
+    "cc-by-4.0"
+   ]
+  ]
+ },
+ "toscana|volumetrie edifici 3D": {
+  "count": 108,
+  "top": [
+   [
+    "edifici-e-fabbricati",
+    "edifici e fabbricati",
+    "Unione di Comuni Montana Lunigiana",
+    "other-pd"
+   ],
+   [
+    "ptcp-ville-ed-edifici-specialistici",
+    "PTCP - Ville ed edifici specialistici",
+    "Comune di Arezzo",
+    "CC-BY"
+   ],
+   [
+    "ptcp-ville-ed-edifici-specialistici-approvato",
+    "PTCP - Ville ed edifici specialistici - Approvato",
+    "Comune di Arezzo",
+    "CC-BY"
+   ],
+   [
+    "edifici-scolastici-citta-metropolitana-di-firenze",
+    "Edifici scolastici - Città Metropolitana di Firenze",
+    "Città metropolitana di Firenze",
+    "cc-by"
+   ],
+   [
+    "mappatura-degli-edifici-occupati-da-scuole-secondarie-di-2-grado-citta-metropolitana-di-firenze",
+    "Mappatura degli edifici occupati da scuole secondarie di 2° grado - Ci",
+    "Città metropolitana di Firenze",
+    "cc-by"
+   ],
+   [
+    "ptcp-1998-art-7-tutela-paesaggistica-ed-ambientale-del-territorio-aperto-abitati-minori-ed-edif",
+    "PTCP 1998 - Art.7 Tutela paesaggistica ed ambientale del territorio ap",
+    "Città metropolitana di Firenze",
+    "cc-by"
+   ],
+   [
+    "scuole-asili-nido",
+    "Scuole - Asili Nido",
+    "Comune di Prato",
+    "cc-by"
+   ],
+   [
+    "scuole-secondarie-primo-grado",
+    "Scuole - Secondarie Primo Grado",
+    "Comune di Prato",
+    "cc-by"
+   ]
+  ]
+ },
+ "datigovit|edifici Pisa": {
+  "count": 1,
+  "top": [
+   [
+    "edifici-scolastici",
+    "Edifici Scolastici",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ]
+  ]
+ },
+ "datigovit|altezza edifici": {
+  "count": 22,
+  "top": [
+   [
+    "stima-fabbisogno-energetico-edifici-ferrara",
+    "Stima fabbisogno energetico edifici Ferrara",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "carta-tecnica-comunale-edifici-volumetrici",
+    "CARTA TECNICA COMUNALE - Edifici volumetrici",
+    "Comune di Bologna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edificato-0311-1",
+    "Edificato 031",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edificato-0881-1",
+    "Edificato 088",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edificato-131",
+    "Edificato 131",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edificato-064-1",
+    "Edificato 064",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edificato-032",
+    "Edificato 032",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edificato-031",
+    "Edificato 031",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ]
+  ]
+ },
+ "datigovit|unità volumetriche": {
+  "count": 88,
+  "top": [
+   [
+    "unita-volumetriche1-25",
+    "Unità volumetriche",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche1-14",
+    "Unità volumetriche",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche1-13",
+    "Unità volumetriche",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche1-11",
+    "Unità volumetriche",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche4-22",
+    "Unità volumetriche",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche4-23",
+    "Unità volumetriche",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche1-9",
+    "Unità volumetriche",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "unita-volumetriche4-17",
+    "Unità volumetriche",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ]
+  ]
+ },
+ "datigovit|DSM DTM Pisa": {
+  "count": 22,
+  "top": [
+   [
+    "dtm-e-dsm-passo-1-m-relativi-alle-fasce-fluviali",
+    "DTM e DSM passo 1 m relativi alle fasce fluviali",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "dtm-e-dsm-passo-1-m-relativi-alla-costa-della-gallura",
+    "DTM e DSM passo 1 m relativi alla costa della Gallura",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "modelli-digitali-del-terreno-dtm-e-delle-superfici-dsm-della-sardegna",
+    "Modelli digitali del terreno (DTM) e delle superfici (DSM) della Sarde",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "ombreggiatura-alpi-dtm-20m1",
+    "Ombreggiatura Alpi (DTM 20m)",
+    "Provincia autonoma di Bolzano",
+    "Creative Commons CC0 1.0 Universale - Public Domain Dedication (CC0 1.0)"
+   ],
+   [
+    "rilievo-lidar-2004-della-costa-e-del-fiume-savio-dtm-digital-terrain-model1",
+    "Rilievi Lidar costa - Rilievo LIDAR 2004 della Costa e del Fiume Savio",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "rilievo-lidar-2004-della-costa-e-del-fiume-savio-dsm-digital-surface-model1",
+    "Rilievi Lidar costa - Rilievo LIDAR 2004 della Costa e del Fiume Savio",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "dato-grezzo-rilevato-dal-sensore-lidar",
+    "Dato grezzo rilevato dal sensore Lidar",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "quadro-di-unione-rer2022-prodotti-lidar1",
+    "Quadro di unione RER2022 - Prodotti LiDAR",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ]
+  ]
+ },
+ "datigovit|lidar": {
+  "count": 159,
+  "top": [
+   [
+    "rilievo-lidar-2019-della-costa-dtmcosta_lidar20191",
+    "Rilievi Lidar costa - DTMCosta_Lidar2019",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "rilievo-lidar-2019-della-costa-dsmcosta_lidar20191",
+    "Rilievi Lidar costa - DSMCosta_Lidar2019",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "rilievi-lidar-costa-rilievo-lidar-2010-della-costa-dtm1",
+    "Rilievi Lidar costa - Rilievo LIDAR 2010 della Costa - DTM",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "rilievi-lidar-costa-rilievo-lidar-2010-della-costa-dsm1",
+    "Rilievi Lidar costa - Rilievo LIDAR 2010 della Costa - DSM",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "rilievo-lidar-2004-della-costa-e-del-fiume-savio-dtm-digital-terrain-model1",
+    "Rilievi Lidar costa - Rilievo LIDAR 2004 della Costa e del Fiume Savio",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "rilievo-lidar-2004-della-costa-e-del-fiume-savio-dsm-digital-surface-model1",
+    "Rilievi Lidar costa - Rilievo LIDAR 2004 della Costa e del Fiume Savio",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "copertura-nuvola-lidar-dolomiti-20101",
+    "Copertura nuvola LIDAR Dolomiti 2010",
+    "Provincia autonoma di Bolzano",
+    "Creative Commons CC0 1.0 Universale - Public Domain Dedication (CC0 1.0)"
+   ],
+   [
+    "regione-toscana-rilievi-lidar",
+    "Regione Toscana - Rilievi Lidar",
+    "Regione Toscana",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ]
+  ]
+ },
+ "datigovit|volumetrie edifici 3D": {
+  "count": 671,
+  "top": [
+   [
+    "attestati-di-prestazione-energetica-degli-edifici-destinazione-duso",
+    "Attestati di prestazione energetica degli edifici - destinazione d'uso",
+    "Regione Umbria",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edifici-e-manufatti-c-t-r-sc-1-5000-2007-2013-ii-edizione-3d-db-topografico",
+    "Edifici e Manufatti - C.T.R. sc. 1:5000 - 2007/2013 - II Edizione 3D/D",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "db-geotopografico-national-core-sc-1-5000-nc5-iii-edizione-3d-dal-2017",
+    "DB Geotopografico National Core sc.1:5000 (NC5) - III Edizione 3D - da",
+    "GeoDati - RNDT",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edifici5-3",
+    "Edifici",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edifici5-5",
+    "Edifici",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edifici1",
+    "Edifici",
+    "Comune di Rimini",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edifici5-1",
+    "Edifici",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ],
+   [
+    "edifici5-2",
+    "Edifici",
+    "Regione Emilia Romagna",
+    "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)"
+   ]
+  ]
+ },
+ "pisa|edifici Pisa": {
+  "err": "HTTP Error 404: Not Found"
+ },
+ "pisa|altezza edifici": {
+  "err": "HTTP Error 404: Not Found"
+ },
+ "pisa|unità volumetriche": {
+  "err": "HTTP Error 404: Not Found"
+ },
+ "pisa|DSM DTM Pisa": {
+  "err": "HTTP Error 404: Not Found"
+ },
+ "pisa|lidar": {
+  "err": "HTTP Error 404: Not Found"
+ },
+ "pisa|volumetrie edifici 3D": {
+  "err": "HTTP Error 404: Not Found"
+ }
+}

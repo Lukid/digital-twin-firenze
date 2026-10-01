@@ -1,0 +1,184 @@
+[
+ {
+  "path": "docs/audit/rete/campioni/ckan_nazionale_pisa_pedonale.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=Pisa pedonale OR marciapiedi OR attraversamenti OR grafo stradale",
+  "timestamp_utc": "2026-10-01T13:30:52+00:00",
+  "bytes": 70983,
+  "sha256": "6c46a521ecda8b2ae9a3fd3ede1b9d6a8940a5261205c6c7366aff9e5984b1fa"
+ },
+ {
+  "path": "docs/audit/rete/campioni/ckan_toscana_DBTR_strade.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=DBTR strade&rows=10",
+  "timestamp_utc": "2026-10-01T13:30:45+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "docs/audit/rete/campioni/ckan_toscana_attraversamenti_pedonali.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=attraversamenti pedonali&rows=10",
+  "timestamp_utc": "2026-10-01T13:30:45+00:00",
+  "bytes": 8739,
+  "sha256": "bc30b678eefcec696228e4e937a90c7f6cd40ed57c6f565da960c40ac4b2629a"
+ },
+ {
+  "path": "docs/audit/rete/campioni/ckan_toscana_dbtopo.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=database topografico regionale&rows=8",
+  "timestamp_utc": "2026-10-01T13:31:03+00:00",
+  "bytes": 58314,
+  "sha256": "374291b0982ad96b65ad5f38e0c1d50827015c58bc85bc54eff7d775c64f0c55"
+ },
+ {
+  "path": "docs/audit/rete/campioni/ckan_toscana_elemento_stradale.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=elemento stradale&rows=10",
+  "timestamp_utc": "2026-10-01T13:30:45+00:00",
+  "bytes": 156485,
+  "sha256": "4533a5e6783f0a45053120467c2b2428a9d105d140da3c624e920b29cf0fa029"
+ },
+ {
+  "path": "docs/audit/rete/campioni/ckan_toscana_grafo-civici.json",
+  "url": "https://dati.toscana.it/api/3/action/package_show?id=grafo-civici",
+  "timestamp_utc": "2026-10-01T13:30:51+00:00",
+  "bytes": 3215,
+  "sha256": "dafa444c51d70c64c2ccdba27d747324c41505f6a784bd4feceec844bea5cafd"
+ },
+ {
+  "path": "docs/audit/rete/campioni/ckan_toscana_grafo_stradale.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=grafo stradale&rows=10",
+  "timestamp_utc": "2026-10-01T13:30:44+00:00",
+  "bytes": 94226,
+  "sha256": "194b3b284e99c8a5e60d7268d6caa5a8f9a1936b44b82f6eee62d1f81fcd5c6f"
+ },
+ {
+  "path": "docs/audit/rete/campioni/ckan_toscana_marciapiedi.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=marciapiedi&rows=10",
+  "timestamp_utc": "2026-10-01T13:30:44+00:00",
+  "bytes": 169341,
+  "sha256": "37a31d888a467c4f87cd5c628afc7af53a2b3e1f18384d687d05a1d06a1bbffc"
+ },
+ {
+  "path": "docs/audit/rete/campioni/ckan_toscana_pisa_viabilita.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=Pisa AND (strade OR stradale OR viabilità OR pedonale OR marciapiedi OR attraversamenti)",
+  "timestamp_utc": "2026-10-01T13:30:51+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "docs/audit/rete/campioni/ckan_toscana_rete_pedonale.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=rete pedonale&rows=10",
+  "timestamp_utc": "2026-10-01T13:30:45+00:00",
+  "bytes": 102840,
+  "sha256": "702b1ddd3d40f297202c56550dfa185ed60382b3ede6d3cb0e1bde53c5312509"
+ },
+ {
+  "path": "docs/audit/rete/campioni/head_dbt10k_pisa.txt",
+  "url": "HEAD http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_050_PISA_2010_2010.7z (file non scaricato)",
+  "timestamp_utc": "2026-10-01T13:31:07+00:00",
+  "bytes": 88,
+  "sha256": "45271b6eb356f6de3afab4873840f915b8bb9a26f280e08b75d541b910bf7aeb"
+ },
+ {
+  "path": "docs/audit/rete/campioni/head_iternet.txt",
+  "url": "HEAD http://www502.regione.toscana.it/geoscopio/download/grafo_stradale/iternet.zip (file non scaricato)",
+  "timestamp_utc": "2026-10-01T13:30:57+00:00",
+  "bytes": 379,
+  "sha256": "21e01d8857300ab34e09276b593cd3b11a29a36f43c0fcdd471b140691a25881"
+ },
+ {
+  "path": "docs/audit/rete/campioni/metriche_osm.json",
+  "url": "derivato da analizza_osm.py sui osm_Z*.json",
+  "timestamp_utc": "2026-10-01T13:48:01+00:00",
+  "bytes": 6099,
+  "sha256": "6e953a88b83c97327b6ff6fc8710e6a455a946063a82cfd37a7fc353c0e2c0f6"
+ },
+ {
+  "path": "docs/audit/rete/campioni/osm_Z1.json",
+  "url": "https://overpass-api.de/api/interpreter (POST, query e bbox in scarica_osm.py; mirror kumi.systems in fallback)",
+  "timestamp_utc": "2026-10-01T13:30:42+00:00",
+  "bytes": 595222,
+  "sha256": "5da5c915e096152d06ebd51732219d28794d53325dc3cff2c470772197bf286f"
+ },
+ {
+  "path": "docs/audit/rete/campioni/osm_Z2.json",
+  "url": "https://overpass-api.de/api/interpreter (POST, query e bbox in scarica_osm.py; mirror kumi.systems in fallback)",
+  "timestamp_utc": "2026-10-01T13:19:49+00:00",
+  "bytes": 835286,
+  "sha256": "b4dff9224020cf9de91b1d30c29e84ec6239feffdca9b697e427e7567f4105cf"
+ },
+ {
+  "path": "docs/audit/rete/campioni/osm_Z3.json",
+  "url": "https://overpass-api.de/api/interpreter (POST, query e bbox in scarica_osm.py; mirror kumi.systems in fallback)",
+  "timestamp_utc": "2026-10-01T13:37:17+00:00",
+  "bytes": 401400,
+  "sha256": "01c254b7b57c36c294bd5632fb40a16643f23d4bee3f5021bd179218f4d7fb7d"
+ },
+ {
+  "path": "docs/audit/rete/campioni/osm_Z4.json",
+  "url": "https://overpass-api.de/api/interpreter (POST, query e bbox in scarica_osm.py; mirror kumi.systems in fallback)",
+  "timestamp_utc": "2026-10-01T13:43:54+00:00",
+  "bytes": 479135,
+  "sha256": "0a1cdbb6b6f85dae8118dce7892e493e9a3d487873bb9de7bad10bac6f50d796"
+ },
+ {
+  "path": "docs/audit/rete/campioni/osm_poi.json",
+  "url": "https://overpass-api.de/api/interpreter (POST, query in scarica_poi.py)",
+  "timestamp_utc": "2026-10-01T13:47:46+00:00",
+  "bytes": 59431,
+  "sha256": "53707ddb234836c6e94a923d88d3f6c5258a38af36d0762ce6dc677edb898a05"
+ },
+ {
+  "path": "docs/audit/rete/campioni/sit_Base_CTR_2023.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_2023/MapServer?f=json",
+  "timestamp_utc": "2026-10-01T13:21:44+00:00",
+  "bytes": 2490,
+  "sha256": "8f411202eff1525d8693e88dece7e54ceb4c774a6d930bec97528a9f79af8b23"
+ },
+ {
+  "path": "docs/audit/rete/campioni/sit_CTR_layer1.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_2023/MapServer/1?f=json",
+  "timestamp_utc": "2026-10-01T13:21:50+00:00",
+  "bytes": 5184,
+  "sha256": "415caed2fa7109bf368977c36eb9e099b16da21c31ce5fa2f1c792a5ba87af2e"
+ },
+ {
+  "path": "docs/audit/rete/campioni/sit_STRADE.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/STRADE/MapServer?f=json",
+  "timestamp_utc": "2026-10-01T13:21:44+00:00",
+  "bytes": 2778,
+  "sha256": "7678dcd4ec753937495457dae319e6c7bcf307af7e6fb02b396c48df351c1acf"
+ },
+ {
+  "path": "docs/audit/rete/campioni/sit_STRADE_layer0.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/STRADE/MapServer/0?f=json",
+  "timestamp_utc": "2026-10-01T13:21:49+00:00",
+  "bytes": 4090,
+  "sha256": "6873ef1962a836a1a4e45377a38047eb58ec52b423f515e035f5f2b00ba675cf"
+ },
+ {
+  "path": "docs/audit/rete/campioni/sit_Toponomastica_comunale.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/Toponomastica_comunale/MapServer?f=json",
+  "timestamp_utc": "2026-10-01T13:21:44+00:00",
+  "bytes": 2960,
+  "sha256": "caa9f0546cc95bccb87ac359825ad981c4338f63569d0aa510987b5d53d48410"
+ },
+ {
+  "path": "docs/audit/rete/campioni/sit_ctr_Z1_layer_stats.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_2023/MapServer/1/query (statistiche rifiutate, HTTP 400 registrato nel file)",
+  "timestamp_utc": "2026-10-01T13:31:14+00:00",
+  "bytes": 104,
+  "sha256": "566e967e3c3953e04ea5b6472007131d629bee1f3af8457a70368a54b58a01e7"
+ },
+ {
+  "path": "docs/audit/rete/campioni/sit_ctr_campione_cavalieri.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_2023/MapServer/1/query (bbox 10.3990,43.7190,10.4010,43.7200 EPSG:4326, solo attributi)",
+  "timestamp_utc": "2026-10-01T13:31:22+00:00",
+  "bytes": 6303,
+  "sha256": "924665e46cd4fad24d9093bac329aa551c1755dfcdbbec45c495c55e6bc12a22"
+ },
+ {
+  "path": "docs/audit/rete/campioni/sit_root.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services?f=json",
+  "timestamp_utc": "2026-10-01T13:21:41+00:00",
+  "bytes": 1326,
+  "sha256": "ef4f0acc3934c4d684c274693f0069560b3288c141a2d53a2f57e530921b6584"
+ }
+]

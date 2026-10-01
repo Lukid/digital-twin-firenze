@@ -1,0 +1,113 @@
+{
+ "alternate_identifier": "[]",
+ "author": "SITA",
+ "author_email": "",
+ "conforms_to": "[]",
+ "creator": "[]",
+ "creator_user_id": "6c396b6e-b7b2-4670-80f1-74ae5d79a1ce",
+ "frequency": "ANNUAL",
+ "geographical_geonames_url": "http://www.geonames.org/3165361",
+ "id": "f06c861d-9620-45ed-8134-337b410b3ef2",
+ "identifier": "f478c6c0-31ae-4509-9c9b-dd98df7c2dfb",
+ "is_version_of": "",
+ "isopen": true,
+ "issued": "",
+ "language": "ITA",
+ "license_id": "cc-by",
+ "license_title": "Creative Commons Attribution",
+ "license_url": "http://www.opendefinition.org/licenses/cc-by",
+ "maintainer": "",
+ "maintainer_email": "infrastruttura.geografica@regione.toscana.it",
+ "metadata_created": "2020-03-30T15:11:51.798671",
+ "metadata_modified": "2020-03-30T15:15:26.505224",
+ "modified": "15-10-2015",
+ "name": "dbt2k",
+ "notes": "DataBase Topografico regionale in scala 1:2.000 - Dati vettoriali SHP + progetto Qgis - [approfondimenti](http://www.regione.toscana.it/-/open-geodata)",
+ "num_resources": 1,
+ "num_tags": 3,
+ "organization": {
+  "id": "d1643030-7809-4c27-a96e-755706311afb",
+  "name": "regione-toscana",
+  "title": "Regione Toscana",
+  "type": "organization",
+  "description": "Regione Toscana",
+  "image_url": "https://www.regione.toscana.it/o/regione-toscana-theme/images/logo-regione.png",
+  "created": "2014-09-18T12:27:27.003780",
+  "is_organization": true,
+  "approval_status": "approved",
+  "state": "active"
+ },
+ "owner_org": "d1643030-7809-4c27-a96e-755706311afb",
+ "private": false,
+ "publisher_identifier": "",
+ "publisher_name": "",
+ "state": "active",
+ "temporal_coverage": "[]",
+ "themes_aggregate": "[{\"subthemes\": [], \"theme\": \"REGI\"}]",
+ "title": "DataBase Topografico Regionale in scala 1:2.000",
+ "type": "dataset",
+ "url": "http://www.regione.toscana.it/-/open-geodata",
+ "version": "",
+ "extras": [
+  {
+   "key": "theme",
+   "value": "[\"REGI\"]"
+  }
+ ],
+ "resources": [
+  {
+   "cache_last_updated": null,
+   "cache_url": null,
+   "created": "2020-03-30T15:15:25.073919",
+   "datastore_active": false,
+   "datastore_contains_all_records_of_source_file": false,
+   "description": "Database Topografico in scala 1:2.000. Ciascun file .7z contiene dati, documentazione, un progetto Qgis e le vestizioni adottate",
+   "distribution_format": "SHP",
+   "format": "SHP",
+   "hash": "",
+   "id": "b54af46e-5949-4061-b7f6-e138a0b5cc55",
+   "last_modified": null,
+   "license_type": "https://w3id.org/italia/controlled-vocabulary/licences/A31_CCBYSA40",
+   "metadata_modified": "2020-03-30T15:15:25.073919",
+   "mimetype": null,
+   "mimetype_inner": null,
+   "name": "DBT2K_progetti_Qgis",
+   "package_id": "f06c861d-9620-45ed-8134-337b410b3ef2",
+   "position": 0,
+   "resource_type": null,
+   "size": null,
+   "state": "active",
+   "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0VAEaI1AJnwEAjETDJGsrIgCWLSysLGQM2cXKb5gnmrCDhV2Yz0YAA2WP66EoaGDkTIXMSMAOZYssFWiRiIhLrScmDCaoYSBo6EAMy5sjwAZmZUyGoYVsHBfEZEIAC6RCpCouIgAApcyABuVsxWxAAEVFbTg1Y8KFPTEUX8w2MTYKtz0wAyVqNxjMhrkRKbI%2BOTM%2FsLSzPrV0Rbt7v38wDKVoLPl2u2zus3mw2IKAuGyIAFU0N8LhIAOwAWnWZX4cO%2BskMAE4AKwAFjREmR%2FAAkoxRr5FFZzgAxOJYZbEULTAAqyB4CjO%2FAAalhkohiAAvOmMLDTRlcZnC0KY%2BE43FIgAcsl0%2BIA0vwAOLxWrTZbxKis2hEI4Sr7TUws6bVJY2GYo6YJM5Q14gAAi7IAstMigAPIrTNgjRL6mzIfjev2B4PkqgjYLIRKR%2FgAQR4AAccIhpgAKZlZrlWMVmLAASmmMemVkTyGTqdM%2FG%2ByZzBZzjBojBFxCrNbrSZTabeU0Y81M5CYrPm%2BxCxB4PCs9oUZYlLrA9GWjs2Y4nyCnjBnoOmXCeR%2FIvnOxE32%2BbRB9xCz7ZvW%2BstihugLnrUB0SPH9XFCQAegiCR8QrDM3CsawXXIcgJiWYQIWOKwMxlSUsxGFREHsIh02CTQsDPaZKECS8hBndCsElAAldMfW%2BdNaJbckWKIdliLPFASLI4Vx2jKwZVw44ZlZYJ6HGMw0KIAAtcsTyw6g1GmW4ZJAeT109NhBmmSVyR1QZ%2BE0yUeFGBJhUSVMIUlfNFFwtQykMPTpgqaYYQAUX9MpwNAyIykgog0DMaxAnochph1LAG2He8vQhYhNAXSUopiptzlowVxVNfg0HsmZkjSx1ZiwFoZk5bkEhmQxIA1CQ1FJD1vgwJ8sHtNlMLDOxzgARR1clvmjAAhBYsHqRsRxANBPCsCjIXDZR7G6EBiwbAZaPZNBmPZNh2Q8rb%2BA2hihvJdlyTQDyADlvhhZjyUOzb2XYkANu%2Bek2Eu7SuiIakuCgMoAF8AYIOA6GIKgqEGZAs3oLN%2BFISA4DMapxFAAMoHxfFDCc3FHMiPEkUMFUiDESBCVxImJAANl0PRcVxFUVV0KmejoNgwFMLgZWtNIOcUUz6GCaYUAbE8eFKrA11s4IZmqGUOdWUxGFrIWAGpVOImgKwIaZiwnXmFG5nh6H3Q8J1cLMYKsAgAB5NC4AA%2BHMuFraYAEd6GPAAdehSSwFVQWzaTNGaSVmmrIb2RU34XSwoSfb9iRpmnO0JlleJrTMFXpjSRhcF14ic%2FOSqz1MEqhc9SPdE1E8JhUGVFywNQ7cd%2FhaEgYR6CwYG0agFUyjKJnDDUQldCRAkkSRfESagcmJH7yIGsJKeynxHIkDoNADYSepDUF3WmEhOuuJTFCTmmBOJH93WuSXEO2RvHwaG58SZh1E2TVt%2B2HY%2FJXrEESUiB6C4UlGyJCXB6BrnmM7IuhpDaRhKrOFCtchDEWZOLZu3825QE7t3ToQMQbgDoCyGQUMYZwyIAjCgPBEh0EuqVGWhxBSCBNBfX2V8A7i1CGuCE5xkyGmQpCGgpsmD7mVloPMNVaaNRUl7Rg3wJY8K7OcJgLpgjCGLoI5AOszzG3UTMYsi4rD31AcXeBZd9ismEJKOR1hiwTUlPsE01gQBA3wUAA&x=677784.9382277&y=4803798.2282864&scale=1028568.998456573",
+   "url_type": null
+  }
+ ],
+ "tags": [
+  {
+   "display_name": "CartografiaTopografica",
+   "id": "bd7dc73c-dce0-4b02-ad9f-5f4c70090b59",
+   "name": "CartografiaTopografica",
+   "state": "active",
+   "vocabulary_id": null
+  },
+  {
+   "display_name": "DataBase-Topografico",
+   "id": "d380ba7e-873e-4550-9679-cb4e36b14cec",
+   "name": "DataBase-Topografico",
+   "state": "active",
+   "vocabulary_id": null
+  },
+  {
+   "display_name": "Informazione-geografica",
+   "id": "d3363185-930e-4531-8248-43119b7c76ab",
+   "name": "Informazione-geografica",
+   "state": "active",
+   "vocabulary_id": null
+  }
+ ],
+ "groups": [],
+ "relationships_as_subject": [],
+ "relationships_as_object": [],
+ "dataset_is_local": true,
+ "holder_name": "Regione Toscana",
+ "holder_identifier": "r_toscan"
+}

@@ -1,0 +1,705 @@
+<?xml version='1.0' encoding="UTF-8" standalone="no" ?>
+<WMS_Capabilities version="1.3.0"  xmlns="http://www.opengis.net/wms"   xmlns:sld="http://www.opengis.net/sld"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"   xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd  http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd  http://mapserver.gis.umn.edu/mapserver https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;service=WMS&amp;version=1.3.0&amp;request=GetSchemaExtension">
+<Service>
+  <Name>WMS</Name>
+  <Title>Geoscopio_wms EDIFICATO</Title>
+  <Abstract>Servizio OGC di tipo WMS fornito da Regione Toscana-SIPT (Sistema Informativo e Pianificazione del Territorio) relativo a dataset spedifici sull&#39; edificato</Abstract>
+  <KeywordList>
+      <Keyword vocabulary="ISO">infoMapAccessService</Keyword>
+  </KeywordList>
+  <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;"/>
+  <ContactInformation>
+    <ContactPersonPrimary>
+      <ContactPerson>Sistema Informativo e Pianificazione del Territorio</ContactPerson>
+      <ContactOrganization>Regione Toscana - Direzione Urbanistica</ContactOrganization>
+    </ContactPersonPrimary>
+      <ContactPosition>custodian</ContactPosition>
+    <ContactAddress>
+        <AddressType>postal</AddressType>
+        <Address>Via di Novoli, 26</Address>
+        <City>Firenze</City>
+        <StateOrProvince>Regione Toscana</StateOrProvince>
+        <PostCode>50127</PostCode>
+        <Country>English</Country>
+    </ContactAddress>
+  <ContactElectronicMailAddress>infrastruttura.geografica@regione.toscana.it</ContactElectronicMailAddress>
+  </ContactInformation>
+  <Fees>none</Fees>
+  <AccessConstraints>none</AccessConstraints>
+  <LayerLimit>20</LayerLimit>
+  <MaxWidth>4096</MaxWidth>
+  <MaxHeight>4096</MaxHeight>
+</Service>
+
+<Capability>
+  <Request>
+    <GetCapabilities>
+      <Format>text/xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetCapabilities>
+    <GetMap>
+      <Format>image/png</Format>
+      <Format>image/png; mode=8bit</Format>
+      <Format>image/jpeg</Format>
+      <Format>image/vnd.jpeg-png</Format>
+      <Format>image/vnd.jpeg-png8</Format>
+      <Format>application/x-pdf</Format>
+      <Format>image/svg+xml</Format>
+      <Format>image/tiff</Format>
+      <Format>application/vnd.google-earth.kml+xml</Format>
+      <Format>application/vnd.google-earth.kmz</Format>
+      <Format>application/vnd.mapbox-vector-tile</Format>
+      <Format>application/x-protobuf</Format>
+      <Format>application/json</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetMap>
+    <GetFeatureInfo>
+      <Format>text/gml</Format>
+      <Format>text/html</Format>
+      <Format>text/plain</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetFeatureInfo>
+  </Request>
+  <Exception>
+    <Format>XML</Format>
+    <Format>INIMAGE</Format>
+    <Format>BLANK</Format>
+  </Exception>
+  <Layer queryable="1">
+    <Name>rt_edif</Name>
+    <Title>Geoscopio_wms EDIFICATO</Title>
+    <Abstract>Servizio OGC di tipo WMS fornito da Regione Toscana-SIPT (Sistema Informativo e Pianificazione del Territorio) relativo a dataset spedifici sull&#39; edificato</Abstract>
+    <KeywordList>
+        <Keyword vocabulary="ISO">infoMapAccessService</Keyword>
+    </KeywordList>
+    <CRS>EPSG:3003</CRS>
+    <CRS>EPSG:3004</CRS>
+    <CRS>EPSG:6706</CRS>
+    <CRS>EPSG:6707</CRS>
+    <CRS>EPSG:6708</CRS>
+    <CRS>EPSG:7791</CRS>
+    <CRS>EPSG:6709</CRS>
+    <CRS>EPSG:23032</CRS>
+    <CRS>EPSG:23033</CRS>
+    <CRS>EPSG:23034</CRS>
+    <CRS>EPSG:25832</CRS>
+    <CRS>EPSG:25833</CRS>
+    <CRS>EPSG:4326</CRS>
+    <CRS>EPSG:4230</CRS>
+    <CRS>EPSG:4258</CRS>
+    <CRS>EPSG:4265</CRS>
+    <CRS>EPSG:4806</CRS>
+    <CRS>EPSG:3857</CRS>
+    <CRS>EPSG:32632</CRS>
+    <CRS>EPSG:32633</CRS>
+    <EX_GeographicBoundingBox>
+        <westBoundLongitude>9.452011</westBoundLongitude>
+        <eastBoundLongitude>12.577133</eastBoundLongitude>
+        <southBoundLatitude>42.081221</southBoundLatitude>
+        <northBoundLatitude>44.702311</northBoundLatitude>
+    </EX_GeographicBoundingBox>
+    <BoundingBox CRS="EPSG:3003"
+                minx="1.53e+06" miny="4.665e+06" maxx="1.8e+06" maxy="4.95e+06" />
+    <Attribution>
+        <LogoURL width="160" height="70">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it:80/ows2/immagini/logo_geoscopio_wms.png"/>
+          </LogoURL>
+    </Attribution>
+    <MinScaleDenominator>1</MinScaleDenominator>
+    <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_edif.unitavolumetriche</Name>
+        <Title>Unita volumetriche</Title>
+        <Abstract>E&#39; la porzione elementare di edificato avente altezza omogenea (all&#39;interno della tolleranza di acquisizione), con base a terra. E&#39; presente l&#39;unita&#39; volumetrica anche nel caso del portico, mentre non fanno parte di questa classe i corpi aggettanti. Porzioni di edificato con altezza e copertura diversa danno luogo a diverse unita&#39; volumetriche, anche quando siano comprese all&#39;interno di una copertura volumetrica piu&#39; ampia (ad esempio mansarde o terrazze a tasca)</Abstract>
+        <CRS>EPSG:3003</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.452011</westBoundLongitude>
+            <eastBoundLongitude>12.577133</eastBoundLongitude>
+            <southBoundLatitude>42.081221</southBoundLatitude>
+            <northBoundLatitude>44.702311</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3003"
+                    minx="1.53e+06" miny="4.665e+06" maxx="1.8e+06" maxy="4.95e+06" />
+        <BoundingBox CRS="EPSG:3004"
+                    minx="2.06145e+06" miny="4.66164e+06" maxx="2.32788e+06" maxy="4.96489e+06" />
+        <BoundingBox CRS="EPSG:6706"
+                    minx="42.081221" miny="9.452331" maxx="44.702309" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:6707"
+                    minx="4.66499e+06" miny="535835" maxx="4.94998e+06" maxy="795892" />
+        <BoundingBox CRS="EPSG:6708"
+                    minx="4.66163e+06" miny="41464.1" maxx="4.96487e+06" maxy="307872" />
+        <BoundingBox CRS="EPSG:7791"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:6709"
+                    minx="4.69326e+06" miny="-454930" maxx="5.01518e+06" maxy="-167939" />
+        <BoundingBox CRS="EPSG:23032"
+                    minx="535916" miny="4.66518e+06" maxx="795976" maxy="4.95018e+06" />
+        <BoundingBox CRS="EPSG:23033"
+                    minx="41524.4" miny="4.66183e+06" maxx="307941" maxy="4.96507e+06" />
+        <BoundingBox CRS="EPSG:23034"
+                    minx="-454885" miny="4.69345e+06" maxx="-167884" maxy="5.01537e+06" />
+        <BoundingBox CRS="EPSG:25832"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:25833"
+                    minx="41464.1" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="42.082226" miny="9.453231" maxx="44.703275" maxy="12.578078" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4265"
+                    minx="42.080570" miny="9.452531" maxx="44.701653" maxy="12.577335" />
+        <BoundingBox CRS="EPSG:4806"
+                    minx="42.080575" miny="-2.999995" maxx="44.701649" maxy="0.125003" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="1.05219e+06" miny="5.17315e+06" maxx="1.40008e+06" maxy="5.57478e+06" />
+        <BoundingBox CRS="EPSG:32632"
+                    minx="535809" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:32633"
+                    minx="41447.5" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>uv_altezza_volume</Name>
+          <Title>uv_altezza_volume</Title>
+          <LegendURL width="28" height="7">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.unitavolumetriche&amp;format=image/png&amp;STYLE=uv_altezza_volume"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>uv_popolazione_residente_2011</Name>
+          <Title>uv_popolazione_residente_2011</Title>
+          <LegendURL width="28" height="7">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.unitavolumetriche&amp;format=image/png&amp;STYLE=uv_popolazione_residente_2011"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>uv_tipologia_e_destinazione_uso</Name>
+          <Title>uv_tipologia_e_destinazione_uso</Title>
+          <LegendURL width="28" height="7">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.unitavolumetriche&amp;format=image/png&amp;STYLE=uv_tipologia_e_destinazione_uso"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>uv_arancione_contorno</Name>
+          <Title>uv_arancione_contorno</Title>
+          <LegendURL width="28" height="7">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.unitavolumetriche&amp;format=image/png&amp;STYLE=uv_arancione_contorno"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_edif.cassoniedilizi</Name>
+        <Title>Cassoni edilizi</Title>
+        <Abstract>E&#39; l&#39;inviluppo di tutti gli edifici adiacenti senza soluzione di continuita&#39;. Rappresenta l&#39;ingombro al suolo di un corpo costruito ed e&#39; percio&#39; delimitato dalla proiezione al suolo di tutti i muri perimetrali. Non comprende le parti a sbalzo. Ogni Cassone edilizio e&#39; disgiunto da qualunque altro oggetto della stessa classe</Abstract>
+        <CRS>EPSG:3003</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.452011</westBoundLongitude>
+            <eastBoundLongitude>12.577133</eastBoundLongitude>
+            <southBoundLatitude>42.081221</southBoundLatitude>
+            <northBoundLatitude>44.702311</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3003"
+                    minx="1.53e+06" miny="4.665e+06" maxx="1.8e+06" maxy="4.95e+06" />
+        <BoundingBox CRS="EPSG:3004"
+                    minx="2.06145e+06" miny="4.66164e+06" maxx="2.32788e+06" maxy="4.96489e+06" />
+        <BoundingBox CRS="EPSG:6706"
+                    minx="42.081221" miny="9.452331" maxx="44.702309" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:6707"
+                    minx="4.66499e+06" miny="535835" maxx="4.94998e+06" maxy="795892" />
+        <BoundingBox CRS="EPSG:6708"
+                    minx="4.66163e+06" miny="41464.1" maxx="4.96487e+06" maxy="307872" />
+        <BoundingBox CRS="EPSG:7791"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:6709"
+                    minx="4.69326e+06" miny="-454930" maxx="5.01518e+06" maxy="-167939" />
+        <BoundingBox CRS="EPSG:23032"
+                    minx="535916" miny="4.66518e+06" maxx="795976" maxy="4.95018e+06" />
+        <BoundingBox CRS="EPSG:23033"
+                    minx="41524.4" miny="4.66183e+06" maxx="307941" maxy="4.96507e+06" />
+        <BoundingBox CRS="EPSG:23034"
+                    minx="-454885" miny="4.69345e+06" maxx="-167884" maxy="5.01537e+06" />
+        <BoundingBox CRS="EPSG:25832"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:25833"
+                    minx="41464.1" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="42.082226" miny="9.453231" maxx="44.703275" maxy="12.578078" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4265"
+                    minx="42.080570" miny="9.452531" maxx="44.701653" maxy="12.577335" />
+        <BoundingBox CRS="EPSG:4806"
+                    minx="42.080575" miny="-2.999995" maxx="44.701649" maxy="0.125003" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="1.05219e+06" miny="5.17315e+06" maxx="1.40008e+06" maxy="5.57478e+06" />
+        <BoundingBox CRS="EPSG:32632"
+                    minx="535809" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:32633"
+                    minx="41447.5" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>solo_contorno_spessore_1</Name>
+          <Title>solo_contorno_spessore_1</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.cassoniedilizi&amp;format=image/png&amp;STYLE=solo_contorno_spessore_1"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>solo_contorno_spessore_2</Name>
+          <Title>solo_contorno_spessore_2</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.cassoniedilizi&amp;format=image/png&amp;STYLE=solo_contorno_spessore_2"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>riempimento_e_contorno</Name>
+          <Title>riempimento_e_contorno</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.cassoniedilizi&amp;format=image/png&amp;STYLE=riempimento_e_contorno"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_edif.sedime_edificato.1897</Name>
+        <Title>Sedime edificato al 1897</Title>
+        <Abstract>Sedime edificato al 1897</Abstract>
+        <CRS>EPSG:3003</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.452011</westBoundLongitude>
+            <eastBoundLongitude>12.577133</eastBoundLongitude>
+            <southBoundLatitude>42.081221</southBoundLatitude>
+            <northBoundLatitude>44.702311</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3003"
+                    minx="1.53e+06" miny="4.665e+06" maxx="1.8e+06" maxy="4.95e+06" />
+        <BoundingBox CRS="EPSG:3004"
+                    minx="2.06145e+06" miny="4.66164e+06" maxx="2.32788e+06" maxy="4.96489e+06" />
+        <BoundingBox CRS="EPSG:6706"
+                    minx="42.081221" miny="9.452331" maxx="44.702309" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:6707"
+                    minx="4.66499e+06" miny="535835" maxx="4.94998e+06" maxy="795892" />
+        <BoundingBox CRS="EPSG:6708"
+                    minx="4.66163e+06" miny="41464.1" maxx="4.96487e+06" maxy="307872" />
+        <BoundingBox CRS="EPSG:7791"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:6709"
+                    minx="4.69326e+06" miny="-454930" maxx="5.01518e+06" maxy="-167939" />
+        <BoundingBox CRS="EPSG:23032"
+                    minx="535916" miny="4.66518e+06" maxx="795976" maxy="4.95018e+06" />
+        <BoundingBox CRS="EPSG:23033"
+                    minx="41524.4" miny="4.66183e+06" maxx="307941" maxy="4.96507e+06" />
+        <BoundingBox CRS="EPSG:23034"
+                    minx="-454885" miny="4.69345e+06" maxx="-167884" maxy="5.01537e+06" />
+        <BoundingBox CRS="EPSG:25832"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:25833"
+                    minx="41464.1" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="42.082226" miny="9.453231" maxx="44.703275" maxy="12.578078" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4265"
+                    minx="42.080570" miny="9.452531" maxx="44.701653" maxy="12.577335" />
+        <BoundingBox CRS="EPSG:4806"
+                    minx="42.080575" miny="-2.999995" maxx="44.701649" maxy="0.125003" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="1.05219e+06" miny="5.17315e+06" maxx="1.40008e+06" maxy="5.57478e+06" />
+        <BoundingBox CRS="EPSG:32632"
+                    minx="535809" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:32633"
+                    minx="41447.5" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/sedimi2016.html"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.sedime_edificato.1897&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_edif.sedime_edificato.1956</Name>
+        <Title>Sedime edificato al 1956</Title>
+        <Abstract>Sedime edificato al 1956</Abstract>
+        <CRS>EPSG:3003</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.452011</westBoundLongitude>
+            <eastBoundLongitude>12.577133</eastBoundLongitude>
+            <southBoundLatitude>42.081221</southBoundLatitude>
+            <northBoundLatitude>44.702311</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3003"
+                    minx="1.53e+06" miny="4.665e+06" maxx="1.8e+06" maxy="4.95e+06" />
+        <BoundingBox CRS="EPSG:3004"
+                    minx="2.06145e+06" miny="4.66164e+06" maxx="2.32788e+06" maxy="4.96489e+06" />
+        <BoundingBox CRS="EPSG:6706"
+                    minx="42.081221" miny="9.452331" maxx="44.702309" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:6707"
+                    minx="4.66499e+06" miny="535835" maxx="4.94998e+06" maxy="795892" />
+        <BoundingBox CRS="EPSG:6708"
+                    minx="4.66163e+06" miny="41464.1" maxx="4.96487e+06" maxy="307872" />
+        <BoundingBox CRS="EPSG:7791"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:6709"
+                    minx="4.69326e+06" miny="-454930" maxx="5.01518e+06" maxy="-167939" />
+        <BoundingBox CRS="EPSG:23032"
+                    minx="535916" miny="4.66518e+06" maxx="795976" maxy="4.95018e+06" />
+        <BoundingBox CRS="EPSG:23033"
+                    minx="41524.4" miny="4.66183e+06" maxx="307941" maxy="4.96507e+06" />
+        <BoundingBox CRS="EPSG:23034"
+                    minx="-454885" miny="4.69345e+06" maxx="-167884" maxy="5.01537e+06" />
+        <BoundingBox CRS="EPSG:25832"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:25833"
+                    minx="41464.1" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="42.082226" miny="9.453231" maxx="44.703275" maxy="12.578078" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4265"
+                    minx="42.080570" miny="9.452531" maxx="44.701653" maxy="12.577335" />
+        <BoundingBox CRS="EPSG:4806"
+                    minx="42.080575" miny="-2.999995" maxx="44.701649" maxy="0.125003" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="1.05219e+06" miny="5.17315e+06" maxx="1.40008e+06" maxy="5.57478e+06" />
+        <BoundingBox CRS="EPSG:32632"
+                    minx="535809" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:32633"
+                    minx="41447.5" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/sedimi2016.html"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.sedime_edificato.1956&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_edif.sedime_edificato.1978</Name>
+        <Title>Sedime edificato al 1978</Title>
+        <Abstract>Sedime edificato al 1978</Abstract>
+        <CRS>EPSG:3003</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.452011</westBoundLongitude>
+            <eastBoundLongitude>12.577133</eastBoundLongitude>
+            <southBoundLatitude>42.081221</southBoundLatitude>
+            <northBoundLatitude>44.702311</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3003"
+                    minx="1.53e+06" miny="4.665e+06" maxx="1.8e+06" maxy="4.95e+06" />
+        <BoundingBox CRS="EPSG:3004"
+                    minx="2.06145e+06" miny="4.66164e+06" maxx="2.32788e+06" maxy="4.96489e+06" />
+        <BoundingBox CRS="EPSG:6706"
+                    minx="42.081221" miny="9.452331" maxx="44.702309" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:6707"
+                    minx="4.66499e+06" miny="535835" maxx="4.94998e+06" maxy="795892" />
+        <BoundingBox CRS="EPSG:6708"
+                    minx="4.66163e+06" miny="41464.1" maxx="4.96487e+06" maxy="307872" />
+        <BoundingBox CRS="EPSG:7791"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:6709"
+                    minx="4.69326e+06" miny="-454930" maxx="5.01518e+06" maxy="-167939" />
+        <BoundingBox CRS="EPSG:23032"
+                    minx="535916" miny="4.66518e+06" maxx="795976" maxy="4.95018e+06" />
+        <BoundingBox CRS="EPSG:23033"
+                    minx="41524.4" miny="4.66183e+06" maxx="307941" maxy="4.96507e+06" />
+        <BoundingBox CRS="EPSG:23034"
+                    minx="-454885" miny="4.69345e+06" maxx="-167884" maxy="5.01537e+06" />
+        <BoundingBox CRS="EPSG:25832"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:25833"
+                    minx="41464.1" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="42.082226" miny="9.453231" maxx="44.703275" maxy="12.578078" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4265"
+                    minx="42.080570" miny="9.452531" maxx="44.701653" maxy="12.577335" />
+        <BoundingBox CRS="EPSG:4806"
+                    minx="42.080575" miny="-2.999995" maxx="44.701649" maxy="0.125003" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="1.05219e+06" miny="5.17315e+06" maxx="1.40008e+06" maxy="5.57478e+06" />
+        <BoundingBox CRS="EPSG:32632"
+                    minx="535809" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:32633"
+                    minx="41447.5" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.sedime_edificato.1978&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_edif.sedime_edificato.1988</Name>
+        <Title>Sedime edificato al 1988</Title>
+        <Abstract>Sedime edificato al 1988</Abstract>
+        <CRS>EPSG:3003</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.452011</westBoundLongitude>
+            <eastBoundLongitude>12.577133</eastBoundLongitude>
+            <southBoundLatitude>42.081221</southBoundLatitude>
+            <northBoundLatitude>44.702311</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3003"
+                    minx="1.53e+06" miny="4.665e+06" maxx="1.8e+06" maxy="4.95e+06" />
+        <BoundingBox CRS="EPSG:3004"
+                    minx="2.06145e+06" miny="4.66164e+06" maxx="2.32788e+06" maxy="4.96489e+06" />
+        <BoundingBox CRS="EPSG:6706"
+                    minx="42.081221" miny="9.452331" maxx="44.702309" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:6707"
+                    minx="4.66499e+06" miny="535835" maxx="4.94998e+06" maxy="795892" />
+        <BoundingBox CRS="EPSG:6708"
+                    minx="4.66163e+06" miny="41464.1" maxx="4.96487e+06" maxy="307872" />
+        <BoundingBox CRS="EPSG:7791"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:6709"
+                    minx="4.69326e+06" miny="-454930" maxx="5.01518e+06" maxy="-167939" />
+        <BoundingBox CRS="EPSG:23032"
+                    minx="535916" miny="4.66518e+06" maxx="795976" maxy="4.95018e+06" />
+        <BoundingBox CRS="EPSG:23033"
+                    minx="41524.4" miny="4.66183e+06" maxx="307941" maxy="4.96507e+06" />
+        <BoundingBox CRS="EPSG:23034"
+                    minx="-454885" miny="4.69345e+06" maxx="-167884" maxy="5.01537e+06" />
+        <BoundingBox CRS="EPSG:25832"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:25833"
+                    minx="41464.1" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="42.082226" miny="9.453231" maxx="44.703275" maxy="12.578078" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4265"
+                    minx="42.080570" miny="9.452531" maxx="44.701653" maxy="12.577335" />
+        <BoundingBox CRS="EPSG:4806"
+                    minx="42.080575" miny="-2.999995" maxx="44.701649" maxy="0.125003" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="1.05219e+06" miny="5.17315e+06" maxx="1.40008e+06" maxy="5.57478e+06" />
+        <BoundingBox CRS="EPSG:32632"
+                    minx="535809" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:32633"
+                    minx="41447.5" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.sedime_edificato.1988&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_edif.sedime_edificato.1996</Name>
+        <Title>Sedime edificato al 1996</Title>
+        <Abstract>Sedime edificato al 1996</Abstract>
+        <CRS>EPSG:3003</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.452011</westBoundLongitude>
+            <eastBoundLongitude>12.577133</eastBoundLongitude>
+            <southBoundLatitude>42.081221</southBoundLatitude>
+            <northBoundLatitude>44.702311</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3003"
+                    minx="1.53e+06" miny="4.665e+06" maxx="1.8e+06" maxy="4.95e+06" />
+        <BoundingBox CRS="EPSG:3004"
+                    minx="2.06145e+06" miny="4.66164e+06" maxx="2.32788e+06" maxy="4.96489e+06" />
+        <BoundingBox CRS="EPSG:6706"
+                    minx="42.081221" miny="9.452331" maxx="44.702309" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:6707"
+                    minx="4.66499e+06" miny="535835" maxx="4.94998e+06" maxy="795892" />
+        <BoundingBox CRS="EPSG:6708"
+                    minx="4.66163e+06" miny="41464.1" maxx="4.96487e+06" maxy="307872" />
+        <BoundingBox CRS="EPSG:7791"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:6709"
+                    minx="4.69326e+06" miny="-454930" maxx="5.01518e+06" maxy="-167939" />
+        <BoundingBox CRS="EPSG:23032"
+                    minx="535916" miny="4.66518e+06" maxx="795976" maxy="4.95018e+06" />
+        <BoundingBox CRS="EPSG:23033"
+                    minx="41524.4" miny="4.66183e+06" maxx="307941" maxy="4.96507e+06" />
+        <BoundingBox CRS="EPSG:23034"
+                    minx="-454885" miny="4.69345e+06" maxx="-167884" maxy="5.01537e+06" />
+        <BoundingBox CRS="EPSG:25832"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:25833"
+                    minx="41464.1" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="42.082226" miny="9.453231" maxx="44.703275" maxy="12.578078" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4265"
+                    minx="42.080570" miny="9.452531" maxx="44.701653" maxy="12.577335" />
+        <BoundingBox CRS="EPSG:4806"
+                    minx="42.080575" miny="-2.999995" maxx="44.701649" maxy="0.125003" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="1.05219e+06" miny="5.17315e+06" maxx="1.40008e+06" maxy="5.57478e+06" />
+        <BoundingBox CRS="EPSG:32632"
+                    minx="535809" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:32633"
+                    minx="41447.5" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.sedime_edificato.1996&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_edif.centri_matrice.poly</Name>
+        <Title>Centri matrice della Toscana</Title>
+        <Abstract>Dataset dei &#39;Centri matrice derivati dai sedimi edilizi con geometria di tipo areale. La copertura &#39;centri matrice della toscana&#39; e&#39; stata prodotta dal LCart/DIDA, Laboratorio di Cartografia del Dipartimento di Architettura dell&#39;Universita&#39; degli Studi di Firenze, allo scopo di rappresentare cartograficamente l&#39;estensione dei centri e nuclei storici nella &#39;Carta dei caratteri del paesaggio&#39;, in scala 1/50000 contenuta nel repertorio del PIT con valenza di Piano Paesaggistico della Regione Toscana.
+All&#39;archivio e&#39; stato successivamente associato un attributo TPI ricavato da confronto con il modello altimetrico della regione, per discriminare i centri matrice in base alla localizzazione in fondovalle, in pianura, su versante o su crinale. Il dataset e&#39; rilasciato con licenza CC-BY-SA 4.0 con obbligo di citazione delle fonti: &#39;Fonti dati: Regione Toscana e LCart/DIDA, Laboratorio di Cartografia del Dipartimento di Architettura della Universita&#39; degli Studi di Firenze&#39;. I poligoni che costituiscono la copertura sono stati ottenuti attraverso l&#39;elaborazione della &#39;banca dati dei sedimi edificati della Toscana&#39; (scaricabile dal Portale Geoscopio Cartoteca), attraverso i passaggi descritti di seguito. Preliminarmente sono stati selezionati i sedimi edificati documentati nelle mappe dei catasti preunitari toscani; per le comunita&#39; per le quali la documentazione storica non fosse disponibile, sono stati selezionati i sedimi documentati al 1954. I poligoni descrittivi dei sedimi cosi&#39; selezionati sono stati elaborati attraverso l&#39;algoritmo ESRI Aggregate Polygons, dai ricercatori del Laboratorio di Architettura, utilizzando i seguenti criteri: distanza massima di aggregazione pari a 50 m, dimensione massima dell&#39;agglomerato maggiore o uguale a 0,5 ha; questa elaborazione individua pertanto gli aggregati edilizi composti da edifici reciprocamente distanti non piu&#39; di 50 metri ed estesi oltre 5000 metri quadrati. Le forme dei poligoni cosi&#39; ottenuti sono state semplificate per la rappresentazione cartografica attraverso l&#39;algoritmo ESRI Bend Simplify con tolleranza di 100m. Ciascun poligono e&#39; stato infine identificato attraverso un toponimo; l&#39;attribuzione e&#39; stata ottenuta attraverso la valutazione della prossimita&#39; spaziale rispetto alla banca dati toponomastica della Carta Tecnica Regionale scala 1:10.000: ciascun poligono e&#39; stato associato al toponimo piu&#39; prossimo. Eventuali conflitti di attribuzione sono stati emendati in seguito a una valutazione critica. Con successiva elaborazione e&#39; stato popolato l&#39;attributo TPI che indica se il centro matrice ricade in un contesto di fondovalle (0), pianura (1), versante (2) o crinale (3).</Abstract>
+        <CRS>EPSG:3003</CRS>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.452011</westBoundLongitude>
+            <eastBoundLongitude>12.577133</eastBoundLongitude>
+            <southBoundLatitude>42.081221</southBoundLatitude>
+            <northBoundLatitude>44.702311</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:3003"
+                    minx="1.53e+06" miny="4.665e+06" maxx="1.8e+06" maxy="4.95e+06" />
+        <BoundingBox CRS="EPSG:3004"
+                    minx="2.06145e+06" miny="4.66164e+06" maxx="2.32788e+06" maxy="4.96489e+06" />
+        <BoundingBox CRS="EPSG:6706"
+                    minx="42.081221" miny="9.452331" maxx="44.702309" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:6707"
+                    minx="4.66499e+06" miny="535835" maxx="4.94998e+06" maxy="795892" />
+        <BoundingBox CRS="EPSG:6708"
+                    minx="4.66163e+06" miny="41464.1" maxx="4.96487e+06" maxy="307872" />
+        <BoundingBox CRS="EPSG:7791"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:6709"
+                    minx="4.69326e+06" miny="-454930" maxx="5.01518e+06" maxy="-167939" />
+        <BoundingBox CRS="EPSG:23032"
+                    minx="535916" miny="4.66518e+06" maxx="795976" maxy="4.95018e+06" />
+        <BoundingBox CRS="EPSG:23033"
+                    minx="41524.4" miny="4.66183e+06" maxx="307941" maxy="4.96507e+06" />
+        <BoundingBox CRS="EPSG:23034"
+                    minx="-454885" miny="4.69345e+06" maxx="-167884" maxy="5.01537e+06" />
+        <BoundingBox CRS="EPSG:25832"
+                    minx="535835" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:25833"
+                    minx="41464.1" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <BoundingBox CRS="EPSG:4326"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4230"
+                    minx="42.082226" miny="9.453231" maxx="44.703275" maxy="12.578078" />
+        <BoundingBox CRS="EPSG:4258"
+                    minx="42.081221" miny="9.452011" maxx="44.702311" maxy="12.577133" />
+        <BoundingBox CRS="EPSG:4265"
+                    minx="42.080570" miny="9.452531" maxx="44.701653" maxy="12.577335" />
+        <BoundingBox CRS="EPSG:4806"
+                    minx="42.080575" miny="-2.999995" maxx="44.701649" maxy="0.125003" />
+        <BoundingBox CRS="EPSG:3857"
+                    minx="1.05219e+06" miny="5.17315e+06" maxx="1.40008e+06" maxy="5.57478e+06" />
+        <BoundingBox CRS="EPSG:32632"
+                    minx="535809" miny="4.66499e+06" maxx="795892" maxy="4.94998e+06" />
+        <BoundingBox CRS="EPSG:32633"
+                    minx="41447.5" miny="4.66163e+06" maxx="307872" maxy="4.96487e+06" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geonetwork/srv/ita/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;ID=r_toscan:199b6235-00d2-4a28-9b44-1362012d2756"/>
+        </MetadataURL>
+        <Style>
+          <Name>solo_contorno</Name>
+          <Title>solo_contorno</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.centri_matrice.poly&amp;format=image/png&amp;STYLE=solo_contorno"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>classificato_tpi</Name>
+          <Title>classificato_tpi</Title>
+          <LegendURL width="31" height="30">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&amp;map_resolution=91&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_edif.centri_matrice.poly&amp;format=image/png&amp;STYLE=classificato_tpi"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+  </Layer>
+</Capability>
+</WMS_Capabilities>

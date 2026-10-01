@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding="UTF-8" standalone="no" ?>
+<WMS_Capabilities version="1.3.0"  xmlns="http://www.opengis.net/wms"   xmlns:sld="http://www.opengis.net/sld"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"   xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd  http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd  http://mapserver.gis.umn.edu/mapserver https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;service=WMS&amp;version=1.3.0&amp;request=GetSchemaExtension">
+<Service>
+  <Name>WMS</Name>
+  <Title>Geoscopio_wms MORFOLOGIA</Title>
+  <Abstract>Servizio OGC di tipo WMS fornito da Regione Toscana-SIPT (Sistema Informativo e Pianificazione del Territorio) dedicato specificamente alla consultazione dei datasets morfologici. Usualmente l&#39;intervallo di visibilita&#39; e&#39; da 1:1 a 1:5.000.000, ma alcuni dataset (strati del servizio) potrebbero avere intervalli piu&#39; ristretti stabiliti sulla base del dettaglio informativo in essi contenuto, per conoscere gli specifici intervalli di visibilita&#39; si faccia quindi riferimento all&#39; &#39;abstract&#39; dello specifico strato.</Abstract>
+  <KeywordList>
+      <Keyword>zone</Keyword>
+      <Keyword>altimetria</Keyword>
+      <Keyword>dtm</Keyword>
+      <Keyword>dem</Keyword>
+      <Keyword>wms</Keyword>
+      <Keyword>toscana</Keyword>
+  </KeywordList>
+  <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;"/>
+  <ContactInformation>
+    <ContactPersonPrimary>
+      <ContactPerson>Sistema Informativo e Pianificazione del Territorio</ContactPerson>
+      <ContactOrganization>Regione Toscana - Direzione Urbanistica</ContactOrganization>
+    </ContactPersonPrimary>
+      <ContactPosition>custodian</ContactPosition>
+    <ContactAddress>
+        <AddressType>postal</AddressType>
+        <Address>Via di Novoli, 26</Address>
+        <City>Firenze</City>
+        <StateOrProvince>Regione Toscana</StateOrProvince>
+        <PostCode>50127</PostCode>
+        <Country>Italy</Country>
+    </ContactAddress>
+  <ContactElectronicMailAddress>infrastruttura.geografica@regione.toscana.it</ContactElectronicMailAddress>
+  </ContactInformation>
+  <Fees>none</Fees>
+  <AccessConstraints>none</AccessConstraints>
+  <LayerLimit>20</LayerLimit>
+  <MaxWidth>4096</MaxWidth>
+  <MaxHeight>4096</MaxHeight>
+</Service>
+
+<Capability>
+  <Request>
+    <GetCapabilities>
+      <Format>text/xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetCapabilities>
+    <GetMap>
+      <Format>image/png</Format>
+      <Format>image/tiff</Format>
+      <Format>image/x-aaigrid</Format>
+      <Format>image/png; mode=8bit</Format>
+      <Format>image/jpeg</Format>
+      <Format>image/vnd.jpeg-png</Format>
+      <Format>image/vnd.jpeg-png8</Format>
+      <Format>application/x-pdf</Format>
+      <Format>image/svg+xml</Format>
+      <Format>application/vnd.google-earth.kml+xml</Format>
+      <Format>application/vnd.google-earth.kmz</Format>
+      <Format>application/vnd.mapbox-vector-tile</Format>
+      <Format>application/x-protobuf</Format>
+      <Format>application/json</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetMap>
+    <GetFeatureInfo>
+      <Format>text/gml</Format>
+      <Format>text/html</Format>
+      <Format>text/plain</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetFeatureInfo>
+  </Request>
+  <Exception>
+    <Format>XML</Format>
+    <Format>INIMAGE</Format>
+    <Format>BLANK</Format>
+  </Exception>
+  <Layer queryable="1">
+    <Name>rt_morfologia</Name>
+    <Title>Geoscopio_wms MORFOLOGIA</Title>
+    <Abstract>Servizio OGC di tipo WMS fornito da Regione Toscana-SIPT (Sistema Informativo e Pianificazione del Territorio) dedicato specificamente alla consultazione dei datasets morfologici. Usualmente l&#39;intervallo di visibilita&#39; e&#39; da 1:1 a 1:5.000.000, ma alcuni dataset (strati del servizio) potrebbero avere intervalli piu&#39; ristretti stabiliti sulla base del dettaglio informativo in essi contenuto, per conoscere gli specifici intervalli di visibilita&#39; si faccia quindi riferimento all&#39; &#39;abstract&#39; dello specifico strato.</Abstract>
+    <KeywordList>
+        <Keyword>zone</Keyword>
+        <Keyword>altimetria</Keyword>
+        <Keyword>dtm</Keyword>
+        <Keyword>dem</Keyword>
+        <Keyword>wms</Keyword>
+        <Keyword>toscana</Keyword>
+    </KeywordList>
+    <CRS>EPSG:3003</CRS>
+    <CRS>EPSG:3004</CRS>
+    <CRS>EPSG:6706</CRS>
+    <CRS>EPSG:6707</CRS>
+    <CRS>EPSG:6708</CRS>
+    <CRS>EPSG:7791</CRS>
+    <CRS>EPSG:6709</CRS>
+    <CRS>EPSG:23032</CRS>
+    <CRS>EPSG:23033</CRS>
+    <CRS>EPSG:23034</CRS>
+    <CRS>EPSG:25832</CRS>
+    <CRS>EPSG:25833</CRS>
+    <CRS>EPSG:4326</CRS>
+    <CRS>EPSG:4230</CRS>
+    <CRS>EPSG:4258</CRS>
+    <CRS>EPSG:4265</CRS>
+    <CRS>EPSG:4806</CRS>
+    <CRS>EPSG:3857</CRS>
+    <CRS>EPSG:32632</CRS>
+    <CRS>EPSG:32633</CRS>
+    <EX_GeographicBoundingBox>
+        <westBoundLongitude>9.663719</westBoundLongitude>
+        <eastBoundLongitude>12.413395</eastBoundLongitude>
+        <southBoundLatitude>42.209128</southBoundLatitude>
+        <northBoundLatitude>44.473545</northBoundLatitude>
+    </EX_GeographicBoundingBox>
+    <MinScaleDenominator>1</MinScaleDenominator>
+    <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_morfologia.iddtm.1m.irs</Name>
+        <Title>DTM 1 metro orografico</Title>
+        <Abstract>Scala di visibilita 1:1 - 1:5.000.000. Modello Digitale del Terreno (DTM) con risoluzione 1x1 m hillshade, derivante da rilievi LiDAR eseguiti da Italian Remote Sensing S.r.l. negli anni 2019, 2020 e 2021 Il dato e&#39; di proprieta&#39; di Italian Remote Sensing S.r.l. ed e&#39; concesso in uso a Regione Toscana ai fini della distribuzione ad altri enti pubblici nel rispetto dei termini della licenza d&#39;uso con la quale e&#39; rilasciato. La metainformazione del dato LiDAR e&#39; disponibile al seguente link https://www502.regione.toscana.it/geoscopio/geometa/html/r_toscan_261ec1b2-bf25-4973-b853-ac08e060ec62.htm. Il dato e&#39; stato acquisito da Regione Toscana nell&#39;ambito di un affidamento con altre finalita&#39; per cui non e&#39; stato possibile sottoporlo alle consuete verifiche di conformita&#39;. L&#39;utilizzo e/o generazione di prodotti derivati, solleva Regione Toscana da qualsiasi responsabilita&#39;.</Abstract>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.660378</westBoundLongitude>
+            <eastBoundLongitude>12.416434</eastBoundLongitude>
+            <southBoundLatitude>42.207455</southBoundLatitude>
+            <northBoundLatitude>44.476473</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+    <Attribution>
+        <Title>Fonte dei dati: DTM da rilievo LiDAR di titolarita&#39; IRS s.r.l. concesso in uso a Regione Toscana ai fini della distribuzione ad altri enti pubblici</Title>
+    </Attribution>
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="140" height="973">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.iddtm.1m.irs&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_morfologia.iddtm.1m.hs.irs</Name>
+        <Title>DTM 1 metro orografico - hillshade</Title>
+        <Abstract>Scala di visibilita 1:1 - 1:5.000.000. Modello Digitale del Terreno (DTM) con risoluzione 1x1 m hillshade, derivante da rilievi LiDAR eseguiti da Italian Remote Sensing S.r.l. negli anni 2019, 2020 e 2021 Il dato e&#39; di proprieta&#39; di Italian Remote Sensing S.r.l. ed e&#39; concesso in uso a Regione Toscana ai fini della distribuzione ad altri enti pubblici nel rispetto dei termini della licenza d&#39;uso CC BY NC SA con la quale e&#39; rilasciato. La metainformazione del dato LiDAR e&#39; disponibile al seguente link https://www502.regione.toscana.it/geoscopio/geometa/html/r_toscan_261ec1b2-bf25-4973-b853-ac08e060ec62.htm. Il dato e&#39; stato acquisito da Regione Toscana nell&#39;ambito di un affidamento con altre finalita&#39; per cui non e&#39; stato possibile sottoporlo alle consuete verifiche di conformita&#39;. L&#39;utilizzo e/o generazione di prodotti derivati, solleva Regione Toscana da qualsiasi responsabilita&#39;</Abstract>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.660378</westBoundLongitude>
+            <eastBoundLongitude>12.416434</eastBoundLongitude>
+            <southBoundLatitude>42.207455</southBoundLatitude>
+            <northBoundLatitude>44.476473</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>75001</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_morfologia.iddsm2021.1m.rt</Name>
+        <Title>DSM (da autocorrelazione di immagini) anno 2021</Title>
+        <Abstract>Scala di visibilita 1:1 - 1:5.000.000. Modello Digitale delle Superfici (DSM) con risoluzione 1x1 m, derivante da elaborazione di rilievi aerofotogrammetrici eseguiti nel 2021 da Italian Remote Sensing S.r.l. per conto di Regione Toscana. La titolarita&#39; del dato e&#39; di Regione Toscana. La metainformazione del dato DSM e&#39; disponibile al seguente link https://www502.regione.toscana.it/geoscopio/geometa/html/r_toscan_c5c907bf-50cc-4a76-8787-abc547509c8d.htm. Il dato e&#39; stato acquisito da Regione Toscana nell&#39;ambito di un affidamento con altre finalita&#39; per cui non e&#39; stato possibile sottoporlo alle consuete verifiche di conformita&#39;. L&#39;utilizzo e/o generazione di prodotti derivati, solleva Regione Toscana da qualsiasi responsabilita&#39;</Abstract>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.660378</westBoundLongitude>
+            <eastBoundLongitude>12.416434</eastBoundLongitude>
+            <southBoundLatitude>42.207455</southBoundLatitude>
+            <northBoundLatitude>44.476473</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="140" height="973">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.iddsm2021.1m.rt&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_morfologia.iddsm2021.1m.hs.rt</Name>
+        <Title>DSM (da autocorrelazione di immagini) anno 2021 - hillshade</Title>
+        <Abstract>Scala di visibilita 1:1 - 1:5.000.000. Modello Digitale delle Superfici (DSM) con risoluzione 1x1 m, derivante da elaborazione di rilievi aerofotogrammetrici eseguiti nel 2021 da Italian Remote Sensing S.r.l. per conto di Regione Toscana. La titolarita&#39; del dato e&#39; di Regione Toscana. La metainformazione del dato DSM e&#39; disponibile al seguente link https://www502.regione.toscana.it/geoscopio/geometa/html/r_toscan_c5c907bf-50cc-4a76-8787-abc547509c8d.htm. Il dato e&#39; stato acquisito da Regione Toscana nell&#39;ambito di un affidamento con altre finalita&#39; per cui non e&#39; stato possibile sottoporlo alle consuete verifiche di conformita&#39;. L&#39;utilizzo e/o generazione di prodotti derivati, solleva Regione Toscana da qualsiasi responsabilita&#39;</Abstract>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.660378</westBoundLongitude>
+            <eastBoundLongitude>12.416434</eastBoundLongitude>
+            <southBoundLatitude>42.207455</southBoundLatitude>
+            <northBoundLatitude>44.476473</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>75001</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_morfologia.iddtm.10m.rt</Name>
+        <Title>DTM 10 metri orografico</Title>
+        <Abstract>Scala di visibilita 1:1 - 1:5.000.000. Dataset areale &#39;DEM-DTM 10m&#39; fonte Regione Toscana - SIPT. Il dataset e&#39; ricavato dalla CTR10K.</Abstract>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.663719</westBoundLongitude>
+            <eastBoundLongitude>12.413395</eastBoundLongitude>
+            <southBoundLatitude>42.209128</southBoundLatitude>
+            <northBoundLatitude>44.473545</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>fasce_altimetriche</Name>
+          <Title>fasce_altimetriche</Title>
+          <LegendURL width="140" height="329">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.iddtm.10m.rt&amp;format=image/png&amp;STYLE=fasce_altimetriche"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_morfologia.dtm_10m_idrol.rt</Name>
+        <Title>DTM 10 metri idrologico</Title>
+        <Abstract>Scala di visibilita 1:1 - 1:5.000.000. DTM con cella di 10m rielaborato a fini di modellistica idrologica.</Abstract>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.663719</westBoundLongitude>
+            <eastBoundLongitude>12.413395</eastBoundLongitude>
+            <southBoundLatitude>42.209128</southBoundLatitude>
+            <northBoundLatitude>44.473545</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>fasce_altimetriche</Name>
+          <Title>fasce_altimetriche</Title>
+          <LegendURL width="140" height="329">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.dtm_10m_idrol.rt&amp;format=image/png&amp;STYLE=fasce_altimetriche"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_morfologia.lineacosta2010</Name>
+        <Title>Linea di costa - 2010</Title>
+        <Abstract>Scala di validita&#39; 1:1 - 1:5.000.000. Dataset &#39;Linea di Costa 2010&#39;</Abstract>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.669914</westBoundLongitude>
+            <eastBoundLongitude>12.421267</eastBoundLongitude>
+            <southBoundLatitude>42.415221</southBoundLatitude>
+            <northBoundLatitude>44.467325</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_morfologia.aspect_10m_idro.rt</Name>
+        <Title>ASPECT 10 metri idrologico</Title>
+        <Abstract>Scala di visibilita 1:1 - 1:5.000.000. Esposizione (Aspect) derivata dal DTM con cella di 10 metri rielaborato a fini di modellistica idrologica</Abstract>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.663719</westBoundLongitude>
+            <eastBoundLongitude>12.413395</eastBoundLongitude>
+            <southBoundLatitude>42.209128</southBoundLatitude>
+            <northBoundLatitude>44.473545</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>generic</Name>
+          <Title>generic</Title>
+          <LegendURL width="126" height="237">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.aspect_10m_idro.rt&amp;format=image/png&amp;STYLE=generic"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>north_facing_aspect</Name>
+          <Title>north_facing_aspect</Title>
+          <LegendURL width="126" height="237">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.aspect_10m_idro.rt&amp;format=image/png&amp;STYLE=north_facing_aspect"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>south_facing_aspect</Name>
+          <Title>south_facing_aspect</Title>
+          <LegendURL width="126" height="237">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.aspect_10m_idro.rt&amp;format=image/png&amp;STYLE=south_facing_aspect"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>west_facing_aspect</Name>
+          <Title>west_facing_aspect</Title>
+          <LegendURL width="126" height="237">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.aspect_10m_idro.rt&amp;format=image/png&amp;STYLE=west_facing_aspect"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>east_facing_aspect</Name>
+          <Title>east_facing_aspect</Title>
+          <LegendURL width="126" height="237">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.aspect_10m_idro.rt&amp;format=image/png&amp;STYLE=east_facing_aspect"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>rt_morfologia.slope_10m_idro.rt</Name>
+        <Title>SLOPE 10 metri idrologico</Title>
+        <Abstract>Scala di visibilita 1:1 - 1:5.000.000. Pendenza (Slope) derivata dal DTM con cella di 10 metri rielaborato a fini di modellistica idrologica</Abstract>
+        <EX_GeographicBoundingBox>
+            <westBoundLongitude>9.663719</westBoundLongitude>
+            <eastBoundLongitude>12.413395</eastBoundLongitude>
+            <southBoundLatitude>42.209128</southBoundLatitude>
+            <northBoundLatitude>44.473545</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <MetadataURL type="TC211">
+          <Format>text/html</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/geoscopio/geometa/html/MetainformazioneNonDisponibile.htm"/>
+        </MetadataURL>
+        <Style>
+          <Name>generic</Name>
+          <Title>generic</Title>
+          <LegendURL width="86" height="214">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.slope_10m_idro.rt&amp;format=image/png&amp;STYLE=generic"/>
+          </LegendURL>
+        </Style>
+        <Style>
+          <Name>greyscale</Name>
+          <Title>greyscale</Title>
+          <LegendURL width="86" height="214">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&amp;version=1.3.0&amp;service=WMS&amp;request=GetLegendGraphic&amp;sld_version=1.1.0&amp;layer=rt_morfologia.slope_10m_idro.rt&amp;format=image/png&amp;STYLE=greyscale"/>
+          </LegendURL>
+        </Style>
+        <MinScaleDenominator>1</MinScaleDenominator>
+        <MaxScaleDenominator>5e+06</MaxScaleDenominator>
+    </Layer>
+  </Layer>
+</Capability>
+</WMS_Capabilities>

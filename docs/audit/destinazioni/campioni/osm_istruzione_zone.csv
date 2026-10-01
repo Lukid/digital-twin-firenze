@@ -1,0 +1,99 @@
+zona_osm_query,osm,tipo,nome,lat,lon,zona,entrate_osm_vicine,entrate_wheelchair,entrate_tag,access,operator,check_date,addr
+Z1,way/140894054,building=school,,43.7188987,10.39929035,Z1,1,0,main,,,,
+Z1,way/185310436,building=school,,43.71766045,10.40527315,Z1,2,0,yes,,,,Via Giuseppe Vernaccini 1
+Z1,way/695631401,building=school,,43.7222127,10.404109,Z1,0,0,,,,,
+Z1,way/163739527,building=university,,43.72013455,10.39619695,Z1,1,0,main,,,,
+Z1,way/253812706,building=university,,43.7170021,10.3990768,Z1,1,0,yes,,,,
+Z1,way/546095513,building=university,,43.72236225,10.4000836,Z1,3,0,home yes,,,,
+Z1,way/797909283,building=university,,43.71880035,10.39842245,Z1,2,0,yes,,,,
+Z1,way/867473637,building=university,,43.72245485,10.399924550000001,Z1,2,0,home yes,,,,
+Z1,relation/8148845,building=university,,43.720346449999994,10.394978850000001,Z1,1,0,main,,,,
+Z1,way/295858896,building=university,Aula Savi,43.72097195,10.3964964,Z1,0,0,,,,,Via Porta Buozzi 3
+Z1,way/721870995,building=university,Palazzo alla Giornata,43.71672275,10.3988023,Z1,2,0,main yes,,,,
+Z1,relation/165512,building=university,Palazzo della Carovana,43.71965715,10.4005684,Z1,1,0,yes,,,,Piazza dei Cavalieri 7
+Z1,way/634725321,kindergarten,,43.717641,10.4052398,Z1,3,0,yes,,,,
+Z1,way/377333611,library,Biblioteca di Scienze naturali e ambientali,43.71848335,10.395103299999999,Z1,4,0,main yes,,Università di Pisa,,Via Derna 1
+Z1,node/5162808006,school,CILT,43.7189454,10.4030433,Z1,3,1,main shop yes,,,,Via Santa Cecilia 23a
+Z1,way/232482921,school,"Liceo Artistico ""F. Russoli""",43.7188481,10.399353,Z1,3,0,main yes,,,,
+Z1,node/965324498,school,Santa Caterina,43.7214622,10.4041161,Z1,0,0,,,,,
+Z1,way/828432256,university,,43.7203564,10.4006562,Z1,5,0,entrance exit main yes,,,,
+Z1,node/3695848052,university,Alma Artis Academy - Accademia di Belle Arti,43.7175066,10.3963539,Z1,3,1,yes,,,,Via Santa Maria 25
+Z1,way/779992710,university,Dipartimento di Anglistica,43.7190157,10.39722115,Z1,4,1,main yes,,Università di Pisa,2025-08-10,
+Z1,node/4408732663,university,Dipartimento di Civiltà e Forme del Sapere,43.7187456,10.3986698,Z1,0,0,,,Università di Pisa,,Via Pasquale Paoli 15
+Z1,way/721900738,university,Dipartimento di Scienze Politiche,43.71679335,10.39905355,Z1,2,0,main yes,,Università di Pisa,,
+Z1,way/779992709,university,Dipartimento di Scienze della Terra,43.718331199999994,10.396772,Z1,6,0,main yes,,Università di Pisa,,
+Z1,node/6487424586,university,"Dipartimento di filologia, letteratura e linguistica",43.7189717,10.3975463,Z1,3,1,main yes,,Università di Pisa,2025-08-10,Via Santa Maria 36
+Z1,node/5129102162,university,Facoltà di Biologia,43.7184524,10.3960131,Z1,2,0,yes,,,,
+Z1,node/339093139,university,Facoltà di Lettere,43.7177172,10.3969459,Z1,5,0,main yes,,,,
+Z1,node/4408732667,university,Facoltà di Lingue e Letterature Straniere,43.7199674,10.3971558,Z1,3,0,main yes,,Università di Pisa,2024-04-25,Via Santa Maria 85
+Z1,way/253818103,university,Palazzo Matteucci,43.7181907,10.39785265,Z1,2,0,yes,,Università di Pisa,,
+Z1,way/93145078,university,Palazzo dell'Orologio,43.7197982,10.3997155,Z1,1,0,main,,,,
+Z1,relation/1729449,university,Palazzo della Sapienza,43.71734415,10.399320750000001,Z1,3,0,yes,,,,Via Curtatone e Montanara
+Z1,way/92930420,university,Polo Carmignani,43.72011415,10.4011362,Z1,2,0,main yes,,Università di Pisa,2026-07-16,
+Z1,relation/4421673,university,Scuola Normale Superiore,43.71965715,10.4005684,Z1,1,0,yes,,,,Piazza dei Cavalieri 7
+Z1,node/1677276904,university,Scuola Superiore Sant'Anna,43.7206078,10.4026444,Z1,0,0,,,,,Piazza Martiri della Libertà 33
+Z1,way/1173691845,university,Scuola Superiore Sant'Anna,43.72067375,10.40272135,Z1,12,0,main yes,,,,
+Z1,node/11942857940,university,Scuola Superiore Sant'Anna - Palazzo Pilo Boyl,43.7190258,10.4032628,Z1,2,0,yes,,,,
+Z1,way/762196368,university,Scuola Superiore Sant'Anna - Palazzo Toscanelli,43.7184706,10.40301075,Z1,2,0,main yes,,Scuola Superiore Sant'Anna,,
+Z1,way/798085977,university,Scuola di Medicina,43.7203091,10.39485,Z1,2,0,main yes,,Università di Pisa,,
+Z1,node/3483952525,university,Università di Pisa - Rettorato,43.7166543,10.3988015,Z1,2,0,main yes,,,2025-03-28,Lungarno Antonio Pacinotti 43
+Z1,way/156114845,building=school,,43.71299395,10.40247295,Z2,0,0,,,,,
+Z1,way/156114847,building=school,,43.71323255,10.40256125,Z2,0,0,,,,,
+Z2,way/127284351,building=school,,43.71102675,10.4020872,Z2,6,0,main,,,,
+Z2,way/146344392,building=school,,43.70395315,10.3989061,Z2,0,0,,,,,Via Sant'Agostino 117
+Z2,way/245798233,building=school,,43.713031900000004,10.39535585,Z2,0,0,,,,,
+Z2,way/306414315,building=school,,43.7128303,10.394947049999999,Z2,0,0,,,,,
+Z2,way/110083622,building=university,Dipartimento di Scienze politiche (sezione staccata),43.7094898,10.40090365,Z2,3,0,main,,,,Via Cristoforo Colombo
+Z2,node/9603303996,kindergarten,Scuola Materna Sant'Antonio Da Padova,43.7065044,10.4063854,Z2,3,0,yes,,,,Via Filippo Corridoni 24
+Z1,way/156114855,kindergarten,Scuola dell’infanzia Matilde Calandrini,43.71302125,10.4015717,Z2,1,0,main,,,,Via del Carmine 10
+Z2,way/240399513,school,,43.7112132,10.4020872,Z2,6,0,main,,,,
+Z2,node/5955116809,school,Accademia Estetista,43.7048239,10.4058292,Z2,1,0,main,,,,Via San Marco 1
+Z2,node/241507010,school,"Istituto Tecnico Commerciale ""Antonio Pacinotti""",43.710749,10.4021048,Z2,1,0,main,,,,Via Benedetto Croce 34
+Z2,node/241507012,school,"Liceo Classico ""Galileo Galilei""",43.7106772,10.4028818,Z2,1,0,main,,,,Via Benedetto Croce 32
+Z2,node/213847571,school,"Liceo scientifico ""Ulisse Dini""",43.7107991,10.401278,Z2,1,0,main,,,2025-09-24,Via Benedetto Croce 36
+Z2,way/580462112,school,"Scuola Elementare ""N. Sauro""",43.703914600000004,10.398909249999999,Z2,0,0,,,"Istituto Comprensivo ""R. Fucini""",2026-05-04,Via Sant'Agostino 117
+Z2,way/592379357,school,"Scuola Primaria ""Cambini""",43.7129254,10.395375099999999,Z2,0,0,,,"Istituto Comprensivo ""G. Toniolo""",,Via Francesco Niosi 4
+Z1,way/368829395,school,"Scuola Primaria ""E. Zerboglio""",43.71311300000001,10.402570749999999,Z2,2,1,main yes,,"Istituto Comprensivo ""R. Fucini""",2024-10-01,Via Pietro Gori
+Z2,way/695634299,school,Scuola Primaria “C. Battisti”,43.7073685,10.404627,Z2,8,0,main staircase yes,,"Istituto Comprensivo ""R. Fucini""",,Via Filippo Corridoni 42
+Z2,way/547880008,school,Scuola dell'infanzia San Francesco,43.70623485,10.397392400000001,Z2,1,0,gate,,,2026-05-04,Via di Goletta 1
+Z2,node/4894134515,school,Scuola di Musica,43.7111703,10.3958157,Z2,0,0,,,,,
+Z2,way/174083473,school,"Scuola pubblica media ""Giuseppe Toniolo""",43.71281635,10.394876499999999,Z2,0,0,,,"Istituto Comprensivo ""G. Toniolo""",2025-03-23,Via della Qualquonia 5
+Z2,relation/15966352,school,Succursale IC Fucini,43.7119034,10.40186235,Z2,0,0,,,I.C. Renato Fucini,,Via Simone Sancasciani 12
+Z2,node/14202304601,university,Residenza Universitaria Artistica per Studenti,43.7077924,10.40505,Z2,0,0,,,,2026-09-21,Via Amerigo Vespucci 43
+Z3,way/211388931,building=school,,43.7127711,10.4320873,Z3,1,0,main,,,,
+Z3,way/259943759,kindergarten,,43.70546505,10.43030055,Z3,0,0,,,,,
+Z3,way/211388929,school,"Scuola Elementare ""Livia Gereschi""",43.71280135000001,10.43218735,Z3,2,0,main,,I.C. Vincenzo Galilei,2025-07-27,Via Umberto Viale 16
+Z4,way/515555918,building=kindergarten,,43.7266378,10.40996875,Z4,0,0,,,,,
+Z1,way/137827231,building=school,,43.72216005,10.404539499999998,Z4,0,0,,,,,
+Z1,way/306558784,building=school,,43.721742649999996,10.4068981,Z4,0,0,,,,,
+Z1,way/307741524,building=school,,43.7180367,10.40804185,Z4,0,0,,,,,
+Z1,way/695631400,building=school,,43.722580050000005,10.40434885,Z4,0,0,,,,,
+Z1,relation/1520437,building=school,,43.7216222,10.4051739,Z4,1,0,yes,,,,
+Z1,relation/5141516,building=school,Nicola Pisano,43.71942215,10.40655125,Z4,9,0,yes,,,,
+Z1,way/128401172,building=school,"Scuola Primaria di Secondo Grado ""Leonardo Fibonacci",43.7179353,10.4086281,Z4,3,0,yes,,,,
+Z1,way/137827245,building=university,,43.72287275,10.40529565,Z4,0,0,,,,,
+Z1,way/476753387,building=university,,43.72257515,10.40511245,Z4,0,0,,,,,
+Z1,way/476753728,building=university,,43.722716649999995,10.405055449999999,Z4,0,0,,,,,
+Z1,way/106644868,building=university,Ex-DMA,43.7201693,10.4071559,Z4,0,0,,,Università di Pisa,,Via Filippo Buonarroti 1
+Z1,way/137827239,building=university,Istituto di Fisiologia (ed. principale),43.722359499999996,10.40534765,Z4,0,0,,,,,
+Z1,way/987805652,building=university,"Polo Fibonacci, edificio B",43.72084255,10.40775425,Z4,3,0,emergency yes,,Università di Pisa,,
+Z4,way/656488090,kindergarten,Asilo nido Betti,43.72134965,10.413816050000001,Z4,0,0,,,Istituto comprensivo L. Fibonacci,,
+Z1,way/873158918,kindergarten,L'isola delle farfalle,43.72609525,10.40303125,Z4,4,0,main yes,,,,
+Z1,node/2700695076,kindergarten,"Scuola dell’Infanzia ""Perodi""",43.7221134,10.4045494,Z4,0,0,,,"Istituto Comprensivo ""L. Strenta Tongiorgi""",,Via San Zeno 3
+Z4,way/238675978,kindergarten,Scuola dell’Infanzia “Parmeggiani”,43.726638,10.4099961,Z4,0,0,,,"Istituto Comprensivo ""L. Strenta Tongiorgi""",,Via Firenze 14
+Z1,way/106644872,school,Centro Sociale Suore Immacolatine,43.7215852,10.4069659,Z4,0,0,,,,2025-08-27,Via Filippo Buonarroti 7
+Z1,way/676049659,school,"Collegio ""Tiziano Terzani""",43.7201492,10.4057247,Z4,10,0,yes,,Scuola superiore di studi universitari e di perfezionamento Sant'Anna,,
+Z1,way/306667933,school,Istituto Arcivescovile Paritario - Santa Caterina,43.72171135,10.40531905,Z4,2,0,yes,,,,Piazza Santa Caterina 4
+Z1,relation/4032458,school,Istituto Leonardo Fibonacci,43.718653450000005,10.40749165,Z4,33,0,emergency main yes,,,,
+Z1,way/217910056,school,Liceo Giosuè Carducci,43.7224324,10.404250000000001,Z4,0,0,,,,,
+Z1,way/183979949,school,Scuola Primaria D. Chiesa,43.718290249999995,10.4080731,Z4,2,0,main yes,,,,
+Z1,way/476755332,university,,43.7227068,10.4055308,Z4,1,0,yes,,Università di Pisa,,
+Z1,node/2463332403,university,Aula AM-1,43.7200603,10.4072125,Z4,0,0,,,eXploit,2024-08-22,Largo Bruno Pontecorvo 2
+Z1,node/5258131767,university,Aula magna / centro congressi,43.7217319,10.408189,Z4,0,0,,,,2025-08-27,
+Z1,node/1715982941,university,Dipartimento di Fisica 'E. Fermi',43.7201299,10.4078976,Z4,0,0,,,University of Pisa,2025-08-27,Largo Bruno Pontecorvo 3
+Z1,node/1715982961,university,Dipartimento di Informatica,43.720378,10.4082249,Z4,0,0,,,,2026-02-17,
+Z1,way/158441765,university,Dipartimento di Matematica,43.719765800000005,10.40785475,Z4,2,0,emergency main,,Università degli Studi di Pisa,2026-03-24,Largo Bruno Pontecorvo 5
+Z1,node/4702380316,university,Istituto di Fisiologia,43.7222484,10.4054329,Z4,0,0,,,Università di Pisa,,Via San Zeno 31
+Z1,way/217538423,university,Polo Fibonacci,43.7209454,10.40828725,Z4,7,0,emergency main yes,,Università di Pisa,,Via Filippo Buonarroti
+Z1,way/35466739,university,"Polo Fibonacci (INFN Pisa), edificio C",43.7206417,10.40839825,Z4,2,0,emergency main,,,2025-08-27,
+Z1,node/5258131768,university,Ufficio immatricolazioni Matricolandosi,43.7215361,10.4082668,Z4,0,0,,,,2025-08-27,

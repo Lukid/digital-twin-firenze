@@ -1,0 +1,34 @@
+feed_publisher_name,feed_publisher_url,feed_lang,feed_start_date,feed_end_date,feed_version,feed_contact_email,feed_contact_url,auto-feed_version
+"Autolinee Toscane",https://www.at-bus.it/,it,20261001,20261021,,,,
+
+fermate 33872 id duplicati 0 senza coordinate 0
+location_type {'0': 33872} wheelchair_boarding {'': 33872}
+linee 946 route_type {'3': 946}
+corse 218914 wheelchair_accessible {'': 218914}
+calendar.txt: servizi 7625 con almeno un giorno settimanale a 1: 0
+calendar_dates eccezioni {'1': 13052}
+20261001 Thu servizi 815 corse 28586
+20261002 Fri servizi 789 corse 28648
+20261003 Sat servizi 670 corse 25249
+20261004 Sun servizi 234 corse 9540
+20261005 Mon servizi 710 corse 28596
+20261006 Tue servizi 671 corse 28572
+20261007 Wed servizi 700 corse 28576
+20261008 Thu servizi 815 corse 28586
+20261009 Fri servizi 789 corse 28648
+20261010 Sat servizi 670 corse 25249
+20261011 Sun servizi 234 corse 9540
+20261012 Mon servizi 710 corse 28596
+20261013 Tue servizi 671 corse 28572
+20261014 Wed servizi 700 corse 28576
+20261015 Thu servizi 815 corse 28586
+20261016 Fri servizi 789 corse 28648
+20261017 Sat servizi 670 corse 25249
+20261018 Sun servizi 234 corse 9540
+20261019 Mon servizi 710 corse 28596
+20261020 Tue servizi 653 corse 27631
+20261021 Wed servizi 3 corse 196
+corse con servizio inesistente 0
+corse con linea inesistente 0
+shape 9105 corse senza shape 0 shape referenziate ma mancanti 0
+stop_times 5907403 corse orfane 0 fermate orfane 0 ora massima 26
