@@ -70,7 +70,7 @@
    "name": "geometric_ray",
    "version": "0.2.0",
    "file": "shadow/ombre.py",
-   "file_sha256": "5d5b2703595f96beeefbdb40f6524cd431f7c94588bb063984402d95f5d5e5fe"
+   "file_sha256": "2b5b57f28cd11e863fd6600338f5ba33855879561c8d047f0de3d095b1409292"
   },
   "accessibilita": {
    "name": "shortest_path_walk_time",
