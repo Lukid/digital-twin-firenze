@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "dt-pisa": {
+      "type": "stdio",
+      "command": "/Users/lucabaroncini/progetti/digital-twin-pisa/service/.venv/bin/python",
+      "args": [
+        "/Users/lucabaroncini/progetti/digital-twin-pisa/service/mcp_server.py"
+      ],
+      "env": {}
+    }
+  }
+}
