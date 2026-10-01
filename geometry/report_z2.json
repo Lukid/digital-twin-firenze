@@ -1,0 +1,121 @@
+{
+ "area": {
+  "Z2_bbox_7791": [
+   612059.81,
+   4839937.71,
+   613203.67,
+   4840900.77
+  ],
+  "buffer_m": 500.0
+ },
+ "edifici_Z2": {
+  "volumi_totali": 1069,
+  "measured_uv_2010": 1034,
+  "derived_post2010_osm_dsm": 23,
+  "coperture_osm_derived": 12,
+  "derived_senza_altezza_dsm": 0,
+  "flag_derivati": {
+   "nessuno": 24,
+   "sotto_2_5m": 7,
+   "dsm_non_attendibile": 3,
+   "vegetazione_possibile": 1
+  },
+  "flag_confronto_dsm_uv": {
+   "ok": 880,
+   "non_confrontato": 123,
+   "dsm_piu_alto": 15,
+   "demolizione_probabile": 11,
+   "dsm_piu_basso": 4,
+   "scarto_con_vegetazione": 1
+  },
+  "osm_stato_buffer": {
+   "con_uv": 2147,
+   "parziale": 603,
+   "senza_uv": 129
+  },
+  "osm_stato_Z2": {
+   "con_uv": 717,
+   "parziale": 185,
+   "senza_uv": 36
+  },
+  "portico_sospeso": "ignoto su tutti i volumi (nessuna fonte)"
+ },
+ "edifici_buffer": {
+  "volumi_totali": 3232,
+  "measured": 3107,
+  "derived": 125
+ },
+ "calibrazione": {
+  "terreno_offset_dtm10_uvqs_m": 0.12,
+  "terreno_sigma_m": 0.69,
+  "bias_dsm_meno_uv_av_m": 0.47,
+  "dh_p10": -0.72,
+  "dh_p90": 1.63,
+  "n_volumi": 2656,
+  "intervallo_derivati_pm_m": 1.36,
+  "soglia_flag_m": 3.0
+ },
+ "dh_uv_Z2": {
+  "count": 1034.0,
+  "mean": -0.28,
+  "std": 1.42,
+  "min": -12.16,
+  "10%": -1.53,
+  "50%": -0.27,
+  "90%": 0.88,
+  "max": 13.37
+ },
+ "alberi_Z2": {
+  "totale": 453,
+  "per_combinazione_fonti": {
+   "osm": 373,
+   "dbt10k_2010": 75,
+   "dbt10k_2010,osm": 5
+  },
+  "chioma_solo_stimata": 453,
+  "altezza_per_classe": {
+   "derived": 278,
+   "estimated": 175
+  },
+  "classe_chioma": {
+   "ignota": 175,
+   "medio": 122,
+   "grande": 93,
+   "piccolo": 63
+  },
+  "con_specie": 2,
+  "con_altezza_osm_plausibile": 0,
+  "in_edificio_posizione_sospetta": 2,
+  "candidati_altra_fonte_non_fusi": 24,
+  "doppioni_osm_entro_1m": 0,
+  "copernicus": "nessun oggetto: solo conteggi poligoni nei campioni dell'audit, geometrie non scaricate"
+ },
+ "alberi_buffer": {
+  "totale": 1131,
+  "per_combinazione_fonti": {
+   "osm": 824,
+   "dbt10k_2010": 297,
+   "dbt10k_2010,osm": 10
+  },
+  "dbt_nel_buffer": 307,
+  "osm_nel_buffer": 834,
+  "fusi": 10,
+  "candidati_3_6m": 25
+ },
+ "regole": {
+  "fusione": "vicini reciproci entro 3.0 m: un solo albero con entrambe le fonti; 3.0-6.0 m: restano due alberi con candidato_altra_fonte; oltre: separati",
+  "post2010": "edificio OSM con copertura UV < 30%, geometria = OSM meno unione UV, parti < 10 m2 scartate",
+  "pulizia_vegetazione": "DSM mediana su poligono eroso 1.0 m (non il massimo); alberi di qualunque fonte entro 2 m dal poligono: flag vegetazione_possibile e intervallo x1,5; altezza < 2,5 m flaggata",
+  "vegetazione_dsm": "nDSM > 2.5 m fuori da UV e OSM bufferizzati 1,5 m; indizio altezza = p95 entro 2.5 m, almeno 6 pixel"
+ },
+ "vegetazione_dsm": {
+  "cluster_ge_20px_Z2": 584,
+  "senza_albero_entro_5m_Z2": 462,
+  "area_m2_senza_albero_Z2": 41917.0
+ },
+ "verifica_classi": {
+  "alberi_con_altezza_da_osm_o_dsm": 278,
+  "quota_sopra_10m_su_questi": 0.59,
+  "riferimento_censimento_2017": 0.37
+ }
+}
