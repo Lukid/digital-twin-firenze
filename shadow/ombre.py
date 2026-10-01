@@ -261,6 +261,12 @@ def scena_caso(caso, extra=None):
     return S.aggiungi(extra) if extra is not None else S
 
 
+def scena_da_alberi(alberi):
+    """Alberi di scenario [{id, x, y, a (raggio chioma, m), z_lo (imposta), z_hi (cima)}], E,N in EPSG:7791, quote in m sopra il suolo: chiome ellissoidali opache."""
+    return Scena(chiome={"x": np.array([t["x"] for t in alberi], float), "y": np.array([t["y"] for t in alberi], float), "a": np.array([t["a"] for t in alberi], float),
+                         "z_lo": np.array([t["z_lo"] for t in alberi], float), "z_hi": np.array([t["z_hi"] for t in alberi], float), "forma": "ellissoide"})
+
+
 def scena_da_volumi(volumi):
     """Volumi di scenario (pensiline, coperture...): [{id, geometry (GeoJSON 7791 o shapely), z_lo, z_hi}], quote in m sopra il suolo, classe scenario."""
     g = [shapely.geometry.shape(v["geometry"]) if isinstance(v["geometry"], dict) else v["geometry"] for v in volumi]
@@ -292,22 +298,23 @@ def _sample(L, step):
     return s, ds, shapely.get_x(p), shapely.get_y(p)
 
 
-def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scenario_volumes=None, walk_speed_m_s=1.2, *,
+def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scenario_volumes=None, walk_speed_m_s=1.2, *, scenario_trees=None,
                    casi=None, fasce=None, el_min=EL_MIN_SUPPORTATA, asset_times=(), asset_casi=("base",), asset_bbox=None, out_dir=None, scenario_version=1):
     """Ombra su ricevitori. Parametri come compute_shadow.input di mcp.schema.json (baseline_id, receivers, when, method, scenario_id, walk_speed_m_s).
     receivers: [{receiver_id, kind: path|surface, geometry (GeoJSON in EPSG:7791, [E, N])}]. when: {date, timezone, times: ['HH:MM']}.
     method: {name:'geometric_ray', space_step_m, time_step_min, obstacles}. obstacles: documented_buildings_only | buildings_and_scenario |
     buildings_and_trees (estensione: aggiunge le chiome degli alberi in 3 casi min/tipico/max, da inserire nell'enum del contratto).
-    scenario_volumes: volumi di scenario [{id, geometry, z_lo, z_hi}]. casi: sottoinsieme di CASI (default da obstacles). fasce: [{id, from, to}] per
+    scenario_volumes: prismi di scenario [{id, geometry, z_lo, z_hi}]. scenario_trees: alberi di scenario [{id, x, y, a, z_lo, z_hi}] (chioma ellissoidale, a = raggio). casi: sottoinsieme di CASI (default da obstacles). fasce: [{id, from, to}] per
     le metriche del manifest. asset_*: GeoJSON 4326 delle ombre unite per orari e casi, ritagliato su asset_bbox (E0, N0, E1, N1 in 7791).
     Ritorna {job, manifest, righe, sintesi, assets}. Stesso input = stesso job_id e stessi numeri. Ora inesistente/ambigua: OraInesistente/OraAmbigua."""
     t_start = dt.datetime.now(UTC)
     _validate(receivers, when, method, walk_speed_m_s)
     ob = method["obstacles"]
-    if ob == "buildings_and_scenario" and not (scenario_id and scenario_volumes): raise ValueError("buildings_and_scenario richiede scenario_id e scenario_volumes")
+    if ob == "buildings_and_scenario" and not (scenario_id and (scenario_volumes or scenario_trees)): raise ValueError("buildings_and_scenario richiede scenario_id e scenario_volumes o scenario_trees")
     casi = list(casi or CASI_PER_OSTACOLI[ob]); fasce = list(fasce or [])
     D = dati()
     extra = scena_da_volumi(scenario_volumes) if scenario_volumes else None
+    if scenario_trees: extra = scena_da_alberi(scenario_trees) if extra is None else extra.aggiungi(scena_da_alberi(scenario_trees))
     scene = {c: scena_caso(c, extra) for c in casi}
     geoms = {r["receiver_id"]: (shapely.geometry.shape(r["geometry"]) if isinstance(r["geometry"], dict) else r["geometry"]) for r in receivers}
     kind = {r["receiver_id"]: r["kind"] for r in receivers}
@@ -390,6 +397,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
               "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni", "method_version": VERSIONE}
     if scenario_volumes: params["scenario_volumes"] = [{"id": v["id"], "z_lo": v.get("z_lo", 0.0), "z_hi": v["z_hi"],
                                                          "geometry": mapping(shapely.set_precision(shapely.geometry.shape(v["geometry"]) if isinstance(v["geometry"], dict) else v["geometry"], 0.01))} for v in scenario_volumes]
+    if scenario_trees: params["scenario_trees"] = [{"id": t["id"], "x": round(float(t["x"]), 2), "y": round(float(t["y"]), 2), "a": round(float(t["a"]), 3), "z_lo": round(float(t["z_lo"]), 3), "z_hi": round(float(t["z_hi"]), 3)} for t in scenario_trees]
     if asset_times: params["assets"] = {"times": list(asset_times), "casi": list(asset_casi), "bbox": list(asset_bbox) if asset_bbox else None}
     job_id = _hash_job("compute_shadow", inputs, params)
     t_end = dt.datetime.now(UTC); fmt = lambda t: t.strftime("%Y-%m-%dT%H:%M:%SZ")

@@ -50,7 +50,7 @@ Ombre di S0, S1, S2 alle 8:00, 13:00 e 16:30 (EPSG:4326); interventi di S1 e S2 
 
 - La baseline esclude gli alberi esistenti: un albero nuovo non è confrontato con le chiome già presenti nello stesso punto.
 - Percorsi sull'asse della rete, lato del marciapiede ignoto.
-- Gli alberi di scenario entrano nel motore d'ombra sostituendo temporaneamente una funzione di `shadow/ombre.py` (non thread-safe): da sostituire con un parametro esplicito del motore.
+- Gli alberi di scenario entrano nel motore d'ombra con il parametro esplicito `scenario_trees` di `compute_shadow` (nessun monkeypatch, nessuno stato condiviso; il `job_id` li include). Il record della baseline è stato ricongelato: cambia solo l'hash di `ombre.py`; S1 e S2 identici.
 - S0 differisce da `shadow/out` di circa 0,01-0,04% sull'area d'ombra (riferimento solare dal baricentro dei ricevitori).
 - Pesi dei tratti = civici SIT, non persone; nessun flusso misurato. Dimensioni e posizioni degli interventi sono ipotesi, senza crescita né anni.
 - Job di confronto sincrono, senza avanzamento.

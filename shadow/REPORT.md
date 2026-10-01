@@ -59,13 +59,13 @@ Numeri identici a 4 decimali su R01 e R08, per tutte le date e fasce: le copertu
 
 ```
 compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scenario_volumes=None,
-               walk_speed_m_s=1.2, *, casi=None, fasce=None, el_min=5.0, asset_times=(),
+               walk_speed_m_s=1.2, *, scenario_trees=None, casi=None, fasce=None, el_min=5.0, asset_times=(),
                asset_casi=("base",), asset_bbox=None, out_dir=None, scenario_version=1)
   -> {"job", "manifest", "righe", "sintesi", "assets"}
 ```
 
 - `receivers`, `when`, `method` seguono `compute_shadow.input` di `mcp.schema.json`. L'enum `method.obstacles` va esteso con `buildings_and_trees`.
-- `scenario_volumes` = [{id, geometry, z_lo, z_hi}] per volumi di scenario (es. pensiline).
+- `scenario_volumes` = [{id, geometry, z_lo, z_hi}] per prismi di scenario (es. pensiline). `scenario_trees` = [{id, x, y, a, z_lo, z_hi}] per alberi di scenario (chioma ellissoidale opaca, a = raggio, E,N in EPSG:7791): entrambi entrano nel `job_id`.
 - `OraInesistente` e `OraAmbigua` sono sottoclassi di `ValueError`: vanno mappate su `tool_error`.
 - Costo: circa 2 minuti per 7 percorsi × 42 orari × 7 casi.
 

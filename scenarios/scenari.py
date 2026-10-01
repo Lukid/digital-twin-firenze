@@ -7,7 +7,7 @@
 
 Interventi ammessi: nuovo albero (punto, altezza, diametro chioma, altezza d'imposta) e pensilina (poligono, quota d'imposta e tetto), tutti
 classe `scenario`, senza modello di crescita né anni. Rimozioni, modifiche, volumi edilizi: fuori capacità. La fattibilità è sempre ignota."""
-import contextlib, datetime as dt, hashlib, json, math, os, pathlib, sys
+import datetime as dt, hashlib, json, math, os, pathlib, sys
 from functools import lru_cache
 import numpy as np, shapely
 from shapely.geometry import Point, Polygon, mapping, shape
@@ -252,48 +252,26 @@ def riepilogo_interventi(scn):
 
 # ---------------------------------------------------------------- ombra con gli interventi
 def volumi_scenario(scn):
-    """Interventi -> volumi per ombre.compute_shadow: [{id, geometry, z_lo, z_hi}]. Un albero è descritto dal cerchio della chioma con quota d'imposta e
-    cima, id 'tree:<op>'; una pensilina dal suo poligono, id 'shelter:<op>'. Il descrittore identifica l'intervento per intero (entra nell'hash del job)."""
-    out = []
+    """Interventi -> (prismi, alberi) per ombre.compute_shadow. Prismi: pensiline [{id 'shelter:<op>', geometry, z_lo, z_hi}]. Alberi: chiome
+    ellissoidali [{id 'tree:<op>', x, y, a, z_lo, z_hi}] con quota d'imposta e cima. Il descrittore identifica l'intervento per intero (entra nell'hash del job)."""
+    prismi, alberi = [], []
     for op in scn["operations"]:
         if op["target_type"] == "tree":
             d = _dim(op, DIM_ALBERO); p = shape(op["geometry"])
-            out.append({"id": f"tree:{op['op_id']}", "geometry": mapping(p.buffer(d["crown_diameter_m"] / 2, quad_segs=16)), "z_lo": d["crown_base_m"], "z_hi": d["height_m"]})
+            alberi.append({"id": f"tree:{op['op_id']}", "x": p.x, "y": p.y, "a": d["crown_diameter_m"] / 2, "z_lo": d["crown_base_m"], "z_hi": d["height_m"]})
         else:
-            d = _dim(op, DIM_PENSILINA); out.append({"id": f"shelter:{op['op_id']}", "geometry": op["geometry"], "z_lo": d["canopy_base_m"], "z_hi": d["roof_height_m"]})
-    return out
-
-
-def _scena_da_descrittori(volumi):
-    """Come ombre.scena_da_volumi, ma gli id 'tree:*' diventano chiome ellissoidali opache (come gli alberi di T09), gli altri prismi."""
-    pr = [v for v in volumi if not v["id"].startswith("tree:")]; al = [v for v in volumi if v["id"].startswith("tree:")]
-    g = [shape(v["geometry"]) if isinstance(v["geometry"], dict) else v["geometry"] for v in pr]
-    ch = None
-    if al:
-        gs = [shape(v["geometry"]) for v in al]; b = np.array([x.bounds for x in gs])
-        ch = {"x": (b[:, 0] + b[:, 2]) / 2, "y": (b[:, 1] + b[:, 3]) / 2, "a": (b[:, 2] - b[:, 0]) / 2,
-              "z_lo": np.array([v["z_lo"] for v in al], float), "z_hi": np.array([v["z_hi"] for v in al], float), "forma": "ellissoide"}
-    return O.Scena(g, [v.get("z_lo", 0.0) for v in pr], [v["z_hi"] for v in pr], [v["id"] for v in pr], ch)
-
-
-@contextlib.contextmanager
-def _patch_scena():
-    # ponytail: ombre.compute_shadow trasforma scenario_volumes solo in prismi e shadow/ non si tocca; sostituiamo la funzione per la durata
-    # della chiamata. Non è thread-safe: il servizio esegue un job alla volta nel processo. Se T09 aggiunge le chiome di scenario, togliere.
-    orig = O.scena_da_volumi; O.scena_da_volumi = _scena_da_descrittori
-    try: yield
-    finally: O.scena_da_volumi = orig
+            d = _dim(op, DIM_PENSILINA); prismi.append({"id": f"shelter:{op['op_id']}", "geometry": op["geometry"], "z_lo": d["canopy_base_m"], "z_hi": d["roof_height_m"]})
+    return prismi, alberi
 
 
 def calcola_ombra(scn, rec, cond, casi=None, fasce=None, asset_times=(), asset_casi=("base",), asset_bbox=None, out_dir=None, walk_speed_m_s=None):
     """Ombra della baseline più gli interventi dello scenario. Senza interventi: solo edifici documentati (stessi numeri della baseline)."""
-    vol = volumi_scenario(scn)
-    method = {**cond["method"], "obstacles": "buildings_and_scenario" if vol else "documented_buildings_only"}
+    vol, alb = volumi_scenario(scn)
+    method = {**cond["method"], "obstacles": "buildings_and_scenario" if (vol or alb) else "documented_buildings_only"}
     when = {"date": cond["date"], "timezone": "Europe/Rome", "times": cond["times"]}
-    with _patch_scena():
-        r = O.compute_shadow(scn["baseline_id"], rec, when, method, scenario_id=scn["scenario_id"], scenario_volumes=vol or None,
-                             walk_speed_m_s=walk_speed_m_s or cond["walk_speed_m_s"], casi=casi, fasce=fasce if fasce is not None else cond["fasce"],
-                             el_min=cond["el_min_deg"], asset_times=asset_times, asset_casi=asset_casi, asset_bbox=asset_bbox, out_dir=out_dir, scenario_version=scn["version"])
+    r = O.compute_shadow(scn["baseline_id"], rec, when, method, scenario_id=scn["scenario_id"], scenario_volumes=vol or None, scenario_trees=alb or None,
+                         walk_speed_m_s=walk_speed_m_s or cond["walk_speed_m_s"], casi=casi, fasce=fasce if fasce is not None else cond["fasce"],
+                         el_min=cond["el_min_deg"], asset_times=asset_times, asset_casi=asset_casi, asset_bbox=asset_bbox, out_dir=out_dir, scenario_version=scn["version"])
     man = r["manifest"]; man["scenario_id"], man["scenario_version"] = scn["scenario_id"], scn["version"]
     man["limits"] += [{"code": "scenario_ipotesi", "text": "Interventi ipotetici di classe scenario: dimensioni dichiarate, non da progetto; nessun modello di crescita né anni."},
                       {"code": "fattibilita_ignota", "text": "Fattibilità ignota: sottoservizi, spazio radicale, proprietà del suolo, permessi e specie non verificati."},
