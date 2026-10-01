@@ -22,7 +22,7 @@ from shapely.geometry import LineString, MultiPolygon, Polygon, Point, box, mapp
 from shapely import affinity
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-VERSIONE = "0.1.0"
+VERSIONE = "0.2.0"
 ROMA = ZoneInfo("Europe/Rome")
 UTC = dt.timezone.utc
 EL_MIN_SUPPORTATA = 5.0   # gradi: sotto, il contesto dei dati (margine 450 m dal bordo Z2) non copre ombre di edifici da 38 m
@@ -230,11 +230,17 @@ def dati():
     return _cache
 
 
+# Coperture OSM (building=roof): volumi sospesi, stessa regola della scena T08 (scene/build.py): base = quota tetto - spessore soletta.
+# Spessore tipico 0,4 m (0,2-0,8 m): con h_min la base scende di 0,8 m, con h_max di 0,2 m (come imp_min/imp_max di T08).
+SOLETTA = {"h": 0.4, "h_min": 0.8, "h_max": 0.2}
+
+
 def scena_edifici(col="h"):
-    """Tutti i volumi del buffer (non solo Z2: le ombre entrano in Z2 da fuori). Volumi tutti pieni (z_lo = 0): il campo 'sospeso' della fonte è
-    'ignoto' ovunque, quindi le coperture OSM sono trattate come volumi pieni, limite superiore dell'ombra al suolo."""
-    v = dati()["v"]
-    return Scena(v.geometry.values, np.zeros(len(v)), np.clip(v[col].values.astype(float), 0.3, None), v.id.tolist())
+    """Tutti i volumi del buffer (non solo Z2: le ombre entrano in Z2 da fuori). Unità volumetriche e volumi derivati: pieni (z_lo = 0, il campo
+    'sospeso' dei portici è 'ignoto', limite superiore). Coperture OSM: sospese, z_lo = tetto - soletta."""
+    v = dati()["v"]; top = np.clip(v[col].values.astype(float), 0.3, None)
+    lo = np.where(v.tipo.values == "copertura_osm", np.clip(top - SOLETTA[col], 0.0, None), 0.0)
+    return Scena(v.geometry.values, lo, top, v.id.tolist())
 
 
 def scena_alberi(caso, forma="ellissoide"):
@@ -381,7 +387,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
     params = {"receivers": rec_canon, "when": when, "method": method, "walk_speed_m_s": walk_speed_m_s, "casi": casi, "fasce": fasce,
               "el_min_deg": el_min, "sun_reference_lonlat": [lon, lat], "geometrie_sha256": D["gpkg_sha256"],
               "chiome": {"forma": "ellissoide", "tronco": "trascurato", "parametri": "geometry/parametri_chiome.json"},
-              "sospesi": "nessuno: campo sospeso ignoto nella fonte, volumi trattati come pieni", "method_version": VERSIONE}
+              "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni", "method_version": VERSIONE}
     if scenario_volumes: params["scenario_volumes"] = [{"id": v["id"], "z_lo": v.get("z_lo", 0.0), "z_hi": v["z_hi"],
                                                          "geometry": mapping(shapely.set_precision(shapely.geometry.shape(v["geometry"]) if isinstance(v["geometry"], dict) else v["geometry"], 0.01))} for v in scenario_volumes]
     if asset_times: params["assets"] = {"times": list(asset_times), "casi": list(asset_casi), "bbox": list(asset_bbox) if asset_bbox else None}
@@ -454,7 +460,7 @@ def _manifest(job_id, inputs, params, ob, sintesi, righe, casi, t0, t1, fasce, w
     n_ok = sum(1 for r in righe if r["stato"] == STATO_OK); stati = {s: sum(1 for r in righe if r["stato"] == s) for s in sorted({r["stato"] for r in righe})}
     limits = [("terreno_piano", "Terreno quasi piano dichiarato: ogni volume riferito al proprio piede (quota base di fonte), ricevitore alla quota dei piedi vicini; dislivelli locali non modellati."),
               ("centerline", "Percorsi sull'asse della rete OSM, non sul lato del marciapiede: lato e portici non noti (marciapiede ignoto), l'effetto del lato non è nel risultato."),
-              ("volumi_sospesi_ignoti", "Il campo sospeso è ignoto in tutta la fonte: portici e pensiline trattati come volumi pieni (limite superiore dell'ombra al suolo); il motore gestisce volumi sospesi se forniti."),
+              ("volumi_sospesi_ignoti", "Coperture OSM trattate come volumi sospesi (soletta 0,4 m, stima 0,2-0,8 m, come la scena); il campo sospeso dei portici delle unità volumetriche è ignoto: trattati come pieni (limite superiore dell'ombra al suolo)."),
               ("alberi_solo_stimati", "Chiome idealizzate opache (ellissoide) con parametri stimati per classe; tronco trascurato; inventario incompleto (462 gruppi di vegetazione DSM senza albero puntuale): non è l'ombra reale degli alberi."),
               ("ombra_binaria", "Ombra geometrica binaria: nessuna trasmissività, nessuna conversione in temperatura, comfort o domanda pedonale."),
               ("altezze_non_indipendenti", "Altezze delle unità volumetriche 2010 e DSM 2021 non indipendenti; datum verticale non confermato; edifici post-2010 solo da OSM più DSM."),

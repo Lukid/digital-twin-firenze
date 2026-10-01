@@ -1,6 +1,6 @@
 {
- "manifest_id": "man_fa8d8e36dfc6fd37",
- "job_id": "job_fa8d8e36dfc6fd37",
+ "manifest_id": "man_fa754c8c5541ccf2",
+ "job_id": "job_fa754c8c5541ccf2",
  "tool": "compute_shadow",
  "aoi_id": "aoi_z2",
  "baseline_id": "bas_z2_20261001",
@@ -1131,7 +1131,7 @@
    }
   ],
   "when": {
-   "date": "2026-10-01",
+   "date": "2026-06-21",
    "timezone": "Europe/Rome",
    "times": [
     "07:45",
@@ -1227,300 +1227,300 @@
    "tronco": "trascurato",
    "parametri": "geometry/parametri_chiome.json"
   },
-  "sospesi": "nessuno: campo sospeso ignoto nella fonte, volumi trattati come pieni",
-  "method_version": "0.1.0"
+  "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni",
+  "method_version": "0.2.0"
  },
  "method": {
   "name": "geometric_ray",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sole con algoritmo astronomico NOAA in Europe/Rome; ombra di ogni volume come somma di Minkowski del footprint con il segmento fra quota di base e di tetto; chiome come ellissoidi opachi; unione di tutte le ombre e intersezione con il ricevitore."
  },
  "crs": "EPSG:7791",
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-01T18:54:04Z",
-  "finished_at": "2026-10-01T18:56:17Z",
-  "duration_s": 133.47
+  "started_at": "2026-10-01T19:01:31Z",
+  "finished_at": "2026-10-01T19:03:37Z",
+  "duration_s": 125.81
  },
  "metrics": [
   {
    "metric_id": "pth_t04_r01_giornata_8_18_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.6118,
+   "value": 0.375,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R01, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R01, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.6031,
-    "high": 0.6218,
+    "low": 0.3653,
+    "high": 0.3846,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r01_giornata_8_18_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.6207,
+   "value": 0.3802,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R01, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R01, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.6136,
-    "high": 0.6529,
+    "low": 0.375,
+    "high": 0.4105,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r01_giornata_8_18_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 4.083,
+   "value": 6.581,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R01, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R01, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 3.976,
-    "high": 4.183,
+    "low": 6.478,
+    "high": 6.696,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r01_giornata_8_18_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 3.992,
+   "value": 6.528,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R01, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R01, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 3.654,
-    "high": 4.065,
+    "low": 6.209,
+    "high": 6.581,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r01_ingresso_mattina_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.9815,
+   "value": 0.9329,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R01, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R01, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9787,
-    "high": 0.9836,
+    "low": 0.9304,
+    "high": 0.935,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r01_ingresso_mattina_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.9815,
+   "value": 0.9329,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R01, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R01, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9815,
-    "high": 0.9836,
+    "low": 0.9329,
+    "high": 0.9329,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r01_ingresso_mattina_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.551,
+   "value": 0.718,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R01, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R01, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.518,
-    "high": 0.583,
+    "low": 0.694,
+    "high": 0.746,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r01_ingresso_mattina_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.551,
+   "value": 0.718,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R01, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R01, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.532,
-    "high": 0.551,
+    "low": 0.718,
+    "high": 0.718,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r01_uscita_mezzogiorno_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.5195,
+   "value": 0.0603,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R01, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R01, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.5045,
-    "high": 0.534,
+    "low": 0.0552,
+    "high": 0.0673,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r01_uscita_mezzogiorno_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.5286,
+   "value": 0.0603,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R01, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R01, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.5213,
-    "high": 0.6108,
+    "low": 0.0603,
+    "high": 0.1051,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r01_uscita_mezzogiorno_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 4.954,
+   "value": 9.837,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R01, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R01, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 4.818,
-    "high": 5.127,
+    "low": 9.751,
+    "high": 9.9,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r01_uscita_mezzogiorno_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 4.866,
+   "value": 9.837,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R01, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R01, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 4.022,
-    "high": 4.941,
+    "low": 9.42,
+    "high": 9.837,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r01_uscita_pomeriggio_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.7289,
+   "value": 0.4204,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R01, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R01, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.713,
-    "high": 0.743,
+    "low": 0.4021,
+    "high": 0.4306,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r01_uscita_pomeriggio_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.7467,
+   "value": 0.4212,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R01, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R01, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7291,
-    "high": 0.7587,
+    "low": 0.4204,
+    "high": 0.4734,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r01_uscita_pomeriggio_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 2.799,
+   "value": 6.009,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R01, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R01, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.655,
-    "high": 2.961,
+    "low": 5.908,
+    "high": 6.166,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r01_uscita_pomeriggio_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 2.614,
+   "value": 5.986,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R01, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R01, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.484,
-    "high": 2.794,
+    "low": 5.44,
+    "high": 6.009,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r03_giornata_8_18_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.84,
+   "value": 0.7008,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R03, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R03, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.8322,
-    "high": 0.8479,
+    "low": 0.7007,
+    "high": 0.7008,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r03_giornata_8_18_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.84,
+   "value": 0.7008,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R03, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R03, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.84,
-    "high": 0.84,
+    "low": 0.7008,
+    "high": 0.7008,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r03_giornata_8_18_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.147,
+   "value": 0.276,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R03, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R03, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.14,
-    "high": 0.154,
+    "low": 0.276,
+    "high": 0.276,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r03_giornata_8_18_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.147,
+   "value": 0.276,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R03, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R03, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.147,
-    "high": 0.147,
+    "low": 0.276,
+    "high": 0.276,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
@@ -1530,7 +1530,7 @@
    "value": 1.0,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R03, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R03, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
     "low": 1.0,
@@ -1544,7 +1544,7 @@
    "value": 1.0,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R03, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R03, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
     "low": 1.0,
@@ -1558,7 +1558,7 @@
    "value": 0.0,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R03, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R03, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
     "low": 0.0,
@@ -1572,7 +1572,7 @@
    "value": 0.0,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R03, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R03, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
     "low": 0.0,
@@ -1583,1238 +1583,1238 @@
   {
    "metric_id": "pth_t04_r03_uscita_mezzogiorno_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.7703,
+   "value": 0.5639,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R03, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R03, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7066,
-    "high": 0.8335,
+    "low": 0.5639,
+    "high": 0.5639,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r03_uscita_mezzogiorno_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.7703,
+   "value": 0.5639,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R03, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R03, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7703,
-    "high": 0.7703,
+    "low": 0.5639,
+    "high": 0.5639,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r03_uscita_mezzogiorno_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.208,
+   "value": 0.402,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R03, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R03, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.152,
-    "high": 0.269,
+    "low": 0.402,
+    "high": 0.402,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r03_uscita_mezzogiorno_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.208,
+   "value": 0.402,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R03, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R03, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.208,
-    "high": 0.208,
+    "low": 0.402,
+    "high": 0.402,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r03_uscita_pomeriggio_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 1.0,
+   "value": 0.5639,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R03, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R03, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 1.0,
-    "high": 1.0,
+    "low": 0.5639,
+    "high": 0.5639,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r03_uscita_pomeriggio_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 1.0,
+   "value": 0.5639,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R03, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R03, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 1.0,
-    "high": 1.0,
+    "low": 0.5639,
+    "high": 0.5639,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r03_uscita_pomeriggio_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.0,
+   "value": 0.402,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R03, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R03, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.0,
-    "high": 0.0,
+    "low": 0.402,
+    "high": 0.402,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r03_uscita_pomeriggio_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.0,
+   "value": 0.402,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R03, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R03, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.0,
-    "high": 0.0,
+    "low": 0.402,
+    "high": 0.402,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r04_giornata_8_18_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.7907,
+   "value": 0.589,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R04, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R04, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7783,
-    "high": 0.8013,
+    "low": 0.5872,
+    "high": 0.5969,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r04_giornata_8_18_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.7907,
+   "value": 0.589,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R04, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R04, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7907,
-    "high": 0.7907,
+    "low": 0.589,
+    "high": 0.589,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r04_giornata_8_18_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.474,
+   "value": 0.931,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R04, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R04, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.45,
-    "high": 0.503,
+    "low": 0.913,
+    "high": 0.934,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r04_giornata_8_18_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.474,
+   "value": 0.931,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R04, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R04, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.474,
-    "high": 0.474,
+    "low": 0.931,
+    "high": 0.931,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r04_ingresso_mattina_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.8266,
+   "value": 0.8966,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R04, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R04, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7644,
-    "high": 0.8332,
+    "low": 0.8895,
+    "high": 0.9142,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r04_ingresso_mattina_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.8266,
+   "value": 0.8966,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R04, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R04, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.8266,
-    "high": 0.8266,
+    "low": 0.8966,
+    "high": 0.8966,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r04_ingresso_mattina_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.392,
+   "value": 0.239,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R04, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R04, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.379,
-    "high": 0.535,
+    "low": 0.194,
+    "high": 0.246,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r04_ingresso_mattina_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.392,
+   "value": 0.239,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R04, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R04, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.392,
-    "high": 0.392,
+    "low": 0.239,
+    "high": 0.239,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r04_uscita_mezzogiorno_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.7724,
+   "value": 0.5709,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R04, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R04, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7206,
-    "high": 0.8238,
+    "low": 0.5709,
+    "high": 0.5709,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r04_uscita_mezzogiorno_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.7724,
+   "value": 0.5709,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R04, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R04, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7724,
-    "high": 0.7724,
+    "low": 0.5709,
+    "high": 0.5709,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r04_uscita_mezzogiorno_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.512,
+   "value": 0.969,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R04, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R04, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.398,
-    "high": 0.634,
+    "low": 0.969,
+    "high": 0.969,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r04_uscita_mezzogiorno_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.512,
+   "value": 0.969,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R04, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R04, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.512,
-    "high": 0.512,
+    "low": 0.969,
+    "high": 0.969,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r04_uscita_pomeriggio_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.9494,
+   "value": 0.6053,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R04, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R04, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9464,
-    "high": 0.9523,
+    "low": 0.6035,
+    "high": 0.608,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r04_uscita_pomeriggio_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.9494,
+   "value": 0.6053,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R04, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R04, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9494,
-    "high": 0.9494,
+    "low": 0.6053,
+    "high": 0.6053,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r04_uscita_pomeriggio_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.111,
+   "value": 0.891,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R04, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R04, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.106,
-    "high": 0.12,
+    "low": 0.886,
+    "high": 0.895,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r04_uscita_pomeriggio_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.111,
+   "value": 0.891,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R04, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R04, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.111,
-    "high": 0.111,
+    "low": 0.891,
+    "high": 0.891,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r05_giornata_8_18_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.7843,
+   "value": 0.5337,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R05, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R05, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7726,
-    "high": 0.7909,
+    "low": 0.5214,
+    "high": 0.5505,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r05_giornata_8_18_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.7843,
+   "value": 0.5337,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R05, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R05, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7843,
-    "high": 0.7859,
+    "low": 0.5337,
+    "high": 0.5337,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r05_giornata_8_18_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 1.618,
+   "value": 3.398,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R05, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R05, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 1.562,
-    "high": 1.664,
+    "low": 3.276,
+    "high": 3.496,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r05_giornata_8_18_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 1.618,
+   "value": 3.398,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R05, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R05, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 1.607,
-    "high": 1.618,
+    "low": 3.398,
+    "high": 3.398,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r05_ingresso_mattina_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.9978,
+   "value": 0.9988,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R05, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R05, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9977,
-    "high": 0.9979,
+    "low": 0.9971,
+    "high": 1.0,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r05_ingresso_mattina_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.9978,
+   "value": 0.9988,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R05, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R05, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9978,
-    "high": 0.9978,
+    "low": 0.9988,
+    "high": 0.9988,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r05_ingresso_mattina_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.023,
+   "value": 0.011,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R05, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R05, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.023,
-    "high": 0.042,
+    "low": 0.0,
+    "high": 0.031,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r05_ingresso_mattina_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.023,
+   "value": 0.011,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R05, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R05, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.023,
-    "high": 0.023,
+    "low": 0.011,
+    "high": 0.011,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r05_uscita_mezzogiorno_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.8075,
+   "value": 0.1514,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R05, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R05, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.781,
-    "high": 0.8285,
+    "low": 0.145,
+    "high": 0.1653,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r05_uscita_mezzogiorno_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.8075,
+   "value": 0.1514,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R05, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R05, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.8075,
-    "high": 0.8075,
+    "low": 0.1514,
+    "high": 0.1514,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r05_uscita_mezzogiorno_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 1.459,
+   "value": 6.15,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R05, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R05, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 1.26,
-    "high": 1.609,
+    "low": 6.033,
+    "high": 6.239,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r05_uscita_mezzogiorno_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 1.459,
+   "value": 6.15,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R05, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R05, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 1.459,
-    "high": 1.459,
+    "low": 6.15,
+    "high": 6.15,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r05_uscita_pomeriggio_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.9805,
+   "value": 0.7481,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R05, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R05, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9781,
-    "high": 0.9836,
+    "low": 0.7352,
+    "high": 0.7561,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r05_uscita_pomeriggio_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.9805,
+   "value": 0.7481,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R05, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R05, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9805,
-    "high": 0.9805,
+    "low": 0.7481,
+    "high": 0.7481,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r05_uscita_pomeriggio_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.129,
+   "value": 1.84,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R05, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R05, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.111,
-    "high": 0.139,
+    "low": 1.761,
+    "high": 1.845,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r05_uscita_pomeriggio_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.129,
+   "value": 1.84,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R05, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R05, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.129,
-    "high": 0.129,
+    "low": 1.84,
+    "high": 1.84,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r06_giornata_8_18_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.5748,
+   "value": 0.3667,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R06, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R06, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.5669,
-    "high": 0.5839,
+    "low": 0.3568,
+    "high": 0.3758,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r06_giornata_8_18_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.5811,
+   "value": 0.3706,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R06, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R06, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.5764,
-    "high": 0.5973,
+    "low": 0.3668,
+    "high": 0.3888,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r06_giornata_8_18_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 5.098,
+   "value": 7.596,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R06, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R06, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 4.986,
-    "high": 5.207,
+    "low": 7.486,
+    "high": 7.741,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r06_giornata_8_18_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 5.025,
+   "value": 7.551,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R06, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R06, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 4.833,
-    "high": 5.08,
+    "low": 7.33,
+    "high": 7.596,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r06_ingresso_mattina_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.9708,
+   "value": 0.8229,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R06, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R06, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9663,
-    "high": 0.9752,
+    "low": 0.8203,
+    "high": 0.8251,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r06_ingresso_mattina_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.9708,
+   "value": 0.8229,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R06, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R06, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9708,
-    "high": 0.9708,
+    "low": 0.8229,
+    "high": 0.8229,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r06_ingresso_mattina_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.926,
+   "value": 2.142,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R06, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R06, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.81,
-    "high": 1.019,
+    "low": 2.104,
+    "high": 2.225,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r06_ingresso_mattina_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.926,
+   "value": 2.142,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R06, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R06, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.926,
-    "high": 0.926,
+    "low": 2.142,
+    "high": 2.142,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r06_uscita_mezzogiorno_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.427,
+   "value": 0.0506,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R06, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R06, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.4126,
-    "high": 0.4409,
+    "low": 0.0483,
+    "high": 0.0543,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r06_uscita_mezzogiorno_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.4346,
+   "value": 0.0506,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R06, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R06, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.4285,
-    "high": 0.4822,
+    "low": 0.0506,
+    "high": 0.0841,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r06_uscita_mezzogiorno_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 6.797,
+   "value": 11.33,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R06, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R06, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 6.658,
-    "high": 6.961,
+    "low": 11.272,
+    "high": 11.369,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r06_uscita_mezzogiorno_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 6.725,
+   "value": 11.33,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R06, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R06, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 6.183,
-    "high": 6.788,
+    "low": 10.98,
+    "high": 11.33,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r06_uscita_pomeriggio_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.7193,
+   "value": 0.4537,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R06, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R06, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7112,
-    "high": 0.7309,
+    "low": 0.4347,
+    "high": 0.4665,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r06_uscita_pomeriggio_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.7308,
+   "value": 0.4544,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R06, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R06, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7195,
-    "high": 0.7379,
+    "low": 0.4537,
+    "high": 0.4811,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r06_uscita_pomeriggio_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 3.305,
+   "value": 6.416,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R06, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R06, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 3.162,
-    "high": 3.398,
+    "low": 6.296,
+    "high": 6.592,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r06_uscita_pomeriggio_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 3.171,
+   "value": 6.393,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R06, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R06, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 3.078,
-    "high": 3.305,
+    "low": 6.083,
+    "high": 6.416,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r07_giornata_8_18_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.6896,
+   "value": 0.3532,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R07, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R07, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.6776,
-    "high": 0.7024,
+    "low": 0.3448,
+    "high": 0.3617,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r07_giornata_8_18_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.6945,
+   "value": 0.3563,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R07, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R07, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.6908,
-    "high": 0.7073,
+    "low": 0.3533,
+    "high": 0.3768,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r07_giornata_8_18_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 4.814,
+   "value": 10.077,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R07, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R07, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 4.615,
-    "high": 5.004,
+    "low": 9.937,
+    "high": 10.216,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r07_giornata_8_18_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 4.743,
+   "value": 10.029,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R07, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R07, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 4.549,
-    "high": 4.795,
+    "low": 9.716,
+    "high": 10.076,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r07_ingresso_mattina_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.8967,
+   "value": 0.5756,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R07, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R07, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.8804,
-    "high": 0.902,
+    "low": 0.5699,
+    "high": 0.581,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r07_ingresso_mattina_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.8967,
+   "value": 0.5769,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R07, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R07, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.8967,
-    "high": 0.8992,
+    "low": 0.5756,
+    "high": 0.6289,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r07_ingresso_mattina_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 2.496,
+   "value": 6.729,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R07, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R07, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.338,
-    "high": 2.643,
+    "low": 6.653,
+    "high": 6.83,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r07_ingresso_mattina_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 2.496,
+   "value": 6.726,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R07, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R07, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.496,
-    "high": 2.496,
+    "low": 5.896,
+    "high": 6.729,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r07_uscita_mezzogiorno_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.6097,
+   "value": 0.2099,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R07, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R07, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.599,
-    "high": 0.6322,
+    "low": 0.2046,
+    "high": 0.2167,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r07_uscita_mezzogiorno_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.6156,
+   "value": 0.2099,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R07, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R07, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.6109,
-    "high": 0.6556,
+    "low": 0.2099,
+    "high": 0.2358,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r07_uscita_mezzogiorno_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 5.969,
+   "value": 12.131,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R07, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R07, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 5.611,
-    "high": 6.114,
+    "low": 12.019,
+    "high": 12.247,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r07_uscita_mezzogiorno_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 5.9,
+   "value": 12.131,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R07, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R07, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 5.355,
-    "high": 5.961,
+    "low": 11.828,
+    "high": 12.131,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r07_uscita_pomeriggio_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.802,
+   "value": 0.4666,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R07, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R07, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7954,
-    "high": 0.8076,
+    "low": 0.4507,
+    "high": 0.4811,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r07_uscita_pomeriggio_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.8109,
+   "value": 0.4672,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R07, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R07, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.8021,
-    "high": 0.8158,
+    "low": 0.4666,
+    "high": 0.4879,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r07_uscita_pomeriggio_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 2.954,
+   "value": 8.037,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R07, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R07, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.88,
-    "high": 3.06,
+    "low": 7.847,
+    "high": 8.269,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r07_uscita_pomeriggio_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 2.824,
+   "value": 8.0,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R07, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R07, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.736,
-    "high": 2.949,
+    "low": 7.713,
+    "high": 8.037,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r08_giornata_8_18_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.6348,
+   "value": 0.3979,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R08, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R08, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.6259,
-    "high": 0.6455,
+    "low": 0.3871,
+    "high": 0.4084,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r08_giornata_8_18_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.6348,
+   "value": 0.3979,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R08, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R08, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.6348,
-    "high": 0.6354,
+    "low": 0.3979,
+    "high": 0.3979,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r08_giornata_8_18_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 2.611,
+   "value": 4.336,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R08, 2026-10-01, fascia giornata_8_18, centerline",
+   "scope": "pth_t04_R08, 2026-06-21, fascia giornata_8_18, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.527,
-    "high": 2.712,
+    "low": 4.268,
+    "high": 4.425,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r08_giornata_8_18_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 2.611,
+   "value": 4.336,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R08, 2026-10-01, fascia giornata_8_18, centerline, chioma tipica",
+   "scope": "pth_t04_R08, 2026-06-21, fascia giornata_8_18, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.606,
-    "high": 2.611,
+    "low": 4.336,
+    "high": 4.336,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r08_ingresso_mattina_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.9871,
+   "value": 0.9783,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R08, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R08, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9842,
-    "high": 0.9888,
+    "low": 0.9739,
+    "high": 0.9814,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r08_ingresso_mattina_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.9871,
+   "value": 0.9783,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R08, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R08, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.9871,
-    "high": 0.9871,
+    "low": 0.9783,
+    "high": 0.9783,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r08_ingresso_mattina_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 0.268,
+   "value": 0.167,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R08, 2026-10-01, fascia ingresso_mattina, centerline",
+   "scope": "pth_t04_R08, 2026-06-21, fascia ingresso_mattina, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.231,
-    "high": 0.361,
+    "low": 0.149,
+    "high": 0.205,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r08_ingresso_mattina_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 0.268,
+   "value": 0.167,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R08, 2026-10-01, fascia ingresso_mattina, centerline, chioma tipica",
+   "scope": "pth_t04_R08, 2026-06-21, fascia ingresso_mattina, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.268,
-    "high": 0.268,
+    "low": 0.167,
+    "high": 0.167,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r08_uscita_mezzogiorno_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.6787,
+   "value": 0.0797,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R08, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R08, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.6585,
-    "high": 0.6988,
+    "low": 0.0761,
+    "high": 0.0855,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r08_uscita_mezzogiorno_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.6787,
+   "value": 0.0797,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R08, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R08, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.6787,
-    "high": 0.6787,
+    "low": 0.0797,
+    "high": 0.0797,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r08_uscita_mezzogiorno_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 2.303,
+   "value": 6.615,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R08, 2026-10-01, fascia uscita_mezzogiorno, centerline",
+   "scope": "pth_t04_R08, 2026-06-21, fascia uscita_mezzogiorno, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.134,
-    "high": 2.459,
+    "low": 6.571,
+    "high": 6.643,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r08_uscita_mezzogiorno_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 2.303,
+   "value": 6.615,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R08, 2026-10-01, fascia uscita_mezzogiorno, centerline, chioma tipica",
+   "scope": "pth_t04_R08, 2026-06-21, fascia uscita_mezzogiorno, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.303,
-    "high": 2.303,
+    "low": 6.615,
+    "high": 6.615,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r08_uscita_pomeriggio_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.7082,
+   "value": 0.5337,
    "unit": "1",
    "classification": "derived",
-   "scope": "pth_t04_R08, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R08, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.702,
-    "high": 0.7125,
+    "low": 0.5123,
+    "high": 0.5406,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r08_uscita_pomeriggio_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.7082,
+   "value": 0.5337,
    "unit": "1",
    "classification": "estimated",
-   "scope": "pth_t04_R08, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R08, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.7082,
-    "high": 0.7082,
+    "low": 0.5337,
+    "high": 0.5337,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   },
   {
    "metric_id": "pth_t04_r08_uscita_pomeriggio_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 2.081,
+   "value": 3.339,
    "unit": "min",
    "classification": "derived",
-   "scope": "pth_t04_R08, 2026-10-01, fascia uscita_pomeriggio, centerline",
+   "scope": "pth_t04_R08, 2026-06-21, fascia uscita_pomeriggio, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.03,
-    "high": 2.132,
+    "low": 3.302,
+    "high": 3.464,
     "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"
    }
   },
   {
    "metric_id": "pth_t04_r08_uscita_pomeriggio_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 2.081,
+   "value": 3.339,
    "unit": "min",
    "classification": "estimated",
-   "scope": "pth_t04_R08, 2026-10-01, fascia uscita_pomeriggio, centerline, chioma tipica",
+   "scope": "pth_t04_R08, 2026-06-21, fascia uscita_pomeriggio, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 2.067,
-    "high": 2.081,
+    "low": 3.339,
+    "high": 3.339,
     "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"
    }
   }
  ],
  "coverage": {
-  "note": "Calcoli 2009 di 2058 (ricevitore, ora, caso); stati del sole: {'ok': 2009, 'sole_basso_fuori_supporto': 49}. Volumi 3228, alberi 1128."
+  "note": "Calcoli 2058 di 2058 (ricevitore, ora, caso); stati del sole: {'ok': 2058}. Volumi 3228, alberi 1128."
  },
  "limits": [
   {
@@ -2827,7 +2827,7 @@
   },
   {
    "code": "volumi_sospesi_ignoti",
-   "text": "Il campo sospeso è ignoto in tutta la fonte: portici e pensiline trattati come volumi pieni (limite superiore dell'ombra al suolo); il motore gestisce volumi sospesi se forniti."
+   "text": "Coperture OSM trattate come volumi sospesi (soletta 0,4 m, stima 0,2-0,8 m, come la scena); il campo sospeso dei portici delle unità volumetriche è ignoto: trattati come pieni (limite superiore dell'ombra al suolo)."
   },
   {
    "code": "alberi_solo_stimati",
@@ -2862,10 +2862,10 @@
  "assets": [
   {
    "asset_id": "ast_shadow_righe_csv",
-   "path": "data/norm/shadow/job_fa8d8e36dfc6fd37_righe.csv",
+   "path": "data/norm/shadow/job_fa754c8c5541ccf2_righe.csv",
    "media_type": "text/csv",
-   "bytes": 246633,
-   "sha256": "133e738913c7fff43ae4358ec492823c442db80ae90b3fbb921899c6cda93de0",
+   "bytes": 247300,
+   "sha256": "33367c2e4622dca971670d6be19dc8b55afeb4d004f98c6fc06d4c9fed9de54c",
    "role": "result_table"
   }
  ]

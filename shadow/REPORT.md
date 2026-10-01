@@ -1,6 +1,6 @@
 # T09: ombre Z2 (analisi B)
 
-Data: 1 ottobre 2026. Redatto dall'agente T09 e salvato dall'integratore. Test `pipeline/.venv/bin/python shadow/test_ombre.py`: tutti OK (rieseguito dall'integratore). Analisi completa `shadow/run.sh`, circa 8 minuti. Job e manifest validi sugli schemi di `contracts/`. Risultati `not_validated_locally`.
+Data: 1 ottobre 2026. Versione 0.2.0 (coperture OSM sospese; la 0.1.0 le trattava come pieni). Redatto dall'agente T09 e salvato dall'integratore. Test `pipeline/.venv/bin/python shadow/test_ombre.py`: tutti OK (rieseguito dall'integratore). Analisi completa `shadow/run.sh`, circa 8 minuti. Job e manifest validi sugli schemi di `contracts/`. Risultati `not_validated_locally`.
 
 ## Metodo
 
@@ -15,14 +15,14 @@ Data: 1 ottobre 2026. Redatto dall'agente T09 e salvato dall'integratore. Test `
 
 - Sole: 6 riferimenti di un algoritmo solare di precisione calcolati offline (scarto sotto 0,015°) e 3 massimi giornalieri analitici.
 - Cambio d'ora: offset, 92 e 100 passi da 15 min, culminazione che salta di 1 h.
-- Geometria: cubo analitico, volume sospeso, unione di volumi sovrapposti, corte con buco, chioma ellittica, sole sotto l'orizzonte.
+- Geometria: cubo analitico, volume sospeso, copertura OSM reale sospesa (stazione) con base = tetto - 0,4 m, unione di volumi sovrapposti, corte con buco, chioma ellittica, sole sotto l'orizzonte.
 - Dati reali: base ≤ alberi min ≤ tipico ≤ max; cilindro > ellissoide.
 - Contratti: `job_id` deterministico, uguale all'hash dell'input.
 - Convergenza (canyon sintetico): passo temporale 15/5/1 min → 0,771/0,777/0,779; passo spaziale 2/1/0,5 m → scarto 0,66/0,34/0,16 punti.
 
 ## Verifica raster indipendente (`verifica_raster.py`)
 
-Ray casting su griglia a 0,5 m, finestra 250×250 m in Z2, 5 istanti × 5 casi: scarto medio della frazione d'ombra al suolo 0,5 punti, massimo 1,1. Il ray casting sul DSM 2021 è solo informativo (0,38 contro 0,50 con sole alto: bias del DSM, veicoli, terreno non piano), non è un riferimento.
+Ray casting su griglia a 0,5 m (volumi pieni: la finestra non contiene coperture OSM), finestra 250×250 m in Z2, 5 istanti × 5 casi: scarto medio della frazione d'ombra al suolo 0,5 punti, massimo 1,1. Il ray casting sul DSM 2021 è solo informativo (0,38 contro 0,50 con sole alto: bias del DSM, veicoli, terreno non piano), non è un riferimento.
 
 ## R01 Pellico → Battisti (755 m, 15 settembre, asse della rete)
 
@@ -36,6 +36,10 @@ Frazione in ombra; fra parentesi l'intervallo (altezze min/max di T05; chiome mi
 - 1 ottobre 12:30-13:30: 0,519 (0,504-0,534), con alberi 0,529 (0,521-0,611); pomeriggio 0,729. Alle 7:45 il sole è sotto 5°: orario escluso con stato esplicito.
 - R03-R08 e le altre date: `shadow/out/riepilogo.json`.
 
+## Effetto delle coperture sospese (0.1.0 → 0.2.0)
+
+Numeri identici a 4 decimali su R01 e R08, per tutte le date e fasce: le coperture più vicine distano 30 m (R01) e 39 m (R08) dal percorso e la loro ombra sospesa differisce da quella piena solo vicino alla base. Cambia l'ombra al suolo sotto le coperture: da 3.500 m² (21 giugno 13:00) a 8.500 m² (15 settembre 13:00), pari a 0,7-1,4% dell'area ombreggiata in Z2, quindi conta per ricevitori di tipo superficie (piazzali, stazione). I valori delle sezioni sopra sono della 0.2.0 (job in `shadow/manifest/`).
+
 ## Sensibilità
 
 - Altezze (±0,5 m measured, ±1,36 m derived, fino a 2,05 m vicino alla vegetazione): ±0,6-1,5 punti.
@@ -46,7 +50,7 @@ Frazione in ombra; fra parentesi l'intervallo (altezze min/max di T05; chiome mi
 ## Limiti
 
 - Percorsi sull'asse della rete: il lato del marciapiede non è noto.
-- Il campo `sospeso` è ignoto nella fonte: portici e coperture OSM sono trattati come volumi pieni (limite superiore dell'ombra al suolo). **Incoerenza con la scena T08**, che disegna le coperture come volumi sospesi: da allineare.
+- Coperture OSM (`building=roof`, 12 in Z2/buffer con altezza): volumi sospesi come nella scena T08 (`scene/build.py`), base = quota tetto - 0,4 m (soletta 0,2-0,8 m: con h_min la base scende di 0,8 m, con h_max di 0,2 m). Il campo `sospeso` dei portici delle unità volumetriche resta ignoto: trattati come pieni (limite superiore). Lo spessore della soletta è una stima, non un dato.
 - Alberi solo stimati per classe; 463 chiome con imposta limitata a metà altezza; esclusi 3 alberi dentro edifici e 4 volumi senza altezza. Inventario incompleto: non è l'ombra reale.
 - Ombra binaria, nessuna conversione in gradi o comfort. Velocità costante 1,2 m/s, senza attese agli attraversamenti.
 - Il `job_id` dipende dall'input, non dal codice: se cambia la logica va aumentata `VERSIONE` in `ombre.py`.

@@ -162,16 +162,29 @@ def test_chioma():
 
 
 def test_casi_dati():
-    # sui dati reali: gli intervalli sono annidati (h_min <= h <= h_max; base <= alberi min/tipico/max) e il cilindro supera l'ellissoide
+    # sui dati reali: aree ordinate h_min < h < h_max; base <= alberi min/tipico/max) e il cilindro supera l'ellissoide
     w = box(612500, 4840250, 613000, 4840700); t = O.locale_a_utc("2026-09-15", "10:00"); area = {}
     for c in O.CASI:
         st, az, el, g = O.ombra_a_istante(O.scena_caso(c), t, 43.715, 10.40, finestra=w); assert st == O.STATO_OK; area[c] = g.intersection(w)
     ar = {c: g.area for c, g in area.items()}
-    assert ar["base_h_min"] < ar["base"] < ar["base_h_max"] and area["base_h_min"].difference(area["base"]).area < 1e-3
+    assert ar["base_h_min"] < ar["base"] < ar["base_h_max"]    # non annidati in senso stretto: le coperture sospese cambiano anche la base
     for c in ("alberi_min", "alberi_tipico", "alberi_max", "alberi_tipico_cilindro"): assert area["base"].difference(area[c]).area < 1e-3 and ar[c] >= ar["base"], c
     assert ar["alberi_min"] <= ar["alberi_tipico"] <= ar["alberi_max"] and ar["alberi_tipico_cilindro"] > ar["alberi_tipico"]
     assert O.scena_caso("alberi_tipico_cilindro").chiome["forma"] == "cilindro" and O.scena_caso("alberi_tipico").chiome["forma"] == "ellissoide"
     ok("dati reali: casi annidati base <= alberi min <= tipico <= max, cilindro > ellissoide")
+
+
+def test_copertura_osm_sospesa():
+    # una copertura OSM reale (stazione, bld_osm_w1461929644, 3187 m2) è sospesa: z_lo = tetto - 0,4 m; il suolo sotto con sole alto resta libero
+    v = O.dati()["v"]; r = v[v.id == "bld_osm_w1461929644"].iloc[0]; S = O.scena_edifici("h")
+    i = S.ids.index(r.id); assert abs(S.z_hi[i] - r.h) < 1e-9 and abs(S.z_lo[i] - (r.h - 0.4)) < 1e-9
+    assert abs(O.scena_edifici("h_min").z_lo[i] - (r.h_min - 0.8)) < 1e-9 and abs(O.scena_edifici("h_max").z_lo[i] - (r.h_max - 0.2)) < 1e-9
+    assert (S.z_lo[[k for k, x in enumerate(v.id) if v.tipo.values[k] != "copertura_osm"]] == 0).all()    # portici/volumi pieni restano pieni
+    c = r.geometry.representative_point(); az, el = 180.0, 85.0
+    sosp = O.ombra_prisma(r.geometry, r.h - 0.4, r.h, az, el); pieno = O.ombra_prisma(r.geometry, 0, r.h, az, el)
+    assert pieno.contains(c) and pieno.area > sosp.area and sosp.difference(pieno).area < 1e-6
+    assert sosp.area < r.geometry.area + 2 * r.geometry.length * 0.4 / math.tan(math.radians(el)) + r.geometry.length * r.h / math.tan(math.radians(el)) and sosp.area > 0
+    ok("copertura OSM reale sospesa (regola T08), portici pieni, ombra sospesa contenuta nella piena")
 
 
 def test_contratti():

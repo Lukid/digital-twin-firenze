@@ -1,5 +1,5 @@
 {
- "versione": "0.1.0",
+ "versione": "0.2.0",
  "baseline_id": "bas_z2_20261001",
  "velocita_m_s": 1.2,
  "passo_temporale_min": 5.0,
@@ -6482,9 +6482,9 @@
   ]
  },
  "job": {
-  "2026-06-21": "job_955a02d0f50ccc2d",
-  "2026-09-15": "job_233c4dc856eec9bf",
-  "2026-10-01": "job_fa8d8e36dfc6fd37"
+  "2026-06-21": "job_fa754c8c5541ccf2",
+  "2026-09-15": "job_9e9333b2ee81c302",
+  "2026-10-01": "job_a5cc4b84ecbf8705"
  },
  "sensibilita_lato_3m_R01": {
   "2026-06-21": [

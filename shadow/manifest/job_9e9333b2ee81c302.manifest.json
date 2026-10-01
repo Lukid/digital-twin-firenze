@@ -1,6 +1,6 @@
 {
- "manifest_id": "man_233c4dc856eec9bf",
- "job_id": "job_233c4dc856eec9bf",
+ "manifest_id": "man_9e9333b2ee81c302",
+ "job_id": "job_9e9333b2ee81c302",
  "tool": "compute_shadow",
  "aoi_id": "aoi_z2",
  "baseline_id": "bas_z2_20261001",
@@ -1227,8 +1227,8 @@
    "tronco": "trascurato",
    "parametri": "geometry/parametri_chiome.json"
   },
-  "sospesi": "nessuno: campo sospeso ignoto nella fonte, volumi trattati come pieni",
-  "method_version": "0.1.0",
+  "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni",
+  "method_version": "0.2.0",
   "assets": {
    "times": [
     "08:00",
@@ -1249,16 +1249,16 @@
  },
  "method": {
   "name": "geometric_ray",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sole con algoritmo astronomico NOAA in Europe/Rome; ombra di ogni volume come somma di Minkowski del footprint con il segmento fra quota di base e di tetto; chiome come ellissoidi opachi; unione di tutte le ombre e intersezione con il ricevitore."
  },
  "crs": "EPSG:7791",
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-01T18:51:48Z",
-  "finished_at": "2026-10-01T18:54:04Z",
-  "duration_s": 135.92
+  "started_at": "2026-10-01T19:03:37Z",
+  "finished_at": "2026-10-01T19:05:56Z",
+  "duration_s": 138.5
  },
  "metrics": [
   {
@@ -2844,7 +2844,7 @@
   },
   {
    "code": "volumi_sospesi_ignoti",
-   "text": "Il campo sospeso è ignoto in tutta la fonte: portici e pensiline trattati come volumi pieni (limite superiore dell'ombra al suolo); il motore gestisce volumi sospesi se forniti."
+   "text": "Coperture OSM trattate come volumi sospesi (soletta 0,4 m, stima 0,2-0,8 m, come la scena); il campo sospeso dei portici delle unità volumetriche è ignoto: trattati come pieni (limite superiore dell'ombra al suolo)."
   },
   {
    "code": "alberi_solo_stimati",
@@ -2879,7 +2879,7 @@
  "assets": [
   {
    "asset_id": "ast_shadow_righe_csv",
-   "path": "data/norm/shadow/job_233c4dc856eec9bf_righe.csv",
+   "path": "data/norm/shadow/job_9e9333b2ee81c302_righe.csv",
    "media_type": "text/csv",
    "bytes": 247668,
    "sha256": "2d1371157fd2ae42f4e6b528f19a8d076ef5a154cc3cb6d1dd4673c2a1433a0a",
@@ -2887,26 +2887,26 @@
   },
   {
    "asset_id": "ast_ombra_20260915_0800",
-   "path": "shadow/out/job_233c4dc856eec9bf_2026-09-15_0800.geojson",
+   "path": "shadow/out/job_9e9333b2ee81c302_2026-09-15_0800.geojson",
    "media_type": "application/geo+json",
-   "bytes": 194079,
-   "sha256": "a8fac2b00e6a0e2cfd073301af305d80486a371ffac6198bf8898ac151935e89",
+   "bytes": 194758,
+   "sha256": "05587fcd49b60cd62a321c000d0a3b9ff78f89d7e8806fd8255cd2a1cf0965c1",
    "role": "result_geometry"
   },
   {
    "asset_id": "ast_ombra_20260915_1300",
-   "path": "shadow/out/job_233c4dc856eec9bf_2026-09-15_1300.geojson",
+   "path": "shadow/out/job_9e9333b2ee81c302_2026-09-15_1300.geojson",
    "media_type": "application/geo+json",
-   "bytes": 517263,
-   "sha256": "2a85381ff0a0b255eb77bb97896e3af0aaae6ff2b8e5e8ec849a5433a58ccafe",
+   "bytes": 517457,
+   "sha256": "8e88581cf63f5f872a6d6f6f9ed4ae1af5a913d8f236d18340fbcadafe59a18b",
    "role": "result_geometry"
   },
   {
    "asset_id": "ast_ombra_20260915_1630",
-   "path": "shadow/out/job_233c4dc856eec9bf_2026-09-15_1630.geojson",
+   "path": "shadow/out/job_9e9333b2ee81c302_2026-09-15_1630.geojson",
    "media_type": "application/geo+json",
-   "bytes": 427389,
-   "sha256": "873866c95ce10764a3a35c0016f3ade130d1c8f3c9c8730f04a2691a8e896b08",
+   "bytes": 427518,
+   "sha256": "df77c3e5719e6b68fdad4dc7c96503928aa6af2b16f70b31e64604330a852bec",
    "role": "result_geometry"
   }
  ]
