@@ -1,0 +1,11 @@
+{
+ "baseline_id": "bas_z2_20261001",
+ "scenario_ids": [
+  "scn_z2_s1_filare_r01",
+  "scn_z2_s2_pensilina_pellico"
+ ],
+ "weights": {
+  "r01_minuti_sole_evitati_mezzogiorno": 1,
+  "area_attesa_ombra_mezzogiorno": 0.5
+ }
+}

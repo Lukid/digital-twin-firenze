@@ -17,7 +17,9 @@ def replay(job_id):
     if m["tool"] not in ("compute_walk_access", "compute_shadow"): return core.err("outside_capability", f"Replay non disponibile per {m['tool']}.")
     if m["tool"] == "compute_shadow":
         p = m["params"]   # geometrie, orari e metodo sono nei parametri del job: nessun dato esterno
-        r = core._esegui_shadow({"baseline_id": m["baseline_id"], "receivers": p["receivers"], "when": p["when"], "method": p["method"], "walk_speed_m_s": p["walk_speed_m_s"]}, store=False)
+        kw = {"baseline_id": m["baseline_id"], "receivers": p["receivers"], "when": p["when"], "method": p["method"], "walk_speed_m_s": p["walk_speed_m_s"]}
+        if m.get("scenario_id"): kw["scenario_id"] = m["scenario_id"]   # lo scenario si rilegge per id (immutabile)
+        r = core._esegui_shadow(kw, store=False)
     else:
         args = _input_da_manifest(m); kw = core._risolvi_walk(args)
         if "error" in kw: return kw

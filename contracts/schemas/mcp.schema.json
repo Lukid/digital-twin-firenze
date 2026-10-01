@@ -834,6 +834,13 @@
          }
         }
        }
+      },
+      "scenario_id": {
+       "$ref": "common.schema.json#/$defs/id_scenario"
+      },
+      "scenario_version": {
+       "type": "integer",
+       "minimum": 1
       }
      },
      "allOf": [
@@ -903,6 +910,55 @@
       "version": {
        "type": "integer",
        "minimum": 1
+      },
+      "cached": {
+       "type": "boolean",
+       "description": "true se lo scenario con lo stesso contenuto esisteva già (stesso scenario_id)."
+      },
+      "warnings": {
+       "type": "array",
+       "description": "Segnalazioni di validazione (interventi dentro edifici, su carreggiata senza marciapiede, su un arco molto usato, fuori Z2). Non bloccano la creazione.",
+       "items": {
+        "type": "object",
+        "required": [
+         "code",
+         "op_id",
+         "severity",
+         "text"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "code": {
+          "type": "string"
+         },
+         "op_id": {
+          "type": "string"
+         },
+         "severity": {
+          "enum": [
+           "info",
+           "warning"
+          ]
+         },
+         "text": {
+          "type": "string"
+         }
+        }
+       }
+      },
+      "feasibility": {
+       "type": "object",
+       "description": "Fattibilità sempre ignota: sottoservizi, spazio radicale, permessi, proprietà del suolo, manutenzione e specie.",
+       "additionalProperties": {
+        "const": "ignota"
+       }
+      },
+      "interventions": {
+       "type": "object",
+       "description": "Numero e superficie degli interventi.",
+       "additionalProperties": {
+        "type": "number"
+       }
       }
      }
     },
@@ -912,31 +968,90 @@
    ]
   },
   "compare_scenarios.input": {
-   "type": "object",
-   "required": [
-    "manifest_ids",
-    "metric_ids"
-   ],
-   "additionalProperties": false,
-   "properties": {
-    "manifest_ids": {
-     "type": "array",
-     "minItems": 2,
-     "maxItems": 10,
-     "uniqueItems": true,
-     "items": {
-      "$ref": "common.schema.json#/$defs/id_manifest"
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "manifest_ids",
+      "metric_ids"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "manifest_ids": {
+       "type": "array",
+       "minItems": 2,
+       "maxItems": 10,
+       "uniqueItems": true,
+       "items": {
+        "$ref": "common.schema.json#/$defs/id_manifest"
+       }
+      },
+      "metric_ids": {
+       "type": "array",
+       "minItems": 1,
+       "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]{1,60}$"
+       }
+      }
      }
     },
-    "metric_ids": {
-     "type": "array",
-     "minItems": 1,
-     "items": {
-      "type": "string",
-      "pattern": "^[a-z][a-z0-9_]{1,60}$"
+    {
+     "type": "object",
+     "required": [
+      "baseline_id",
+      "scenario_ids"
+     ],
+     "additionalProperties": false,
+     "description": "Confronto multicriterio di scenari con la baseline (S0) su condizioni comuni: delta su R01 e percorsi campione, area di attesa, tratti più usati pesati per civici, accessibilità. I pesi sono un parametro facoltativo del decisore: senza pesi nessun ordinamento.",
+     "properties": {
+      "baseline_id": {
+       "$ref": "common.schema.json#/$defs/id_baseline"
+      },
+      "scenario_ids": {
+       "type": "array",
+       "minItems": 1,
+       "maxItems": 5,
+       "uniqueItems": true,
+       "items": {
+        "$ref": "common.schema.json#/$defs/id_scenario"
+       }
+      },
+      "with_variants": {
+       "type": "boolean",
+       "description": "Includere le varianti di sensibilità degli scenari dimostrativi (default true)."
+      },
+      "weights": {
+       "type": "object",
+       "description": "Pesi del decisore per un ordinamento esplicito (>= 0, somma positiva).",
+       "additionalProperties": false,
+       "minProperties": 1,
+       "properties": {
+        "r01_minuti_sole_evitati_mezzogiorno": {
+         "type": "number",
+         "minimum": 0
+        },
+        "r01_minuti_sole_evitati_giornata": {
+         "type": "number",
+         "minimum": 0
+        },
+        "campione_minuti_sole_evitati_mezzogiorno": {
+         "type": "number",
+         "minimum": 0
+        },
+        "archi_civici_minuti_evitati_mezzogiorno": {
+         "type": "number",
+         "minimum": 0
+        },
+        "area_attesa_ombra_mezzogiorno": {
+         "type": "number",
+         "minimum": 0
+        }
+       }
+      }
      }
     }
-   }
+   ]
   },
   "compare_scenarios.output": {
    "oneOf": [
@@ -988,6 +1103,16 @@
          "discriminates": {
           "type": "boolean",
           "description": "false se il delta è dentro l'incertezza"
+         },
+         "delta_low": {
+          "type": "number",
+          "description": "Estremo inferiore dell'intervallo del delta (altezze degli edifici, lato del marciapiede)."
+         },
+         "delta_high": {
+          "type": "number"
+         },
+         "scope": {
+          "type": "string"
          }
         }
        }
@@ -997,6 +1122,71 @@
        "items": {
         "$ref": "common.schema.json#/$defs/limit"
        }
+      },
+      "job_id": {
+       "$ref": "common.schema.json#/$defs/id_job"
+      },
+      "result_manifest_id": {
+       "$ref": "common.schema.json#/$defs/id_manifest"
+      },
+      "cached": {
+       "type": "boolean"
+      },
+      "status": {
+       "enum": [
+        "succeeded"
+       ]
+      },
+      "datasets": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "required": [
+         "snapshot_id",
+         "source_id",
+         "sha256",
+         "license_state"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "snapshot_id": {
+          "$ref": "common.schema.json#/$defs/id_snapshot"
+         },
+         "source_id": {
+          "$ref": "common.schema.json#/$defs/id_source"
+         },
+         "sha256": {
+          "$ref": "common.schema.json#/$defs/sha256"
+         },
+         "license_state": {
+          "$ref": "common.schema.json#/$defs/license_state"
+         }
+        }
+       }
+      },
+      "params": {
+       "type": "object"
+      },
+      "limits": {
+       "type": "array",
+       "items": {
+        "$ref": "common.schema.json#/$defs/limit"
+       }
+      },
+      "method": {
+       "type": "string"
+      },
+      "scenarios": {
+       "type": "object",
+       "description": "Per scenario: indicatori separati, segnalazioni, fattibilità ignota, accessibilità, robustezza alle varianti (riepilogo completo del confronto)."
+      },
+      "indicators": {
+       "type": "object",
+       "description": "Indicatori scalari per scenario (positivi se c'è un beneficio): nessun punteggio unico."
+      },
+      "ranking": {
+       "type": "object",
+       "description": "Presente solo se il decisore ha dato i pesi; riporta pesi, punteggi e ordine con l'avvertenza che dipendono dai pesi."
       }
      }
     },

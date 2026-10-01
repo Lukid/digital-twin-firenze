@@ -1,0 +1,39 @@
+{
+ "baseline_id": "bas_z2_20261001",
+ "scenario_title": "Un albero di dimensione tipica",
+ "operations": [
+  {
+   "op_id": "op_albero_1",
+   "op": "add",
+   "target_type": "tree",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     612610.0,
+     4840650.0
+    ]
+   },
+   "dimensions": {
+    "height_m": {
+     "value": 11.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "classe scenario 'medio', valore tipico (stima di classe, non misura né progetto)"
+    },
+    "crown_diameter_m": {
+     "value": 6.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "classe scenario 'medio', valore tipico (stima di classe, non misura né progetto)"
+    },
+    "crown_base_m": {
+     "value": 2.5,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "classe scenario 'medio', valore tipico (stima di classe, non misura né progetto)"
+    }
+   },
+   "hypothesis_status": "feasibility_unknown"
+  }
+ ]
+}

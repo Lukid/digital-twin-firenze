@@ -13,9 +13,7 @@ CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache")  
 BASELINE_ID, AOI_ID = "bas_z2_20261001", "aoi_z2"
 ID_DEST = re.compile(r"^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$")
 ENGINE_ORIGINS = "civici_sit_z2"
-TOOLS_FUTURI = {"create_local_scenario": "gli scenari locali (T10) non sono ancora disponibili",
-                "compare_scenarios": "il confronto fra scenari (T10) non è ancora disponibile"}
-TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", *TOOLS_FUTURI]
+TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios"]
 THEMES = {  # tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso)
     "edifici": ["src_rt_unita_volumetriche", "src_rt_dbt10k_pisa", "src_sit_edifici_scolastici", "src_osm_pisa"],
     "quote": ["src_rt_dsm2021", "src_rt_dtm10"], "rete_pedonale": ["src_osm_pisa", "src_rt_iternet"],
@@ -249,8 +247,15 @@ def _percorso_campione(rid):
 def _risolvi_shadow(a):
     """Argomenti validati -> argomenti di ombre.compute_shadow (percorsi campione espansi), o errore."""
     if a["baseline_id"] != BASELINE_ID: return err("incompatible_baseline", f"Baseline disponibile: {BASELINE_ID}.", candidates=[BASELINE_ID])
-    if a.get("scenario_id") or a["method"]["obstacles"] == "buildings_and_scenario":
-        return err("outside_capability", "Gli scenari locali (T10) non sono ancora disponibili: calcolo possibile solo sulla baseline (documented_buildings_only o buildings_and_trees).")
+    sid, ob = a.get("scenario_id"), a["method"]["obstacles"]
+    if ob == "buildings_and_scenario" and not sid: return err("invalid_params", "buildings_and_scenario richiede scenario_id (creare lo scenario con create_local_scenario).")
+    if sid and ob != "buildings_and_scenario":
+        return err("invalid_params", "Con scenario_id usare obstacles=buildings_and_scenario: lo scenario si somma agli edifici documentati (nessun albero esistente).")
+    if sid:
+        S, _ = _sc()
+        try: scn = S.carica(sid)
+        except S.ScenarioError as e: return err(e.code, str(e), candidates=e.candidates)
+        if scn["baseline_id"] != a["baseline_id"]: return err("incompatible_baseline", f"Lo scenario {sid} parte dalla baseline {scn['baseline_id']}.", candidates=[scn["baseline_id"]])
     rec = []
     for r in a["receivers"]:
         if "route_id" in r:
@@ -260,7 +265,9 @@ def _risolvi_shadow(a):
         else: rec.append(r)
     ids = [r["receiver_id"] for r in rec]
     if len(set(ids)) != len(ids): return err("invalid_params", "receiver_id duplicati.")
-    return {"baseline_id": a["baseline_id"], "receivers": rec, "when": a["when"], "method": a["method"], "walk_speed_m_s": a.get("walk_speed_m_s", 1.2)}
+    kw = {"baseline_id": a["baseline_id"], "receivers": rec, "when": a["when"], "method": a["method"], "walk_speed_m_s": a.get("walk_speed_m_s", 1.2)}
+    if sid: kw.update(scenario_id=sid, scenario_sha256=S.sha_obj({k: v for k, v in scn.items() if k != "created_at"}))   # contenuto dello scenario nella chiave di cache
+    return kw
 
 
 def _alias_key(O, kw):
@@ -271,7 +278,8 @@ def _alias_key(O, kw):
 def _risposta_shadow(job, man, extra, cached, casi):
     return {"job_id": job["job_id"], "status": job["status"], "result_manifest_id": man["manifest_id"], "headline_metrics": man["metrics"], "cached": cached,
             "datasets": [{k: d[k] for k in ("snapshot_id", "source_id", "sha256", "license_state")} for d in man["datasets"]], "params": man["params"], "limits": man["limits"],
-            "method": f"{man['method']['name']} {man['method']['version']}", "cases": casi, **extra}
+            "method": f"{man['method']['name']} {man['method']['version']}", "cases": casi, **extra,
+            **({"scenario_id": man["scenario_id"], "scenario_version": man["scenario_version"]} if "scenario_id" in man else {})}
 
 
 def _esegui_shadow(kw, store=True):
@@ -281,11 +289,16 @@ def _esegui_shadow(kw, store=True):
     if store and ak.exists():
         jid = _load(ak)["job_id"]; jp, mp = _paths(jid)
         if jp.exists() and mp.exists(): return _risposta_shadow(_load(jp), _load(mp), _load(CACHE / f"{jid}.summary.json"), True, _load(ak)["cases"])
-    try: res = O.compute_shadow(kw["baseline_id"], kw["receivers"], kw["when"], kw["method"], walk_speed_m_s=kw["walk_speed_m_s"])
+    try:
+        if kw.get("scenario_id"):   # baseline + interventi dello scenario (scenarios/scenari.py)
+            S, _ = _sc(); cond = {"date": kw["when"]["date"], "times": kw["when"]["times"], "walk_speed_m_s": kw["walk_speed_m_s"], "fasce": [], "el_min_deg": O.EL_MIN_SUPPORTATA,
+                                  "method": {k: kw["method"][k] for k in ("name", "space_step_m", "time_step_min")}}
+            res = S.calcola_ombra(S.carica(kw["scenario_id"]), kw["receivers"], cond)
+        else: res = O.compute_shadow(kw["baseline_id"], kw["receivers"], kw["when"], kw["method"], walk_speed_m_s=kw["walk_speed_m_s"])
     except O.OraInesistente as e: return err("invalid_params", f"Ora inesistente: {str(e).split(' (')[0]} (salto dell'ora legale). Indicare un orario diverso.")
     except O.OraAmbigua as e: return err("invalid_params", f"Ora ambigua: {str(e).split(':')[0]} (fine ora legale). Chiedere all'utente se intende la prima (ora legale) o la seconda (ora solare), oppure scegliere un altro orario.")
     except ValueError as e: return err("invalid_params", str(e))
-    job, man = res["job"], res["manifest"]; rows = res["righe"]; casi = job["params"]["casi"]
+    job, man = json.loads(json.dumps(res["job"])), json.loads(json.dumps(res["manifest"])); rows = res["righe"]; casi = job["params"]["casi"]   # via JSON: stessa forma della cache (liste, non tuple)
     extra = {"sun_state_counts": {s: sum(1 for r in rows if r["stato"] == s) for s in sorted({r["stato"] for r in rows})}, "summary": res["sintesi"]}
     if store:
         jid = job["job_id"]; _write(CACHE / f"{jid}.summary.json", extra); _write(_paths(jid)[1], man); _write(_paths(jid)[0], job)
@@ -317,11 +330,161 @@ def compute_shadow(a):
 def _fuori(msg): return err("outside_capability", msg + ". Nessun risultato numerico disponibile per questa richiesta.")
 
 
+# ---------- scenari (T10) ----------
+def _sc():
+    """Librerie di scenarios/ (scenari, confronto), caricate al primo uso."""
+    for d in ("scenarios", "shadow"):
+        if str(ROOT / d) not in sys.path: sys.path.insert(0, str(ROOT / d))
+    import scenari, confronto
+    return scenari, confronto
+
+
+def create_local_scenario(a):
+    """Crea e salva uno scenario versionato (id = hash del contenuto: stesso input, stesso scenario). Segnala, senza bloccare, gli interventi dentro edifici o su carreggiata."""
+    S, _ = _sc()
+    try:
+        scn = S.crea_scenario(a["baseline_id"], a["scenario_title"], a["operations"], autore="client MCP")
+        v = S.valida(scn); _, creato = S.salva(scn)
+    except S.ScenarioError as e: return err(e.code, str(e), **({"candidates": e.candidates} if e.candidates else {}))
+    return {"scenario_id": scn["scenario_id"], "version": scn["version"], "cached": not creato, "warnings": v["warnings"], "feasibility": v["feasibility"], "interventions": S.riepilogo_interventi(scn)}
+
+
+def _dati_baseline(S):
+    b = S.baseline(); return [{k: s[k] for k in ("snapshot_id", "source_id", "sha256", "license_state")} for s in b["snapshot"]]
+
+
+def _metrica_delta(mid, label, d, unit, scope):
+    m = {"metric_id": mid[:60], "label": label, "value": d["delta"], "unit": unit, "classification": "scenario", "scope": scope}
+    m["uncertainty"] = {"kind": "interval", "low": min(d["intervallo"]), "high": max(d["intervallo"]), "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"}
+    return m
+
+
+def _compatta(e):
+    """Riepilogo di uno scenario per la risposta: R01 e area di attesa per intero, per gli altri percorsi solo il delta dei minuti al sole."""
+    out = {k: e[k] for k in ("titolo", "stato", "job_id", "manifest_id", "interventi", "segnalazioni", "fattibilita", "incompatibilita") if k in e}
+    if e.get("stato") != "confrontato": return out
+    out.update(R01=e["percorsi"]["R01"], area_attesa_pellico=e["area_attesa_pellico"], archi_usati=e["archi_usati"], accessibilita={k: v for k, v in e["accessibilita"].items() if k != "ricalcolo"},
+               fasce_utili_R01=e["fasce_utili_R01"], percorsi_campione_minuti_sole={r: {f: m["minuti_sole"] for f, m in t.items()} for r, t in e["percorsi"].items() if r != "R01"},
+               assets=e["assets"], robustezza=e.get("robustezza", {}))
+    return out
+
+
+def _compare_job(inputs, params, metrics, limits, payload, store, t0):
+    import datetime
+    jid = "job_" + hashlib.sha256(canon({"tool": "compare_scenarios", "inputs": inputs, "params": params}).encode()).hexdigest()[:16]
+    t1 = datetime.datetime.now(datetime.timezone.utc); fmt = lambda t: t.strftime("%Y-%m-%dT%H:%M:%SZ")
+    man = {"manifest_id": "man_" + jid[4:], "job_id": jid, "tool": "compare_scenarios", "aoi_id": AOI_ID, "baseline_id": inputs["baseline_id"], "datasets": payload["datasets"], "params": params,
+           "method": {"name": "scenario_comparison", "version": payload["method_version"], "description": "Delta accoppiati scenario meno baseline su condizioni comuni (stessi ricevitori, date, fasce, passi, geometrie), con intervalli da altezze e lato; nessun punteggio unico."},
+           "crs": "EPSG:7791", "vertical_datum_status": "not_confirmed", "timezone": "Europe/Rome",
+           "timing": {"started_at": fmt(t0), "finished_at": fmt(t1), "duration_s": round((t1 - t0).total_seconds(), 2)}, "metrics": metrics,
+           "limits": limits, "validation_status": "not_validated_locally", "assets": []}
+    job = {"job_id": jid, "tool": "compare_scenarios", "status": "succeeded", "created_at": fmt(t0), "started_at": fmt(t0), "finished_at": fmt(t1), "inputs": inputs, "params": params,
+           "limits": {"max_area_km2": 4, "max_rows": 50000, "max_seconds": 3600, "max_memory_mb": 4096}, "progress": {"fraction": 1.0, "message": "completato"}, "result_manifest_id": man["manifest_id"]}
+    return jid, job, man
+
+
+def _compare_da_manifest(a):
+    """Forma 1: delta fra manifest di compute_shadow già eseguiti (il primo è il riferimento, senza scenario)."""
+    import datetime; t0 = datetime.datetime.now(datetime.timezone.utc); S, C = _sc()
+    jobs, mans = [], []
+    for mid in a["manifest_ids"]:
+        j, m = _read_job("job_" + mid[4:], "job"), _read_job("job_" + mid[4:], "manifest")
+        if not j or not m: return err("unknown_id", f"Manifest sconosciuto: {mid}.")
+        if m["tool"] != "compute_shadow": return err("invalid_params", f"{mid}: il confronto per manifest vale per compute_shadow.")
+        jobs.append(j); mans.append(m)
+    ref_j, ref_m = jobs[0], mans[0]
+    inputs = {"baseline_id": ref_j["inputs"]["baseline_id"], "snapshot_ids": ref_j["inputs"]["snapshot_ids"]}; params = {"manifest_ids": a["manifest_ids"], "metric_ids": a["metric_ids"]}
+    jid = "job_" + hashlib.sha256(canon({"tool": "compare_scenarios", "inputs": inputs, "params": params}).encode()).hexdigest()[:16]; jp, mp = _paths(jid)
+    if jp.exists() and mp.exists() and (CACHE / f"{jid}.compare.json").exists(): return {**_load(CACHE / f"{jid}.compare.json"), "cached": True}
+    incomp, deltas = [], []
+    ix_ref = {m["metric_id"]: m for m in ref_m["metrics"]}
+    for j, m in zip(jobs[1:], mans[1:]):
+        scope = m.get("scenario_id") or m["manifest_id"]
+        inc = C.incompatibilita(ref_j, j)
+        if inc: incomp += [{"code": i["code"], "text": f"{scope}: {i['text']}"} for i in inc]; continue
+        for mid in a["metric_ids"]:
+            cand = sorted(k for k in ix_ref if k == mid or k.endswith("_" + mid) or mid in k)
+            if not cand: incomp.append({"code": "metrica_assente", "text": f"{mid}: nessuna metrica corrispondente nel manifest di riferimento."}); continue
+            ix_s = {x["metric_id"]: x for x in m["metrics"]}
+            for k in cand:
+                if k not in ix_s: incomp.append({"code": "metrica_assente", "text": f"{k}: assente nel manifest {m['manifest_id']}."}); continue
+                b_, s_ = ix_ref[k], ix_s[k]; d = round(s_["value"] - b_["value"], 6); ub, us = b_.get("uncertainty"), s_.get("uncertainty")
+                lo, hi = (min(us["low"] - ub["low"], us["high"] - ub["high"], d), max(us["low"] - ub["low"], us["high"] - ub["high"], d)) if ub and us and ub["kind"] == us["kind"] == "interval" else (d, d)
+                deltas.append({"metric_id": k, "baseline_value": b_["value"], "scenario_value": s_["value"], "delta": d, "delta_low": round(lo, 6), "delta_high": round(hi, 6), "unit": b_["unit"],
+                               "classification": s_["classification"], "discriminates": bool(lo > C.TOL or hi < -C.TOL), "scope": f"{scope} - {b_.get('scope', '')}"})
+    cc = {"baseline_id": ref_j["inputs"]["baseline_id"], "date": ref_j["params"]["when"]["date"], "times": ref_j["params"]["when"]["times"], "method": {k: v for k, v in ref_j["params"]["method"].items() if k != "obstacles"},
+          "walk_speed_m_s": ref_j["params"]["walk_speed_m_s"], "receivers": [r["receiver_id"] for r in ref_j["params"]["receivers"]], "motore_ombre": ref_m["method"]["version"]}
+    if not deltas and not incomp: incomp.append({"code": "nessun_delta", "text": "Nessuna metrica confrontabile."})
+    if not deltas: return err("incompatible_baseline", "Confronto respinto: " + "; ".join(i["text"] for i in incomp)[:300])
+    met = [_metrica_delta(f"d{n}_{d['metric_id']}", f"Delta {d['metric_id']}", {"delta": d["delta"], "intervallo": [d["delta_low"], d["delta_high"]]}, d["unit"], d["scope"]) for n, d in enumerate(deltas)]
+    lim = [{"code": "confronto_per_manifest", "text": "Delta fra i valori dei manifest indicati; l'intervallo accoppia gli estremi di sensibilità dei due manifest."}, *ref_m["limits"][:3]]
+    payload = {"datasets": ref_m["datasets"], "method_version": "0.1.0"}
+    jid, job, man = _compare_job(inputs, params, met, lim, payload, True, t0)
+    r = {"common_conditions": cc, "deltas": deltas, "incompatibilities": incomp, "job_id": jid, "result_manifest_id": man["manifest_id"], "status": "succeeded", "cached": False,
+         "datasets": man["datasets"], "params": params, "limits": lim, "method": "scenario_comparison 0.1.0"}
+    _write(CACHE / f"{jid}.compare.json", {k: v for k, v in r.items() if k != "cached"}); _write(_paths(jid)[1], man); _write(_paths(jid)[0], job)
+    return r
+
+
+def _compare_scenari(a):
+    """Forma 2: confronto multicriterio di scenari con la baseline S0 (scenarios/confronto.py). Le ombre degli scenari sono in cache (data/norm/scenarios/jobs):
+    se mancano il calcolo richiede alcuni minuti per scenario."""
+    import datetime; t0 = datetime.datetime.now(datetime.timezone.utc); S, C = _sc()
+    if a["baseline_id"] != BASELINE_ID: return err("incompatible_baseline", f"Baseline disponibile: {BASELINE_ID}.", candidates=[BASELINE_ID])
+    try: scns = [S.carica(i) for i in a["scenario_ids"]]
+    except S.ScenarioError as e: return err(e.code, str(e), candidates=e.candidates)
+    dif = S.verifica_baseline()
+    if dif: return err("incompatible_baseline", "La baseline non coincide con il record congelato: " + "; ".join(dif)[:250])
+    wv = a.get("with_variants", True)
+    inputs = {"baseline_id": a["baseline_id"], "snapshot_ids": sorted(s["snapshot_id"] for s in S.baseline()["snapshot"])}
+    params = {"scenario_ids": a["scenario_ids"], "scenario_sha256": [S.sha_obj({k: v for k, v in s.items() if k != "created_at"}) for s in scns], "with_variants": wv, "method_version": C.VERSIONE,
+              "ombre_version": S.O.VERSIONE, "baseline_record_sha256": S.stato_baseline()["record_sha256"]}
+    jid = "job_" + hashlib.sha256(canon({"tool": "compare_scenarios", "inputs": inputs, "params": params}).encode()).hexdigest()[:16]; jp, mp = _paths(jid); cp = CACHE / f"{jid}.compare.json"
+    if not (jp.exists() and mp.exists() and cp.exists()):
+        try: riep = C.confronta(a["scenario_ids"], con_varianti=wv)
+        except S.ScenarioError as e: return err(e.code, str(e))
+        inc = [{"code": i["code"], "text": f"{sid}: {i['text']}"} for sid, e in riep["scenari"].items() for i in e.get("incompatibilita", [])]
+        deltas, met = [], []
+        for n, (sid, e) in enumerate(riep["scenari"].items(), 1):
+            if e.get("stato") != "confrontato": continue
+            for f, tab in e["percorsi"]["R01"].items():
+                for k, unit, nome, ch in (("minuti_sole", "min", "sun_min", "walk_sun_min"), ("frazione_ombra", "1", "shade", "shade_fraction")):
+                    d = tab[k]
+                    if not d: continue
+                    mid = f"sc{n}_r01_{f}_{nome}"; sc = f"{sid}, R01, {riep['condizioni_comuni']['data']}, fascia {f}"
+                    deltas.append({"metric_id": mid[:60], "baseline_value": d["baseline"], "scenario_value": d["scenario"], "delta": d["delta"], "delta_low": d["intervallo"][0], "delta_high": d["intervallo"][1],
+                                   "unit": unit, "classification": "scenario", "discriminates": d["discrimina"], "scope": sc}); met.append(_metrica_delta(mid, f"Delta {nome} R01", d, unit, sc))
+            for f, d in e["area_attesa_pellico"].items():
+                if not d: continue
+                mid = f"sc{n}_attesa_{f}_shade"; sc = f"{sid}, area di attesa Pellico, fascia {f}"
+                deltas.append({"metric_id": mid[:60], "baseline_value": d["baseline"], "scenario_value": d["scenario"], "delta": d["delta"], "delta_low": d["intervallo"][0], "delta_high": d["intervallo"][1],
+                               "unit": "1", "classification": "scenario", "discriminates": d["discrimina"], "scope": sc}); met.append(_metrica_delta(mid, "Delta ombra area di attesa", d, "1", sc))
+        if not met: return err("incompatible_baseline", "Confronto respinto: " + "; ".join(i["text"] for i in inc)[:300])
+        cc = {"baseline_id": riep["baseline_id"], "reference": riep["riferimento"]["scenario_id"], "date": riep["condizioni_comuni"]["data"], "fasce": [f["id"] for f in riep["condizioni_comuni"]["fasce"]],
+              "method": riep["condizioni_comuni"]["method"], "walk_speed_m_s": riep["condizioni_comuni"]["walk_speed_m_s"], "ricevitori": len(riep["condizioni_comuni"]["ricevitori"]),
+              "motore_ombre": riep["condizioni_comuni"]["motore_ombre"], "ostacoli_baseline": riep["condizioni_comuni"]["ostacoli_baseline"], "origini_e_percorsi": riep["condizioni_comuni"]["origini_e_percorsi"]}
+        lim = [{"code": f"dichiarazione_{i + 1}", "text": t} for i, t in enumerate(riep["dichiarazioni"])]
+        payload = {"datasets": _dati_baseline(S), "method_version": C.VERSIONE}
+        jid2, job, man = _compare_job(inputs, params, met, lim, payload, True, t0); assert jid2 == jid
+        r = {"common_conditions": cc, "deltas": deltas, "incompatibilities": inc, "job_id": jid, "result_manifest_id": man["manifest_id"], "status": "succeeded", "datasets": man["datasets"], "params": params,
+             "limits": lim, "method": f"scenario_comparison {C.VERSIONE}", "scenarios": {sid: _compatta(e) for sid, e in riep["scenari"].items()}, "indicators": riep["indicatori"]}
+        _write(cp, r); _write(_paths(jid)[1], man); _write(_paths(jid)[0], job); cached = False
+    else: r = _load(cp); cached = True
+    r = {**r, "cached": cached}
+    if a.get("weights"):
+        try: r["ranking"] = C.ordina({"indicatori": r["indicators"]}, a["weights"])
+        except S.ScenarioError as e: return err(e.code, str(e))
+    return r
+
+
+def compare_scenarios(a):
+    return _compare_da_manifest(a) if "manifest_ids" in a else _compare_scenari(a)
+
+
 # ---------- punto d'ingresso unico ----------
 def run_tool(name, args=None):
     args = args if isinstance(args, dict) else {}
     if name not in TOOLS: return err("unknown_id", f"Strumento sconosciuto: {name}.", candidates=TOOLS)
-    if name in TOOLS_FUTURI: return _fuori(TOOLS_FUTURI[name][0].upper() + TOOLS_FUTURI[name][1:])
     if name == "compute_walk_access":   # destinazione mancante o data per nome: mai una scelta implicita
         ids = args.get("destination_ids")
         if not ids or not isinstance(ids, list) or any(not isinstance(i, str) or not ID_DEST.match(i) for i in ids):
