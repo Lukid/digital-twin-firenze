@@ -399,6 +399,7 @@
      "properties": {
       "speed_m_s": {
        "type": "number",
+       "description": "Velocità ipotizzata. Riferimento del progetto 1,2 m/s (i job della mappa usano 1,2, 0,8 e 1,4); dichiararla se l'utente non la dà.",
        "minimum": 0.3,
        "maximum": 2.5
       },
@@ -426,6 +427,8 @@
      "type": "array",
      "minItems": 1,
      "maxItems": 6,
+     "uniqueItems": true,
+     "description": "Soglie in minuti, senza ripetizioni. I job della mappa usano [5, 10, 15]: con le stesse soglie il risultato viene dalla cache ed è lo stesso job della mappa.",
      "items": {
       "type": "number",
       "exclusiveMinimum": 0,
@@ -655,6 +658,7 @@
       },
       "space_step_m": {
        "type": "number",
+       "description": "Passo dei punti sul ricevitore. I job della mappa usano 1 m (e time_step_min 5).",
        "minimum": 0.25,
        "maximum": 5
       },
