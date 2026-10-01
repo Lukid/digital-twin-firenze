@@ -243,15 +243,15 @@
   "stato_verifica": "da_verificare",
   "grafo": "grf_z2_osm_20261001",
   "stato": "reachable",
-  "lunghezza_rete_m": 556.5,
+  "lunghezza_rete_m": 519.2,
   "raccordi_m": 5.1,
-  "lunghezza_totale_m": 561.5,
+  "lunghezza_totale_m": 524.3,
   "attraversamenti": 1,
   "attraversamenti_tipi": [
    "uncontrolled"
   ],
   "tratti_marciapiede_ignoto": 1,
-  "m_marciapiede_ignoto": 42.1,
+  "m_marciapiede_ignoto": 4.9,
   "m_marciapiede_assente": 0,
   "scale": 0,
   "sottopassi": 0,
@@ -273,7 +273,7 @@
    "edg_osm_1508845483_13794021236_13794021225"
   ],
   "marciapiede_dichiarato": false,
-  "deviazione": 1.4
+  "deviazione": 1.31
  },
  {
   "id": "R06",
@@ -508,16 +508,16 @@
   "stato_verifica": "da_verificare",
   "grafo": "grf_z2_osm_20261001",
   "stato": "reachable",
-  "lunghezza_rete_m": 394.4,
+  "lunghezza_rete_m": 357.1,
   "raccordi_m": 6.0,
-  "lunghezza_totale_m": 400.4,
+  "lunghezza_totale_m": 363.2,
   "attraversamenti": 2,
   "attraversamenti_tipi": [
    "uncontrolled",
    "uncontrolled"
   ],
   "tratti_marciapiede_ignoto": 5,
-  "m_marciapiede_ignoto": 93.5,
+  "m_marciapiede_ignoto": 56.2,
   "m_marciapiede_assente": 29.2,
   "scale": 0,
   "sottopassi": 0,
@@ -549,7 +549,7 @@
    "edg_osm_544585227_3600889663_5264115226"
   ],
   "marciapiede_dichiarato": false,
-  "deviazione": 1.42
+  "deviazione": 1.29
  },
  {
   "id": "V01",

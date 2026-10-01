@@ -81,4 +81,19 @@ na = civ[civ.stato == "insufficient_data"]
 assert na.edge_id.isna().all() and na.raccordo_m.isna().all()
 assert (civ[civ.stato != "insufficient_data"].raccordo_m.astype(float) <= MAXO).all()
 print(f"6 ok: origini {len(civ)}, agganciate {len(civ) - len(na)}, insufficient_data {len(na)}")
+
+# 7. archi memorizzati in verso opposto alla geometria: l'offset dello snap è sulla geometria (regressione)
+W = lambda x, y, dd: min(e["length_m"] for e in dd.values())
+inv = [(u, v, k, d) for u, v, k, d in G.edges(keys=True, data=True) if d["nod_da"] != u and d["length_m"] > 30]
+assert inv, "nessun arco invertito per il test"
+u, v, k, d = inv[0]; off = round(d["length_m"] * 0.1, 2); pt = d["geom"].interpolate(off)
+s_a = {"u": u, "v": v, "edge_id": k, "offset_m": off, "proj": (pt.x, pt.y), "dist_m": 0.0}
+H7 = con_agganci(G, {"A": s_a})
+da, a_ = d["nod_da"], d["nod_a"]
+for X in list(G.nodes)[::400]:
+    atteso = min(off + nx.shortest_path_length(G, da, X, weight=W), d["length_m"] - off + nx.shortest_path_length(G, a_, X, weight=W))   # calcolo indipendente
+    got = nx.shortest_path_length(H7, "snp_A", X, weight=W)
+    assert abs(got - atteso) < 0.1, (X, got, atteso)
+    assert got >= pt.distance(Point(G.nodes[X]["x"], G.nodes[X]["y"])) - 0.01, "distanza di rete minore della linea d'aria"
+print(f"7 ok: arco invertito {k}, distanze di rete = calcolo indipendente e >= linea d'aria")
 print("TUTTI I TEST OK")

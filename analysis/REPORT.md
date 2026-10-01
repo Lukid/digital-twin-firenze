@@ -4,11 +4,11 @@ Data: 1 ottobre 2026. Redatto dall'agente T06 e salvato dall'integratore. `bash 
 
 ## Difetto trovato in T04
 
-In `network/rete_lib.py` (`con_agganci`) 1.116 archi su 3.901 sono memorizzati con verso (u,v) opposto alla geometria, mentre l'offset dello snap è misurato sulla geometria: le origini o gli ingressi su quegli archi ricevono i tratti parziali sul lato sbagliato. T06 usa una versione corretta in `analysis/accessibilita.py`, senza toccare `network/`.
+In `network/rete_lib.py` (`con_agganci`) 1.116 archi su 3.901 sono memorizzati con verso (u,v) opposto alla geometria, mentre l'offset dello snap è misurato sulla geometria: le origini o gli ingressi su quegli archi ricevono i tratti parziali sul lato sbagliato. Corretto alla radice in `network/rete_lib.py`: `analysis/accessibilita.py` usa quella funzione.
 
 - Effetto sui percorsi campione: R05 524,3 m (T04: 561,5), R09 363,2 m (T04: 400,4); gli altri entro 0,3 m.
 - Su tutte le origini vale distanza di rete ≥ linea d'aria.
-- Da correggere alla radice in `network/rete_lib.py` e rigenerare i percorsi campione.
+- Fatto: percorsi campione rigenerati, R05 e R09 ora coincidono con T06.
 
 ## Stati
 

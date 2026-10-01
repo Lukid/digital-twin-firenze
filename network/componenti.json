@@ -290,12 +290,12 @@
   "km_in_z2": 0.0,
   "principale": false,
   "tipi": {
-   "sentiero": 1,
-   "strada": 2
+   "strada": 2,
+   "sentiero": 1
   },
   "highway": {
-   "path": 1,
-   "service": 2
+   "service": 2,
+   "path": 1
   },
   "gap_dalla_principale_m": 14.9,
   "motivi": [
@@ -348,8 +348,8 @@
   "km_in_z2": 0.0,
   "principale": false,
   "tipi": {
-   "marciapiede_disegnato": 1,
-   "sottopasso": 1
+   "sottopasso": 1,
+   "marciapiede_disegnato": 1
   },
   "highway": {
    "footway": 2

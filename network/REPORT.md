@@ -32,7 +32,7 @@ Data: 1 ottobre 2026. Redatto dall'agente T04 e salvato dall'integratore. `netwo
 - Civici SIT agganciati 2.169 su 2.224, limite 40 m (p99 della distanza civico-arco 41 m). Raccordo p50 3,5 m, p99 27,5 m, massimo 39,1 m.
 - 55 non agganciati = `insufficient_data`: 26 raccordi bloccati da edifici, 25 senza archi entro 40 m, 4 da tratti esclusi.
 - Il raccordo non attraversa edifici, tratti esclusi o nodi bloccanti; le origini non si agganciano agli attraversamenti.
-- 21 civici agganciati a componenti isolate (cmp_14, cmp_24): in T06 vanno trattati come `isolated`.
+- 21 civici agganciati a componenti isolate (cmp_14, cmp_24): in T06 sono `forbidden`, non `isolated`: collegati al resto solo da tratti access=customers o access=private (grafo di controllo).
 
 ## Confronto con Iter.net (`confronto_iternet.json`)
 
@@ -43,9 +43,9 @@ Grafo veicolare del 2019: 18,1 km in Z2, senza marciapiedi, attraversamenti o sc
 - R01 Pellico → ingresso scuola: 755 m (deviazione 1,13), 1 attraversamento, 97 m a marciapiede ignoto.
 - R02 Pellico → ingresso contiguo di via Corridoni: 745 m, 3 attraversamenti. Cambiare ingresso cambia di 10 m la lunghezza e gli attraversamenti.
 - R03 fermata Corridoni 1 → ingresso: 67 m, marciapiede dichiarato.
-- R04-R07 civici a circa 150, 400, 700 e 1.000 m in linea d'aria: 163, 562, 861 e 1.113 m, con 1-4 attraversamenti.
+- R04-R07 civici a circa 150, 400, 700 e 1.000 m in linea d'aria: 163, 524, 861 e 1.113 m (R05 corretto da 562 m dopo la correzione dell'orientamento in `con_agganci`), con 1-4 attraversamenti.
 - R08 fermata stazione PI0001 → ingresso: 518 m.
-- R09 civico di R05 → Pellico: 400 m.
+- R09 civico di R05 → Pellico: 363 m (corretto da 400 m).
 - V01 via Poerio 3 → Battisti: `forbidden`. Collegata al resto solo da 3 archi access=private: 429 m sul grafo di controllo, rifiutato sul grafo verificato.
 - Nessun percorso campione usa scale o sottopassi.
 
