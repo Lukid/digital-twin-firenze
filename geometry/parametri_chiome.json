@@ -1,0 +1,46 @@
+{
+  "versione": "1.0.0",
+  "data": "2026-10-01",
+  "stato": "parametri iniziali di esperimento, non tarati su Pisa; da sostituire con rilievo (vedi sopralluogo_z2.json)",
+  "classe_valori": "estimated",
+  "fonte_delle_classi": [
+    "Giudizio di progetto su ordini di grandezza correnti dell'arboricoltura urbana (alberi di viale e di giardino a latifoglie e conifere). Nessuna pubblicazione è stata consultata in questa sessione (nessun accesso esterno): i valori non sono citabili come dato di letteratura.",
+    "Ancoraggio locale 1: censimento comunale R3-Trees (aggiornamento 2017, 18.074 piante), circa il 37% sopra 10 m, come riportato nella sintesi di docs/audit/verde/REPORT.md; il censimento stesso non è accessibile. Il confronto con la quota stimata dal DSM 2021 è in report_z2.json (chiave verifica_classi).",
+    "Ancoraggio locale 2: DSM 2021 meno terreno nei punti albero (altezza derived, usata per scegliere la classe quando disponibile).",
+    "Ancoraggio locale 3: tag OSM height, quando plausibile (2-40 m); diameter_crown e altezza d'imposta non esistono in OSM su Z2."
+  ],
+  "regole_assegnazione": [
+    "1. Altezza da tag OSM plausibile (2-40 m): classe dall'altezza, altezza classe measured (valore di fonte, non verificato) con intervallo +-20%.",
+    "2. Altrimenti, indizio DSM (almeno 6 pixel di vegetazione entro 2,5 m dal punto): altezza classe derived, intervallo +-(1,5 m + 10%); classe dall'altezza.",
+    "3. Altrimenti classe 'ignota': intervallo largo, che copre tutte le classi.",
+    "Diametro chioma, altezza d'imposta e diametro del tronco sono sempre estimated, con min/tipico/max della classe. Mai un valore puntuale senza intervallo."
+  ],
+  "soglie_classe_altezza_m": {"piccolo": [0, 8], "medio": [8, 14], "grande": [14, 99]},
+  "classi": {
+    "piccolo": {
+      "altezza_m": {"min": 4.0, "tipico": 6.0, "max": 8.0},
+      "diametro_chioma_m": {"min": 2.0, "tipico": 3.5, "max": 5.0},
+      "altezza_imposta_m": {"min": 1.0, "tipico": 1.8, "max": 2.5},
+      "diametro_tronco_m": {"min": 0.10, "tipico": 0.18, "max": 0.25}
+    },
+    "medio": {
+      "altezza_m": {"min": 8.0, "tipico": 11.0, "max": 14.0},
+      "diametro_chioma_m": {"min": 4.0, "tipico": 6.0, "max": 9.0},
+      "altezza_imposta_m": {"min": 2.0, "tipico": 2.5, "max": 3.5},
+      "diametro_tronco_m": {"min": 0.20, "tipico": 0.30, "max": 0.45}
+    },
+    "grande": {
+      "altezza_m": {"min": 14.0, "tipico": 18.0, "max": 25.0},
+      "diametro_chioma_m": {"min": 7.0, "tipico": 10.0, "max": 15.0},
+      "altezza_imposta_m": {"min": 2.5, "tipico": 3.5, "max": 5.0},
+      "diametro_tronco_m": {"min": 0.40, "tipico": 0.60, "max": 0.90}
+    },
+    "ignota": {
+      "altezza_m": {"min": 4.0, "tipico": 10.0, "max": 25.0},
+      "diametro_chioma_m": {"min": 2.0, "tipico": 6.0, "max": 15.0},
+      "altezza_imposta_m": {"min": 1.0, "tipico": 2.5, "max": 5.0},
+      "diametro_tronco_m": {"min": 0.10, "tipico": 0.30, "max": 0.90}
+    }
+  },
+  "forma_chioma": "ellissoide idealizzato opaco (confronto geometrico dichiarato, non attenuazione reale); la forma reale e la trasmissività non sono modellate qui"
+}
