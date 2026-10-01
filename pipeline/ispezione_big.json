@@ -1,0 +1,1665 @@
+{
+ "bbox_AOI_3003_nominale": [
+  1611588.8,
+  4839453.6,
+  1613732.7,
+  4841416.7
+ ],
+ "dbt10k_pisa": {
+  "000201_zona_r_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 205,
+   "oggetti_in_AOI": 4,
+   "campi": [
+    "zona_r_id",
+    "zona_r_sn",
+    "zona_r_ent",
+    "zona_r_rid",
+    "zona_r_dt",
+    "zona_r_col",
+    "zona_r_met",
+    "zona_r_dv",
+    "zona_r_cl",
+    "zona_r_dcl",
+    "codprv",
+    "nome"
+   ]
+  },
+  "010101_ac_vei_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 46914,
+   "oggetti_in_AOI": 929,
+   "campi": [
+    "suolo_id",
+    "sup3d_id",
+    "ac_vei_id",
+    "ac_vei_zon",
+    "ac_vei_dzo",
+    "ac_vei_fon",
+    "ac_vei_dfo",
+    "ac_vei_sed",
+    "ac_vei_dse",
+    "ar_str_id",
+    "ar_str_cf",
+    "ar_str_dcf",
+    "ar_str_sta",
+    "ar_str_dst",
+    "ar_str_dug",
+    "ar_str_top",
+    "ar_str_uff",
+    "ac_vei_cl",
+    "ac_vei_dcl"
+   ]
+  },
+  "010102_ac_ped_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 1104,
+   "oggetti_in_AOI": 23,
+   "campi": [
+    "suolo_id",
+    "sup3d_id",
+    "ac_ped_id",
+    "ac_ped_pos",
+    "ac_ped_dpo",
+    "ac_ped_zon",
+    "ac_ped_dzo",
+    "ac_ped_fon",
+    "ac_ped_dfo",
+    "ac_ped_sed",
+    "ac_ped_dse",
+    "ar_str_id",
+    "ar_str_cf",
+    "ar_str_dcf",
+    "ar_str_sta",
+    "ar_str_dst",
+    "ar_str_dug",
+    "ar_str_top",
+    "ar_str_uff",
+    "ac_ped_cl",
+    "ac_ped_dcl"
+   ]
+  },
+  "010103_ac_cic_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 222,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "sup3d_id",
+    "ac_cic_id",
+    "ac_cic_pos",
+    "ac_cic_dpo",
+    "ac_cic_sed",
+    "ac_cic_dse",
+    "ar_str_id",
+    "ar_str_cf",
+    "ar_str_dcf",
+    "ar_str_sta",
+    "ar_str_dst",
+    "ar_str_dug",
+    "ar_str_top",
+    "ar_str_uff",
+    "ac_cic_cl",
+    "ac_cic_dcl"
+   ]
+  },
+  "010104_ar_str_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 10747,
+   "oggetti_in_AOI": 276,
+   "campi": [
+    "ar_str_id",
+    "ar_str_cf",
+    "ar_str_dcf",
+    "ar_str_sta",
+    "ar_str_dst",
+    "ar_str_dug",
+    "ar_str_top",
+    "ar_str_uff",
+    "ar_str_cl",
+    "ar_str_dcl"
+   ]
+  },
+  "010105_ar_vms_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 13454,
+   "oggetti_in_AOI": 1,
+   "campi": [
+    "suolo_id",
+    "sup3d_id",
+    "ar_vms_id",
+    "ar_vms_sed",
+    "ar_vms_dse",
+    "ar_vms_ty",
+    "ar_vms_dty",
+    "ar_vms_cl",
+    "ar_vms_dcl"
+   ]
+  },
+  "010120_sentiero_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 17755,
+   "oggetti_in_AOI": 1,
+   "campi": [
+    "sent_id",
+    "sent_sed",
+    "sent_dsed",
+    "sent_cl",
+    "sent_dcl",
+    "geolss_id",
+    "lin_el_id"
+   ]
+  },
+  "010201_sd_fer_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 724,
+   "oggetti_in_AOI": 24,
+   "campi": [
+    "suolo_id",
+    "sup3d_id",
+    "sd_fer_id",
+    "sd_fer_ty",
+    "sd_fer_dty",
+    "sd_fer_sed",
+    "sd_fer_ds0",
+    "sd_fer_cl",
+    "sd_fer_dcl"
+   ]
+  },
+  "010301_el_fne_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 0,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "el_fne_id",
+    "el_fne_sta",
+    "el_fne_ty",
+    "el_fne_dty",
+    "el_fne_cl",
+    "el_fne_dcl",
+    "geom"
+   ]
+  },
+  "020101_un_vol_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 183934,
+   "oggetti_in_AOI": 3107,
+   "campi": [
+    "suolo_id",
+    "sup3d_id",
+    "un_vol_id",
+    "edi_min_id",
+    "edifc_id",
+    "un_vol_av",
+    "un_vol_qe",
+    "un_vol_por",
+    "un_vol_dp0",
+    "un_vol_cl",
+    "un_vol_dcl",
+    "edifc_ty",
+    "edifc_uso",
+    "edifc_mon",
+    "edifc_stat",
+    "edifc_sot",
+    "edi_min_ty",
+    "edi_min_pr",
+    "edi_min_st"
+   ]
+  },
+  "020102_edifc_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 110597,
+   "oggetti_in_AOI": 2175,
+   "campi": [
+    "edifc_id",
+    "cs_edi_id",
+    "edifc_ty",
+    "edifc_dty",
+    "edifc_mon",
+    "edifc_dmon",
+    "edifc_uso",
+    "edifc_duso",
+    "edifc_stat",
+    "edifc_dst0",
+    "edifc_sot",
+    "edifc_dsot",
+    "edifc_cl",
+    "edifc_dcl"
+   ]
+  },
+  "020103_cs_edi_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 152650,
+   "oggetti_in_AOI": 1903,
+   "campi": [
+    "cs_edi_id"
+   ]
+  },
+  "020105_par_ar_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 16,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "par_ar_id",
+    "par_ar_ty",
+    "par_ar_dty",
+    "par_ar_cl",
+    "par_ar_dcl"
+   ]
+  },
+  "020106_edi_min_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 61408,
+   "oggetti_in_AOI": 932,
+   "campi": [
+    "edi_min_id",
+    "cs_edi_id",
+    "edi_min_ty",
+    "edi_min_d0",
+    "edi_min_pr",
+    "edi_min_d1",
+    "edi_min_st",
+    "edi_min_d2",
+    "edi_min_cl",
+    "edi_min_d3"
+   ]
+  },
+  "020107_vol_agg_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 2,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "agg_id",
+    "agg_alt",
+    "agg_quo",
+    "agg_uso",
+    "agg_duso",
+    "agg_cl",
+    "agg_dcl"
+   ]
+  },
+  "020201_mn_ind_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 4709,
+   "oggetti_in_AOI": 28,
+   "campi": [
+    "suolo_id",
+    "mn_ind_qe",
+    "mn_ind_ty",
+    "mn_ind_dty",
+    "mn_ind_cl",
+    "mn_ind_dcl"
+   ]
+  },
+  "020202_mn_mau_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 10248,
+   "oggetti_in_AOI": 66,
+   "campi": [
+    "suolo_id",
+    "mn_mau_qe",
+    "mn_mau_ty",
+    "mn_mau_dty",
+    "mn_mau_cl",
+    "mn_mau_dcl"
+   ]
+  },
+  "020204_attr_sp_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 3438,
+   "oggetti_in_AOI": 22,
+   "campi": [
+    "suolo_id",
+    "attr_sp_ty",
+    "attr_sp_d0",
+    "attr_sp_cl",
+    "attr_sp_d1"
+   ]
+  },
+  "020205_man_tr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 2392,
+   "oggetti_in_AOI": 37,
+   "campi": [
+    "suolo_id",
+    "man_tr_ty",
+    "man_tr_dty",
+    "man_tr_av",
+    "man_tr_cl",
+    "man_tr_dcl"
+   ]
+  },
+  "020206_aatt_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 50039,
+   "oggetti_in_AOI": 920,
+   "campi": [
+    "suolo_id",
+    "aatt_ty",
+    "aatt_dty",
+    "aatt_cl",
+    "aatt_dcl"
+   ]
+  },
+  "020207_tralic_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 1825,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "tral_qso",
+    "tral_qc_mn",
+    "tral_qc_mx",
+    "tral_ty",
+    "tral_dty",
+    "tral_imp",
+    "tral_dimp",
+    "tral_cl",
+    "tral_dcl"
+   ]
+  },
+  "020208_palo_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Point Z",
+   "oggetti_totali": 983,
+   "oggetti_in_AOI": 1,
+   "campi": [
+    "palo_id",
+    "palo_qmax",
+    "palo_ty",
+    "palo_dty",
+    "palo_imp",
+    "palo_dimp",
+    "palo_sy",
+    "palo_dsy",
+    "palo_ang",
+    "palo_f_sc",
+    "palo_cl",
+    "palo_dcl"
+   ]
+  },
+  "020209_el_div_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 348480,
+   "oggetti_in_AOI": 3011,
+   "campi": [
+    "el_div_id",
+    "el_div_ty",
+    "el_div_dty",
+    "el_div_cl",
+    "el_div_dcl",
+    "geolss_id",
+    "lin_el_id"
+   ]
+  },
+  "020210_mu_div_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 66,
+   "oggetti_in_AOI": 15,
+   "campi": [
+    "suolo_id",
+    "mu_div_qe",
+    "mu_div_ty",
+    "mu_div_dty",
+    "mu_div_cl",
+    "mu_div_dcl"
+   ]
+  },
+  "020211_mn_con_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 8,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "mn_con_se0",
+    "mn_con_ds0",
+    "mn_con_ty",
+    "mn_con_dty",
+    "mn_con_cl",
+    "mn_con_dcl"
+   ]
+  },
+  "020212_mn_arr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Point",
+   "oggetti_totali": 1164,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "mn_arr_id",
+    "mn_arr_ty",
+    "mn_arr_dty",
+    "sim_tipo",
+    "sim_dtipo",
+    "sim_ang",
+    "sim_fat_sc",
+    "mn_arr_cl",
+    "mn_arr_dcl"
+   ]
+  },
+  "020214_loctr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Point",
+   "oggetti_totali": 2095,
+   "oggetti_in_AOI": 9,
+   "campi": [
+    "loctr_id",
+    "loctr_ty",
+    "loctr_dty",
+    "loctr_sy",
+    "loctr_dsy",
+    "sim_ang",
+    "sim_fat_sc",
+    "loctr_cl",
+    "loctr_dcl"
+   ]
+  },
+  "020301_ponte_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 3225,
+   "oggetti_in_AOI": 17,
+   "campi": [
+    "ponte_id",
+    "ponte_ty",
+    "ponte_dty",
+    "ponte_uso",
+    "ponte_dus",
+    "ponte_nome",
+    "ponte_cl",
+    "ponte_dcl"
+   ]
+  },
+  "020303_galler_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 75,
+   "oggetti_in_AOI": 5,
+   "campi": [
+    "galler_id",
+    "galler_ty",
+    "galler_dty",
+    "galler_uso",
+    "galler_dus",
+    "galler_nom",
+    "galler_cl",
+    "galler_dcl"
+   ]
+  },
+  "020401_mu_sos_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 2482,
+   "oggetti_in_AOI": 76,
+   "campi": [
+    "suolo_id",
+    "msos_ty",
+    "msos_dty",
+    "msos_zona",
+    "msos_dzona",
+    "msos_cl",
+    "msos_dcl"
+   ]
+  },
+  "020501_diga_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 25,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "diga_mat",
+    "diga_dmat",
+    "diga_ty",
+    "diga_dty",
+    "diga_zona",
+    "diga_dzona",
+    "diga_cl",
+    "diga_dcl"
+   ]
+  },
+  "020502_argine_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 570,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "argn_zona",
+    "argn_dzona",
+    "argine_cl",
+    "argine_dcl"
+   ]
+  },
+  "020503_op_reg_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 30892,
+   "oggetti_in_AOI": 3,
+   "campi": [
+    "op_reg_id",
+    "op_reg_ty",
+    "op_reg_dty",
+    "op_reg_cl",
+    "op_reg_dcl",
+    "geolss_id",
+    "lin_el_id"
+   ]
+  },
+  "020504_at_nav_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 1,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "at_nav_ty",
+    "at_nav_dty",
+    "at_nav_cl",
+    "at_nav_dcl"
+   ]
+  },
+  "020505_op_por_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 245,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "oppr_ty",
+    "oppr_dty",
+    "oppr_cl",
+    "oppr_dcl"
+   ]
+  },
+  "020506_man_idr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 9,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "man_idr_ty",
+    "man_idr_d0",
+    "man_idr_cl",
+    "man_idr_d1"
+   ]
+  },
+  "040101_ab_cda_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 3898,
+   "oggetti_in_AOI": 14,
+   "campi": [
+    "suolo_id",
+    "sup3d_id",
+    "ab_cda_id",
+    "cr_idr_id",
+    "ab_cda_liv",
+    "ab_cda_dl0",
+    "ab_cda_sed",
+    "ab_cda_ds0",
+    "ab_cda_cl",
+    "ab_cda_dcl"
+   ]
+  },
+  "040102_sp_acq_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 2159,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "cr_idr_id",
+    "cr_idr_nom",
+    "cr_idr_rec",
+    "cod_utente",
+    "sp_acq_qa",
+    "sp_acq_ty",
+    "sp_acq_dty",
+    "sp_acq_cl",
+    "sp_acq_dcl"
+   ]
+  },
+  "040105_cascata_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 0,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "cascata_nm",
+    "cascata_ds",
+    "cascata_cl",
+    "cascata_dc",
+    "lin_el_id",
+    "geom"
+   ]
+  },
+  "040201_cs_mar_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 296,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "cs_mar_id",
+    "cs_mar_ty",
+    "cs_mar_dty",
+    "cs_mar_nom",
+    "cod_sibapo",
+    "cs_mar_ny",
+    "cs_mar_dny",
+    "cs_mar_cl",
+    "cs_mar_dcl",
+    "lin_el_id"
+   ]
+  },
+  "040202_ar_mar_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 10,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "ar_mar_nom",
+    "ar_mar_cl",
+    "ar_mar_dcl"
+   ]
+  },
+  "040401_el_idr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 34814,
+   "oggetti_in_AOI": 29,
+   "campi": [
+    "ai_id",
+    "el_idr_nav",
+    "el_idr_dna",
+    "el_idr_nom",
+    "el_idr_ost",
+    "ai_ndini",
+    "ai_ndfin",
+    "ai_livello",
+    "ai_dlivell",
+    "ai_sede",
+    "ai_dsede",
+    "ai_ty_trac",
+    "ai_dty_tra",
+    "ar_id_ori",
+    "ar_id_dori",
+    "el_idr_cl",
+    "el_idr_dcl"
+   ]
+  },
+  "040402_condot_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 1702,
+   "oggetti_in_AOI": 1,
+   "campi": [
+    "ai_id",
+    "condot_fun",
+    "condot_dfu",
+    "condot_ty",
+    "condot_dty",
+    "condot_ntu",
+    "ai_ndini",
+    "ai_ndfin",
+    "ai_livello",
+    "ai_dlivell",
+    "ai_sede",
+    "ai_dsede",
+    "ai_ty_trac",
+    "ai_dty_tra",
+    "ar_id_ori",
+    "ar_id_dori",
+    "condot_cl",
+    "condot_dcl"
+   ]
+  },
+  "040403_nd_idr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Point",
+   "oggetti_totali": 37756,
+   "oggetti_in_AOI": 28,
+   "campi": [
+    "nd_idr_id",
+    "nd_idr_ty",
+    "nd_idr_dty",
+    "nd_idr_cl",
+    "nd_idr_dcl"
+   ]
+  },
+  "040406_asta_f_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 201,
+   "oggetti_in_AOI": 1,
+   "campi": [
+    "cr_idr_id",
+    "cr_idr_nom",
+    "cod_utente",
+    "ord_ger",
+    "cod_sibapo",
+    "CORSO_REC",
+    "cr_idr_rec",
+    "tipo_corso",
+    "dtipo_cors",
+    "asta_f_cl",
+    "asta_f_dcl"
+   ]
+  },
+  "040415_corpo_idr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 2360,
+   "oggetti_in_AOI": 1,
+   "campi": [
+    "cr_idr_id",
+    "cr_idr_nom",
+    "cr_idr_rec",
+    "cr_idr_ty",
+    "cod_utente",
+    "cr_idr_cl",
+    "cr_idr_dcl"
+   ]
+  },
+  "040416_arco_idr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 36516,
+   "oggetti_in_AOI": 30,
+   "campi": [
+    "ai_id",
+    "ai_ndini",
+    "ai_ndfin",
+    "ai_livello",
+    "ai_dlivell",
+    "ai_sede",
+    "ai_dsede",
+    "ai_ty_trac",
+    "ai_dty_tra",
+    "ar_id_ori",
+    "ar_id_dori",
+    "ai_cl",
+    "ai_dcl"
+   ]
+  },
+  "040417_riva_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 12007,
+   "oggetti_in_AOI": 41,
+   "campi": [
+    "riva_id",
+    "riva_ty",
+    "riva_dty",
+    "riva_cl",
+    "riva_dcl",
+    "lin_el_id"
+   ]
+  },
+  "040418_el_crp_idr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 4395,
+   "oggetti_in_AOI": 13,
+   "campi": [
+    "cr_idr_id",
+    "cr_idr_nom",
+    "cod_utente",
+    "ord_ger",
+    "cod_sibapo",
+    "corso_rec",
+    "cr_idr_rec",
+    "tipo_corso",
+    "dtipo_cors",
+    "elxcrp_cl",
+    "elxcrp_dcl",
+    "verso_scor",
+    "dverso_sco",
+    "ai_id",
+    "el_idr_nav",
+    "el_idr_dna",
+    "el_idr_nom",
+    "el_idr_ost",
+    "ai_ndini",
+    "ai_ndfin",
+    "ai_livello",
+    "ai_dlivell",
+    "ai_sede",
+    "ai_dsede",
+    "ai_ty_trac"
+   ]
+  },
+  "050101_cv_liv_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString Z",
+   "oggetti_totali": 33428,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "cv_liv_id",
+    "cv_liv_q",
+    "cv_liv_dt",
+    "cv_liv_ddt",
+    "cv_liv_ty",
+    "cv_liv_dty",
+    "cv_liv_cl",
+    "cv_liv_dcl",
+    "cv_liv_vis"
+   ]
+  },
+  "050102_pt_quo_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Point Z",
+   "oggetti_totali": 415844,
+   "oggetti_in_AOI": 6160,
+   "campi": [
+    "pt_quo_id",
+    "pt_quo_q",
+    "pt_quo_sed",
+    "pt_quo_dse",
+    "pt_quo_ril",
+    "pt_quo_dri",
+    "pt_quo_sym",
+    "pt_quo_dsy",
+    "pt_quo_ang",
+    "pt_quo_sc",
+    "pt_quo_cl",
+    "pt_quo_dcl"
+   ]
+  },
+  "050103_brk_ln_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString Z",
+   "oggetti_totali": 308262,
+   "oggetti_in_AOI": 3562,
+   "campi": [
+    "brk_id",
+    "brk_co_ctr",
+    "brk_co_dct",
+    "brk_cl",
+    "brk_dcl",
+    "lin_el_id",
+    "lin3d_id"
+   ]
+  },
+  "050301_f_nter_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 565,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "f_nter_ty",
+    "f_nter_dty",
+    "f_nter_cl",
+    "f_nter_dcl"
+   ]
+  },
+  "050302_scarpt_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 173,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "scarpt_cl",
+    "scarpt_dcl"
+   ]
+  },
+  "050303_sc_dis_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 114,
+   "oggetti_in_AOI": 1,
+   "campi": [
+    "suolo_id",
+    "sc_dis_ty",
+    "sc_dis_dty",
+    "sc_dis_cl",
+    "sc_dis_dcl"
+   ]
+  },
+  "050304_a_tras_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 82,
+   "oggetti_in_AOI": 2,
+   "campi": [
+    "suolo_id",
+    "a_tras_ty",
+    "a_tras_dty",
+    "a_tras_cl",
+    "a_tras_dcl"
+   ]
+  },
+  "050307_ar_idr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 972,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "cr_idr_id",
+    "ar_idr_cl",
+    "ar_idr_dcl"
+   ]
+  },
+  "060101_bosco_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 11427,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "bosco_essz",
+    "bosco_dess",
+    "bosco_gov",
+    "bosco_dgov",
+    "bosco_ty",
+    "bosco_dty",
+    "bosco_cl",
+    "bosco_dcl"
+   ]
+  },
+  "060104_a_pveg_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 523,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "suolo_id",
+    "a_pveg_cau",
+    "a_pveg_dca",
+    "a_pveg_cl",
+    "a_pveg_dcl"
+   ]
+  },
+  "060105_ps_inc_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 20694,
+   "oggetti_in_AOI": 10,
+   "campi": [
+    "suolo_id",
+    "ps_inc_ty",
+    "ps_inc_dty",
+    "ps_inc_cl",
+    "ps_inc_dcl"
+   ]
+  },
+  "060106_cl_agr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 47721,
+   "oggetti_in_AOI": 22,
+   "campi": [
+    "suolo_id",
+    "cl_agr_ty",
+    "cl_agr_dty",
+    "cl_agr_cl",
+    "cl_agr_dcl"
+   ]
+  },
+  "060401_ar_vrd_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 40724,
+   "oggetti_in_AOI": 382,
+   "campi": [
+    "suolo_id",
+    "ar_vrd_ty",
+    "ar_vrd_dty",
+    "ar_vrd_cl",
+    "ar_vrd_dcl"
+   ]
+  },
+  "060402_fil_al_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 41173,
+   "oggetti_in_AOI": 12,
+   "campi": [
+    "fil_al_id",
+    "fil_al_ty",
+    "fil_al_dty",
+    "fil_al_ess",
+    "fil_al_cl",
+    "fil_al_dcl",
+    "geolss_id",
+    "lin_el_id"
+   ]
+  },
+  "060403_albero_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Point",
+   "oggetti_totali": 97850,
+   "oggetti_in_AOI": 307,
+   "campi": [
+    "albero_id",
+    "albero_ang",
+    "albero_sc",
+    "albero_sy",
+    "albero_dsy",
+    "albero_ty",
+    "albero_dty",
+    "albero_cl",
+    "albero_dcl"
+   ]
+  },
+  "070301_tr_ele_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 1105,
+   "oggetti_in_AOI": 4,
+   "campi": [
+    "tr_ele_id",
+    "tr_ele_ty",
+    "tr_ele_dty",
+    "tr_ele_pos",
+    "tr_ele_dpo",
+    "tr_ele_cl",
+    "tr_ele_dcl"
+   ]
+  },
+  "070501_tr_gas_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 132,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "tr_gas_id",
+    "tr_gas_pos",
+    "tr_gas_dpo",
+    "tr_gas_cl",
+    "tr_gas_dcl"
+   ]
+  },
+  "070601_tr_tlr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 0,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "tr_tlr_id",
+    "tr_tlr_pos",
+    "tr_tlr_dpo",
+    "tr_tlr_cl",
+    "tr_tlr_dcl",
+    "geom"
+   ]
+  },
+  "070701_tr_ole_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 0,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "tr_ole_id",
+    "tr_ole_pos",
+    "tr_ole_dpo",
+    "tr_ole_cl",
+    "tr_ole_dcl",
+    "geom"
+   ]
+  },
+  "080101_loc_sg_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "MultiPoint",
+   "oggetti_totali": 10908,
+   "oggetti_in_AOI": 8,
+   "campi": [
+    "loc_sg_id",
+    "loc_sg_bel",
+    "loc_sg_top",
+    "loc_sg_ty",
+    "loc_sg_dty",
+    "loc_sg_cl",
+    "loc_sg_dcl"
+   ]
+  },
+  "100101_sv_str_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 252,
+   "oggetti_in_AOI": 7,
+   "campi": [
+    "sv_str_id",
+    "sv_str_ty",
+    "sv_str_dty",
+    "sv_str_nom",
+    "sv_str_cl",
+    "sv_str_dcl"
+   ]
+  },
+  "100102_sv_fer_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 14,
+   "oggetti_in_AOI": 1,
+   "campi": [
+    "sv_fer_id",
+    "sv_fer_inf",
+    "sv_fer_din",
+    "sv_fer_fun",
+    "sv_fer_dfu",
+    "sv_fer_nom",
+    "sv_fer_cl",
+    "sv_fer_dcl"
+   ]
+  },
+  "100103_sv_por_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 1,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "sv_por_id",
+    "sv_por_nom",
+    "sv_por_cl",
+    "sv_por_dcl"
+   ]
+  },
+  "100104_sv_aer_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 2,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "sv_aer_id",
+    "sv_aer_nom",
+    "sv_aer_ty",
+    "sv_aer_dty",
+    "sv_aer_cl",
+    "sv_aer_dcl"
+   ]
+  },
+  "100105_sv_atr_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 2,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "sv_atr_id",
+    "sv_atr_ty",
+    "sv_atr_dty",
+    "sv_atr_cl",
+    "sv_atr_dcl"
+   ]
+  },
+  "100201_pe_uins_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 990,
+   "oggetti_in_AOI": 22,
+   "campi": [
+    "pe_uins_id",
+    "pe_uins_ty",
+    "pe_uins_dt",
+    "pe_uins_nm",
+    "pe_uins_cl",
+    "pe_uins_d0"
+   ]
+  },
+  "100302_cv_aes_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 70,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "cv_aes_id",
+    "cv_aes_ty",
+    "cv_aes_dty",
+    "cv_aes_nom",
+    "cv_aes_cl",
+    "cv_aes_dcl"
+   ]
+  },
+  "100303_cv_dis_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 6,
+   "oggetti_in_AOI": 0,
+   "campi": [
+    "cv_dis_id",
+    "cv_dis_nom",
+    "cv_dis_cl",
+    "cv_dis_dcl"
+   ]
+  },
+  "888801_arco_3d_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString Z",
+   "oggetti_totali": 12407,
+   "oggetti_in_AOI": 68,
+   "campi": [
+    "arco_3d_id",
+    "arco_3d_cl",
+    "arco_3d_d0"
+   ]
+  },
+  "888802_linee_el3d_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString Z",
+   "oggetti_totali": 19145,
+   "oggetti_in_AOI": 109,
+   "campi": [
+    "lin3d_id",
+    "arc3d_id",
+    "lin3d_brk",
+    "lin3d_ctr",
+    "lin3d_dct",
+    "lin3d_vis",
+    "lin3d_dvi",
+    "lsup3d_id",
+    "lsup3d_cl",
+    "lsup3d_dcl",
+    "rsup3d_id",
+    "rsup3d_cl",
+    "rsup3d_dcl",
+    "lin3d_cl",
+    "lin3d_dcl"
+   ]
+  },
+  "888803_sup_3d_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon Z",
+   "oggetti_totali": 3372,
+   "oggetti_in_AOI": 23,
+   "campi": [
+    "sup3d_id",
+    "agg_id",
+    "galler_id",
+    "ponte_id",
+    "sup3d_cl",
+    "sup3d_dcl"
+   ]
+  },
+  "888804_geo_lin_ss_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 107226,
+   "oggetti_in_AOI": 50,
+   "campi": [
+    "geolss_id",
+    "geo_l_ss",
+    "geo_l_ssdc",
+    "geo_l_cl",
+    "geo_l_dcl"
+   ]
+  },
+  "xxxx01_suolo_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "Polygon",
+   "oggetti_totali": 445366,
+   "oggetti_in_AOI": 5645,
+   "campi": [
+    "suolo_id",
+    "suolo_cl",
+    "suolo_dcl",
+    "suolo_or",
+    "suolo_dor"
+   ]
+  },
+  "xxxx02_lin_el_3003.shp": {
+   "crs": "EPSG:3003",
+   "geometria": "LineString",
+   "oggetti_totali": 1225839,
+   "oggetti_in_AOI": 14614,
+   "campi": [
+    "lin_el_id",
+    "lin_el_ctr",
+    "lin_el_dct",
+    "lin_el_cl",
+    "lin_el_dcl",
+    "lin_el_vis",
+    "lin_el_dvi",
+    "lin_el_lt",
+    "lin_el_dlt",
+    "brk_id",
+    "lin_el_or",
+    "lin_el_dor",
+    "lin_el_mod",
+    "lin_el_dmo",
+    "lfsuo_id",
+    "lfsuo_cl",
+    "lfsuo_dcl",
+    "lfsuo_or",
+    "rfsuo_id",
+    "rfsuo_cl",
+    "rfsuo_dcl",
+    "rfsuo_or"
+   ]
+  }
+ },
+ "iternet": {
+  "file_estratti": [
+   "iternet_c91b903823ae2a975c539cc65f880af9.zip",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/verso_di_percorrenza.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/classificazione_funzionale.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/GrafoFerro_20170102.7z",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/licenza_ccby_40.pdf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/GrafoStrade4.48.zip",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/ST_GrafoRT_rel1_7_13.pdf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/classificazione_strade.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/_contenuti_db_iternet_e_impostazioni_qgis_20150904_NON_AGGIORNATO.pdf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/stazioni.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/ST_esportazioneGrafoRT_rel1_7_12.pdf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/cippi.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/ALL_1_ITN_ST_grafo_ferroviario.v.1.5.6.pdf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/civici.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/scali.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/cls_rul.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/tipologia.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/numeri_civici.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/ST_acquisizioneGrafoRT_rel4_8.pdf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/iternet.qgs~",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/grafo_strade_percorrenza.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/iternet.qgs",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/nomi_strade.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/cippi_chilometrici.qml",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/cippi.dbf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/civici.prj",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/stazioni.dbf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/strade.dbf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/ferrovie.prj",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/elem_strad.dbf",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/loc.prj",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/scali.prj",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/elem_strad.shp",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/elem_strad.shx",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/strade.shp",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/stazioni.shx",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/estesa_amministrativa.prj",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/cippi.shx",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/elem_ferr.prj",
+   "iternet_c91b903823ae2a975c539cc65f880af9/iternet/shp/strade.shx"
+  ],
+  "layer": {
+   "cippi.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "Point",
+    "oggetti_totali": 10025,
+    "oggetti_in_AOI": 3,
+    "campi": [
+     "pk_uid",
+     "cod_pnt",
+     "cod_top",
+     "cod_ele",
+     "prog",
+     "comune",
+     "siglaprov",
+     "cod_com",
+     "cod_istat",
+     "dug",
+     "toponimo",
+     "indirizzo",
+     "scritta",
+     "x_cippo",
+     "y_cippo",
+     "data_agg",
+     "data_elab",
+     "tipostrada"
+    ]
+   },
+   "civici.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "Point",
+    "oggetti_totali": 1522752,
+    "oggetti_in_AOI": 6288,
+    "campi": [
+     "pk_uid",
+     "cod_civ",
+     "cod_top",
+     "cod_ele",
+     "cod_acc_es",
+     "passocarr",
+     "comune",
+     "siglaprov",
+     "cod_com",
+     "cod_istat",
+     "dug",
+     "toponimo",
+     "indirizzo",
+     "den_estesa",
+     "civico",
+     "esponente",
+     "colore",
+     "scritta",
+     "origine",
+     "x_from",
+     "y_from",
+     "x_civ",
+     "y_civ",
+     "dispari",
+     "prog"
+    ]
+   },
+   "elem_ferr.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "LineString",
+    "oggetti_totali": 3613,
+    "oggetti_in_AOI": 27,
+    "campi": [
+     "pk_uid",
+     "cod_ele",
+     "tip_ele",
+     "cod_reg",
+     "den_cnv",
+     "den_uff",
+     "gst",
+     "KM_INI",
+     "KM_FIN",
+     "nod_ini",
+     "t_gnzini",
+     "gnzini",
+     "x_gnzini",
+     "y_gnzini",
+     "nod_fin",
+     "t_gnzfin",
+     "gnzfin",
+     "x_gnzfin",
+     "y_gnzfin",
+     "cod_sta",
+     "cod_sed",
+     "cls_ali",
+     "tip_sca",
+     "sot_pas",
+     "num_bin"
+    ]
+   },
+   "elem_strad.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "LineString",
+    "oggetti_totali": 405341,
+    "oggetti_in_AOI": 1114,
+    "campi": [
+     "pk_uid",
+     "cod_ele",
+     "tip_ele",
+     "tipo_ele",
+     "cls_tcn",
+     "clstecfun",
+     "tip_gst",
+     "tip_gest",
+     "cod_gst",
+     "sot_pas",
+     "sotto_pass",
+     "cmp_ele",
+     "comp_ele",
+     "org",
+     "origine",
+     "cod_sta",
+     "stat_eserc",
+     "cod_sed",
+     "sede_ele",
+     "cls_lrg",
+     "cls_largh",
+     "nod_ini",
+     "t_gnzini",
+     "gnzini",
+     "nod_fin"
+    ]
+   },
+   "estesa_amministrativa.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "LineString",
+    "oggetti_totali": 130383,
+    "oggetti_in_AOI": 328,
+    "campi": [
+     "pk_uid",
+     "cod_reg",
+     "den_estesa",
+     "tip_prp",
+     "tipo_prop",
+     "cod_prp",
+     "cls_amm",
+     "classe_amm",
+     "den_breve",
+     "data_agg",
+     "data_elab",
+     "tipostrada"
+    ]
+   },
+   "ferrovie.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "LineString",
+    "oggetti_totali": 46,
+    "oggetti_in_AOI": 6,
+    "campi": [
+     "pk_uid",
+     "cod_reg",
+     "den_cnv",
+     "den_uff",
+     "gst",
+     "KM_INI",
+     "KM_FIN",
+     "data_agg",
+     "data_elab"
+    ]
+   },
+   "loc.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "Point",
+    "oggetti_totali": 81268,
+    "oggetti_in_AOI": 6,
+    "campi": [
+     "pk_uid",
+     "cod_loc",
+     "cod_com",
+     "cod_istat",
+     "siglaprov",
+     "comune",
+     "toponimo",
+     "fonte",
+     "est",
+     "nord",
+     "long",
+     "lat"
+    ]
+   },
+   "scali.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "Point",
+    "oggetti_totali": 19,
+    "oggetti_in_AOI": 0,
+    "campi": [
+     "pk_uid",
+     "cod_sca",
+     "nome",
+     "cf",
+     "cod_gnz",
+     "x_sca",
+     "y_sca",
+     "tip_gnz",
+     "gnz",
+     "org",
+     "origine",
+     "data_agg",
+     "data_elab"
+    ]
+   },
+   "stazioni.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "Point",
+    "oggetti_totali": 258,
+    "oggetti_in_AOI": 1,
+    "campi": [
+     "pk_uid",
+     "cod_stz",
+     "den_uff",
+     "cod_gnz",
+     "x_stz",
+     "y_stz",
+     "tip_gnz",
+     "gnz",
+     "org",
+     "origine",
+     "indirizzo",
+     "comune",
+     "provincia",
+     "gestore",
+     "categoria",
+     "cod_sta",
+     "data_agg",
+     "data_elab"
+    ]
+   },
+   "strade.shp": {
+    "crs": "EPSG:3003",
+    "geometria": "LineString",
+    "oggetti_totali": 137416,
+    "oggetti_in_AOI": 330,
+    "campi": [
+     "pk_uid",
+     "cod_top",
+     "comune",
+     "siglaprov",
+     "cod_com",
+     "cod_istat",
+     "dug",
+     "toponimo",
+     "indirizzo",
+     "cod_reg",
+     "tip_prp",
+     "tipo_prop",
+     "cod_prp",
+     "cls_amm",
+     "classe_amm",
+     "den_estesa",
+     "den_breve",
+     "cent_x",
+     "cent_y",
+     "t_gnzini",
+     "gnzini",
+     "nod_fin",
+     "t_gnzfin",
+     "gnzfin",
+     "lung"
+    ]
+   }
+  }
+ }
+}

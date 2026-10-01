@@ -115,7 +115,7 @@ Corridoio da scegliere al sopralluogo, sul percorso fra la fermata e la scuola c
 
 Input:
 - campioni salvati in `docs/audit/`: circa 44 MB in git;
-- da scaricare in T03: GTFS 185 MB (scade il 20/10, va congelato), DBT10K Pisa 411 MB, grafo Iter.net 460 MB, estratto OSM regionale, tile DSM 1 m per l'area pilota;
+- da scaricare in T03: GTFS 185 MB (scade il 21/10, congelato in T03), DBT10K Pisa 411 MB, grafo Iter.net 460 MB, estratto OSM regionale, tile DSM 1 m per l'area pilota;
 - tutto gestibile in locale, nessuna infrastruttura necessaria.
 
 Stima, in giornate equivalenti, rispetto a PIANO.md sezione 6:

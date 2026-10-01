@@ -1,0 +1,44 @@
+{
+ "source_id": "src_rt_dtm10",
+ "title": "DTM 10 m (WMS morfologia, surrogato del download ufficiale)",
+ "publisher": "Regione Toscana",
+ "dataset_url": "http://www502.regione.toscana.it/geoscopio/servizi/wms/MORFOLOGIA.htm",
+ "provenance": {
+  "origin": "ogc_service",
+  "note": "SURROGATO: raster letto via GetMap, non il download ufficiale"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "http://www502.regione.toscana.it/geoscopio/servizi/wms/MORFOLOGIA.htm",
+  "evidence_note": "Metadato regionale (audit edifici).",
+  "identifier": "CC-BY-4.0",
+  "reserve_note": "Letto via WMS come surrogato; datum verticale non dichiarato."
+ },
+ "content_period": {
+  "note": "epoca del DTM 10 m non dichiarata dal servizio"
+ },
+ "crs": {
+  "declared": "EPSG:7791",
+  "vertical_datum": "not_declared"
+ },
+ "units": {
+  "value": "m"
+ },
+ "schema_fields": [
+  "band1"
+ ],
+ "checks": [
+  {
+   "name": "raster ritagliato su AOI",
+   "result": "pass",
+   "detail": "196 x 214 pixel da 10 m"
+  },
+  {
+   "name": "nodata",
+   "result": "warn",
+   "detail": "0,51% dei pixel con -9999 (mascherati)"
+  }
+ ],
+ "resource_url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia"
+}

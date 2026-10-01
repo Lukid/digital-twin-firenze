@@ -1,0 +1,61 @@
+{
+ "source_id": "src_osm_pisa",
+ "title": "OpenStreetMap, estratto regionale Centro Italia (ritagliato su Z2 + 500 m)",
+ "publisher": "OpenStreetMap contributors, estratto di un distributore di estratti OSM",
+ "dataset_url": "https://download.geofabrik.de/europe/italy/centro.html",
+ "provenance": {
+  "origin": "crowdsourced",
+  "note": "estratto locale al posto di Overpass (instabile); ritaglio in normalizzazione"
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://www.openstreetmap.org/copyright",
+  "evidence_note": "Dati OpenStreetMap sotto ODbL.",
+  "identifier": "ODbL-1.0"
+ },
+ "content_period": {
+  "note": "stato di OpenStreetMap al 2026-09-30 (timestamp dell'estratto), senza data di rilievo per oggetto"
+ },
+ "crs": {
+  "declared": "EPSG:4326",
+  "vertical_datum": "not_declared",
+  "note": "lon/lat trattati come RDN2008 geografico (scarto misurato in crs_check.json, voce B)"
+ },
+ "units": {
+  "length_m": "m",
+  "area_m2": "m2"
+ },
+ "schema_fields": [
+  "id",
+  "highway",
+  "sidewalk",
+  "crossing",
+  "entrance",
+  "building",
+  "height"
+ ],
+ "checks": [
+  {
+   "name": "strade in AOI",
+   "result": "pass",
+   "detail": "2251 tratti"
+  },
+  {
+   "name": "nodi con tag in AOI",
+   "result": "pass",
+   "detail": "4880 nodi"
+  },
+  {
+   "name": "edifici in AOI",
+   "result": "pass",
+   "detail": "2879 edifici"
+  },
+  {
+   "name": "altezze edifici (tag height) compilate",
+   "result": "warn",
+   "detail": "campo quasi vuoto, vedi audit edifici"
+  }
+ ],
+ "resource_url": "https://download.geofabrik.de/europe/italy/centro-260930.osm.pbf"
+}

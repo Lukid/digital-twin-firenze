@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_rt_dbt10k_pisa_20261001",
+ "source_id": "src_rt_dbt10k_pisa",
+ "retrieved_at": "2026-10-01T15:30:04Z",
+ "bytes": 411509203,
+ "sha256": "63bb7e264dafd87351c960af5fe546f103f71b5cfc421896530434dadac0b14f",
+ "local_path": "data/raw/rt_dbt10k_pisa/20261001/DBT10K_050_PISA_2010_2010.7z",
+ "status": "ok",
+ "stored": false,
+ "url": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_050_PISA_2010_2010.7z",
+ "media_type": "application/x-7z-compressed",
+ "license_state": "clear",
+ "content_period": {
+  "note": "dati 2010, scala 1:10.000; file del 2025-10-10 (Last-Modified)"
+ }
+}

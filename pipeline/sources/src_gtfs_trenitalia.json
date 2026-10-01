@@ -1,0 +1,43 @@
+{
+ "source_id": "src_gtfs_trenitalia",
+ "title": "GTFS Trenitalia (servizio regionale toscano)",
+ "publisher": "Regione Toscana / Trenitalia",
+ "dataset_url": "https://dati.toscana.it/dataset/rt-oraritb",
+ "provenance": {
+  "origin": "official_download"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://dati.toscana.it/dataset/rt-oraritb",
+  "evidence_note": "Stesso dataset del catalogo regionale (CC BY).",
+  "identifier": "cc-by",
+  "reserve_note": "Condizioni specifiche del feed non trovate: vale solo il campo del catalogo."
+ },
+ "content_period": {
+  "start": "2026-01-15",
+  "end": "2026-12-12",
+  "note": "minimo e massimo di calendar_dates.txt (nessun feed_info.txt); risorsa aggiornata il 2026-01-15"
+ },
+ "crs": {
+  "declared": "EPSG:4326",
+  "vertical_datum": "not_declared"
+ },
+ "units": {
+  "stop_lat": "deg",
+  "stop_lon": "deg",
+  "trips_on_ref_date": "count"
+ },
+ "schema_fields": [
+  "stop_id",
+  "stop_name"
+ ],
+ "checks": [
+  {
+   "name": "stazioni in AOI",
+   "result": "pass",
+   "detail": "1 stazione (Pisa Centrale)"
+  }
+ ],
+ "resource_url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/4f85393b-357d-443d-8378-65de4198505f/download/trenitalia.gtfs"
+}

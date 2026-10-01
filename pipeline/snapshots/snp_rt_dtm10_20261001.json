@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_rt_dtm10_20261001",
+ "source_id": "src_rt_dtm10",
+ "retrieved_at": "2026-10-01T15:39:28Z",
+ "bytes": 168322,
+ "sha256": "4d6a4f8c1cc9ff8a87b30b4c08ba3b15aa68659db78f483eb6a06e8e33b7b36b",
+ "local_path": "data/raw/rt_dtm10/20261001/rt_dtm10_10m.tif",
+ "status": "ok",
+ "stored": false,
+ "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=rt_morfologia.iddtm.10m.rt&STYLES=&CRS=EPSG:7791&BBOX=611559.81,4839437.71,613699.81,4841397.71&WIDTH=214&HEIGHT=196&FORMAT=image/tiff",
+ "media_type": "image/tiff",
+ "license_state": "clear_with_reserve",
+ "content_period": {
+  "note": "letto via WMS (surrogato del download ufficiale, che richiede la Cartoteca regionale); data di acquisizione nei metadati del layer"
+ }
+}

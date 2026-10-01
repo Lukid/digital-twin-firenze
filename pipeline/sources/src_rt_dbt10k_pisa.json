@@ -1,0 +1,44 @@
+{
+ "source_id": "src_rt_dbt10k_pisa",
+ "title": "DB topografico regionale 1:10.000, foglio Pisa (2010)",
+ "publisher": "Regione Toscana",
+ "dataset_url": "https://dati.toscana.it/dataset/dbt10k-li-pi-pt-po-si",
+ "provenance": {
+  "origin": "official_download"
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://dati.toscana.it/dataset/dbt10k-li-pi-pt-po-si",
+  "evidence_note": "Catalogo (CKAN): Creative Commons Attribution; il pacchetto contiene licenza_dbt10k_ccby40.pdf.",
+  "identifier": "CC-BY-4.0"
+ },
+ "content_period": {
+  "start": "2010-01-01",
+  "end": "2010-12-31",
+  "note": "dati 2010, scala 1:10.000"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "shapefile 3003 con Z"
+ },
+ "units": {},
+ "schema_fields": [
+  "un_vol_id",
+  "un_vol_av"
+ ],
+ "checks": [
+  {
+   "name": "ispezionato in AOI",
+   "result": "pass",
+   "detail": "vedi ispezione_big.json"
+  },
+  {
+   "name": "non normalizzato in data/norm",
+   "result": "warn",
+   "detail": "ispezione soltanto (non bloccante, non richiesto)"
+  }
+ ],
+ "resource_url": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_050_PISA_2010_2010.7z"
+}

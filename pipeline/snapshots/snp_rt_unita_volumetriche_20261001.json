@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_rt_unita_volumetriche_20261001",
+ "source_id": "src_rt_unita_volumetriche",
+ "retrieved_at": "2026-10-01T15:39:26Z",
+ "bytes": 8194161,
+ "sha256": "0d2397b5d1195b278edf8a3dceac9f81ed9039a48842f7dca3be39d17ec86223",
+ "local_path": "data/raw/rt_unita_volumetriche/20261001/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=rt_edif.unitavolumetriche&SRSNAME=urn:ogc:def:crs:EPSG::7791&BBOX=611559.81,4839437.71,613703.67,4841400.77,urn:ogc:def:crs:EPSG::7791",
+ "media_type": "application/gml+xml",
+ "license_state": "clear_with_reserve",
+ "content_period": {
+  "note": "volo 2010 (campo anno nei dati); il servizio non dichiara la data di aggiornamento"
+ }
+}

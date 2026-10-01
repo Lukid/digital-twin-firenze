@@ -1,0 +1,56 @@
+{
+ "source_id": "src_gtfs_at_toscana",
+ "title": "GTFS Autolinee Toscane (trasporto pubblico locale)",
+ "publisher": "Regione Toscana / Autolinee Toscane",
+ "dataset_url": "https://dati.toscana.it/dataset/rt-oraritb",
+ "provenance": {
+  "origin": "official_download"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://dati.toscana.it/dataset/rt-oraritb",
+  "evidence_note": "Campo license_id del catalogo regionale (CKAN, letto con gli strumenti ckan): 'Creative Commons Attribution'.",
+  "identifier": "cc-by",
+  "reserve_note": "Le condizioni specifiche del feed non sono state trovate: vale solo il campo del catalogo."
+ },
+ "content_period": {
+  "start": "2026-10-01",
+  "end": "2026-10-21",
+  "note": "feed_start_date e feed_end_date da feed_info.txt; il feed scade il 21 ottobre 2026"
+ },
+ "crs": {
+  "declared": "EPSG:4326",
+  "vertical_datum": "not_declared",
+  "note": "lat/lon come da specifica GTFS"
+ },
+ "units": {
+  "stop_lat": "deg",
+  "stop_lon": "deg",
+  "trips_on_ref_date": "count"
+ },
+ "schema_fields": [
+  "stop_id",
+  "stop_code",
+  "stop_name",
+  "wheelchair_boarding"
+ ],
+ "checks": [
+  {
+   "name": "fermate in AOI",
+   "result": "pass",
+   "detail": "92 fermate"
+  },
+  {
+   "name": "wheelchair_boarding valorizzato",
+   "result": "warn",
+   "detail": "vuoto sulle fermate del feed (come da audit)"
+  },
+  {
+   "name": "calendar.txt con giorni attivi",
+   "result": "warn",
+   "detail": "servizio in calendar_dates: le corse del giorno si ricavano da li'"
+  }
+ ],
+ "resource_url": "https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs"
+}

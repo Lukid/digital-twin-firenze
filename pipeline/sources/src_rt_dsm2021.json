@@ -1,0 +1,47 @@
+{
+ "source_id": "src_rt_dsm2021",
+ "title": "DSM 1 m 2021 (WMS morfologia, surrogato del download ufficiale)",
+ "publisher": "Regione Toscana",
+ "dataset_url": "http://www502.regione.toscana.it/geoscopio/servizi/wms/MORFOLOGIA.htm",
+ "provenance": {
+  "origin": "ogc_service",
+  "note": "SURROGATO: raster letto via GetMap, non il download ufficiale (Cartoteca regionale)"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://www502.regione.toscana.it/geoscopio/geometa/html/r_toscan_c5c907bf-50cc-4a76-8787-abc547509c8d.htm",
+  "evidence_note": "Metadato del layer DSM 2021 (audit edifici).",
+  "identifier": "CC-BY-4.0",
+  "reserve_note": "Letto via WMS come surrogato: valori e pixel possono differire dal download ufficiale; datum verticale non dichiarato."
+ },
+ "content_period": {
+  "start": "2021-01-01",
+  "end": "2021-12-31",
+  "note": "DSM 2021; data esatta di acquisizione nei metadati del layer"
+ },
+ "crs": {
+  "declared": "EPSG:7791",
+  "vertical_datum": "not_declared",
+  "note": "GetMap richiesto in EPSG:7791"
+ },
+ "units": {
+  "value": "m"
+ },
+ "schema_fields": [
+  "band1"
+ ],
+ "checks": [
+  {
+   "name": "raster ritagliato su AOI",
+   "result": "pass",
+   "detail": "1963 x 2144 pixel da 1 m, nessun nodata"
+  },
+  {
+   "name": "datum verticale",
+   "result": "warn",
+   "detail": "non dichiarato"
+  }
+ ],
+ "resource_url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia"
+}

@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_sit_edifici_scolastici_20261001",
+ "source_id": "src_sit_edifici_scolastici",
+ "retrieved_at": "2026-10-01T15:39:31Z",
+ "bytes": 28263,
+ "sha256": "6c99fcb794a0df4889ff4d6815ecb09da4383c32672f7bfb76f58ddba012eceb",
+ "local_path": "data/raw/sit_edifici_scolastici/20261001/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/edifici_scolastici/FeatureServer/4/query?where=1%3D1&geometry=10.384496031494045,43.69925173047817,10.411508848378325,43.71724722851131&inSR=4326&outSR=3003&f=geojson",
+ "media_type": "application/geo+json",
+ "license_state": "unproven",
+ "content_period": {
+  "note": "stato del servizio alla data di scarico (data di modifica solo se dichiarata nel layer)"
+ }
+}
