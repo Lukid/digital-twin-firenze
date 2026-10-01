@@ -1,6 +1,6 @@
 # ADR-T02: contratti dati del pilota Z2
 
-Stato: proposta, 1 ottobre 2026. Redatto dall'agente T02 e salvato dall'integratore. Controllo: `contracts/.venv/bin/python contracts/validate.py` (31 validi passano, 10 non validi respinti).
+Stato: approvato dall'utente il 1 ottobre 2026 (EPSG:7791 e stato `outside_model` inclusi). Redatto dall'agente T02 e salvato dall'integratore. Controllo: `contracts/.venv/bin/python contracts/validate.py` (31 validi passano, 10 non validi respinti).
 
 ## Decisioni
 
@@ -29,9 +29,7 @@ Stato: proposta, 1 ottobre 2026. Redatto dall'agente T02 e salvato dall'integrat
 
 ## Punti aperti
 
-1. Approvare EPSG:7791 al posto di 6707.
 2. Nessun GIS desktop nel test dei lettori: aprire il campione in un GIS desktop prima di T08.
-3. Confermare `outside_model` come quinto stato.
 4. Scarto WGS84/RDN2008 e accuratezza della trasformazione da EPSG:3003: da misurare in T03 con punti noti.
 5. Datum verticale da confermare con la Regione.
 6. GeoPackage non prodotto (mancano strumenti locali): in T03 se serve.
