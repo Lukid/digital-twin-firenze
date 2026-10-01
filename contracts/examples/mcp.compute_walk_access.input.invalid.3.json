@@ -1,0 +1,19 @@
+{
+ "baseline_id": "bas_z2_20261001",
+ "origins": {
+  "kind": "civici_sit_z2"
+ },
+ "destination_ids": [
+  "dst_school_piee82101p"
+ ],
+ "entrance_ids": [
+  "ingresso principale"
+ ],
+ "profile": {
+  "speed_m_s": 1.2,
+  "crossing_penalty_s": -5
+ },
+ "thresholds_min": [
+  10
+ ]
+}

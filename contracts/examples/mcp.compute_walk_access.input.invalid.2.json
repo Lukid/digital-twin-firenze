@@ -1,0 +1,16 @@
+{
+ "baseline_id": "bas_z2_20261001",
+ "origins": {
+  "kind": "civici_sit_z2"
+ },
+ "destination_ids": [
+  "dst_school_piee82101p"
+ ],
+ "profile": {
+  "speed_m_s": 0.8,
+  "stairs": "maybe"
+ },
+ "thresholds_min": [
+  10
+ ]
+}
