@@ -62,6 +62,18 @@ Net7 gestisce dati.toscana.it. Verifica del 1 ottobre 2026 con il server MCP CKA
 
 Idea: costruire la scena e i livelli partendo dal catalogo, con il server MCP CKAN per scoperta e ispezione e i nostri adattatori per scaricare, controllare e versionare. Dove la fonte non è su CKAN (geoportale, SIT, archivio ARPAT), registrarlo come lacuna del catalogo. Il gemello diventa anche un banco di prova del portale: quali dati servono a una città e non ci sono, con proposta di pubblicazione o di harvesting.
 
+### Confronto fra territori sul catalogo (1 ottobre 2026)
+
+Livelli chiave per scena e analisi cercati su dati.toscana.it:
+
+- Provincia di Pisa (69 dataset): livelli del piano territoriale, vincolo monumentale, musei, teatri, strutture ricettive, edifici scolastici, strade provinciali, incidenti 2005-2010. Utile come contesto; niente edifici, alberi o civici urbani.
+- Comune di Firenze (1.992): censimento alberi pubblici aggiornato ogni giorno, siti alberi da rilievo celerimetrico, DTM e DSM LiDAR 2023 (anche 2017 e 2007), civici, censimento delle barriere architettoniche, percorsi pedonali Walking City, rifugi climatici (spazi ombreggiati da alberi per oltre il 70%). Copre quasi tutte le domande del progetto, ma è una città grande: il pilota sarebbe un quartiere.
+- Comune di Siena (328, circa 53.000 abitanti): edificato e edificato minore, civici e toponimi, area stradale, aree di circolazione pedonale, verde urbano, destinazione d'uso catastale. Manca un censimento degli alberi (si userebbe l'altezza delle chiome da CHM).
+- Comune di Arezzo (983): edifici, civici, accessi agli edifici, area stradale, aree di circolazione pedonale, periodizzazione degli edifici, DTM a 5 m. Manca un censimento degli alberi.
+- Comune di Pisa: nessun dataset su dati.toscana.it.
+
+Riuso del lavoro fatto se si cambia territorio: contratti, servizio e MCP, motori di accessibilità, ombre e scenari, scena e verifica NL si riusano; vanno rifatti acquisizione, rete, ingressi, edifici, verde e protocollo di campo (T03-T05, T11).
+
 ## 6. Cosa riprendere e cosa no
 
 Riprendere:
