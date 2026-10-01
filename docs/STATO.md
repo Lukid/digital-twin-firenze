@@ -4,7 +4,7 @@ Aggiornato al 1 ottobre 2026, fine della prima sessione di lavoro. Punto di ripa
 
 ## In una riga
 
-Pilota Z2 (Stazione / Sant'Antonio / Corso Italia): dati, rete, accessibilità, ombre, scenari, scena e server MCP funzionano in locale e hanno test; manca tutta la verifica sul posto (T11), la verifica delle domande in linguaggio naturale (T12) e la demo (T13).
+Pilota Z2 (Stazione / Sant'Antonio / Corso Italia): dati, rete, accessibilità, ombre, scenari, scena e server MCP funzionano in locale e hanno test; verifica delle domande in linguaggio naturale fatta (T12); manca la verifica sul posto (T11) e la demo (T13).
 
 ## Fatto (ogni consegna ha un REPORT.md e un test rieseguito dall'integratore)
 
@@ -22,6 +22,7 @@ Pilota Z2 (Stazione / Sant'Antonio / Corso Italia): dati, rete, accessibilità, 
 | T09 ombre | `shadow/` | `pipeline/.venv/bin/python shadow/test_ombre.py` |
 | T10 scenari | `scenarios/` | `bash scenarios/run.sh` |
 | T11 preparazione | `fieldwork/` (protocollo, 185 punti, scheda stampabile) | `python3 fieldwork/test_importa.py` |
+| T12 verifica NL | `nl/` (25 domande, registro, replay, confronto con la mappa) | `service/.venv/bin/python nl/test_nl.py` |
 
 Anteprima storica: `preview/` (superata da `scene/`).
 
@@ -42,7 +43,7 @@ Anteprima storica: `preview/` (superata da `scene/`).
 
 ## Risultati principali (non validati sul posto)
 
-- Accessibilità a 1,2 m/s su 2.224 civici: Battisti 52,5% entro 10 min (p50 9,7 min); Pellico 66,3%. 21 civici vietati (accesso privato), 55 con dati insufficienti.
+- Accessibilità a 1,2 m/s su 2.224 civici: Battisti 52,5% entro 10 min (p50 9,7 min); fermata Pellico 66,3%. 21 civici vietati (accesso privato), 55 con dati insufficienti.
 - Ombra su R01 Pellico → Battisti, 15 settembre: 91% in ombra all'ingresso, 46% all'uscita (12:30-13:30). Il lato del marciapiede cambia fino a 20 punti: è l'incertezza dominante.
 - Scenari: filare S1 -0,58 min di sole a mezzogiorno su R01 (intervallo fino a -0,12), quasi nullo sul lato opposto; pensilina S2 utile solo sull'area di attesa (ombra da 0 a 31%).
 - La scelta dell'ingresso della scuola è il parametro che sposta di più l'accessibilità.
@@ -57,7 +58,7 @@ Anteprima storica: `preview/` (superata da `scene/`).
 
 ## Prossimi passi
 
-1. **T12 verifica NL**: collegare il server MCP del progetto (`dt-pisa`, diverso dal server CKAN del catalogo) e provare almeno 12 domande (concrete, ambigue, fuori capacità), con replay e confronto con mappa e manifest. Comando di collegamento in `service/REPORT.md`.
+1. **Difetti aperti di T12** (`nl/REPORT.md`): elenco scenari, ombra per orario, ora ambigua, più destinazioni, conteggio civici, replay via MCP. Da decidere quali fare prima della demo.
 2. **T11 validazione**: sopralluogo con `fieldwork/scheda.html`, import esiti, correzioni separate dalle verifiche, report con tolleranze.
 3. **T13 demo e consegna**: dopo T11 e T12.
 4. Eventuale T14 (chat web) solo dopo decisione D09.

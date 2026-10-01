@@ -1,0 +1,448 @@
+{
+ "manifest_id": "man_0e5ab09bb4863155",
+ "job_id": "job_0e5ab09bb4863155",
+ "tool": "compare_scenarios",
+ "aoi_id": "aoi_z2",
+ "baseline_id": "bas_z2_20261001",
+ "datasets": [
+  {
+   "snapshot_id": "snp_gtfs_at_toscana_20261001",
+   "source_id": "src_gtfs_at_toscana",
+   "sha256": "2c00c8a604c60fb72c409715dcc8f2f20ef151f0fe389c5a3d08db2f217102c7",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_osm_pisa_20261001",
+   "source_id": "src_osm_pisa",
+   "sha256": "69d65bfc52e0daf14ccd57fee67216af9b91d747cdb79841ec2337a2f2b086f5",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_rt_dbt10k_pisa_20261001",
+   "source_id": "src_rt_dbt10k_pisa",
+   "sha256": "63bb7e264dafd87351c960af5fe546f103f71b5cfc421896530434dadac0b14f",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_rt_dsm2021_20261001",
+   "source_id": "src_rt_dsm2021",
+   "sha256": "88ef7aed9a0890777788abb958b118fb5268a26f79c26167b826b25fe59ec4c2",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_rt_dtm10_20261001",
+   "source_id": "src_rt_dtm10",
+   "sha256": "4d6a4f8c1cc9ff8a87b30b4c08ba3b15aa68659db78f483eb6a06e8e33b7b36b",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_rt_unita_volumetriche_20261001",
+   "source_id": "src_rt_unita_volumetriche",
+   "sha256": "0d2397b5d1195b278edf8a3dceac9f81ed9039a48842f7dca3be39d17ec86223",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_sit_civici_20261001",
+   "source_id": "src_sit_civici",
+   "sha256": "b1acea5703362bc497b8df8afe374ef6864cbd8ad470dd976973fd1be43af915",
+   "license_state": "unproven"
+  }
+ ],
+ "params": {
+  "scenario_ids": [
+   "scn_z2_s1_filare_r01",
+   "scn_z2_s2_pensilina_pellico"
+  ],
+  "scenario_sha256": [
+   "77b38cc2e7fa169b8ef0f8e7b928d9d2daec439ffe3c3eb198f278de5b65f7bd",
+   "92ebb30ccfdeae8dc30a5939a105f0ab448d0b7c9adec045a4ef72b83c75c088"
+  ],
+  "with_variants": true,
+  "method_version": "0.1.0",
+  "ombre_version": "0.2.0",
+  "baseline_record_sha256": "b58d11f53024837f7f4acf289d615b20135f9eb3024d30805a37a592c07f49a7"
+ },
+ "method": {
+  "name": "scenario_comparison",
+  "version": "0.1.0",
+  "description": "Delta accoppiati scenario meno baseline su condizioni comuni (stessi ricevitori, date, fasce, passi, geometrie), con intervalli da altezze e lato; nessun punteggio unico."
+ },
+ "crs": "EPSG:7791",
+ "vertical_datum_status": "not_confirmed",
+ "timezone": "Europe/Rome",
+ "timing": {
+  "started_at": "2026-10-01T20:33:24Z",
+  "finished_at": "2026-10-01T20:33:25Z",
+  "duration_s": 0.67
+ },
+ "metrics": [
+  {
+   "metric_id": "sc1_r01_ingresso_mattina_sun_min",
+   "label": "Delta sun_min R01",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, R01, 2026-09-15, fascia ingresso_mattina",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_ingresso_mattina_shade",
+   "label": "Delta shade R01",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, R01, 2026-09-15, fascia ingresso_mattina",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_uscita_mezzogiorno_sun_min",
+   "label": "Delta sun_min R01",
+   "value": -0.583,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, R01, 2026-09-15, fascia uscita_mezzogiorno",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.583,
+    "high": -0.116,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_uscita_mezzogiorno_shade",
+   "label": "Delta shade R01",
+   "value": 0.0555,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, R01, 2026-09-15, fascia uscita_mezzogiorno",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0115,
+    "high": 0.0555,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_uscita_pomeriggio_sun_min",
+   "label": "Delta sun_min R01",
+   "value": -0.199,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, R01, 2026-09-15, fascia uscita_pomeriggio",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.573,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_uscita_pomeriggio_shade",
+   "label": "Delta shade R01",
+   "value": 0.0218,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, R01, 2026-09-15, fascia uscita_pomeriggio",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0573,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_giornata_8_18_sun_min",
+   "label": "Delta sun_min R01",
+   "value": -0.348,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, R01, 2026-09-15, fascia giornata_8_18",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.378,
+    "high": -0.191,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_giornata_8_18_shade",
+   "label": "Delta shade R01",
+   "value": 0.0334,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, R01, 2026-09-15, fascia giornata_8_18",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0183,
+    "high": 0.0367,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_attesa_ingresso_mattina_shade",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, area di attesa Pellico, fascia ingresso_mattina",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_attesa_uscita_mezzogiorno_shade",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, area di attesa Pellico, fascia uscita_mezzogiorno",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_attesa_uscita_pomeriggio_shade",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, area di attesa Pellico, fascia uscita_pomeriggio",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc1_attesa_giornata_8_18_shade",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s1_filare_r01, area di attesa Pellico, fascia giornata_8_18",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_ingresso_mattina_sun_min",
+   "label": "Delta sun_min R01",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, R01, 2026-09-15, fascia ingresso_mattina",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_ingresso_mattina_shade",
+   "label": "Delta shade R01",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, R01, 2026-09-15, fascia ingresso_mattina",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_uscita_mezzogiorno_sun_min",
+   "label": "Delta sun_min R01",
+   "value": -0.008,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, R01, 2026-09-15, fascia uscita_mezzogiorno",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.008,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_uscita_mezzogiorno_shade",
+   "label": "Delta shade R01",
+   "value": 0.0008,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, R01, 2026-09-15, fascia uscita_mezzogiorno",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0009,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_uscita_pomeriggio_sun_min",
+   "label": "Delta sun_min R01",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, R01, 2026-09-15, fascia uscita_pomeriggio",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.055,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_uscita_pomeriggio_shade",
+   "label": "Delta shade R01",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, R01, 2026-09-15, fascia uscita_pomeriggio",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0054,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_giornata_8_18_sun_min",
+   "label": "Delta sun_min R01",
+   "value": -0.006,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, R01, 2026-09-15, fascia giornata_8_18",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.014,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_giornata_8_18_shade",
+   "label": "Delta shade R01",
+   "value": 0.0006,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, R01, 2026-09-15, fascia giornata_8_18",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0015,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_attesa_ingresso_mattina_shade",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, area di attesa Pellico, fascia ingresso_mattina",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_attesa_uscita_mezzogiorno_shade",
+   "label": "Delta ombra area di attesa",
+   "value": 0.3149,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, area di attesa Pellico, fascia uscita_mezzogiorno",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.3149,
+    "high": 0.3149,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_attesa_uscita_pomeriggio_shade",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0137,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, area di attesa Pellico, fascia uscita_pomeriggio",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0137,
+    "high": 0.0137,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  },
+  {
+   "metric_id": "sc2_attesa_giornata_8_18_shade",
+   "label": "Delta ombra area di attesa",
+   "value": 0.1244,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_z2_s2_pensilina_pellico, area di attesa Pellico, fascia giornata_8_18",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.1244,
+    "high": 0.1244,
+    "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"
+   }
+  }
+ ],
+ "limits": [
+  {
+   "code": "dichiarazione_1",
+   "text": "I pesi dei tratti sono numeri di civici SIT (punti d'indirizzo che passano dall'arco nel cammino minimo): non sono persone e non esistono flussi pedonali misurati."
+  },
+  {
+   "code": "dichiarazione_2",
+   "text": "Baseline = edifici documentati (alberi esistenti esclusi, inventario stimato e incompleto): un albero nuovo non è confrontato con la chioma esistente nello stesso punto."
+  },
+  {
+   "code": "dichiarazione_3",
+   "text": "Ombra geometrica binaria: nessuna conversione in gradi, comfort, salute o domanda pedonale; nessun anno di crescita."
+  },
+  {
+   "code": "dichiarazione_4",
+   "text": "Contesto con alberi esistenti: ombra unione, quindi il beneficio di un albero nuovo può solo calare o restare rispetto ai soli edifici; alberi esistenti stimati per classe, inventario incompleto."
+  },
+  {
+   "code": "dichiarazione_5",
+   "text": "Percorsi sull'asse della rete: il lato del marciapiede è ignoto, l'intervallo sul lato (R01 spostata di 3 m) è riportato accanto al delta."
+  },
+  {
+   "code": "dichiarazione_6",
+   "text": "Dimensioni degli interventi dichiarate come ipotesi di classe scenario; fattibilità (sottoservizi, spazio radicale, proprietà del suolo, permessi, specie) ignota per tutti."
+  },
+  {
+   "code": "dichiarazione_7",
+   "text": "Nessuna validazione locale: risultati not_validated_locally."
+  }
+ ],
+ "validation_status": "not_validated_locally",
+ "assets": []
+}

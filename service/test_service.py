@@ -32,7 +32,7 @@ assert core.run_tool("get_job_status", {"job_id": r1["job_id"]})["status"] == "s
 assert err_code(core.run_tool("get_job_status", {"job_id": "job_0000000000000000"})) == "unknown_id"
 
 # 2. input non valido respinto prima del calcolo
-for bad in ({**A, "sql": "select 1"}, {**A, "profile": {"speed_m_s": 12}}, {**A, "profile": {"speed_m_s": 1.2, "stairs": "forse"}}, {**A, "thresholds_min": []},
+for bad in ({**A, "sql": "select 1"}, {**A, "profile": {"speed_m_s": 12}}, {**A, "profile": {"speed_m_s": 1.2, "stairs": "forse"}}, {**A, "thresholds_min": []}, {**A, "thresholds_min": [10, 10.0]},
             {**A, "entrance_ids": ["ingresso principale"]}, {k: v for k, v in A.items() if k != "profile"}):
     assert err_code(core.run_tool("compute_walk_access", bad)) == "invalid_params", bad
 assert err_code(core.run_tool("compute_walk_access", {**A, "entrance_ids": ["ent_osm_n5278157573"]})) == "invalid_params"   # ingresso di un'altra destinazione

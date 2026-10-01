@@ -146,8 +146,8 @@ def _paths(job_id):
 
 
 def _read_job(job_id, what):
-    """Cerca prima nella cache del servizio, poi tra i manifest già prodotti da analysis/ (T06)."""
-    for d in (CACHE, ROOT / "analysis/manifest", ROOT / "shadow/manifest"):
+    """Cerca prima nella cache del servizio, poi tra i manifest versionati di analysis/ (T06), shadow/ (T09) e nl/ (T12)."""
+    for d in (CACHE, ROOT / "analysis/manifest", ROOT / "shadow/manifest", ROOT / "nl/manifest"):
         p = d / f"{job_id}.{what}.json"
         if p.exists(): return _load(p)
     return None
