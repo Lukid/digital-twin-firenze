@@ -28,20 +28,24 @@ Anteprima storica: `preview/` (superata da `scene/`).
 
 ## Decisioni prese dall'utente
 
-- Pilota Z2 (D03), CRS EPSG:7791, stato di accessibilità `outside_model` incluso.
-- Motore grafico: libreria cartografica web con estrusioni (ADR-T08, proposta dell'agente, non ancora confermata esplicitamente).
+- Nuovo pilota Firenze, Novoli - Firenze Nova (D12, 1 ottobre 2026), nonostante i gemelli già esistenti di Comune e DISIT.
+- Riferimento di presentazione e di approccio: gemello di Padova (D11, perimetro ancora aperto).
+- Primo pilota Pisa Z2 (D03), CRS EPSG:7791 (vale anche per Firenze), stato di accessibilità `outside_model` incluso.
+- Motore grafico: libreria cartografica web con estrusioni (ADR-T08, proposta dell'agente, da rivedere con la via di Padova).
 
 ## Decisioni aperte (dell'utente)
 
-1. Licenza dei layer SIT comunali (oggi solo uso interno del prototipo).
-2. Richiesta al Comune del censimento alberi.
-3. Segnalazione al Comune dei tre layer SIT pubblici che dichiarano operazioni di scrittura (non testato).
-4. Sopralluogo: data, rilevatori, giornata corta (priorità 1, circa 6,5 h) o completa; orari della scuola; conferma delle tolleranze in `fieldwork/protocollo.json` e congelamento (`python3 fieldwork/importa_esiti.py --congela`); altezza alla gronda o media.
-5. Rendere obbligatorio l'ingresso nelle richieste sulle scuole (consiglio: no, fino al sopralluogo).
-6. Confermare ADR-T08.
-7. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
-8. Quali difetti aperti di T12 correggere prima della demo (vedi Prossimi passi, punto 1).
-9. Riferimento visivo indicato dall'utente il 1/10/2026: https://padova-digital-twin.ekore.tech/ («il risultato a cui vorrei arrivare»). Da decidere: estendere la scena oltre Z2 e quali livelli (D11 nel piano, task T15 nel backlog; vedi Prossimi passi, punto 0).
+Firenze:
+1. Riquadro definitivo e destinazioni (F01).
+2. Perimetro di D11: livelli della scena e se adottare l'approccio di Padova (T15).
+3. Dati ARPAT: chiedere ad ARPAT il consenso per proxy e dati (T16).
+4. Contatto con Comune di Firenze o DISIT: concorrenza o collaborazione.
+5. Uso del campione Life Escapos, licenza non commerciale: solo verifica interna?
+
+Pisa (primo pilota):
+6. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.
+7. Licenza dei layer SIT, richiesta del censimento alberi, segnalazione dei layer SIT scrivibili.
+8. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
 
 ## Risultati principali su Pisa (non validati sul posto)
 
