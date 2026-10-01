@@ -57,9 +57,32 @@ ins = core.run_tool("inspect_dataset", {"source_id": "src_sit_civici"})
 assert core.validate("inspect_dataset", "output", ins) == [] and ins["license"]["state"] == "unproven"
 assert core.validate("list_destinations", "output", core.run_tool("list_destinations", {"aoi_id": "aoi_z2", "category": "school"})) == []
 
-# 5. strumenti d'ombra e scenari: fuori capacità finché il motore non c'è
-for tool, args in (("compute_shadow", {}), ("create_local_scenario", {"x": 1}), ("compare_scenarios", None)):
+# 5. scenari (T10): fuori capacità finché il motore non c'è
+for tool, args in (("create_local_scenario", {"x": 1}), ("compare_scenarios", None)):
     assert err_code(core.run_tool(tool, args)) == "outside_capability", tool
+
+# 5b. ombra (T09)
+SH = {"baseline_id": "bas_z2_20261001", "receivers": [{"route_id": "R01"}], "when": {"date": "2026-09-15", "timezone": "Europe/Rome", "times": ["08:00", "13:00", "16:30"]},
+      "method": {"name": "geometric_ray", "space_step_m": 1, "time_step_min": 5, "obstacles": "buildings_and_trees"}}
+s1 = core.run_tool("compute_shadow", SH)
+assert s1["status"] == "succeeded" and s1["cached"] is False and core.validate("compute_shadow", "output", s1) == [], s1
+assert s1["cases"] == ["base", "base_h_min", "base_h_max", "alberi_min", "alberi_tipico", "alberi_max"] and s1["sun_state_counts"] == {"ok": 18}
+assert s1["datasets"] and s1["limits"] and s1["params"] and s1["headline_metrics"]
+s2 = core.run_tool("compute_shadow", SH); assert s2["cached"] is True and strip(s2) == strip(s1)
+assert core.run_tool("get_result_manifest", {"job_id": s1["job_id"]})["tool"] == "compute_shadow"
+shw = lambda **k: {**SH, "when": {**SH["when"], **k}}
+r = core.run_tool("compute_shadow", shw(date="2026-10-25", times=["02:30"])); assert err_code(r) == "invalid_params" and "ambigua" in r["error"]["message"], r   # fine ora legale
+r = core.run_tool("compute_shadow", shw(date="2026-03-29", times=["02:30"])); assert err_code(r) == "invalid_params" and "inesistente" in r["error"]["message"], r
+r = core.run_tool("compute_shadow", shw(date="2026-12-21", times=["06:00", "12:00"]))   # inverno: alba sotto l'orizzonte, mezzogiorno sole basso
+assert r["status"] == "succeeded" and set(r["sun_state_counts"]) <= {"ok", "sole_sotto_orizzonte", "sole_basso_fuori_supporto"} and r["sun_state_counts"].get("sole_sotto_orizzonte"), r["sun_state_counts"]
+big = {**SH, "receivers": [{"route_id": i} for i in ("R01", "R03", "R04", "R05")], "when": {**SH["when"], "times": [f"{m // 60:02d}:{m % 60:02d}" for m in range(0, 1440, 15)]}}
+r = core.run_tool("compute_shadow", big); assert err_code(r) == "limit_exceeded" and r["error"]["smaller_request"], r
+assert core.validate("compute_shadow", "input", r["error"]["smaller_request"]) == []
+assert err_code(core.run_tool("compute_shadow", {**SH, "receivers": [{"route_id": "R99"}]})) == "unknown_id"
+assert err_code(core.run_tool("compute_shadow", {**SH, "scenario_id": "scn_x_y"})) == "outside_capability"
+assert err_code(core.run_tool("compute_shadow", {**SH, "method": {**SH["method"], "obstacles": "buildings_and_scenario"}})) == "outside_capability"
+assert err_code(core.run_tool("compute_shadow", {**SH, "sql": "x"})) == "invalid_params"
+assert replay.replay(s1["job_id"])["match"]
 
 # 6. replay coincide (job appena calcolato e job storico di analysis/manifest)
 rp = replay.replay(r4["job_id"]); assert rp["match"] and rp["metrics_compared"] > 10, rp
@@ -87,7 +110,13 @@ async def mcp_test():
             m = json.loads(res.content[0].text); assert not res.isError and strip(m) == strip(r1) and res.structuredContent == m
             res = await s.call_tool("compute_walk_access", {**A, "destination_ids": ["scuola"]})
             assert res.isError and json.loads(res.content[0].text)["error"]["code"] == "ambiguous_destination"
-            res = await s.call_tool("compute_shadow", {})
+            res = await s.call_tool("compute_shadow", SH)
+            m = json.loads(res.content[0].text); assert not res.isError and m["cached"] is True and strip(m) == strip(s1)
+            res = await s.call_tool("compute_shadow", shw(date="2026-10-25", times=["02:30"]))
+            assert res.isError and "ambigua" in json.loads(res.content[0].text)["error"]["message"]
+            res = await s.call_tool("compute_shadow", big)
+            assert res.isError and json.loads(res.content[0].text)["error"]["code"] == "limit_exceeded"
+            res = await s.call_tool("create_local_scenario", {})
             assert res.isError and json.loads(res.content[0].text)["error"]["code"] == "outside_capability"
             res = await s.call_tool("compute_walk_access", {**A, "sql": "drop table x"})
             assert res.isError and json.loads(res.content[0].text)["error"]["code"] == "invalid_params"

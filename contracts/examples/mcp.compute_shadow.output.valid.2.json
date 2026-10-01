@@ -1,0 +1,38 @@
+{
+ "job_id": "job_0123456789abcdef",
+ "status": "succeeded",
+ "result_manifest_id": "man_0123456789abcdef",
+ "cached": false,
+ "cases": [
+  "base",
+  "base_h_min",
+  "base_h_max",
+  "alberi_min",
+  "alberi_tipico",
+  "alberi_max"
+ ],
+ "sun_state_counts": {
+  "ok": 16,
+  "sole_basso_fuori_supporto": 2
+ },
+ "summary": [
+  {
+   "receiver_id": "pth_t04_R01",
+   "caso": "base",
+   "fascia": "tutti",
+   "n_orari": 3,
+   "n_orari_calcolati": 3,
+   "stati": [
+    "ok"
+   ]
+  }
+ ],
+ "headline_metrics": [
+  {
+   "metric_id": "pth_t04_r01_tutti_shade_fraction_base",
+   "value": 0.55,
+   "unit": "1",
+   "classification": "derived"
+  }
+ ]
+}
