@@ -52,6 +52,8 @@ Il margine di contesto dipende dall'altezza degli ostacoli e dall'elevazione sol
 
 Output senza promesse termiche: una maggiore copertura geometrica non è una conversione in °C, UTCI, salute o domanda pedonale. Eventuali modelli termici sono una fase distinta con specialisti e osservazioni.
 
+Un livello di temperatura delle superfici da satellite (come nel riferimento di Padova, D11) è descrittivo: mostra °C al suolo a 100 m nell'istante del passaggio. Non entra negli indicatori d'ombra, non misura l'effetto di uno scenario e via MCP va restituito con data, risoluzione e copertura valida.
+
 ## 3. Caso C — confronto degli interventi
 
 Snapshot baseline congelato; scenario come lista di aggiunte/rimozioni/modifiche con ID, geometria, fonte delle dimensioni e stato di ipotesi. Per alberi nuovi confrontare dimensioni della chioma proposte, senza assegnare anni di crescita non modellati.

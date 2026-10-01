@@ -16,7 +16,7 @@ La prima domanda unisce accessibilità e ombra; le altre due ne costituiscono mo
 
 Una vista pubblica più semplice è un'evoluzione successiva. Per il prototipo servono soprattutto un caso utile, dati controllabili e una restituzione comprensibile da un tecnico o decisore.
 
-Padova resta un riferimento di esperienza visiva. La demo non è stata visitabile interattivamente in questa sessione: nessuna ipotesi di equivalenza del backend o dei modelli. Il fotorealismo integrale, l'analisi energetica dei tetti e le simulazioni specialistiche di traffico/allagamento sono fuori dallo scopo iniziale.
+Padova è il riferimento di presentazione: il 1 ottobre 2026 l'utente l'ha indicata come «il risultato a cui vorrei arrivare» (decisione D11, aperta). La demo, visitata lo stesso giorno con un browser automatico, è un atlante 3D di tutta la città: edifici con tetti, verde 3D, nomi dei luoghi, ricerca per via, civico e particella catastale, parcheggi, ferrovia e tram, temperatura delle superfici da satellite per data, qualità dell'aria, webcam. Non mostra calcoli di accessibilità, ombre analitiche o scenari. Il gemello di Pisa ha già il motore di analisi e MCP; per avvicinarsi a Padova servono qualità della scena, estensione oltre Z2 e livelli informativi, senza mescolare la resa grafica con i calcoli. Nessuna ipotesi sul backend di Padova oltre a quanto osservato. Il fotorealismo integrale, l'analisi energetica dei tetti e le simulazioni specialistiche di traffico/allagamento sono fuori dallo scopo iniziale.
 
 | Risultato | Fattibilità con il perimetro scelto | Limite principale |
 |---|---|---|
@@ -25,6 +25,8 @@ Padova resta un riferimento di esperienza visiva. La demo non è stata visitabil
 | Ombra geometrica prima/dopo | Buona con altezze e ostacoli sufficienti | Chiome, pensiline e dettagli mancanti; incertezza delle quote |
 | Priorità degli interventi | Utile come confronto multicriterio | Pesi, domanda pedonale e fattibilità di piantumazione da concordare |
 | Raffrescamento in gradi e comfort termico | Da sviluppare con specialisti | Non deducibile dalla sola percentuale di ombra |
+| Temperatura delle superfici da satellite (livello descrittivo, come Padova) | Buona come mappa per data | Risoluzione termica 100 m, solo all'ora del passaggio, non è temperatura dell'aria né effetto di un intervento |
+| Scena di presentazione di tutta la città | Da stimare dopo D11 | Peso degli asset e dettaglio di tetti e verde su tutta Pisa; coerenza con il modello analitico di Z2 |
 
 Un'animazione d'ombra non verifica il calcolo. Il prototipo deve usare un motore analitico separato dalla resa grafica, con input e risultati versionati.
 
@@ -42,6 +44,7 @@ Un'animazione d'ombra non verifica il calcolo. Il prototipo deve usare un motore
 | D08 | Aperto | Licenze del codice, diffusione del prototipo e successiva vista pubblica |
 | D09 | Requisito confermato, modalità aperta | Interrogazione in linguaggio naturale di catalogo e analisi via MCP; MCP nel client AI come proposta iniziale, chat web da decidere |
 | D10 | Confermato dall'utente | Fonti, aggiornamento e limiti visibili in ogni risultato |
+| D11 | Indicazione dell'utente (1 ottobre 2026), perimetro aperto | Livello di presentazione di riferimento: gemello di Padova. Da decidere estensione della scena (Z2, centro, città), livelli informativi e se rivedere il motore grafico (ADR-T08) |
 
 ### Selezione del pilota
 
@@ -100,7 +103,7 @@ Per l'ombra confrontare un calcolo su volumi 3D con un riferimento GIS per il ca
 
 ### Interfaccia
 
-TypeScript e un solo motore cartografico. MapLibre è il candidato iniziale per un atlante a scala locale con estrusioni; Cesium è il candidato se terreno, quote o modelli richiedono una scena geospaziale più articolata. Il confronto è breve, su un campione reale, e non blocca l'analisi indipendente. La decisione segue la qualità dei dati e i requisiti dell'ombra; un motore grafico non diventa il motore scientifico per il solo fatto di mostrare ombre.
+Riferimento di qualità e di contenuti: il gemello di Padova (D11). TypeScript e un solo motore cartografico. MapLibre è il candidato iniziale per un atlante a scala locale con estrusioni; Cesium è il candidato se terreno, quote o modelli richiedono una scena geospaziale più articolata. Il confronto è breve, su un campione reale, e non blocca l'analisi indipendente. La decisione segue la qualità dei dati e i requisiti dell'ombra; un motore grafico non diventa il motore scientifico per il solo fatto di mostrare ombre.
 
 ### Linguaggio naturale e MCP
 
@@ -131,6 +134,8 @@ Stime di pianificazione in giornate complessive di lavoro equivalente, inclusa r
 | 4 — Collaudo e dimostrazione | 5–8 giorni | Controlli sul campo, report qualità, feedback e demo | Criteri analitici soddisfatti; scostamenti documentati |
 
 Totale indicativo del pilota completo: **32–52 giorni equivalenti**, esclusi tempi di attesa per dati e disponibilità esterne. Prima dimostrazione di accessibilità con MCP: **17–26 giorni equivalenti** prima del collaudo finale. Se B non supera l'audit, limitarlo a un sito controllato. Una chat web immediata aumenta il lavoro: stimarla separatamente dopo la decisione D09.
+
+Non è stimata la scena di presentazione sul modello di Padova (D11): va stimata dopo aver fissato estensione e livelli, come fase separata.
 
 Punti di decisione: G1 rete e accessi sufficienti; G2 quote/ostacoli adeguati all'ombra; G3 risultati riprodotti e verificati sul campo; G4 feedback di un utilizzatore. Senza interlocutore il risultato resta un prototipo tecnico e non una soluzione già validata nell'uso.
 

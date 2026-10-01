@@ -1,6 +1,6 @@
 # Backlog per gli agenti — pilota accessibilità e ombra
 
-Revisione 2, 1 ottobre 2026. Leggere [PIANO.md](PIANO.md), [SPEC_ANALISI.md](SPEC_ANALISI.md) e [FONTI.md](FONTI.md). La direzione di prodotto è definita; nessun agente è stato avviato e nessuna applicazione è stata implementata.
+Revisione 3, 1 ottobre 2026. Leggere [PIANO.md](PIANO.md), [SPEC_ANALISI.md](SPEC_ANALISI.md) e [FONTI.md](FONTI.md). Stato dei task: [STATO.md](STATO.md) (T01-T10 e T12 consegnati, T11 preparato). Aggiunto T15 dopo l'indicazione dell'utente su Padova (D11).
 
 ## Regole di esecuzione
 
@@ -28,8 +28,9 @@ Un integratore mantiene contratti e decisioni, assegna percorsi/branch e riesami
 | T12 | Verifica NL e integrazione | T07 + T08 + T06, poi T09/T10 | Almeno 12 domande, replay, confronto mappa/manifest e benchmark | Ambiguità/mancanze/fuori capacità gestiti; niente risultati numerici senza esecuzione |
 | T13 | Demo e handoff | T11 + T12 | Installazione/build, scheda decisione, demo, registro difetti/costi/manutenzione | Un tecnico può riprodurre e discutere una decisione; stato del feedback utente/partner registrato |
 | T14 | Chat web, condizionale | Decisione D09 + T07/T12 | UI conversazionale collegata agli stessi tool/job | Stesso risultato della via MCP; costi e gestione sessioni verificati |
+| T15 | Scena di presentazione, condizionale | Decisione D11 + T08; eventuale revisione ADR-T08 | Scena sul modello di Padova: estensione decisa, tetti, verde 3D, nomi dei luoghi, ricerca per via e civico, livelli di mobilità, temperatura delle superfici per data; risultati di T06/T09/T10 sopra la stessa scena | Prima vista e fluidità entro i target del piano anche fuori da Z2; ogni livello con fonte, data e licenza; nessun livello descrittivo presentato come risultato analitico; risultati di Z2 identici ai manifest |
 
-T04 e T05 possono procedere insieme dopo T02/T03. T07 e T08 possono usare campioni contrattualizzati mentre l'analisi A si completa. T09 entra solo dopo G2; in caso negativo, limitare B a un sito con rilievo locale o consegnare A con le lacune delle ombre. La preparazione del protocollo T11 inizia presto, prima di vedere i risultati finali.
+T15 può partire prima di T11 per la parte di scena, ma la demo T13 non mostra risultati di Z2 come validati finché T11 non è chiuso. T04 e T05 possono procedere insieme dopo T02/T03. T07 e T08 possono usare campioni contrattualizzati mentre l'analisi A si completa. T09 entra solo dopo G2; in caso negativo, limitare B a un sito con rilievo locale o consegnare A con le lacune delle ombre. La preparazione del protocollo T11 inizia presto, prima di vedere i risultati finali.
 
 G1 chiude la fattibilità di A. G2 chiude la fattibilità geometrica di B. G3 è la verifica tecnica/di campo. G4 è il riscontro di un utilizzatore reale: T13 può consegnare una demo tecnica senza partner, ma non dichiarare già dimostrato il valore nella decisione.
 

@@ -72,3 +72,7 @@ Poi http://127.0.0.1:8791/index.html (non funziona da `file://`; servono rete pe
 - Pannello: R01 per le 4 fasce del 15 settembre, frazione in ombra e minuti al sole con tipico e intervallo min-max, più la nota sul lato del marciapiede (fino a 20 punti) e sul percorso sull'asse.
 - Verifica: 16 valori del pannello uguali a `shadow/out/riepilogo.json`, console pulita, `screenshot_ombre.png` (16:30 con alberi).
 - Limite: il rendering mostra i poligoni, non verifica la geometria delle ombre (lo fa T09 con il suo controllo raster).
+
+## Riferimento Padova (1 ottobre 2026)
+
+L'utente ha indicato il gemello di Padova come risultato a cui arrivare (D11 nel piano). Quella demo usa un motore 3D generico, non una libreria cartografica, con la città in riquadri a due livelli di dettaglio, tetti e verde 3D su tutta la città. Questa ADR resta una proposta: le misure sopra valgono per Z2 (1.522 solidi) e non dicono come scala la scelta su tutta Pisa. Se D11 estende la scena oltre Z2, ripetere il confronto su un campione più grande (centro storico) e con i tetti, prima di T15.
