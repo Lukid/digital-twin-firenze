@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Scena Z2 Pisa: accessibilità a piedi</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--mut:#4a4a4a;--line:#b5b5b5;--ban:#fff3c4;--banfg:#4a3500;--acc:#0b5cad}
+*{box-sizing:border-box}
+html{font-size:100%}
+body{margin:0;font:0.9375rem/1.4 system-ui,sans-serif;color:var(--fg);background:var(--bg);display:flex;flex-direction:column;height:100vh;height:100dvh}
+.banner{background:var(--ban);color:var(--banfg);padding:0.4rem 1rem;font-weight:600;border-bottom:0.125rem solid #b38600}
+.banner small{display:block;font-weight:400}
+.app{flex:1;display:flex;min-height:0}
+#map{flex:1;min-width:0;position:relative}
+aside{width:26rem;max-width:45vw;overflow:auto;padding:0.75rem 1rem;border-left:1px solid var(--line)}
+h1{font-size:1.15rem;margin:0 0 0.5rem}h2{font-size:1rem;margin:1rem 0 0.35rem}h3{font-size:0.9rem;margin:0.6rem 0 0.2rem}
+fieldset{border:1px solid var(--line);margin:0 0 0.6rem;padding:0.35rem 0.7rem}
+label{display:flex;gap:0.5rem;align-items:center;padding:0.2rem 0;cursor:pointer}
+.f{display:block}.f select,.f input{width:100%;margin-top:0.15rem}
+select,button,input[type=search]{font:inherit;padding:0.4rem;max-width:100%;min-height:2.25rem}
+input[type=checkbox]{width:1.1rem;height:1.1rem}
+:focus-visible{outline:0.19rem solid var(--acc);outline-offset:0.12rem}
+.lg{list-style:none;margin:0 0 0.4rem;padding:0;font-size:0.85rem;color:var(--mut)}
+.lg li{display:flex;align-items:center;gap:0.45rem;padding:0.1rem 0}
+.sw{display:inline-block;width:0.8rem;height:0.8rem;border:1px solid #000;flex:none;border-radius:50%}
+.sq{border-radius:0}.ic{width:1.3rem;height:1.3rem;flex:none}
+#scheda{border:1px solid var(--line);padding:0.5rem 0.65rem;background:#f4f4f4}
+#scheda dl{margin:0.4rem 0 0;display:grid;grid-template-columns:auto 1fr;gap:0.15rem 0.6rem}
+#scheda dt{color:var(--mut)}#scheda dd{margin:0;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;font-size:0.8rem}
+caption{text-align:left;font-weight:600;padding-bottom:0.25rem}
+th,td{border:1px solid var(--line);padding:0.2rem 0.3rem;text-align:right}
+th[scope=row]{text-align:left;font-weight:400}
+thead th{font-size:0.75rem}
+th.sel,td.sel{background:#e3eefb;font-weight:600}
+.tw{overflow-x:auto}
+#stato,#errore{font-size:0.85rem}
+#errore{color:#8a0000;font-weight:600}
+.nota{font-size:0.8rem;color:var(--mut)}
+a{color:var(--acc)}
+[hidden]{display:none!important}
+.maplibregl-ctrl-attrib{font-size:0.7rem}
+@media(max-width:48rem){.app{flex-direction:column}#map{flex:none;height:52%}aside{width:auto;max-width:none;flex:1;border-left:0;border-top:1px solid var(--line)}.banner small{display:none}}
+</style>
+</head>
+<body>
+<div class="banner" role="note">Anteprima tecnica, dati del 1 ottobre 2026. Risultati non validati sul posto: rete OSM non verificata, velocità e penalità sono ipotesi, chiome e imposte stimate.
+<small>Le ombre non sono ancora calcolate. La mappa mostra, non calcola.</small></div>
+<div class="app">
+<div id="map" role="region" aria-label="Mappa 3D della zona Z2 di Pisa con i civici colorati per tempo a piedi. Le stesse informazioni sono nella tabella e nella scheda del pannello."></div>
+<aside aria-label="Pannello di controllo, legenda e dati">
+<h1>Z2 Pisa: tempo a piedi verso scuola e fermata</h1>
+<p id="errore" role="alert" hidden></p>
+<fieldset><legend>Risultato</legend>
+<label class="f" for="dst">Destinazione
+<select id="dst"><option value="b">Scuola primaria Battisti (ingresso probabile)</option><option value="p">Fermata Pellico (PI4390)</option></select></label>
+<label class="f" for="prof">Profilo di cammino
+<select id="prof"><option value="0">Base, 1,2 m/s</option><option value="1">Lento, 0,8 m/s</option><option value="2">Rapido, 1,4 m/s</option><option value="3">Ridotta: 0,8 m/s, senza scale, 10 s per attraversamento</option></select></label>
+<label class="f" for="cerca">Cerca un civico (tastiera)
+<input id="cerca" type="search" list="civ-list" autocomplete="off" placeholder="es. VIA FILIPPO CORRIDONI 20"></label>
+<datalist id="civ-list"></datalist>
+</fieldset>
+<h2>Legenda dei civici</h2>
+<ul class="lg" id="leg" aria-label="Legenda dei civici per tempo e stato"></ul>
+<p class="nota">Il tempo è solo per i civici raggiungibili. Vietato e dati insufficienti non hanno un tempo: non vuol dire che siano lontani.</p>
+<fieldset><legend>Modalità</legend>
+<label><input type="checkbox" id="lite"> Modalità leggera (2D, meno livelli)</label>
+</fieldset>
+<fieldset><legend>Livelli</legend>
+<label><input type="checkbox" data-l="civ" checked> Civici (risultato)</label>
+<label><input type="checkbox" data-l="dest" checked> Destinazione e ingressi probabili</label>
+<label><input type="checkbox" data-l="ed" checked> Edifici</label>
+<ul class="lg"><li><span class="sw sq" style="background:#9a9a9a"></span>misurato (unità volumetriche 2010)</li><li><span class="sw sq" style="background:#d9a066"></span>derivato (OSM + DSM 2021)</li></ul>
+<label><input type="checkbox" data-l="sp" checked> Coperture e pensiline, volumi sospesi</label>
+<ul class="lg"><li><span class="sw sq" style="background:#4e9bd8"></span>copertura OSM: base = quota tetto meno 0,4 m di soletta (stima, 0,2 - 0,8 m)</li></ul>
+<label><input type="checkbox" data-l="al" checked> Alberi, tronco e chioma stimati</label>
+<ul class="lg"><li><span class="sw sq" style="background:#2e7d32"></span>chioma sollevata da terra</li><li><span class="sw sq" style="background:#6d4c41"></span>tronco (reso almeno 0,6 m)</li></ul>
+<label><input type="checkbox" data-l="rete"> Rete pedonale per stato del marciapiede</label>
+<ul class="lg"><li><span class="sw sq" style="background:#1b7f3b"></span>presente</li><li><span class="sw sq" style="background:#0b5cad"></span>separato</li><li><span class="sw sq" style="background:#c62828"></span>assente</li><li><span class="sw sq" style="background:#6b6b6b"></span>ignoto</li><li><span class="sw sq" style="background:#b8b8b8"></span>non applicabile</li><li><span class="sw sq" style="background:#e65100"></span>attraversamento (tratteggio)</li></ul>
+<label><input type="checkbox" data-l="perc" checked> Percorsi campione (R01-R09 neri, V01 rosso tratteggiato)</label>
+<label><input type="checkbox" data-l="arc"> Tratti più usati (spessore per n. di origini)</label>
+<label><input type="checkbox" data-l="omb"> Ombre (T09)</label>
+</fieldset>
+<p id="stato" role="status" aria-live="polite"></p>
+<label class="f" id="ombsel-w" hidden for="ombsel">Istante delle ombre<select id="ombsel"></select></label>
+<h2>Scheda</h2>
+<div id="scheda" aria-live="polite" tabindex="-1">Clicca un elemento sulla mappa, oppure cerca un civico.</div>
+<h2>Indicatori</h2>
+<div class="tw" id="tab"></div>
+<h2>Fonti, date e ipotesi</h2>
+<ul class="nota" id="fonti"></ul>
+<p class="nota">Stato di validazione di tutti i risultati: <b>non validato sul posto</b> (<code>not_validated_locally</code>).</p>
+</aside>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+'use strict';
+const OSM='© OpenStreetMap contributors',RT='Regione Toscana - DB topografico',D=n=>'data/'+n;
+const PROFN=['Base 1,2 m/s','Lento 0,8 m/s','Rapido 1,4 m/s','Ridotta 0,8 m/s senza scale'];
+const COL=['#fde725','#35b779','#31688e','#440154'],CLS=['fino a 5 min','5-10 min','10-15 min','oltre 15 min'];
+const $=id=>document.getElementById(id);
+const m1=v=>(+v).toFixed(1).replace('.',',')+' m',pc=v=>(v*100).toFixed(1).replace('.',',')+'%',n1=v=>(+v).toFixed(1).replace('.',',');
+const el=(t,txt,c)=>{const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(c)e.className=c;return e};
+let META,CIV,DET,map,sel=null;
+const S={d:'b',f:0,lite:false,off:new Set(['rete','arc','omb'])};
+const small=matchMedia('(max-width:48rem)');
+// ---- icone per vietato e dati insufficienti (forma, non solo colore)
+function icona(kind){const c=document.createElement('canvas');c.width=c.height=48;const x=c.getContext('2d');x.lineJoin='round';
+ if(kind==='forb'){x.fillStyle='#fff';x.strokeStyle='#b00020';x.lineWidth=5;x.beginPath();x.arc(24,24,18,0,7);x.fill();x.stroke();x.lineWidth=6;x.lineCap='round';x.beginPath();x.moveTo(15,15);x.lineTo(33,33);x.moveTo(33,15);x.lineTo(15,33);x.stroke()}
+ else{x.fillStyle='#fff';x.strokeStyle='#37474f';x.lineWidth=4;x.beginPath();x.moveTo(24,4);x.lineTo(44,24);x.lineTo(24,44);x.lineTo(4,24);x.closePath();x.fill();x.stroke();x.fillStyle='#37474f';x.font='bold 26px sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText('?',24,26)}
+ return c}
+const ICF=icona('forb'),ICI=icona('ins');
+// ---- hash
+function readHash(){const h=new URLSearchParams(location.hash.slice(1));const o={};
+ if(h.get('c')){const [a,b]=h.get('c').split(',').map(Number);if(isFinite(a)&&isFinite(b))o.center=[a,b]}
+ ['z','p','b'].forEach(k=>{const v=parseFloat(h.get(k));if(isFinite(v))o[k]=v});
+ if(['b','p'].includes(h.get('d')))S.d=h.get('d');
+ const f=parseInt(h.get('f'));if(f>=0&&f<=3)S.f=f;
+ if(h.has('lite'))o.lite=h.get('lite')==='1';
+ if(h.has('off')){S.off=new Set(h.get('off').split(',').filter(Boolean))}
+ return o}
+function writeHash(){if(!map)return;const c=map.getCenter(),h=new URLSearchParams();
+ h.set('c',c.lng.toFixed(5)+','+c.lat.toFixed(5));h.set('z',map.getZoom().toFixed(2));h.set('p',Math.round(map.getPitch()));h.set('b',Math.round(map.getBearing()));
+ h.set('d',S.d);h.set('f',S.f);h.set('lite',S.lite?1:0);h.set('off',[...S.off].join(','));
+ history.replaceState(null,'','#'+h.toString())}
+// ---- layer registry, aggiunti solo quando servono
+const ORDER=['ed2','ed3','sp2','sp3','al_ch2','al_ch3','al_tr','rete','attr','arc','omb','perc_o','perc_ok','perc_v','civ_ok','civ_ins','civ_forb','dest_in','dest','sel'];
+const GROUP={ed2:'ed',ed3:'ed',sp2:'sp',sp3:'sp',al_ch2:'al',al_ch3:'al',al_tr:'al',rete:'rete',attr:'rete',arc:'arc',omb:'omb',perc_o:'perc',perc_ok:'perc',perc_v:'perc',civ_ok:'civ',civ_ins:'civ',civ_forb:'civ',dest_in:'dest',dest:'dest'};
+const ZW=(a,b)=>['interpolate',['linear'],['zoom'],14,a,19,b];
+const EDCOL=['case',['==',['get','classe_h'],'derived'],'#d9a066','#9a9a9a'];
+const SPEC={
+ ed:{src:{id:'edifici',data:D('edifici.geojson'),attr:RT+', DSM 2021 Regione Toscana'},layers:[
+  {id:'ed2',type:'fill',filter:['!=',['get','sosp'],1],paint:{'fill-color':EDCOL,'fill-opacity':0.85,'fill-outline-color':'#555'}},
+  {id:'ed3',type:'fill-extrusion',filter:['!=',['get','sosp'],1],paint:{'fill-extrusion-base':0,'fill-extrusion-height':['get','h'],'fill-extrusion-color':EDCOL,'fill-extrusion-opacity':0.92}}]},
+ sp:{src:{id:'edifici',data:D('edifici.geojson'),attr:RT},layers:[
+  {id:'sp2',type:'fill',filter:['==',['get','sosp'],1],paint:{'fill-color':'#4e9bd8','fill-opacity':0.6,'fill-outline-color':'#0b3d6b'}},
+  {id:'sp3',type:'fill-extrusion',filter:['==',['get','sosp'],1],paint:{'fill-extrusion-base':['get','imp'],'fill-extrusion-height':['get','h'],'fill-extrusion-color':'#4e9bd8','fill-extrusion-opacity':0.9}}]},
+ al:{src:{id:'alberi',data:D('alberi.geojson'),attr:'DBT10K Regione Toscana, '+OSM},layers:[
+  {id:'al_ch2',type:'fill',filter:['==',['get','parte'],'chioma'],paint:{'fill-color':'#2e7d32','fill-opacity':0.5,'fill-outline-color':'#1b5e20'}},
+  {id:'al_ch3',type:'fill-extrusion',filter:['==',['get','parte'],'chioma'],paint:{'fill-extrusion-base':['get','imposta'],'fill-extrusion-height':['get','h'],'fill-extrusion-color':'#2e7d32','fill-extrusion-opacity':0.85}},
+  {id:'al_tr',type:'fill-extrusion',filter:['==',['get','parte'],'tronco'],paint:{'fill-extrusion-base':0,'fill-extrusion-height':['get','imposta'],'fill-extrusion-color':'#6d4c41'}}]},
+ rete:{src:{id:'rete',data:D('rete.geojson'),attr:OSM},layers:[
+  {id:'rete',type:'line',filter:['!=',['get','tipo'],'attraversamento'],paint:{'line-color':['match',['get','mc'],'presente','#1b7f3b','separato','#0b5cad','assente','#c62828','ignoto','#6b6b6b','#b8b8b8'],'line-width':ZW(1,4)}},
+  {id:'attr',type:'line',filter:['==',['get','tipo'],'attraversamento'],paint:{'line-color':'#e65100','line-dasharray':[1,1],'line-width':ZW(1.5,5)}}]},
+ arc:{src:{id:'archi',data:D('archi_usati.geojson'),attr:OSM},layers:[
+  {id:'arc',type:'line',filter:['==',['get','d'],'b'],paint:{'line-color':'#d81b60','line-opacity':0.8,'line-width':['interpolate',['linear'],['get','n_origini'],0,2,2200,8]}}]},
+ perc:{src:{id:'percorsi',data:D('percorsi.geojson'),attr:OSM},layers:[
+  {id:'perc_o',type:'line',paint:{'line-color':'#fff','line-width':ZW(3,9),'line-opacity':0.9}},
+  {id:'perc_ok',type:'line',filter:['!=',['get','stato'],'forbidden'],paint:{'line-color':'#111','line-width':ZW(1.5,5)}},
+  {id:'perc_v',type:'line',filter:['==',['get','stato'],'forbidden'],paint:{'line-color':'#d50000','line-dasharray':[2,1.5],'line-width':ZW(2,5)}}]},
+ dest:{src:{id:'ingressi',data:D('ingressi.geojson'),attr:OSM},layers:[
+  {id:'dest_in',type:'circle',paint:{'circle-color':['match',['get','classe'],'probabile_ingresso_scuola','#7b1fa2','#fff'],'circle-stroke-color':'#7b1fa2','circle-stroke-width':2.5,'circle-radius':5}}]}
+};
+function layerSpec(key){return SPEC[key].layers}
+function addOrdered(spec,source){const i=ORDER.indexOf(spec.id);let before;for(let j=i+1;j<ORDER.length;j++)if(map.getLayer(ORDER[j])){before=ORDER[j];break}
+ map.addLayer({...spec,source},before)}
+function ensure(key){if(key==='civ'||key==='omb')return;const sp=SPEC[key];if(!sp)return;
+ if(!map.getSource(sp.src.id))map.addSource(sp.src.id,{type:'geojson',data:sp.src.data,attribution:sp.src.attr});
+ sp.layers.forEach(l=>{if(!map.getLayer(l.id))addOrdered(l,sp.src.id)})}
+function vis(id){const g=GROUP[id];if(S.off.has(g))return false;
+ if(id==='ed2'||id==='sp2'||id==='al_ch2')return S.lite;if(id==='ed3'||id==='sp3'||id==='al_ch3')return !S.lite;if(id==='al_tr')return !S.lite;
+ if(id==='arc')return true;return true}
+function sync(){Object.keys(SPEC).forEach(k=>{if(!S.off.has(k))ensure(k)});
+ ORDER.forEach(id=>{if(map.getLayer(id)&&GROUP[id])map.setLayoutProperty(id,'visibility',vis(id)?'visible':'none')});
+ if(map.getLayer('arc'))map.setFilter('arc',['==',['get','d'],S.d]);
+ document.querySelectorAll('[data-l]').forEach(c=>c.checked=!S.off.has(c.dataset.l));
+ $('lite').checked=S.lite;
+ omb()}
+// ---- risultato
+const tk=()=>'t'+S.d+S.f,sk=()=>'s'+S.d;
+function paintResult(){
+ const t=['get',tk()];
+ map.setPaintProperty('civ_ok','circle-color',['case',['<=',t,5],COL[0],['<=',t,10],COL[1],['<=',t,15],COL[2],COL[3]]);
+ map.setFilter('civ_ok',['==',['get',sk()],'reachable']);
+ map.setFilter('civ_ins',['==',['get',sk()],'insufficient_data']);
+ map.setFilter('civ_forb',['==',['get',sk()],'forbidden']);
+ if(map.getLayer('dest'))map.setFilter('dest',['==',['get','k'],S.d]);
+ legenda();tabella();$('dst').value=S.d;$('prof').value=S.f}
+function counts(){const c=[0,0,0,0,0,0];CIV.features.forEach(f=>{const p=f.properties,s=p[sk()];if(s==='reachable'){const t=p[tk()];c[t<=5?0:t<=10?1:t<=15?2:3]++}else if(s==='forbidden')c[4]++;else if(s==='insufficient_data')c[5]++});return c}
+function legenda(){const c=counts(),ul=$('leg');ul.replaceChildren();
+ CLS.forEach((n,i)=>{const li=el('li');const s=el('span',null,'sw');s.style.background=COL[i];s.setAttribute('aria-hidden','true');li.append(s,el('span','Raggiungibile, '+n+': '+c[i]+' civici'));li.dataset.k='c'+i;ul.append(li)});
+ [['forb','Vietato (forbidden), nessun percorso sulla rete verificata: ',c[4]],['ins','Dati insufficienti, civico non collegato alla rete: ',c[5]]].forEach(([k,t,n],i)=>{const li=el('li');const im=el('img');im.className='ic';im.alt='';im.src=(k==='forb'?ICF:ICI).toDataURL();li.append(im,el('span',t+n+' civici'));li.dataset.k=k;ul.append(li)})}
+function tabella(){const host=$('tab');host.replaceChildren();const dn=META.dest[S.d].nome==='battisti'?'scuola Battisti':'fermata Pellico';
+ const t=el('table'),cap=el('caption','Indicatori di T06 verso '+dn+', per profilo (2.224 civici SIT)');t.append(cap);
+ const th=el('thead'),tr=el('tr');tr.append(Object.assign(el('th','Indicatore'),{scope:'col'}));
+ ['Base','Lento','Rapido','Ridotta'].forEach((n,i)=>{const h=el('th',n+(i===S.f?' (scelto)':''));h.scope='col';if(i===S.f)h.className='sel';tr.append(h)});th.append(tr);t.append(th);
+ const R=i=>META.riepilogo[S.d+i];
+ const rows=[['reach','Civici raggiungibili',r=>r.conteggi.reachable],['forb','Civici vietati',r=>r.conteggi.forbidden],['ins','Civici con dati insufficienti',r=>r.conteggi.insufficient_data],
+  ['q5','Quota entro 5 min (su tutti i civici)',r=>pc(r.quote['5'])],['q10','Quota entro 10 min',r=>pc(r.quote['10'])],['q15','Quota entro 15 min',r=>pc(r.quote['15'])],
+  ['p50','Tempo mediano, min',r=>n1(r.tempo.p50)],['p90','Tempo p90, min',r=>n1(r.tempo.p90)],['max','Tempo massimo, min',r=>n1(r.tempo.max)],
+  ['rete','Rete mediana, m',r=>Math.round(r.rete_p50)],['att','Attraversamenti, mediana',r=>r.att_med],['ign','Metri a marciapiede ignoto, quota',r=>pc(r.ign)],['job','job_id',r=>r.job_id.replace('job_','')]];
+ const tb=el('tbody');rows.forEach(([k,n,f])=>{const tr=el('tr'),h=el('th',n);h.scope='row';tr.append(h);for(let i=0;i<4;i++){const td=el('td',f(R(i)));td.dataset.k=k;td.dataset.f=i;if(i===S.f)td.className='sel';tr.append(td)}tb.append(tr)});
+ t.append(tb);host.append(t)}
+// ---- schede
+const FLAG={demolizione_probabile:'demolizione probabile (DSM molto più basso delle unità volumetriche)',dsm_piu_alto:'DSM più alto (possibile sopraelevazione)',dsm_piu_basso:'DSM più basso',non_confrontato:'non confrontato (sotto 40 m²)',scarto_con_vegetazione:'scarto con vegetazione',sotto_2_5m:'altezza sotto 2,5 m',dsm_non_attendibile:'DSM non attendibile',vegetazione_possibile:'vegetazione possibile'};
+const STATO={reachable:'Raggiungibile',forbidden:'Vietato: nessun percorso sulla rete verificata, collegato solo da tratti con restrizione documentata',insufficient_data:'Dati insufficienti: civico non collegabile alla rete'};
+function scheda(titolo,righe){const s=$('scheda');s.replaceChildren();s.append(el('strong',titolo));const dl=el('dl');righe.forEach(([k,v])=>{if(v==null)return;dl.append(el('dt',k));const d=el('dd');if(v instanceof Node)d.append(v);else d.textContent=v;dl.append(d)});s.append(dl)}
+async function civico(id){const f=CIV.features.find(x=>x.properties.id===id);if(!f)return;const p=f.properties,job=META.dest[S.d].jobs[S.f],st=p[sk()];
+ if(!DET)DET=await fetch(D('civici_dettaglio.json')).then(r=>r.json());
+ const dn=S.d==='b'?'Scuola Battisti, ingresso '+job.entrance_ids[0]:'Fermata Pellico PI4390, ingresso '+job.entrance_ids[0];
+ const rows=[['Indirizzo (civico SIT)',p.a],['Identificativo',p.id],['Stato',STATO[st]],['Destinazione',dn],['Profilo',PROFN[S.f]]];
+ if(st==='reachable'){const d=DET[id]&&DET[id][S.d]&&DET[id][S.d][S.f];
+  rows.push(['Tempo a piedi',n1(p[tk()])+' min'],['Distanza di rete',d?d[0]+' m (compresi i raccordi)':'n.d.'],['Attraversamenti',d?d[1]:'n.d.'],['Metri a marciapiede ignoto',d?d[2]+' m':'n.d.'],['Scale / sottopassi',d?d[3]+' / '+d[4]:'n.d.'],['Deviazione rispetto alla linea d\'aria',d?n1(d[5])+' volte':'n.d.'])}
+ else{rows.push(['Motivo',p['m'+S.d]],['Tempo','nessuno calcolato: non significa lontano'])}
+ const a=el('a','apri il manifest');a.href=D('manifest/'+job.job_id+'.manifest.json');a.target='_blank';a.rel='noopener';a.textContent='apri il manifest (apre nuova finestra)';
+ rows.push(['job_id',job.job_id],['manifest_id',job.manifest_id],['Manifest',a],['Calcolato il',job.finished_at],['Validazione','non validato sul posto'],['Nota','Civico SIT: punto d\'indirizzo, non residenti; licenza non provata, solo uso interno.']);
+ scheda('Civico '+p.a,rows);select(f.geometry.coordinates)}
+function select(xy){sel=xy;map.getSource('sel').setData({type:'Feature',geometry:{type:'Point',coordinates:xy},properties:{}})}
+const T={
+ ed:p=>['Edificio '+({volume_uv:'(unità volumetrica)',volume_derivato:'(volume derivato)'}[p.tipo]||''),[['Identificativo',p.id],['Classe altezza',p.classe_h==='measured'?'misurato (unità volumetriche 2010, ±0,5 m ipotesi)':'derivato (OSM + DSM 2021 meno DTM)'],['Quota base (dato)',m1(p.z_base)+', terreno reso piatto in scena'],['Altezza',m1(p.h)+' (intervallo '+m1(p.h_min)+' - '+m1(p.h_max)+')'],['Flag DSM',FLAG[p.flag]||'nessuno'],['Portico',p.portico],['Fonte',p.fonte]]],
+ sp:p=>['Copertura OSM, volume sospeso',[['Identificativo',p.id],['Quota base d\'imposta (stima)',m1(p.imp)+' dal suolo (intervallo '+m1(p.imp_min)+' - '+m1(p.imp_max)+')'],['Quota tetto',m1(p.h)+' (intervallo '+m1(p.h_min)+' - '+m1(p.h_max)+', derivata da DSM 2021)'],['Ipotesi','soletta di 0,4 m (0,2 - 0,8 m); supporti e altezza libera reali non noti'],['Quota base del suolo (dato)',m1(p.z_base)],['Superficie',Math.round(p.area_m2)+' m²'],['Sospeso / portico','ignoto, da verificare al sopralluogo']]],
+ al:p=>['Albero, tronco e chioma stimati',[['Identificativo',p.id],['Fonte',{osm:'OSM',dbt10k_2010:'DBT10K 2010','dbt10k_2010,osm':'DBT10K 2010 + OSM'}[p.fonti]||p.fonti],['Chioma, diametro',m1(p.chioma_d_min)+' / '+m1(p.chioma_d)+' / '+m1(p.chioma_d_max)+' (min / tipico / max)'],['Altezza totale',m1(p.h_min)+' / '+m1(p.h)+' / '+m1(p.h_max)+' ('+(p.h_cls==='derived'?'da DSM':'classe ignota')+')'],['Altezza d\'imposta della chioma',m1(p.imposta_min)+' / '+m1(p.imposta)+' / '+m1(p.imposta_max)],['Tronco, diametro',m1(p.tronco_d)+' stimato (reso 0,6 m)'],['Classificazione','posizione misurata, dimensioni stimate']]],
+ rete:p=>['Tratto del grafo',[['Identificativo',p.id],['Tipo',p.tipo],['Classe OSM',p.hw],['Nome',p.nome||'-'],['Marciapiede',String(p.mc).replace('_',' ')],['Lunghezza',m1(p.m)],['Stato','rete OSM non verificata sul posto']]],
+ arc:p=>['Tratto molto usato verso '+(p.d==='b'?'la scuola':'la fermata'),[['Identificativo',p.id],['Gruppo',p.gruppo],['Origini che lo usano',p.n_origini],['Marciapiede',String(p.marciapiede).replace('_',' ')],['Nome',p.nome||'-'],['Profilo','base, 1,2 m/s']]],
+ perc:p=>p.stato==='forbidden'?['V01 vietato',[['Percorso',p.descrizione],['Esito','nessun percorso sul grafo verificato'],['Sul grafo di controllo',m1(p.permissivo_lunghezza_m)+' (non percorribile)'],['Restrizioni',(p.restrizioni||[]).join(', ')]]]:[p.id+' percorso campione',[['Percorso',p.descrizione],['Lunghezza',m1(p.lunghezza_totale_m)],['Attraversamenti',p.attraversamenti],['Marciapiede ignoto',m1(p.m_marciapiede_ignoto)],['Scale / sottopassi',p.scale+' / '+p.sottopassi],['Verifica','da verificare sul posto']]],
+ dest:p=>[p.k?'Destinazione '+p.nome:'Ingresso '+(p.classe==='probabile_ingresso_scuola'?'probabile della scuola':'probabile di edificio contiguo'),[['Identificativo',p.id||p.ing],['Verifica','da verificare'],['Raccordo alla rete',p.raccordo_m!=null?m1(p.raccordo_m):null],['Nota','ingresso reale non verificato: cambiarlo cambia lunghezze e attraversamenti']]]
+};
+const LID={ed2:'ed',ed3:'ed',sp2:'sp',sp3:'sp',al_ch2:'al',al_ch3:'al',al_tr:'al',rete:'rete',attr:'rete',arc:'arc',perc_ok:'perc',perc_v:'perc',dest_in:'dest',dest:'dest'};
+const PRIO=['civ_forb','civ_ins','civ_ok','dest','dest_in','perc_v','perc_ok','arc','attr','sp3','sp2','al_ch3','al_ch2','al_tr','rete','ed3','ed2'];
+// ---- ombre T09 (vuote)
+let OMB=null;
+async function omb(){const on=!S.off.has('omb');$('ombsel-w').hidden=true;if(!on){if(map.getLayer('omb'))map.setLayoutProperty('omb','visibility','none');if($('stato').dataset.o)$('stato').textContent='';return}
+ if(!OMB)OMB=await fetch(D('ombre/index.json')).then(r=>r.json());
+ if(!OMB.istanti.length){$('stato').dataset.o=1;$('stato').textContent=OMB.messaggio;return}
+ const w=$('ombsel');if(!w.options.length)OMB.istanti.forEach(i=>w.append(new Option(i.istante,i.url)));$('ombsel-w').hidden=false;
+ const put=u=>{if(map.getSource('omb'))map.getSource('omb').setData(D(u));else map.addSource('omb',{type:'geojson',data:D(u)});if(!map.getLayer('omb'))addOrdered({id:'omb',type:'fill',paint:{'fill-color':'#37474f','fill-opacity':0.4}},'omb');map.setLayoutProperty('omb','visibility','visible')};
+ w.onchange=()=>put(w.value);put(w.value);$('stato').textContent='Ombre del job '+OMB.job_id}
+// ---- avvio
+async function main(){
+ const o=readHash();
+ [META,CIV]=await Promise.all([fetch(D('meta.json')).then(r=>r.json()),fetch(D('civici.geojson')).then(r=>r.json())]);
+ S.lite=o.lite!==undefined?o.lite:small.matches;
+ if(S.lite&&o.lite===undefined&&!location.hash.includes('off='))S.off=new Set(['al','rete','arc','omb']);
+ const dl=$('civ-list');CIV.features.forEach(f=>{const op=document.createElement('option');op.value=f.properties.a;dl.append(op)});
+ $('fonti').append(...[
+  'Dati del 1 ottobre 2026: snapshot OSM 20261001 (rete, ingressi, coperture, alberi), Regione Toscana DB topografico e unità volumetriche 2010 (edifici), DSM 2021 (altezze derivate), DBT10K Regione Toscana 2010 (alberi), Autolinee Toscane GTFS (fermata), SIT civici (punti d\'indirizzo, licenza non provata: solo uso interno).',
+  'Modello in EPSG:7791; in mappa coordinate EPSG:4326 derivate e arrotondate (circa 0,1 m). Datum verticale non confermato. Il terreno (0,8 - 5,5 m) è reso piatto: altezze e imposte sono relative al suolo locale.',
+  'Ipotesi: velocità 0,8 / 1,2 / 1,4 m/s, penalità di attraversamento 10 s solo nel profilo ridotta, limite di aggancio alla rete 40 m. Non sono misure su Pisa né attribuite a gruppi di persone.',
+  'Chiome, imposte e tronchi: 453 su 453 stimati con intervallo. Coperture OSM: imposta stimata con soletta di 0,4 m. Portici e volumi sospesi altrimenti ignoti.',
+  'Ombre: non ancora calcolate. Il layer è predisposto per i poligoni d\'ombra di T09 (un file GeoJSON per istante, con job_id).',
+  ...META.limiti.map(l=>l.text)].map(t=>el('li',t)));
+ const hs=o.center||[10.3985,43.7085];
+ map=new maplibregl.Map({container:'map',center:hs,zoom:o.z||(S.lite?15.6:16.2),pitch:S.lite?0:(o.p!=null?o.p:58),bearing:S.lite?0:(o.b!=null?o.b:-25),maxPitch:75,
+  style:{version:8,sources:{osm:{type:'raster',tiles:['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],tileSize:256,maxzoom:19,attribution:OSM}},
+   layers:[{id:'osm',type:'raster',source:'osm',paint:{'raster-saturation':-0.7,'raster-opacity':0.8}}]}});
+ map.addControl(new maplibregl.NavigationControl());map.addControl(new maplibregl.ScaleControl());
+ map.on('error',e=>{const p=$('errore');p.hidden=false;p.textContent='Errore di caricamento: '+(e.error&&e.error.message||e)});
+ map.on('load',()=>{try{
+  const id=c=>c.getContext('2d').getImageData(0,0,48,48);map.addImage('forb',id(ICF),{pixelRatio:2});map.addImage('ins',id(ICI),{pixelRatio:2});
+  map.addSource('civici',{type:'geojson',data:CIV,attribution:'SIT civici (uso interno)'});
+  map.addSource('sel',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
+  map.addSource('dest',{type:'geojson',data:{type:'FeatureCollection',features:Object.entries(META.dest).map(([k,v])=>({type:'Feature',geometry:{type:'Point',coordinates:v.xy},properties:{k,nome:k==='b'?'Scuola primaria Battisti':'Fermata Pellico',id:v.destination_id,ing:v.ingresso}}))}});
+  map.addLayer({id:'civ_ok',type:'circle',source:'civici',paint:{'circle-radius':ZW(2.5,7),'circle-color':COL[0],'circle-stroke-color':'#1a1a1a','circle-stroke-width':0.8,'circle-pitch-alignment':'viewport'}});
+  map.addLayer({id:'civ_ins',type:'symbol',source:'civici',layout:{'icon-image':'ins','icon-size':['interpolate',['linear'],['zoom'],14,0.45,19,0.8],'icon-allow-overlap':true,'icon-ignore-placement':true}});
+  map.addLayer({id:'civ_forb',type:'symbol',source:'civici',layout:{'icon-image':'forb','icon-size':['interpolate',['linear'],['zoom'],14,0.5,19,0.9],'icon-allow-overlap':true,'icon-ignore-placement':true}});
+  map.addLayer({id:'dest',type:'circle',source:'dest',paint:{'circle-color':'#7b1fa2','circle-radius':11,'circle-stroke-color':'#fff','circle-stroke-width':3}});
+  map.addLayer({id:'sel',type:'circle',source:'sel',paint:{'circle-color':'rgba(0,0,0,0)','circle-radius':13,'circle-stroke-color':'#0b5cad','circle-stroke-width':3.5}});
+  sync();paintResult();
+  map.once('idle',()=>{window.__scene={firstRenderMs:Math.round(performance.now()),lite:S.lite};performance.mark('first_render');document.body.dataset.ready='1'});
+ }catch(e){const p=$('errore');p.hidden=false;p.textContent='Errore: '+e.message;console.error(e)}});
+ map.on('moveend',writeHash);
+ map.on('click',e=>{const bb=[[e.point.x-6,e.point.y-6],[e.point.x+6,e.point.y+6]];const ls=PRIO.filter(l=>map.getLayer(l)&&map.getLayoutProperty(l,'visibility')!=='none');
+  const f=map.queryRenderedFeatures(bb,{layers:ls}).sort((a,b)=>PRIO.indexOf(a.layer.id)-PRIO.indexOf(b.layer.id))[0];if(!f)return;
+  const id=f.layer.id;if(id.startsWith('civ_'))return civico(f.properties.id);
+  const k=LID[id],[t,r]=T[k](f.properties);scheda(t,r.concat([['Classificazione','dato non validato sul posto']]));if(f.geometry.type==='Point')select(f.geometry.coordinates)});
+ map.on('mousemove',e=>{const ls=PRIO.filter(l=>map.getLayer(l)&&map.getLayoutProperty(l,'visibility')!=='none');map.getCanvas().style.cursor=map.queryRenderedFeatures(e.point,{layers:ls}).length?'pointer':''});
+ $('dst').onchange=e=>{S.d=e.target.value;paintResult();sync();writeHash();const dd=META.dest[S.d];map.easeTo({center:dd.xy,duration:600})};
+ $('prof').onchange=e=>{S.f=+e.target.value;paintResult();writeHash()};
+ $('cerca').onchange=e=>{const f=CIV.features.find(x=>x.properties.a===e.target.value.trim().toUpperCase());if(f){map.easeTo({center:f.geometry.coordinates,zoom:Math.max(map.getZoom(),18),duration:500});civico(f.properties.id)}};
+ document.querySelectorAll('[data-l]').forEach(c=>c.onchange=()=>{c.checked?S.off.delete(c.dataset.l):S.off.add(c.dataset.l);sync();writeHash()});
+ $('lite').onchange=e=>{S.lite=e.target.checked;if(S.lite){['al','rete','arc'].forEach(k=>S.off.add(k));map.easeTo({pitch:0,bearing:0})}else{S.off.delete('al');map.easeTo({pitch:58,bearing:-25})}sync();writeHash()};
+ small.addEventListener('change',e=>{if(e.matches&&!S.lite)$('lite').click()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'){sel=null;map.getSource('sel').setData({type:'FeatureCollection',features:[]});$('scheda').textContent='Clicca un elemento sulla mappa, oppure cerca un civico.'}});
+ // la scheda dei civici si aggiorna quando cambia profilo o destinazione
+ const re=()=>{const id=sel&&CIV.features.find(f=>f.geometry.coordinates===sel||(f.geometry.coordinates[0]===sel[0]&&f.geometry.coordinates[1]===sel[1]));if(id&&$('scheda').textContent.startsWith('Civico'))civico(id.properties.id)};
+ $('dst').addEventListener('change',re);$('prof').addEventListener('change',re);
+}
+main().catch(e=>{const p=$('errore');p.hidden=false;p.textContent='Errore: '+e.message;console.error(e)});
+</script>
+</body>
+</html>

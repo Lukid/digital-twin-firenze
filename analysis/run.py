@@ -8,7 +8,7 @@ from shapely.geometry import mapping, Point
 ROOT = A.ROOT; OUT = ROOT / "analysis/out"; MAN = ROOT / "analysis/manifest"
 DEST = {"battisti": "dst_school_piee82101p", "pellico": "dst_stop_pi4390"}
 c = A.contesto()
-dump = lambda o, p, **k: pathlib.Path(p).write_text(json.dumps(o, ensure_ascii=False, separators=(",", ":"), **k))
+dump = lambda o, p, **k: pathlib.Path(p).write_text(json.dumps(o, ensure_ascii=False, separators=(",", ":"), allow_nan=False, **k))
 r6 = lambda x: round(x, 6)
 
 def sintesi(res):
@@ -39,7 +39,7 @@ for nome, did in DEST.items():
     feats = []
     for oid in sorted(risultati[nome]["base_1_2"]["origini"]):
         r = risultati[nome]["base_1_2"]["origini"][oid]; p = A.agganci_origini("civici_sit_z2", 40.0)[oid][0]; g = A._ll(p)
-        pr = {"layer": "origine", "id": oid, "ind": c["civ"].loc[oid, "indirizzo"], "stato": r["stato"]}
+        pr = {"layer": "origine", "id": oid, "ind": (lambda v: v if isinstance(v, str) else None)(c["civ"].loc[oid, "indirizzo"]), "stato": r["stato"]}
         for pid, k in (("base_1_2", "t"), ("lento_0_8", "t_lento"), ("rapido_1_4", "t_rapido"), ("ridotta_0_8_senza_scale", "t_ridotta")):
             x = risultati[nome][pid]["origini"][oid]
             if x["stato"] == "reachable": pr[k] = round(x["tempo_s"] / 60, 1)
