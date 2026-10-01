@@ -1,0 +1,3007 @@
+{
+ "versione": "0.1.0",
+ "baseline_id": "bas_z2_20261001",
+ "baseline_invariata": true,
+ "condizioni_comuni": {
+  "data": "2026-09-15",
+  "fasce": [
+   {
+    "id": "ingresso_mattina",
+    "from": "07:45",
+    "to": "08:30"
+   },
+   {
+    "id": "uscita_mezzogiorno",
+    "from": "12:30",
+    "to": "13:30"
+   },
+   {
+    "id": "uscita_pomeriggio",
+    "from": "16:00",
+    "to": "16:30"
+   },
+   {
+    "id": "giornata_8_18",
+    "from": "08:00",
+    "to": "18:00"
+   }
+  ],
+  "n_orari": 42,
+  "method": {
+   "name": "geometric_ray",
+   "space_step_m": 1.0,
+   "time_step_min": 5.0
+  },
+  "walk_speed_m_s": 1.2,
+  "el_min_deg": 5.0,
+  "ricevitori": [
+   "pth_t04_R01",
+   "pth_t10_R01sx",
+   "pth_t10_R01dx",
+   "pth_t04_R03",
+   "pth_t04_R04",
+   "pth_t04_R05",
+   "pth_t04_R06",
+   "pth_t04_R07",
+   "pth_t04_R08",
+   "sfc_t10_pell",
+   "edg_t06_01",
+   "edg_t06_02",
+   "edg_t06_03",
+   "edg_t06_04",
+   "edg_t06_05",
+   "edg_t06_06",
+   "edg_t06_07",
+   "edg_t06_08",
+   "edg_t06_09",
+   "edg_t06_10",
+   "edg_t06_11",
+   "edg_t06_12",
+   "edg_t06_13",
+   "edg_t06_14",
+   "edg_t06_15",
+   "edg_t06_16",
+   "edg_t06_17",
+   "edg_t06_18",
+   "edg_t06_19",
+   "edg_t06_20",
+   "edg_t06_21",
+   "edg_t06_22",
+   "edg_t06_23",
+   "edg_t06_24",
+   "edg_t06_25",
+   "edg_t06_26",
+   "edg_t06_27",
+   "edg_t06_28",
+   "edg_t06_29",
+   "edg_t06_30",
+   "edg_t06_31",
+   "edg_t06_32",
+   "edg_t06_33",
+   "edg_t06_34",
+   "edg_t06_35",
+   "edg_t06_36",
+   "edg_t06_37"
+  ],
+  "motore_ombre": "geometric_ray 0.2.0",
+  "geometrie_sha256": "416410ce6c7674d6af9354f613928d031efdc9b715d10ce108b65ed87d2d8216",
+  "origini_e_percorsi": "stesse origini (civici SIT Z2), stessi percorsi campione, stesso grafo (hash in baseline.json)",
+  "ostacoli_baseline": "edifici documentati, sensibilità altezze h_min/h_max"
+ },
+ "riferimento": {
+  "scenario_id": "scn_z2_s0_baseline",
+  "job_id": "job_0c2ec9daf884698a",
+  "manifest_id": "man_0c2ec9daf884698a"
+ },
+ "scenari": {
+  "scn_z2_s1_filare_r01": {
+   "titolo": "S1 filare di alberi tipici su R01: regola dichiarata: tratto di 60 m di R01 (da 236 a 296 m dall'origine) con massima frazione media al sole, 15 settembre 12:30-13:30 (a parità: media 8-18, poi la prima lungo il percorso), caso edifici documentati, asse della rete; 7 alberi, interasse 8 m, a 3 m dall'asse; lato del sole alle 13:00 (ipotesi, il lato del marciapiede non è noto)",
+   "job_id": "job_1a745fd460f9bf9e",
+   "manifest_id": "man_1a745fd460f9bf9e",
+   "interventi": {
+    "alberi": 7,
+    "pensiline": 0,
+    "area_proiezione_chiome_m2": 197.9,
+    "area_pensiline_m2": 0.0
+   },
+   "segnalazioni": [
+    {
+     "code": "marciapiede_ignoto",
+     "op_id": "op_albero_04",
+     "severity": "info",
+     "text": "Vicino a una strada carrabile con marciapiede ignoto: il lato e la carreggiata non sono verificabili dai dati."
+    }
+   ],
+   "fattibilita": {
+    "sottoservizi": "ignota",
+    "spazio_radicale": "ignota",
+    "permessi": "ignota",
+    "proprieta_suolo": "ignota",
+    "manutenzione_e_specie": "ignota"
+   },
+   "stato": "confrontato",
+   "incompatibilita": [],
+   "percorsi": {
+    "R01": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.9127,
+       "scenario": 0.9127,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "delta_lato_3m": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.951,
+       "scenario": 0.951,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "delta_lato_3m": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.4577,
+       "scenario": 0.5132,
+       "delta": 0.0555,
+       "intervallo_altezze": [
+        0.0555,
+        0.0555
+       ],
+       "delta_lato_3m": [
+        0.0518,
+        0.0115
+       ],
+       "intervallo": [
+        0.0115,
+        0.0555
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 5.715,
+       "scenario": 5.132,
+       "delta": -0.583,
+       "intervallo_altezze": [
+        -0.583,
+        -0.583
+       ],
+       "delta_lato_3m": [
+        -0.527,
+        -0.116
+       ],
+       "intervallo": [
+        -0.583,
+        -0.116
+       ],
+       "discrimina": true
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.6616,
+       "scenario": 0.6834,
+       "delta": 0.0218,
+       "intervallo_altezze": [
+        0.0218,
+        0.0219
+       ],
+       "delta_lato_3m": [
+        0.0573,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0573
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 3.502,
+       "scenario": 3.303,
+       "delta": -0.199,
+       "intervallo_altezze": [
+        -0.199,
+        -0.198
+       ],
+       "delta_lato_3m": [
+        -0.573,
+        0.0
+       ],
+       "intervallo": [
+        -0.573,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.5494,
+       "scenario": 0.5828,
+       "delta": 0.0334,
+       "intervallo_altezze": [
+        0.0334,
+        0.0334
+       ],
+       "delta_lato_3m": [
+        0.0367,
+        0.0183
+       ],
+       "intervallo": [
+        0.0183,
+        0.0367
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 4.718,
+       "scenario": 4.37,
+       "delta": -0.348,
+       "intervallo_altezze": [
+        -0.348,
+        -0.348
+       ],
+       "delta_lato_3m": [
+        -0.378,
+        -0.191
+       ],
+       "intervallo": [
+        -0.378,
+        -0.191
+       ],
+       "discrimina": true
+      }
+     }
+    },
+    "R03": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 1.0,
+       "scenario": 1.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.0,
+       "scenario": 0.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.5639,
+       "scenario": 0.5639,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.402,
+       "scenario": 0.402,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 1.0,
+       "scenario": 1.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.0,
+       "scenario": 0.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.7972,
+       "scenario": 0.7972,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.187,
+       "scenario": 0.187,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    },
+    "R04": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.8977,
+       "scenario": 0.8977,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.232,
+       "scenario": 0.232,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.6261,
+       "scenario": 0.6261,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.844,
+       "scenario": 0.844,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.9213,
+       "scenario": 0.9213,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.18,
+       "scenario": 0.18,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.7288,
+       "scenario": 0.7288,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.614,
+       "scenario": 0.614,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    },
+    "R05": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 1.0,
+       "scenario": 1.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.0,
+       "scenario": 0.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.7269,
+       "scenario": 0.7269,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 2.042,
+       "scenario": 2.042,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.9634,
+       "scenario": 0.9634,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.227,
+       "scenario": 0.227,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.732,
+       "scenario": 0.732,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 1.976,
+       "scenario": 1.976,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    },
+    "R06": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.9233,
+       "scenario": 0.9233,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 1.004,
+       "scenario": 1.004,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.3735,
+       "scenario": 0.4222,
+       "delta": 0.0487,
+       "intervallo_altezze": [
+        0.0487,
+        0.0487
+       ],
+       "intervallo": [
+        0.0487,
+        0.0487
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 7.505,
+       "scenario": 6.919,
+       "delta": -0.586,
+       "intervallo_altezze": [
+        -0.586,
+        -0.586
+       ],
+       "intervallo": [
+        -0.586,
+        -0.586
+       ],
+       "discrimina": true
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.6678,
+       "scenario": 0.6869,
+       "delta": 0.0191,
+       "intervallo_altezze": [
+        0.0191,
+        0.0191
+       ],
+       "intervallo": [
+        0.0191,
+        0.0191
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 3.856,
+       "scenario": 3.634,
+       "delta": -0.222,
+       "intervallo_altezze": [
+        -0.222,
+        -0.222
+       ],
+       "intervallo": [
+        -0.222,
+        -0.222
+       ],
+       "discrimina": true
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.5192,
+       "scenario": 0.5485,
+       "delta": 0.0293,
+       "intervallo_altezze": [
+        0.0293,
+        0.0293
+       ],
+       "intervallo": [
+        0.0293,
+        0.0293
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 5.75,
+       "scenario": 5.403,
+       "delta": -0.347,
+       "intervallo_altezze": [
+        -0.347,
+        -0.347
+       ],
+       "intervallo": [
+        -0.347,
+        -0.347
+       ],
+       "discrimina": true
+      }
+     }
+    },
+    "R07": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.7029,
+       "scenario": 0.7029,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 4.917,
+       "scenario": 4.917,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.5702,
+       "scenario": 0.6079,
+       "delta": 0.0377,
+       "intervallo_altezze": [
+        0.0377,
+        0.0377
+       ],
+       "intervallo": [
+        0.0377,
+        0.0377
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 6.683,
+       "scenario": 6.1,
+       "delta": -0.583,
+       "intervallo_altezze": [
+        -0.584,
+        -0.583
+       ],
+       "intervallo": [
+        -0.584,
+        -0.583
+       ],
+       "discrimina": true
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.7242,
+       "scenario": 0.739,
+       "delta": 0.0148,
+       "intervallo_altezze": [
+        0.0148,
+        0.0148
+       ],
+       "intervallo": [
+        0.0148,
+        0.0148
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 4.139,
+       "scenario": 3.917,
+       "delta": -0.222,
+       "intervallo_altezze": [
+        -0.223,
+        -0.222
+       ],
+       "intervallo": [
+        -0.223,
+        -0.222
+       ],
+       "discrimina": true
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.6069,
+       "scenario": 0.6295,
+       "delta": 0.0226,
+       "intervallo_altezze": [
+        0.0226,
+        0.0227
+       ],
+       "intervallo": [
+        0.0226,
+        0.0227
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 6.085,
+       "scenario": 5.734,
+       "delta": -0.351,
+       "intervallo_altezze": [
+        -0.351,
+        -0.351
+       ],
+       "intervallo": [
+        -0.351,
+        -0.351
+       ],
+       "discrimina": true
+      }
+     }
+    },
+    "R08": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.9734,
+       "scenario": 0.9761,
+       "delta": 0.0027,
+       "intervallo_altezze": [
+        0.0026,
+        0.0027
+       ],
+       "intervallo": [
+        0.0026,
+        0.0027
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 0.208,
+       "scenario": 0.191,
+       "delta": -0.017,
+       "intervallo_altezze": [
+        -0.018,
+        -0.017
+       ],
+       "intervallo": [
+        -0.018,
+        -0.017
+       ],
+       "discrimina": true
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.6034,
+       "scenario": 0.6034,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 2.863,
+       "scenario": 2.863,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.695,
+       "scenario": 0.695,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 2.16,
+       "scenario": 2.16,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.5703,
+       "scenario": 0.5707,
+       "delta": 0.0004,
+       "intervallo_altezze": [
+        0.0003,
+        0.0004
+       ],
+       "intervallo": [
+        0.0003,
+        0.0004
+       ],
+       "discrimina": true
+      },
+      "minuti_sole": {
+       "baseline": 3.083,
+       "scenario": 3.081,
+       "delta": -0.002,
+       "intervallo_altezze": [
+        -0.002,
+        -0.002
+       ],
+       "intervallo": [
+        -0.002,
+        -0.002
+       ],
+       "discrimina": true
+      }
+     }
+    }
+   },
+   "area_attesa_pellico": {
+    "ingresso_mattina": {
+     "baseline": 1.0,
+     "scenario": 1.0,
+     "delta": 0.0,
+     "intervallo_altezze": [
+      0.0,
+      0.0
+     ],
+     "intervallo": [
+      0.0,
+      0.0
+     ],
+     "discrimina": false
+    },
+    "uscita_mezzogiorno": {
+     "baseline": 0.0,
+     "scenario": 0.0,
+     "delta": 0.0,
+     "intervallo_altezze": [
+      0.0,
+      0.0
+     ],
+     "intervallo": [
+      0.0,
+      0.0
+     ],
+     "discrimina": false
+    },
+    "uscita_pomeriggio": {
+     "baseline": 0.0,
+     "scenario": 0.0,
+     "delta": 0.0,
+     "intervallo_altezze": [
+      0.0,
+      0.0
+     ],
+     "intervallo": [
+      0.0,
+      0.0
+     ],
+     "discrimina": false
+    },
+    "giornata_8_18": {
+     "baseline": 0.2082,
+     "scenario": 0.2082,
+     "delta": 0.0,
+     "intervallo_altezze": [
+      0.0,
+      0.0
+     ],
+     "intervallo": [
+      0.0,
+      0.0
+     ],
+     "discrimina": false
+    }
+   },
+   "archi_usati": {
+    "battisti": {
+     "archi": 20,
+     "civici_uso_totali": 17510,
+     "fasce": {
+      "ingresso_mattina": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_mezzogiorno": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_pomeriggio": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "giornata_8_18": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      }
+     }
+    },
+    "pellico": {
+     "archi": 20,
+     "civici_uso_totali": 20552,
+     "fasce": {
+      "ingresso_mattina": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_mezzogiorno": {
+       "delta_frazione_ombra_media_pesata": 0.07962,
+       "civici_minuti_sole_evitati": 433.89,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        433.89,
+        433.89
+       ],
+       "archi_toccati": 4,
+       "civici_uso_toccati": 2920,
+       "edge_id_toccati": [
+        "edg_osm_22717572_1671656790_11753154074",
+        "edg_osm_153762366_243661933_6572985100",
+        "edg_osm_22717572_11753154074_243661933",
+        "edg_osm_546163611_6572985100_285181910"
+       ]
+      },
+      "uscita_pomeriggio": {
+       "delta_frazione_ombra_media_pesata": 0.03306,
+       "civici_minuti_sole_evitati": 163.46,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        163.46,
+        163.46
+       ],
+       "archi_toccati": 4,
+       "civici_uso_toccati": 2920,
+       "edge_id_toccati": [
+        "edg_osm_22717572_1671656790_11753154074",
+        "edg_osm_153762366_243661933_6572985100",
+        "edg_osm_22717572_11753154074_243661933",
+        "edg_osm_546163611_6572985100_285181910"
+       ]
+      },
+      "giornata_8_18": {
+       "delta_frazione_ombra_media_pesata": 0.05116,
+       "civici_minuti_sole_evitati": 256.32,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        255.59,
+        257.05
+       ],
+       "archi_toccati": 4,
+       "civici_uso_toccati": 2920,
+       "edge_id_toccati": [
+        "edg_osm_22717572_1671656790_11753154074",
+        "edg_osm_153762366_243661933_6572985100",
+        "edg_osm_22717572_11753154074_243661933",
+        "edg_osm_546163611_6572985100_285181910"
+       ]
+      }
+     }
+    }
+   },
+   "accessibilita": {
+    "delta_quota_servita": 0.0,
+    "delta_tempo_mediano_min": 0.0,
+    "nullo": true,
+    "motivo": "per costruzione: il motore di accessibilità usa grafo, origini e profilo, che gli interventi non modificano; verificato con hash e ricalcolo",
+    "hash_grafo_regole_origini_invariati": true,
+    "ricalcolo": {
+     "dst_school_piee82101p": {
+      "job_id": "job_4d23232eb780b0c1",
+      "job_id_riferimento": "job_4d23232eb780b0c1",
+      "stesso_job": true,
+      "metriche_identiche": true,
+      "quota_10min": 0.5247
+     },
+     "dst_stop_pi4390": {
+      "job_id": "job_9cc7481bc4f55863",
+      "job_id_riferimento": "job_9cc7481bc4f55863",
+      "stesso_job": true,
+      "metriche_identiche": true,
+      "quota_10min": 0.6632
+     }
+    },
+    "ostruzione_passaggio_non_modellata": []
+   },
+   "fasce_utili_R01": [
+    "uscita_mezzogiorno",
+    "giornata_8_18"
+   ],
+   "assets": [
+    "scenarios/out/ombre_scn_z2_s1_filare_r01_2026-09-15_0800.geojson",
+    "scenarios/out/ombre_scn_z2_s1_filare_r01_2026-09-15_1300.geojson",
+    "scenarios/out/ombre_scn_z2_s1_filare_r01_2026-09-15_1630.geojson"
+   ],
+   "robustezza": {
+    "scn_z2_s1v_chioma_min": {
+     "R01": {
+      "ingresso_mattina": {
+       "frazione_ombra": {
+        "baseline": 0.9127,
+        "scenario": 0.9127,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         0.0,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0
+        ],
+        "discrimina": false
+       },
+       "minuti_sole": {
+        "baseline": 0.951,
+        "scenario": 0.951,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         0.0,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0
+        ],
+        "discrimina": false
+       }
+      },
+      "uscita_mezzogiorno": {
+       "frazione_ombra": {
+        "baseline": 0.4577,
+        "scenario": 0.4905,
+        "delta": 0.0328,
+        "intervallo_altezze": [
+         0.0328,
+         0.0329
+        ],
+        "delta_lato_3m": [
+         0.0251,
+         0.0048
+        ],
+        "intervallo": [
+         0.0048,
+         0.0329
+        ],
+        "discrimina": true
+       },
+       "minuti_sole": {
+        "baseline": 5.715,
+        "scenario": 5.368,
+        "delta": -0.347,
+        "intervallo_altezze": [
+         -0.347,
+         -0.347
+        ],
+        "delta_lato_3m": [
+         -0.258,
+         -0.044
+        ],
+        "intervallo": [
+         -0.347,
+         -0.044
+        ],
+        "discrimina": true
+       }
+      },
+      "uscita_pomeriggio": {
+       "frazione_ombra": {
+        "baseline": 0.6616,
+        "scenario": 0.6616,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         0.0372,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0372
+        ],
+        "discrimina": false
+       },
+       "minuti_sole": {
+        "baseline": 3.502,
+        "scenario": 3.502,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         -0.365,
+         0.0
+        ],
+        "intervallo": [
+         -0.365,
+         0.0
+        ],
+        "discrimina": false
+       }
+      },
+      "giornata_8_18": {
+       "frazione_ombra": {
+        "baseline": 0.5494,
+        "scenario": 0.565,
+        "delta": 0.0156,
+        "intervallo_altezze": [
+         0.0156,
+         0.0157
+        ],
+        "delta_lato_3m": [
+         0.0166,
+         0.01
+        ],
+        "intervallo": [
+         0.01,
+         0.0166
+        ],
+        "discrimina": true
+       },
+       "minuti_sole": {
+        "baseline": 4.718,
+        "scenario": 4.553,
+        "delta": -0.165,
+        "intervallo_altezze": [
+         -0.165,
+         -0.165
+        ],
+        "delta_lato_3m": [
+         -0.165,
+         -0.104
+        ],
+        "intervallo": [
+         -0.165,
+         -0.104
+        ],
+        "discrimina": true
+       }
+      }
+     },
+     "archi_battisti": {
+      "ingresso_mattina": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_mezzogiorno": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_pomeriggio": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "giornata_8_18": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      }
+     }
+    },
+    "scn_z2_s1v_chioma_max": {
+     "R01": {
+      "ingresso_mattina": {
+       "frazione_ombra": {
+        "baseline": 0.9127,
+        "scenario": 0.9127,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         0.0,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0
+        ],
+        "discrimina": false
+       },
+       "minuti_sole": {
+        "baseline": 0.951,
+        "scenario": 0.951,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         0.0,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0
+        ],
+        "discrimina": false
+       }
+      },
+      "uscita_mezzogiorno": {
+       "frazione_ombra": {
+        "baseline": 0.4577,
+        "scenario": 0.5374,
+        "delta": 0.0797,
+        "intervallo_altezze": [
+         0.0797,
+         0.0798
+        ],
+        "delta_lato_3m": [
+         0.0721,
+         0.0446
+        ],
+        "intervallo": [
+         0.0446,
+         0.0798
+        ],
+        "discrimina": true
+       },
+       "minuti_sole": {
+        "baseline": 5.715,
+        "scenario": 4.871,
+        "delta": -0.844,
+        "intervallo_altezze": [
+         -0.844,
+         -0.843
+        ],
+        "delta_lato_3m": [
+         -0.747,
+         -0.427
+        ],
+        "intervallo": [
+         -0.844,
+         -0.427
+        ],
+        "discrimina": true
+       }
+      },
+      "uscita_pomeriggio": {
+       "frazione_ombra": {
+        "baseline": 0.6616,
+        "scenario": 0.7136,
+        "delta": 0.052,
+        "intervallo_altezze": [
+         0.052,
+         0.052
+        ],
+        "delta_lato_3m": [
+         0.0776,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0776
+        ],
+        "discrimina": false
+       },
+       "minuti_sole": {
+        "baseline": 3.502,
+        "scenario": 2.975,
+        "delta": -0.527,
+        "intervallo_altezze": [
+         -0.527,
+         -0.527
+        ],
+        "delta_lato_3m": [
+         -0.8,
+         0.0
+        ],
+        "intervallo": [
+         -0.8,
+         0.0
+        ],
+        "discrimina": false
+       }
+      },
+      "giornata_8_18": {
+       "frazione_ombra": {
+        "baseline": 0.5494,
+        "scenario": 0.6012,
+        "delta": 0.0518,
+        "intervallo_altezze": [
+         0.0517,
+         0.0518
+        ],
+        "delta_lato_3m": [
+         0.0561,
+         0.03
+        ],
+        "intervallo": [
+         0.03,
+         0.0561
+        ],
+        "discrimina": true
+       },
+       "minuti_sole": {
+        "baseline": 4.718,
+        "scenario": 4.177,
+        "delta": -0.541,
+        "intervallo_altezze": [
+         -0.542,
+         -0.541
+        ],
+        "delta_lato_3m": [
+         -0.58,
+         -0.311
+        ],
+        "intervallo": [
+         -0.58,
+         -0.311
+        ],
+        "discrimina": true
+       }
+      }
+     },
+     "archi_battisti": {
+      "ingresso_mattina": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_mezzogiorno": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_pomeriggio": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "giornata_8_18": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      }
+     }
+    },
+    "scn_z2_s1v_lato_opposto": {
+     "R01": {
+      "ingresso_mattina": {
+       "frazione_ombra": {
+        "baseline": 0.9127,
+        "scenario": 0.9127,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         0.0,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0
+        ],
+        "discrimina": false
+       },
+       "minuti_sole": {
+        "baseline": 0.951,
+        "scenario": 0.951,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         0.0,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0
+        ],
+        "discrimina": false
+       }
+      },
+      "uscita_mezzogiorno": {
+       "frazione_ombra": {
+        "baseline": 0.4577,
+        "scenario": 0.4609,
+        "delta": 0.0032,
+        "intervallo_altezze": [
+         0.0032,
+         0.0032
+        ],
+        "delta_lato_3m": [
+         0.0122,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0122
+        ],
+        "discrimina": false
+       },
+       "minuti_sole": {
+        "baseline": 5.715,
+        "scenario": 5.687,
+        "delta": -0.028,
+        "intervallo_altezze": [
+         -0.028,
+         -0.027
+        ],
+        "delta_lato_3m": [
+         -0.128,
+         0.0
+        ],
+        "intervallo": [
+         -0.128,
+         0.0
+        ],
+        "discrimina": false
+       }
+      },
+      "uscita_pomeriggio": {
+       "frazione_ombra": {
+        "baseline": 0.6616,
+        "scenario": 0.6616,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         0.0,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0
+        ],
+        "discrimina": false
+       },
+       "minuti_sole": {
+        "baseline": 3.502,
+        "scenario": 3.502,
+        "delta": 0.0,
+        "intervallo_altezze": [
+         0.0,
+         0.0
+        ],
+        "delta_lato_3m": [
+         0.0,
+         0.0
+        ],
+        "intervallo": [
+         0.0,
+         0.0
+        ],
+        "discrimina": false
+       }
+      },
+      "giornata_8_18": {
+       "frazione_ombra": {
+        "baseline": 0.5494,
+        "scenario": 0.5546,
+        "delta": 0.0052,
+        "intervallo_altezze": [
+         0.0052,
+         0.0052
+        ],
+        "delta_lato_3m": [
+         0.015,
+         0.002
+        ],
+        "intervallo": [
+         0.002,
+         0.015
+        ],
+        "discrimina": true
+       },
+       "minuti_sole": {
+        "baseline": 4.718,
+        "scenario": 4.662,
+        "delta": -0.056,
+        "intervallo_altezze": [
+         -0.056,
+         -0.055
+        ],
+        "delta_lato_3m": [
+         -0.156,
+         -0.023
+        ],
+        "intervallo": [
+         -0.156,
+         -0.023
+        ],
+        "discrimina": true
+       }
+      }
+     },
+     "archi_battisti": {
+      "ingresso_mattina": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_mezzogiorno": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_pomeriggio": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "giornata_8_18": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      }
+     }
+    }
+   }
+  },
+  "scn_z2_s2_pensilina_pellico": {
+   "titolo": "S2 pensilina alla fermata Pellico (dimensione dichiarata)",
+   "job_id": "job_a8459757ca5e2565",
+   "manifest_id": "man_a8459757ca5e2565",
+   "interventi": {
+    "alberi": 0,
+    "pensiline": 1,
+    "area_proiezione_chiome_m2": 0.0,
+    "area_pensiline_m2": 12.0
+   },
+   "segnalazioni": [
+    {
+     "code": "su_arco_molto_usato",
+     "op_id": "op_pensilina_01",
+     "severity": "warning",
+     "text": "L'impronta tocca un arco fra i più usati da T06 (['edg_osm_544585227_3600889663_5264115226']): passaggio libero e larghezza non modellati, da verificare."
+    }
+   ],
+   "fattibilita": {
+    "sottoservizi": "ignota",
+    "spazio_radicale": "ignota",
+    "permessi": "ignota",
+    "proprieta_suolo": "ignota",
+    "manutenzione_e_specie": "ignota"
+   },
+   "stato": "confrontato",
+   "incompatibilita": [],
+   "percorsi": {
+    "R01": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.9127,
+       "scenario": 0.9127,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "delta_lato_3m": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.951,
+       "scenario": 0.951,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "delta_lato_3m": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.4577,
+       "scenario": 0.4585,
+       "delta": 0.0008,
+       "intervallo_altezze": [
+        0.0008,
+        0.0009
+       ],
+       "delta_lato_3m": [
+        0.0009,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0009
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 5.715,
+       "scenario": 5.707,
+       "delta": -0.008,
+       "intervallo_altezze": [
+        -0.008,
+        -0.008
+       ],
+       "delta_lato_3m": [
+        -0.008,
+        0.0
+       ],
+       "intervallo": [
+        -0.008,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.6616,
+       "scenario": 0.6616,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "delta_lato_3m": [
+        0.0054,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0054
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 3.502,
+       "scenario": 3.502,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "delta_lato_3m": [
+        -0.055,
+        0.0
+       ],
+       "intervallo": [
+        -0.055,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.5494,
+       "scenario": 0.55,
+       "delta": 0.0006,
+       "intervallo_altezze": [
+        0.0006,
+        0.0006
+       ],
+       "delta_lato_3m": [
+        0.0015,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0015
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 4.718,
+       "scenario": 4.712,
+       "delta": -0.006,
+       "intervallo_altezze": [
+        -0.006,
+        -0.006
+       ],
+       "delta_lato_3m": [
+        -0.014,
+        0.0
+       ],
+       "intervallo": [
+        -0.014,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    },
+    "R03": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 1.0,
+       "scenario": 1.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.0,
+       "scenario": 0.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.5639,
+       "scenario": 0.5639,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.402,
+       "scenario": 0.402,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 1.0,
+       "scenario": 1.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.0,
+       "scenario": 0.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.7972,
+       "scenario": 0.7972,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.187,
+       "scenario": 0.187,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    },
+    "R04": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.8977,
+       "scenario": 0.8977,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.232,
+       "scenario": 0.232,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.6261,
+       "scenario": 0.6261,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.844,
+       "scenario": 0.844,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.9213,
+       "scenario": 0.9213,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.18,
+       "scenario": 0.18,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.7288,
+       "scenario": 0.7288,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.614,
+       "scenario": 0.614,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    },
+    "R05": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 1.0,
+       "scenario": 1.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.0,
+       "scenario": 0.0,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.7269,
+       "scenario": 0.7269,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 2.042,
+       "scenario": 2.042,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.9634,
+       "scenario": 0.9634,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.227,
+       "scenario": 0.227,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.732,
+       "scenario": 0.732,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 1.976,
+       "scenario": 1.976,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    },
+    "R06": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.9233,
+       "scenario": 0.9233,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 1.004,
+       "scenario": 1.004,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.3735,
+       "scenario": 0.3735,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 7.505,
+       "scenario": 7.505,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.6678,
+       "scenario": 0.6678,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 3.856,
+       "scenario": 3.856,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.5192,
+       "scenario": 0.5192,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 5.75,
+       "scenario": 5.75,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    },
+    "R07": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.7029,
+       "scenario": 0.7029,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 4.917,
+       "scenario": 4.917,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.5702,
+       "scenario": 0.5702,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 6.683,
+       "scenario": 6.683,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.7242,
+       "scenario": 0.7242,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 4.139,
+       "scenario": 4.139,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.6069,
+       "scenario": 0.6069,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 6.085,
+       "scenario": 6.085,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    },
+    "R08": {
+     "ingresso_mattina": {
+      "frazione_ombra": {
+       "baseline": 0.9734,
+       "scenario": 0.9734,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 0.208,
+       "scenario": 0.208,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_mezzogiorno": {
+      "frazione_ombra": {
+       "baseline": 0.6034,
+       "scenario": 0.6034,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 2.863,
+       "scenario": 2.863,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "uscita_pomeriggio": {
+      "frazione_ombra": {
+       "baseline": 0.695,
+       "scenario": 0.695,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 2.16,
+       "scenario": 2.16,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     },
+     "giornata_8_18": {
+      "frazione_ombra": {
+       "baseline": 0.5703,
+       "scenario": 0.5703,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      },
+      "minuti_sole": {
+       "baseline": 3.083,
+       "scenario": 3.083,
+       "delta": 0.0,
+       "intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "intervallo": [
+        0.0,
+        0.0
+       ],
+       "discrimina": false
+      }
+     }
+    }
+   },
+   "area_attesa_pellico": {
+    "ingresso_mattina": {
+     "baseline": 1.0,
+     "scenario": 1.0,
+     "delta": 0.0,
+     "intervallo_altezze": [
+      0.0,
+      0.0
+     ],
+     "intervallo": [
+      0.0,
+      0.0
+     ],
+     "discrimina": false
+    },
+    "uscita_mezzogiorno": {
+     "baseline": 0.0,
+     "scenario": 0.3149,
+     "delta": 0.3149,
+     "intervallo_altezze": [
+      0.3149,
+      0.3149
+     ],
+     "intervallo": [
+      0.3149,
+      0.3149
+     ],
+     "discrimina": true
+    },
+    "uscita_pomeriggio": {
+     "baseline": 0.0,
+     "scenario": 0.0137,
+     "delta": 0.0137,
+     "intervallo_altezze": [
+      0.0137,
+      0.0137
+     ],
+     "intervallo": [
+      0.0137,
+      0.0137
+     ],
+     "discrimina": true
+    },
+    "giornata_8_18": {
+     "baseline": 0.2082,
+     "scenario": 0.3326,
+     "delta": 0.1244,
+     "intervallo_altezze": [
+      0.1244,
+      0.1244
+     ],
+     "intervallo": [
+      0.1244,
+      0.1244
+     ],
+     "discrimina": true
+    }
+   },
+   "archi_usati": {
+    "battisti": {
+     "archi": 20,
+     "civici_uso_totali": 17510,
+     "fasce": {
+      "ingresso_mattina": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_mezzogiorno": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_pomeriggio": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "giornata_8_18": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      }
+     }
+    },
+    "pellico": {
+     "archi": 20,
+     "civici_uso_totali": 20552,
+     "fasce": {
+      "ingresso_mattina": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_mezzogiorno": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "uscita_pomeriggio": {
+       "delta_frazione_ombra_media_pesata": 0.0,
+       "civici_minuti_sole_evitati": 0.0,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        0.0,
+        0.0
+       ],
+       "archi_toccati": 0,
+       "civici_uso_toccati": 0,
+       "edge_id_toccati": []
+      },
+      "giornata_8_18": {
+       "delta_frazione_ombra_media_pesata": 0.00283,
+       "civici_minuti_sole_evitati": 30.07,
+       "civici_minuti_sole_evitati_intervallo_altezze": [
+        30.07,
+        32.22
+       ],
+       "archi_toccati": 1,
+       "civici_uso_toccati": 2148,
+       "edge_id_toccati": [
+        "edg_osm_544585227_3600889663_5264115226"
+       ]
+      }
+     }
+    }
+   },
+   "accessibilita": {
+    "delta_quota_servita": 0.0,
+    "delta_tempo_mediano_min": 0.0,
+    "nullo": true,
+    "motivo": "per costruzione: il motore di accessibilità usa grafo, origini e profilo, che gli interventi non modificano; verificato con hash e ricalcolo",
+    "hash_grafo_regole_origini_invariati": true,
+    "ricalcolo": {
+     "dst_school_piee82101p": {
+      "job_id": "job_4d23232eb780b0c1",
+      "job_id_riferimento": "job_4d23232eb780b0c1",
+      "stesso_job": true,
+      "metriche_identiche": true,
+      "quota_10min": 0.5247
+     },
+     "dst_stop_pi4390": {
+      "job_id": "job_9cc7481bc4f55863",
+      "job_id_riferimento": "job_9cc7481bc4f55863",
+      "stesso_job": true,
+      "metriche_identiche": true,
+      "quota_10min": 0.6632
+     }
+    },
+    "ostruzione_passaggio_non_modellata": [
+     {
+      "op_id": "op_pensilina_01",
+      "text": "L'impronta tocca un arco fra i più usati da T06 (['edg_osm_544585227_3600889663_5264115226']): passaggio libero e larghezza non modellati, da verificare."
+     }
+    ]
+   },
+   "fasce_utili_R01": [],
+   "assets": [
+    "scenarios/out/ombre_scn_z2_s2_pensilina_pellico_2026-09-15_0800.geojson",
+    "scenarios/out/ombre_scn_z2_s2_pensilina_pellico_2026-09-15_1300.geojson",
+    "scenarios/out/ombre_scn_z2_s2_pensilina_pellico_2026-09-15_1630.geojson"
+   ],
+   "robustezza": {}
+  }
+ },
+ "dichiarazioni": [
+  "I pesi dei tratti sono numeri di civici SIT (punti d'indirizzo che passano dall'arco nel cammino minimo): non sono persone e non esistono flussi pedonali misurati.",
+  "Baseline = edifici documentati (alberi esistenti esclusi, inventario stimato e incompleto): un albero nuovo non è confrontato con la chioma esistente nello stesso punto.",
+  "Ombra geometrica binaria: nessuna conversione in gradi, comfort, salute o domanda pedonale; nessun anno di crescita.",
+  "Percorsi sull'asse della rete: il lato del marciapiede è ignoto, l'intervallo sul lato (R01 spostata di 3 m) è riportato accanto al delta.",
+  "Dimensioni degli interventi dichiarate come ipotesi di classe scenario; fattibilità (sottoservizi, spazio radicale, proprietà del suolo, permessi, specie) ignota per tutti.",
+  "Nessuna validazione locale: risultati not_validated_locally."
+ ],
+ "indicatori": {
+  "valori": {
+   "scn_z2_s1_filare_r01": {
+    "r01_minuti_sole_evitati_mezzogiorno": 0.583,
+    "r01_minuti_sole_evitati_giornata": 0.348,
+    "campione_minuti_sole_evitati_mezzogiorno": 0.2503,
+    "archi_civici_minuti_evitati_mezzogiorno": 0.0,
+    "area_attesa_ombra_mezzogiorno": 0.0
+   },
+   "scn_z2_s2_pensilina_pellico": {
+    "r01_minuti_sole_evitati_mezzogiorno": 0.008,
+    "r01_minuti_sole_evitati_giornata": 0.006,
+    "campione_minuti_sole_evitati_mezzogiorno": 0.0011,
+    "archi_civici_minuti_evitati_mezzogiorno": 0.0,
+    "area_attesa_ombra_mezzogiorno": 0.3149
+   }
+  },
+  "descrizioni": {
+   "r01_minuti_sole_evitati_mezzogiorno": "minuti al sole evitati su R01 camminando, partenza 12:30-13:30",
+   "r01_minuti_sole_evitati_giornata": "minuti al sole evitati su R01 camminando, partenza 8-18",
+   "campione_minuti_sole_evitati_mezzogiorno": "media sui 7 percorsi campione dei minuti al sole evitati, partenza 12:30-13:30",
+   "archi_civici_minuti_evitati_mezzogiorno": "somma sui tratti più usati verso la Battisti di (civici x minuti al sole evitati), partenza 12:30-13:30",
+   "area_attesa_ombra_mezzogiorno": "aumento della frazione d'ombra dell'area di attesa Pellico, 12:30-13:30"
+  },
+  "nota": "Indicatori separati, positivi se c'è un beneficio. Nessun punteggio unico: usare ordina() con pesi esplicitamente scelti dal decisore."
+ },
+ "sensibilita_pesi": {
+  "ordini": {
+   "r01_minuti_sole_evitati_mezzogiorno": [
+    "scn_z2_s1_filare_r01",
+    "scn_z2_s2_pensilina_pellico"
+   ],
+   "r01_minuti_sole_evitati_giornata": [
+    "scn_z2_s1_filare_r01",
+    "scn_z2_s2_pensilina_pellico"
+   ],
+   "campione_minuti_sole_evitati_mezzogiorno": [
+    "scn_z2_s1_filare_r01",
+    "scn_z2_s2_pensilina_pellico"
+   ],
+   "archi_civici_minuti_evitati_mezzogiorno": [
+    "scn_z2_s1_filare_r01",
+    "scn_z2_s2_pensilina_pellico"
+   ],
+   "area_attesa_ombra_mezzogiorno": [
+    "scn_z2_s2_pensilina_pellico",
+    "scn_z2_s1_filare_r01"
+   ],
+   "pesi_uguali": [
+    "scn_z2_s1_filare_r01",
+    "scn_z2_s2_pensilina_pellico"
+   ]
+  },
+  "ordine_stabile": false
+ }
+}

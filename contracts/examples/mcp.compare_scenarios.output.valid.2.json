@@ -1,0 +1,34 @@
+{
+ "common_conditions": {
+  "date": "2026-09-15",
+  "baseline_id": "bas_z2_20261001",
+  "reference": "scn_z2_s0_baseline",
+  "motore_ombre": "geometric_ray 0.2.0"
+ },
+ "deltas": [
+  {
+   "metric_id": "sc1_r01_noon_sun_min",
+   "baseline_value": 3.5,
+   "scenario_value": 3.2,
+   "delta": -0.3,
+   "delta_low": -0.35,
+   "delta_high": -0.25,
+   "unit": "min",
+   "classification": "estimated",
+   "discriminates": true,
+   "scope": "scn_z2_s1_filare_r01, R01, partenza 12:30-13:30"
+  }
+ ],
+ "incompatibilities": [],
+ "job_id": "job_0123456789abcdef",
+ "result_manifest_id": "man_0123456789abcdef",
+ "cached": false,
+ "status": "succeeded",
+ "limits": [
+  {
+   "code": "civici_non_persone",
+   "text": "I pesi dei tratti sono civici SIT, non persone; nessun flusso pedonale misurato."
+  }
+ ],
+ "method": "scenario_comparison 0.1.0"
+}

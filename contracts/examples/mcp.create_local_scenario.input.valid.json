@@ -34,8 +34,14 @@
     ]
    },
    "dimensions": {
-    "height_m": {
+    "roof_height_m": {
      "value": 3.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di esempio, non da progetto"
+    },
+    "canopy_base_m": {
+     "value": 2.5,
      "unit": "m",
      "classification": "scenario",
      "dimension_source": "ipotesi di esempio, non da progetto"
@@ -82,8 +88,14 @@
     ]
    },
    "dimensions": {
-    "height_m": {
+    "roof_height_m": {
      "value": 3.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di esempio, non da progetto"
+    },
+    "canopy_base_m": {
+     "value": 2.5,
      "unit": "m",
      "classification": "scenario",
      "dimension_source": "ipotesi di esempio, non da progetto"

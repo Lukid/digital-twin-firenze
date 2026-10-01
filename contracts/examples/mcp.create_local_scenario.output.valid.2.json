@@ -1,0 +1,26 @@
+{
+ "scenario_id": "scn_z2_0123456789abcdef",
+ "version": 1,
+ "cached": false,
+ "warnings": [
+  {
+   "code": "su_arco_molto_usato",
+   "op_id": "op_pensilina_1",
+   "severity": "warning",
+   "text": "L'impronta tocca un arco fra i più usati da T06: passaggio libero da verificare."
+  }
+ ],
+ "feasibility": {
+  "sottoservizi": "ignota",
+  "spazio_radicale": "ignota",
+  "permessi": "ignota",
+  "proprieta_suolo": "ignota",
+  "manutenzione_e_specie": "ignota"
+ },
+ "interventions": {
+  "alberi": 0,
+  "pensiline": 1,
+  "area_proiezione_chiome_m2": 0.0,
+  "area_pensiline_m2": 12.0
+ }
+}

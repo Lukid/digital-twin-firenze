@@ -5,6 +5,7 @@ import asyncio, json, os, pathlib, shutil, subprocess, sys
 HERE = pathlib.Path(__file__).parent
 CACHE = HERE / ".cache_test"; shutil.rmtree(CACHE, ignore_errors=True)
 os.environ["DT_CACHE_DIR"] = str(CACHE)
+os.environ["DT_SCENARIOS_DIR"] = str(CACHE / "scenari")   # scenari creati dal test: nella cache temporanea, non in data/norm
 sys.path.insert(0, str(HERE))
 import core, replay  # noqa: E402
 
@@ -57,9 +58,9 @@ ins = core.run_tool("inspect_dataset", {"source_id": "src_sit_civici"})
 assert core.validate("inspect_dataset", "output", ins) == [] and ins["license"]["state"] == "unproven"
 assert core.validate("list_destinations", "output", core.run_tool("list_destinations", {"aoi_id": "aoi_z2", "category": "school"})) == []
 
-# 5. scenari (T10): fuori capacità finché il motore non c'è
-for tool, args in (("create_local_scenario", {"x": 1}), ("compare_scenarios", None)):
-    assert err_code(core.run_tool(tool, args)) == "outside_capability", tool
+# 5. scenari (T10): input non validi respinti prima di qualunque calcolo
+for tool, args in (("create_local_scenario", {"x": 1}), ("compare_scenarios", None), ("compare_scenarios", {"manifest_ids": ["man_0123456789abcdef"] * 2, "metric_ids": ["x"]})):
+    assert err_code(core.run_tool(tool, args)) == "invalid_params", tool
 
 # 5b. ombra (T09)
 SH = {"baseline_id": "bas_z2_20261001", "receivers": [{"route_id": "R01"}], "when": {"date": "2026-09-15", "timezone": "Europe/Rome", "times": ["08:00", "13:00", "16:30"]},
@@ -79,10 +80,80 @@ big = {**SH, "receivers": [{"route_id": i} for i in ("R01", "R03", "R04", "R05")
 r = core.run_tool("compute_shadow", big); assert err_code(r) == "limit_exceeded" and r["error"]["smaller_request"], r
 assert core.validate("compute_shadow", "input", r["error"]["smaller_request"]) == []
 assert err_code(core.run_tool("compute_shadow", {**SH, "receivers": [{"route_id": "R99"}]})) == "unknown_id"
-assert err_code(core.run_tool("compute_shadow", {**SH, "scenario_id": "scn_x_y"})) == "outside_capability"
-assert err_code(core.run_tool("compute_shadow", {**SH, "method": {**SH["method"], "obstacles": "buildings_and_scenario"}})) == "outside_capability"
+assert err_code(core.run_tool("compute_shadow", {**SH, "scenario_id": "scn_x_y", "method": {**SH["method"], "obstacles": "buildings_and_scenario"}})) == "unknown_id"
+assert err_code(core.run_tool("compute_shadow", {**SH, "method": {**SH["method"], "obstacles": "buildings_and_scenario"}})) == "invalid_params"   # senza scenario_id
+assert err_code(core.run_tool("compute_shadow", {**SH, "scenario_id": "scn_z2_s2_pensilina_pellico"})) == "invalid_params"                         # con scenario_id serve buildings_and_scenario
 assert err_code(core.run_tool("compute_shadow", {**SH, "sql": "x"})) == "invalid_params"
 assert replay.replay(s1["job_id"])["match"]
+
+# 5c. scenari e confronto (T10)
+import copy
+from jsonschema import Draft202012Validator
+sch, reg = core._registry()
+valida_man = lambda m: [e.message for e in Draft202012Validator({"$ref": sch["manifest.schema.json"]["$id"]}, registry=reg).iter_errors(m)]
+EX = lambda n: json.loads((HERE.parent / "contracts/examples" / n).read_text())
+ALBERO = EX("mcp.create_local_scenario.input.valid.2.json")
+sc1 = core.run_tool("create_local_scenario", ALBERO)
+assert sc1["version"] == 1 and sc1["scenario_id"].startswith("scn_z2_") and sc1["cached"] is False and core.validate("create_local_scenario", "output", sc1) == [], sc1
+assert set(sc1["feasibility"].values()) == {"ignota"} and sc1["interventions"]["alberi"] == 1
+sc1b = core.run_tool("create_local_scenario", dict(reversed(list(ALBERO.items()))))
+assert sc1b["scenario_id"] == sc1["scenario_id"] and sc1b["cached"] is True                    # stesso input = stesso scenario
+op = ALBERO["operations"][0]
+bad = copy.deepcopy(ALBERO); bad["operations"][0]["dimensions"]["crown_base_m"]["value"] = 9.0
+assert err_code(core.run_tool("create_local_scenario", bad)) == "invalid_params"              # imposta oltre metà altezza
+bad = copy.deepcopy(ALBERO); del bad["operations"][0]["dimensions"]["crown_diameter_m"]
+assert err_code(core.run_tool("create_local_scenario", bad)) == "invalid_params"
+bad = copy.deepcopy(ALBERO); bad["operations"][0].update(op="remove", target_id="tre_osm_1")
+assert err_code(core.run_tool("create_local_scenario", bad)) == "outside_capability"           # rimozioni non supportate
+bad = copy.deepcopy(ALBERO); bad["operations"][0]["hypothesis_status"] = "feasibility_checked"
+assert err_code(core.run_tool("create_local_scenario", bad)) == "invalid_params"              # la fattibilità non è mai verificata qui
+assert err_code(core.run_tool("create_local_scenario", EX("mcp.create_local_scenario.input.invalid.json"))) == "invalid_params"
+assert err_code(core.run_tool("create_local_scenario", {**ALBERO, "baseline_id": "bas_altra"})) == "incompatible_baseline"
+S_, C_ = core._sc(); edif = S_._contesto_geo()["bld"][0].representative_point()
+inside = copy.deepcopy(ALBERO); inside["scenario_title"] = "Albero dentro un edificio (prova di segnalazione)"; inside["operations"][0]["geometry"]["coordinates"] = [round(edif.x, 2), round(edif.y, 2)]
+r = core.run_tool("create_local_scenario", inside); assert "error" not in r and any(w["code"] == "dentro_edificio" for w in r["warnings"]), r   # segnala, non blocca
+nullo = core.run_tool("create_local_scenario", {"baseline_id": "bas_z2_20261001", "scenario_title": "Scenario senza interventi", "operations": []})
+assert nullo["interventions"]["alberi"] == 0 and core.validate("create_local_scenario", "output", nullo) == []
+
+ST = {**SH, "method": {**SH["method"], "obstacles": "buildings_and_scenario"}, "scenario_id": sc1["scenario_id"]}
+SB = {**SH, "method": {**SH["method"], "obstacles": "documented_buildings_only"}}
+pb = core.run_tool("compute_shadow", SB); assert pb["status"] == "succeeded" and core.validate("compute_shadow", "output", pb) == []
+ps = core.run_tool("compute_shadow", ST)
+assert ps["status"] == "succeeded" and ps["cached"] is False and ps["scenario_id"] == sc1["scenario_id"] and core.validate("compute_shadow", "output", ps) == [], ps
+assert ps["job_id"] != pb["job_id"] and ps["cases"] == ["base", "base_h_min", "base_h_max"]
+ps2 = core.run_tool("compute_shadow", ST); assert ps2["cached"] is True and ps2["job_id"] == ps["job_id"] and strip(ps2) == strip(ps)   # stesso input = stesso job
+assert valida_man(core.run_tool("get_result_manifest", {"job_id": ps["job_id"]})) == []
+assert err_code(core.run_tool("compute_shadow", {**ST, "scenario_id": "scn_z2_inesistente"})) == "unknown_id"
+nz = core.run_tool("compute_shadow", {**ST, "scenario_id": nullo["scenario_id"]})                                     # scenario nullo = baseline
+assert nz["status"] == "succeeded" and {m["metric_id"]: m["value"] for m in nz["headline_metrics"]} == {m["metric_id"]: m["value"] for m in pb["headline_metrics"]}
+assert replay.replay(ps["job_id"])["match"]                                                                          # replay del job di scenario
+# compare_scenarios, forma 1: delta fra manifest
+cmp1 = core.run_tool("compare_scenarios", {"manifest_ids": [pb["result_manifest_id"], ps["result_manifest_id"]], "metric_ids": ["shade_fraction"]})
+assert core.validate("compare_scenarios", "output", cmp1) == [] and cmp1["incompatibilities"] == [] and cmp1["deltas"] and cmp1["job_id"].startswith("job_"), cmp1
+assert all(d["delta"] >= -1e-9 for d in cmp1["deltas"]) and all(d["delta_low"] <= d["delta"] <= d["delta_high"] for d in cmp1["deltas"])   # un albero non riduce l'ombra
+assert cmp1["common_conditions"]["receivers"] and valida_man(core.run_tool("get_result_manifest", {"job_id": cmp1["job_id"]})) == []
+assert core.run_tool("compare_scenarios", {"manifest_ids": [pb["result_manifest_id"], ps["result_manifest_id"]], "metric_ids": ["shade_fraction"]})["cached"] is True
+cz = core.run_tool("compare_scenarios", {"manifest_ids": [pb["result_manifest_id"], nz["result_manifest_id"]], "metric_ids": ["shade_fraction", "walk_sun_min"]})
+assert cz["deltas"] and all(abs(d["delta"]) <= 1e-6 and d["discriminates"] is False for d in cz["deltas"]), cz                # scenario nullo: delta zero, non discrimina
+other = core.run_tool("compute_shadow", {**ST, "when": {**ST["when"], "date": "2026-06-21"}})
+r = core.run_tool("compare_scenarios", {"manifest_ids": [pb["result_manifest_id"], other["result_manifest_id"]], "metric_ids": ["shade_fraction"]})
+assert err_code(r) == "incompatible_baseline" and "when" in r["error"]["message"], r                                      # condizioni non comuni: respinto
+assert err_code(core.run_tool("compare_scenarios", {"manifest_ids": [pb["result_manifest_id"], "man_0000000000000000"], "metric_ids": ["shade_fraction"]})) == "unknown_id"
+# compare_scenarios, forma 2: confronto multicriterio sugli scenari dimostrativi (ombre in cache di scenarios/, altrimenti qualche minuto)
+CS = {"baseline_id": "bas_z2_20261001", "scenario_ids": ["scn_z2_s1_filare_r01", "scn_z2_s2_pensilina_pellico"]}
+mc = core.run_tool("compare_scenarios", CS)
+assert core.validate("compare_scenarios", "output", mc) == [] and mc["cached"] is False and mc["incompatibilities"] == [] and "ranking" not in mc, mc.get("error")
+assert mc["deltas"] and set(mc["scenarios"]) == set(CS["scenario_ids"]) and mc["indicators"]["valori"]
+for sid in CS["scenario_ids"]:
+    e = mc["scenarios"][sid]; assert e["stato"] == "confrontato" and set(e["fattibilita"].values()) == {"ignota"} and e["accessibilita"]["nullo"] is True
+assert "civici" in " ".join(l["text"] for l in mc["limits"]) and "non sono persone" in " ".join(l["text"] for l in mc["limits"])
+mc2 = core.run_tool("compare_scenarios", CS); assert mc2["cached"] is True and mc2["job_id"] == mc["job_id"]
+w = {"r01_minuti_sole_evitati_mezzogiorno": 2, "area_attesa_ombra_mezzogiorno": 1}
+mw = core.run_tool("compare_scenarios", {**CS, "weights": w}); assert mw["ranking"]["pesi"] == w and mw["ranking"]["ordine"] and "non è una raccomandazione" in mw["ranking"]["avvertenza"] and mw["job_id"] == mc["job_id"]   # i pesi non cambiano il job
+assert err_code(core.run_tool("compare_scenarios", {**CS, "weights": {"punteggio_unico": 1}})) == "invalid_params"
+assert err_code(core.run_tool("compare_scenarios", {**CS, "scenario_ids": ["scn_z2_inesistente"]})) == "unknown_id"
+assert err_code(core.run_tool("compare_scenarios", {**CS, "baseline_id": "bas_altra"})) == "incompatible_baseline"
+assert valida_man(core.run_tool("get_result_manifest", {"job_id": mc["job_id"]})) == []
 
 # 6. replay coincide (job appena calcolato e job storico di analysis/manifest)
 rp = replay.replay(r4["job_id"]); assert rp["match"] and rp["metrics_compared"] > 10, rp
@@ -117,7 +188,9 @@ async def mcp_test():
             res = await s.call_tool("compute_shadow", big)
             assert res.isError and json.loads(res.content[0].text)["error"]["code"] == "limit_exceeded"
             res = await s.call_tool("create_local_scenario", {})
-            assert res.isError and json.loads(res.content[0].text)["error"]["code"] == "outside_capability"
+            assert res.isError and json.loads(res.content[0].text)["error"]["code"] == "invalid_params"
+            res = await s.call_tool("create_local_scenario", ALBERO)
+            m = json.loads(res.content[0].text); assert not res.isError and m["scenario_id"] == sc1["scenario_id"] and m["cached"] is True
             res = await s.call_tool("compute_walk_access", {**A, "sql": "drop table x"})
             assert res.isError and json.loads(res.content[0].text)["error"]["code"] == "invalid_params"
             res = await s.call_tool("get_result_manifest", {"job_id": r1["job_id"]})
