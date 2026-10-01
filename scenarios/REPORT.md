@@ -31,9 +31,21 @@ Data: 1 ottobre 2026. Redatto dall'agente T10 e salvato dall'integratore. `bash 
 - Nessun punteggio unico: `ordina()` richiede pesi espliciti. Con un indicatore alla volta l'ordine cambia (area di attesa → S2, gli altri → S1).
 - La pensilina cade sul marciapiede più usato (2.148 civici): il passaggio libero non è modellato.
 
+## Contesto con alberi esistenti (secondo contesto, baseline invariata)
+
+Stesse condizioni, stessi ricevitori, S0 come riferimento; ombre di edifici + alberi esistenti T05 (chioma tipica, min e max come intervallo, come i casi di T09) più gli interventi. Calcolato per S0, S1, S2 (non per le varianti di S1). Delta a mezzogiorno (15 settembre, partenza 12:30-13:30), minuti al sole su R01, solo edifici / con alberi esistenti:
+
+- Baseline R01: 5,715 / 5,637 minuti al sole (gli alberi esistenti ne tolgono 0,08).
+- S1: -0,583 / -0,583 (intervallo [-0,583; -0,116] in entrambi); 8-18: -0,348 / -0,347. Il beneficio non cala: i 7 alberi stanno in un tratto lontano dagli alberi esistenti (nessuna sovrapposizione di chioma tipica; un solo albero, op_albero_01, tocca una chioma esistente massima, a 10,3 m).
+- S2: -0,008 / -0,008 su R01; area di attesa Pellico a mezzogiorno ombra 0 → 0,31 in entrambi i contesti (nessun albero esistente la ombreggia).
+- Archi più usati verso Pellico a mezzogiorno: 434 civici-minuti evitati da S1 in entrambi i contesti; S2 nessun effetto a mezzogiorno.
+- Quindi, per questi due scenari, escludere gli alberi esistenti non sovrastima il beneficio. Non vale in generale: dove una chioma esistente ombreggia già il punto, il delta può solo calare (testato). L'inventario degli alberi è stimato e incompleto.
+- Gli alberi di S1 con chioma sovrapposta a una esistente sono segnalati (info `chioma_su_chioma_esistente`, elenco `sovrapposizioni_alberi_esistenti` nel riepilogo).
+- Tool: `compare_scenarios` accetta `context` (`solo_edifici` default, `con_alberi_esistenti`, `entrambi`; metriche del secondo contesto con suffisso `_alb`).
+
 ## Test (`test_scenari.py`)
 
-Baseline invariata dopo gli scenari; S0 contro S0 = delta 0; un albero aggiunto non riduce mai l'ombra né aumenta i minuti al sole; stesso input = stesso `scenario_id` e `job_id`; condizioni non comuni respinte (data, ricevitori, velocità, geometrie, baseline, passo); fattibilità sempre ignota; segnalazioni; accessibilità invariata; asset di scena.
+Baseline invariata dopo gli scenari; S0 contro S0 = delta 0; un albero aggiunto non riduce mai l'ombra né aumenta i minuti al sole; stesso input = stesso `scenario_id` e `job_id`; condizioni non comuni respinte (data, ricevitori, velocità, geometrie, baseline, passo); fattibilità sempre ignota; segnalazioni; accessibilità invariata; asset di scena; nel contesto con alberi esistenti il beneficio di un nuovo albero non supera quello a soli edifici (stesso ricevitore, ora e caso).
 
 ## Tool MCP
 
@@ -48,7 +60,7 @@ Ombre di S0, S1, S2 alle 8:00, 13:00 e 16:30 (EPSG:4326); interventi di S1 e S2 
 
 ## Limiti
 
-- La baseline esclude gli alberi esistenti: un albero nuovo non è confrontato con le chiome già presenti nello stesso punto.
+- La baseline esclude gli alberi esistenti; il secondo contesto li include (stimati per classe, inventario incompleto), ma le varianti di S1 sono calcolate solo a soli edifici.
 - Percorsi sull'asse della rete, lato del marciapiede ignoto.
 - Gli alberi di scenario entrano nel motore d'ombra con il parametro esplicito `scenario_trees` di `compute_shadow` (nessun monkeypatch, nessuno stato condiviso; il `job_id` li include). Il record della baseline è stato ricongelato: cambia solo l'hash di `ombre.py`; S1 e S2 identici.
 - S0 differisce da `shadow/out` di circa 0,01-0,04% sull'area d'ombra (riferimento solare dal baricentro dei ricevitori).

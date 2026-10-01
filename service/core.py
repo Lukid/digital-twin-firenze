@@ -366,6 +366,10 @@ def _compatta(e):
     out.update(R01=e["percorsi"]["R01"], area_attesa_pellico=e["area_attesa_pellico"], archi_usati=e["archi_usati"], accessibilita={k: v for k, v in e["accessibilita"].items() if k != "ricalcolo"},
                fasce_utili_R01=e["fasce_utili_R01"], percorsi_campione_minuti_sole={r: {f: m["minuti_sole"] for f, m in t.items()} for r, t in e["percorsi"].items() if r != "R01"},
                assets=e["assets"], robustezza=e.get("robustezza", {}))
+    if "con_alberi_esistenti" in e:
+        c = e["con_alberi_esistenti"]; out["con_alberi_esistenti"] = c if c.get("stato") != "confrontato" else {"stato": "confrontato", "job_id": c["job_id"], "R01": c["percorsi"]["R01"], "area_attesa_pellico": c["area_attesa_pellico"],
+                                                                                                           "archi_usati": c["archi_usati"], "fasce_utili_R01": c["fasce_utili_R01"]}
+        out["sovrapposizioni_alberi_esistenti"] = e["sovrapposizioni_alberi_esistenti"]
     return out
 
 
@@ -435,30 +439,33 @@ def _compare_scenari(a):
     except S.ScenarioError as e: return err(e.code, str(e), candidates=e.candidates)
     dif = S.verifica_baseline()
     if dif: return err("incompatible_baseline", "La baseline non coincide con il record congelato: " + "; ".join(dif)[:250])
-    wv = a.get("with_variants", True)
+    wv = a.get("with_variants", True); ctx = a.get("context", "solo_edifici")
     inputs = {"baseline_id": a["baseline_id"], "snapshot_ids": sorted(s["snapshot_id"] for s in S.baseline()["snapshot"])}
-    params = {"scenario_ids": a["scenario_ids"], "scenario_sha256": [S.sha_obj({k: v for k, v in s.items() if k != "created_at"}) for s in scns], "with_variants": wv, "method_version": C.VERSIONE,
+    params = {"scenario_ids": a["scenario_ids"], "scenario_sha256": [S.sha_obj({k: v for k, v in s.items() if k != "created_at"}) for s in scns], "with_variants": wv, **({"context": ctx} if ctx != "solo_edifici" else {}), "method_version": C.VERSIONE,
               "ombre_version": S.O.VERSIONE, "baseline_record_sha256": S.stato_baseline()["record_sha256"]}
     jid = "job_" + hashlib.sha256(canon({"tool": "compare_scenarios", "inputs": inputs, "params": params}).encode()).hexdigest()[:16]; jp, mp = _paths(jid); cp = CACHE / f"{jid}.compare.json"
     if not (jp.exists() and mp.exists() and cp.exists()):
-        try: riep = C.confronta(a["scenario_ids"], con_varianti=wv)
+        try: riep = C.confronta(a["scenario_ids"], con_varianti=wv, contesti=S.CONTESTI if ctx != "solo_edifici" else ("solo_edifici",))
         except S.ScenarioError as e: return err(e.code, str(e))
         inc = [{"code": i["code"], "text": f"{sid}: {i['text']}"} for sid, e in riep["scenari"].items() for i in e.get("incompatibilita", [])]
         deltas, met = [], []
         for n, (sid, e) in enumerate(riep["scenari"].items(), 1):
             if e.get("stato") != "confrontato": continue
-            for f, tab in e["percorsi"]["R01"].items():
-                for k, unit, nome, ch in (("minuti_sole", "min", "sun_min", "walk_sun_min"), ("frazione_ombra", "1", "shade", "shade_fraction")):
-                    d = tab[k]
+            ctxs = [("", "", e)] if ctx == "solo_edifici" else [("_alb", ", contesto con alberi esistenti", e.get("con_alberi_esistenti") or {})] if ctx == "con_alberi_esistenti" else [("", "", e), ("_alb", ", contesto con alberi esistenti", e.get("con_alberi_esistenti") or {})]
+            for suf, lab, ee in ctxs:
+                if ee.get("stato", "confrontato") != "confrontato": continue
+                for f, tab in ee["percorsi"]["R01"].items():
+                    for k, unit, nome in (("minuti_sole", "min", "sun_min"), ("frazione_ombra", "1", "shade")):
+                        d = tab[k]
+                        if not d: continue
+                        mid = f"sc{n}_r01_{f}_{nome}{suf}"; sc = f"{sid}, R01, {riep['condizioni_comuni']['data']}, fascia {f}{lab}"
+                        deltas.append({"metric_id": mid[:60], "baseline_value": d["baseline"], "scenario_value": d["scenario"], "delta": d["delta"], "delta_low": d["intervallo"][0], "delta_high": d["intervallo"][1],
+                                       "unit": unit, "classification": "scenario", "discriminates": d["discrimina"], "scope": sc}); met.append(_metrica_delta(mid, f"Delta {nome} R01", d, unit, sc))
+                for f, d in ee["area_attesa_pellico"].items():
                     if not d: continue
-                    mid = f"sc{n}_r01_{f}_{nome}"; sc = f"{sid}, R01, {riep['condizioni_comuni']['data']}, fascia {f}"
+                    mid = f"sc{n}_attesa_{f}_shade{suf}"; sc = f"{sid}, area di attesa Pellico, fascia {f}{lab}"
                     deltas.append({"metric_id": mid[:60], "baseline_value": d["baseline"], "scenario_value": d["scenario"], "delta": d["delta"], "delta_low": d["intervallo"][0], "delta_high": d["intervallo"][1],
-                                   "unit": unit, "classification": "scenario", "discriminates": d["discrimina"], "scope": sc}); met.append(_metrica_delta(mid, f"Delta {nome} R01", d, unit, sc))
-            for f, d in e["area_attesa_pellico"].items():
-                if not d: continue
-                mid = f"sc{n}_attesa_{f}_shade"; sc = f"{sid}, area di attesa Pellico, fascia {f}"
-                deltas.append({"metric_id": mid[:60], "baseline_value": d["baseline"], "scenario_value": d["scenario"], "delta": d["delta"], "delta_low": d["intervallo"][0], "delta_high": d["intervallo"][1],
-                               "unit": "1", "classification": "scenario", "discriminates": d["discrimina"], "scope": sc}); met.append(_metrica_delta(mid, "Delta ombra area di attesa", d, "1", sc))
+                                   "unit": "1", "classification": "scenario", "discriminates": d["discrimina"], "scope": sc}); met.append(_metrica_delta(mid, "Delta ombra area di attesa", d, "1", sc))
         if not met: return err("incompatible_baseline", "Confronto respinto: " + "; ".join(i["text"] for i in inc)[:300])
         cc = {"baseline_id": riep["baseline_id"], "reference": riep["riferimento"]["scenario_id"], "date": riep["condizioni_comuni"]["data"], "fasce": [f["id"] for f in riep["condizioni_comuni"]["fasce"]],
               "method": riep["condizioni_comuni"]["method"], "walk_speed_m_s": riep["condizioni_comuni"]["walk_speed_m_s"], "ricevitori": len(riep["condizioni_comuni"]["ricevitori"]),
@@ -467,12 +474,12 @@ def _compare_scenari(a):
         payload = {"datasets": _dati_baseline(S), "method_version": C.VERSIONE}
         jid2, job, man = _compare_job(inputs, params, met, lim, payload, True, t0); assert jid2 == jid
         r = {"common_conditions": cc, "deltas": deltas, "incompatibilities": inc, "job_id": jid, "result_manifest_id": man["manifest_id"], "status": "succeeded", "datasets": man["datasets"], "params": params,
-             "limits": lim, "method": f"scenario_comparison {C.VERSIONE}", "scenarios": {sid: _compatta(e) for sid, e in riep["scenari"].items()}, "indicators": riep["indicatori"]}
+             "limits": lim, "method": f"scenario_comparison {C.VERSIONE}", "scenarios": {sid: _compatta(e) for sid, e in riep["scenari"].items()}, "indicators": riep["indicatori"], **({"indicators_con_alberi_esistenti": riep["indicatori_con_alberi_esistenti"]} if "indicatori_con_alberi_esistenti" in riep else {})}
         _write(cp, r); _write(_paths(jid)[1], man); _write(_paths(jid)[0], job); cached = False
     else: r = _load(cp); cached = True
     r = {**r, "cached": cached}
     if a.get("weights"):
-        try: r["ranking"] = C.ordina({"indicatori": r["indicators"]}, a["weights"])
+        try: r["ranking"] = C.ordina({"indicatori": r["indicators"], "indicatori_con_alberi_esistenti": r.get("indicators_con_alberi_esistenti")}, a["weights"], "solo_edifici" if ctx == "solo_edifici" else "con_alberi_esistenti")
         except S.ScenarioError as e: return err(e.code, str(e))
     return r
 

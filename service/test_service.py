@@ -150,6 +150,10 @@ assert "civici" in " ".join(l["text"] for l in mc["limits"]) and "non sono perso
 mc2 = core.run_tool("compare_scenarios", CS); assert mc2["cached"] is True and mc2["job_id"] == mc["job_id"]
 w = {"r01_minuti_sole_evitati_mezzogiorno": 2, "area_attesa_ombra_mezzogiorno": 1}
 mw = core.run_tool("compare_scenarios", {**CS, "weights": w}); assert mw["ranking"]["pesi"] == w and mw["ranking"]["ordine"] and "non è una raccomandazione" in mw["ranking"]["avvertenza"] and mw["job_id"] == mc["job_id"]   # i pesi non cambiano il job
+me = core.run_tool("compare_scenarios", {**CS, "context": "entrambi"})   # secondo contesto: edifici + alberi esistenti (ombre in cache di scenarios/)
+assert core.validate("compare_scenarios", "output", me) == [] and me["job_id"] != mc["job_id"] and any(d["metric_id"].endswith("_alb") for d in me["deltas"]), me.get("error")
+assert me["scenarios"]["scn_z2_s1_filare_r01"]["con_alberi_esistenti"]["stato"] == "confrontato" and me["scenarios"]["scn_z2_s1_filare_r01"]["sovrapposizioni_alberi_esistenti"]
+assert err_code(core.run_tool("compare_scenarios", {**CS, "context": "tutti"})) == "invalid_params"
 assert err_code(core.run_tool("compare_scenarios", {**CS, "weights": {"punteggio_unico": 1}})) == "invalid_params"
 assert err_code(core.run_tool("compare_scenarios", {**CS, "scenario_ids": ["scn_z2_inesistente"]})) == "unknown_id"
 assert err_code(core.run_tool("compare_scenarios", {**CS, "baseline_id": "bas_altra"})) == "incompatible_baseline"
