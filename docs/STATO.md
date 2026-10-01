@@ -41,6 +41,7 @@ Anteprima storica: `preview/` (superata da `scene/`).
 6. Confermare ADR-T08.
 7. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
 8. Quali difetti aperti di T12 correggere prima della demo (vedi Prossimi passi, punto 1).
+9. Riferimento visivo indicato dall'utente il 1/10/2026: https://padova-digital-twin.ekore.tech/ («il risultato a cui vorrei arrivare»). Da decidere: estendere la scena oltre Z2 e quali livelli (vedi Prossimi passi, punto 0).
 
 ## Risultati principali (non validati sul posto)
 
@@ -59,6 +60,7 @@ Anteprima storica: `preview/` (superata da `scene/`).
 
 ## Prossimi passi
 
+0. **Obiettivo di presentazione (Padova)**. Il gemello di Padova è un atlante di tutta la città: edifici con tetti colorati, verde 3D, nomi dei luoghi, ricerca per via, civico e particella catastale, parcheggi, ferrovia e tram, temperatura delle superfici da satellite (Landsat, 100 m, per data, con confronto fra giornate), qualità dell'aria ARPAV, webcam. Motore 3D proprio, città divisa in riquadri a due livelli di dettaglio. Non mostra calcoli di accessibilità o scenari. Rispetto a Pisa: noi abbiamo il motore di analisi e MCP, ci mancano la qualità della scena, l'estensione oltre Z2 e i livelli informativi. Domattina: decidere se aprire un task "scena di presentazione" (estensione, stile, livelli, temperatura delle superfici) e se rivedere ADR-T08.
 1. **Correzioni da T12 prima della demo** (dettaglio in `nl/REPORT.md`, Difetti aperti). Ordine consigliato, da confermare (decisione 8):
    - tool `list_scenarios`: oggi il client non trova filare e pensilina senza che l'utente gli dia gli ID. Piccolo: legge `scenarios/scn_*.json`.
    - ombra per orario nell'output di `compute_shadow`: oggi solo medie e min/max, la mappa invece ha i valori per orario. Medio.
