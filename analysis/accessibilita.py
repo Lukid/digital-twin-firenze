@@ -69,21 +69,7 @@ def agganci_origini(family, snap_limit_m):
     return out
 
 
-def con_agganci(G, agganci):
-    """Come rete_lib.con_agganci, ma orienta l'arco secondo la geometria (nod_da -> nod_a). In rete_lib si usa l'ordine (u, v) del
-    MultiGraph, che per 1.116 archi su 3.901 è l'inverso della geometria: l'offset dello snap (dalla geometria) cadrebbe sul lato sbagliato."""
-    H = G.copy(); per_arco = {}
-    for nome, s in agganci.items(): per_arco.setdefault((s["u"], s["v"], s["edge_id"]), []).append((s["offset_m"], nome))
-    for (u0, v0, k), lst in sorted(per_arco.items(), key=lambda kv: kv[0][2]):
-        d = dict(H.edges[u0, v0, k]); u, v = d["nod_da"], d["nod_a"]; g = d["geom"]; L = g.length; H.remove_edge(u0, v0, k)
-        punti = [(0.0, u)] + sorted((o, "snp_" + n) for o, n in lst) + [(L, v)]
-        for n, (o, nn) in enumerate(punti):
-            if n == 0: continue
-            o0, n0 = punti[n - 1]
-            sg = RL.substring(g, o0, o) if o - o0 > 1e-6 else RL.LineString([g.interpolate(o0), g.interpolate(o)])
-            if nn not in H: H.add_node(nn, x=sg.coords[-1][0], y=sg.coords[-1][1], bordo_buffer=False, in_z2=True, componente=H.nodes[u]["componente"])
-            H.add_edge(n0, nn, key=f"{k}#{n}", **{**d, "geom": sg, "length_m": round(o - o0, 2), "parte_di": k})
-    return H
+con_agganci = RL.con_agganci   # unica implementazione, in network/rete_lib.py
 
 
 def _costo(e, prof, orig_len):

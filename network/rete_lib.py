@@ -58,8 +58,9 @@ def con_agganci(G, agganci):
     """Copia del grafo con i punti agganciati come nodi 'snp_<nome>' che spezzano l'arco. agganci: {nome: snap}."""
     H = G.copy(); per_arco = {}
     for nome, s in agganci.items(): per_arco.setdefault((s["u"], s["v"], s["edge_id"]), []).append((s["offset_m"], nome))
-    for (u, v, k), lst in per_arco.items():
-        d = dict(H.edges[u, v, k]); g = d["geom"]; L = g.length; H.remove_edge(u, v, k)
+    for (u0, v0, k), lst in sorted(per_arco.items(), key=lambda kv: kv[0][2]):
+        # la geometria corre da nod_da a nod_a, ma in networkx (u, v) può essere l'inverso: l'offset dello snap è sulla geometria
+        d = dict(H.edges[u0, v0, k]); u, v = d.get("nod_da", u0), d.get("nod_a", v0); g = d["geom"]; L = g.length; H.remove_edge(u0, v0, k)
         punti = [(0.0, u)] + sorted((o, "snp_" + n) for o, n in lst) + [(L, v)]
         for n, (o, nn) in enumerate(punti):
             if n == 0: continue

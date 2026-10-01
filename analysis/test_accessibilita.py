@@ -38,10 +38,6 @@ def punto(s):
 import rete_lib as RL
 def invertito(sn):   # l'arco è memorizzato nel grafo in ordine (u, v) opposto alla geometria
     e = c["G"].edges[sn["u"], sn["v"], sn["edge_id"]]; return (sn["u"], sn["v"]) != (e["nod_da"], e["nod_a"])
-def corretto(sn):    # snap con l'offset riportato al verso (u, v) del grafo, per far girare il percorso() di T04 senza il suo difetto
-    if not invertito(sn): return sn
-    return {**sn, "offset_m": round(c["G"].edges[sn["u"], sn["v"], sn["edge_id"]]["geom"].length - sn["offset_m"], 2)}
-differenti = []
 for rid, t in sorted(camp.items()):
     po, so = punto(t["origine"]); pd_, sd = punto(t["destinazione"])
     eid = t["destinazione"].split()[0]; eid = stop_ent[eid]["entrance_id"] if eid.startswith("dst_stop") else eid
@@ -51,16 +47,14 @@ for rid, t in sorted(camp.items()):
         continue
     assert x["stato"] == "reachable" == t["stato"], (rid, x)
     # riferimento indipendente: il percorso() di T04 con gli snap riportati al verso del grafo
-    H, nodi, archi = RL.percorso(c["G"], corretto(so), corretto(sd)); att = {e.get("parte_di", e["edge_id"]) for e in archi if e["tipo_arco"] == "attraversamento"}
+    H, nodi, archi = RL.percorso(c["G"], so, sd); att = {e.get("parte_di", e["edge_id"]) for e in archi if e["tipo_arco"] == "attraversamento"}
     atteso = sum(e["length_m"] for e in archi) + so["dist_m"] + sd["dist_m"]
     assert abs(x["totale_m"] - atteso) < 0.3 and x["attraversamenti"] == len(att), (rid, x["totale_m"], atteso)
     assert abs(x["diretta_m"] - t["diretta_m"]) < 0.15 and x["totale_m"] >= x["diretta_m"], (rid, x)
-    if invertito(so) or invertito(sd):
-        differenti.append(rid); assert t["lunghezza_totale_m"] > x["totale_m"] + 5, (rid, t["lunghezza_totale_m"], x["totale_m"])   # T04 sovrastima
-    else:
+    if True:
         assert abs(x["totale_m"] - t["lunghezza_totale_m"]) < 0.3 and x["attraversamenti"] == t["attraversamenti"] and abs(x["m_marciapiede_ignoto"] - t["m_marciapiede_ignoto"]) < 0.3, (rid, x, t)
-    print(f"  {rid} {x['totale_m']} m (T04 {t['lunghezza_totale_m']} m){' [snap su arco invertito]' if rid in differenti else ''}, attr {x['attraversamenti']}")
-print("3 ok: R01-R09 uguali a T04 salvo", differenti, "(difetto di orientamento in rete_lib.con_agganci), V01 forbidden")
+    print(f"  {rid} {x['totale_m']} m (T04 {t['lunghezza_totale_m']} m), attr {x['attraversamenti']}")
+print("3 ok: R01-R09 uguali a T04, V01 forbidden")
 # V01 anche dentro la funzione di libreria
 assert O["adr_sit_11884"]["stato"] == "forbidden"
 

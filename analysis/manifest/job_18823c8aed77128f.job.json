@@ -2,9 +2,9 @@
  "job_id": "job_18823c8aed77128f",
  "tool": "compute_walk_access",
  "status": "succeeded",
- "created_at": "2026-10-01T16:55:04Z",
- "started_at": "2026-10-01T16:55:04Z",
- "finished_at": "2026-10-01T16:55:04Z",
+ "created_at": "2026-10-01T16:58:13Z",
+ "started_at": "2026-10-01T16:58:13Z",
+ "finished_at": "2026-10-01T16:58:13Z",
  "inputs": {
   "baseline_id": "bas_z2_20261001",
   "snapshot_ids": [
