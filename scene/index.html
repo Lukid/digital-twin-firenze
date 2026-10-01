@@ -48,7 +48,7 @@ a{color:var(--acc)}
 </head>
 <body>
 <div class="banner" role="note">Anteprima tecnica, dati del 1 ottobre 2026. Risultati non validati sul posto: rete OSM non verificata, velocità e penalità sono ipotesi, chiome e imposte stimate.
-<small>Le ombre non sono ancora calcolate. La mappa mostra, non calcola.</small></div>
+<small>Le ombre vengono dal calcolo separato di T09: la mappa le mostra, non le calcola.</small></div>
 <div class="app">
 <div id="map" role="region" aria-label="Mappa 3D della zona Z2 di Pisa con i civici colorati per tempo a piedi. Le stesse informazioni sono nella tabella e nella scheda del pannello."></div>
 <aside aria-label="Pannello di controllo, legenda e dati">
@@ -85,11 +85,19 @@ a{color:var(--acc)}
 <label><input type="checkbox" data-l="omb"> Ombre (T09)</label>
 </fieldset>
 <p id="stato" role="status" aria-live="polite"></p>
-<label class="f" id="ombsel-w" hidden for="ombsel">Istante delle ombre<select id="ombsel"></select></label>
+<fieldset id="ombctl" hidden><legend>Ombre del 15 settembre 2026</legend>
+<label class="f" for="omb-t">Istante (ora di Pisa)
+<select id="omb-t"><option value="0800">8:00</option><option value="1300">13:00</option><option value="1630">16:30</option></select></label>
+<label class="f" for="omb-c">Caso
+<select id="omb-c"><option value="base">Solo edifici documentati</option><option value="alberi_tipico">Edifici e alberi, chioma tipica stimata</option></select></label>
+<ul class="lg" id="omb-leg"></ul>
+</fieldset>
 <h2>Scheda</h2>
 <div id="scheda" aria-live="polite" tabindex="-1">Clicca un elemento sulla mappa, oppure cerca un civico.</div>
 <h2>Indicatori</h2>
 <div class="tw" id="tab"></div>
+<h2>Ombra sul percorso R01</h2>
+<div class="tw" id="ombtab"></div>
 <h2>Fonti, date e ipotesi</h2>
 <ul class="nota" id="fonti"></ul>
 <p class="nota">Stato di validazione di tutti i risultati: <b>non validato sul posto</b> (<code>not_validated_locally</code>).</p>
@@ -105,7 +113,7 @@ const $=id=>document.getElementById(id);
 const m1=v=>(+v).toFixed(1).replace('.',',')+' m',pc=v=>(v*100).toFixed(1).replace('.',',')+'%',n1=v=>(+v).toFixed(1).replace('.',',');
 const el=(t,txt,c)=>{const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(c)e.className=c;return e};
 let META,CIV,DET,map,sel=null;
-const S={d:'b',f:0,lite:false,off:new Set(['rete','arc','omb'])};
+const S={d:'b',f:0,ot:'1300',oc:'base',lite:false,off:new Set(['rete','arc','omb'])};
 const small=matchMedia('(max-width:48rem)');
 // ---- icone per vietato e dati insufficienti (forma, non solo colore)
 function icona(kind){const c=document.createElement('canvas');c.width=c.height=48;const x=c.getContext('2d');x.lineJoin='round';
@@ -119,15 +127,17 @@ function readHash(){const h=new URLSearchParams(location.hash.slice(1));const o=
  ['z','p','b'].forEach(k=>{const v=parseFloat(h.get(k));if(isFinite(v))o[k]=v});
  if(['b','p'].includes(h.get('d')))S.d=h.get('d');
  const f=parseInt(h.get('f'));if(f>=0&&f<=3)S.f=f;
+ if(['0800','1300','1630'].includes(h.get('ot')))S.ot=h.get('ot');
+ if(['base','alberi'].includes(h.get('oc')))S.oc=h.get('oc')==='alberi'?'alberi_tipico':'base';
  if(h.has('lite'))o.lite=h.get('lite')==='1';
  if(h.has('off')){S.off=new Set(h.get('off').split(',').filter(Boolean))}
  return o}
 function writeHash(){if(!map)return;const c=map.getCenter(),h=new URLSearchParams();
  h.set('c',c.lng.toFixed(5)+','+c.lat.toFixed(5));h.set('z',map.getZoom().toFixed(2));h.set('p',Math.round(map.getPitch()));h.set('b',Math.round(map.getBearing()));
- h.set('d',S.d);h.set('f',S.f);h.set('lite',S.lite?1:0);h.set('off',[...S.off].join(','));
+ h.set('d',S.d);h.set('f',S.f);h.set('ot',S.ot);h.set('oc',S.oc==='base'?'base':'alberi');h.set('lite',S.lite?1:0);h.set('off',[...S.off].join(','));
  history.replaceState(null,'','#'+h.toString())}
 // ---- layer registry, aggiunti solo quando servono
-const ORDER=['ed2','ed3','sp2','sp3','al_ch2','al_ch3','al_tr','rete','attr','arc','omb','perc_o','perc_ok','perc_v','civ_ok','civ_ins','civ_forb','dest_in','dest','sel'];
+const ORDER=['omb','ed2','ed3','sp2','sp3','al_ch2','al_ch3','al_tr','rete','attr','arc','perc_o','perc_ok','perc_v','civ_ok','civ_ins','civ_forb','dest_in','dest','sel'];
 const GROUP={ed2:'ed',ed3:'ed',sp2:'sp',sp3:'sp',al_ch2:'al',al_ch3:'al',al_tr:'al',rete:'rete',attr:'rete',arc:'arc',omb:'omb',perc_o:'perc',perc_ok:'perc',perc_v:'perc',civ_ok:'civ',civ_ins:'civ',civ_forb:'civ',dest_in:'dest',dest:'dest'};
 const ZW=(a,b)=>['interpolate',['linear'],['zoom'],14,a,19,b];
 const EDCOL=['case',['==',['get','classe_h'],'derived'],'#d9a066','#9a9a9a'];
@@ -220,27 +230,46 @@ const T={
 };
 const LID={ed2:'ed',ed3:'ed',sp2:'sp',sp3:'sp',al_ch2:'al',al_ch3:'al',al_tr:'al',rete:'rete',attr:'rete',arc:'arc',perc_ok:'perc',perc_v:'perc',dest_in:'dest',dest:'dest'};
 const PRIO=['civ_forb','civ_ins','civ_ok','dest','dest_in','perc_v','perc_ok','arc','attr','sp3','sp2','al_ch3','al_ch2','al_tr','rete','ed3','ed2'];
-// ---- ombre T09 (vuote)
+// ---- ombre T09
 let OMB=null;
-async function omb(){const on=!S.off.has('omb');$('ombsel-w').hidden=true;if(!on){if(map.getLayer('omb'))map.setLayoutProperty('omb','visibility','none');if($('stato').dataset.o)$('stato').textContent='';return}
+async function omb(){const on=!S.off.has('omb');$('ombctl').hidden=!on;$('omb-t').value=S.ot;$('omb-c').value=S.oc;
+ if(!on){if(map.getLayer('omb'))map.setLayoutProperty('omb','visibility','none');$('stato').textContent='';return}
  if(!OMB)OMB=await fetch(D('ombre/index.json')).then(r=>r.json());
- if(!OMB.istanti.length){$('stato').dataset.o=1;$('stato').textContent=OMB.messaggio;return}
- const w=$('ombsel');if(!w.options.length)OMB.istanti.forEach(i=>w.append(new Option(i.istante,i.url)));$('ombsel-w').hidden=false;
- const put=u=>{if(map.getSource('omb'))map.getSource('omb').setData(D(u));else map.addSource('omb',{type:'geojson',data:D(u)});if(!map.getLayer('omb'))addOrdered({id:'omb',type:'fill',paint:{'fill-color':'#37474f','fill-opacity':0.4}},'omb');map.setLayoutProperty('omb','visibility','visible')};
- w.onchange=()=>put(w.value);put(w.value);$('stato').textContent='Ombre del job '+OMB.job_id}
+ const ul=$('omb-leg');ul.replaceChildren();
+ if(!OMB.istanti.length){$('stato').textContent=OMB.messaggio;return}
+ const i=OMB.istanti.find(x=>x.id===S.ot),c=i.casi[S.oc];
+ $('stato').textContent='';
+ const sw=el('span',null,'sw sq');sw.style.background='rgba(55,71,79,0.55)';sw.setAttribute('aria-hidden','true');
+ const li=el('li');li.append(sw,el('span','Ombra al suolo, '+(S.oc==='base'?'solo edifici documentati':'edifici e chiome tipiche stimate')));ul.append(li);
+ [['Data e ora','15 settembre 2026, '+i.etichetta+' (Europe/Rome)'],['Sole','elevazione '+n1(i.elevazione_deg)+'°, azimut '+n1(i.azimut_deg)+'° da Nord'],['Motore ombre',OMB.motore],['job_id',OMB.job_id],['Classificazione',c.classificazione==='derived'?'derivato':'stimato'],['Validazione','non validato sul posto']].forEach(([k,v])=>ul.append(el('li',k+': '+v)));
+ const a=el('a');a.href=D('manifest/'+OMB.job_id+'.manifest.json');a.target='_blank';a.rel='noopener';a.textContent='manifest (apre nuova finestra)';const l2=el('li');l2.append(a);ul.append(l2);
+ const url=D(i.url);
+ if(map.getSource('omb')){if(map._ombUrl!==url){map.getSource('omb').setData(url);map._ombUrl=url}}else{map.addSource('omb',{type:'geojson',data:url,attribution:'Ombre: motore del progetto'});map._ombUrl=url}
+ if(!map.getLayer('omb'))addOrdered({id:'omb',type:'fill',paint:{'fill-color':'#37474f','fill-opacity':0.45}},'omb');
+ map.setFilter('omb',['==',['get','caso'],S.oc]);map.setLayoutProperty('omb','visibility','visible');
+ ombTab()}
+function ombTab(){const host=$('ombtab');host.replaceChildren();const R=META.ombre_r01;if(!R)return;
+ const fa=R.istante_fascia[S.ot],pf=v=>(v*100).toFixed(1).replace('.',','),rng=(o,f)=>f(o.valore)+' ('+f(o.min)+' - '+f(o.max)+')';
+ const t=el('table');t.append(el('caption','Percorso R01 Pellico-Battisti ('+R.lunghezza_m.toString().replace('.',',')+' m, asse della strada), 15 settembre: tipico e intervallo min-max'));
+ const th=el('thead'),tr=el('tr');['Fascia','Edifici: in ombra %','Edifici: minuti al sole','Con alberi: in ombra %','Con alberi: minuti al sole'].forEach(x=>{const h=el('th',x);h.scope='col';tr.append(h)});th.append(tr);t.append(th);
+ const tb=el('tbody');R.righe.forEach(r=>{const tr=el('tr'),h=el('th',r.etichetta+(r.fascia===fa?' (istante scelto)':''));h.scope='row';tr.append(h);
+  [['ed','fr',pf],['ed','ms',n1],['al','fr',pf],['al','ms',n1]].forEach(([c,k,f])=>{const td=el('td',rng(r[c][k],f));td.dataset.k=r.fascia+'.'+c+'.'+k;if(r.fascia===fa)td.className='sel';tr.append(td)});tb.append(tr)});
+ t.append(tb);host.append(t);host.append(el('p',R.nota_lato,'nota'));
+ host.append(el('p','Gli intervalli usano le altezze min/max di T05 e le chiome min/max. Ombra binaria geometrica, non è una stima di temperatura né di comfort. Alberi solo stimati e inventario incompleto. Non validato sul posto.','nota'))}
 // ---- avvio
 async function main(){
  const o=readHash();
  [META,CIV]=await Promise.all([fetch(D('meta.json')).then(r=>r.json()),fetch(D('civici.geojson')).then(r=>r.json())]);
  S.lite=o.lite!==undefined?o.lite:small.matches;
  if(S.lite&&o.lite===undefined&&!location.hash.includes('off='))S.off=new Set(['al','rete','arc','omb']);
+ ombTab();
  const dl=$('civ-list');CIV.features.forEach(f=>{const op=document.createElement('option');op.value=f.properties.a;dl.append(op)});
  $('fonti').append(...[
   'Dati del 1 ottobre 2026: snapshot OSM 20261001 (rete, ingressi, coperture, alberi), Regione Toscana DB topografico e unità volumetriche 2010 (edifici), DSM 2021 (altezze derivate), DBT10K Regione Toscana 2010 (alberi), Autolinee Toscane GTFS (fermata), SIT civici (punti d\'indirizzo, licenza non provata: solo uso interno).',
   'Modello in EPSG:7791; in mappa coordinate EPSG:4326 derivate e arrotondate (circa 0,1 m). Datum verticale non confermato. Il terreno (0,8 - 5,5 m) è reso piatto: altezze e imposte sono relative al suolo locale.',
   'Ipotesi: velocità 0,8 / 1,2 / 1,4 m/s, penalità di attraversamento 10 s solo nel profilo ridotta, limite di aggancio alla rete 40 m. Non sono misure su Pisa né attribuite a gruppi di persone.',
   'Chiome, imposte e tronchi: 453 su 453 stimati con intervallo. Coperture OSM: imposta stimata con soletta di 0,4 m. Portici e volumi sospesi altrimenti ignoti.',
-  'Ombre: non ancora calcolate. Il layer è predisposto per i poligoni d\'ombra di T09 (un file GeoJSON per istante, con job_id).',
+  'Ombre (T09): 15 settembre 2026 alle 8:00, 13:00, 16:30; unione delle ombre al suolo di edifici documentati, con o senza chiome stimate. Sole con algoritmo astronomico, terreno quasi piano. Il rendering mostra, non calcola.',
   ...META.limiti.map(l=>l.text)].map(t=>el('li',t)));
  const hs=o.center||[10.3985,43.7085];
  map=new maplibregl.Map({container:'map',center:hs,zoom:o.z||(S.lite?15.6:16.2),pitch:S.lite?0:(o.p!=null?o.p:58),bearing:S.lite?0:(o.b!=null?o.b:-25),maxPitch:75,
@@ -268,6 +297,8 @@ async function main(){
   const k=LID[id],[t,r]=T[k](f.properties);scheda(t,r.concat([['Classificazione','dato non validato sul posto']]));if(f.geometry.type==='Point')select(f.geometry.coordinates)});
  map.on('mousemove',e=>{const ls=PRIO.filter(l=>map.getLayer(l)&&map.getLayoutProperty(l,'visibility')!=='none');map.getCanvas().style.cursor=map.queryRenderedFeatures(e.point,{layers:ls}).length?'pointer':''});
  $('dst').onchange=e=>{S.d=e.target.value;paintResult();sync();writeHash();const dd=META.dest[S.d];map.easeTo({center:dd.xy,duration:600})};
+ $('omb-t').onchange=e=>{S.ot=e.target.value;omb();writeHash()};
+ $('omb-c').onchange=e=>{S.oc=e.target.value;omb();writeHash()};
  $('prof').onchange=e=>{S.f=+e.target.value;paintResult();writeHash()};
  $('cerca').onchange=e=>{const f=CIV.features.find(x=>x.properties.a===e.target.value.trim().toUpperCase());if(f){map.easeTo({center:f.geometry.coordinates,zoom:Math.max(map.getZoom(),18),duration:500});civico(f.properties.id)}};
  document.querySelectorAll('[data-l]').forEach(c=>c.onchange=()=>{c.checked?S.off.delete(c.dataset.l):S.off.add(c.dataset.l);sync();writeHash()});

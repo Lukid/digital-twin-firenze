@@ -149,11 +149,41 @@ for dk, (dname, _) in DEST.items():
 assert (n_edifici, n_sosp, n_alberi) == (1069, 12, 453), (n_edifici, n_sosp, n_alberi)
 dump("meta.json", meta)
 
-# ---- layer ombre T09: vuoto, con il formato atteso
+# ---- layer ombre T09 (shadow/out, versione del motore dal manifest)
+import glob
 os.makedirs(os.path.join(OUT, "ombre"), exist_ok=True)
-dump("ombre/index.json", {"stato": "non_calcolate", "messaggio": "Ombre non ancora calcolate (T09).", "job_id": None, "istanti": [],
-    "formato_atteso": {"file": "FeatureCollection GeoJSON EPSG:4326 (derivato dal modello in EPSG:7791), un file per istante, elencato in 'istanti'",
-        "istanti": [{"istante": "2026-07-21T14:00:00+02:00 (RFC 3339, Europe/Rome)", "url": "ombre/<job_id>_<AAAAMMGGThhmm>.geojson"}],
-        "feature": "Polygon/MultiPolygon: unione delle ombre al suolo a quell'istante",
-        "properties": {"job_id": "job_<16 hex>", "istante": "RFC 3339 con offset", "elevazione_solare_gradi": "numero", "classificazione": "derived|estimated|scenario", "ostacoli": "baseline_edifici|edifici_e_alberi_stimati|scenario"}}})
+sh = J("shadow/out/riepilogo.json")
+files = sorted(glob.glob(os.path.join(ROOT, "shadow/out/job_*_2026-09-15_*.geojson")))
+assert len(files) == 3, files
+jid = os.path.basename(files[0]).split("_2026")[0]
+sm = J(f"shadow/manifest/{jid}.manifest.json")
+assert sm["job_id"] == jid
+shutil.copy(os.path.join(ROOT, f"shadow/manifest/{jid}.manifest.json"), os.path.join(OUT, "manifest", f"{jid}.manifest.json"))
+ist = []
+for fp in files:
+    g = json.load(open(fp)); hhmm = os.path.basename(fp).split("_")[-1][:4]
+    assert {f["properties"]["caso"] for f in g["features"]} == {"base", "alberi_tipico"}
+    url = "ombre/" + os.path.basename(fp)
+    shutil.copy(fp, os.path.join(OUT, url))
+    p = g["features"][0]["properties"]
+    ist.append({"id": hhmm, "istante": f"{p['date']}T{p['time_local']}:00+02:00", "etichetta": p["time_local"], "url": url,
+                "elevazione_deg": p["elevation_deg"], "azimut_deg": p["azimuth_deg"], "stato": p["stato"],
+                "casi": {f["properties"]["caso"]: {"classificazione": f["properties"]["classification"], "ostacoli": f["properties"]["obstacles"], "area_m2": f["properties"]["area_m2"]} for f in g["features"]}})
+dump("ombre/index.json", {"stato": "calcolate", "messaggio": "Ombre T09 del 15 settembre 2026.", "job_id": jid, "manifest_id": sm["manifest_id"],
+    "motore": sm["method"]["name"] + " " + sm["method"]["version"], "validazione": sm["validation_status"], "data": "2026-09-15", "timezone": "Europe/Rome",
+    "limiti": [l["text"] for l in sm["limits"]], "istanti": ist,
+    "formato": "FeatureCollection GeoJSON EPSG:4326 (derivato da EPSG:7791), un file per istante con una feature per caso (base, alberi_tipico); properties: date, time_local, utc, azimuth_deg, elevation_deg, stato, caso, classification, obstacles, area_m2"})
+FASCE = {"ingresso_mattina": "Ingresso, 7:45-8:30", "uscita_mezzogiorno": "Uscita, 12:30-13:30", "uscita_pomeriggio": "Uscita, 16:00-16:30", "giornata_8_18": "Giornata, 8-18"}
+ISTFASCIA = {"0800": "ingresso_mattina", "1300": "uscita_mezzogiorno", "1630": "uscita_pomeriggio"}
+rows = []
+for x in sh["date"]["2026-09-15"]:
+    if x["receiver_id"] == "pth_t04_R01" and x["fascia"] in FASCE:
+        rows.append({"fascia": x["fascia"], "etichetta": FASCE[x["fascia"]], "n_orari": x["n_orari"],
+            "ed": {"fr": x["edifici_documentati"]["frazione"], "ms": x["edifici_documentati"]["min_sole"]},
+            "al": {"fr": x["edifici_e_alberi"]["frazione"], "ms": x["edifici_e_alberi"]["min_sole"]}})
+assert len(rows) == 4
+meta2 = J("scene/data/meta.json")
+meta2["ombre_r01"] = {"data": "2026-09-15", "versione": sh["versione"], "lunghezza_m": 755.41, "righe": rows, "istante_fascia": ISTFASCIA,
+    "nota_lato": "Il percorso R01 è sull'asse della strada: il lato del marciapiede non è noto e, spostando il percorso di 3 m, il risultato può cambiare fino a 20 punti percentuali."}
+dump("meta.json", meta2)
 print("OK", meta["bbox"])
