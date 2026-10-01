@@ -1,0 +1,117 @@
+{
+  "versione": "0.1.0",
+  "data": "2026-10-01",
+  "stato": "proposta T04, da verificare al sopralluogo",
+  "nota": "Il builder (network/build_rete.py) legge questo file: le liste qui sotto sono quelle effettivamente applicate. Ogni regola usa solo tag OSM del file congelato di T03.",
+  "crs": "EPSG:7791",
+  "area": {
+    "aoi_id": "aoi_z2",
+    "buffer_m": 500,
+    "taglio": "Si tengono gli archi (segmenti fra due nodi) con il punto medio dentro il riquadro Z2+500 m. I nodi a meno di 30 m dal bordo del riquadro sono marcati bordo_buffer=true: un loro grado 1 non è un vicolo cieco, è un taglio.",
+    "bordo_m": 30
+  },
+  "id": {
+    "nodo": "nod_osm_<id del nodo OSM>",
+    "arco": "edg_osm_<id way>_<nodo da>_<nodo a> (nodi in ordine di digitalizzazione della way; suffisso _2, _3 se la stessa coppia si ripete nella way)",
+    "grafo": "grf_z2_osm_<AAAAMMGG dello snapshot OSM>",
+    "stabilità": "Gli ID derivano da way e nodi OSM: restano uguali in una nuova versione finché OSM non cambia i nodi."
+  },
+  "grafo": {
+    "orientamento": "Non orientato. oneway di OSM ignorato (vale per i veicoli, non per i pedoni).",
+    "topologia": "Due way sono collegate solo se condividono un nodo OSM. Un incrocio geometrico senza nodo comune (ponte, sottopasso, layer diverso) NON è una connessione.",
+    "lunghezze": "Piano EPSG:7791 senza correzione di scala (ADR-T02)."
+  },
+  "highway": {
+    "percorribili": ["footway", "pedestrian", "path", "steps", "living_street", "residential", "service", "unclassified", "tertiary", "tertiary_link", "secondary", "secondary_link", "primary", "primary_link", "platform"],
+    "solo_con_foot_esplicito": {
+      "classi": ["cycleway", "trunk", "trunk_link", "motorway", "motorway_link"],
+      "foot_ammessi": ["yes", "designated", "permissive"],
+      "motivo": "Ciclabili senza foot esplicito e strade a scorrimento non sono percorribili a piedi; una ciclopedonale ha foot=designated."
+    },
+    "esclusi": ["proposed", "construction", "raceway", "bus_guideway", "escape", "abandoned", "no", "corridor", "elevator"],
+    "platform": "highway=platform è percorribile solo se non è una banchina ferroviaria (vedi sezione ferrovia)."
+  },
+  "tipo_arco": {
+    "attraversamento": "footway=crossing (o highway=footway con crossing=*)",
+    "scala": "highway=steps",
+    "marciapiede_disegnato": "footway=sidewalk",
+    "sottopasso": "tunnel=yes o tunnel=building_passage su un tratto percorribile",
+    "ponte": "bridge=yes",
+    "strada": "classi carrabili (living_street, residential, service, unclassified, tertiary*, secondary*, primary*)",
+    "sentiero": "footway, pedestrian, path, cycleway ciclopedonale, platform bus"
+  },
+  "foot": {
+    "ammessi_sempre": ["yes", "designated", "permissive"],
+    "ammesso_con_nota": ["destination"],
+    "esclusi": ["no", "use_sidepath", "customers"],
+    "nota": "foot=* prevale su access=* e sulla classe. use_sidepath: il pedone deve usare il percorso separato, quindi il tratto stradale è escluso e il percorso separato (se mappato) lo sostituisce."
+  },
+  "access": {
+    "esclusi": ["no", "private", "customers", "permit", "delivery", "agricultural", "forestry", "military"],
+    "ammesso_con_nota": ["destination", "unknown"],
+    "ammessi": ["yes", "permissive", "designated"],
+    "nota": "access=* si applica solo se foot non è esplicito (foot positivo vince)."
+  },
+  "scale": {
+    "regola": "highway=steps è percorribile ma marcato scala=true con step_count, ramp, handrail dove presenti. Non è praticabile con carrozzina: il profilo di T06 decide, qui non si certifica nulla."
+  },
+  "attraversamenti": {
+    "tratti": "I tratti footway=crossing sono archi del grafo con tipo_arco=attraversamento e attributi crossing, crossing:markings, tactile_paving, kerb.",
+    "nodi": "I nodi highway=crossing spezzano la strada: diventano nodi del grafo con crossing=<tipo>, tactile, kerb. Un nodo crossing da solo non collega due marciapiedi: serve un tratto crossing.",
+    "tipi_noti": ["zebra", "uncontrolled", "marked", "traffic_signals", "unmarked"]
+  },
+  "strada_senza_marciapiede": {
+    "regola": "Le strade carrabili sono percorribili anche senza marciapiede taggato, con marciapiede_stato=ignoto e marciapiede_dichiarato=false.",
+    "stati": {
+      "presente": "sidewalk o sidewalk:left/right/both in yes, both, left, right",
+      "separato": "sidewalk=separate (marciapiede mappato come way a parte)",
+      "assente": "sidewalk=no/none su entrambi i lati o sidewalk=no: percorribile ma non certificata",
+      "ignoto": "nessun tag sidewalk: percorribile, non certificata",
+      "non_applicabile": "percorsi dedicati ai pedoni (footway, path, pedestrian, steps)"
+    },
+    "marciapiede_dichiarato": "campo dell'arco (non è una certificazione di accessibilità): true solo per presente, separato e non_applicabile; mai per ignoto e assente. Nessuna certificazione di accessibilità universale (SPEC_ANALISI)."
+  },
+  "livelli": {
+    "layer": "Conservato come attributo. Non crea né toglie connessioni: conta solo il nodo condiviso.",
+    "ponte": "bridge=yes conservato; percorribile se la classe lo è.",
+    "sottopasso": "tunnel=yes: percorribile per footway, pedestrian, path, steps, e per strade con foot esplicito o sidewalk presente. tunnel=building_passage (portici, androni): percorribile per ogni classe percorribile.",
+    "tunnel_stradali": "Strade in tunnel=yes senza foot esplicito e senza marciapiede: esclusi (sottopassi veicolari).",
+    "indoor": "indoor=yes: tenuto con indoor=true (corridoi di stazione, passaggi); non esclude.",
+    "aree": "Le way area=yes (piazze, banchine disegnate come poligono) NON entrano nel grafo: il loro perimetro non è un percorso. Lacuna dichiarata: possibili falsi vicoli ciechi nelle piazze."
+  },
+  "ferrovia": {
+    "binari": "Le way con railway=* non entrano mai nel grafo, anche se hanno highway=*.",
+    "banchine": "Esclusi i tratti con railway=platform, o public_transport=platform con train/subway/tram=yes, o area=yes con railway=platform.",
+    "eccezioni": "Restano i sottopassi pedonali reali: highway=footway/steps/path con tunnel=yes, senza tag railway. Sono esclusi (motivo banchina_ferroviaria) i segmenti con più del 50% della lunghezza dentro il poligono di una banchina (scale di salita ai binari). Le scale che terminano su una banchina senza starci dentro restano con termina_su_banchina=true.",
+    "test": "test_rete.py: nessun arco con railway=*, nessun arco sovrapposto a un binario o a una banchina per più di 5 m (esclusi sottopassi e ponti)."
+  },
+  "barriere": {
+    "nodi_spezzano": ["gate", "lift_gate", "sally_port", "cycle_barrier", "bollard", "chain", "swing_gate", "turnstile", "block", "wall", "fence", "height_restrictor", "toll_booth", "yes", "entrance"],
+    "passabili_con_nota": ["bollard", "cycle_barrier", "lift_gate", "sally_port", "block", "height_restrictor", "toll_booth", "yes", "entrance", "chain", "turnstile", "swing_gate"],
+    "cancelli": "barrier=gate: passabile con nota 'da verificare' (chiuso o no non è nei dati); bloccato se access o foot del nodo sono no, private, customers, permit.",
+    "bloccanti": ["wall", "fence"],
+    "kerb": "barrier=kerb non spezza né blocca: conta come attributo n_kerb sul nodo/arco (interruzione di marciapiede, non ostacolo).",
+    "nodi_bloccati": "Un nodo bloccante viene tolto dal grafo (con i suoi archi) e registrato nel livello nodi_bloccati."
+  },
+  "attributi_conservati": ["highway", "name", "surface", "width", "incline", "lit", "wheelchair", "tactile_paving", "kerb", "step_count", "handrail", "ramp", "layer", "bridge", "tunnel", "level", "indoor", "foot", "access", "sidewalk", "crossing", "crossing:markings"],
+  "classificazione_attributi": "Tag OSM = measured; lunghezza = derived; tipo_arco e marciapiede_stato = derived (regole sopra).",
+  "snapping": {
+    "origini": {"sorgente": "civici SIT in Z2 (uso internal_prototype)", "max_m": 40, "candidati": 6, "tipi_arco_esclusi": ["attraversamento"]},
+    "ingressi": {"sorgente": "nodi OSM entrance=* e fermate GTFS", "max_m": 40, "candidati": 6},
+    "motivazione_max": "Il valore 40 m è un parametro iniziale scelto sulla distribuzione delle distanze civico-asse (percentili in snapping_report.json): copre la quasi totalità dei civici senza agganciare strade dall'altra parte dell'isolato. Scarto fra SIT e OSM: mediana 1,4 m (T03). Da rivedere con il sopralluogo.",
+    "regola": "Le origini non si agganciano ai tratti di attraversamento (nessuno abita su una zebra). Il punto si aggancia alla proiezione sull'arco percorribile più vicino. Il raccordo (segmento punto-proiezione) non può attraversare un edificio OSM (tranne quello che contiene o tocca il punto a meno di 1,5 m), un arco escluso (foot=no, private, ferrovia) né un nodo bloccante. Si prova il candidato successivo.",
+    "non_agganciati": "Nessun candidato valido entro max_m: stato insufficient_data, mai agganciati forzatamente."
+  },
+  "stati_percorso": {
+    "reachable": "esiste un percorso sul grafo verificato (solo archi percorribili).",
+    "forbidden": "nessun percorso sul grafo verificato, ma esiste sul grafo di controllo che aggiunge i tratti esclusi per restrizione documentata (foot, access, tunnel stradale). Mai ferrovie, banchine o aree.",
+    "isolated": "nessun percorso nemmeno sul grafo di controllo.",
+    "insufficient_data": "origine o ingresso non agganciati alla rete entro il limite di snapping."
+  },
+  "limiti": [
+    "Marciapiedi non taggati non si deducono: tag assente non prova assenza.",
+    "Larghezze, pendenze, rampe, kerb sono quasi sempre assenti: nessuna certificazione di accessibilità universale.",
+    "Cancelli e cortili privati dipendono dal tag access: da verificare sul posto.",
+    "Piazze e banchine a poligono non sono nel grafo."
+  ]
+}

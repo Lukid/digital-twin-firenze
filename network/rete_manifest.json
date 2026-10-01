@@ -1,0 +1,104 @@
+{
+ "graph_id": "grf_z2_osm_20261001",
+ "aoi_id": "aoi_z2",
+ "crs": "EPSG:7791",
+ "snapshot_id": "snp_osm_pisa_20261001",
+ "sha256_osm": "69d65bfc52e0daf14ccd57fee67216af9b91d747cdb79841ec2337a2f2b086f5",
+ "regole_sha256": "7334ecafeafe39ede0654d6cbde541ca0c2c7380c9098a21b3b6c81fd6e8eec3",
+ "area_buffer_en": [
+  611559.81,
+  4839437.71,
+  613703.67,
+  4841400.77
+ ],
+ "z2_en": [
+  612059.81,
+  4839937.71,
+  613203.67,
+  4840900.77
+ ],
+ "nodi": 3065,
+ "archi": 3901,
+ "km_totali": 122.291,
+ "km_in_z2": 35.327,
+ "archi_per_tipo": {
+  "strada": 2077,
+  "ponte": 33,
+  "attraversamento": 442,
+  "sentiero": 638,
+  "marciapiede_disegnato": 574,
+  "scala": 37,
+  "sottopasso": 100
+ },
+ "km_per_tipo": {
+  "attraversamento": 2.494,
+  "marciapiede_disegnato": 28.108,
+  "ponte": 1.953,
+  "scala": 0.283,
+  "sentiero": 16.709,
+  "sottopasso": 1.652,
+  "strada": 71.091
+ },
+ "km_per_marciapiede": {
+  "presente": 13.418,
+  "separato": 4.452,
+  "assente": 3.229,
+  "ignoto": 51.15,
+  "non_applicabile": 50.042
+ },
+ "km_non_certificati": 54.38,
+ "archi_scala": 37,
+ "archi_sottopasso": 101,
+ "archi_ponte": 34,
+ "nodi_crossing": 446,
+ "nodi_barriera_passabile": 130,
+ "nodi_bloccanti": 5,
+ "nodi_bordo_buffer": 221,
+ "vicoli_ciechi_veri_in_z2": 134,
+ "vicoli_ciechi_bordo": 91,
+ "esclusi_per_motivo": {
+  "access=private": 121,
+  "banchina_ferroviaria": 110,
+  "classe_non_pedonale_senza_foot": 58,
+  "foot=use_sidepath": 32,
+  "area_poligono": 32,
+  "tunnel_stradale_senza_marciapiede": 29,
+  "foot=no": 28,
+  "access=customers": 13,
+  "foot=customers": 6,
+  "access=permit": 4,
+  "access=no": 3,
+  "highway=proposed": 1
+ },
+ "km_esclusi_per_motivo": {
+  "access=customers": 0.212,
+  "access=no": 0.044,
+  "access=permit": 0.176,
+  "access=private": 4.151,
+  "area_poligono": 3.726,
+  "banchina_ferroviaria": 6.483,
+  "classe_non_pedonale_senza_foot": 3.417,
+  "foot=customers": 0.31,
+  "foot=no": 3.854,
+  "foot=use_sidepath": 1.206,
+  "highway=proposed": 0.208,
+  "tunnel_stradale_senza_marciapiede": 0.474
+ },
+ "way_area_poligono_escluse": 33,
+ "nodi_layer_sospetti": [
+  "nod_osm_10921438362",
+  "nod_osm_258889567",
+  "nod_osm_258889581",
+  "nod_osm_8838264979",
+  "nod_osm_8838264981",
+  "nod_osm_8838264985",
+  "nod_osm_8838264987",
+  "nod_osm_8838264989"
+ ],
+ "componenti": 30,
+ "formati": [
+  "rete_z2.gpkg (nodi, archi, archi_esclusi, nodi_bloccati): riferimento",
+  "rete_z2.pkl (MultiGraph con geometrie): riferimento per gli script",
+  "rete_z2.graphml: solo scambio, archi paralleli fusi in uno"
+ ]
+}
