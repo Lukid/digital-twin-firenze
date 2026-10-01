@@ -1239,9 +1239,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-01T18:46:04Z",
-  "finished_at": "2026-10-01T18:47:46Z",
-  "duration_s": 102.01
+  "started_at": "2026-10-01T18:49:44Z",
+  "finished_at": "2026-10-01T18:51:48Z",
+  "duration_s": 123.86
  },
  "metrics": [
   {
@@ -2864,8 +2864,8 @@
    "asset_id": "ast_shadow_righe_csv",
    "path": "data/norm/shadow/job_955a02d0f50ccc2d_righe.csv",
    "media_type": "text/csv",
-   "bytes": 247295,
-   "sha256": "066144ce9e6041be551c78dd70f1c41550b5aa8e633a1df0706c844cffe312eb",
+   "bytes": 247300,
+   "sha256": "33367c2e4622dca971670d6be19dc8b55afeb4d004f98c6fc06d4c9fed9de54c",
    "role": "result_table"
   }
  ]

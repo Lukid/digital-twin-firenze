@@ -161,6 +161,19 @@ def test_chioma():
     ok("chioma: ellisse analitica, chioma sollevata, cilindro come limite superiore")
 
 
+def test_casi_dati():
+    # sui dati reali: gli intervalli sono annidati (h_min <= h <= h_max; base <= alberi min/tipico/max) e il cilindro supera l'ellissoide
+    w = box(612500, 4840250, 613000, 4840700); t = O.locale_a_utc("2026-09-15", "10:00"); area = {}
+    for c in O.CASI:
+        st, az, el, g = O.ombra_a_istante(O.scena_caso(c), t, 43.715, 10.40, finestra=w); assert st == O.STATO_OK; area[c] = g.intersection(w)
+    ar = {c: g.area for c, g in area.items()}
+    assert ar["base_h_min"] < ar["base"] < ar["base_h_max"] and area["base_h_min"].difference(area["base"]).area < 1e-3
+    for c in ("alberi_min", "alberi_tipico", "alberi_max", "alberi_tipico_cilindro"): assert area["base"].difference(area[c]).area < 1e-3 and ar[c] >= ar["base"], c
+    assert ar["alberi_min"] <= ar["alberi_tipico"] <= ar["alberi_max"] and ar["alberi_tipico_cilindro"] > ar["alberi_tipico"]
+    assert O.scena_caso("alberi_tipico_cilindro").chiome["forma"] == "cilindro" and O.scena_caso("alberi_tipico").chiome["forma"] == "ellissoide"
+    ok("dati reali: casi annidati base <= alberi min <= tipico <= max, cilindro > ellissoide")
+
+
 def test_contratti():
     from jsonschema import Draft202012Validator
     from referencing import Registry, Resource
@@ -177,6 +190,13 @@ def test_contratti():
     assert Draft202012Validator({"$ref": sch["mcp"]["$id"] + "#/$defs/compute_shadow.input"}, registry=reg).is_valid(
         {"baseline_id": "bas_z2_20261001", "receivers": rec, "when": w, "method": {**m, "obstacles": "documented_buildings_only"}})
     assert all(x["classification"] in ("derived", "estimated") and "unit" in x for x in r1["manifest"]["metrics"])
+    # ora ambigua/inesistente respinta; sole sotto l'orizzonte: riga con stato esplicito e nessuna frazione
+    for d, hh, esc in (("2026-10-25", "02:30", O.OraAmbigua), ("2026-03-29", "02:30", O.OraInesistente)):
+        try: O.compute_shadow("bas_z2_20261001", rec, {**w, "date": d, "times": [hh]}, {**m, "obstacles": "documented_buildings_only"}); assert False
+        except esc: pass
+    rn = O.compute_shadow("bas_z2_20261001", rec, {**w, "date": "2026-10-25", "times": ["03:00", "12:00"]}, {**m, "obstacles": "documented_buildings_only"})
+    notte = [x for x in rn["righe"] if x["time_local"] == "03:00"]; assert notte and all(x["stato"] == O.STATO_NOTTE and "shade_fraction" not in x for x in notte)
+    assert any(x["stato"] == O.STATO_OK and 0 <= x["shade_fraction"] <= 1 for x in rn["righe"] if x["time_local"] == "12:00")
     ok("compute_shadow: deterministico, job_id = hash, job/manifest validi sugli schemi")
 
 

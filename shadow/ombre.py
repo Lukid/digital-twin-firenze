@@ -111,7 +111,9 @@ class Scena:
 
     def aggiungi(self, altra):
         """Nuova scena = questa + altra (es. pensiline di scenario)."""
-        c = {k: np.concatenate([self.chiome[k], altra.chiome[k]]) if k != "forma" else self.chiome["forma"] for k in self.chiome}
+        forma = altra.chiome["forma"] if len(altra.chiome["x"]) else self.chiome["forma"]
+        assert not (len(self.chiome["x"]) and len(altra.chiome["x"])) or self.chiome["forma"] == altra.chiome["forma"], "forme di chioma miste"
+        c = {k: np.concatenate([self.chiome[k], altra.chiome[k]]) if k != "forma" else forma for k in self.chiome}
         return Scena(list(self.geoms) + list(altra.geoms), np.concatenate([self.z_lo, altra.z_lo]), np.concatenate([self.z_hi, altra.z_hi]),
                      self.ids + altra.ids, c)
 
