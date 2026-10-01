@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 1 ottobre 2026, fine della prima sessione di lavoro. Punto di ripartenza per la prossima sessione.
+Aggiornato al 1 ottobre 2026, fine della seconda sessione (T12 chiuso, commit 8d94082). Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -40,6 +40,7 @@ Anteprima storica: `preview/` (superata da `scene/`).
 5. Rendere obbligatorio l'ingresso nelle richieste sulle scuole (consiglio: no, fino al sopralluogo).
 6. Confermare ADR-T08.
 7. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
+8. Quali difetti aperti di T12 correggere prima della demo (vedi Prossimi passi, punto 1).
 
 ## Risultati principali (non validati sul posto)
 
@@ -58,10 +59,17 @@ Anteprima storica: `preview/` (superata da `scene/`).
 
 ## Prossimi passi
 
-1. **Difetti aperti di T12** (`nl/REPORT.md`): elenco scenari, ombra per orario, ora ambigua, più destinazioni, conteggio civici, replay via MCP. Da decidere quali fare prima della demo.
-2. **T11 validazione**: sopralluogo con `fieldwork/scheda.html`, import esiti, correzioni separate dalle verifiche, report con tolleranze.
-3. **T13 demo e consegna**: dopo T11 e T12.
+1. **Correzioni da T12 prima della demo** (dettaglio in `nl/REPORT.md`, Difetti aperti). Ordine consigliato, da confermare (decisione 8):
+   - tool `list_scenarios`: oggi il client non trova filare e pensilina senza che l'utente gli dia gli ID. Piccolo: legge `scenarios/scn_*.json`.
+   - ombra per orario nell'output di `compute_shadow`: oggi solo medie e min/max, la mappa invece ha i valori per orario. Medio.
+   - accessibilità verso "almeno una" di più destinazioni (caso stazione, 9 fermate): oggi lo schema accetta 20 destinazioni ma il motore una. Medio, tocca `analysis/`.
+   - dopo la demo: campo per l'ora ambigua, conteggio dei civici raggiunti, replay via MCP, differenza 7.606/2.224 civici in `inspect_dataset`.
+   Dopo ogni correzione: `service/test_service.py`, `nl/test_nl.py`, e ripetere le domande 6, 9, 12 e 13 con un client nuovo.
+2. **T11 validazione**: sopralluogo con `fieldwork/scheda.html`, import esiti, correzioni separate dalle verifiche, report con tolleranze. Serve prima la decisione 4.
+3. **T13 demo e consegna**: dopo T11 e il punto 1. Il GTFS congelato scade il 21/10/2026: se la demo è dopo, va rigenerato lo snapshot.
 4. Eventuale T14 (chat web) solo dopo decisione D09.
+
+Nota per la ripartenza: il client MCP rilegge le descrizioni dei tool all'avvio della sessione; i manifest dei job di T12 sono versionati in `nl/manifest/`, la cache `service/cache/` no.
 
 ## Come lavora la sessione
 
