@@ -74,6 +74,10 @@ python3 treni_pisa.py $T/tren campioni/trenitalia_stazioni_pisa.csv
 # 6. Analisi: fermate per zona, concordanza fonti, riepilogo
 python3 analizza.py $G $T/mim_stat.csv $T/mim_par.csv campioni/provincia_edifici_scolastici_raw.csv
 python3 verifica_gtfs.py $G > campioni/gtfs_verifica_integrita.txt
+# 6b. Ricalcolo sui riquadri canonici di ../ZONE.json
+./ricalcolo_osm.sh
+python3 ricalcolo.py $G $T/mim_stat.csv $T/mim_par.csv
+
 # 7. Conteggio civici attorno ai candidati (dipende da candidati_caso_A.json prodotto da analizza.py)
 python3 - <<'PY'
 import json,subprocess

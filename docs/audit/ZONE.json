@@ -1,0 +1,10 @@
+{
+  "nota": "Riquadri canonici T01 (EPSG:4326, S,W,N,E). Presi da edifici/script/zone.py. Zone di lavoro, non approvate.",
+  "data": "2026-10-01",
+  "zone": {
+    "Z1": {"nome": "Santa Maria / Piazza dei Cavalieri", "bbox": [43.7130, 10.3940, 43.7210, 10.4080]},
+    "Z2": {"nome": "Stazione / Sant'Antonio / Corso Italia", "bbox": [43.7040, 10.3910, 43.7125, 10.4050]},
+    "Z3": {"nome": "Cisanello", "bbox": [43.7010, 10.4360, 43.7100, 10.4510]},
+    "Z4": {"nome": "Porta a Lucca / Pratale", "bbox": [43.7215, 10.4000, 43.7295, 10.4160]}
+  }
+}

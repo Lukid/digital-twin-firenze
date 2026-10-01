@@ -163,6 +163,34 @@
    "sha256": "535535770bc076c7d0067078f99de88c56ce1c3298e9358782bbd0171972a231"
   },
   {
+   "path": "campioni/osmc_Z1.json",
+   "url": "https://overpass-api.de/api/interpreter (riquadro canonico di ../ZONE.json, query in ricalcolo_osm.sh)",
+   "timestamp_utc": "2026-10-01T13:55:41Z",
+   "byte": 83646,
+   "sha256": "2efb03bf5402f296afc2fe8e931299bda41f1c1fe9ef678f43a04dcf12095789"
+  },
+  {
+   "path": "campioni/osmc_Z2.json",
+   "url": "https://overpass-api.de/api/interpreter (riquadro canonico di ../ZONE.json, query in ricalcolo_osm.sh)",
+   "timestamp_utc": "2026-10-01T13:56:50Z",
+   "byte": 53160,
+   "sha256": "e0dcb1576c7677527e77578aa24f753cb42301b1916ee73b85b5d7814a85f9ad"
+  },
+  {
+   "path": "campioni/osmc_Z3.json",
+   "url": "https://overpass-api.de/api/interpreter (riquadro canonico di ../ZONE.json, query in ricalcolo_osm.sh)",
+   "timestamp_utc": "2026-10-01T14:05:50Z",
+   "byte": 886,
+   "sha256": "af0bee28a398001fcaa94acb4eb75f1aee30d46a6cd6b4326ddf738a13aed6db"
+  },
+  {
+   "path": "campioni/osmc_Z4.json",
+   "url": "https://overpass-api.de/api/interpreter (riquadro canonico di ../ZONE.json, query in ricalcolo_osm.sh)",
+   "timestamp_utc": "2026-10-01T13:59:48Z",
+   "byte": 21640,
+   "sha256": "15de43cc5e4fdaba843ee12db580a66f6d860243c12f450859167dbb9b9783d6"
+  },
+  {
    "path": "campioni/provincia_edifici_scolastici_metadato.rdf",
    "url": "https://maps.provincia.pisa.it/metarepo2/api/datasets/edifici_scolastici/download (METADATO_E_LICENZA/edifici_scolastici_r1.rdf nello ZIP)",
    "timestamp_utc": "2026-10-01T13:42:17Z",
@@ -182,6 +210,13 @@
    "timestamp_utc": "2026-10-01T13:48:35Z",
    "byte": 2188,
    "sha256": "c499a6df75cd0710a0b5671bbe898634a42e181053db6b6184cb98d5b1bae375"
+  },
+  {
+   "path": "campioni/ricalcolo_zone_canoniche.json",
+   "url": "derivato: analizza.py / verifica_gtfs.py / treni_pisa.py da fonti elencate in REPORT.md",
+   "timestamp_utc": "2026-10-01T14:06:25Z",
+   "byte": 25664,
+   "sha256": "94a33fce4cc0cdad1dcd89b9a2522eae847cacb575322a73caa6cd831162e3ee"
   },
   {
    "path": "campioni/riepilogo_zone.json",

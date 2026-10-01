@@ -68,3 +68,25 @@ No da misure, in nessuna zona. Possibili:
 ## File
 
 `riproduci.sh`, `manifest.json`, `zone.json`, `campioni/`, `scan_catalogo_pisa.py`, `ckan_queries.sh`, `sit_verde.py`, `osm_alberi.py`, `analisi_osm.py`, `make_manifest.py`.
+
+## Addendum: ricalcolo sui riquadri canonici
+
+Riquadri in `docs/audit/ZONE.json`. Risultati in `campioni/ricalcolo_zone_canoniche.json`; i dati sui riquadri iniziali restano in `campioni/riquadri_iniziali/`. Manifest aggiornato: 92 file, nessuno a 0 byte. `zone.json` e `riproduci.sh` ora usano i riquadri canonici.
+
+Aree: Z1 1,00 km², Z2 1,06, Z3 1,21, Z4 1,14. Valori Z1 / Z2 / Z3 / Z4:
+- Alberi OSM (natural=tree): 284 / 373 / 123 / 432; densità per km²: 284 / 352 / 102 / 379
+- tree_row: 6 / 8 / 0 / 28
+- Aree verdi OSM: 83 / 29 / 35 / 47
+- Specie: 4,9% / 0,5% / 0,8% / 0,2%
+- Altezza: 1,4% / 0,3% / 0% / 0%
+- Diametro chioma: 0,4% / 0% / 0% / 0%
+- Altezza d'imposta: 0% ovunque
+- leaf_type: 10,2% / 9,1% / 0,8% / 0,2%
+- Date nodi OSM: Z1 2014-09/2026-09; Z2 2015-09/2026-07; Z3 2016-12/2026-05; Z4 2014-03/2026-09
+- Poligoni Copernicus Street Tree: 45 / 35 / 26 / 45
+- Layer PSI: Z3 4 parchi territoriali, 3 vegetazione ripariale, 0 aree vincolate, 1 voce di toponomastica. Aree verdi vincolate centro storico: Z1 82, Z2 20, Z4 8. Verde sportivo Z4: 8. Layer di pianificazione, non rilievi.
+- Valore sospetto: in Z2 l'unica altezza OSM è 0,2 m.
+
+Z3: il giudizio "palesemente incompleta" dipendeva in gran parte dal riquadro iniziale, circa 1 km più a sud (alberi da 50 a 123). Z3 resta la zona più povera: densità circa un terzo delle altre, attributi quasi vuoti, Copernicus al minimo. Non verificato sul campo se la causa sia mappatura incompleta o poco verde reale.
+
+Il giudizio generale non cambia: nessuna zona ha diametro chioma o altezza d'imposta misurati; le chiome restano da stimare o rilevare.
