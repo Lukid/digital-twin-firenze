@@ -44,7 +44,7 @@ Un'animazione d'ombra non verifica il calcolo. Il prototipo deve usare un motore
 | D08 | Aperto | Licenze del codice, diffusione del prototipo e successiva vista pubblica |
 | D09 | Requisito confermato, modalità aperta | Interrogazione in linguaggio naturale di catalogo e analisi via MCP; MCP nel client AI come proposta iniziale, chat web da decidere |
 | D10 | Confermato dall'utente | Fonti, aggiornamento e limiti visibili in ogni risultato |
-| D11 | Indicazione dell'utente (1 ottobre 2026), perimetro aperto | Livello di presentazione di riferimento: gemello di Padova. Da decidere estensione della scena (Z2, centro, città), livelli informativi e se rivedere il motore grafico (ADR-T08) |
+| D11 | Indicazione dell'utente (1 ottobre 2026), perimetro aperto | Riferimento di presentazione e di approccio: gemello di Padova, anche per stack e metodo (scena statica precotta, fonti aperte dichiarate). Da decidere estensione (Z2, centro, città), livelli, dati ambientali ARPAT, uso del portale regionale via MCP CKAN e revisione del motore grafico (ADR-T08). Analisi in [RIFERIMENTO-PADOVA.md](RIFERIMENTO-PADOVA.md) |
 
 ### Selezione del pilota
 
@@ -103,7 +103,7 @@ Per l'ombra confrontare un calcolo su volumi 3D con un riferimento GIS per il ca
 
 ### Interfaccia
 
-Riferimento di qualità e di contenuti: il gemello di Padova (D11). TypeScript e un solo motore cartografico. MapLibre è il candidato iniziale per un atlante a scala locale con estrusioni; Cesium è il candidato se terreno, quote o modelli richiedono una scena geospaziale più articolata. Il confronto è breve, su un campione reale, e non blocca l'analisi indipendente. La decisione segue la qualità dei dati e i requisiti dell'ombra; un motore grafico non diventa il motore scientifico per il solo fatto di mostrare ombre.
+Riferimento di qualità, contenuti e approccio: il gemello di Padova (D11, [RIFERIMENTO-PADOVA.md](RIFERIMENTO-PADOVA.md)): sito statico, scena precotta da una pipeline offline in riquadri con due livelli di dettaglio, motore 3D generico, fonti e limiti dentro i dati. Se D11 lo conferma, questa impostazione sostituisce la scelta che segue. TypeScript e un solo motore cartografico. MapLibre è il candidato iniziale per un atlante a scala locale con estrusioni; Cesium è il candidato se terreno, quote o modelli richiedono una scena geospaziale più articolata. Il confronto è breve, su un campione reale, e non blocca l'analisi indipendente. La decisione segue la qualità dei dati e i requisiti dell'ombra; un motore grafico non diventa il motore scientifico per il solo fatto di mostrare ombre.
 
 ### Linguaggio naturale e MCP
 
@@ -135,7 +135,7 @@ Stime di pianificazione in giornate complessive di lavoro equivalente, inclusa r
 
 Totale indicativo del pilota completo: **32–52 giorni equivalenti**, esclusi tempi di attesa per dati e disponibilità esterne. Prima dimostrazione di accessibilità con MCP: **17–26 giorni equivalenti** prima del collaudo finale. Se B non supera l'audit, limitarlo a un sito controllato. Una chat web immediata aumenta il lavoro: stimarla separatamente dopo la decisione D09.
 
-Non è stimata la scena di presentazione sul modello di Padova (D11): va stimata dopo aver fissato estensione e livelli, come fase separata.
+Non sono stimati la scena di presentazione sul modello di Padova, i dati ambientali ARPAT e l'acquisizione dal portale regionale (D11, T15-T17): vanno stimati dopo aver fissato estensione e livelli, come fase separata.
 
 Punti di decisione: G1 rete e accessi sufficienti; G2 quote/ostacoli adeguati all'ombra; G3 risultati riprodotti e verificati sul campo; G4 feedback di un utilizzatore. Senza interlocutore il risultato resta un prototipo tecnico e non una soluzione già validata nell'uso.
 
