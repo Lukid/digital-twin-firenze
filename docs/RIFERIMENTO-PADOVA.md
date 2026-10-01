@@ -74,6 +74,25 @@ Livelli chiave per scena e analisi cercati su dati.toscana.it:
 
 Riuso del lavoro fatto se si cambia territorio: contratti, servizio e MCP, motori di accessibilità, ombre e scenari, scena e verifica NL si riusano; vanno rifatti acquisizione, rete, ingressi, edifici, verde e protocollo di campo (T03-T05, T11).
 
+### Firenze: lavori esistenti e quartieri (1 ottobre 2026)
+
+Gemelli digitali già esistenti a Firenze:
+- Comune di Firenze, [Digital Twin](https://www.comune.firenze.it/territorio/digital-twin): ecosistema interno di modelli 3D, LiDAR, fotogrammetria e strati informativi per alberature e verde, mobilità, patrimonio UNESCO, comunità energetiche; microclima e isole di calore annunciati. Nessuna consultazione pubblica indicata.
+- DISIT Lab dell'Università di Firenze (piattaforma Snap4City): gemello 3D web pubblico con edifici del centro, rete stradale, sensori, traffico, dispersione degli inquinanti e analisi what-if; codice aperto.
+- Nessuno dei due dichiara accessibilità pedonale verso destinazioni, ombra sui percorsi o interrogazione in linguaggio naturale con calcoli tracciati. La sovrapposizione è su 3D, alberi e microclima.
+
+Dati per quartiere (scaricati dal portale, licenza CC BY 4.0):
+
+| Quartiere | km² | Alberi pubblici | Barriere censite | Rifugi climatici | Civici |
+|---|---|---|---|---|---|
+| 1 Centro storico | 11,3 | 20.104 | 536 | 9 | 29.047 |
+| 2 Campo di Marte | 23,6 | 14.872 | 425 | 10 | 23.444 |
+| 3 Gavinana Galluzzo | 22,6 | 11.421 | 271 | 4 | 13.188 |
+| 4 Isolotto Legnaia | 17,0 | 17.699 | 411 | 9 | 16.068 |
+| 5 Rifredi | 28,0 | 18.118 | 421 | 9 | 27.354 |
+
+Il censimento degli alberi (82.235) ha specie e circonferenza, non altezza né chioma: servono DSM 2023 o CHM. Per l'area di Firenze Nova (quartiere 5) c'è in più il dataset Life Escapos con parametri strutturali degli alberi.
+
 ## 6. Cosa riprendere e cosa no
 
 Riprendere:
