@@ -90,3 +90,7 @@ Aree: Z1 1,00 km², Z2 1,06, Z3 1,21, Z4 1,14. Valori Z1 / Z2 / Z3 / Z4:
 Z3: il giudizio "palesemente incompleta" dipendeva in gran parte dal riquadro iniziale, circa 1 km più a sud (alberi da 50 a 123). Z3 resta la zona più povera: densità circa un terzo delle altre, attributi quasi vuoti, Copernicus al minimo. Non verificato sul campo se la causa sia mappatura incompleta o poco verde reale.
 
 Il giudizio generale non cambia: nessuna zona ha diametro chioma o altezza d'imposta misurati; le chiome restano da stimare o rilevare.
+
+## Nota di revisione
+
+Alla riesecuzione Overpass ha risposto 504 su Z1: `analisi_osm.py` va in errore (`KeyError 'elements'`) e la risposta d'errore sovrascrive il campione. Da correggere: controllare la risposta prima di salvarla e conservare l'ultimo campione valido.

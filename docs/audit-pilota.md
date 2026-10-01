@@ -11,7 +11,10 @@ Riquadri canonici in `docs/audit/ZONE.json` (zone di lavoro, non approvate), cir
 - Z3 Cisanello
 - Z4 Porta a Lucca / Pratale
 
-Nota sui confini: edifici, verde (addendum) e destinazioni (addendum) usano i riquadri canonici. La rete usa riquadri propri molto vicini, salvo Z1 più piccolo (0,75 km²) e Z4 spostato di circa 100-500 m a est; per la rete valgono le percentuali, non i km assoluti. Da riallineare in T03.
+Nota sui confini:
+
+- Edifici usa i riquadri canonici. Verde e destinazioni li usano solo negli addendum in fondo ai rispettivi report: nel corpo di quei report i numeri sono su riquadri iniziali (verde, Z3 circa 1 km più a sud) e su cerchi (destinazioni), e non sono confrontabili.
+- La rete usa riquadri propri: Z1 più piccolo (0,75 km²); Z2 esteso di circa 240 m a ovest e 280 m a nord; Z3 entro 80-110 m; Z4 esteso di circa 220 m a nord. Per la rete valgono le percentuali, non i km assoluti. Da riallineare in T03.
 
 ## 2. Confronto per criterio
 
@@ -19,7 +22,7 @@ Nota sui confini: edifici, verde (addendum) e destinazioni (addendum) usano i ri
 
 - Z1: 6 scuole SIT, 33 oggetti universitari OSM, 23 fermate (22 linee). Candidata: Liceo Artistico Russoli.
 - Z2: 5 scuole SIT, 38 fermate (34 linee, il nodo più servito), stazione di Pisa Centrale ai margini. Candidata: Primaria Battisti.
-- Z3: nessuna scuola né sede universitaria nelle fonti usate dentro il riquadro, 10 fermate (6 linee). Candidata possibile solo una fermata (Martin Lutero 4) o l'ospedale.
+- Z3: nessuna scuola né sede universitaria nel riquadro (zero in SIT e MIM, che sono elenchi; zero anche in OSM, che da solo non prova l'assenza), 10 fermate (6 linee). Candidata possibile solo una fermata (Martin Lutero 4) o l'ospedale.
 - Z4: 4 scuole SIT, 9 oggetti universitari OSM, 34 fermate (13 linee). Candidata: Istituto Santa Caterina, al bordo sud del riquadro, con 1 solo ingresso mappato.
 
 ### Rete pedonale (rete/REPORT.md)
@@ -35,10 +38,11 @@ Fonte: solo OSM. Nessun dato ufficiale con marciapiedi o attraversamenti trovato
 
 Fonte chiave: unità volumetriche del DB topografico regionale, altezza misurata sul 100% degli oggetti, ma volo 2010.
 
-- Z1: 923 volumi; scarto rispetto al DSM 2021 2,8 m; portici non rilevati.
+- Z1: 923 volumi; scarto rispetto al DSM 2021 2,8 m (strade strette, misura meno affidabile).
 - Z2: 998 volumi; scarto 2,3 m.
 - Z3: 238 volumi; 31% degli edifici OSM non presenti nel 2010.
 - Z4: 962 volumi; scarto 1,4 m, il più basso.
+- Portici e volumi sospesi: attributo non popolato in nessuna zona; nessuna fonte li rileva.
 
 Terreno: DTM 10 m regionale sufficiente (Pisa piana). Il DTM LiDAR 1 m non copre le zone e ha licenza NC-SA per soli enti pubblici.
 
@@ -51,9 +55,11 @@ Terreno: DTM 10 m regionale sufficiente (Pisa piana). Il DTM LiDAR 1 m non copre
 
 ### Licenze (cataloghi/REPORT.md)
 
-- Chiare: OSM (ODbL), fonti regionali (CC BY: unità volumetriche secondo la politica open geodata, DSM, DTM 10 m, DBT10K, GTFS), MIM (CC BY 4.0).
-- Non dichiarate: tutti i layer SIT comunali (scuole, civici, edifici, PSI) e lo StatPortal.
-- Da evitare: ARPAT (NC-SA), DTM LiDAR 1 m (NC-SA, enti pubblici).
+- Chiare: OSM (ODbL), MIM (CC BY 4.0), DBT10K (cc-by nel catalogo).
+- Chiare con riserva: unità volumetriche (nessuna licenza sul layer; vale la politica regionale open geodata, CC BY o CC BY-SA); GTFS (cc-by nel catalogo, condizioni specifiche del feed non trovate); DSM 2021 e DTM 10 m (CC BY, ma letti via WMS come surrogato del download ufficiale); grafo Iter.net (CC BY o BY-SA, da accertare).
+- In conflitto: LiDAR regionale, cc-by nella scheda del catalogo ma CC BY-NC-SA per soli enti pubblici nel metadato del layer DTM 1 m. Da chiarire prima dell'uso.
+- Non dimostrate: tutti i layer SIT comunali (scuole, civici, edifici, PSI) senza licenza; StatPortal con cc-by solo nel campo API, uguale per tutti i 663 dataset (probabile default) e assente dalle schede.
+- Da evitare: ARPAT (NC-SA).
 
 ### Verificabilità sul posto
 
@@ -68,7 +74,7 @@ Non valutata sul campo. Da desk: Z1 e Z2 sono raggiungibili a piedi dalla stazio
 - candidata con più fonti concordi (SIT, MIM, OSM) e più ingressi mappati;
 - altezze misurate con scarto contenuto (2,3 m) e densità di alberi OSM fra le più alte, utile per B.
 
-**Alternativa: Z1**, se il caso d'uso privilegia le sedi universitarie. Ha più destinazioni universitarie e ingressi mappati, ma portici non rilevati e scarto altezze più alto: più difficile per B.
+**Alternativa: Z1**, se il caso d'uso privilegia le sedi universitarie. Ha più destinazioni universitarie e ingressi mappati, ma portici diffusi (Borgo Stretto) non rilevati da nessuna fonte e scarto altezze più alto: più difficile per B.
 
 **Esclusa per ora: Z3.** Nessuna scuola nel riquadro, rete frammentata, edilizia recente senza altezze. Andrebbe ridisegnata verso ovest (Gereschi, via di Parigi, via Puglia) e rifatta da capo.
 
@@ -101,14 +107,14 @@ Corridoio da scegliere al sopralluogo, sul percorso fra la fermata e la scuola c
 - Tre aree confrontate con evidenze e raccomandazione: sì, quattro (sezioni 2-3).
 - Una scuola/sede/fermata candidata con ingresso da verificare e famiglia di origini: sì (sezione 4).
 - Fonte della rete e completezza; necessità di rilievo: sì. Solo OSM; rilievo a campione in Z2 su 5-10 percorsi (marciapiedi, attraversamenti, rampe).
-- Percentuale di edifici con altezze documentate: sì, 100% dei volumi 2010; post-2010 stimati con OSM. Chiome separate dalla posizione: sì, non disponibili.
+- Percentuale di edifici con altezze documentate: sì, 100% dei volumi presenti nel 2010, non degli edifici attuali (in Z3 il 31% degli edifici OSM non c'era nel 2010). Altezze post-2010 da DSM 2021 o da rilievo: OSM non ha quasi altezze. Chiome separate dalla posizione: sì, non disponibili.
 - Riuso, download e campione per ogni fonte; zeri registrati come tali: sì (cataloghi/REPORT.md e ogni report).
 - Dimensione degli input e stima aggiornata: sezione 7.
 
 ## 7. Dimensione degli input e stima aggiornata
 
 Input:
-- campioni salvati in `docs/audit/`: circa 48 MB in git;
+- campioni salvati in `docs/audit/`: circa 44 MB in git;
 - da scaricare in T03: GTFS 185 MB (scade il 20/10, va congelato), DBT10K Pisa 411 MB, grafo Iter.net 460 MB, estratto OSM regionale, tile DSM 1 m per l'area pilota;
 - tutto gestibile in locale, nessuna infrastruttura necessaria.
 
@@ -138,3 +144,12 @@ Sono stime di pianificazione, non preventivi.
 - Licenza SIT: non dichiarata.
 - Datum verticale delle fonti regionali: non dichiarato, coerente per evidenza indiretta.
 - Overpass instabile: estratto locale in T03.
+
+## 10. Revisione
+
+Revisione indipendente del 1 ottobre 2026, su copia separata:
+- `riproduci.sh` di destinazioni, edifici e cataloghi rieseguiti con gli stessi risultati (GTFS con lo stesso sha256).
+- Verde riprodotto in parte: Overpass ha risposto 504 su Z1 e lo script non gestisce l'errore. Rete non riproducibile oggi per errori continui di Overpass: i numeri sono controllati solo sui campioni salvati.
+- Numeri dei report e della sintesi coerenti con i campioni. Un errore corretto nel report edifici (Z2 post-2010: 113/1.227).
+- Tutti i manifest coincidono con i file su disco; nessun file a 0 byte; nessun segreto né file sopra 20 MB in git.
+- Correzioni applicate a questa sintesi: confini della rete, licenze con riserva e conflitto LiDAR, altezze post-2010, portici in tutte le zone, dimensione in git.
