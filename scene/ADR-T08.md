@@ -63,4 +63,12 @@ Poi http://127.0.0.1:8791/index.html (non funziona da `file://`; servono rete pe
 - Il NaN nei civici senza indirizzo è stato corretto dall'integratore in `analysis/run.py` (ora `null`, e la scrittura rifiuta i NaN).
 - fps su GPU di telefono e peso compresso non misurati. Motore 3D provato solo con terreno piatto. Campione non aperto in un GIS desktop.
 - Mappa non accessibile a lettori di schermo: l'alternativa è tabella, scheda e ricerca civico.
-- Layer ombre non ancora provato con dati reali.
+- Layer ombre provato con i 3 GeoJSON di T09 (vedi sotto); coperto solo il 15 settembre.
+
+## Ombre T09 collegate (1 ottobre 2026)
+
+- Import in `build.py` da `shadow/out/` (job `job_9e9333b2ee81c302`, motore 0.2.0, manifest copiato): 8:00, 13:00, 16:30 del 15 settembre, casi solo edifici e edifici + alberi tipico. Formato in `data/ombre/index.json`. Poligoni 2D semitrasparenti sotto gli edifici, anche in modalità leggera.
+- Legenda con data, ora, elevazione, versione del motore, job_id, classificazione e link al manifest. URL esteso con `ot` (0800/1300/1630) e `oc` (base/alberi).
+- Pannello: R01 per le 4 fasce del 15 settembre, frazione in ombra e minuti al sole con tipico e intervallo min-max, più la nota sul lato del marciapiede (fino a 20 punti) e sul percorso sull'asse.
+- Verifica: 16 valori del pannello uguali a `shadow/out/riepilogo.json`, console pulita, `screenshot_ombre.png` (16:30 con alberi).
+- Limite: il rendering mostra i poligoni, non verifica la geometria delle ombre (lo fa T09 con il suo controllo raster).
