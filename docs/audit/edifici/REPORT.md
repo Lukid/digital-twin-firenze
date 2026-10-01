@@ -42,7 +42,7 @@ OSM (edifici; con `height`; con `building:levels`; senza nessuno dei due; centro
 
 `min_height` 0 ovunque; `building=roof` Z1 2, Z2 15, Z3 5, Z4 4.
 
-Post-2010 (indicatore approssimato): poligoni `Base_CTR_per_POC` ≥ 40 m² fuori da ogni UV: Z1 149/1.449, Z2 105/1.121, Z3 61/384, Z4 115/1.211. È un limite superiore (include aiuole e altri areali). Gli edifici OSM fuori UV sono un indicatore più pulito: Z3 31%.
+Post-2010 (indicatore approssimato): poligoni `Base_CTR_per_POC` ≥ 40 m² fuori da ogni UV: Z1 149/1.449, Z2 113/1.227, Z3 61/384, Z4 115/1.211. È un limite superiore (include aiuole e altri areali). Gli edifici OSM fuori UV sono un indicatore più pulito: Z3 31%.
 
 ## 3. Coerenza fra fonti
 
