@@ -79,7 +79,7 @@ add(id="POE-01", gruppo="accesso", tipo="strada_private", prio=1, nome="Via Poer
 NB = gpd.read_file(ROOT / "data/norm/network/rete_z2.gpkg", layer="nodi_bloccati", engine="pyogrio").set_index("node_id")
 gp = MultiPoint([NB.loc[n].geometry for n in ("nod_osm_3617796598", "nod_osm_3617796616", "nod_osm_3617796622")]).centroid
 add(id="POE-02", gruppo="accesso", tipo="cancelli_privati", prio=3, nome="Tre cancelli access=private che bloccano la rete (nodi 3617796598, 3617796616, 3617796622)", id_modello="nod_osm_3617796598|nod_osm_3617796616|nod_osm_3617796622",
-    xy=[gp.x, gp.y], motivo="Tre cancelli access=private bloccano la rete: nodi bloccanti (network/REPORT.md). Sono circa 700 m a ovest di Pellico, fuori dal giro principale: solo se si passa di là. Verificare che esistano e siano chiusi o vietati.",
+    xy=[gp.x, gp.y], motivo="Tre cancelli access=private bloccano la rete: nodi bloccanti (network/REPORT.md). NON sono quelli del caso V01 (via Poerio 3): V01 è bloccato da 3 archi access=private (edg_osm_326768263_*, coperti da POE-01), mentre questi 3 nodi sono circa 1,3 km a ovest della scuola e 700 m a ovest di Pellico, fuori dal giro principale: solo se si passa di là. Verificare che esistano e siano chiusi o vietati.",
     cosa="Per ciascuno dei tre cancelli: esiste? Aperto, chiuso, con cartello? Annotare quanti ne trovi.",
     come="Osservare dalla via pubblica, foto. Non entrare.", min=5, uso="correzione",
     misure=[mis("cancello_passabile", valore_modello="chiuso")])
@@ -87,27 +87,30 @@ add(id="POE-02", gruppo="accesso", tipo="cancelli_privati", prio=3, nome="Tre ca
 # ---------- scala 38 gradini ----------
 sc = EA.loc[["edg_osm_22717629_11480720548_11480720545", "edg_osm_22717629_1914050891_11480720548"]]
 scp = sc.geometry.union_all().centroid
+n_scala = int(gpd.read_file(ROOT / "data/norm/analysis/battisti/job_4d23232eb780b0c1_archi_usati.geojson").set_index("edge_id").loc["edg_osm_22717629_11480720548_11480720545", "n_origini"])
 add(id="SCA-01", gruppo="scala", tipo="scala", prio=1, nome="Scala da 38 gradini sul percorso verso l'ingresso Battisti", id_modello="edg_osm_22717629_11480720548_11480720545+edg_osm_22717629_1914050891_11480720548",
-    xy=[scp.x, scp.y], motivo="Usata da 592 origini su 2.224 verso Battisti; il profilo ridotta la evita e allunga di 45 m (analysis/REPORT.md punti 2). Step_count 38 è un tag OSM non verificato.",
+    xy=[scp.x, scp.y], motivo=f"Usata da {n_scala} origini su 2.224 verso Battisti (archi usati T06, profilo base); il profilo ridotta la evita e allunga di 45 m (analysis/REPORT.md punti 2). Step_count 38 è un tag OSM non verificato.",
     cosa="Numero di gradini, corrimano, larghezza, rampa o alternativa senza gradini, cancello o barriera, stato (agibile o chiusa).",
     come="Contare salendo e scendendo; larghezza con rotella; foto dall'alto e dal basso.", min=8, uso="correzione",
     misure=[mis("scala_gradini", valore_modello=38, unita="gradini"), mis("cancello_passabile", valore_modello="passabile"), mis("posizione_oggetto", valore_modello=0.0, unita="m")])
 
-# ---------- cancelli più usati (stima dal cammino minimo) ----------
-src = "nod_osm_13794021225"
-H = G.to_undirected() if G.is_directed() else G
-dist, path = nx.single_source_dijkstra(H, src, weight="length_m")
-bar = {n for n, a in H.nodes(data=True) if a.get("barriera")}
-cnt = collections.Counter()
-for u, v in zip(o.snap_u, o.snap_v):
-    c = [x for x in (u, v) if x in dist]
-    if c:
-        for n in path[min(c, key=lambda t: dist[t])]:
-            if n in bar: cnt[n] += 1
+# ---------- cancelli piu usati: stessi calcoli di T06 (profilo base, ingresso predefinito Battisti) ----------
+sys.path.insert(0, str(ROOT / "analysis"))
+import accessibilita as T06  # noqa: E402
+cnt, orig_bar, _ris = collections.Counter(), 0, T06._riassunto
+def _cattura(H, nodi, archi):
+    r = _ris(H, nodi, archi); bn = [n for n in nodi if H.nodes[n].get("barriera")]
+    if bn: cnt.update(bn)
+    return r
+T06._riassunto = _cattura
+res06 = T06.compute_walk_access("dst_school_piee82101p")  # senza out_dir: nessun file scritto
+T06._riassunto = _ris
+n06 = res06["aggregati"]["origini_con_barriera"]
+assert n06 == 596, n06  # coincide con analysis/REPORT.md
 for i, (n, c) in enumerate(cnt.most_common(5), 1):
     g = EN.loc[n].geometry
     add(id=f"CAN-{i:02d}", gruppo="cancello", tipo="barriera_" + str(EN.loc[n].barriera), prio=1 if i <= 3 else 2, nome=f"Barriera {EN.loc[n].barriera} (nodo {n.split('_')[-1]})", id_modello=n, xy=[g.x, g.y],
-        motivo=f"Barriera passabile solo per ipotesi: sul cammino minimo di circa {c} origini verso Battisti (stima; T06 ne conta 596 con barriera). 182 cancelli senza tag access sono passabili per ipotesi (network/REPORT.md, analysis/REPORT.md punto 2).",
+        motivo=f"Barriera passabile solo per ipotesi: sul percorso di {c} delle {n06} origini con barriera verso Battisti (ricalcolo con il codice T06, profilo base: stesso totale di analysis/REPORT.md). 182 cancelli senza tag access sono passabili per ipotesi (network/REPORT.md, analysis/REPORT.md punto 2).",
         cosa="Tipo, larghezza libera, passabile a piedi (sempre, a orari, mai), aggirabile, orari esposti.",
         come="Osservare, larghezza con rotella o laser, foto. Non entrare in aree private.", min=4, uso="verifica" if i % 2 == 0 else "correzione",
         misure=[mis("cancello_passabile", valore_modello="passabile"), mis("posizione_oggetto", valore_modello=0.0, unita="m")])
