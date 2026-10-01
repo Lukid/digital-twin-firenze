@@ -1,0 +1,98 @@
+{
+  "manifest_created_at_utc": "2026-10-01T12:09:50.263978+00:00",
+  "audit_date": "2026-10-01",
+  "scope": "Initial research snapshots; not an approved publication catalogue",
+  "request_details": "See ../FONTI.md; this timestamp is manifest creation, not individual HTTP retrieval time",
+  "files": [
+    {
+      "path": "ckan-nazionale-pisa-count.json",
+      "bytes": 1127,
+      "sha256": "454a1e2c4432c7ebef2b8347a75d452e95d3687cdefd1bca5758a3dabbf381ec",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "ckan-toscana-gtfs.json",
+      "bytes": 17582,
+      "sha256": "c188977c928430dfa97b9ad7ee238b04d9a9bd6d0907a7a1faf9afc57b006cae",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "ckan-toscana-lidar.json",
+      "bytes": 3969,
+      "sha256": "1bc680863b2493b141aeab337c1ef4f43d850b7d0a23484ca88835fce6759db6",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "ckan-toscana-pisa-alberi.json",
+      "bytes": 215,
+      "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "ckan-toscana-pisa-pilota.json",
+      "bytes": 215,
+      "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "ckan-toscana-pisa-verde.json",
+      "bytes": 215,
+      "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "ckan-toscana-pisa.json",
+      "bytes": 3375867,
+      "sha256": "7547a4b425f109adf6b9eb7c6d06d5bf14852911ddab797cc3c69759ee1174b5",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "pisa-ciclabili-count.json",
+      "bytes": 13,
+      "sha256": "03379e984499e6d47b89cebea50d5132b1953ccf1061c1f3912d56f5e0f01113",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "pisa-ciclabili-sample.geojson",
+      "bytes": 1259,
+      "sha256": "774f0e49f3f471bed733f6f1ebb39d0d1ef9fb07ca58fdff55a70de79f998e35",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "pisa-ciclabili-service.json",
+      "bytes": 2591,
+      "sha256": "98d39ec4dee0c37c46a185457e7573fd4e5e2a99a6f9ba346b35be40021438fb",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "pisa-dbtopografico-service.json",
+      "bytes": 5727,
+      "sha256": "bd750ff86c809b885e3159a9fd97b7e5afc3e1e6760ef23e08b8c7dfc5300792",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "pisa-hosted-services.json",
+      "bytes": 699,
+      "sha256": "7ce5222cb4829f442753c758fb86de43236664d242474197a78c0d6a53f777a0",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "pisa-scuole-layer.json",
+      "bytes": 10151,
+      "sha256": "cb4adf58d71ca9d80925972da97ae183ff7734a7b19563caa81665ba353f2f98",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "pisa-scuole-sample.json",
+      "bytes": 1557,
+      "sha256": "52957eeddb7ec3fad8d2f6705e32396aa23890641492c36c80bd1479f1d5ebe0",
+      "type": "initial_audit_response"
+    },
+    {
+      "path": "pisa-scuole-service.json",
+      "bytes": 2419,
+      "sha256": "75da36a391e2651ea2e83744ed9c100a723a5f5d25fa4308495a546270b79ad1",
+      "type": "initial_audit_response"
+    }
+  ]
+}

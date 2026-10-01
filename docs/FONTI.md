@@ -1,0 +1,58 @@
+# Fonti e verifiche — Pisa Digital Twin
+
+Verifica iniziale: 1 ottobre 2026. Questo inventario distingue scoperta, metadati e contenuto. Non è ancora un catalogo approvato per la pubblicazione.
+
+| Fonte | Collegamento | Evidenza raccolta | Verifiche mancanti |
+|---|---|---|---|
+| Riferimento Padova | [Demo EKORE](https://padova-digital-twin.ekore.tech/) | URL fornito dall'utente; accesso web non riuscito e browser interattivo indisponibile | Visita manuale, funzioni desiderate, nessuna ipotesi sul backend |
+| Descrizione dell'autore | [Post Andrea Agostini](https://it.linkedin.com/posts/agostini-andrea_ekore-urbandigitaltwin-opendata-activity-7511098673020403712-lCuV) | Descrizione reperita nel motore di ricerca: edifici 3D, civici, alberi, POI, tram su orari, dati ambientali e Landsat | Non verificata dentro l'app; non assumere sensori o modelli equivalenti per Pisa |
+| Catalogo comunale | [Open data Pisa](https://opendata.comune.pisa.it/) | Homepage dichiara 663 dataset, categorie, StatPortal; risorse in evidenza con anni storici | Audit per dataset: contenuto, unicità, anno, licenza, download |
+| SIT comunale | [Servizio SIT](https://www.comune.pisa.it/Servizi/S.I.T), [Directory REST](https://sit.comune.pisa.it/arcgis/rest/services) | Directory con cartografia, toponomastica, ciclabili, idrografia, urbanistica e raster idraulici | Licenze, date e copertura per layer |
+| Ciclabili | [MapServer](https://sit.comune.pisa.it/arcgis/rest/services/Piste_ciclabili/MapServer) | GET API riuscite: layer `piste_ciclabili_new`, 144 feature; un oggetto LineString estratto in EPSG:4326. CRS sorgente EPSG:3003 | Data del contenuto, legenda completa, licenza, semantica dei campi e qualità geometrica |
+| Cartografia recente candidata | [Base CTR 2023](https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_2023/MapServer) | Pagina elenca `ctr_pisa_cascina_2022`; il nome del servizio non certifica l'anno di ogni oggetto | Estrarre un dataset vettoriale utile agli edifici; la presenza di una basemap non prova altezze disponibili |
+| Regione Toscana CKAN | [Catalogo](https://dati.toscana.it/), [status API](https://dati.toscana.it/api/3/action/status_show) | `success=true`, CKAN 2.10.4. Ricerca `q=Pisa`: 130 risultati, primi 100 salvati | Ricerca tematica e spaziale, publisher, duplicati e file effettivi |
+| dati.gov.it CKAN | [Catalogo](https://www.dati.gov.it/), [status API](https://www.dati.gov.it/opendata/api/3/action/status_show) | `success=true`, CKAN 2.10.3. Ricerca `q=Pisa`, `rows=0`: 147 risultati con facet degli editori | Non sono 147 dataset cittadini; selezione e deduplicazione |
+| Trasporti GTFS | [Dataset rt-oraritb](https://dati.toscana.it/dataset/rt-oraritb), [API metadati](https://dati.toscana.it/api/3/action/package_show?id=rt-oraritb) | Metadati completi salvati; risorse bus, treno, tram, traghetti. Risorsa Autolinee Toscane punta a Smart Region, licenza del catalogo CC Attribution | GET del feed, formato, calendari, fermate Pisa, shapes, attributi e condizioni specifiche. HEAD ha risposto 405: non dimostra un errore del GET |
+| GTFS bus, URL risorsa | [Endpoint Smart Region](https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs) | URL ricavato dai metadati regionali | Non ancora scaricato o validato |
+| ARPAT aria | [Archivio orario 2008–2025](https://www.arpat.toscana.it/datiemappe/qualita-dellaria-dati-orari/), [ZIP Pisa 2025](https://www.arpat.toscana.it/app/uploads/2026/05/PI_DATI_QA_2025_CSV.zip) | ZIP scaricato e aperto: file per Borghetto, Passi e altre stazioni provinciali. CSV CO Borghetto: 8.760 record, separatore `;`, decimali con virgola, ora solare e campo validità | Verificare tutti gli inquinanti, codifica, unità e coordinate. Filtrare il Comune, non tutta la provincia. Condizioni di riuso specifiche da documentare |
+| GeoScopio e geodati | [GeoScopio](https://www.regione.toscana.it/-/geoscopio), [Open Geodata](https://geoblog.regione.toscana.it/-/open-geodata) | Catalogo regionale documenta DTM, DB topografico, CTR, ortofoto e rilievi LiDAR, con diverse licenze CC | Risorse locali, date, download e licenza esatta. Alcuni collegamenti di catalogo sono vecchi |
+| LiDAR | [Dataset lidar](https://dati.toscana.it/dataset/lidar), [API](https://dati.toscana.it/api/3/action/package_show?id=lidar) | API riuscita; descrive rilievi 1×1 e 2×2 m su aree regionali, risorsa verso la Cartoteca | La copertura di Pisa non è dimostrata; verificare DTM/DSM, epoca e datum verticale |
+| Idrometria | [SIR](https://www.sir.toscana.it/idrometria-pub) | Pagina ufficiale pubblica dati acquisiti in tempo reale e avverte che non sono validati; ora solare | Stazioni utili a Pisa, API/download, frequenza reale, unità e riuso |
+| Cartografia idraulica candidata | [Battenti](https://sit.comune.pisa.it/arcgis/rest/services/Battenti/ImageServer) e directory SIT | Servizi raster pubblicamente documentati, inclusi TR200 | Fonte dello studio, versione, scenario, unità e validità territoriale; non dedurre rischi da un nome di layer |
+| Dati territoriali/statistici | [Basi Istat](https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/) | Istat documenta basi 2021 e variabili censuarie; fonte candidata | Scaricare Toscana/Pisa, join per codice, anno delle variabili, revisione dei confini |
+| OSM | [Licenza e attribuzione](https://www.openstreetmap.org/copyright) | Dati ODbL; servizi tile e geocoding hanno condizioni proprie | Misurare copertura locale di edifici, altezze e POI; scegliere modalità di distribuzione con attribuzione appropriata |
+| Landsat | [USGS Surface Temperature](https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature) | Prodotto ufficiale e documentazione della temperatura superficiale | Scene effettive su Pisa, nuvole, nodata, scala/unità, comparabilità stagionale e risoluzione effettiva |
+| MCP CKAN | [Repository AgID](https://github.com/AgID/ckan-mcp-server) | README consultato; supporta discovery, package search/show, DataStore e qualità dei metadati | Configurazione e prova nell'ambiente esecutore; in questa sessione nessun tool CKAN esposto |
+| Motore candidato MapLibre | [Esempio edifici 3D](https://maplibre.org/maplibre-gl-js/docs/examples/display-buildings-in-3d/) | Documentazione ufficiale sulle estrusioni | Prova con dati Pisa, picking, prestazioni e necessità di modelli speciali |
+| Motore candidato Cesium | [CesiumJS](https://cesium.com/platform/cesiumjs/) | Documentazione ufficiale su terreno, modelli, 3D Tiles e visualizzazione temporale | Prova, scelta delle sorgenti e condizioni dei servizi; libreria e servizi non coincidono |
+
+## Evidenze locali
+
+- `research/ckan-toscana-pisa.json`: risposta a `package_search(q=Pisa, rows=100)`; campione del catalogo, non raccolta completa.
+- `research/ckan-toscana-gtfs.json`: risposta a `package_show(id=rt-oraritb)`.
+- `research/ckan-toscana-lidar.json`: risposta a `package_show(id=lidar)`.
+- `research/ckan-nazionale-pisa-count.json`: risposta a `package_search(q=Pisa, rows=0)` con facet organizzazioni.
+- `research/pisa-ciclabili-service.json`: metadati del MapServer.
+- `research/pisa-ciclabili-count.json`: conteggio del layer 0.
+- `research/pisa-ciclabili-sample.geojson`: query `objectIds=1`, `outFields=*`, `outSR=4326`.
+- Lo ZIP ARPAT è stato aperto in `/private/tmp/pisa-qa-2025.zip`; per riprodurre l'audit riscaricarlo dall'URL ufficiale. Il file temporaneo non è un archivio permanente.
+
+Nell'audit successivo aggiungere timestamp completo, checksum e log dei controlli di ogni risorsa. Le risposte API qui salvate documentano la ricerca iniziale; non sostituiscono i contratti dati della pipeline futura.
+
+## Audit mirato dopo la scelta di accessibilità e ombra
+
+Verifiche aggiuntive del 1 ottobre 2026. La priorità ora è rete pedonale, ingressi, edifici e alberi; ARPAT, GTFS e Arno restano fonti di contesto o evoluzioni successive.
+
+| Fonte | Evidenza | Mancanze o implicazioni |
+|---|---|---|
+| [Censimento arboreo, comunicato comunale](https://www.comune.pisa.it/Novita/Comunicati/Rinnovo-arboreo-il-Comune-di-Pisa-prosegue-gli-incontri-con-le-associazioni-ambientaliste) | Pagina aggiornata il 2 maggio 2024: il Comune dichiara un censimento georeferenziato e dati sulle altezze | Esistenza documentata, download e licenza non accertati; dimensioni delle chiome da verificare. Nessuna previsione numerica del comunicato considerata dato attuale |
+| [Servizi Hosted SIT](https://sit.comune.pisa.it/arcgis/rest/services/Hosted) | GET JSON riuscito; servizi per edifici scolastici, plessi, strade e civici | Verifica specifica per ciascun servizio; non sono automaticamente ingressi pedonali |
+| [Edifici scolastici, layer 4](https://sit.comune.pisa.it/arcgis/rest/services/Hosted/edifici_scolastici/FeatureServer/4) | Layer poligonale interrogabile, paginazione dichiarata; schema e un record campione acquisiti, con via e civico | Nello schema esaminato non ci sono altezze o ingressi; denominazione e funzione da integrare con altre fonti. Licenza/anno ancora aperti |
+| [Base DBTopografico](https://sit.comune.pisa.it/arcgis/rest/services/Hosted/Base_DBTopografico/MapServer) | Metadati elencano layer fra cui nomi contenenti `3d`, ma capabilities del servizio sono `TilesOnly,Tilemap` | La basemap non prova disponibilità dei vettori analitici o delle quote; serve un pacchetto/download distinto |
+| [Sedi di Ingegneria UniPi](https://www.ing.unipi.it/it/la-scuola/sedi-e-strutture) | Pagina ufficiale documenta sedi/poli | Fonte candidata per identificazione dei servizi; non è una rete pedonale validata né un dataset degli ingressi |
+| [Studio censimento arboreo UniPi](https://arpi.unipi.it/handle/11568/885149) | Record bibliografico reperito in ricerca relativo al censimento delle alberature | Non usato come dataset; accesso completo non riuscito, eventuale riferimento per un partner di dominio |
+| CKAN Toscana, query mirate | `Pisa AND verde`, `Pisa AND alber*` e query combinata salvate: zero risultati nelle risposte | Non dimostra assenza dei dati; proseguire su fonte comunale, termini diversi e cataloghi territoriali |
+| [OSMnx, documentazione ufficiale](https://osmnx.readthedocs.io/en/stable/user-reference.html) | Documentazione per acquisizione e gestione di grafi e percorsi | Candidato per la rete; la libreria non dimostra qualità/completamento della rete pisana |
+| [GRASS r.sunmask](https://grass.osgeo.org/grass-stable/manuals/r.sunmask.html) | Calcolo ombre da elevazioni e posizione solare; documentazione delle convenzioni temporali | Candidato di confronto per terreno/edifici; attenzione a ora legale e rappresentazione raster di volumi sollevati |
+
+Evidenze aggiuntive salvate in `research/`: `pisa-hosted-services.json`, `pisa-dbtopografico-service.json`, `pisa-scuole-service.json`, `pisa-scuole-layer.json`, `pisa-scuole-sample.json`, `ckan-toscana-pisa-pilota.json`, `ckan-toscana-pisa-verde.json`, `ckan-toscana-pisa-alberi.json`. La query scuola restituisce un campione con geometria esclusa: il servizio è documentato come poligonale, ma il campione non valida ancora la geometria.
