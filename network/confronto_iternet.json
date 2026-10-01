@@ -1,0 +1,71 @@
+{
+ "area": "Z2 (senza buffer)",
+ "licenza": "da accertare (CC BY 4.0 nel pacchetto, BY/BY-SA nel catalogo)",
+ "data_aggiornamento_elementi": [
+  "20190904"
+ ],
+ "natura": "grafo stradale veicolare del Piano regionale: elementi di carreggiata, piazza, rotatoria; nessun marciapiede, attraversamento, scala, cancello o livello pedonale",
+ "iternet": {
+  "elementi": 243,
+  "km": 18.08,
+  "per_tipo": {
+   "di tronco carreggiata": 188,
+   "di piazza": 43,
+   "pedonale": 3,
+   "raccordo, bretella, svincolo": 1,
+   "di rotatoria": 8
+  },
+  "elementi_pedonali": 3,
+  "elementi_in_sottopasso": 2,
+  "civici": 1832
+ },
+ "osm": {
+  "km_carrabili_incl_escluse_a_piedi": 22.11,
+  "km_dedicati_pedoni": 24.37,
+  "km_grafo_pedonale": 35.74,
+  "attraversamenti_archi": 191,
+  "scale_archi": 7
+ },
+ "quota_iternet_coperta_da_osm_carrabile_10m": 0.86,
+ "quota_osm_carrabile_coperta_da_iternet_10m": 0.75,
+ "quota_iternet_coperta_da_osm_carrabile_25m": 0.939,
+ "quota_osm_carrabile_coperta_da_iternet_25m": 0.855,
+ "solo_osm_carrabile": {
+  "km": 6.22,
+  "per_highway_km": {
+   "living_street": 0.02,
+   "residential": 0.85,
+   "secondary": 0.06,
+   "service": 5.18,
+   "tertiary": 0.1
+  }
+ },
+ "solo_iternet": {
+  "elementi": 42,
+  "km": 3.12,
+  "per_tipo": {
+   "di tronco carreggiata": 29,
+   "pedonale": 3,
+   "di piazza": 10
+  },
+  "id_esempio": [
+   "RT05002629652ES",
+   "RT05002629582ES",
+   "RT05002629598ES",
+   "RT05002626391ES",
+   "RT05002612497ES"
+  ]
+ },
+ "pedonale_osm_coperto_da_iternet_10m": 0.654,
+ "civici": {
+  "sit_z2": 2224,
+  "iternet_z2": 1832,
+  "sit_con_pari_numero_iternet_25m": 1794,
+  "nota": "il civico non è un ingresso: entrambe le fonti sono usate solo come origini"
+ },
+ "sintesi": [
+  "Iter.net è veicolare: copre le carreggiate ma non i marciapiedi, gli attraversamenti, le scale e i cancelli. Non sostituisce OSM per il caso A.",
+  "Utile come controllo di completezza della viabilità carrabile e come dato ufficiale per i civici (origine regionale).",
+  "Non ha tag foot/access/sidewalk: non può dire se un tratto sia percorribile a piedi."
+ ]
+}

@@ -1,0 +1,127 @@
+{
+ "parametri": {
+  "origini_max_m": 40,
+  "ingressi_max_m": 40,
+  "candidati": 6
+ },
+ "origini_totali_z2": 2224,
+ "agganciate": 2169,
+ "non_agganciate_insufficient_data": 55,
+ "non_agganciate_motivi": {
+  "tutti i candidati scartati: edificio": 26,
+  "nessun arco percorribile entro N m": 25,
+  "tutti i candidati scartati: tratto_escluso": 4
+ },
+ "distanza_arco_piu_vicino_senza_vincoli_m": {
+  "p50": 3.6,
+  "p75": 6.0,
+  "p90": 9.8,
+  "p95": 17.4,
+  "p99": 41.2,
+  "max": 69.0
+ },
+ "raccordo_registrato_m": {
+  "p50": 3.5,
+  "p75": 5.7,
+  "p90": 8.5,
+  "p95": 12.4,
+  "p99": 27.5,
+  "max": 39.1
+ },
+ "civici_oltre_20_m": 47,
+ "civici_primo_candidato_scartato": 43,
+ "per_componente": {
+  "cmp_01": 2148,
+  "cmp_14": 18,
+  "cmp_24": 3
+ },
+ "agganciati_a_componenti_isolate": 21,
+ "per_tipo_arco_agganciato": {
+  "sentiero": 148,
+  "strada": 1031,
+  "marciapiede_disegnato": 943,
+  "sottopasso": 47
+ },
+ "per_marciapiede_arco_agganciato": {
+  "non_applicabile": 1138,
+  "ignoto": 395,
+  "presente": 558,
+  "assente": 78
+ },
+ "ingressi_battisti": [
+  {
+   "id": "ent_osm_n6532183886",
+   "classe": "probabile_ingresso_scuola",
+   "stato": "agganciato",
+   "raccordo_m": 0.67,
+   "componente": "cmp_01"
+  },
+  {
+   "id": "ent_osm_n13804118752",
+   "classe": "probabile_edificio_contiguo",
+   "stato": "agganciato",
+   "raccordo_m": 0.56,
+   "componente": "cmp_01"
+  },
+  {
+   "id": "ent_osm_n13804368962",
+   "classe": "probabile_edificio_contiguo",
+   "stato": "agganciato",
+   "raccordo_m": 1.22,
+   "componente": "cmp_01"
+  },
+  {
+   "id": "ent_osm_n13804368966",
+   "classe": "probabile_edificio_contiguo",
+   "stato": "agganciato",
+   "raccordo_m": 1.22,
+   "componente": "cmp_01"
+  },
+  {
+   "id": "ent_osm_n5101368984",
+   "classe": "probabile_edificio_contiguo",
+   "stato": "agganciato",
+   "raccordo_m": 2.03,
+   "componente": "cmp_01"
+  },
+  {
+   "id": "ent_osm_n5101368985",
+   "classe": "probabile_edificio_contiguo",
+   "stato": "agganciato",
+   "raccordo_m": 1.78,
+   "componente": "cmp_01"
+  },
+  {
+   "id": "ent_osm_n13804118745",
+   "classe": "probabile_edificio_contiguo",
+   "stato": "agganciato",
+   "raccordo_m": 0.62,
+   "componente": "cmp_01"
+  },
+  {
+   "id": "ent_osm_n5101368983",
+   "classe": "probabile_edificio_contiguo",
+   "stato": "agganciato",
+   "raccordo_m": 2.1,
+   "componente": "cmp_01"
+  },
+  {
+   "id": "ent_osm_n13804118746",
+   "classe": "probabile_edificio_contiguo",
+   "stato": "agganciato",
+   "raccordo_m": 0.63,
+   "componente": "cmp_01"
+  }
+ ],
+ "fermate_z2": 40,
+ "fermate_agganciate": 40,
+ "fermate_raccordo_m": {
+  "p50": 1.8,
+  "p90": 4.3,
+  "max": 5.83
+ },
+ "fermate_non_agganciate": [],
+ "fermate_su_componenti": {
+  "cmp_01": 40
+ }
+}

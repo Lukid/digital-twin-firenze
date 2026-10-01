@@ -1,0 +1,3 @@
+{"type":"FeatureCollection","name":"correzioni_rete","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:EPSG::7791"}},
+"nota":"Correzioni locali alla rete, separate dai dati originali. Vuoto: nessuna correzione motivata finora (nessun rilievo sul posto). Ogni feature dovrà avere: azione (aggiungi_arco, togli_arco, cambia_attributo, aggiungi_connessione), target (edge_id o node_id), valore, motivo, fonte_evidenza, autore, data, osservazione_id. Non si ripubblicano in OSM. Le osservazioni di verifica (T11) restano in un file a parte.",
+"features":[]}

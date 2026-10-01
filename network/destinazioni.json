@@ -1,0 +1,2160 @@
+{
+ "graph_id": "grf_z2_osm_20261001",
+ "classificazione": "ingressi OSM = measured; classe ingresso e aggancio = derived (regole in regole.json e nel codice); tutto da_verificare",
+ "destinazioni": [
+  {
+   "destination_id": "dst_school_piee82101p",
+   "categoria": "school",
+   "nome": "Scuola Primaria C. Battisti",
+   "indirizzo": "via Filippo Corridoni 42",
+   "codice_mim": "PIEE82101P (dall'audit T01, non nel SIT)",
+   "fonte": "OSM way 695634299",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (orari, cancello, ingresso alunni vs pubblico)",
+   "ingresso_predefinito": "ent_osm_n6532183886",
+   "ingressi": [
+    {
+     "entrance_id": "ent_osm_n6532183886",
+     "osm_node": 6532183886,
+     "classe": "probabile_ingresso_scuola",
+     "motivazione": "ingresso OSM entrance=main, indirizzo assente, a 0.0 m dal perimetro OSM della scuola (way 695634299, via Filippo Corridoni 42); dentro il perimetro, su bld_osm_w90078413 (yes, 1165 m2, 100% nel perimetro della scuola); indirizzo assente o coerente: nessun segnale di un altro edificio",
+     "dist_perimetro_m": 0.0,
+     "nell_audit_t01": true,
+     "stato_verifica": "da_verificare",
+     "tags": {
+      "entrance": "main"
+     },
+     "xy": [
+      613152.54,
+      4840302.55
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1508845483_13794021236_13794021225",
+      "u": "nod_osm_13794021236",
+      "v": "nod_osm_13794021225",
+      "offset_m": 83.75,
+      "dist_m": 0.67,
+      "proj": [
+       613152.258487749,
+       4840301.9417159315
+      ],
+      "scartati": [],
+      "raccordo_m": 0.67,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_osm_n13804118752",
+     "osm_node": 13804118752,
+     "classe": "probabile_edificio_contiguo",
+     "motivazione": "ingresso OSM entrance=staircase, indirizzo Via Amerigo Vespucci 31, a 10.4 m dal perimetro OSM della scuola (way 695634299, via Filippo Corridoni 42); fuori dal perimetro, su bld_osm_w90081253 (apartments, 196 m2, 0% nel perimetro della scuola); numero civico diverso da 42",
+     "dist_perimetro_m": 10.4,
+     "nell_audit_t01": true,
+     "stato_verifica": "da_verificare",
+     "tags": {
+      "addr:housenumber": "31",
+      "addr:street": "Via Amerigo Vespucci",
+      "entrance": "staircase"
+     },
+     "xy": [
+      613147.69,
+      4840382.85
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1510001182_13804368969_13794021235",
+      "u": "nod_osm_13794021235",
+      "v": "nod_osm_13804368969",
+      "offset_m": 25.89,
+      "dist_m": 0.56,
+      "proj": [
+       613147.9309633946,
+       4840383.3560179295
+      ],
+      "scartati": [],
+      "raccordo_m": 0.56,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_osm_n13804368962",
+     "osm_node": 13804368962,
+     "classe": "probabile_edificio_contiguo",
+     "motivazione": "ingresso OSM entrance=yes, indirizzo Via Amerigo Vespucci 16, a 11.2 m dal perimetro OSM della scuola (way 695634299, via Filippo Corridoni 42); fuori dal perimetro, su bld_osm_w92319287 (yes, 133 m2, 0% nel perimetro della scuola); numero civico diverso da 42",
+     "dist_perimetro_m": 11.2,
+     "nell_audit_t01": true,
+     "stato_verifica": "da_verificare",
+     "tags": {
+      "addr:housenumber": "16",
+      "addr:street": "Via Amerigo Vespucci",
+      "entrance": "yes"
+     },
+     "xy": [
+      613165.41,
+      4840386.78
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1510001184_13804368960_13804368968",
+      "u": "nod_osm_13804368960",
+      "v": "nod_osm_13804368968",
+      "offset_m": 60.09,
+      "dist_m": 1.22,
+      "proj": [
+       613164.8938236926,
+       4840385.674605634
+      ],
+      "scartati": [],
+      "raccordo_m": 1.22,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_osm_n13804368966",
+     "osm_node": 13804368966,
+     "classe": "probabile_edificio_contiguo",
+     "motivazione": "ingresso OSM entrance=yes, indirizzo Via Amerigo Vespucci 18, a 13.8 m dal perimetro OSM della scuola (way 695634299, via Filippo Corridoni 42); fuori dal perimetro, su bld_osm_w92319295 (apartments, 586 m2, 0% nel perimetro della scuola); numero civico diverso da 42",
+     "dist_perimetro_m": 13.8,
+     "nell_audit_t01": false,
+     "stato_verifica": "da_verificare",
+     "tags": {
+      "addr:housenumber": "18",
+      "addr:street": "Via Amerigo Vespucci",
+      "entrance": "yes"
+     },
+     "xy": [
+      613154.39,
+      4840391.93
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1510001184_13804368960_13804368968",
+      "u": "nod_osm_13804368960",
+      "v": "nod_osm_13804368968",
+      "offset_m": 47.92,
+      "dist_m": 1.22,
+      "proj": [
+       613153.8722567573,
+       4840390.821250034
+      ],
+      "scartati": [],
+      "raccordo_m": 1.22,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_osm_n5101368984",
+     "osm_node": 5101368984,
+     "classe": "probabile_edificio_contiguo",
+     "motivazione": "ingresso OSM entrance=yes, indirizzo Via Filippo Corridoni 33, a 15.4 m dal perimetro OSM della scuola (way 695634299, via Filippo Corridoni 42); fuori dal perimetro, su bld_osm_w524165584 (yes, 143 m2, 0% nel perimetro della scuola); numero civico diverso da 42",
+     "dist_perimetro_m": 15.4,
+     "nell_audit_t01": true,
+     "stato_verifica": "da_verificare",
+     "tags": {
+      "addr:housenumber": "33",
+      "addr:street": "Via Filippo Corridoni",
+      "entrance": "yes"
+     },
+     "xy": [
+      613135.82,
+      4840293.82
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236412358_11480720554_11480720557",
+      "u": "nod_osm_11480720554",
+      "v": "nod_osm_11480720557",
+      "offset_m": 72.28,
+      "dist_m": 2.03,
+      "proj": [
+       613136.6824571743,
+       4840295.661810656
+      ],
+      "scartati": [],
+      "raccordo_m": 2.03,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_osm_n5101368985",
+     "osm_node": 5101368985,
+     "classe": "probabile_edificio_contiguo",
+     "motivazione": "ingresso OSM entrance=yes, indirizzo Via Filippo Corridoni 29, a 16.4 m dal perimetro OSM della scuola (way 695634299, via Filippo Corridoni 42); fuori dal perimetro, su bld_osm_w524165586 (hotel, 360 m2, 0% nel perimetro della scuola); numero civico diverso da 42",
+     "dist_perimetro_m": 16.4,
+     "nell_audit_t01": true,
+     "stato_verifica": "da_verificare",
+     "tags": {
+      "addr:housenumber": "29",
+      "addr:street": "Via Filippo Corridoni",
+      "entrance": "yes"
+     },
+     "xy": [
+      613163.77,
+      4840281.01
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236412358_11480720557_11480720542",
+      "u": "nod_osm_11480720557",
+      "v": "nod_osm_11480720542",
+      "offset_m": 19.41,
+      "dist_m": 1.78,
+      "proj": [
+       613164.5260989291,
+       4840282.624946163
+      ],
+      "scartati": [],
+      "raccordo_m": 1.78,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_osm_n13804118745",
+     "osm_node": 13804118745,
+     "classe": "probabile_edificio_contiguo",
+     "motivazione": "ingresso OSM entrance=yes, indirizzo Via Amerigo Vespucci 35, a 19.2 m dal perimetro OSM della scuola (way 695634299, via Filippo Corridoni 42); fuori dal perimetro, su bld_osm_w90081248 (apartments, 189 m2, 0% nel perimetro della scuola); numero civico diverso da 42",
+     "dist_perimetro_m": 19.2,
+     "nell_audit_t01": true,
+     "stato_verifica": "da_verificare",
+     "tags": {
+      "addr:housenumber": "35",
+      "addr:street": "Via Amerigo Vespucci",
+      "entrance": "yes"
+     },
+     "xy": [
+      613139.76,
+      4840386.56
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1510001182_13804368969_13794021235",
+      "u": "nod_osm_13794021235",
+      "v": "nod_osm_13804368969",
+      "offset_m": 34.65,
+      "dist_m": 0.62,
+      "proj": [
+       613140.0266717807,
+       4840387.120004986
+      ],
+      "scartati": [],
+      "raccordo_m": 0.62,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_osm_n5101368983",
+     "osm_node": 5101368983,
+     "classe": "probabile_edificio_contiguo",
+     "motivazione": "ingresso OSM entrance=yes, indirizzo Via Filippo Corridoni 35, a 21.9 m dal perimetro OSM della scuola (way 695634299, via Filippo Corridoni 42); fuori dal perimetro, su bld_osm_w524165582 (yes, 165 m2, 0% nel perimetro della scuola); numero civico diverso da 42",
+     "dist_perimetro_m": 21.9,
+     "nell_audit_t01": true,
+     "stato_verifica": "da_verificare",
+     "tags": {
+      "addr:housenumber": "35",
+      "addr:street": "Via Filippo Corridoni",
+      "entrance": "yes"
+     },
+     "xy": [
+      613125.06,
+      4840298.78
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236412358_11480720554_11480720557",
+      "u": "nod_osm_11480720554",
+      "v": "nod_osm_11480720557",
+      "offset_m": 60.43,
+      "dist_m": 2.1,
+      "proj": [
+       613125.9526212561,
+       4840300.686227219
+      ],
+      "scartati": [],
+      "raccordo_m": 2.1,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_osm_n13804118746",
+     "osm_node": 13804118746,
+     "classe": "probabile_edificio_contiguo",
+     "motivazione": "ingresso OSM entrance=yes, indirizzo Via Amerigo Vespucci 37, a 22.8 m dal perimetro OSM della scuola (way 695634299, via Filippo Corridoni 42); fuori dal perimetro, su bld_osm_w90081248 (apartments, 189 m2, 0% nel perimetro della scuola); numero civico diverso da 42",
+     "dist_perimetro_m": 22.8,
+     "nell_audit_t01": true,
+     "stato_verifica": "da_verificare",
+     "tags": {
+      "addr:housenumber": "37",
+      "addr:street": "Via Amerigo Vespucci",
+      "entrance": "yes"
+     },
+     "xy": [
+      613136.52,
+      4840388.09
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1510001182_13804368969_13794021235",
+      "u": "nod_osm_13794021235",
+      "v": "nod_osm_13804368969",
+      "offset_m": 38.23,
+      "dist_m": 0.63,
+      "proj": [
+       613136.7916687236,
+       4840388.660498458
+      ],
+      "scartati": [],
+      "raccordo_m": 0.63,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0003",
+   "categoria": "stop",
+   "nome": "PISA stazione",
+   "stop_code": "PI0003",
+   "corse_giorno_rif": 131,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n5278157573",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0003",
+     "stop_code": "PI0003",
+     "nome": "PISA stazione",
+     "corse": 131,
+     "entrance_id": "ent_osm_n5278157573",
+     "ingresso_fonte": "piattaforma OSM a 3.5 m dal punto GTFS",
+     "nome_osm": "Stazione FS 3",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612734.75,
+      4840451.54
+     ],
+     "gtfs_xy": [
+      612736.37,
+      4840448.42
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1267993298_11776488381_11776488379",
+      "u": "nod_osm_11776488381",
+      "v": "nod_osm_11776488379",
+      "offset_m": 27.94,
+      "dist_m": 1.02,
+      "proj": [
+       612734.5241333232,
+       4840450.54942619
+      ],
+      "scartati": [],
+      "raccordo_m": 1.02,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0004",
+   "categoria": "stop",
+   "nome": "PISA stazione",
+   "stop_code": "PI0004",
+   "corse_giorno_rif": 167,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n3602022542",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0004",
+     "stop_code": "PI0004",
+     "nome": "PISA stazione",
+     "corse": 167,
+     "entrance_id": "ent_osm_n3602022542",
+     "ingresso_fonte": "piattaforma OSM a 6.2 m dal punto GTFS",
+     "nome_osm": "Stazione FS 4",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612750.54,
+      4840462.62
+     ],
+     "gtfs_xy": [
+      612754.43,
+      4840467.39
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1267993304_11776488379_11480659109",
+      "u": "nod_osm_11480659109",
+      "v": "nod_osm_11776488379",
+      "offset_m": 18.52,
+      "dist_m": 3.6,
+      "proj": [
+       612753.9526971524,
+       4840461.4616029905
+      ],
+      "scartati": [],
+      "raccordo_m": 3.6,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0008",
+   "categoria": "stop",
+   "nome": "PISA stazione",
+   "stop_code": "PI0008",
+   "corse_giorno_rif": 86,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n11013991726",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0008",
+     "stop_code": "PI0008",
+     "nome": "PISA stazione",
+     "corse": 86,
+     "entrance_id": "ent_osm_n11013991726",
+     "ingresso_fonte": "piattaforma OSM a 2.7 m dal punto GTFS",
+     "nome_osm": "Stazione FS 7",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612730.72,
+      4840475.83
+     ],
+     "gtfs_xy": [
+      612733.27,
+      4840474.81
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1220251687_11307144992_11307144993",
+      "u": "nod_osm_11307144992",
+      "v": "nod_osm_11307144993",
+      "offset_m": 10.7,
+      "dist_m": 0.76,
+      "proj": [
+       612730.3290890235,
+       4840475.181249896
+      ],
+      "scartati": [],
+      "raccordo_m": 0.76,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0007",
+   "categoria": "stop",
+   "nome": "PISA stazione",
+   "stop_code": "PI0007",
+   "corse_giorno_rif": 86,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n285185681",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0007",
+     "stop_code": "PI0007",
+     "nome": "PISA stazione",
+     "corse": 86,
+     "entrance_id": "ent_osm_n285185681",
+     "ingresso_fonte": "piattaforma OSM a 3.1 m dal punto GTFS",
+     "nome_osm": "Stazione FS 6",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612733.8,
+      4840482.19
+     ],
+     "gtfs_xy": [
+      612735.84,
+      4840479.85
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_354485963_11013991725_3602022543",
+      "u": "nod_osm_11013991725",
+      "v": "nod_osm_3602022543",
+      "offset_m": 10.2,
+      "dist_m": 0.61,
+      "proj": [
+       612733.5324232681,
+       4840481.644466098
+      ],
+      "scartati": [],
+      "raccordo_m": 0.61,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0001",
+   "categoria": "stop",
+   "nome": "PISA stazione",
+   "stop_code": "PI0001",
+   "corse_giorno_rif": 171,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n285185677",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0001",
+     "stop_code": "PI0001",
+     "nome": "PISA stazione",
+     "corse": 171,
+     "entrance_id": "ent_osm_n285185677",
+     "ingresso_fonte": "piattaforma OSM a 3.9 m dal punto GTFS",
+     "nome_osm": "Stazione FS 1",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612699.98,
+      4840477.7
+     ],
+     "gtfs_xy": [
+      612703.37,
+      4840479.53
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_521851277_8821185686_11013991724",
+      "u": "nod_osm_8821185686",
+      "v": "nod_osm_11013991724",
+      "offset_m": 0.11,
+      "dist_m": 5.83,
+      "proj": [
+       612705.6373601083,
+       4840476.271218797
+      ],
+      "scartati": [],
+      "raccordo_m": 5.83,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0006",
+   "categoria": "stop",
+   "nome": "PISA stazione",
+   "stop_code": "PI0006",
+   "corse_giorno_rif": 310,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n285185681",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0006",
+     "stop_code": "PI0006",
+     "nome": "PISA stazione",
+     "corse": 310,
+     "entrance_id": "ent_osm_n285185681",
+     "ingresso_fonte": "piattaforma OSM a 3.8 m dal punto GTFS",
+     "nome_osm": "Stazione FS 6",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612733.8,
+      4840482.19
+     ],
+     "gtfs_xy": [
+      612735.34,
+      4840485.62
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_354485963_11013991725_3602022543",
+      "u": "nod_osm_11013991725",
+      "v": "nod_osm_3602022543",
+      "offset_m": 10.2,
+      "dist_m": 0.61,
+      "proj": [
+       612733.5324232681,
+       4840481.644466098
+      ],
+      "scartati": [],
+      "raccordo_m": 0.61,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0002",
+   "categoria": "stop",
+   "nome": "PISA stazione",
+   "stop_code": "PI0002",
+   "corse_giorno_rif": 168,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n285185665",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0002",
+     "stop_code": "PI0002",
+     "nome": "PISA stazione",
+     "corse": 168,
+     "entrance_id": "ent_osm_n285185665",
+     "ingresso_fonte": "piattaforma OSM a 5.0 m dal punto GTFS",
+     "nome_osm": "Stazione FS 2",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612714.51,
+      4840455.77
+     ],
+     "gtfs_xy": [
+      612718.41,
+      4840452.67
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1267993298_11776488381_11776488379",
+      "u": "nod_osm_11776488381",
+      "v": "nod_osm_11776488379",
+      "offset_m": 7.27,
+      "dist_m": 0.64,
+      "proj": [
+       612714.367342566,
+       4840455.1455482785
+      ],
+      "scartati": [],
+      "raccordo_m": 0.64,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0005",
+   "categoria": "stop",
+   "nome": "PISA stazione",
+   "stop_code": "PI0005",
+   "corse_giorno_rif": 303,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n5153363486",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0005",
+     "stop_code": "PI0005",
+     "nome": "PISA stazione",
+     "corse": 303,
+     "entrance_id": "ent_osm_n5153363486",
+     "ingresso_fonte": "piattaforma OSM a 1.7 m dal punto GTFS",
+     "nome_osm": "Stazione 5",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612723.07,
+      4840500.12
+     ],
+     "gtfs_xy": [
+      612722.39,
+      4840498.51
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236405273_11480656535_11480659107",
+      "u": "nod_osm_11480656535",
+      "v": "nod_osm_11480659107",
+      "offset_m": 19.81,
+      "dist_m": 2.44,
+      "proj": [
+       612724.077402448,
+       4840502.343487958
+      ],
+      "scartati": [],
+      "raccordo_m": 2.44,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0009",
+   "categoria": "stop",
+   "nome": "PISA stazione",
+   "stop_code": "PI0009",
+   "corse_giorno_rif": 86,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n11013991727",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0009",
+     "stop_code": "PI0009",
+     "nome": "PISA stazione",
+     "corse": 86,
+     "entrance_id": "ent_osm_n11013991727",
+     "ingresso_fonte": "piattaforma OSM a 2.3 m dal punto GTFS",
+     "nome_osm": "Stazione FS 8",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612727.8,
+      4840471.0
+     ],
+     "gtfs_xy": [
+      612729.41,
+      4840469.41
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1220251686_11307144990_11307144991",
+      "u": "nod_osm_11307144990",
+      "v": "nod_osm_11307144991",
+      "offset_m": 10.66,
+      "dist_m": 0.77,
+      "proj": [
+       612727.3975215714,
+       4840470.343282634
+      ],
+      "scartati": [],
+      "raccordo_m": 0.77,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0016",
+   "categoria": "stop",
+   "nome": "PISA Sesta Porta",
+   "stop_code": "PI0016",
+   "corse_giorno_rif": 302,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_gtfs_pi0016",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0016",
+     "stop_code": "PI0016",
+     "nome": "PISA Sesta Porta",
+     "corse": 302,
+     "entrance_id": "ent_gtfs_pi0016",
+     "ingresso_fonte": "punto GTFS (nessuna piattaforma OSM entro 25 m)",
+     "nome_osm": null,
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612455.99,
+      4840635.67
+     ],
+     "gtfs_xy": [
+      612455.99,
+      4840635.67
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_509276536_4982860885_4985275645",
+      "u": "nod_osm_4982860885",
+      "v": "nod_osm_4985275645",
+      "offset_m": 7.57,
+      "dist_m": 5.39,
+      "proj": [
+       612456.5337652513,
+       4840630.311406339
+      ],
+      "scartati": [],
+      "raccordo_m": 5.39,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0014",
+   "categoria": "stop",
+   "nome": "PISA Sesta Porta",
+   "stop_code": "PI0014",
+   "corse_giorno_rif": 308,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n9431724264",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0014",
+     "stop_code": "PI0014",
+     "nome": "PISA Sesta Porta",
+     "corse": 308,
+     "entrance_id": "ent_osm_n9431724264",
+     "ingresso_fonte": "piattaforma OSM a 6.8 m dal punto GTFS",
+     "nome_osm": "Via Battisti",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612499.04,
+      4840651.6
+     ],
+     "gtfs_xy": [
+      612493.09,
+      4840648.29
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_544585227_9882762240_9882762239",
+      "u": "nod_osm_9882762239",
+      "v": "nod_osm_9882762240",
+      "offset_m": 54.69,
+      "dist_m": 0.46,
+      "proj": [
+       612498.9571907427,
+       4840651.149920854
+      ],
+      "scartati": [],
+      "raccordo_m": 0.46,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4368",
+   "categoria": "stop",
+   "nome": "SANTI EFISIO E POTITO",
+   "stop_code": "PI4368",
+   "corse_giorno_rif": 72,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878281",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4368",
+     "stop_code": "PI4368",
+     "nome": "SANTI EFISIO E POTITO",
+     "corse": 72,
+     "entrance_id": "ent_osm_n1652878281",
+     "ingresso_fonte": "piattaforma OSM a 1.2 m dal punto GTFS",
+     "nome_osm": "SS. Efisio e Potito",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612680.67,
+      4840026.08
+     ],
+     "gtfs_xy": [
+      612680.9,
+      4840024.88
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_146343107_1596063943_1596063945",
+      "u": "nod_osm_1596063943",
+      "v": "nod_osm_1596063945",
+      "offset_m": 6.28,
+      "dist_m": 1.55,
+      "proj": [
+       612679.1740743202,
+       4840026.50371153
+      ],
+      "scartati": [],
+      "raccordo_m": 1.55,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4089",
+   "categoria": "stop",
+   "nome": "DA MORRONA",
+   "stop_code": "PI4089",
+   "corse_giorno_rif": 35,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878253",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4089",
+     "stop_code": "PI4089",
+     "nome": "DA MORRONA",
+     "corse": 35,
+     "entrance_id": "ent_osm_n1652878253",
+     "ingresso_fonte": "piattaforma OSM a 6.5 m dal punto GTFS",
+     "nome_osm": "Da Morrona",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612995.78,
+      4840106.9
+     ],
+     "gtfs_xy": [
+      612998.53,
+      4840101.01
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236405277_11480659133_11480659134",
+      "u": "nod_osm_11480659133",
+      "v": "nod_osm_11480659134",
+      "offset_m": 16.99,
+      "dist_m": 0.44,
+      "proj": [
+       612995.5798189604,
+       4840106.505484293
+      ],
+      "scartati": [],
+      "raccordo_m": 0.44,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4186",
+   "categoria": "stop",
+   "nome": "GOLETTA",
+   "stop_code": "PI4186",
+   "corse_giorno_rif": 72,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878252",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4186",
+     "stop_code": "PI4186",
+     "nome": "GOLETTA",
+     "corse": 72,
+     "entrance_id": "ent_osm_n1652878252",
+     "ingresso_fonte": "piattaforma OSM a 1.0 m dal punto GTFS",
+     "nome_osm": "Goletta",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612516.42,
+      4840109.5
+     ],
+     "gtfs_xy": [
+      612515.63,
+      4840108.97
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_152724209_245925395_245925396",
+      "u": "nod_osm_245925396",
+      "v": "nod_osm_245925395",
+      "offset_m": 14.74,
+      "dist_m": 4.22,
+      "proj": [
+       612512.3013880968,
+       4840110.41177462
+      ],
+      "scartati": [],
+      "raccordo_m": 4.22,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4074",
+   "categoria": "stop",
+   "nome": "CORRIDONI 1",
+   "stop_code": "PI4074",
+   "corse_giorno_rif": 203,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878262",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4074",
+     "stop_code": "PI4074",
+     "nome": "CORRIDONI 1",
+     "corse": 203,
+     "entrance_id": "ent_osm_n1652878262",
+     "ingresso_fonte": "piattaforma OSM a 3.9 m dal punto GTFS",
+     "nome_osm": "Corridoni 1",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      613093.16,
+      4840327.11
+     ],
+     "gtfs_xy": [
+      613096.52,
+      4840325.2
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1508845483_13794021236_13794021225",
+      "u": "nod_osm_13794021236",
+      "v": "nod_osm_13794021225",
+      "offset_m": 19.55,
+      "dist_m": 1.98,
+      "proj": [
+       613093.9918203016,
+       4840328.907374841
+      ],
+      "scartati": [],
+      "raccordo_m": 1.98,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4076",
+   "categoria": "stop",
+   "nome": "CORRIDONI 3",
+   "stop_code": "PI4076",
+   "corse_giorno_rif": 172,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878307",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4076",
+     "stop_code": "PI4076",
+     "nome": "CORRIDONI 3",
+     "corse": 172,
+     "entrance_id": "ent_osm_n1652878307",
+     "ingresso_fonte": "piattaforma OSM a 1.1 m dal punto GTFS",
+     "nome_osm": "Corridoni 3",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612888.52,
+      4840413.13
+     ],
+     "gtfs_xy": [
+      612887.93,
+      4840412.21
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236405275_13460325809_13460325810",
+      "u": "nod_osm_13460325809",
+      "v": "nod_osm_13460325810",
+      "offset_m": 93.35,
+      "dist_m": 1.84,
+      "proj": [
+       612889.2861665621,
+       4840414.798177571
+      ],
+      "scartati": [],
+      "raccordo_m": 1.84,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4182",
+   "categoria": "stop",
+   "nome": "GIUSTI 1",
+   "stop_code": "PI4182",
+   "corse_giorno_rif": 172,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878283",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4182",
+     "stop_code": "PI4182",
+     "nome": "GIUSTI 1",
+     "corse": 172,
+     "entrance_id": "ent_osm_n1652878283",
+     "ingresso_fonte": "piattaforma OSM a 7.3 m dal punto GTFS",
+     "nome_osm": "Giusti 1",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612916.8,
+      4840068.76
+     ],
+     "gtfs_xy": [
+      612915.21,
+      4840061.61
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1279089188_11874207602_11874207628",
+      "u": "nod_osm_11874207602",
+      "v": "nod_osm_11874207628",
+      "offset_m": 27.75,
+      "dist_m": 1.94,
+      "proj": [
+       612918.5299130669,
+       4840067.881116919
+      ],
+      "scartati": [],
+      "raccordo_m": 1.94,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4050",
+   "categoria": "stop",
+   "nome": "CAPPUCCINI",
+   "stop_code": "PI4050",
+   "corse_giorno_rif": 69,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878299",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4050",
+     "stop_code": "PI4050",
+     "nome": "CAPPUCCINI",
+     "corse": 69,
+     "entrance_id": "ent_osm_n1652878299",
+     "ingresso_fonte": "piattaforma OSM a 3.8 m dal punto GTFS",
+     "nome_osm": "Cappuccini",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612753.94,
+      4840153.79
+     ],
+     "gtfs_xy": [
+      612754.31,
+      4840149.99
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_571042211_279535522_245927657",
+      "u": "nod_osm_245927657",
+      "v": "nod_osm_279535522",
+      "offset_m": 43.33,
+      "dist_m": 3.13,
+      "proj": [
+       612754.2076722338,
+       4840156.906060938
+      ],
+      "scartati": [],
+      "raccordo_m": 3.13,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4160",
+   "categoria": "stop",
+   "nome": "FRA' MANSUETO",
+   "stop_code": "PI4160",
+   "corse_giorno_rif": 69,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878248",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4160",
+     "stop_code": "PI4160",
+     "nome": "FRA' MANSUETO",
+     "corse": 69,
+     "entrance_id": "ent_osm_n1652878248",
+     "ingresso_fonte": "piattaforma OSM a 3.4 m dal punto GTFS",
+     "nome_osm": "Fra' Mansueto",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612464.75,
+      4840268.5
+     ],
+     "gtfs_xy": [
+      612466.89,
+      4840265.9
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_954896407_8838434769_245927734",
+      "u": "nod_osm_245927734",
+      "v": "nod_osm_8838434769",
+      "offset_m": 5.21,
+      "dist_m": 4.09,
+      "proj": [
+       612460.7528130612,
+       4840269.365043429
+      ],
+      "scartati": [],
+      "raccordo_m": 4.09,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4080",
+   "categoria": "stop",
+   "nome": "BONAINI 1",
+   "stop_code": "PI4080",
+   "corse_giorno_rif": 251,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652855551",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4080",
+     "stop_code": "PI4080",
+     "nome": "BONAINI 1",
+     "corse": 251,
+     "entrance_id": "ent_osm_n1652855551",
+     "ingresso_fonte": "piattaforma OSM a 5.2 m dal punto GTFS",
+     "nome_osm": "Bonaini 1",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612827.36,
+      4840606.13
+     ],
+     "gtfs_xy": [
+      612823.05,
+      4840603.2
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236405245_11480659099_11480659104",
+      "u": "nod_osm_11480659099",
+      "v": "nod_osm_11480659104",
+      "offset_m": 30.97,
+      "dist_m": 0.79,
+      "proj": [
+       612827.3961168677,
+       4840605.339520295
+      ],
+      "scartati": [],
+      "raccordo_m": 0.79,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4083",
+   "categoria": "stop",
+   "nome": "CROCE 1",
+   "stop_code": "PI4083",
+   "corse_giorno_rif": 329,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n7714399271",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4083",
+     "stop_code": "PI4083",
+     "nome": "CROCE 1",
+     "corse": 329,
+     "entrance_id": "ent_osm_n7714399271",
+     "ingresso_fonte": "piattaforma OSM a 2.6 m dal punto GTFS",
+     "nome_osm": "Croce 1",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      613159.09,
+      4840671.29
+     ],
+     "gtfs_xy": [
+      613158.31,
+      4840668.86
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236348152_11479403417_11479403420",
+      "u": "nod_osm_11479403420",
+      "v": "nod_osm_11479403417",
+      "offset_m": 12.88,
+      "dist_m": 0.84,
+      "proj": [
+       613158.9129464418,
+       4840672.115461275
+      ],
+      "scartati": [],
+      "raccordo_m": 0.84,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0032",
+   "categoria": "stop",
+   "nome": "PISA SANT'ANTONIO",
+   "stop_code": "PI0032",
+   "corse_giorno_rif": 164,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1409174429",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0032",
+     "stop_code": "PI0032",
+     "nome": "PISA SANT'ANTONIO",
+     "corse": 164,
+     "entrance_id": "ent_osm_n1409174429",
+     "ingresso_fonte": "piattaforma OSM a 3.5 m dal punto GTFS",
+     "nome_osm": "Pisa Piazza Sant'Antonio",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612582.44,
+      4840713.69
+     ],
+     "gtfs_xy": [
+      612583.67,
+      4840710.36
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_544585227_3592157892_3689242963",
+      "u": "nod_osm_3592157892",
+      "v": "nod_osm_3689242963",
+      "offset_m": 2.89,
+      "dist_m": 2.03,
+      "proj": [
+       612582.3103213157,
+       4840711.663584672
+      ],
+      "scartati": [],
+      "raccordo_m": 2.03,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4183",
+   "categoria": "stop",
+   "nome": "GIUSTI 2",
+   "stop_code": "PI4183",
+   "corse_giorno_rif": 168,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878326",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4183",
+     "stop_code": "PI4183",
+     "nome": "GIUSTI 2",
+     "corse": 168,
+     "entrance_id": "ent_osm_n1652878326",
+     "ingresso_fonte": "piattaforma OSM a 11.9 m dal punto GTFS",
+     "nome_osm": "Giusti 2",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612924.33,
+      4840057.33
+     ],
+     "gtfs_xy": [
+      612929.21,
+      4840068.18
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_153988335_6572921713_245917937",
+      "u": "nod_osm_245917937",
+      "v": "nod_osm_6572921713",
+      "offset_m": 34.25,
+      "dist_m": 3.83,
+      "proj": [
+       612920.9090212607,
+       4840059.044013777
+      ],
+      "scartati": [
+       {
+        "edge_id": "edg_osm_1467561642_8814440645_8814440647",
+        "dist_m": 2.61,
+        "motivo": "tratto_escluso"
+       }
+      ],
+      "raccordo_m": 3.83,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4075",
+   "categoria": "stop",
+   "nome": "CORRIDONI 2",
+   "stop_code": "PI4075",
+   "corse_giorno_rif": 203,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652878250",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4075",
+     "stop_code": "PI4075",
+     "nome": "CORRIDONI 2",
+     "corse": 203,
+     "entrance_id": "ent_osm_n1652878250",
+     "ingresso_fonte": "piattaforma OSM a 3.1 m dal punto GTFS",
+     "nome_osm": "Corridoni 2",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612885.8,
+      4840425.45
+     ],
+     "gtfs_xy": [
+      612883.72,
+      4840423.14
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_152406776_10880438178_5020308233",
+      "u": "nod_osm_10880438178",
+      "v": "nod_osm_5020308233",
+      "offset_m": 85.71,
+      "dist_m": 3.84,
+      "proj": [
+       612884.1785793671,
+       4840421.968137782
+      ],
+      "scartati": [],
+      "raccordo_m": 3.84,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4390",
+   "categoria": "stop",
+   "nome": "PELLICO",
+   "stop_code": "PI4390",
+   "corse_giorno_rif": 583,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n7852588815",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4390",
+     "stop_code": "PI4390",
+     "nome": "PELLICO",
+     "corse": 583,
+     "entrance_id": "ent_osm_n7852588815",
+     "ingresso_fonte": "piattaforma OSM a 4.1 m dal punto GTFS",
+     "nome_osm": "Pellico",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612592.17,
+      4840664.0
+     ],
+     "gtfs_xy": [
+      612589.5,
+      4840660.91
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_544585227_3600889663_5264115226",
+      "u": "nod_osm_3600889663",
+      "v": "nod_osm_5264115226",
+      "offset_m": 31.23,
+      "dist_m": 1.66,
+      "proj": [
+       612593.8244509596,
+       4840663.875168575
+      ],
+      "scartati": [],
+      "raccordo_m": 1.66,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4265",
+   "categoria": "stop",
+   "nome": "MAZZINI 2",
+   "stop_code": "PI4265",
+   "corse_giorno_rif": 324,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n6224807341",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4265",
+     "stop_code": "PI4265",
+     "nome": "MAZZINI 2",
+     "corse": 324,
+     "entrance_id": "ent_osm_n6224807341",
+     "ingresso_fonte": "piattaforma OSM a 5.6 m dal punto GTFS",
+     "nome_osm": "Mazzini 2",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612665.72,
+      4840896.22
+     ],
+     "gtfs_xy": [
+      612660.29,
+      4840897.63
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_19881668_5607581292_5596505743",
+      "u": "nod_osm_5607581292",
+      "v": "nod_osm_5596505743",
+      "offset_m": 71.85,
+      "dist_m": 3.13,
+      "proj": [
+       612668.8451873369,
+       4840896.4125610385
+      ],
+      "scartati": [],
+      "raccordo_m": 3.13,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi0010",
+   "categoria": "stop",
+   "nome": "GRAMSCI stazione",
+   "stop_code": "PI0010",
+   "corse_giorno_rif": 77,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n5274122309",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi0010",
+     "stop_code": "PI0010",
+     "nome": "GRAMSCI stazione",
+     "corse": 77,
+     "entrance_id": "ent_osm_n5274122309",
+     "ingresso_fonte": "piattaforma OSM a 6.7 m dal punto GTFS",
+     "nome_osm": "Gramsci Stazione",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612697.95,
+      4840538.28
+     ],
+     "gtfs_xy": [
+      612704.64,
+      4840537.99
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_22717572_1671656790_11753154074",
+      "u": "nod_osm_1671656790",
+      "v": "nod_osm_11753154074",
+      "offset_m": 1.29,
+      "dist_m": 4.77,
+      "proj": [
+       612693.248452533,
+       4840539.105784356
+      ],
+      "scartati": [],
+      "raccordo_m": 4.77,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4386",
+   "categoria": "stop",
+   "nome": "CROCE 2",
+   "stop_code": "PI4386",
+   "corse_giorno_rif": 329,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n7714399272",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4386",
+     "stop_code": "PI4386",
+     "nome": "CROCE 2",
+     "corse": 329,
+     "entrance_id": "ent_osm_n7714399272",
+     "ingresso_fonte": "piattaforma OSM a 12.2 m dal punto GTFS",
+     "nome_osm": "Croce 2",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612786.78,
+      4840694.77
+     ],
+     "gtfs_xy": [
+      612798.96,
+      4840693.67
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236348155_11479403465_11479409771",
+      "u": "nod_osm_11479403465",
+      "v": "nod_osm_11479409771",
+      "offset_m": 27.92,
+      "dist_m": 1.61,
+      "proj": [
+       612786.8736182159,
+       4840696.372530198
+      ],
+      "scartati": [],
+      "raccordo_m": 1.61,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4387",
+   "categoria": "stop",
+   "nome": "VITTORIO EMANUELE II",
+   "stop_code": "PI4387",
+   "corse_giorno_rif": 324,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n285178900",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4387",
+     "stop_code": "PI4387",
+     "nome": "VITTORIO EMANUELE II",
+     "corse": 324,
+     "entrance_id": "ent_osm_n285178900",
+     "ingresso_fonte": "piattaforma OSM a 4.9 m dal punto GTFS",
+     "nome_osm": "Vittorio Emanuele II",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612679.56,
+      4840741.82
+     ],
+     "gtfs_xy": [
+      612674.75,
+      4840742.67
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1509964570_13803866693_13803866695",
+      "u": "nod_osm_13803866693",
+      "v": "nod_osm_13803866695",
+      "offset_m": 3.23,
+      "dist_m": 0.84,
+      "proj": [
+       612680.3960706668,
+       4840741.900229831
+      ],
+      "scartati": [],
+      "raccordo_m": 0.84,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4078",
+   "categoria": "stop",
+   "nome": "CRISPI 1",
+   "stop_code": "PI4078",
+   "corse_giorno_rif": 336,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n285188660",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4078",
+     "stop_code": "PI4078",
+     "nome": "CRISPI 1",
+     "corse": 336,
+     "entrance_id": "ent_osm_n285188660",
+     "ingresso_fonte": "piattaforma OSM a 6.0 m dal punto GTFS",
+     "nome_osm": "Crispi 1",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612564.0,
+      4840780.97
+     ],
+     "gtfs_xy": [
+      612565.1,
+      4840775.04
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1232711813_3600889666_11435245088",
+      "u": "nod_osm_3600889666",
+      "v": "nod_osm_11435245088",
+      "offset_m": 19.78,
+      "dist_m": 1.39,
+      "proj": [
+       612565.3201552794,
+       4840781.396237145
+      ],
+      "scartati": [],
+      "raccordo_m": 1.39,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4369",
+   "categoria": "stop",
+   "nome": "STAMPACE",
+   "stop_code": "PI4369",
+   "corse_giorno_rif": 207,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n3512110649",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4369",
+     "stop_code": "PI4369",
+     "nome": "STAMPACE",
+     "corse": 207,
+     "entrance_id": "ent_osm_n3512110649",
+     "ingresso_fonte": "piattaforma OSM a 16.7 m dal punto GTFS",
+     "nome_osm": "Stampace",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612152.27,
+      4840795.79
+     ],
+     "gtfs_xy": [
+      612136.86,
+      4840789.39
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1232711804_11435237522_11435237520",
+      "u": "nod_osm_11435237520",
+      "v": "nod_osm_11435237522",
+      "offset_m": 10.78,
+      "dist_m": 1.2,
+      "proj": [
+       612152.4203566518,
+       4840794.594714894
+      ],
+      "scartati": [],
+      "raccordo_m": 1.2,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4053",
+   "categoria": "stop",
+   "nome": "BONAINI 2",
+   "stop_code": "PI4053",
+   "corse_giorno_rif": 336,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1652855508",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4053",
+     "stop_code": "PI4053",
+     "nome": "BONAINI 2",
+     "corse": 336,
+     "entrance_id": "ent_osm_n1652855508",
+     "ingresso_fonte": "piattaforma OSM a 9.3 m dal punto GTFS",
+     "nome_osm": "Bonaini 2",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      613155.09,
+      4840584.25
+     ],
+     "gtfs_xy": [
+      613146.09,
+      4840581.78
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236405248_11480656566_11480658975",
+      "u": "nod_osm_11480656566",
+      "v": "nod_osm_11480658975",
+      "offset_m": 26.53,
+      "dist_m": 1.31,
+      "proj": [
+       613154.8520761053,
+       4840582.957455952
+      ],
+      "scartati": [],
+      "raccordo_m": 1.31,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4389",
+   "categoria": "stop",
+   "nome": "BATTISTI",
+   "stop_code": "PI4389",
+   "corse_giorno_rif": 416,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n5264167248",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4389",
+     "stop_code": "PI4389",
+     "nome": "BATTISTI",
+     "corse": 416,
+     "entrance_id": "ent_osm_n5264167248",
+     "ingresso_fonte": "piattaforma OSM a 3.7 m dal punto GTFS",
+     "nome_osm": "Battisti",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612636.89,
+      4840628.74
+     ],
+     "gtfs_xy": [
+      612636.04,
+      4840625.15
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236405237_11480656509_11480656508",
+      "u": "nod_osm_11480656509",
+      "v": "nod_osm_11480656508",
+      "offset_m": 43.17,
+      "dist_m": 2.16,
+      "proj": [
+       612637.3664058668,
+       4840630.843780221
+      ],
+      "scartati": [],
+      "raccordo_m": 2.16,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4399",
+   "categoria": "stop",
+   "nome": "ZERBOGLIO",
+   "stop_code": "PI4399",
+   "corse_giorno_rif": 47,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1671656752",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4399",
+     "stop_code": "PI4399",
+     "nome": "ZERBOGLIO",
+     "corse": 47,
+     "entrance_id": "ent_osm_n1671656752",
+     "ingresso_fonte": "piattaforma OSM a 3.5 m dal punto GTFS",
+     "nome_osm": "Zerboglio",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612328.23,
+      4840814.59
+     ],
+     "gtfs_xy": [
+      612331.7,
+      4840814.66
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1232711806_11435237532_11435237533",
+      "u": "nod_osm_11435237532",
+      "v": "nod_osm_11435237533",
+      "offset_m": 124.5,
+      "dist_m": 3.03,
+      "proj": [
+       612328.0865936772,
+       4840817.6119476445
+      ],
+      "scartati": [],
+      "raccordo_m": 3.03,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi4364",
+   "categoria": "stop",
+   "nome": "SAN PAOLO A RIPA D'ARNO",
+   "stop_code": "PI4364",
+   "corse_giorno_rif": 101,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n3663357121",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi4364",
+     "stop_code": "PI4364",
+     "nome": "SAN PAOLO A RIPA D'ARNO",
+     "corse": 101,
+     "entrance_id": "ent_osm_n3663357121",
+     "ingresso_fonte": "piattaforma OSM a 1.2 m dal punto GTFS",
+     "nome_osm": "Piazza San Paolo a Ripa D'Arno",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612174.51,
+      4840887.55
+     ],
+     "gtfs_xy": [
+      612173.75,
+      4840886.66
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_701416368_247936858_1948790902",
+      "u": "nod_osm_247936858",
+      "v": "nod_osm_1948790902",
+      "offset_m": 24.43,
+      "dist_m": 2.3,
+      "proj": [
+       612172.3000131908,
+       4840886.903320455
+      ],
+      "scartati": [],
+      "raccordo_m": 2.3,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_bp11289",
+   "categoria": "stop",
+   "nome": "CROCE 2",
+   "stop_code": "BP11289",
+   "corse_giorno_rif": 0,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n7714399272",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_bp11289",
+     "stop_code": "BP11289",
+     "nome": "CROCE 2",
+     "corse": 0,
+     "entrance_id": "ent_osm_n7714399272",
+     "ingresso_fonte": "piattaforma OSM a 13.9 m dal punto GTFS",
+     "nome_osm": "Croce 2",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612786.78,
+      4840694.77
+     ],
+     "gtfs_xy": [
+      612799.75,
+      4840689.79
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1236348155_11479403465_11479409771",
+      "u": "nod_osm_11479403465",
+      "v": "nod_osm_11479409771",
+      "offset_m": 27.92,
+      "dist_m": 1.61,
+      "proj": [
+       612786.8736182159,
+       4840696.372530198
+      ],
+      "scartati": [],
+      "raccordo_m": 1.61,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi5400",
+   "categoria": "stop",
+   "nome": "PISA SANT'ANTONIO",
+   "stop_code": "PI5400",
+   "corse_giorno_rif": 12,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n1409174429",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi5400",
+     "stop_code": "PI5400",
+     "nome": "PISA SANT'ANTONIO",
+     "corse": 12,
+     "entrance_id": "ent_osm_n1409174429",
+     "ingresso_fonte": "piattaforma OSM a 5.5 m dal punto GTFS",
+     "nome_osm": "Pisa Piazza Sant'Antonio",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612582.44,
+      4840713.69
+     ],
+     "gtfs_xy": [
+      612585.71,
+      4840709.29
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_544585227_3592157892_3689242963",
+      "u": "nod_osm_3592157892",
+      "v": "nod_osm_3689242963",
+      "offset_m": 2.89,
+      "dist_m": 2.03,
+      "proj": [
+       612582.3103213157,
+       4840711.663584672
+      ],
+      "scartati": [],
+      "raccordo_m": 2.03,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi5401",
+   "categoria": "stop",
+   "nome": "PISA - Via Crispi",
+   "stop_code": "PI5401",
+   "corse_giorno_rif": 12,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_osm_n285188660",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi5401",
+     "stop_code": "PI5401",
+     "nome": "PISA - Via Crispi",
+     "corse": 12,
+     "entrance_id": "ent_osm_n285188660",
+     "ingresso_fonte": "piattaforma OSM a 10.8 m dal punto GTFS",
+     "nome_osm": "Crispi 1",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612564.0,
+      4840780.97
+     ],
+     "gtfs_xy": [
+      612568.3,
+      4840771.1
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1232711813_3600889666_11435245088",
+      "u": "nod_osm_3600889666",
+      "v": "nod_osm_11435245088",
+      "offset_m": 19.78,
+      "dist_m": 1.39,
+      "proj": [
+       612565.3201552794,
+       4840781.396237145
+      ],
+      "scartati": [],
+      "raccordo_m": 1.39,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_pi5418",
+   "categoria": "stop",
+   "nome": "Via Stampace 1",
+   "stop_code": "PI5418",
+   "corse_giorno_rif": 12,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_gtfs_pi5418",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_pi5418",
+     "stop_code": "PI5418",
+     "nome": "Via Stampace 1",
+     "corse": 12,
+     "entrance_id": "ent_gtfs_pi5418",
+     "ingresso_fonte": "punto GTFS (nessuna piattaforma OSM entro 25 m)",
+     "nome_osm": null,
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612182.5,
+      4840797.49
+     ],
+     "gtfs_xy": [
+      612182.5,
+      4840797.49
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1232711804_11435237522_11435237520",
+      "u": "nod_osm_11435237520",
+      "v": "nod_osm_11435237522",
+      "offset_m": 40.99,
+      "dist_m": 0.88,
+      "proj": [
+       612182.3899781194,
+       4840798.364637163
+      ],
+      "scartati": [],
+      "raccordo_m": 0.88,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  },
+  {
+   "destination_id": "dst_stop_golettacp",
+   "categoria": "stop",
+   "nome": "GOLETTA CAPOLINEA",
+   "stop_code": "GOLETTACP",
+   "corse_giorno_rif": 72,
+   "fonte": "GTFS Autolinee Toscane",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (pensilina, marciapiede, accessibilità non dichiarata nel feed)",
+   "ingresso_predefinito": "ent_gtfs_golettacp",
+   "ingressi": [
+    {
+     "destination_id": "dst_stop_golettacp",
+     "stop_code": "GOLETTACP",
+     "nome": "GOLETTA CAPOLINEA",
+     "corse": 72,
+     "entrance_id": "ent_gtfs_golettacp",
+     "ingresso_fonte": "punto GTFS (nessuna piattaforma OSM entro 25 m)",
+     "nome_osm": null,
+     "stato_verifica": "da_verificare",
+     "xy": [
+      612546.7,
+      4840216.7
+     ],
+     "gtfs_xy": [
+      612546.7,
+      4840216.7
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_152724204_245925396_10880758259",
+      "u": "nod_osm_245925396",
+      "v": "nod_osm_10880758259",
+      "offset_m": 84.65,
+      "dist_m": 5.43,
+      "proj": [
+       612541.5083010421,
+       4840218.292889368
+      ],
+      "scartati": [],
+      "raccordo_m": 5.43,
+      "componente": "cmp_01"
+     }
+    }
+   ]
+  }
+ ]
+}
