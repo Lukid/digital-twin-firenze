@@ -1,0 +1,300 @@
+{
+ "nota": "timestamp_utc = ora di scrittura del file (fine del download)",
+ "files": [
+  {
+   "path": "campioni/arpat-aria-orari.html",
+   "url": "https://www.arpat.toscana.it/datiemappe/qualita-dellaria-dati-orari/",
+   "timestamp_utc": "2026-10-01T13:25:37Z",
+   "bytes": 352151,
+   "sha256": "864eaec0d66cfbee91ae4f86e00ca52d803c160a33eaf7c831eda4ac8da0eeef"
+  },
+  {
+   "path": "campioni/arpat-licenza.html",
+   "url": "https://www.arpat.toscana.it/note-legali",
+   "timestamp_utc": "2026-10-01T13:25:38Z",
+   "bytes": 237066,
+   "sha256": "4fc56dba3d27db07eb39e5e86234cdfa09972a7386a6a83ec699b3eb7b0f0ea7"
+  },
+  {
+   "path": "campioni/ckan-nazionale-pisa-count.json",
+   "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=Pisa&rows=0&facet.field=[\"organization\"]",
+   "timestamp_utc": "2026-10-01T13:19:42Z",
+   "bytes": 1127,
+   "sha256": "454a1e2c4432c7ebef2b8347a75d452e95d3687cdefd1bca5758a3dabbf381ec"
+  },
+  {
+   "path": "campioni/ckan-ricerche-tematiche.json",
+   "url": "ricerche_ckan.py su dati.toscana.it e dati.gov.it",
+   "timestamp_utc": "2026-10-01T13:24:00Z",
+   "bytes": 487152,
+   "sha256": "423979d3460589478f07e1dcb07493c860bfba4f87523438343f1b0d14ded842"
+  },
+  {
+   "path": "campioni/ckan-toscana-gtfs.json",
+   "url": "https://dati.toscana.it/api/3/action/package_show?id=rt-oraritb",
+   "timestamp_utc": "2026-10-01T13:19:28Z",
+   "bytes": 17582,
+   "sha256": "c188977c928430dfa97b9ad7ee238b04d9a9bd6d0907a7a1faf9afc57b006cae"
+  },
+  {
+   "path": "campioni/ckan-toscana-lidar.json",
+   "url": "https://dati.toscana.it/api/3/action/package_show?id=lidar",
+   "timestamp_utc": "2026-10-01T13:19:28Z",
+   "bytes": 3969,
+   "sha256": "1bc680863b2493b141aeab337c1ef4f43d850b7d0a23484ca88835fce6759db6"
+  },
+  {
+   "path": "campioni/ckan-toscana-pisa-alberi.json",
+   "url": "https://dati.toscana.it/api/3/action/package_search?q=Pisa+AND+alber*",
+   "timestamp_utc": "2026-10-01T13:19:30Z",
+   "bytes": 215,
+   "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+  },
+  {
+   "path": "campioni/ckan-toscana-pisa-pilota.json",
+   "url": "https://dati.toscana.it/api/3/action/package_search?q=Pisa+AND+pilota (query ipotizzata)",
+   "timestamp_utc": "2026-10-01T13:19:43Z",
+   "bytes": 215,
+   "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+  },
+  {
+   "path": "campioni/ckan-toscana-pisa-verde.json",
+   "url": "https://dati.toscana.it/api/3/action/package_search?q=Pisa+AND+verde",
+   "timestamp_utc": "2026-10-01T13:19:30Z",
+   "bytes": 215,
+   "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+  },
+  {
+   "path": "campioni/ckan-toscana-pisa.json",
+   "url": "https://dati.toscana.it/api/3/action/package_search?q=Pisa&rows=100",
+   "timestamp_utc": "2026-10-01T13:19:30Z",
+   "bytes": 3375867,
+   "sha256": "7547a4b425f109adf6b9eb7c6d06d5bf14852911ddab797cc3c69759ee1174b5"
+  },
+  {
+   "path": "campioni/geoblog-open-geodata.html",
+   "url": "https://geoblog.regione.toscana.it/-/open-geodata",
+   "timestamp_utc": "2026-10-01T13:25:39Z",
+   "bytes": 116409,
+   "sha256": "f943d18d8bd38844c39d48c812e10ceac7f07f71891d9ebfb0c98fa30491d2a0"
+  },
+  {
+   "path": "campioni/geoscopio.html",
+   "url": "https://www.regione.toscana.it/-/geoscopio",
+   "timestamp_utc": "2026-10-01T13:25:39Z",
+   "bytes": 180222,
+   "sha256": "a60ceea57510b17d1c2511bcc239a164ee366fbeb65c00c0b2ca175f7b3bd655"
+  },
+  {
+   "path": "campioni/intestazioni-grandi-file.txt",
+   "url": "HEAD su DBT10K_050_PISA_2010_2010.7z e iternet.zip (regione.toscana.it/geoscopio)",
+   "timestamp_utc": "2026-10-01T13:26:22Z",
+   "bytes": 972,
+   "sha256": "592520b73d1ec262c7306503b24c7b87ff02038b3df4963b1e747846acbc0c5f"
+  },
+  {
+   "path": "campioni/intestazioni-gtfs-dbtr.txt",
+   "url": "GET con Range su endpoint GTFS Autolinee Toscane e DBT10K Pisa; il GTFS ignora Range (sessione interrotta dopo 77 MB)",
+   "timestamp_utc": "2026-10-01T13:25:12Z",
+   "bytes": 1284,
+   "sha256": "5537065f9320956ecc9672cd3d80a79d1796b2b726cf855f4718b8f228e86fca"
+  },
+  {
+   "path": "campioni/istat-basi-territoriali.html",
+   "url": "https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/",
+   "timestamp_utc": "2026-10-01T13:25:38Z",
+   "bytes": 152765,
+   "sha256": "0757233d6cb241e6d2216461039d2ea6f0d5a166ca0e8c7fad6b1c9db219272a"
+  },
+  {
+   "path": "campioni/od-api-2_rest_dataset.json",
+   "url": "https://opendata.comune.pisa.it/SpodCkanApi/api/2/rest/dataset",
+   "timestamp_utc": "2026-10-01T13:20:04Z",
+   "bytes": 27848,
+   "sha256": "caa235c19242f162649ab27413c6e4a2b50f8cd1208a03d78e61de4b5a1ec055"
+  },
+  {
+   "path": "campioni/od-api-2_rest_licenses.json",
+   "url": "https://opendata.comune.pisa.it/SpodCkanApi/api/2/rest/licenses",
+   "timestamp_utc": "2026-10-01T13:20:04Z",
+   "bytes": 1416,
+   "sha256": "1a434e36b5e68159bbe218ca5646f30f048ad7c1e78bb2cbd94dc9384d7b2896"
+  },
+  {
+   "path": "campioni/od-api.html",
+   "url": "https://opendata.comune.pisa.it/content/api",
+   "timestamp_utc": "2026-10-01T13:20:00Z",
+   "bytes": 16431,
+   "sha256": "a1dbc917476826d626b19424c21669c670fe81bff35e9447011933c46144e7d3"
+  },
+  {
+   "path": "campioni/od-cosa-e.html",
+   "url": "https://opendata.comune.pisa.it/content/cos%C3%A8-lopendata",
+   "timestamp_utc": "2026-10-01T13:20:00Z",
+   "bytes": 16590,
+   "sha256": "e5d67456809f70e5b19c630f0229f15f3b2c20bbe3f10a045b0693052201e106"
+  },
+  {
+   "path": "campioni/od-grafo-dlpage.html",
+   "url": "https://opendata.comune.pisa.it/metadata_download_page/676/shp/477/650e32c2-94ad-495a-8635-cc9698152ce3%40pisa",
+   "timestamp_utc": "2026-10-01T13:20:58Z",
+   "bytes": 11400,
+   "sha256": "e770aaca62e2a530edfa1f5ec25996bebd0c878acdb3ad522ba9e3febddca407"
+  },
+  {
+   "path": "campioni/od-home.html",
+   "url": "https://opendata.comune.pisa.it/",
+   "timestamp_utc": "2026-10-01T13:19:47Z",
+   "bytes": 131473,
+   "sha256": "7bb99506a52096f8ea1efdbc0f80416dcdac6655657f6232fa4298eba2fee31f"
+  },
+  {
+   "path": "campioni/od-page-grafo.html",
+   "url": "https://opendata.comune.pisa.it/content/grafo-stradale",
+   "timestamp_utc": "2026-10-01T13:20:48Z",
+   "bytes": 44091,
+   "sha256": "1d5b320bbcf6d680d83b5740fb71058ce322f30cab4a9dd5a13ba6ea964727ee"
+  },
+  {
+   "path": "campioni/od-statportal-dataset.json",
+   "url": "https://opendata.comune.pisa.it/SpodCkanApi/api/2/rest/dataset/{id} x663 (scarica_statportal.py)",
+   "timestamp_utc": "2026-10-01T13:26:02Z",
+   "bytes": 1209052,
+   "sha256": "29ea3cc01aa2400cd296cd37fe1ddb7bc4b0af16f16a1d726002d9f0f207ecde"
+  },
+  {
+   "path": "campioni/osm-copyright.html",
+   "url": "https://www.openstreetmap.org/copyright",
+   "timestamp_utc": "2026-10-01T13:25:39Z",
+   "bytes": 21314,
+   "sha256": "610aba75f84d71cb8331770b08cb2d4ec23c8f62d4e3d13a140694822a436c0a"
+  },
+  {
+   "path": "campioni/pisa-ciclabili-count.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Piste_ciclabili/MapServer/0/query?where=1=1&returnCountOnly=true&f=json",
+   "timestamp_utc": "2026-10-01T13:19:30Z",
+   "bytes": 13,
+   "sha256": "03379e984499e6d47b89cebea50d5132b1953ccf1061c1f3912d56f5e0f01113"
+  },
+  {
+   "path": "campioni/pisa-ciclabili-sample.geojson",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Piste_ciclabili/MapServer/0/query?objectIds=1&outFields=*&outSR=4326&f=geojson",
+   "timestamp_utc": "2026-10-01T13:19:30Z",
+   "bytes": 1259,
+   "sha256": "774f0e49f3f471bed733f6f1ebb39d0d1ef9fb07ca58fdff55a70de79f998e35"
+  },
+  {
+   "path": "campioni/pisa-ciclabili-service.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Piste_ciclabili/MapServer?f=json",
+   "timestamp_utc": "2026-10-01T13:19:42Z",
+   "bytes": 2591,
+   "sha256": "98d39ec4dee0c37c46a185457e7573fd4e5e2a99a6f9ba346b35be40021438fb"
+  },
+  {
+   "path": "campioni/pisa-dbtopografico-service.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/Base_DBTopografico/MapServer?f=json",
+   "timestamp_utc": "2026-10-01T13:19:31Z",
+   "bytes": 5727,
+   "sha256": "bd750ff86c809b885e3159a9fd97b7e5afc3e1e6760ef23e08b8c7dfc5300792"
+  },
+  {
+   "path": "campioni/pisa-hosted-services.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted?f=json",
+   "timestamp_utc": "2026-10-01T13:19:31Z",
+   "bytes": 699,
+   "sha256": "7ce5222cb4829f442753c758fb86de43236664d242474197a78c0d6a53f777a0"
+  },
+  {
+   "path": "campioni/pisa-scuole-layer.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/edifici_scolastici/FeatureServer/4?f=json",
+   "timestamp_utc": "2026-10-01T13:19:31Z",
+   "bytes": 10151,
+   "sha256": "cb4adf58d71ca9d80925972da97ae183ff7734a7b19563caa81665ba353f2f98"
+  },
+  {
+   "path": "campioni/pisa-scuole-sample.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/edifici_scolastici/FeatureServer/4/query?where=1=1&outFields=*&returnGeometry=false&resultRecordCount=1&f=json",
+   "timestamp_utc": "2026-10-01T13:19:31Z",
+   "bytes": 1557,
+   "sha256": "52957eeddb7ec3fad8d2f6705e32396aa23890641492c36c80bd1479f1d5ebe0"
+  },
+  {
+   "path": "campioni/pisa-scuole-service.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/edifici_scolastici/FeatureServer?f=json",
+   "timestamp_utc": "2026-10-01T13:19:31Z",
+   "bytes": 2419,
+   "sha256": "75da36a391e2651ea2e83744ed9c100a723a5f5d25fa4308495a546270b79ad1"
+  },
+  {
+   "path": "campioni/provincia-pisa-musei-metadato.xml",
+   "url": "estratto da provincia-pisa-musei.zip (METADATO_E_LICENZA/musei_r1.xml)",
+   "timestamp_utc": "2026-10-01T13:25:27Z",
+   "bytes": 12969,
+   "sha256": "80da3951f264984b07c845a8c601c57f69a6265369b84bd3e24492ec72fb996e"
+  },
+  {
+   "path": "campioni/provincia-pisa-musei.geojson",
+   "url": "estratto da provincia-pisa-musei.zip (RISORSE/GeoJSON/musei_r1.geojson)",
+   "timestamp_utc": "2026-10-01T13:25:27Z",
+   "bytes": 27356,
+   "sha256": "b2b90ea2e54a4eaf0a7332807aab2e28e30645293d74075f56e24ca8a5c390e1"
+  },
+  {
+   "path": "campioni/provincia-pisa-musei.zip",
+   "url": "https://maps.provincia.pisa.it/metarepo2/api/datasets/musei/download",
+   "timestamp_utc": "2026-10-01T13:25:12Z",
+   "bytes": 206060,
+   "sha256": "8de27621086b96d713f34858ca9aa8edd67a438a172e53df460ffabcc18dc596"
+  },
+  {
+   "path": "campioni/sit-condizioni-servizio.pdf",
+   "url": "https://www.comune.pisa.it/ocmultibinary/download/16297/418809/2/bb7834eecf99f6426a937b5dc6f2f95a.pdf/file/Pisa%2Bcondizioni%2Bservizi.pdf",
+   "timestamp_utc": "2026-10-01T13:23:00Z",
+   "bytes": 422152,
+   "sha256": "ff5dce7b3f178874e6efdef965578d9a330eb06e80b0eb42ae3ccf533aaf51b4"
+  },
+  {
+   "path": "campioni/sit-folder-Hosted.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted?f=json",
+   "timestamp_utc": "2026-10-01T13:21:04Z",
+   "bytes": 699,
+   "sha256": "7ce5222cb4829f442753c758fb86de43236664d242474197a78c0d6a53f777a0"
+  },
+  {
+   "path": "campioni/sit-folder-SIT_2013.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/SIT_2013?f=json",
+   "timestamp_utc": "2026-10-01T13:21:04Z",
+   "bytes": 62,
+   "sha256": "ca1489e43448fa7e2b5cb79548c3678ce3c1e15a56308b1b841aea42ae4de860"
+  },
+  {
+   "path": "campioni/sit-folder-Utilities.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Utilities?f=json",
+   "timestamp_utc": "2026-10-01T13:21:04Z",
+   "bytes": 102,
+   "sha256": "731b9fa73762c24986972017684b6e636d32dce8db04eeb2281608a12b777c28"
+  },
+  {
+   "path": "campioni/sit-inventario.json",
+   "url": "inventario_sit.py su https://sit.comune.pisa.it/arcgis/rest/services",
+   "timestamp_utc": "2026-10-01T13:22:42Z",
+   "bytes": 234539,
+   "sha256": "27d3b471e9a78fb8f281ead6c0f17125f92cf2be9270808d30e5db3b63500090"
+  },
+  {
+   "path": "campioni/sit-pagina-comune.html",
+   "url": "https://www.comune.pisa.it/Servizi/S.I.T",
+   "timestamp_utc": "2026-10-01T13:22:53Z",
+   "bytes": 74331,
+   "sha256": "acb3fceef95acb56d36d0c12e9ab4a3d052425b8cd85bcb249560736decf4acf"
+  },
+  {
+   "path": "campioni/sit-root.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services?f=json",
+   "timestamp_utc": "2026-10-01T13:21:04Z",
+   "bytes": 1326,
+   "sha256": "ef4f0acc3934c4d684c274693f0069560b3288c141a2d53a2f57e530921b6584"
+  }
+ ],
+ "file_a_zero_byte": []
+}

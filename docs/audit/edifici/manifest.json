@@ -1,0 +1,398 @@
+{
+ "generato": "timestamp = mtime del file (ora del download per i file scaricati, dell'elaborazione per i derivati)",
+ "files": [
+  {
+   "path": "campioni/campione_coerenza.csv",
+   "url": "derivato locale (script/*.py), non scaricato",
+   "downloaded_utc": "2026-10-01T13:51:42Z",
+   "bytes": 730,
+   "sha256": "dcb41de54cfd637d14c93342a761bdb4276f3beefd9e59ab8b459053470494f1"
+  },
+  {
+   "path": "campioni/ckan_database-topografico-1-2-000.json",
+   "url": "https://dati.toscana.it/api/3/action/package_show?id=database-topografico-1-2-000",
+   "downloaded_utc": "2026-10-01T13:21:59Z",
+   "bytes": 3609,
+   "sha256": "898cba78fbddb4016be96a66406a297ff93cacd2a08d235ebf855d6b54344f03"
+  },
+  {
+   "path": "campioni/ckan_dbt10k-li-pi-pt-po-si.json",
+   "url": "https://dati.toscana.it/api/3/action/package_show?id=dbt10k-li-pi-pt-po-si",
+   "downloaded_utc": "2026-10-01T13:21:59Z",
+   "bytes": 7366,
+   "sha256": "82c4629c380d235310b0b67c1c1eb25f89243545b2afbdb8b07715ef5c93f853"
+  },
+  {
+   "path": "campioni/ckan_dbt2k.json",
+   "url": "https://dati.toscana.it/api/3/action/package_show?id=dbt2k",
+   "downloaded_utc": "2026-10-01T13:21:59Z",
+   "bytes": 5482,
+   "sha256": "7486a008bb27933b8b0f1174ff61d44b4e0024b946f3db83739ef5c112672d0d"
+  },
+  {
+   "path": "campioni/ckan_dtm-2017.json",
+   "url": "https://dati.toscana.it/api/3/action/package_show?id=dtm-2017",
+   "downloaded_utc": "2026-10-01T13:22:28Z",
+   "bytes": 7080,
+   "sha256": "f2ef8f975d7f01db219e788d103eaa69d74a91d0acc047162842af121f8497dc"
+  },
+  {
+   "path": "campioni/ckan_lidar.json",
+   "url": "https://dati.toscana.it/api/3/action/package_show?id=lidar",
+   "downloaded_utc": "2026-10-01T13:21:59Z",
+   "bytes": 4053,
+   "sha256": "9b8666f14d60cde1e2e18a84535820ddab9ebdd5cfa4abc75c807a734e8d02fe"
+  },
+  {
+   "path": "campioni/ckan_ricerche_edifici.json",
+   "url": "package_search su dati.toscana.it, dati.gov.it, opendata.comune.pisa.it (query nel file)",
+   "downloaded_utc": "2026-10-01T13:28:32Z",
+   "bytes": 12589,
+   "sha256": "1d26cfd089190df76ef93a091b8e47527df9b5596182d0417074c839ceb16d13"
+  },
+  {
+   "path": "campioni/dsm_Z1_612607_4841145_500.tif",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=(vedi script/fetch_raster.py)&CRS=EPSG:32632&BBOX=612607,4841145,+500m&FORMAT=image/tiff",
+   "downloaded_utc": "2026-10-01T13:25:02Z",
+   "bytes": 1001162,
+   "sha256": "447ce6ed82ad69203be1a2a1b33525d05c4bfaeba5a3e37965f870fdc37886db"
+  },
+  {
+   "path": "campioni/dsm_Z2_612382_4840169_500.tif",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=(vedi script/fetch_raster.py)&CRS=EPSG:32632&BBOX=612382,4840169,+500m&FORMAT=image/tiff",
+   "downloaded_utc": "2026-10-01T13:25:06Z",
+   "bytes": 1001162,
+   "sha256": "d6e81abb1c5ebffce2843a4aa5bd55506e243f6af75ff5f7ec3d6d4a1ea02c16"
+  },
+  {
+   "path": "campioni/dsm_Z3_616053_4839927_500.tif",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=(vedi script/fetch_raster.py)&CRS=EPSG:32632&BBOX=616053,4839927,+500m&FORMAT=image/tiff",
+   "downloaded_utc": "2026-10-01T13:25:09Z",
+   "bytes": 1001162,
+   "sha256": "97894ea0a41c6f0bb026db258831881093aa2f1d954adff1d656e086fb5b0ff2"
+  },
+  {
+   "path": "campioni/dsm_Z4_613155_4842099_500.tif",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=(vedi script/fetch_raster.py)&CRS=EPSG:32632&BBOX=613155,4842099,+500m&FORMAT=image/tiff",
+   "downloaded_utc": "2026-10-01T13:25:12Z",
+   "bytes": 1001162,
+   "sha256": "347b3c8fff2964b2774302d005807e1042c3a325b0ebdbfa28b04cb2b953645c"
+  },
+  {
+   "path": "campioni/dtm10_Z1_612607_4841145_500.tif",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=(vedi script/fetch_raster.py)&CRS=EPSG:32632&BBOX=612607,4841145,+500m&FORMAT=image/tiff",
+   "downloaded_utc": "2026-10-01T13:25:03Z",
+   "bytes": 1001162,
+   "sha256": "bfc3c1756c860d4fb55553541227e03bb95d0a7763142f8c2df8791ea3183751"
+  },
+  {
+   "path": "campioni/dtm10_Z2_612382_4840169_500.tif",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=(vedi script/fetch_raster.py)&CRS=EPSG:32632&BBOX=612382,4840169,+500m&FORMAT=image/tiff",
+   "downloaded_utc": "2026-10-01T13:25:07Z",
+   "bytes": 1001162,
+   "sha256": "057acd8b76c7cd7a52c98b4aa8dc2ad821e8127a7a76032160be9673f8478cc1"
+  },
+  {
+   "path": "campioni/dtm10_Z3_616053_4839927_500.tif",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=(vedi script/fetch_raster.py)&CRS=EPSG:32632&BBOX=616053,4839927,+500m&FORMAT=image/tiff",
+   "downloaded_utc": "2026-10-01T13:25:10Z",
+   "bytes": 1001162,
+   "sha256": "439318886a4d69e35db44059fee548ddc49252a159986ef08a8bc8d76b738bb5"
+  },
+  {
+   "path": "campioni/dtm10_Z4_613155_4842099_500.tif",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=(vedi script/fetch_raster.py)&CRS=EPSG:32632&BBOX=613155,4842099,+500m&FORMAT=image/tiff",
+   "downloaded_utc": "2026-10-01T13:25:13Z",
+   "bytes": 1001162,
+   "sha256": "96459d00c68f6fcb6a3b9433c9dc298fcf520c55d05445c3006eb547838b4d88"
+  },
+  {
+   "path": "campioni/dtm_Z1_612607_4841145_500.tif",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=(vedi script/fetch_raster.py)&CRS=EPSG:32632&BBOX=612607,4841145,+500m&FORMAT=image/tiff",
+   "downloaded_utc": "2026-10-01T13:25:01Z",
+   "bytes": 1001162,
+   "sha256": "573bf35b643a5555e3ec9fce84d28e295a1d61cff095fa82e378a603fcee4218"
+  },
+  {
+   "path": "campioni/geometa_261ec.htm",
+   "url": "https://www502.regione.toscana.it/geoscopio/geometa/html/r_toscan_261ec1b2-bf25-4973-b853-ac08e060ec62.htm",
+   "downloaded_utc": "2026-10-01T13:22:33Z",
+   "bytes": 34998,
+   "sha256": "e06113a64003b7f1276bc0e25cb316800218deae747850eed90e35ccfd6a6f3d"
+  },
+  {
+   "path": "campioni/geometa_dsm2021.htm",
+   "url": "https://www502.regione.toscana.it/geoscopio/geometa/html/r_toscan_c5c907bf-50cc-4a76-8787-abc547509c8d.htm",
+   "downloaded_utc": "2026-10-01T13:27:54Z",
+   "bytes": 36509,
+   "sha256": "68dbb3b3d88b64b46c19f93d8e9fcc7b2c8b4b2a064eaaa535487530336b1d09"
+  },
+  {
+   "path": "campioni/geonetwork_lidar_1m.xml",
+   "url": "https://www502.regione.toscana.it/geonetwork/srv/api/records/r_toscan:f3ff89ee-49fa-4487-89fe-c69ae58ecd0c/formatters/xml",
+   "downloaded_utc": "2026-10-01T13:22:28Z",
+   "bytes": 32610,
+   "sha256": "08f0ee166748c38bacc4195798c8bce7d6f43e78e49ee2dd305f9003d1b3d790"
+  },
+  {
+   "path": "campioni/geoscopio_wms_CTR.htm",
+   "url": "http://www502.regione.toscana.it/geoscopio/servizi/wms/CTR.htm",
+   "downloaded_utc": "2026-10-01T13:22:38Z",
+   "bytes": 57298,
+   "sha256": "17b8da816179102bb1a43f7342fe48b10b439848eaa768075125d76944f13f90"
+  },
+  {
+   "path": "campioni/geoscopio_wms_EDIFICATO.htm",
+   "url": "http://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm",
+   "downloaded_utc": "2026-10-01T13:22:38Z",
+   "bytes": 16824,
+   "sha256": "0a73891271c3ce75ebb61fb31cd213dbc1aaedff685c51978baef49486ddd9da"
+  },
+  {
+   "path": "campioni/geoscopio_wms_MORFOLOGIA.htm",
+   "url": "http://www502.regione.toscana.it/geoscopio/servizi/wms/MORFOLOGIA.htm",
+   "downloaded_utc": "2026-10-01T13:22:38Z",
+   "bytes": 18516,
+   "sha256": "079b8bc3bbd6d2df99873e3b990e2259da1806d5b953018cfb1433d9999b9461"
+  },
+  {
+   "path": "campioni/ndsm_confronto.csv",
+   "url": "derivato locale (script/*.py), non scaricato",
+   "downloaded_utc": "2026-10-01T13:27:35Z",
+   "bytes": 67930,
+   "sha256": "b9023b0e06a5bbc010638c65a81cc6acded0175fa87d896c148e72c175d98196"
+  },
+  {
+   "path": "campioni/osm_buildings_Z1.json",
+   "url": "Overpass API, way/relation[building] nel bbox della zona (bbox(S,W,N,E)=43.713,10.394,43.721,10.408)",
+   "downloaded_utc": "2026-10-01T13:34:51Z",
+   "bytes": 180092,
+   "sha256": "fac10e8710c751fe16f70286b082ca494d988b218dd9fb8001ea930902d09cd1"
+  },
+  {
+   "path": "campioni/osm_buildings_Z2.json",
+   "url": "Overpass API, way/relation[building] nel bbox della zona (bbox(S,W,N,E)=43.704,10.391,43.7125,10.405)",
+   "downloaded_utc": "2026-10-01T13:43:24Z",
+   "bytes": 130561,
+   "sha256": "ef98172cca540ef28bc74421019212cf36e4eda6ada813408775fff7b0a8c1bb"
+  },
+  {
+   "path": "campioni/osm_buildings_Z3.json",
+   "url": "Overpass API, way/relation[building] nel bbox della zona (bbox(S,W,N,E)=43.701,10.436,43.71,10.451)",
+   "downloaded_utc": "2026-10-01T13:51:36Z",
+   "bytes": 30522,
+   "sha256": "7fe5acaf15df2e310a11a6facc5eb5f62b5e803ca5f5f6e78ae71a1fb46cb13f"
+  },
+  {
+   "path": "campioni/osm_buildings_Z4.json",
+   "url": "Overpass API, way/relation[building] nel bbox della zona (bbox(S,W,N,E)=43.7215,10.4,43.7295,10.416)",
+   "downloaded_utc": "2026-10-01T13:50:34Z",
+   "bytes": 108392,
+   "sha256": "d262bf22de2b0159c5897be0d11a0b85959db3c181d07cdcbe2b6bd27cd3d89a"
+  },
+  {
+   "path": "campioni/osm_vs_uv.csv",
+   "url": "derivato locale (script/*.py), non scaricato",
+   "downloaded_utc": "2026-10-01T13:51:42Z",
+   "bytes": 46905,
+   "sha256": "79ef1312e7dce5bf012b75a7c2c27aac5a9f04ddf001a5ae679b43f506c354c8"
+  },
+  {
+   "path": "campioni/rt_edificato_wfs_caps.xml",
+   "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities",
+   "downloaded_utc": "2026-10-01T13:22:54Z",
+   "bytes": 21814,
+   "sha256": "a5626565159cb732e342664d30604af711d168967b7b02e20515a8bb64e120ff"
+  },
+  {
+   "path": "campioni/rt_edificato_wms_caps.xml",
+   "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WMS&REQUEST=GetCapabilities",
+   "downloaded_utc": "2026-10-01T13:22:43Z",
+   "bytes": 46418,
+   "sha256": "ecf69829dd72fdedb24788277a62c17df5564ac7d9d715164a543210976d83b2"
+  },
+  {
+   "path": "campioni/rt_morfologia_wcs_caps.xml",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCapabilities (risposta: errore 400)",
+   "downloaded_utc": "2026-10-01T13:23:30Z",
+   "bytes": 559,
+   "sha256": "3c077d14079ae761c01925d7cbd6da1f02237c789ee5ee73a8201aeee5de785e"
+  },
+  {
+   "path": "campioni/rt_morfologia_wms_caps.xml",
+   "url": "https://www502.regione.toscana.it/wmsraster/com.rt.wms.RTmap/wms?map=wmsmorfologia&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+   "downloaded_utc": "2026-10-01T13:23:30Z",
+   "bytes": 25578,
+   "sha256": "da50774f7943dc18b2cff7c3d475727288c42d5b4dc7970191c7dd7d42a64d01"
+  },
+  {
+   "path": "campioni/rt_uv_Z1.json",
+   "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=rt_edif.unitavolumetriche (bbox(S,W,N,E)=43.713,10.394,43.721,10.408)",
+   "downloaded_utc": "2026-10-01T13:23:15Z",
+   "bytes": 923175,
+   "sha256": "592a2c3a865e140616cacf420cfc6eab19cb5a08d3416bd3097b6e26e8163cea"
+  },
+  {
+   "path": "campioni/rt_uv_Z2.json",
+   "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=rt_edif.unitavolumetriche (bbox(S,W,N,E)=43.704,10.391,43.7125,10.405)",
+   "downloaded_utc": "2026-10-01T13:23:16Z",
+   "bytes": 931733,
+   "sha256": "45dcd0e8f43d424948b999ac701a46a9da2680efcd6cc833cd9d4db75575a25e"
+  },
+  {
+   "path": "campioni/rt_uv_Z3.json",
+   "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=rt_edif.unitavolumetriche (bbox(S,W,N,E)=43.701,10.436,43.71,10.451)",
+   "downloaded_utc": "2026-10-01T13:23:17Z",
+   "bytes": 226597,
+   "sha256": "184d5762522e7d9d9ac1229e058a421c81ee9a14608acabc866e6e15ce090dee"
+  },
+  {
+   "path": "campioni/rt_uv_Z4.json",
+   "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=rt_edif.unitavolumetriche (bbox(S,W,N,E)=43.7215,10.4,43.7295,10.416)",
+   "downloaded_utc": "2026-10-01T13:23:17Z",
+   "bytes": 882295,
+   "sha256": "e68fa790b84c51932ddf0431b35053f02a7389813152b9a05c2016b7eb12b166"
+  },
+  {
+   "path": "campioni/rt_uv_describe.xml",
+   "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType&TYPENAMES=rt_edif.unitavolumetriche",
+   "downloaded_utc": "2026-10-01T13:22:55Z",
+   "bytes": 3179,
+   "sha256": "1fb71ad7feb3a2bb292b0a9572be8087feae5a55dc5d27e20577c99d00a340eb"
+  },
+  {
+   "path": "campioni/sit_Base_CTR_2023_MapServer_1.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_2023/MapServer/1?f=json",
+   "downloaded_utc": "2026-10-01T13:19:37Z",
+   "bytes": 5184,
+   "sha256": "415caed2fa7109bf368977c36eb9e099b16da21c31ce5fa2f1c792a5ba87af2e"
+  },
+  {
+   "path": "campioni/sit_Base_CTR_per_POC_MapServer_1.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_per_POC/MapServer/1?f=json",
+   "downloaded_utc": "2026-10-01T13:19:37Z",
+   "bytes": 7056,
+   "sha256": "08f0f51ececf6be72db27480414487dca62de7d64260bade1042bdae1f0264d1"
+  },
+  {
+   "path": "campioni/sit_FABBRICATI_PEG_MapServer_0.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/FABBRICATI_PEG/MapServer/0?f=json",
+   "downloaded_utc": "2026-10-01T13:19:36Z",
+   "bytes": 14031,
+   "sha256": "e6aa4aa4a4444755b5239c6430152f6abbf90ac1a76273671ea9b04a627f6446"
+  },
+  {
+   "path": "campioni/sit_Hosted_Base_DBTopografico_MapServer.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/Base_DBTopografico/MapServer?f=json",
+   "downloaded_utc": "2026-10-01T13:19:35Z",
+   "bytes": 5727,
+   "sha256": "bd750ff86c809b885e3159a9fd97b7e5afc3e1e6760ef23e08b8c7dfc5300792"
+  },
+  {
+   "path": "campioni/sit_Hosted_FABBRICATI_PEG_FeatureServer.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/FABBRICATI_PEG/FeatureServer?f=json",
+   "downloaded_utc": "2026-10-01T13:19:35Z",
+   "bytes": 2896,
+   "sha256": "4d8b1509edc4cbfe4a63fe0227d3020b517250a178b4d1a1423b234cf4b54d95"
+  },
+  {
+   "path": "campioni/sit_Hosted_FABBRICATI_PEG_FeatureServer_0.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/FABBRICATI_PEG/FeatureServer/0?f=json",
+   "downloaded_utc": "2026-10-01T13:19:35Z",
+   "bytes": 21439,
+   "sha256": "ec0095a5d1b7b359f65e9f9e72b377f7fe867adb8f1f25a89fb7b853a30803d8"
+  },
+  {
+   "path": "campioni/sit_Hosted_edifici_scolastici_FeatureServer_0.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/edifici_scolastici/FeatureServer/0?f=json",
+   "downloaded_utc": "2026-10-01T13:19:36Z",
+   "bytes": 63,
+   "sha256": "d3f5fb2e0455127bfdfe22607504e12cea287ff684433c01f04f50ee6e211f2a",
+   "note": "risposta di errore (63 byte), non un layer"
+  },
+  {
+   "path": "campioni/sit_ctrpoc_Z1.geojson",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_per_POC/MapServer/1/query (bbox(S,W,N,E)=43.713,10.394,43.721,10.408, returnZ)",
+   "downloaded_utc": "2026-10-01T13:32:10Z",
+   "bytes": 1568265,
+   "sha256": "fb0239f7274a7894cdfc19143b75aa1922c8b2f5f47bc2fa7dfc7ed7e9e0a0fb"
+  },
+  {
+   "path": "campioni/sit_ctrpoc_Z2.geojson",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_per_POC/MapServer/1/query (bbox(S,W,N,E)=43.704,10.391,43.7125,10.405, returnZ)",
+   "downloaded_utc": "2026-10-01T13:32:11Z",
+   "bytes": 1463321,
+   "sha256": "2b344b0e79a65d8b660cf6870116237dac619ddf164d34a103e16502818bdc34"
+  },
+  {
+   "path": "campioni/sit_ctrpoc_Z3.geojson",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_per_POC/MapServer/1/query (bbox(S,W,N,E)=43.701,10.436,43.71,10.451, returnZ)",
+   "downloaded_utc": "2026-10-01T13:32:11Z",
+   "bytes": 442755,
+   "sha256": "68695b074fde296cd644a85fb5fc447f00957c1d39d4dd22532e14d2f0f76fbc"
+  },
+  {
+   "path": "campioni/sit_ctrpoc_Z4.geojson",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/Base_CTR_per_POC/MapServer/1/query (bbox(S,W,N,E)=43.7215,10.4,43.7295,10.416, returnZ)",
+   "downloaded_utc": "2026-10-01T13:32:12Z",
+   "bytes": 1306160,
+   "sha256": "c92f1fbd446ae0b5dba827ad3a20f5ac5d270d2025da5c0277c5d1b073adf93c"
+  },
+  {
+   "path": "campioni/sit_periodizzazione_Z1.geojson",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/periodizzazione_edificato_share/MapServer/1/query (bbox(S,W,N,E)=43.713,10.394,43.721,10.408, returnZ)",
+   "downloaded_utc": "2026-10-01T13:32:08Z",
+   "bytes": 1004559,
+   "sha256": "7cb0712145f7838dad73c332b68616617f248d782900d943ea85d1b7c078a261"
+  },
+  {
+   "path": "campioni/sit_periodizzazione_Z2.geojson",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/periodizzazione_edificato_share/MapServer/1/query (bbox(S,W,N,E)=43.704,10.391,43.7125,10.405, returnZ)",
+   "downloaded_utc": "2026-10-01T13:32:08Z",
+   "bytes": 1625950,
+   "sha256": "3f32d824f8f1fc3cb4c59fc18cee5a1939152b23188fa3605267a4def6cca2fa"
+  },
+  {
+   "path": "campioni/sit_periodizzazione_Z3.geojson",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/periodizzazione_edificato_share/MapServer/1/query (bbox(S,W,N,E)=43.701,10.436,43.71,10.451, returnZ)",
+   "downloaded_utc": "2026-10-01T13:32:09Z",
+   "bytes": 547696,
+   "sha256": "cf6097c82271a80a5186e6ed11f1807b72c607cb58e04062f2abfff1e0421f30"
+  },
+  {
+   "path": "campioni/sit_periodizzazione_Z4.geojson",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/periodizzazione_edificato_share/MapServer/1/query (bbox(S,W,N,E)=43.7215,10.4,43.7295,10.416, returnZ)",
+   "downloaded_utc": "2026-10-01T13:32:09Z",
+   "bytes": 1497980,
+   "sha256": "e51f5e7ef5d6f63cff3feff3ecc43b1a446e79e57dd4a18536d05c633f3001c4"
+  },
+  {
+   "path": "campioni/sit_periodizzazione_edificato_share_MapServer_0.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/periodizzazione_edificato_share/MapServer/0?f=json",
+   "downloaded_utc": "2026-10-01T13:19:36Z",
+   "bytes": 4200,
+   "sha256": "447c4a7c184a5be0c96a91fde9ba1e133e11a379b666efe98e0db559af467786"
+  },
+  {
+   "path": "campioni/sit_periodizzazione_edificato_share_MapServer_1.json",
+   "url": "https://sit.comune.pisa.it/arcgis/rest/services/periodizzazione_edificato_share/MapServer/1?f=json",
+   "downloaded_utc": "2026-10-01T13:19:36Z",
+   "bytes": 6828,
+   "sha256": "a44ac521a4ad4c2579ccad830f635540336118c32a92ce54e78f6a44a8a8e2a7"
+  },
+  {
+   "path": "campioni/statistiche_zone.json",
+   "url": "derivato locale (script/*.py), non scaricato",
+   "downloaded_utc": "2026-10-01T13:51:42Z",
+   "bytes": 1517,
+   "sha256": "f94dd8fbd344b7e5d774a15fec184045e3a3e1294a2101b85939f8a0a12bcb66"
+  },
+  {
+   "path": "campioni/wms.html",
+   "url": "derivato locale (script/*.py), non scaricato",
+   "downloaded_utc": "2026-10-01T13:22:34Z",
+   "bytes": 186625,
+   "sha256": "d810c54bbe268a8878800bbea72ae02e5f14a1e67cc7c752178f59ff75c6c299"
+  }
+ ]
+}

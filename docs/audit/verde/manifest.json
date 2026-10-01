@@ -1,0 +1,576 @@
+[
+ {
+  "path": "campioni/arpi_885149.html",
+  "url": "https://arpi.unipi.it/handle/11568/885149",
+  "timestamp_utc": "2026-10-01T13:29:44+00:00",
+  "bytes": 49751,
+  "sha256": "f2b15ef4f127ba8aafd61774c309d6c07eaaaa00460f6fe0c6d7870917230c1d"
+ },
+ {
+  "path": "campioni/catalogo_pisa_titoli.json",
+  "url": "https://opendata.comune.pisa.it/catalogo-opendata?page=0..132 (scan_catalogo_pisa.py)",
+  "timestamp_utc": "2026-10-01T13:20:24+00:00",
+  "bytes": 108884,
+  "sha256": "82a525f382fe851c46479ac73cbfbc713563593ac408a35e4cece8a17f8bcb81"
+ },
+ {
+  "path": "campioni/censimento_mappa_alberi_old_url_410.html",
+  "url": "https://www.comune.pisa.it/it/ufficio-scheda/20099/Censimento-e-Mappa-degli-alberi.html (risposta HTTP 410, pagina non trovata)",
+  "timestamp_utc": "2026-10-01T13:29:38+00:00",
+  "bytes": 53944,
+  "sha256": "f3830f18c1eec3a6efc134e121ca865834ec80fe3c9b86899ed7fef85faab420"
+ },
+ {
+  "path": "campioni/ckan_1.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=alberi&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:34+00:00",
+  "bytes": 200734,
+  "sha256": "496ba81e6aa1936142b96b44b509d66c86238b849b6cdf715cc2123e371c2d25"
+ },
+ {
+  "path": "campioni/ckan_10.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=tree cover&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:36+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_101.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=DTM Pisa&rows=20",
+  "timestamp_utc": "2026-10-01T13:30:33+00:00",
+  "bytes": 19854,
+  "sha256": "b91ef508d21d81b80aed7f47f2e6d7c8991e3e3545ba62de45e61744acd51f8b"
+ },
+ {
+  "path": "campioni/ckan_102.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=DSM&rows=20",
+  "timestamp_utc": "2026-10-01T13:30:33+00:00",
+  "bytes": 49761,
+  "sha256": "edc8ca4558a84284070c43391037131429eb16b42f4255adde9ff74a3f7bbb4f"
+ },
+ {
+  "path": "campioni/ckan_103.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=modello digitale del terreno&rows=20",
+  "timestamp_utc": "2026-10-01T13:30:33+00:00",
+  "bytes": 60788,
+  "sha256": "300268aa3d08f2e523f17755d465030d965af4c2db6480a8ca80662a59b1c399"
+ },
+ {
+  "path": "campioni/ckan_104.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=modello digitale di superficie&rows=20",
+  "timestamp_utc": "2026-10-01T13:30:34+00:00",
+  "bytes": 70964,
+  "sha256": "4f54cacffe5c07608741009d9e9a6ad8a0c9e1945128cd9281761569e234682c"
+ },
+ {
+  "path": "campioni/ckan_105.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=CHM&rows=20",
+  "timestamp_utc": "2026-10-01T13:30:34+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_106.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=ortofoto Pisa&rows=20",
+  "timestamp_utc": "2026-10-01T13:30:34+00:00",
+  "bytes": 34202,
+  "sha256": "675db62f555308b087d09a09773ab55d1fb23d1de5e548417c1292e8e6979975"
+ },
+ {
+  "path": "campioni/ckan_107.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=dbtopografico Pisa&rows=20",
+  "timestamp_utc": "2026-10-01T13:30:34+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_11.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=copertura arborea&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:37+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_12.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=uso del suolo&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:37+00:00",
+  "bytes": 304422,
+  "sha256": "fe249bb08fa0089e5ff97ad287eef1abbfb2ea9a3e8e554a10a17822ebc81395"
+ },
+ {
+  "path": "campioni/ckan_13.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=uso suolo&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:38+00:00",
+  "bytes": 304421,
+  "sha256": "73e666e2b35e259cbe3d86e058a546926d6d40742672535b14313da4df3223d4"
+ },
+ {
+  "path": "campioni/ckan_14.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=LiDAR&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:38+00:00",
+  "bytes": 142481,
+  "sha256": "d3a77096161083431aa7b7e55a62dbf04dd03cede6cd605ffefa64ee70cc00d9"
+ },
+ {
+  "path": "campioni/ckan_15.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=canopy&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:38+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_16.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=Pisa alberi&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:39+00:00",
+  "bytes": 13828,
+  "sha256": "1ea501dbb43fa0abdd514da8c55f42141c3c085fd56ea3c50085a25d3a073b18"
+ },
+ {
+  "path": "campioni/ckan_17.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=Pisa verde&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:39+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_18.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=Pisa alberature&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:39+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_19.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=comune di Pisa verde pubblico&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:40+00:00",
+  "bytes": 156470,
+  "sha256": "847e4242959168a83d9c6342d900005946261057a6939b2986f5dbb7f086f9c6"
+ },
+ {
+  "path": "campioni/ckan_2.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=albero&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:34+00:00",
+  "bytes": 39308,
+  "sha256": "530cae1052cafeb1daa3c1d1b62718ffdf1630c02d351a84268b5bf6ac2e94fb"
+ },
+ {
+  "path": "campioni/ckan_20.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=alberi&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:40+00:00",
+  "bytes": 184094,
+  "sha256": "232d9b031bc1f30bf08187448386f5a9a94f9c95231a71932ec369eb361bb109"
+ },
+ {
+  "path": "campioni/ckan_21.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=albero&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:41+00:00",
+  "bytes": 232493,
+  "sha256": "2cc7966f037579d53874326cf978fca732075aba5a1621ed654c081b40ed1e76"
+ },
+ {
+  "path": "campioni/ckan_22.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=alberate&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:41+00:00",
+  "bytes": 72305,
+  "sha256": "76bc44f1a381e14fc89f150d266b3257f29fc432f04159071a7fb47043ac2e84"
+ },
+ {
+  "path": "campioni/ckan_23.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=alberature&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:41+00:00",
+  "bytes": 100231,
+  "sha256": "d2b2cc5fca6e799a97588d677750c5dd77ead2ce56fa971c717fb5d71651115e"
+ },
+ {
+  "path": "campioni/ckan_24.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=censimento arboreo&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:42+00:00",
+  "bytes": 17065,
+  "sha256": "09ad49a1904f76101099b57002eb4382751bb12177a75030f1670fb6cb88f135"
+ },
+ {
+  "path": "campioni/ckan_25.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=patrimonio arboreo&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:42+00:00",
+  "bytes": 24443,
+  "sha256": "cde7da2bbdc7718783937c9c36cd7b5f52208f2ac2e041d1e144e9a06c3c8360"
+ },
+ {
+  "path": "campioni/ckan_26.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=verde urbano&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:42+00:00",
+  "bytes": 196371,
+  "sha256": "5f61ebca7ab12b2665964a53325bda5ac061e8beb5de763ed04a648762d39d2b"
+ },
+ {
+  "path": "campioni/ckan_27.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=verde pubblico&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:43+00:00",
+  "bytes": 196139,
+  "sha256": "120ba214b39d3b7bf34de4d61571438d59607a404f2b728ab02926603454783b"
+ },
+ {
+  "path": "campioni/ckan_28.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=chiome&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:43+00:00",
+  "bytes": 45037,
+  "sha256": "c47546a024fc3cf1791c2cb940df136b052211ac7bf52b95ac0de43d35a507c7"
+ },
+ {
+  "path": "campioni/ckan_29.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=tree cover&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:43+00:00",
+  "bytes": 20827,
+  "sha256": "41a14bc07500862879682e5c850b162e43b49caaded2154d96b8b38b6a90eaae"
+ },
+ {
+  "path": "campioni/ckan_3.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=alberate&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:35+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_30.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=copertura arborea&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:43+00:00",
+  "bytes": 55028,
+  "sha256": "c89477c8c67ac5ba0e6c699873bac041a68da9c44c84cc651e9a0004b8045082"
+ },
+ {
+  "path": "campioni/ckan_31.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=uso del suolo&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:44+00:00",
+  "bytes": 310901,
+  "sha256": "a92911dfca29596ba8e330e0c633b90d6235109da456e1e9fa1608f8e2e5c5f2"
+ },
+ {
+  "path": "campioni/ckan_32.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=uso suolo&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:44+00:00",
+  "bytes": 310900,
+  "sha256": "2b31f2b2bbacb97eb5f05e11428dadd2e2599c8c765667166cefc249867882f4"
+ },
+ {
+  "path": "campioni/ckan_33.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=LiDAR&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:45+00:00",
+  "bytes": 180790,
+  "sha256": "9c25918ced926b4ef1d212e90f3d6ffe5c8cc5e586ea17aead87419be8f46945"
+ },
+ {
+  "path": "campioni/ckan_34.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=canopy&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:45+00:00",
+  "bytes": 12420,
+  "sha256": "253094011e0b79f1ff1839d61d3d3bd6cc3027b90d45638103f082731a34f2b5"
+ },
+ {
+  "path": "campioni/ckan_35.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=Pisa alberi&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:45+00:00",
+  "bytes": 22807,
+  "sha256": "8f24fca5db123e0616d71c14a51edd99584f57f11ab3058ae64990fca8ad908c"
+ },
+ {
+  "path": "campioni/ckan_36.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=Pisa verde&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:45+00:00",
+  "bytes": 224,
+  "sha256": "301e54d7be2d10db5be35db5e4425ac89da16015a5ee74f560af3b68437bb6a0"
+ },
+ {
+  "path": "campioni/ckan_37.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=Pisa alberature&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:45+00:00",
+  "bytes": 224,
+  "sha256": "301e54d7be2d10db5be35db5e4425ac89da16015a5ee74f560af3b68437bb6a0"
+ },
+ {
+  "path": "campioni/ckan_38.json",
+  "url": "https://www.dati.gov.it/opendata/api/3/action/package_search?q=comune di Pisa verde pubblico&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:46+00:00",
+  "bytes": 149859,
+  "sha256": "edb453d4df6b616ac8236cc5190e208c8a3069149d5fc19f715d98643e78ea66"
+ },
+ {
+  "path": "campioni/ckan_4.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=alberature&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:35+00:00",
+  "bytes": 16101,
+  "sha256": "9be31fd28ee43609221093661bf5aad38f858a504cbd206bb4f3f828bb53cfc5"
+ },
+ {
+  "path": "campioni/ckan_5.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=censimento arboreo&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:35+00:00",
+  "bytes": 4639,
+  "sha256": "679ae1948e1d0dd2a7524b8842737ab73bda2b1ac5de0290a39fa19e1e8fcd91"
+ },
+ {
+  "path": "campioni/ckan_6.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=patrimonio arboreo&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:35+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_7.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=verde urbano&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:36+00:00",
+  "bytes": 107436,
+  "sha256": "3c09a146698d2953270967744f6c7b865caed270ec665cab55ff1790839449fb"
+ },
+ {
+  "path": "campioni/ckan_8.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=verde pubblico&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:36+00:00",
+  "bytes": 156470,
+  "sha256": "893d66d9531826709fc8c4da4ff1c274e1a3699d99024e42e187c21cf808553d"
+ },
+ {
+  "path": "campioni/ckan_9.json",
+  "url": "https://dati.toscana.it/api/3/action/package_search?q=chiome&rows=20",
+  "timestamp_utc": "2026-10-01T13:20:36+00:00",
+  "bytes": 215,
+  "sha256": "407cbe84cc80ac4909239069e822d58dbd6554d7302da997b173eb883c18ee8d"
+ },
+ {
+  "path": "campioni/ckan_log.tsv",
+  "url": "(derivato da ckan_queries.sh)",
+  "timestamp_utc": "2026-10-01T13:30:34+00:00",
+  "bytes": 2531,
+  "sha256": "7e24dcd63cfbb83c42fcce2550c36854bf8fc2c385bf0c3bc6051c1bfdeae661"
+ },
+ {
+  "path": "campioni/ckan_pkg_dsm-2007.json",
+  "url": "https://dati.toscana.it/api/3/action/package_show?id=dsm-2007",
+  "timestamp_utc": "2026-10-01T13:28:30+00:00",
+  "bytes": 6004,
+  "sha256": "815fb80b981b1379ca3118a29769db50a3ec2cf642d5c0f046de95efaaee2b85"
+ },
+ {
+  "path": "campioni/ckan_pkg_dsm-2017.json",
+  "url": "https://dati.toscana.it/api/3/action/package_show?id=dsm-2017",
+  "timestamp_utc": "2026-10-01T13:28:29+00:00",
+  "bytes": 6932,
+  "sha256": "0eceacd570cf835d20da7a8f68b60b5d7b6c958d10b89a8a27a0067f1466caab"
+ },
+ {
+  "path": "campioni/ckan_pkg_dsm-lidar-2023.json",
+  "url": "https://dati.toscana.it/api/3/action/package_show?id=dsm-lidar-2023",
+  "timestamp_utc": "2026-10-01T13:28:29+00:00",
+  "bytes": 7127,
+  "sha256": "964787f4fb83e8cce55f7dfaf79594494e17eba4f91aaa8e75c5500a6348d383"
+ },
+ {
+  "path": "campioni/ckan_pkg_dtm-2017.json",
+  "url": "https://dati.toscana.it/api/3/action/package_show?id=dtm-2017",
+  "timestamp_utc": "2026-10-01T13:28:29+00:00",
+  "bytes": 7080,
+  "sha256": "f2ef8f975d7f01db219e788d103eaa69d74a91d0acc047162842af121f8497dc"
+ },
+ {
+  "path": "campioni/ckan_pkg_dtm-lidar-2023.json",
+  "url": "https://dati.toscana.it/api/3/action/package_show?id=dtm-lidar-2023",
+  "timestamp_utc": "2026-10-01T13:28:29+00:00",
+  "bytes": 7122,
+  "sha256": "be382cf8c48fe6e5a67a132972d99e9746b938423cbc598cc94655cee565d3cf"
+ },
+ {
+  "path": "campioni/comunicato_rinnovo_arboreo.html",
+  "url": "https://www.comune.pisa.it/Novita/Comunicati/Rinnovo-arboreo-il-Comune-di-Pisa-prosegue-gli-incontri-con-le-associazioni-ambientaliste",
+  "timestamp_utc": "2026-10-01T13:28:36+00:00",
+  "bytes": 71775,
+  "sha256": "bbd9910031ade77d086c8641cfdfd30fd55688ed85dd617b39ec40112158b660"
+ },
+ {
+  "path": "campioni/cop_stl_conteggi_zone.json",
+  "url": ".../MapServer/0/query (returnCountOnly, bbox zona)",
+  "timestamp_utc": "2026-10-01T13:30:17+00:00",
+  "bytes": 84,
+  "sha256": "d0909fb212e10c2ca0db14402e354f0f6b5601bf5de62457c4fd38f5831c99d1"
+ },
+ {
+  "path": "campioni/cop_stl_layer0.json",
+  "url": ".../UA_StreetTreeLayer_2018/MapServer/0?f=pjson",
+  "timestamp_utc": "2026-10-01T13:30:22+00:00",
+  "bytes": 5608,
+  "sha256": "1c557c69ad66c6be69a42f3d56854c5b95c1a717509292f2a002e2bc937cb026"
+ },
+ {
+  "path": "campioni/cop_stl_layer2.json",
+  "url": ".../UA_StreetTreeLayer_2018/MapServer/2?f=pjson",
+  "timestamp_utc": "2026-10-01T13:30:23+00:00",
+  "bytes": 2774,
+  "sha256": "11b24b9126d0297f19333aa3f5918f3bc6b568e88e211a81db64611c167085a6"
+ },
+ {
+  "path": "campioni/cop_stl_mapserver.json",
+  "url": "https://copernicus.discomap.eea.europa.eu/arcgis/rest/services/UrbanAtlas/UA_StreetTreeLayer_2018/MapServer?f=pjson",
+  "timestamp_utc": "2026-10-01T13:30:16+00:00",
+  "bytes": 5450,
+  "sha256": "d7b2d831771dfcb0e1c00fc522fb39f409e7ffd1fb892863f773e750213dfef1"
+ },
+ {
+  "path": "campioni/cop_stl_sample_Z1.geojson",
+  "url": ".../MapServer/0/query (5 feature, bbox Z1, outSR 4326)",
+  "timestamp_utc": "2026-10-01T13:30:23+00:00",
+  "bytes": 38358,
+  "sha256": "0200cfa8a3ce96890a28e8602aaded730c1c636421d44fb6496e62ac0b117195"
+ },
+ {
+  "path": "campioni/dataset_page.html",
+  "url": "https://www.comune.pisa.it/Amministrazione/Documenti-e-dati/Dataset",
+  "timestamp_utc": "2026-10-01T13:29:19+00:00",
+  "bytes": 60262,
+  "sha256": "cc7ab065861f6394770fc283ae644a036f86ba0eaf3beae123112e85451f4818"
+ },
+ {
+  "path": "campioni/od_catalogo-opendata.html",
+  "url": "https://opendata.comune.pisa.it/catalogo-opendata (variante, vedi riproduci.sh)",
+  "timestamp_utc": "2026-10-01T13:19:47+00:00",
+  "bytes": 137733,
+  "sha256": "0ff85a3f247c81b1016905d395226e45e9a9ce044a45db8d0d16d5c7fec2d5a9"
+ },
+ {
+  "path": "campioni/od_categoria_ambiente.html",
+  "url": "https://opendata.comune.pisa.it/categoria/ambiente (variante, vedi riproduci.sh)",
+  "timestamp_utc": "2026-10-01T13:19:46+00:00",
+  "bytes": 141763,
+  "sha256": "18051a13fe720f6498d2d5051772b2cd093a460f7295a5a4607e4e6a79672831"
+ },
+ {
+  "path": "campioni/od_content_api.html",
+  "url": "https://opendata.comune.pisa.it/content/api (variante, vedi riproduci.sh)",
+  "timestamp_utc": "2026-10-01T13:19:48+00:00",
+  "bytes": 16431,
+  "sha256": "686c4221bf2fadb77fe1e825aceed5be307cb55ed59dd4981e01aea3fbbd472d"
+ },
+ {
+  "path": "campioni/osm_Z1.json",
+  "url": "https://overpass-api.de/api/interpreter (osm_alberi.py)",
+  "timestamp_utc": "2026-10-01T13:27:27+00:00",
+  "bytes": 98283,
+  "sha256": "c3df2950d3c7f6bbaa3aabb68c2fe4027428493d1b3ffc4d28e30763d8d419fe"
+ },
+ {
+  "path": "campioni/osm_Z2.json",
+  "url": "https://overpass-api.de/api/interpreter (osm_alberi.py)",
+  "timestamp_utc": "2026-10-01T13:27:38+00:00",
+  "bytes": 106846,
+  "sha256": "d26919872633e32cbef3fbe11a0d8db45afce189c174b0b2844338afb486397e"
+ },
+ {
+  "path": "campioni/osm_Z3.json",
+  "url": "https://overpass-api.de/api/interpreter (osm_alberi.py)",
+  "timestamp_utc": "2026-10-01T13:27:45+00:00",
+  "bytes": 19250,
+  "sha256": "afab074af60b518d3803a661b0d66bed5d0c128370b481003f716e4020fe703e"
+ },
+ {
+  "path": "campioni/osm_Z4.json",
+  "url": "https://overpass-api.de/api/interpreter (osm_alberi.py)",
+  "timestamp_utc": "2026-10-01T13:28:09+00:00",
+  "bytes": 164441,
+  "sha256": "04b95b1acb085394a9f00bfd0fb7768b8201e2f291b480347e4f98b17fae9113"
+ },
+ {
+  "path": "campioni/osm_analisi.json",
+  "url": "(derivato da analisi_osm.py)",
+  "timestamp_utc": "2026-10-01T13:30:45+00:00",
+  "bytes": 2494,
+  "sha256": "3495d5ea594476939ba40d3253ec0bda5294769804740eaf7e8a21ca04f82161"
+ },
+ {
+  "path": "campioni/osm_stats.json",
+  "url": "https://overpass-api.de/api/interpreter (osm_alberi.py)",
+  "timestamp_utc": "2026-10-01T13:28:09+00:00",
+  "bytes": 2196,
+  "sha256": "90d99859e9a68826684815124ef8110924d1ed6b08f17c930ff45300cb28df81"
+ },
+ {
+  "path": "campioni/sit_psi_layer_104.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/PSI/MapServer/104?f=json",
+  "timestamp_utc": "2026-10-01T13:23:11+00:00",
+  "bytes": 7312,
+  "sha256": "8f16930354e07d0ffac87d39e84a58454c68b09e9bd97b9fb603a918e826d338"
+ },
+ {
+  "path": "campioni/sit_psi_layer_105.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/PSI/MapServer/105?f=json",
+  "timestamp_utc": "2026-10-01T13:23:11+00:00",
+  "bytes": 8366,
+  "sha256": "386a86b699ab71e22afa70d10040aca89a0cbd5a59d61d1709fa2be2525be45c"
+ },
+ {
+  "path": "campioni/sit_psi_layer_218.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/PSI/MapServer/218?f=json",
+  "timestamp_utc": "2026-10-01T13:23:11+00:00",
+  "bytes": 4459,
+  "sha256": "01f783fa3a8aaf8650a4aba6cc94c72da75ac22dfb29e8712ea68a626429c3e8"
+ },
+ {
+  "path": "campioni/sit_psi_layer_237.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/PSI/MapServer/237?f=json",
+  "timestamp_utc": "2026-10-01T13:23:11+00:00",
+  "bytes": 4480,
+  "sha256": "7b4efdaed918abaee6e868273f76fda9120bbdbf3a0eb0bef65b66ab210185ee"
+ },
+ {
+  "path": "campioni/sit_psi_layer_243.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/PSI/MapServer/243?f=json",
+  "timestamp_utc": "2026-10-01T13:23:11+00:00",
+  "bytes": 5106,
+  "sha256": "158c5798431040ec87a6c536604cc0785845569c4627645d78878857c7d84d96"
+ },
+ {
+  "path": "campioni/sit_psi_service.json",
+  "url": "https://sit.comune.pisa.it/arcgis/rest/services/PSI/MapServer?f=json",
+  "timestamp_utc": "2026-10-01T13:23:11+00:00",
+  "bytes": 73575,
+  "sha256": "98cd941352eef3d503a2b6d0893173cb7e028f6ed8df07d3e4d4df72bfcd45c6"
+ },
+ {
+  "path": "campioni/sit_verde_conteggi.json",
+  "url": "(derivato da sit_verde.py, query su https://sit.comune.pisa.it/arcgis/rest/services/)",
+  "timestamp_utc": "2026-10-01T13:23:48+00:00",
+  "bytes": 7422,
+  "sha256": "9f9b6f1bb1562e4c9a4901507740cb205a1559707bf1032c67a393216266e5a3"
+ },
+ {
+  "path": "campioni/sitemap.html",
+  "url": "https://www.comune.pisa.it/content/view/sitemap/2",
+  "timestamp_utc": "2026-10-01T13:29:20+00:00",
+  "bytes": 59880,
+  "sha256": "5b754b787dc0591ad49f30457349b163a1b1284a45eed0fe2c617df6439ac8f6"
+ },
+ {
+  "path": "campioni/spazio_verde.html",
+  "url": "https://www.comune.pisa.it/Argomenti/Ambiente/Spazio-verde",
+  "timestamp_utc": "2026-10-01T13:29:06+00:00",
+  "bytes": 81872,
+  "sha256": "6d2d2ae632bbac0184a51f855f115b73bf97336ab977b6f24e0de18202a73ee5"
+ },
+ {
+  "path": "campioni/spod_1_rest_licenses.json",
+  "url": "http://opendata.comune.pisa.it/SpodCkanApi/api/1/rest/licenses",
+  "timestamp_utc": "2026-10-01T13:30:55+00:00",
+  "bytes": 1416,
+  "sha256": "1a434e36b5e68159bbe218ca5646f30f048ad7c1e78bb2cbd94dc9384d7b2896"
+ },
+ {
+  "path": "campioni/spod_2_rest_package.json",
+  "url": "http://opendata.comune.pisa.it/SpodCkanApi/api/2/rest/package",
+  "timestamp_utc": "2026-10-01T13:30:55+00:00",
+  "bytes": 27848,
+  "sha256": "caa235c19242f162649ab27413c6e4a2b50f8cd1208a03d78e61de4b5a1ec055"
+ },
+ {
+  "path": "zone.json",
+  "url": "(bbox definiti in questo audit, non una fonte)",
+  "timestamp_utc": "2026-10-01T13:21:05+00:00",
+  "bytes": 266,
+  "sha256": "f3bd786fee2e1a7aa29d7426fbf6bb6f7ec3558defa69da3365670647222b363"
+ }
+]

@@ -1,0 +1,5 @@
+{"nota":"Zone di lavoro candidate, non approvate. Cerchi approssimati attorno a un centro scelto a mano (WGS84); raggio in metri. Servono solo a ritagliare i campioni, non sono perimetri ufficiali.",
+ "Z1":{"nome":"Santa Maria / Piazza dei Cavalieri","lat":43.7200,"lon":10.3999,"raggio_m":550},
+ "Z2":{"nome":"Stazione Centrale / Sant'Antonio / Corso Italia","lat":43.7095,"lon":10.4010,"raggio_m":650},
+ "Z3":{"nome":"Cisanello","lat":43.7100,"lon":10.4370,"raggio_m":750},
+ "Z4":{"nome":"Porta a Lucca / Pratale","lat":43.7235,"lon":10.4090,"raggio_m":750}}
