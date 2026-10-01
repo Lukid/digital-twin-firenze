@@ -1,0 +1,831 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://dt-pisa.example/contracts/schemas/mcp.schema.json",
+ "title": "Strumenti MCP: input e output",
+ "description": "Un def per direzione: <tool>.input e <tool>.output. Nessun input accetta codice o SQL libero (additionalProperties false ovunque). Ogni output è il risultato oppure tool_error.",
+ "$defs": {
+  "list_approved_sources.input": {
+   "type": "object",
+   "required": [
+    "theme",
+    "aoi_id"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "theme": {
+     "enum": [
+      "edifici",
+      "quote",
+      "rete_pedonale",
+      "verde",
+      "destinazioni",
+      "trasporto",
+      "licenze"
+     ]
+    },
+    "aoi_id": {
+     "$ref": "common.schema.json#/$defs/id_aoi"
+    }
+   }
+  },
+  "list_approved_sources.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "sources",
+      "gaps"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "sources": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "required": [
+         "source_id",
+         "snapshot_id",
+         "license_state",
+         "permitted_use",
+         "content_period"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "source_id": {
+          "$ref": "common.schema.json#/$defs/id_source"
+         },
+         "snapshot_id": {
+          "$ref": "common.schema.json#/$defs/id_snapshot"
+         },
+         "license_state": {
+          "$ref": "common.schema.json#/$defs/license_state"
+         },
+         "permitted_use": {
+          "enum": [
+           "redistribution",
+           "internal_prototype",
+           "none"
+          ]
+         },
+         "content_period": {
+          "$ref": "common.schema.json#/$defs/content_period"
+         }
+        }
+       }
+      },
+      "gaps": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "required": [
+         "theme",
+         "text"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "theme": {
+          "enum": [
+           "edifici",
+           "quote",
+           "rete_pedonale",
+           "verde",
+           "destinazioni",
+           "trasporto",
+           "licenze"
+          ]
+         },
+         "text": {
+          "type": "string",
+          "minLength": 5
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  },
+  "inspect_dataset.input": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "source_id"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "source_id": {
+       "$ref": "common.schema.json#/$defs/id_source"
+      }
+     }
+    },
+    {
+     "type": "object",
+     "required": [
+      "snapshot_id"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "snapshot_id": {
+       "$ref": "common.schema.json#/$defs/id_snapshot"
+      }
+     }
+    }
+   ]
+  },
+  "inspect_dataset.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "source_id",
+      "snapshot_id",
+      "fields",
+      "extent",
+      "content_period",
+      "license"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "source_id": {
+       "$ref": "common.schema.json#/$defs/id_source"
+      },
+      "snapshot_id": {
+       "$ref": "common.schema.json#/$defs/id_snapshot"
+      },
+      "fields": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "required": [
+         "name",
+         "unit",
+         "classification"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "name": {
+          "type": "string"
+         },
+         "unit": {
+          "type": "string"
+         },
+         "classification": {
+          "$ref": "common.schema.json#/$defs/classification"
+         },
+         "populated_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+         }
+        }
+       }
+      },
+      "extent": {
+       "$ref": "common.schema.json#/$defs/bbox_en"
+      },
+      "content_period": {
+       "$ref": "common.schema.json#/$defs/content_period"
+      },
+      "license": {
+       "$ref": "common.schema.json#/$defs/license"
+      },
+      "quality": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  },
+  "list_destinations.input": {
+   "type": "object",
+   "required": [
+    "aoi_id",
+    "category"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "aoi_id": {
+     "$ref": "common.schema.json#/$defs/id_aoi"
+    },
+    "category": {
+     "enum": [
+      "school",
+      "university",
+      "stop",
+      "station",
+      "hospital"
+     ]
+    },
+    "name_query": {
+     "type": "string",
+     "maxLength": 80
+    }
+   }
+  },
+  "list_destinations.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "destinations"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "destinations": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "required": [
+         "destination_id",
+         "category",
+         "name",
+         "verification",
+         "entrances"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "destination_id": {
+          "$ref": "common.schema.json#/$defs/id_destination"
+         },
+         "category": {
+          "enum": [
+           "school",
+           "university",
+           "stop",
+           "station",
+           "hospital"
+          ]
+         },
+         "name": {
+          "type": "string"
+         },
+         "verification": {
+          "$ref": "common.schema.json#/$defs/verification_state"
+         },
+         "access_conditions": {
+          "type": "string"
+         },
+         "entrances": {
+          "type": "array",
+          "items": {
+           "type": "object",
+           "required": [
+            "entrance_id",
+            "position",
+            "verification"
+           ],
+           "additionalProperties": false,
+           "properties": {
+            "entrance_id": {
+             "$ref": "common.schema.json#/$defs/id_entrance"
+            },
+            "position": {
+             "$ref": "common.schema.json#/$defs/position"
+            },
+            "verification": {
+             "$ref": "common.schema.json#/$defs/verification_state"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  },
+  "compute_walk_access.input": {
+   "type": "object",
+   "required": [
+    "baseline_id",
+    "origins",
+    "destination_ids",
+    "profile",
+    "thresholds_min"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "baseline_id": {
+     "$ref": "common.schema.json#/$defs/id_baseline"
+    },
+    "origins": {
+     "oneOf": [
+      {
+       "type": "object",
+       "required": [
+        "kind",
+        "points"
+       ],
+       "additionalProperties": false,
+       "properties": {
+        "kind": {
+         "const": "points"
+        },
+        "points": {
+         "type": "array",
+         "minItems": 1,
+         "maxItems": 20000,
+         "items": {
+          "$ref": "common.schema.json#/$defs/position"
+         }
+        }
+       }
+      },
+      {
+       "type": "object",
+       "required": [
+        "kind",
+        "aoi_id",
+        "spacing_m"
+       ],
+       "additionalProperties": false,
+       "properties": {
+        "kind": {
+         "const": "grid"
+        },
+        "aoi_id": {
+         "$ref": "common.schema.json#/$defs/id_aoi"
+        },
+        "spacing_m": {
+         "type": "number",
+         "minimum": 5,
+         "maximum": 200
+        }
+       }
+      }
+     ]
+    },
+    "destination_ids": {
+     "type": "array",
+     "minItems": 1,
+     "maxItems": 20,
+     "items": {
+      "$ref": "common.schema.json#/$defs/id_destination"
+     }
+    },
+    "profile": {
+     "type": "object",
+     "required": [
+      "speed_m_s"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "speed_m_s": {
+       "type": "number",
+       "minimum": 0.3,
+       "maximum": 2.5
+      },
+      "snap_limit_m": {
+       "type": "number",
+       "minimum": 1,
+       "maximum": 100
+      }
+     }
+    },
+    "thresholds_min": {
+     "type": "array",
+     "minItems": 1,
+     "maxItems": 6,
+     "items": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 60
+     }
+    }
+   }
+  },
+  "compute_walk_access.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "job_id",
+      "status"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "job_id": {
+       "$ref": "common.schema.json#/$defs/id_job"
+      },
+      "status": {
+       "enum": [
+        "queued",
+        "running",
+        "succeeded",
+        "failed",
+        "rejected_limits"
+       ]
+      },
+      "result_manifest_id": {
+       "$ref": "common.schema.json#/$defs/id_manifest"
+      },
+      "headline_metrics": {
+       "type": "array",
+       "items": {
+        "$ref": "common.schema.json#/$defs/metric"
+       }
+      },
+      "progress": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      }
+     },
+     "allOf": [
+      {
+       "if": {
+        "properties": {
+         "status": {
+          "const": "succeeded"
+         }
+        },
+        "required": [
+         "status"
+        ]
+       },
+       "then": {
+        "required": [
+         "result_manifest_id"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  },
+  "compute_shadow.input": {
+   "type": "object",
+   "required": [
+    "baseline_id",
+    "receivers",
+    "when",
+    "method"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "baseline_id": {
+     "$ref": "common.schema.json#/$defs/id_baseline"
+    },
+    "scenario_id": {
+     "$ref": "common.schema.json#/$defs/id_scenario"
+    },
+    "receivers": {
+     "type": "array",
+     "minItems": 1,
+     "maxItems": 50,
+     "items": {
+      "type": "object",
+      "required": [
+       "receiver_id",
+       "kind",
+       "geometry"
+      ],
+      "additionalProperties": false,
+      "properties": {
+       "receiver_id": {
+        "$ref": "common.schema.json#/$defs/id_feature"
+       },
+       "kind": {
+        "enum": [
+         "path",
+         "surface"
+        ]
+       },
+       "geometry": {
+        "$ref": "common.schema.json#/$defs/geometry"
+       }
+      }
+     }
+    },
+    "when": {
+     "type": "object",
+     "required": [
+      "date",
+      "timezone",
+      "times"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "date": {
+       "$ref": "common.schema.json#/$defs/date"
+      },
+      "timezone": {
+       "const": "Europe/Rome"
+      },
+      "times": {
+       "type": "array",
+       "minItems": 1,
+       "maxItems": 96,
+       "items": {
+        "$ref": "common.schema.json#/$defs/local_time"
+       }
+      }
+     }
+    },
+    "method": {
+     "type": "object",
+     "required": [
+      "name",
+      "space_step_m",
+      "time_step_min",
+      "obstacles"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "name": {
+       "const": "geometric_ray"
+      },
+      "space_step_m": {
+       "type": "number",
+       "minimum": 0.25,
+       "maximum": 5
+      },
+      "time_step_min": {
+       "type": "number",
+       "minimum": 1,
+       "maximum": 30
+      },
+      "obstacles": {
+       "enum": [
+        "documented_buildings_only",
+        "buildings_and_scenario"
+       ]
+      }
+     }
+    },
+    "walk_speed_m_s": {
+     "type": "number",
+     "minimum": 0.3,
+     "maximum": 2.5
+    }
+   }
+  },
+  "compute_shadow.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "job_id",
+      "status"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "job_id": {
+       "$ref": "common.schema.json#/$defs/id_job"
+      },
+      "status": {
+       "enum": [
+        "queued",
+        "running",
+        "succeeded",
+        "failed",
+        "rejected_limits"
+       ]
+      },
+      "result_manifest_id": {
+       "$ref": "common.schema.json#/$defs/id_manifest"
+      },
+      "headline_metrics": {
+       "type": "array",
+       "items": {
+        "$ref": "common.schema.json#/$defs/metric"
+       }
+      },
+      "progress": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      }
+     },
+     "allOf": [
+      {
+       "if": {
+        "properties": {
+         "status": {
+          "const": "succeeded"
+         }
+        },
+        "required": [
+         "status"
+        ]
+       },
+       "then": {
+        "required": [
+         "result_manifest_id"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  },
+  "create_local_scenario.input": {
+   "type": "object",
+   "required": [
+    "baseline_id",
+    "scenario_title",
+    "operations"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "baseline_id": {
+     "$ref": "common.schema.json#/$defs/id_baseline"
+    },
+    "scenario_title": {
+     "type": "string",
+     "minLength": 3,
+     "maxLength": 120
+    },
+    "operations": {
+     "type": "array",
+     "maxItems": 200,
+     "items": {
+      "$ref": "scenario.schema.json#/$defs/operation"
+     }
+    }
+   }
+  },
+  "create_local_scenario.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "scenario_id",
+      "version"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "scenario_id": {
+       "$ref": "common.schema.json#/$defs/id_scenario"
+      },
+      "version": {
+       "type": "integer",
+       "minimum": 1
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  },
+  "compare_scenarios.input": {
+   "type": "object",
+   "required": [
+    "manifest_ids",
+    "metric_ids"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "manifest_ids": {
+     "type": "array",
+     "minItems": 2,
+     "maxItems": 10,
+     "uniqueItems": true,
+     "items": {
+      "$ref": "common.schema.json#/$defs/id_manifest"
+     }
+    },
+    "metric_ids": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{1,60}$"
+     }
+    }
+   }
+  },
+  "compare_scenarios.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "common_conditions",
+      "deltas",
+      "incompatibilities"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "common_conditions": {
+       "type": "object"
+      },
+      "deltas": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "required": [
+         "metric_id",
+         "baseline_value",
+         "scenario_value",
+         "delta",
+         "unit",
+         "classification",
+         "discriminates"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "metric_id": {
+          "type": "string"
+         },
+         "baseline_value": {
+          "type": "number"
+         },
+         "scenario_value": {
+          "type": "number"
+         },
+         "delta": {
+          "type": "number"
+         },
+         "unit": {
+          "$ref": "common.schema.json#/$defs/unit"
+         },
+         "classification": {
+          "$ref": "common.schema.json#/$defs/classification"
+         },
+         "discriminates": {
+          "type": "boolean",
+          "description": "false se il delta è dentro l'incertezza"
+         }
+        }
+       }
+      },
+      "incompatibilities": {
+       "type": "array",
+       "items": {
+        "$ref": "common.schema.json#/$defs/limit"
+       }
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  },
+  "get_job_status.input": {
+   "type": "object",
+   "required": [
+    "job_id"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "job_id": {
+     "$ref": "common.schema.json#/$defs/id_job"
+    }
+   }
+  },
+  "get_job_status.output": {
+   "oneOf": [
+    {
+     "$ref": "job.schema.json"
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  },
+  "get_result_manifest.input": {
+   "type": "object",
+   "required": [
+    "job_id"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "job_id": {
+     "$ref": "common.schema.json#/$defs/id_job"
+    }
+   }
+  },
+  "get_result_manifest.output": {
+   "oneOf": [
+    {
+     "$ref": "manifest.schema.json"
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  }
+ }
+}

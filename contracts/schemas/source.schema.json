@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dt-pisa.example/contracts/schemas/source.schema.json",
+  "title": "Fonte",
+  "description": "Un dataset o servizio di un editore, con licenza e periodo del contenuto. Le versioni scaricate sono snapshot.",
+  "type": "object",
+  "required": ["source_id", "title", "publisher", "dataset_url", "license", "content_period", "crs", "units", "checks"],
+  "additionalProperties": false,
+  "properties": {
+    "source_id": {"$ref": "common.schema.json#/$defs/id_source"},
+    "title": {"type": "string", "minLength": 3},
+    "publisher": {"type": "string", "minLength": 2},
+    "dataset_url": {"$ref": "common.schema.json#/$defs/url"},
+    "resource_url": {"$ref": "common.schema.json#/$defs/url"},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "origin": {"enum": ["official_download", "ogc_service", "crowdsourced", "derived", "manual_survey"]},
+        "derived_from": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/id_source"}},
+        "note": {"type": "string"}
+      },
+      "required": ["origin"]
+    },
+    "license": {"$ref": "common.schema.json#/$defs/license"},
+    "content_period": {"$ref": "common.schema.json#/$defs/content_period"},
+    "crs": {
+      "type": "object",
+      "required": ["declared"],
+      "additionalProperties": false,
+      "properties": {
+        "declared": {"type": "string", "description": "CRS dichiarato dalla fonte, o 'undeclared'"},
+        "vertical_datum": {"enum": ["declared", "not_declared"]},
+        "note": {"type": "string"}
+      }
+    },
+    "units": {"type": "object", "description": "campo -> unità dichiarata o dedotta", "additionalProperties": {"type": "string"}},
+    "schema_fields": {"type": "array", "items": {"type": "string"}},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "result"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {"type": "string"},
+          "result": {"enum": ["pass", "warn", "fail"]},
+          "detail": {"type": "string"}
+        }
+      }
+    }
+  }
+}

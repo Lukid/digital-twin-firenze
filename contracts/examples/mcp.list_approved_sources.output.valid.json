@@ -1,0 +1,25 @@
+{
+ "sources": [
+  {
+   "source_id": "src_rt_unita_volumetriche",
+   "snapshot_id": "snp_rt_unita_volumetriche_20261001",
+   "license_state": "clear_with_reserve",
+   "permitted_use": "internal_prototype",
+   "content_period": {
+    "start": "2010-07-19",
+    "end": "2010-07-19",
+    "note": "data del volo; vale solo per gli oggetti presenti nel 2010"
+   }
+  }
+ ],
+ "gaps": [
+  {
+   "theme": "edifici",
+   "text": "Edifici posteriori al 2010 senza altezza misurata: da DSM 2021 o rilievo."
+  },
+  {
+   "theme": "edifici",
+   "text": "Portici e volumi sospesi non rilevati da nessuna fonte."
+  }
+ ]
+}

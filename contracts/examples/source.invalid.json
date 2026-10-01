@@ -1,0 +1,22 @@
+{
+ "source_id": "src_rt_lidar_dtm_1m",
+ "title": "DTM 1 m da LiDAR 2019-2021",
+ "publisher": "Regione Toscana",
+ "dataset_url": "https://dati.toscana.it/dataset/lidar",
+ "license": {
+  "state": "conflict",
+  "identifier": "cc-by",
+  "permitted_use": "redistribution"
+ },
+ "content_period": {
+  "start": "2019-01-01",
+  "end": "2021-12-31"
+ },
+ "crs": {
+  "declared": "RDN2008 / UTM 32N"
+ },
+ "units": {
+  "z": "m"
+ },
+ "checks": []
+}

@@ -1,0 +1,11 @@
+{
+ "error": {
+  "code": "ambiguous_destination",
+  "message": "Nell'area aoi_z2 ci sono 5 scuole: scegliere un destination_id prima di calcolare.",
+  "candidates": [
+   "dst_school_piee82101p",
+   "dst_school_piaa82102e",
+   "dst_school_pi1a01600g"
+  ]
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:EPSG::7791"
+  }
+ },
+ "conventions": {
+  "crs": "EPSG:7791",
+  "axis_order": "E,N",
+  "unit": "m",
+  "vertical_datum": "not_confirmed",
+  "timezone": "Europe/Rome"
+ },
+ "provenance": [
+  {
+   "source_id": "src_gtfs_at_toscana",
+   "file": "gtfs_fermate_zone.csv",
+   "sha256": "5aac4778e59dde78c521ade70a26611af83d0cdda57190248fdf4e677b920312"
+  }
+ ],
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     4840660.91,
+     612589.5
+    ]
+   },
+   "properties": {
+    "id": "dst_stop_pi4390",
+    "layer": "stop",
+    "source_id": "src_gtfs_at_toscana",
+    "cls": {
+     "name": "measured"
+    },
+    "name": "PELLICO"
+   }
+  }
+ ]
+}

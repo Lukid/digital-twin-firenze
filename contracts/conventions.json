@@ -1,0 +1,83 @@
+{
+  "versione": "1.0.0",
+  "data": "2026-10-01",
+  "stato": "proposta T02, da approvare",
+  "id": {
+    "regola": "Gli ID sono stabili: derivano dall'ID originario della fonte o da una chiave di contenuto, mai dalla posizione in un elenco. Un ID non si riusa per un altro oggetto. Una nuova versione del dato mantiene gli ID degli oggetti che la fonte identifica ancora.",
+    "formati": {
+      "source_id": "src_<slug>, es. src_gtfs_at_toscana",
+      "snapshot_id": "snp_<slug>_<AAAAMMGG di scarico UTC>[_NN], es. snp_gtfs_at_toscana_20261001",
+      "baseline_id": "bas_<slug>: insieme congelato di snapshot, es. bas_z2_20261001",
+      "aoi_id": "aoi_<slug>, es. aoi_z2",
+      "destination_id": "dst_<categoria>_<codice ufficiale minuscolo>, es. dst_school_piee82101p, dst_stop_pi4390",
+      "entrance_id": "ent_<fonte>_<tipo+id>, es. ent_osm_n6532183886",
+      "feature_id": "<tipo 3 lettere>_<fonte>_<ID originario>, es. bld_rt_RT0201010300640612, way_osm_5036121, nod_osm_31770726",
+      "job_id": "job_ + 16 esadecimali dello sha256 del JSON canonico (tool, inputs, params): stesso input, stesso job",
+      "manifest_id": "man_ + gli stessi 16 esadecimali del job",
+      "scenario_id": "scn_<slug>, con versione intera separata (1, 2, ...)",
+      "asset_id": "ast_<slug>"
+    },
+    "json_canonico": "chiavi ordinate, UTF-8, separatori compatti, numeri come da parser standard"
+  },
+  "crs": {
+    "operativo": "EPSG:7791",
+    "nome": "RDN2008 / UTM zone 32N, assi Est poi Nord",
+    "equivalente_non_usare": "EPSG:6707 (stesso sistema, ma assi Nord poi Est)",
+    "motivazione": [
+      "Le fonti regionali (unità volumetriche, DSM, DTM, WMS/WFS) dichiarano RDN2008 / UTM 32N: nessuna trasformazione di datum sui dati principali.",
+      "Il SIT comunale usa EPSG:3003 (Monte Mario / Italy zone 1): richiede una trasformazione verso RDN2008 la cui accuratezza va verificata in T03 con punti noti; si converte una volta sola in ingresso e si registra nel manifest della fonte.",
+      "UTM è metrico con fattore di scala 0,9996 sul meridiano centrale (9 E): Pisa è a circa 1,4 gradi a est, errore di lunghezza nell'ordine di 0,04 per cento, trascurabile per percorsi e ombre del pilota ma da dichiarare.",
+      "Il codice 6707 ha assi N,E secondo il registro EPSG: PROJ/pyproj lo rispettano, GDAL con ordine tradizionale no. Il codice 7791 ha gli stessi parametri con assi E,N e toglie l'ambiguità (provato, vedi sample)."
+    ],
+    "ordine_assi": "E,N sempre; in GeoJSON [E, N]; i limiti di range nello schema (E 166000-834000, N 3900000-5300000) respingono la coppia scambiata",
+    "geojson": "Eccezione deliberata a RFC 7946 (che impone WGS84): i file in EPSG:7791 dichiarano il membro 'crs' con URN, letto da GDAL/QGIS. I file per il client web, se servono, sono derivati a parte in EPSG:4326 e marcati come tali.",
+    "dati_in_ingresso": "Le fonti che consegnano lon/lat (OSM, GTFS, servizi regionali in 4326) sono trattate come RDN2008 geografico (EPSG:6706). Scarto atteso sotto 1 m, non misurato: da verificare in T03 con punti noti.",
+    "precisione_coordinate": "0,01 m (due decimali)",
+    "lunghezze_aree": "Calcolate in piano nel CRS operativo, senza correzione di scala"
+  },
+  "datum_verticale": {
+    "stato": "non_confermato",
+    "nota": "Le fonti regionali non dichiarano il datum verticale (audit edifici). Evidenza indiretta: DSM 2021, DTM 10 m e quota suolo uv_qs coerenti entro circa 1 m. Nessun modello di geoide viene assunto.",
+    "regola": "Ogni quota porta la dicitura 'datum non confermato' nei manifest (vertical_datum_status). Le altezze relative (uv_av, altezza chioma) non dipendono dal datum; le quote assolute si usano solo fra fonti regionali coerenti. Da confermare con la Regione prima di mescolare quote di altra origine."
+  },
+  "tempo": {
+    "timezone": "Europe/Rome",
+    "timestamp": "RFC 3339 con offset esplicito; i file generati usano UTC con suffisso Z",
+    "date_locali": "AAAA-MM-GG; orari locali HH:MM nella timezone Europe/Rome",
+    "ora_legale": "La conversione verso il motore solare passa per UTC con il database tz; non si sommano offset a mano",
+    "gtfs": "Gli orari GTFS restano stringhe HH:MM:SS riferite al giorno di servizio e possono superare 24 (nel feed fino a 26): non si interpretano come timestamp",
+    "azimut_solare": "gradi in senso orario da Nord (0 = N, 90 = E); elevazione sopra l'orizzonte in gradi"
+  },
+  "unita": {
+    "lunghezza": "m", "area": "m2", "volume": "m3", "tempo": "s (soglie di accessibilità in min, sempre con unità esplicita)",
+    "velocita": "m/s", "angolo": "deg", "adimensionale": "1", "elenco_ammesso": ["m", "m2", "m3", "s", "min", "h", "m/s", "deg", "1", "percent", "count", "count/km2", "km2"],
+    "regola": "Nessun numero senza unità nei manifest e negli scambi MCP"
+  },
+  "classificazione": {
+    "campo": "classification (nei manifest, scenari e messaggi MCP) o cls (per attributo nei file geografici)",
+    "valori": {
+      "measured": "misurato: rilevato da fonte o da campo, così come è",
+      "derived": "derivato: calcolato in modo deterministico da valori misurati (lunghezza, area, conteggi)",
+      "estimated": "stimato: ipotesi o modello; richiede incertezza dichiarata",
+      "scenario": "scenario: dimensione di un intervento ipotetico, mai osservata"
+    },
+    "regola": "Ogni valore ha una classe. Una stima senza intervallo o deviazione è respinta dallo schema."
+  },
+  "accessibilita_stati": {
+    "reachable": "raggiungibile entro la rete verificata",
+    "isolated": "isolato: nessun percorso sulla rete verificata (componente disconnessa), le componenti restano nei dati",
+    "insufficient_data": "dati insufficienti per decidere (attributi o rete mancanti)",
+    "forbidden": "vietato: accesso negato da una restrizione documentata",
+    "outside_model": "fuori dal modello: origine fuori da area o rete analizzata (dalla SPEC, punto aperto)"
+  },
+  "licenza_stati": {
+    "clear": "chiara", "clear_with_reserve": "chiara con riserva", "conflict": "in conflitto", "unproven": "non dimostrata",
+    "regola": "Se lo stato non è clear serve una nota di riserva; con conflict o unproven la ridistribuzione è esclusa e l'uso resta interno al prototipo"
+  },
+  "formati": {
+    "geometrie": "GeoPackage per revisione e archivio, GeoJSON in EPSG:7791 per campioni e scambi piccoli",
+    "tabelle": "Parquet", "grafo": "GraphML o formato da concordare in T04", "manifest_schemi": "JSON, JSON Schema 2020-12",
+    "checksum": "sha256 esadecimale minuscolo, 64 caratteri"
+  },
+  "nomi_prodotto": "Nei manifest e nei documenti cliente si descrive il metodo, non il prodotto che lo implementa"
+}

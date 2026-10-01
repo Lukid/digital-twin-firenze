@@ -1,0 +1,28 @@
+{
+ "destinations": [
+  {
+   "destination_id": "dst_school_piee82101p",
+   "category": "school",
+   "name": "Scuola Primaria C. Battisti",
+   "verification": "desk_candidate",
+   "entrances": [
+    {
+     "entrance_id": "ent_osm_n6532183886",
+     "position": [
+      4840302.55,
+      613152.54
+     ],
+     "verification": "unverified"
+    },
+    {
+     "entrance_id": "ent_osm_n5101368983",
+     "position": [
+      613125.06,
+      4840298.78
+     ],
+     "verification": "unverified"
+    }
+   ]
+  }
+ ]
+}

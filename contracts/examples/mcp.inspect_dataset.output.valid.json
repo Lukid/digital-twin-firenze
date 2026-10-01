@@ -1,0 +1,39 @@
+{
+ "source_id": "src_rt_unita_volumetriche",
+ "snapshot_id": "snp_rt_unita_volumetriche_20261001",
+ "fields": [
+  {
+   "name": "uv_av",
+   "unit": "m",
+   "classification": "measured",
+   "populated_fraction": 1.0
+  },
+  {
+   "name": "uv_por",
+   "unit": "1",
+   "classification": "measured",
+   "populated_fraction": 0.0
+  }
+ ],
+ "extent": [
+  612382,
+  4840169,
+  613600,
+  4841000
+ ],
+ "content_period": {
+  "start": "2010-07-19",
+  "end": "2010-07-19",
+  "note": "data del volo; vale solo per gli oggetti presenti nel 2010"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "identifier": "CC BY o CC BY-SA (politica open geodata regionale)",
+  "evidence_note": "Nessuna licenza sul layer: si applica la politica regionale.",
+  "reserve_note": "Licenza non scritta sul layer; versione CC BY o CC BY-SA da accertare con la Regione.",
+  "permitted_use": "internal_prototype"
+ },
+ "quality": [
+  "scarto mediano rispetto al DSM 2021: 2,3 m su Z2"
+ ]
+}

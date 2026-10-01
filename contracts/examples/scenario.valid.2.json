@@ -1,0 +1,9 @@
+{
+ "scenario_id": "scn_z2_nullo",
+ "version": 1,
+ "baseline_id": "bas_z2_20261001",
+ "title": "Scenario senza cambiamenti (delta atteso zero)",
+ "author": "Luca Baroncini",
+ "created_at": "2026-10-02T09:01:00Z",
+ "operations": []
+}

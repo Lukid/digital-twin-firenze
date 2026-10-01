@@ -1,0 +1,117 @@
+{
+ "manifest_id": "man_877a41bd5f95939a",
+ "job_id": "job_877a41bd5f95939a",
+ "tool": "compute_walk_access",
+ "aoi_id": "aoi_z2",
+ "baseline_id": "bas_z2_20261001",
+ "datasets": [
+  {
+   "snapshot_id": "snp_gtfs_at_toscana_20261001",
+   "source_id": "src_gtfs_at_toscana",
+   "sha256": "2c00c8a604c60fb72c409715dcc8f2f20ef151f0fe389c5a3d08db2f217102c7",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_osm_pisa_20261001",
+   "source_id": "src_osm_pisa",
+   "sha256": "b4dff9224020cf9de91b1d30c29e84ec6239feffdca9b697e427e7567f4105cf",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_rt_unita_volumetriche_20261001",
+   "source_id": "src_rt_unita_volumetriche",
+   "sha256": "45dcd0e8f43d424948b999ac701a46a9da2680efcd6cc833cd9d4db75575a25e",
+   "license_state": "clear_with_reserve"
+  }
+ ],
+ "params": {
+  "destination_ids": [
+   "dst_school_piee82101p"
+  ],
+  "origins": {
+   "kind": "civici_sit",
+   "radius_m": 1000,
+   "count": 6768
+  },
+  "profile": {
+   "speed_m_s": 1.2,
+   "snap_limit_m": 25
+  },
+  "thresholds_min": [
+   5,
+   10,
+   15
+  ]
+ },
+ "method": {
+  "name": "shortest_path_walk",
+  "version": "0.1.0",
+  "description": "Cammino minimo pesato per tempo su rete pedonale OSM congelata, con raccordo registrato dall'origine alla rete."
+ },
+ "crs": "EPSG:7791",
+ "vertical_datum_status": "not_confirmed",
+ "timezone": "Europe/Rome",
+ "timing": {
+  "started_at": "2026-10-02T08:00:01Z",
+  "finished_at": "2026-10-02T08:00:41Z",
+  "duration_s": 40
+ },
+ "metrics": [
+  {
+   "metric_id": "origins_total",
+   "label": "Civici SIT entro 1.000 m dalla scuola",
+   "value": 6768,
+   "unit": "count",
+   "classification": "derived"
+  },
+  {
+   "metric_id": "served_share_10min",
+   "label": "Quota di origini campione servite entro 10 minuti (valore d'esempio)",
+   "value": 0.31,
+   "unit": "1",
+   "classification": "estimated",
+   "scope": "soglia 10 min, 1,2 m/s",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.25,
+    "high": 0.37,
+    "basis": "sensibilità a 0,8-1,4 m/s"
+   }
+  }
+ ],
+ "coverage": {
+  "accessibility_counts": {
+   "reachable": 5102,
+   "isolated": 211,
+   "insufficient_data": 640,
+   "forbidden": 0,
+   "outside_model": 815
+  },
+  "note": "Un civico non è un residente."
+ },
+ "limits": [
+  {
+   "code": "example_illustrative_values",
+   "text": "Valori d'esempio per collaudare il contratto: non sono un risultato di analisi."
+  },
+  {
+   "code": "entrance_not_verified",
+   "text": "Ingresso della scuola non verificato sul posto: 8 ingressi OSM, alcuni forse di un edificio contiguo."
+  },
+  {
+   "code": "network_osm_only",
+   "text": "Rete solo OSM, nessun dato ufficiale con marciapiedi e attraversamenti."
+  }
+ ],
+ "validation_status": "not_validated_locally",
+ "assets": [
+  {
+   "asset_id": "ast_z2_campione",
+   "path": "contracts/sample/z2_campione.geojson",
+   "media_type": "application/geo+json",
+   "bytes": 23876,
+   "sha256": "4243f04a22759e848e9e06ab88cd030ccd3635a61567356d440722045ca89766",
+   "role": "input_copy"
+  }
+ ]
+}

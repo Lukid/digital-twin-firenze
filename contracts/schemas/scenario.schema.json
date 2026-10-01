@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dt-pisa.example/contracts/schemas/scenario.schema.json",
+  "title": "Scenario",
+  "description": "Baseline congelata più elenco di operazioni dichiarate. Non modifica mai lo snapshot originario. Elenco vuoto ammesso: scenario nullo, delta atteso zero.",
+  "type": "object",
+  "required": ["scenario_id", "version", "baseline_id", "author", "created_at", "operations"],
+  "additionalProperties": false,
+  "properties": {
+    "scenario_id": {"$ref": "common.schema.json#/$defs/id_scenario"},
+    "version": {"type": "integer", "minimum": 1},
+    "baseline_id": {"$ref": "common.schema.json#/$defs/id_baseline"},
+    "title": {"type": "string"},
+    "author": {"type": "string", "minLength": 2},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "operations": {"type": "array", "items": {"$ref": "#/$defs/operation"}}
+  },
+  "$defs": {
+    "operation": {
+      "type": "object",
+      "required": ["op_id", "op", "target_type", "geometry", "dimensions", "hypothesis_status"],
+      "additionalProperties": false,
+      "properties": {
+        "op_id": {"type": "string", "pattern": "^op_[a-z0-9_]{1,40}$"},
+        "op": {"enum": ["add", "remove", "modify"]},
+        "target_type": {"enum": ["tree", "shelter", "building_volume", "canopy"]},
+        "target_id": {"$ref": "common.schema.json#/$defs/id_feature", "description": "Obbligatorio per remove e modify"},
+        "geometry": {"$ref": "common.schema.json#/$defs/geometry"},
+        "dimensions": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "object",
+            "required": ["value", "unit", "classification", "dimension_source"],
+            "properties": {
+              "value": {"type": "number"},
+              "unit": {"$ref": "common.schema.json#/$defs/unit"},
+              "classification": {"const": "scenario"},
+              "dimension_source": {"type": "string", "minLength": 3}
+            },
+            "additionalProperties": false
+          }
+        },
+        "hypothesis_status": {"enum": ["hypothesis", "feasibility_unknown", "feasibility_checked"]},
+        "note": {"type": "string"}
+      },
+      "if": {"properties": {"op": {"enum": ["remove", "modify"]}}, "required": ["op"]},
+      "then": {"required": ["target_id"]}
+    }
+  }
+}

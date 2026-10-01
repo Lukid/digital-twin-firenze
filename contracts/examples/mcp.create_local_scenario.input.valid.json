@@ -1,0 +1,102 @@
+{
+ "baseline_id": "bas_z2_20261001",
+ "scenario_title": "Due pensiline presso la fermata Pellico",
+ "operations": [
+  {
+   "op_id": "op_pensilina_1",
+   "op": "add",
+   "target_type": "shelter",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       612591.5,
+       4840660.91
+      ],
+      [
+       612597.5,
+       4840660.91
+      ],
+      [
+       612597.5,
+       4840662.91
+      ],
+      [
+       612591.5,
+       4840662.91
+      ],
+      [
+       612591.5,
+       4840660.91
+      ]
+     ]
+    ]
+   },
+   "dimensions": {
+    "height_m": {
+     "value": 3.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di esempio, non da progetto"
+    },
+    "length_m": {
+     "value": 6.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di esempio, non da progetto"
+    }
+   },
+   "hypothesis_status": "feasibility_unknown",
+   "note": "Vicino alla fermata Pellico PI4390; sottoservizi e proprietà del suolo non verificati."
+  },
+  {
+   "op_id": "op_pensilina_2",
+   "op": "add",
+   "target_type": "shelter",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       612599.5,
+       4840660.91
+      ],
+      [
+       612605.5,
+       4840660.91
+      ],
+      [
+       612605.5,
+       4840662.91
+      ],
+      [
+       612599.5,
+       4840662.91
+      ],
+      [
+       612599.5,
+       4840660.91
+      ]
+     ]
+    ]
+   },
+   "dimensions": {
+    "height_m": {
+     "value": 3.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di esempio, non da progetto"
+    },
+    "length_m": {
+     "value": 6.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di esempio, non da progetto"
+    }
+   },
+   "hypothesis_status": "feasibility_unknown",
+   "note": "Vicino alla fermata Pellico PI4390; sottoservizi e proprietà del suolo non verificati."
+  }
+ ]
+}

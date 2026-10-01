@@ -1,0 +1,1414 @@
+{
+ "type": "FeatureCollection",
+ "name": "z2_campione",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:EPSG::7791"
+  }
+ },
+ "conventions": {
+  "crs": "EPSG:7791",
+  "axis_order": "E,N",
+  "unit": "m",
+  "vertical_datum": "not_confirmed",
+  "timezone": "Europe/Rome"
+ },
+ "provenance": [
+  {
+   "source_id": "src_osm_pisa",
+   "file": "rete/campioni/osm_Z2.json",
+   "sha256": "b4dff9224020cf9de91b1d30c29e84ec6239feffdca9b697e427e7567f4105cf"
+  },
+  {
+   "source_id": "src_osm_pisa",
+   "file": "destinazioni/campioni/candidati_caso_A.json",
+   "sha256": "3ef3c8386b2c235f694ee32961e7a9f19fd02ae4bd62790637d42612011137d3"
+  },
+  {
+   "source_id": "src_gtfs_at_toscana",
+   "file": "destinazioni/campioni/gtfs_fermate_zone.csv",
+   "sha256": "5aac4778e59dde78c521ade70a26611af83d0cdda57190248fdf4e677b920312"
+  },
+  {
+   "source_id": "src_rt_unita_volumetriche",
+   "file": "edifici/campioni/rt_uv_Z2.json",
+   "sha256": "45dcd0e8f43d424948b999ac701a46a9da2680efcd6cc833cd9d4db75575a25e"
+  }
+ ],
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     613167.27,
+     4840330.39
+    ]
+   },
+   "properties": {
+    "id": "dst_school_piee82101p",
+    "layer": "destination",
+    "source_id": "src_osm_pisa",
+    "name": "Scuola Primaria C. Battisti",
+    "category": "school",
+    "mim_code": "PIEE82101P",
+    "verification": "desk_candidate",
+    "orig_wgs84": [
+     10.404627,
+     43.707369
+    ],
+    "cls": {
+     "name": "measured",
+     "category": "derived",
+     "mim_code": "measured",
+     "verification": "derived",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     613125.06,
+     4840298.78
+    ]
+   },
+   "properties": {
+    "id": "ent_osm_n5101368983",
+    "layer": "entrance",
+    "source_id": "src_osm_pisa",
+    "destination_id": "dst_school_piee82101p",
+    "osm_entrance": "yes",
+    "verification": "unverified",
+    "orig_wgs84": [
+     10.4040966,
+     43.7070909
+    ],
+    "cls": {
+     "osm_entrance": "measured",
+     "verification": "derived",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     613152.54,
+     4840302.55
+    ]
+   },
+   "properties": {
+    "id": "ent_osm_n6532183886",
+    "layer": "entrance",
+    "source_id": "src_osm_pisa",
+    "destination_id": "dst_school_piee82101p",
+    "osm_entrance": "main",
+    "verification": "unverified",
+    "orig_wgs84": [
+     10.4044383,
+     43.7071206
+    ],
+    "cls": {
+     "osm_entrance": "measured",
+     "verification": "derived",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     613139.76,
+     4840386.56
+    ]
+   },
+   "properties": {
+    "id": "ent_osm_n13804118745",
+    "layer": "entrance",
+    "source_id": "src_osm_pisa",
+    "destination_id": "dst_school_piee82101p",
+    "osm_entrance": "yes",
+    "verification": "unverified",
+    "orig_wgs84": [
+     10.4042974,
+     43.7078788
+    ],
+    "cls": {
+     "osm_entrance": "measured",
+     "verification": "derived",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     612589.5,
+     4840660.91
+    ]
+   },
+   "properties": {
+    "id": "dst_stop_pi4390",
+    "layer": "stop",
+    "source_id": "src_gtfs_at_toscana",
+    "name": "PELLICO",
+    "stop_code": "PI4390",
+    "trips_on_2026_10_01": 583,
+    "lines": "1+ 13 14 2 21 22 23 3+ 4 5 6",
+    "wheelchair_boarding": "unknown",
+    "orig_wgs84": [
+     10.397527,
+     43.710432
+    ],
+    "cls": {
+     "name": "measured",
+     "stop_code": "measured",
+     "trips_on_2026_10_01": "derived",
+     "lines": "derived",
+     "wheelchair_boarding": "measured",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     612636.04,
+     4840625.15
+    ]
+   },
+   "properties": {
+    "id": "dst_stop_pi4389",
+    "layer": "stop",
+    "source_id": "src_gtfs_at_toscana",
+    "name": "BATTISTI",
+    "stop_code": "PI4389",
+    "trips_on_2026_10_01": 416,
+    "lines": "1+ 13 15 2 21 22 23 3+ 4 6",
+    "wheelchair_boarding": "unknown",
+    "orig_wgs84": [
+     10.398097,
+     43.710103
+    ],
+    "cls": {
+     "name": "measured",
+     "stop_code": "measured",
+     "trips_on_2026_10_01": "derived",
+     "lines": "derived",
+     "wheelchair_boarding": "measured",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     613096.52,
+     4840325.2
+    ]
+   },
+   "properties": {
+    "id": "dst_stop_pi4074",
+    "layer": "stop",
+    "source_id": "src_gtfs_at_toscana",
+    "name": "CORRIDONI 1",
+    "stop_code": "PI4074",
+    "trips_on_2026_10_01": 203,
+    "lines": "12 15 16 21 3+ 5",
+    "wheelchair_boarding": "unknown",
+    "orig_wgs84": [
+     10.403748,
+     43.707333
+    ],
+    "cls": {
+     "name": "measured",
+     "stop_code": "measured",
+     "trips_on_2026_10_01": "derived",
+     "lines": "derived",
+     "wheelchair_boarding": "measured",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      613106.05,
+      4840403.3
+     ],
+     [
+      613090.8,
+      4840371.15
+     ],
+     [
+      613076.28,
+      4840339.46
+     ],
+     [
+      613075.79,
+      4840337.93
+     ],
+     [
+      613075.96,
+      4840337.26
+     ],
+     [
+      613076.25,
+      4840337.12
+     ],
+     [
+      613218.69,
+      4840271.2
+     ],
+     [
+      613220.11,
+      4840271.1
+     ],
+     [
+      613221.34,
+      4840272.32
+     ]
+    ]
+   },
+   "properties": {
+    "id": "way_osm_1508845483",
+    "layer": "network_edge",
+    "source_id": "src_osm_pisa",
+    "highway": "footway",
+    "name": "",
+    "sidewalk_tags": "",
+    "length_m": 233.17,
+    "cls": {
+     "highway": "measured",
+     "name": "measured",
+     "sidewalk_tags": "measured",
+     "length_m": "derived"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      613187.86,
+      4840278.89
+     ],
+     [
+      613149.41,
+      4840296.03
+     ],
+     [
+      613073.85,
+      4840331.94
+     ],
+     [
+      613068.89,
+      4840334.19
+     ]
+    ]
+   },
+   "properties": {
+    "id": "way_osm_22717661",
+    "layer": "network_edge",
+    "source_id": "src_osm_pisa",
+    "highway": "tertiary",
+    "name": "Via Filippo Corridoni",
+    "sidewalk_tags": "",
+    "length_m": 131.2,
+    "cls": {
+     "highway": "measured",
+     "name": "measured",
+     "sidewalk_tags": "measured",
+     "length_m": "derived"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      613249.29,
+      4840334.08
+     ],
+     [
+      613249.11,
+      4840335.07
+     ],
+     [
+      613217.78,
+      4840350.09
+     ],
+     [
+      613217.47,
+      4840350.24
+     ],
+     [
+      613171.31,
+      4840372.22
+     ],
+     [
+      613106.05,
+      4840403.3
+     ]
+    ]
+   },
+   "properties": {
+    "id": "way_osm_1510001182",
+    "layer": "network_edge",
+    "source_id": "src_osm_pisa",
+    "highway": "footway",
+    "name": "",
+    "sidewalk_tags": "",
+    "length_m": 159.5,
+    "cls": {
+     "highway": "measured",
+     "name": "measured",
+     "sidewalk_tags": "measured",
+     "length_m": "derived"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      612926.44,
+      4840393.61
+     ],
+     [
+      612927.17,
+      4840393.33
+     ],
+     [
+      613060.32,
+      4840331.39
+     ],
+     [
+      613061.61,
+      4840330.77
+     ],
+     [
+      613069.29,
+      4840327.16
+     ],
+     [
+      613071.23,
+      4840326.31
+     ],
+     [
+      613146.95,
+      4840290.85
+     ],
+     [
+      613179.33,
+      4840275.69
+     ],
+     [
+      613184.11,
+      4840273.63
+     ],
+     [
+      613184.04,
+      4840271.15
+     ]
+    ]
+   },
+   "properties": {
+    "id": "way_osm_1236412358",
+    "layer": "network_edge",
+    "source_id": "src_osm_pisa",
+    "highway": "footway",
+    "name": "",
+    "sidewalk_tags": "",
+    "length_m": 286.72,
+    "cls": {
+     "highway": "measured",
+     "name": "measured",
+     "sidewalk_tags": "measured",
+     "length_m": "derived"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      613104.57,
+      4840409.32
+     ],
+     [
+      613109.2,
+      4840406.99
+     ],
+     [
+      613171.88,
+      4840377.43
+     ],
+     [
+      613173.32,
+      4840376.71
+     ],
+     [
+      613179.97,
+      4840373.6
+     ]
+    ]
+   },
+   "properties": {
+    "id": "way_osm_23416567",
+    "layer": "network_edge",
+    "source_id": "src_osm_pisa",
+    "highway": "residential",
+    "name": "Via Amerigo Vespucci",
+    "sidewalk_tags": "both",
+    "length_m": 83.44,
+    "cls": {
+     "highway": "measured",
+     "name": "measured",
+     "sidewalk_tags": "measured",
+     "length_m": "derived"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      613110.45,
+      4840411.1
+     ],
+     [
+      613174.53,
+      4840381.18
+     ],
+     [
+      613175.31,
+      4840381.12
+     ],
+     [
+      613175.79,
+      4840381.66
+     ]
+    ]
+   },
+   "properties": {
+    "id": "way_osm_1510001184",
+    "layer": "network_edge",
+    "source_id": "src_osm_pisa",
+    "highway": "footway",
+    "name": "",
+    "sidewalk_tags": "",
+    "length_m": 72.23,
+    "cls": {
+     "highway": "measured",
+     "name": "measured",
+     "sidewalk_tags": "measured",
+     "length_m": "derived"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      613051.58,
+      4840301.13
+     ],
+     [
+      613064.39,
+      4840294.42
+     ],
+     [
+      613111.66,
+      4840271.85
+     ],
+     [
+      613123.3,
+      4840266.78
+     ],
+     [
+      613129.26,
+      4840264.75
+     ],
+     [
+      613135.21,
+      4840263.09
+     ],
+     [
+      613139.55,
+      4840262.13
+     ],
+     [
+      613143.36,
+      4840261.79
+     ],
+     [
+      613149.35,
+      4840261.38
+     ],
+     [
+      613153.37,
+      4840261.31
+     ],
+     [
+      613156.54,
+      4840261.42
+     ],
+     [
+      613162.52,
+      4840261.98
+     ],
+     [
+      613171.18,
+      4840263.26
+     ],
+     [
+      613181.14,
+      4840264.89
+     ],
+     [
+      613187.92,
+      4840268.82
+     ],
+     [
+      613189.15,
+      4840271.08
+     ],
+     [
+      613189.48,
+      4840273.33
+     ],
+     [
+      613187.86,
+      4840278.89
+     ]
+    ]
+   },
+   "properties": {
+    "id": "way_osm_153762306",
+    "layer": "network_edge",
+    "source_id": "src_osm_pisa",
+    "highway": "tertiary",
+    "name": "Cavalcavia San Giusto",
+    "sidewalk_tags": "",
+    "length_m": 156.81,
+    "cls": {
+     "highway": "measured",
+     "name": "measured",
+     "sidewalk_tags": "measured",
+     "length_m": "derived"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      613184.04,
+      4840271.15
+     ],
+     [
+      613182.6,
+      4840269.66
+     ],
+     [
+      613162.43,
+      4840265.38
+     ],
+     [
+      613150.79,
+      4840264.85
+     ],
+     [
+      613142.18,
+      4840265.6
+     ],
+     [
+      613131.97,
+      4840267.46
+     ],
+     [
+      613122.63,
+      4840270.79
+     ],
+     [
+      613065.87,
+      4840297.47
+     ],
+     [
+      613055.62,
+      4840301.96
+     ],
+     [
+      613056.45,
+      4840303.5
+     ],
+     [
+      613053.73,
+      4840304.64
+     ],
+     [
+      613050.76,
+      4840306.27
+     ],
+     [
+      613050.04,
+      4840305.23
+     ]
+    ]
+   },
+   "properties": {
+    "id": "way_osm_1236412366",
+    "layer": "network_edge",
+    "source_id": "src_osm_pisa",
+    "highway": "footway",
+    "name": "",
+    "sidewalk_tags": "",
+    "length_m": 146.54,
+    "cls": {
+     "highway": "measured",
+     "name": "measured",
+     "sidewalk_tags": "measured",
+     "length_m": "derived"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     613073.85,
+     4840331.94
+    ]
+   },
+   "properties": {
+    "id": "nod_osm_5020308234",
+    "layer": "crossing",
+    "source_id": "src_osm_pisa",
+    "crossing": "uncontrolled",
+    "tactile_paving": "no",
+    "orig_wgs84": [
+     10.4034681,
+     43.7073972
+    ],
+    "cls": {
+     "crossing": "measured",
+     "tactile_paving": "measured",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     613072.22,
+     4840341.23
+    ]
+   },
+   "properties": {
+    "id": "nod_osm_5020308236",
+    "layer": "crossing",
+    "source_id": "src_osm_pisa",
+    "crossing": "uncontrolled",
+    "tactile_paving": "no",
+    "orig_wgs84": [
+     10.4034499,
+     43.707481
+    ],
+    "cls": {
+     "crossing": "measured",
+     "tactile_paving": "measured",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     613109.2,
+     4840406.99
+    ]
+   },
+   "properties": {
+    "id": "nod_osm_9425208140",
+    "layer": "crossing",
+    "source_id": "src_osm_pisa",
+    "crossing": "uncontrolled",
+    "tactile_paving": "no",
+    "orig_wgs84": [
+     10.4039225,
+     43.7080673
+    ],
+    "cls": {
+     "crossing": "measured",
+     "tactile_paving": "measured",
+     "orig_wgs84": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       613178.06,
+       4840345.24
+      ],
+      [
+       613165.74,
+       4840320.92
+      ],
+      [
+       613164.93,
+       4840321.24
+      ],
+      [
+       613160.51,
+       4840311.17
+      ],
+      [
+       613172.28,
+       4840305.93
+      ],
+      [
+       613173.37,
+       4840308.39
+      ],
+      [
+       613178.89,
+       4840305.93
+      ],
+      [
+       613181.49,
+       4840304.75
+      ],
+      [
+       613182.11,
+       4840306.09
+      ],
+      [
+       613190.39,
+       4840302.35
+      ],
+      [
+       613188.53,
+       4840298.2
+      ],
+      [
+       613195.19,
+       4840295.21
+      ],
+      [
+       613190.22,
+       4840284.12
+      ],
+      [
+       613186.48,
+       4840285.84
+      ],
+      [
+       613183.8,
+       4840287.01
+      ],
+      [
+       613184.58,
+       4840288.8
+      ],
+      [
+       613158.84,
+       4840300.26
+      ],
+      [
+       613158.06,
+       4840298.69
+      ],
+      [
+       613146.11,
+       4840304.82
+      ],
+      [
+       613126.53,
+       4840313.71
+      ],
+      [
+       613130.33,
+       4840322.44
+      ],
+      [
+       613151.04,
+       4840313.12
+      ],
+      [
+       613156.25,
+       4840324.65
+      ],
+      [
+       613152.59,
+       4840326.37
+      ],
+      [
+       613154.84,
+       4840331.41
+      ],
+      [
+       613158.58,
+       4840329.69
+      ],
+      [
+       613165.18,
+       4840344.25
+      ],
+      [
+       613167.75,
+       4840349.84
+      ],
+      [
+       613178.06,
+       4840345.24
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "bld_rt_RT0201010300653521",
+    "layer": "building_volume",
+    "source_id": "src_rt_unita_volumetriche",
+    "edifc_id": "RT0201020300170927",
+    "height_m": 11.21,
+    "ground_elev_m": 4.6,
+    "roof_elev_m": 15.81,
+    "area_m2": 1231.0,
+    "survey_year": 2010,
+    "cls": {
+     "edifc_id": "measured",
+     "height_m": "measured",
+     "ground_elev_m": "measured",
+     "roof_elev_m": "measured",
+     "area_m2": "derived",
+     "survey_year": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       613181.49,
+       4840352.08
+      ],
+      [
+       613178.06,
+       4840345.24
+      ],
+      [
+       613167.75,
+       4840349.84
+      ],
+      [
+       613165.18,
+       4840344.25
+      ],
+      [
+       613157.15,
+       4840347.78
+      ],
+      [
+       613162.89,
+       4840360.43
+      ],
+      [
+       613181.49,
+       4840352.08
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "bld_rt_RT0201010300648483",
+    "layer": "building_volume",
+    "source_id": "src_rt_unita_volumetriche",
+    "edifc_id": "RT0201020300176775",
+    "height_m": 6.27,
+    "ground_elev_m": 4.6,
+    "roof_elev_m": 10.87,
+    "area_m2": 209.46,
+    "survey_year": 2010,
+    "cls": {
+     "edifc_id": "measured",
+     "height_m": "measured",
+     "ground_elev_m": "measured",
+     "roof_elev_m": "measured",
+     "area_m2": "derived",
+     "survey_year": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       613194.03,
+       4840358.84
+      ],
+      [
+       613199.39,
+       4840356.27
+      ],
+      [
+       613191.84,
+       4840340.7
+      ],
+      [
+       613186.48,
+       4840343.27
+      ],
+      [
+       613194.03,
+       4840358.84
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "bld_rt_RT0201010300648479",
+    "layer": "building_volume",
+    "source_id": "src_rt_unita_volumetriche",
+    "edifc_id": "RT0201020300176773",
+    "height_m": 3.5,
+    "ground_elev_m": 4.6,
+    "roof_elev_m": 8.1,
+    "area_m2": 102.86,
+    "survey_year": 2010,
+    "cls": {
+     "edifc_id": "measured",
+     "height_m": "measured",
+     "ground_elev_m": "measured",
+     "roof_elev_m": "measured",
+     "area_m2": "derived",
+     "survey_year": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       613141.26,
+       4840329.06
+      ],
+      [
+       613135.58,
+       4840331.3
+      ],
+      [
+       613137.6,
+       4840336.22
+      ],
+      [
+       613143.28,
+       4840333.88
+      ],
+      [
+       613141.26,
+       4840329.06
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "bld_rt_RT0201010300653494",
+    "layer": "building_volume",
+    "source_id": "src_rt_unita_volumetriche",
+    "edifc_id": "",
+    "height_m": 3.06,
+    "ground_elev_m": 4.6,
+    "roof_elev_m": 7.66,
+    "area_m2": 32.29,
+    "survey_year": 2010,
+    "cls": {
+     "edifc_id": "measured",
+     "height_m": "measured",
+     "ground_elev_m": "measured",
+     "roof_elev_m": "measured",
+     "area_m2": "derived",
+     "survey_year": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       613124.97,
+       4840353.67
+      ],
+      [
+       613125.52,
+       4840354.79
+      ],
+      [
+       613142.25,
+       4840346.75
+      ],
+      [
+       613139.91,
+       4840342.26
+      ],
+      [
+       613135.85,
+       4840344.19
+      ],
+      [
+       613136.32,
+       4840345.2
+      ],
+      [
+       613123.8,
+       4840351.21
+      ],
+      [
+       613124.97,
+       4840353.67
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "bld_rt_RT0201010300653530",
+    "layer": "building_volume",
+    "source_id": "src_rt_unita_volumetriche",
+    "edifc_id": "",
+    "height_m": 2.31,
+    "ground_elev_m": 4.6,
+    "roof_elev_m": 6.91,
+    "area_m2": 78.41,
+    "survey_year": 2010,
+    "cls": {
+     "edifc_id": "measured",
+     "height_m": "measured",
+     "ground_elev_m": "measured",
+     "roof_elev_m": "measured",
+     "area_m2": "derived",
+     "survey_year": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       613100.5,
+       4840337.37
+      ],
+      [
+       613102.52,
+       4840341.85
+      ],
+      [
+       613115.03,
+       4840336.17
+      ],
+      [
+       613112.39,
+       4840330.35
+      ],
+      [
+       613116.53,
+       4840328.53
+      ],
+      [
+       613118.86,
+       4840333.68
+      ],
+      [
+       613125.28,
+       4840330.79
+      ],
+      [
+       613123.41,
+       4840326.65
+      ],
+      [
+       613126.58,
+       4840325.15
+      ],
+      [
+       613130.08,
+       4840332.99
+      ],
+      [
+       613134.22,
+       4840331.06
+      ],
+      [
+       613130.33,
+       4840322.44
+      ],
+      [
+       613126.53,
+       4840313.71
+      ],
+      [
+       613109.48,
+       4840321.64
+      ],
+      [
+       613096.48,
+       4840327.86
+      ],
+      [
+       613100.5,
+       4840337.37
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "bld_rt_RT0201010300653506",
+    "layer": "building_volume",
+    "source_id": "src_rt_unita_volumetriche",
+    "edifc_id": "RT0201020300169511",
+    "height_m": 11.21,
+    "ground_elev_m": 4.6,
+    "roof_elev_m": 15.81,
+    "area_m2": 479.51,
+    "survey_year": 2010,
+    "cls": {
+     "edifc_id": "measured",
+     "height_m": "measured",
+     "ground_elev_m": "measured",
+     "roof_elev_m": "measured",
+     "area_m2": "derived",
+     "survey_year": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       613146.16,
+       4840382.47
+      ],
+      [
+       613157.05,
+       4840377.44
+      ],
+      [
+       613150.05,
+       4840362.21
+      ],
+      [
+       613140.95,
+       4840366.39
+      ],
+      [
+       613142.82,
+       4840370.42
+      ],
+      [
+       613145.93,
+       4840377.14
+      ],
+      [
+       613144.46,
+       4840378.0
+      ],
+      [
+       613146.16,
+       4840382.47
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "bld_rt_RT0201010300653546",
+    "layer": "building_volume",
+    "source_id": "src_rt_unita_volumetriche",
+    "edifc_id": "RT0201020300176795",
+    "height_m": 12.31,
+    "ground_elev_m": 4.6,
+    "roof_elev_m": 16.91,
+    "area_m2": 176.55,
+    "survey_year": 2010,
+    "cls": {
+     "edifc_id": "measured",
+     "height_m": "measured",
+     "ground_elev_m": "measured",
+     "roof_elev_m": "measured",
+     "area_m2": "derived",
+     "survey_year": "measured"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       613069.41,
+       4840322.18
+      ],
+      [
+       613070.58,
+       4840324.76
+      ],
+      [
+       613160.49,
+       4840283.73
+      ],
+      [
+       613158.54,
+       4840279.48
+      ],
+      [
+       613165.04,
+       4840276.47
+      ],
+      [
+       613161.23,
+       4840268.3
+      ],
+      [
+       613157.33,
+       4840270.12
+      ],
+      [
+       613156.79,
+       4840268.78
+      ],
+      [
+       613151.51,
+       4840271.14
+      ],
+      [
+       613152.29,
+       4840272.81
+      ],
+      [
+       613106.24,
+       4840293.81
+      ],
+      [
+       613107.02,
+       4840295.49
+      ],
+      [
+       613084.44,
+       4840305.77
+      ],
+      [
+       613083.58,
+       4840303.87
+      ],
+      [
+       613078.63,
+       4840306.12
+      ],
+      [
+       613079.49,
+       4840307.8
+      ],
+      [
+       613074.13,
+       4840310.26
+      ],
+      [
+       613073.04,
+       4840307.91
+      ],
+      [
+       613064.67,
+       4840311.77
+      ],
+      [
+       613066.07,
+       4840314.9
+      ],
+      [
+       613069.41,
+       4840322.18
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "id": "bld_rt_RT0201010300653467",
+    "layer": "building_volume",
+    "source_id": "src_rt_unita_volumetriche",
+    "edifc_id": "RT0201020300174141",
+    "height_m": 13.8,
+    "ground_elev_m": 3.69,
+    "roof_elev_m": 17.49,
+    "area_m2": 1347.6,
+    "survey_year": 2010,
+    "cls": {
+     "edifc_id": "measured",
+     "height_m": "measured",
+     "ground_elev_m": "measured",
+     "roof_elev_m": "measured",
+     "area_m2": "derived",
+     "survey_year": "measured"
+    }
+   }
+  }
+ ]
+}

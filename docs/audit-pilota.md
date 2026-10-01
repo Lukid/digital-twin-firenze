@@ -131,7 +131,7 @@ Sono stime di pianificazione, non preventivi.
 
 1. Chiedere al Comune la licenza dei layer SIT (scuole, civici, edifici). Fino ad allora: solo uso interno del prototipo.
 2. Chiedere al Comune l'accesso al censimento degli alberi (formato, campi, data, licenza).
-3. Approvare Z2 come pilota, oppure Z1.
+3. ~~Approvare Z2 come pilota, oppure Z1.~~ Approvato Z2 dall'utente il 1 ottobre 2026.
 4. Pianificare un sopralluogo in Z2: ingressi della scuola, 5-10 percorsi, un corridoio per B.
 5. Eventuale segnalazione al Comune: tre layer SIT pubblici (FABBRICATI_PEG, STRADE, TERRENI_PEG) dichiarano operazioni di scrittura. Non testato.
 
