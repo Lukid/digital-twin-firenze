@@ -1,6 +1,6 @@
 # Pisa Digital Twin — piano di fattibilità e realizzazione
 
-Data: 1 ottobre 2026. Revisione 2, basata sulle risposte dell’utente. **Direzione definita; area pilota, interlocutore, budget e calendario ancora aperti.** Nessuna applicazione implementata o pubblicata.
+Data: 1 ottobre 2026. Revisione 3. **Cambio di territorio (D12): il pilota passa da Pisa Z2 a Firenze, area Novoli - Firenze Nova.** Il lavoro su Pisa resta nel repository come primo pilota (motori, servizio MCP, scena e test riusabili). Interlocutore, budget e calendario ancora aperti. Nessuna applicazione pubblicata.
 
 ## 1. Risultato proposto
 
@@ -36,7 +36,7 @@ Un'animazione d'ombra non verifica il calcolo. Il prototipo deve usare un motore
 |---|---|---|
 | D01 | Confermato dall'utente | Primo pubblico: Comune e partner tecnici/ricerca; utilizzo interno per demo e feedback |
 | D02 | Confermato dall'utente | Casi prioritari: accessibilità pedonale e ombreggiamento; caso concreto scelto dopo audit e interlocutore |
-| D03 | Confermato dall'utente (1 ottobre 2026) | Pilota Z2 Stazione / Sant'Antonio / Corso Italia, riquadro in `docs/audit/ZONE.json`; scelta motivata in `docs/audit-pilota.md`. Z1 alternativa |
+| D03 | Superato da D12 (1 ottobre 2026) | Primo pilota Z2 Pisa Stazione / Sant'Antonio / Corso Italia (`docs/audit/ZONE.json`, `docs/audit-pilota.md`): consegnati T01-T10 e T12, T11 solo preparato |
 | D04 | Confermato dall'utente | Volumi semplificati; precisione adeguata alla domanda; dettaglio di altezze/chiome per le ombre |
 | D05 | Aperto | Budget, calendario, tempo di revisione umana e capacità di rilievo locale |
 | D06 | Confermato come impostazione | Sviluppo nostro + agenti AI; competenze GIS e di dominio per analisi specialistiche; nessun partner già confermato |
@@ -44,6 +44,7 @@ Un'animazione d'ombra non verifica il calcolo. Il prototipo deve usare un motore
 | D08 | Aperto | Licenze del codice, diffusione del prototipo e successiva vista pubblica |
 | D09 | Requisito confermato, modalità aperta | Interrogazione in linguaggio naturale di catalogo e analisi via MCP; MCP nel client AI come proposta iniziale, chat web da decidere |
 | D10 | Confermato dall'utente | Fonti, aggiornamento e limiti visibili in ogni risultato |
+| D12 | Confermato dall'utente (1 ottobre 2026) | Nuovo pilota a Firenze, quartiere 5, area Novoli - Firenze Nova: il Comune di Firenze è il più ricco di dati su dati.toscana.it (censimento alberi, LiDAR 2023, civici, barriere architettoniche, rifugi climatici, licenza CC BY 4.0). A Firenze esistono già il Digital Twin del Comune e quello di DISIT/Snap4City: il nostro valore distintivo è accessibilità pedonale, ombra sui percorsi, confronto di interventi e domande in linguaggio naturale con calcoli tracciati, costruiti dal portale regionale. Riquadro da fissare con il nuovo audit (candidato in [RIFERIMENTO-PADOVA.md](RIFERIMENTO-PADOVA.md), sezione 5) |
 | D11 | Indicazione dell'utente (1 ottobre 2026), perimetro aperto | Riferimento di presentazione e di approccio: gemello di Padova, anche per stack e metodo (scena statica precotta, fonti aperte dichiarate). Da decidere estensione (Z2, centro, città), livelli, dati ambientali ARPAT, uso del portale regionale via MCP CKAN e revisione del motore grafico (ADR-T08). Analisi in [RIFERIMENTO-PADOVA.md](RIFERIMENTO-PADOVA.md) |
 
 ### Selezione del pilota

@@ -1,6 +1,6 @@
 # Backlog per gli agenti — pilota accessibilità e ombra
 
-Revisione 3, 1 ottobre 2026. Leggere [PIANO.md](PIANO.md), [SPEC_ANALISI.md](SPEC_ANALISI.md) e [FONTI.md](FONTI.md). Stato dei task: [STATO.md](STATO.md) (T01-T10 e T12 consegnati, T11 preparato). Aggiunti T15-T17 dopo l'indicazione dell'utente su Padova (D11, [RIFERIMENTO-PADOVA.md](RIFERIMENTO-PADOVA.md)).
+Revisione 3, 1 ottobre 2026. Leggere [PIANO.md](PIANO.md), [SPEC_ANALISI.md](SPEC_ANALISI.md) e [FONTI.md](FONTI.md). Stato dei task: [STATO.md](STATO.md) (T01-T10 e T12 consegnati, T11 preparato). Aggiunti T15-T17 dopo l'indicazione dell'utente su Padova (D11, [RIFERIMENTO-PADOVA.md](RIFERIMENTO-PADOVA.md)). **Revisione 4: nuovo pilota Firenze Novoli - Firenze Nova (D12)**, con il ciclo F qui sotto; i task T01-T12 restano come consegne del primo pilota su Pisa.
 
 ## Regole di esecuzione
 
@@ -35,6 +35,22 @@ Un integratore mantiene contratti e decisioni, assegna percorsi/branch e riesami
 T15 può partire prima di T11 per la parte di scena, ma la demo T13 non mostra risultati di Z2 come validati finché T11 non è chiuso. T04 e T05 possono procedere insieme dopo T02/T03. T07 e T08 possono usare campioni contrattualizzati mentre l'analisi A si completa. T09 entra solo dopo G2; in caso negativo, limitare B a un sito con rilievo locale o consegnare A con le lacune delle ombre. La preparazione del protocollo T11 inizia presto, prima di vedere i risultati finali.
 
 G1 chiude la fattibilità di A. G2 chiude la fattibilità geometrica di B. G3 è la verifica tecnica/di campo. G4 è il riscontro di un utilizzatore reale: T13 può consegnare una demo tecnica senza partner, ma non dichiarare già dimostrato il valore nella decisione.
+
+## Ciclo Firenze (D12)
+
+| ID | Riuso da Pisa | Output | Criterio di chiusura |
+|---|---|---|---|
+| F01 Audit e riquadro | metodo T01 | Riquadro di 1,5-2 km² fra Novoli e Firenze Nova; destinazioni (scuole, università, fermate del tram, Careggi se nel raggio); inventario delle fonti dal portale regionale con il server MCP CKAN e lacune; confronto con i gemelli esistenti | Riquadro e destinazioni motivati; licenza di ogni fonte verificata (Life Escapos è CC BY-NC 4.0) |
+| F02 Contratti | T02 | Estensione di `contracts/` a più aree (`aoi_id`, baseline per area) | Pisa e Firenze validano con gli stessi schemi |
+| F03 Acquisizione | T03 | Snapshot di alberi, civici, barriere, rifugi climatici, edifici, DTM e DSM LiDAR 2023, OSM, GTFS tram e bus | Manifest con sha256; T17 applicato |
+| F04 Rete e ingressi | T04 | Grafo pedonale; barriere architettoniche censite come attributi | Percorsi campione e casi vietati controllabili |
+| F05 Edifici e verde | T05 | Altezze edifici da DSM 2023; alberi censiti con altezza e chioma da LiDAR, verificate sui 50 alberi Life Escapos | Chiome misurate e stimate separate; scarto sul campione dichiarato |
+| F06-F10 Analisi | motori T06, T09, T10 | Accessibilità, ombre, scenari sul nuovo riquadro | Stessi test dei motori, nuovi casi |
+| F07 Servizio MCP | T07, T12 | Server con più aree; domande di T12 ripetute su Firenze | Replay e confronto con la mappa |
+| F11 Campo | T11 | Protocollo e punti per Firenze | Come T11 |
+| F15-F17 | T15-T17 | Scena sul modello di Padova, dati ARPAT di Firenze, fonti dal portale | Come T15-T17 |
+
+Ordine: F01, poi F02 e F03, poi F04 e F05 in parallelo, poi analisi e servizio. T15 può partire dopo F03.
 
 ## Primo incarico pronto da assegnare
 

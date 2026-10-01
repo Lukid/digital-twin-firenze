@@ -1,5 +1,7 @@
 # Audit dei dati e proposta del pilota (T01)
 
+> Primo pilota su Pisa. Dal 1 ottobre 2026 il pilota è Firenze Novoli - Firenze Nova (D12 nel piano): questo audit resta come riferimento di metodo.
+
 Data: 1 ottobre 2026. Sintesi dell'integratore sui cinque audit in `docs/audit/` (rete, edifici, verde, destinazioni, cataloghi). Ogni numero rimanda al report della cartella relativa, dove ci sono campioni, manifest con sha256 e `riproduci.sh`. Nessun contatto con enti, acquisto o pubblicazione. Nessuna verifica sul campo: tutto quello che segue è da desk.
 
 ## 1. Zone confrontate
