@@ -1,0 +1,1213 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-01T13:58:19Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 2700695076,
+  "lat": 43.7221134,
+  "lon": 10.4045494,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "3",
+    "addr:postcode": "56123",
+    "addr:street": "Via San Zeno",
+    "amenity": "kindergarten",
+    "isced:level": "0",
+    "name": "Scuola dell’Infanzia \"Perodi\"",
+    "operator": "Istituto Comprensivo \"L. Strenta Tongiorgi\"",
+    "operator:wikidata": "Q52791018",
+    "wikidata": "Q52792481"
+  }
+},
+{
+  "type": "node",
+  "id": 2846224890,
+  "lat": 43.7223843,
+  "lon": 10.4081447,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3187007195,
+  "lat": 43.7230261,
+  "lon": 10.4076007,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 3498696314,
+  "lat": 43.7221266,
+  "lon": 10.4022445,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "20",
+    "addr:postcode": "56127",
+    "addr:street": "Largo del Parlascio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3498696315,
+  "lat": 43.7221572,
+  "lon": 10.4022510,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "18",
+    "addr:postcode": "56127",
+    "addr:street": "Largo del Parlascio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4408788441,
+  "lat": 43.7259457,
+  "lon": 10.4075787,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Torino",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4621123067,
+  "lat": 43.7258432,
+  "lon": 10.4038640,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Lucchese",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4702380316,
+  "lat": 43.7222484,
+  "lon": 10.4054329,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "31",
+    "addr:postcode": "56123",
+    "addr:street": "Via San Zeno",
+    "amenity": "university",
+    "internet_access": "yes",
+    "name": "Istituto di Fisiologia",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "node",
+  "id": 5258131767,
+  "lat": 43.7217319,
+  "lon": 10.4081890,
+  "tags": {
+    "amenity": "university",
+    "check_date": "2025-08-27",
+    "name": "Aula magna / centro congressi"
+  }
+},
+{
+  "type": "node",
+  "id": 5258131768,
+  "lat": 43.7215361,
+  "lon": 10.4082668,
+  "tags": {
+    "amenity": "university",
+    "check_date": "2025-08-27",
+    "name": "Ufficio immatricolazioni Matricolandosi"
+  }
+},
+{
+  "type": "node",
+  "id": 5277491001,
+  "lat": 43.7222289,
+  "lon": 10.4012085,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5277491772,
+  "lat": 43.7219699,
+  "lon": 10.4000058,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via San Tommaso",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7128360239,
+  "lat": 43.7253959,
+  "lon": 10.4022958,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7375770617,
+  "lat": 43.7215247,
+  "lon": 10.4098774,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Vittorio Veneto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7389485388,
+  "lat": 43.7224170,
+  "lon": 10.4134636,
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:street": "Via Angelo Battelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7389485400,
+  "lat": 43.7237351,
+  "lon": 10.4105586,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via di Pratale",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7389485402,
+  "lat": 43.7237315,
+  "lon": 10.4102004,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Hermada",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407584770,
+  "lat": 43.7226181,
+  "lon": 10.4070318,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Filippo Buonarroti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407584771,
+  "lat": 43.7224436,
+  "lon": 10.4070177,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via Filippo Buonarroti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407584772,
+  "lat": 43.7222198,
+  "lon": 10.4071996,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via Filippo Buonarroti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726033,
+  "lat": 43.7259299,
+  "lon": 10.4012586,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726034,
+  "lat": 43.7259528,
+  "lon": 10.4012043,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726039,
+  "lat": 43.7259807,
+  "lon": 10.4017216,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via Ugo Rindi",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726040,
+  "lat": 43.7259734,
+  "lon": 10.4017848,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via Ugo Rindi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726041,
+  "lat": 43.7259540,
+  "lon": 10.4018218,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Via Ugo Rindi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726044,
+  "lat": 43.7259047,
+  "lon": 10.4021429,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Ugo Rindi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726045,
+  "lat": 43.7258762,
+  "lon": 10.4021838,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Ugo Rindi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726046,
+  "lat": 43.7258430,
+  "lon": 10.4022314,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Ugo Rindi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726048,
+  "lat": 43.7258086,
+  "lon": 10.4023027,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Via Ugo Rindi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726051,
+  "lat": 43.7257106,
+  "lon": 10.4020750,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726052,
+  "lat": 43.7255543,
+  "lon": 10.4023158,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Ugo Rindi",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726053,
+  "lat": 43.7255822,
+  "lon": 10.4022887,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Ugo Rindi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726054,
+  "lat": 43.7260842,
+  "lon": 10.4014301,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726056,
+  "lat": 43.7257569,
+  "lon": 10.4026154,
+  "tags": {
+    "addr:housenumber": "94",
+    "addr:street": "Via Luigi Bianchi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726057,
+  "lat": 43.7256688,
+  "lon": 10.4026079,
+  "tags": {
+    "addr:housenumber": "90",
+    "addr:street": "Via Luigi Bianchi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726058,
+  "lat": 43.7258449,
+  "lon": 10.4026229,
+  "tags": {
+    "addr:housenumber": "98",
+    "addr:street": "Via Luigi Bianchi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726059,
+  "lat": 43.7254446,
+  "lon": 10.4025951,
+  "tags": {
+    "addr:housenumber": "84",
+    "addr:street": "Via Luigi Bianchi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726062,
+  "lat": 43.7262178,
+  "lon": 10.4026337,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Viale Giovanni Pisano",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726063,
+  "lat": 43.7263244,
+  "lon": 10.4026385,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Viale Giovanni Pisano",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726064,
+  "lat": 43.7262544,
+  "lon": 10.4023443,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Viale Giovanni Pisano",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726066,
+  "lat": 43.7262917,
+  "lon": 10.4023463,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Viale Giovanni Pisano",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726067,
+  "lat": 43.7263276,
+  "lon": 10.4023482,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Viale Giovanni Pisano",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726068,
+  "lat": 43.7262214,
+  "lon": 10.4023425,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Viale Giovanni Pisano",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726069,
+  "lat": 43.7261833,
+  "lon": 10.4023405,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Viale Giovanni Pisano",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7407726072,
+  "lat": 43.7265148,
+  "lon": 10.4019050,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Via Damiano Chiesa",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7463039953,
+  "lat": 43.7261173,
+  "lon": 10.4077660,
+  "tags": {
+    "entrance": "emergency"
+  }
+},
+{
+  "type": "node",
+  "id": 7783527695,
+  "lat": 43.7249832,
+  "lon": 10.4098789,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7844027131,
+  "lat": 43.7216067,
+  "lon": 10.4077250,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8085503594,
+  "lat": 43.7279648,
+  "lon": 10.4072823,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8085692907,
+  "lat": 43.7224582,
+  "lon": 10.4007858,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8085692908,
+  "lat": 43.7224962,
+  "lon": 10.4006092,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8085692914,
+  "lat": 43.7224617,
+  "lon": 10.4001277,
+  "tags": {
+    "addr:housenumber": "27",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8085692915,
+  "lat": 43.7223989,
+  "lon": 10.4004652,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8085692916,
+  "lat": 43.7223520,
+  "lon": 10.4007156,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8085737217,
+  "lat": 43.7223420,
+  "lon": 10.4007585,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8085737223,
+  "lat": 43.7223935,
+  "lon": 10.4011043,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8085737228,
+  "lat": 43.7223886,
+  "lon": 10.4015988,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9563005093,
+  "lat": 43.7284997,
+  "lon": 10.4061708,
+  "tags": {
+    "addr:housenumber": "102",
+    "addr:street": "Via di Gello",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9563005097,
+  "lat": 43.7282297,
+  "lon": 10.4061192,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Napoli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10594287956,
+  "lat": 43.7238789,
+  "lon": 10.4040104,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "10",
+    "addr:postcode": "56123",
+    "addr:street": "Via Marche",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10594287957,
+  "lat": 43.7240088,
+  "lon": 10.4042216,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Marche",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10594393697,
+  "lat": 43.7229323,
+  "lon": 10.4072382,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10594393704,
+  "lat": 43.7225901,
+  "lon": 10.4063863,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Via San Zeno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10836690421,
+  "lat": 43.7216205,
+  "lon": 10.4157808,
+  "tags": {
+    "access": "private",
+    "addr:city": "Pisa",
+    "addr:housenumber": "7",
+    "addr:postcode": "56127",
+    "addr:street": "Via Percy Bysshe Shelley",
+    "entrance": "home"
+  }
+},
+{
+  "type": "node",
+  "id": 11591900766,
+  "lat": 43.7250488,
+  "lon": 10.4022606,
+  "tags": {
+    "addr:housenumber": "67",
+    "addr:street": "Via Luigi Bianchi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11591932569,
+  "lat": 43.7252101,
+  "lon": 10.4025773,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11602504376,
+  "lat": 43.7251275,
+  "lon": 10.4081560,
+  "tags": {
+    "addr:housenumber": "61",
+    "addr:street": "Via Lucchese",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11602504377,
+  "lat": 43.7250723,
+  "lon": 10.4084987,
+  "tags": {
+    "addr:housenumber": "63",
+    "addr:street": "Via Lucchese",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11602504378,
+  "lat": 43.7254455,
+  "lon": 10.4087028,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Via Olbia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11602504379,
+  "lat": 43.7254688,
+  "lon": 10.4081426,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Via Milano",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12075054191,
+  "lat": 43.7223228,
+  "lon": 10.4151080,
+  "tags": {
+    "addr:housenumber": "2A",
+    "addr:street": "Via Ugo Foscolo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12430484061,
+  "lat": 43.7260073,
+  "lon": 10.4031273,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Lucchese",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12430484063,
+  "lat": 43.7259698,
+  "lon": 10.4032526,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Via Lucchese",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12430484065,
+  "lat": 43.7259322,
+  "lon": 10.4033781,
+  "tags": {
+    "addr:housenumber": "27",
+    "addr:street": "Via Lucchese",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12430484067,
+  "lat": 43.7258720,
+  "lon": 10.4035794,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Via Lucchese",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12430484068,
+  "lat": 43.7260464,
+  "lon": 10.4029968,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Via Lucchese",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12430484069,
+  "lat": 43.7260864,
+  "lon": 10.4028631,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12430484075,
+  "lat": 43.7258376,
+  "lon": 10.4037545,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Lucchese",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12696345951,
+  "lat": 43.7221447,
+  "lon": 10.4014775,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12696345954,
+  "lat": 43.7223603,
+  "lon": 10.4012544,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12696345956,
+  "lat": 43.7225599,
+  "lon": 10.4003079,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "home"
+  }
+},
+{
+  "type": "node",
+  "id": 12696345957,
+  "lat": 43.7225904,
+  "lon": 10.4001515,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Cardinale Pietro Maffi",
+    "entrance": "home"
+  }
+},
+{
+  "type": "way",
+  "id": 106644872,
+  "bounds": {
+    "minlat": 43.7211737,
+    "minlon": 10.4066606,
+    "maxlat": 43.7219967,
+    "maxlon": 10.4072712
+  },
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Via Filippo Buonarroti",
+    "amenity": "school",
+    "check_date": "2025-08-27",
+    "name": "Centro Sociale Suore Immacolatine"
+  }
+},
+{
+  "type": "way",
+  "id": 137827231,
+  "bounds": {
+    "minlat": 43.7220193,
+    "minlon": 10.4043725,
+    "maxlat": 43.7223008,
+    "maxlon": 10.4047065
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 137827239,
+  "bounds": {
+    "minlat": 43.7222033,
+    "minlon": 10.4050529,
+    "maxlat": 43.7225157,
+    "maxlon": 10.4056424
+  },
+  "tags": {
+    "building": "university",
+    "name": "Istituto di Fisiologia (ed. principale)"
+  }
+},
+{
+  "type": "way",
+  "id": 137827245,
+  "bounds": {
+    "minlat": 43.7227206,
+    "minlon": 10.4051687,
+    "maxlat": 43.7230249,
+    "maxlon": 10.4054226
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 217538423,
+  "bounds": {
+    "minlat": 43.7194515,
+    "minlon": 10.4074001,
+    "maxlat": 43.7224393,
+    "maxlon": 10.4091744
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:postcode": "56127",
+    "addr:street": "Via Filippo Buonarroti",
+    "amenity": "university",
+    "name": "Polo Fibonacci",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 217910056,
+  "bounds": {
+    "minlat": 43.7217708,
+    "minlon": 10.4036110,
+    "maxlat": 43.7230940,
+    "maxlon": 10.4048890
+  },
+  "tags": {
+    "amenity": "school",
+    "isced:level": "3",
+    "name": "Liceo Giosuè Carducci",
+    "wikidata": "Q52807043"
+  }
+},
+{
+  "type": "way",
+  "id": 238675978,
+  "bounds": {
+    "minlat": 43.7262477,
+    "minlon": 10.4095446,
+    "maxlat": 43.7270283,
+    "maxlon": 10.4104476
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "14",
+    "addr:postcode": "56123",
+    "addr:street": "Via Firenze",
+    "amenity": "kindergarten",
+    "name": "Scuola dell’Infanzia “Parmeggiani”",
+    "operator": "Istituto Comprensivo \"L. Strenta Tongiorgi\"",
+    "operator:type": "public",
+    "operator:wikidata": "Q52791018",
+    "phone": "+39 050 555 831",
+    "wikidata": "Q52796581"
+  }
+},
+{
+  "type": "way",
+  "id": 306558784,
+  "bounds": {
+    "minlat": 43.7215334,
+    "minlon": 10.4067117,
+    "maxlat": 43.7219519,
+    "maxlon": 10.4070845
+  },
+  "tags": {
+    "building": "school",
+    "roof:material": "roof_tiles",
+    "roof:shape": "hipped"
+  }
+},
+{
+  "type": "way",
+  "id": 306667933,
+  "bounds": {
+    "minlat": 43.7209025,
+    "minlon": 10.4040045,
+    "maxlat": 43.7225202,
+    "maxlon": 10.4066336
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "4",
+    "addr:postcode": "56127",
+    "addr:street": "Piazza Santa Caterina",
+    "amenity": "school",
+    "denomination": "catholic",
+    "name": "Istituto Arcivescovile Paritario - Santa Caterina",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 476753387,
+  "bounds": {
+    "minlat": 43.7225272,
+    "minlon": 10.4050514,
+    "maxlat": 43.7226231,
+    "maxlon": 10.4051735
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 476753728,
+  "bounds": {
+    "minlat": 43.7226590,
+    "minlon": 10.4049817,
+    "maxlat": 43.7227743,
+    "maxlon": 10.4051292
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 476755332,
+  "bounds": {
+    "minlat": 43.7219776,
+    "minlon": 10.4047206,
+    "maxlat": 43.7234360,
+    "maxlon": 10.4063410
+  },
+  "tags": {
+    "amenity": "university",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 515555918,
+  "bounds": {
+    "minlat": 43.7263893,
+    "minlon": 10.4097807,
+    "maxlat": 43.7268863,
+    "maxlon": 10.4101568
+  },
+  "tags": {
+    "building": "kindergarten"
+  }
+},
+{
+  "type": "way",
+  "id": 546095513,
+  "bounds": {
+    "minlat": 43.7222408,
+    "minlon": 10.3999346,
+    "maxlat": 43.7224837,
+    "maxlon": 10.4002326
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 656488090,
+  "bounds": {
+    "minlat": 43.7209594,
+    "minlon": 10.4132802,
+    "maxlat": 43.7217399,
+    "maxlon": 10.4143519
+  },
+  "tags": {
+    "amenity": "kindergarten",
+    "name": "Asilo nido Betti",
+    "operator": "Istituto comprensivo L. Fibonacci",
+    "operator:type": "public",
+    "operator:wikidata": "Q52828053",
+    "wikidata": "Q52830350"
+  }
+},
+{
+  "type": "way",
+  "id": 695631400,
+  "bounds": {
+    "minlat": 43.7222578,
+    "minlon": 10.4041551,
+    "maxlat": 43.7229023,
+    "maxlon": 10.4045426
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 695631401,
+  "bounds": {
+    "minlat": 43.7220148,
+    "minlon": 10.4037989,
+    "maxlat": 43.7224106,
+    "maxlon": 10.4044191
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 873158918,
+  "bounds": {
+    "minlat": 43.7260112,
+    "minlon": 10.4028837,
+    "maxlat": 43.7261793,
+    "maxlon": 10.4031788
+  },
+  "tags": {
+    "amenity": "kindergarten",
+    "building": "school",
+    "building:levels": "2",
+    "name": "L'isola delle farfalle",
+    "roof:levels": "0"
+  }
+},
+{
+  "type": "way",
+  "id": 987805652,
+  "bounds": {
+    "minlat": 43.7200783,
+    "minlon": 10.4074493,
+    "maxlat": 43.7216068,
+    "maxlon": 10.4080592
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "2",
+    "name": "Polo Fibonacci, edificio B",
+    "operator": "Università di Pisa",
+    "roof:shape": "sawtooth"
+  }
+},
+{
+  "type": "relation",
+  "id": 1520437,
+  "bounds": {
+    "minlat": 43.7210760,
+    "minlon": 10.4040045,
+    "maxlat": 43.7221684,
+    "maxlon": 10.4063433
+  },
+  "tags": {
+    "building": "school",
+    "denomination": "catholic",
+    "religion": "christian",
+    "type": "multipolygon"
+  }
+}
+
+  ]
+}

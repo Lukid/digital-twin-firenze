@@ -1,0 +1,133 @@
+{
+ "Z1": {
+  "alberi_nodi": 272,
+  "posizione_%": 100,
+  "specie_(species|taxon|genus)": 15,
+  "altezza_height": 4,
+  "chioma_diameter_crown": 1,
+  "circonferenza_tronco": 3,
+  "leaf_type": 29,
+  "tree_row": 5,
+  "tree_row_con_height": 0,
+  "tree_row_con_species": 0,
+  "esempi_height": [
+   "19",
+   "21.5m",
+   "2",
+   "25"
+  ],
+  "denotation": {
+   "urban": 2,
+   "park": 9,
+   "gingko_biloba": 1,
+   "platanus_hispanica": 1
+  },
+  "aree_verdi_tipi": {
+   "garden": 21,
+   "park": 29,
+   "grass": 45
+  },
+  "pct": {
+   "specie_(species|taxon|genus)": 5.5,
+   "altezza_height": 1.5,
+   "chioma_diameter_crown": 0.4,
+   "leaf_type": 10.7,
+   "circonferenza_tronco": 1.1
+  }
+ },
+ "Z2": {
+  "alberi_nodi": 426,
+  "posizione_%": 100,
+  "specie_(species|taxon|genus)": 5,
+  "altezza_height": 4,
+  "chioma_diameter_crown": 0,
+  "circonferenza_tronco": 0,
+  "leaf_type": 34,
+  "tree_row": 7,
+  "tree_row_con_height": 0,
+  "tree_row_con_species": 0,
+  "esempi_height": [
+   "0.5",
+   "1",
+   "0.8",
+   "0.2"
+  ],
+  "denotation": {
+   "urban": 2,
+   "park": 2
+  },
+  "aree_verdi_tipi": {
+   "park": 9,
+   "grass": 20,
+   "garden": 1,
+   "dog_park": 1
+  },
+  "pct": {
+   "specie_(species|taxon|genus)": 1.2,
+   "altezza_height": 0.9,
+   "chioma_diameter_crown": 0.0,
+   "leaf_type": 8.0,
+   "circonferenza_tronco": 0.0
+  }
+ },
+ "Z3": {
+  "alberi_nodi": 50,
+  "posizione_%": 100,
+  "specie_(species|taxon|genus)": 0,
+  "altezza_height": 0,
+  "chioma_diameter_crown": 0,
+  "circonferenza_tronco": 0,
+  "leaf_type": 0,
+  "tree_row": 8,
+  "tree_row_con_height": 0,
+  "tree_row_con_species": 0,
+  "esempi_height": [],
+  "denotation": {},
+  "aree_verdi_tipi": {
+   "park": 2,
+   "grass": 10
+  },
+  "pct": {
+   "specie_(species|taxon|genus)": 0.0,
+   "altezza_height": 0.0,
+   "chioma_diameter_crown": 0.0,
+   "leaf_type": 0.0,
+   "circonferenza_tronco": 0.0
+  }
+ },
+ "Z4": {
+  "alberi_nodi": 516,
+  "posizione_%": 100,
+  "specie_(species|taxon|genus)": 1,
+  "altezza_height": 6,
+  "chioma_diameter_crown": 0,
+  "circonferenza_tronco": 0,
+  "leaf_type": 15,
+  "tree_row": 64,
+  "tree_row_con_height": 0,
+  "tree_row_con_species": 0,
+  "esempi_height": [
+   "15",
+   "13",
+   "13",
+   "13",
+   "8",
+   "13"
+  ],
+  "denotation": {},
+  "aree_verdi_tipi": {
+   "garden": 7,
+   "park": 28,
+   "grass": 64,
+   "dog_park": 1,
+   "forest": 1
+  },
+  "pct": {
+   "specie_(species|taxon|genus)": 0.2,
+   "altezza_height": 1.2,
+   "chioma_diameter_crown": 0.0,
+   "leaf_type": 2.9,
+   "circonferenza_tronco": 0.0
+  }
+ }
+}

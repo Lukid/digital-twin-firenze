@@ -1,0 +1,1171 @@
+{
+ "riquadri": {
+  "Z1": [
+   43.713,
+   10.394,
+   43.721,
+   10.408
+  ],
+  "Z2": [
+   43.704,
+   10.391,
+   43.7125,
+   10.405
+  ],
+  "Z3": [
+   43.701,
+   10.436,
+   43.71,
+   10.451
+  ],
+  "Z4": [
+   43.7215,
+   10.4,
+   43.7295,
+   10.416
+  ]
+ },
+ "zone": {
+  "Z1": {
+   "gtfs": {
+    "fermate": 23,
+    "servite_oggi": 23,
+    "linee_oggi": 22,
+    "corse_oggi_somma_sulle_fermate": 4701
+   },
+   "scuole_sit": {
+    "totale": 6,
+    "per_tipo": {
+     "3)  Scuole dell'infanzia": 1,
+     "4)  Scuole primarie": 3,
+     "5)  Scuole secondarie": 1,
+     "1)  nidi d'infanzia": 1
+    }
+   },
+   "elenco_sit": [
+    {
+     "nome": "Calandrini",
+     "indirizzo": "via del Carmine;",
+     "lat": 43.713073,
+     "lon": 10.401577
+    },
+    {
+     "nome": "D. Chiesa",
+     "indirizzo": "via San Francesco;",
+     "lat": 43.718368,
+     "lon": 10.407855
+    },
+    {
+     "nome": "Nicola Pisano",
+     "indirizzo": "Piazza S. Francesco n° 3",
+     "lat": 43.719249,
+     "lon": 10.406287
+    },
+    {
+     "nome": "Zerboglio",
+     "indirizzo": "via P. Gori;",
+     "lat": 43.713089,
+     "lon": 10.402402
+    },
+    {
+     "nome": "Fibonacci succursale (ex Carducci)",
+     "indirizzo": "Piazza S. Francesco n° 3",
+     "lat": 43.719432,
+     "lon": 10.406283
+    },
+    {
+     "nome": "Coccapani",
+     "indirizzo": "piazza san francesco",
+     "lat": 43.719489,
+     "lon": 10.406805
+    }
+   ],
+   "mim_sedi_con_via_di_una_scuola_SIT_nel_riquadro": 9,
+   "osm": {
+    "scuole_infanzia": 12,
+    "universita": 33,
+    "con_ingressi": 37,
+    "base_osm": "2026-10-01T13:54:11Z"
+   },
+   "elenco_osm": [
+    {
+     "osm": "way/140894054",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.718899,
+     "lon": 10.39929,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "way/156114847",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.713233,
+     "lon": 10.402561,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/185310436",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.71766,
+     "lon": 10.405273,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "way/245798233",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.713032,
+     "lon": 10.395356,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "relation/5141516",
+     "tipo": "building=school",
+     "nome": "Nicola Pisano",
+     "lat": 43.719422,
+     "lon": 10.406551,
+     "ingressi": 9,
+     "check_date": ""
+    },
+    {
+     "osm": "way/163739527",
+     "tipo": "building=university",
+     "nome": "",
+     "lat": 43.720135,
+     "lon": 10.396197,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "way/253812706",
+     "tipo": "building=university",
+     "nome": "",
+     "lat": 43.717002,
+     "lon": 10.399077,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "way/797909283",
+     "tipo": "building=university",
+     "nome": "",
+     "lat": 43.7188,
+     "lon": 10.398422,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "relation/8148845",
+     "tipo": "building=university",
+     "nome": "",
+     "lat": 43.720346,
+     "lon": 10.394979,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "way/295858896",
+     "tipo": "building=university",
+     "nome": "Aula Savi",
+     "lat": 43.720972,
+     "lon": 10.396496,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/106644868",
+     "tipo": "building=university",
+     "nome": "Ex-DMA",
+     "lat": 43.720169,
+     "lon": 10.407156,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/721870995",
+     "tipo": "building=university",
+     "nome": "Palazzo alla Giornata",
+     "lat": 43.716723,
+     "lon": 10.398802,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "relation/165512",
+     "tipo": "building=university",
+     "nome": "Palazzo della Carovana",
+     "lat": 43.719657,
+     "lon": 10.400568,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "way/987805652",
+     "tipo": "building=university",
+     "nome": "Polo Fibonacci, edificio B",
+     "lat": 43.720843,
+     "lon": 10.407754,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "way/634725321",
+     "tipo": "kindergarten",
+     "nome": "",
+     "lat": 43.717641,
+     "lon": 10.40524,
+     "ingressi": 3,
+     "check_date": ""
+    },
+    {
+     "osm": "way/156114855",
+     "tipo": "kindergarten",
+     "nome": "Scuola dell’infanzia Matilde Calandrini",
+     "lat": 43.713021,
+     "lon": 10.401572,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/377333611",
+     "tipo": "library",
+     "nome": "Biblioteca di Scienze naturali e ambientali",
+     "lat": 43.718483,
+     "lon": 10.395103,
+     "ingressi": 4,
+     "check_date": ""
+    },
+    {
+     "osm": "node/5162808006",
+     "tipo": "school",
+     "nome": "CILT",
+     "lat": 43.718945,
+     "lon": 10.403043,
+     "ingressi": 3,
+     "check_date": ""
+    },
+    {
+     "osm": "way/676049659",
+     "tipo": "school",
+     "nome": "Collegio \"Tiziano Terzani\"",
+     "lat": 43.720149,
+     "lon": 10.405725,
+     "ingressi": 10,
+     "check_date": ""
+    },
+    {
+     "osm": "relation/4032458",
+     "tipo": "school",
+     "nome": "Istituto Leonardo Fibonacci",
+     "lat": 43.718653,
+     "lon": 10.407492,
+     "ingressi": 27,
+     "check_date": ""
+    },
+    {
+     "osm": "way/232482921",
+     "tipo": "school",
+     "nome": "Liceo Artistico \"F. Russoli\"",
+     "lat": 43.718848,
+     "lon": 10.399353,
+     "ingressi": 3,
+     "check_date": ""
+    },
+    {
+     "osm": "way/368829395",
+     "tipo": "school",
+     "nome": "Scuola Primaria \"E. Zerboglio\"",
+     "lat": 43.713113,
+     "lon": 10.402571,
+     "ingressi": 2,
+     "check_date": "2024-10-01"
+    },
+    {
+     "osm": "way/828432256",
+     "tipo": "university",
+     "nome": "",
+     "lat": 43.720356,
+     "lon": 10.400656,
+     "ingressi": 5,
+     "check_date": ""
+    },
+    {
+     "osm": "node/3695848052",
+     "tipo": "university",
+     "nome": "Alma Artis Academy - Accademia di Belle Arti",
+     "lat": 43.717507,
+     "lon": 10.396354,
+     "ingressi": 3,
+     "check_date": ""
+    },
+    {
+     "osm": "node/2463332403",
+     "tipo": "university",
+     "nome": "Aula AM-1",
+     "lat": 43.72006,
+     "lon": 10.407212,
+     "ingressi": 0,
+     "check_date": "2024-08-22"
+    },
+    {
+     "osm": "way/779992710",
+     "tipo": "university",
+     "nome": "Dipartimento di Anglistica",
+     "lat": 43.719016,
+     "lon": 10.397221,
+     "ingressi": 4,
+     "check_date": "2025-08-10"
+    },
+    {
+     "osm": "node/4408732663",
+     "tipo": "university",
+     "nome": "Dipartimento di Civiltà e Forme del Sapere",
+     "lat": 43.718746,
+     "lon": 10.39867,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "node/1715982941",
+     "tipo": "university",
+     "nome": "Dipartimento di Fisica 'E. Fermi'",
+     "lat": 43.72013,
+     "lon": 10.407898,
+     "ingressi": 0,
+     "check_date": "2025-08-27"
+    },
+    {
+     "osm": "way/158441765",
+     "tipo": "university",
+     "nome": "Dipartimento di Matematica",
+     "lat": 43.719766,
+     "lon": 10.407855,
+     "ingressi": 1,
+     "check_date": "2026-03-24"
+    },
+    {
+     "osm": "way/721900738",
+     "tipo": "university",
+     "nome": "Dipartimento di Scienze Politiche",
+     "lat": 43.716793,
+     "lon": 10.399054,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "way/779992709",
+     "tipo": "university",
+     "nome": "Dipartimento di Scienze della Terra",
+     "lat": 43.718331,
+     "lon": 10.396772,
+     "ingressi": 6,
+     "check_date": ""
+    },
+    {
+     "osm": "node/6487424586",
+     "tipo": "university",
+     "nome": "Dipartimento di filologia, letteratura e linguistica",
+     "lat": 43.718972,
+     "lon": 10.397546,
+     "ingressi": 3,
+     "check_date": "2025-08-10"
+    },
+    {
+     "osm": "node/5129102162",
+     "tipo": "university",
+     "nome": "Facoltà di Biologia",
+     "lat": 43.718452,
+     "lon": 10.396013,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "node/339093139",
+     "tipo": "university",
+     "nome": "Facoltà di Lettere",
+     "lat": 43.717717,
+     "lon": 10.396946,
+     "ingressi": 5,
+     "check_date": ""
+    },
+    {
+     "osm": "node/4408732667",
+     "tipo": "university",
+     "nome": "Facoltà di Lingue e Letterature Straniere",
+     "lat": 43.719967,
+     "lon": 10.397156,
+     "ingressi": 3,
+     "check_date": "2024-04-25"
+    },
+    {
+     "osm": "way/253818103",
+     "tipo": "university",
+     "nome": "Palazzo Matteucci",
+     "lat": 43.718191,
+     "lon": 10.397853,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "way/93145078",
+     "tipo": "university",
+     "nome": "Palazzo dell'Orologio",
+     "lat": 43.719798,
+     "lon": 10.399715,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "relation/1729449",
+     "tipo": "university",
+     "nome": "Palazzo della Sapienza",
+     "lat": 43.717344,
+     "lon": 10.399321,
+     "ingressi": 3,
+     "check_date": ""
+    },
+    {
+     "osm": "way/92930420",
+     "tipo": "university",
+     "nome": "Polo Carmignani",
+     "lat": 43.720114,
+     "lon": 10.401136,
+     "ingressi": 2,
+     "check_date": "2026-07-16"
+    },
+    {
+     "osm": "relation/4421673",
+     "tipo": "university",
+     "nome": "Scuola Normale Superiore",
+     "lat": 43.719657,
+     "lon": 10.400568,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "node/1677276904",
+     "tipo": "university",
+     "nome": "Scuola Superiore Sant'Anna",
+     "lat": 43.720608,
+     "lon": 10.402644,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/1173691845",
+     "tipo": "university",
+     "nome": "Scuola Superiore Sant'Anna",
+     "lat": 43.720674,
+     "lon": 10.402721,
+     "ingressi": 8,
+     "check_date": ""
+    },
+    {
+     "osm": "node/11942857940",
+     "tipo": "university",
+     "nome": "Scuola Superiore Sant'Anna - Palazzo Pilo Boyl",
+     "lat": 43.719026,
+     "lon": 10.403263,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "way/762196368",
+     "tipo": "university",
+     "nome": "Scuola Superiore Sant'Anna - Palazzo Toscanelli",
+     "lat": 43.718471,
+     "lon": 10.403011,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "way/798085977",
+     "tipo": "university",
+     "nome": "Scuola di Medicina",
+     "lat": 43.720309,
+     "lon": 10.39485,
+     "ingressi": 2,
+     "check_date": ""
+    },
+    {
+     "osm": "node/3483952525",
+     "tipo": "university",
+     "nome": "Università di Pisa - Rettorato",
+     "lat": 43.716654,
+     "lon": 10.398801,
+     "ingressi": 2,
+     "check_date": "2025-03-28"
+    }
+   ],
+   "civici_sit_nel_riquadro": 4060,
+   "candidato": {
+    "tipo": "scuola",
+    "etichetta": "Liceo Artistico F. Russoli, via San Frediano 13",
+    "osm": "way/232482921",
+    "lat": 43.718848,
+    "lon": 10.399353,
+    "ingressi_osm_nel_riquadro": 3,
+    "fonti": "MIM PISD05000L; Provincia 0500260315 (2017, rampe presenti); OSM",
+    "dentro_riquadro": true,
+    "fermate_gtfs_entro_300m": [
+     {
+      "codice": "PI4355",
+      "nome": "SANTA MARIA 1",
+      "dist_m": 176,
+      "corse_oggi": 54,
+      "linee": "23"
+     },
+     {
+      "codice": "PI4356",
+      "nome": "SANTA MARIA 2",
+      "dist_m": 248,
+      "corse_oggi": 27,
+      "linee": "23"
+     },
+     {
+      "codice": "PI4291",
+      "nome": "PACINOTTI 2",
+      "dist_m": 260,
+      "corse_oggi": 349,
+      "linee": "13 2 21 22 23 25 3+ 4 5"
+     }
+    ],
+    "civici_entro_500m": 3031,
+    "civici_entro_1000m": 7523
+   }
+  },
+  "Z2": {
+   "gtfs": {
+    "fermate": 38,
+    "servite_oggi": 37,
+    "linee_oggi": 34,
+    "corse_oggi_somma_sulle_fermate": 6860
+   },
+   "scuole_sit": {
+    "totale": 5,
+    "per_tipo": {
+     "3)  Scuole dell'infanzia": 3,
+     "4)  Scuole primarie": 1,
+     "5)  Scuole secondarie": 1
+    }
+   },
+   "elenco_sit": [
+    {
+     "nome": "Gianfaldoni",
+     "indirizzo": "via Corridoni;",
+     "lat": 43.707041,
+     "lon": 10.404847
+    },
+    {
+     "nome": "Battisti",
+     "indirizzo": "via Corridoni;",
+     "lat": 43.707113,
+     "lon": 10.404665
+    },
+    {
+     "nome": "Fucini succursale",
+     "indirizzo": "via Sancasciani;",
+     "lat": 43.711685,
+     "lon": 10.401783
+    },
+    {
+     "nome": "Conti succursale",
+     "indirizzo": "via S.AGOSTINO",
+     "lat": 43.704051,
+     "lon": 10.398936
+    },
+    {
+     "nome": "Scuola Materna Istituto Suore Padre Agostino",
+     "indirizzo": "Via di Goletta 1",
+     "lat": 43.706348,
+     "lon": 10.397148
+    }
+   ],
+   "mim_sedi_con_via_di_una_scuola_SIT_nel_riquadro": 6,
+   "osm": {
+    "scuole_infanzia": 9,
+    "universita": 1,
+    "con_ingressi": 8,
+    "base_osm": "2026-10-01T13:55:13Z"
+   },
+   "elenco_osm": [
+    {
+     "osm": "way/127284351",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.711027,
+     "lon": 10.402087,
+     "ingressi": 6,
+     "check_date": ""
+    },
+    {
+     "osm": "way/110083622",
+     "tipo": "building=university",
+     "nome": "Dipartimento di Scienze politiche (sezione staccata)",
+     "lat": 43.70949,
+     "lon": 10.400904,
+     "ingressi": 3,
+     "check_date": ""
+    },
+    {
+     "osm": "way/240399513",
+     "tipo": "school",
+     "nome": "",
+     "lat": 43.711213,
+     "lon": 10.402087,
+     "ingressi": 6,
+     "check_date": ""
+    },
+    {
+     "osm": "node/241507010",
+     "tipo": "school",
+     "nome": "Istituto Tecnico Commerciale \"Antonio Pacinotti\"",
+     "lat": 43.710749,
+     "lon": 10.402105,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "node/241507012",
+     "tipo": "school",
+     "nome": "Liceo Classico \"Galileo Galilei\"",
+     "lat": 43.710677,
+     "lon": 10.402882,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "node/213847571",
+     "tipo": "school",
+     "nome": "Liceo scientifico \"Ulisse Dini\"",
+     "lat": 43.710799,
+     "lon": 10.401278,
+     "ingressi": 1,
+     "check_date": "2025-09-24"
+    },
+    {
+     "osm": "way/695634299",
+     "tipo": "school",
+     "nome": "Scuola Primaria “C. Battisti”",
+     "lat": 43.707369,
+     "lon": 10.404627,
+     "ingressi": 8,
+     "check_date": ""
+    },
+    {
+     "osm": "way/547880008",
+     "tipo": "school",
+     "nome": "Scuola dell'infanzia San Francesco",
+     "lat": 43.706235,
+     "lon": 10.397392,
+     "ingressi": 1,
+     "check_date": "2026-05-04"
+    },
+    {
+     "osm": "node/4894134515",
+     "tipo": "school",
+     "nome": "Scuola di Musica",
+     "lat": 43.71117,
+     "lon": 10.395816,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "relation/15966352",
+     "tipo": "school",
+     "nome": "Succursale IC Fucini",
+     "lat": 43.711903,
+     "lon": 10.401862,
+     "ingressi": 0,
+     "check_date": ""
+    }
+   ],
+   "civici_sit_nel_riquadro": 2135,
+   "candidato": {
+    "tipo": "scuola",
+    "etichetta": "Scuola primaria C. Battisti, via Corridoni 42",
+    "osm": "way/695634299",
+    "lat": 43.707369,
+    "lon": 10.404627,
+    "ingressi_osm_nel_riquadro": 8,
+    "fonti": "SIT; MIM PIEE82101P; OSM",
+    "dentro_riquadro": true,
+    "fermate_gtfs_entro_300m": [
+     {
+      "codice": "PI4074",
+      "nome": "CORRIDONI 1",
+      "dist_m": 71,
+      "corse_oggi": 203,
+      "linee": "12 15 16 21 3+ 5"
+     },
+     {
+      "codice": "PI4055",
+      "nome": "CATTANEO 1",
+      "dist_m": 210,
+      "corse_oggi": 201,
+      "linee": "1+ 12 16 160 190 50 8"
+     },
+     {
+      "codice": "PI4056",
+      "nome": "CATTANEO 2",
+      "dist_m": 219,
+      "corse_oggi": 86,
+      "linee": "160 190 50 8"
+     },
+     {
+      "codice": "PI4053",
+      "nome": "BONAINI 2",
+      "dist_m": 253,
+      "corse_oggi": 336,
+      "linee": "1+ 110 12 14 150 16 160 190 5 50 8"
+     },
+     {
+      "codice": "PI4089",
+      "nome": "DA MORRONA",
+      "dist_m": 285,
+      "corse_oggi": 35,
+      "linee": "12 16"
+     },
+     {
+      "codice": "PI4076",
+      "nome": "CORRIDONI 3",
+      "dist_m": 290,
+      "corse_oggi": 172,
+      "linee": "15 21 3+ 5"
+     },
+     {
+      "codice": "PI4075",
+      "nome": "CORRIDONI 2",
+      "dist_m": 298,
+      "corse_oggi": 203,
+      "linee": "12 15 16 21 3+ 5"
+     }
+    ],
+    "civici_entro_500m": 1873,
+    "civici_entro_1000m": 6768
+   }
+  },
+  "Z3": {
+   "gtfs": {
+    "fermate": 10,
+    "servite_oggi": 10,
+    "linee_oggi": 6,
+    "corse_oggi_somma_sulle_fermate": 1099
+   },
+   "scuole_sit": {
+    "totale": 0,
+    "per_tipo": {}
+   },
+   "elenco_sit": [],
+   "mim_sedi_con_via_di_una_scuola_SIT_nel_riquadro": 0,
+   "osm": {
+    "scuole_infanzia": 0,
+    "universita": 0,
+    "con_ingressi": 0,
+    "base_osm": "2026-10-01T14:04:31Z"
+   },
+   "elenco_osm": [],
+   "civici_sit_nel_riquadro": 304,
+   "candidato": {
+    "tipo": "fermata",
+    "etichetta": "Fermata Martin Lutero 4 (PI4254)",
+    "lat": 43.707423,
+    "lon": 10.4385,
+    "fonti": "GTFS AT; nessuna scuola o sede universitaria nel riquadro in SIT né in OSM (zero risultati, non prova di assenza)",
+    "ingressi_osm_nel_riquadro": null,
+    "dentro_riquadro": true,
+    "fermate_gtfs_entro_300m": [
+     {
+      "codice": "PI4254",
+      "nome": "MARTIN LUTERO 4",
+      "dist_m": 0,
+      "corse_oggi": 164,
+      "linee": "1+ 14 150 22"
+     },
+     {
+      "codice": "PI4255",
+      "nome": "MARTIN LUTERO 1",
+      "dist_m": 27,
+      "corse_oggi": 154,
+      "linee": "1+ 13 150 18"
+     },
+     {
+      "codice": "PI4298",
+      "nome": "PARADISA 1",
+      "dist_m": 196,
+      "corse_oggi": 58,
+      "linee": "13 18"
+     },
+     {
+      "codice": "PI4010",
+      "nome": "GIOVANNETTI",
+      "dist_m": 273,
+      "corse_oggi": 71,
+      "linee": "13 150 18"
+     },
+     {
+      "codice": "PI4034",
+      "nome": "OSPEDALE CISANELLO - PINCHERA",
+      "dist_m": 277,
+      "corse_oggi": 127,
+      "linee": "13 150 18"
+     },
+     {
+      "codice": "PI4344",
+      "nome": "SAN BIAGIO 1",
+      "dist_m": 293,
+      "corse_oggi": 65,
+      "linee": "14 22"
+     }
+    ],
+    "civici_entro_500m": 412,
+    "civici_entro_1000m": 1023
+   }
+  },
+  "Z4": {
+   "gtfs": {
+    "fermate": 34,
+    "servite_oggi": 31,
+    "linee_oggi": 13,
+    "corse_oggi_somma_sulle_fermate": 1627
+   },
+   "scuole_sit": {
+    "totale": 4,
+    "per_tipo": {
+     "1)  nidi d'infanzia": 1,
+     "3)  Scuole dell'infanzia": 1,
+     "1)  nidi d'infanzia privato": 2
+    }
+   },
+   "elenco_sit": [
+    {
+     "nome": "L'Isola delle Farfalle",
+     "indirizzo": "via Lucchese n. 13;",
+     "lat": 43.726116,
+     "lon": 10.403018
+    },
+    {
+     "nome": "Parmeggiani",
+     "indirizzo": "via Firenze n. 12;",
+     "lat": 43.726626,
+     "lon": 10.409972
+    },
+    {
+     "nome": "Il Birichino",
+     "indirizzo": "PIAZZA S.CATERINA, 4",
+     "lat": 43.721509,
+     "lon": 10.404218
+    },
+    {
+     "nome": "Il Giardino Incantato",
+     "indirizzo": "VIA FILIPPO BUONARROTI, 7",
+     "lat": 43.721765,
+     "lon": 10.406864
+    }
+   ],
+   "mim_sedi_con_via_di_una_scuola_SIT_nel_riquadro": 6,
+   "osm": {
+    "scuole_infanzia": 12,
+    "universita": 9,
+    "con_ingressi": 4,
+    "base_osm": "2026-10-01T13:58:19Z"
+   },
+   "elenco_osm": [
+    {
+     "osm": "way/515555918",
+     "tipo": "building=kindergarten",
+     "nome": "",
+     "lat": 43.726638,
+     "lon": 10.409969,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/137827231",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.72216,
+     "lon": 10.404539,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/306558784",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.721743,
+     "lon": 10.406898,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/695631400",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.72258,
+     "lon": 10.404349,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/695631401",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.722213,
+     "lon": 10.404109,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "relation/1520437",
+     "tipo": "building=school",
+     "nome": "",
+     "lat": 43.721622,
+     "lon": 10.405174,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/137827245",
+     "tipo": "building=university",
+     "nome": "",
+     "lat": 43.722873,
+     "lon": 10.405296,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/476753387",
+     "tipo": "building=university",
+     "nome": "",
+     "lat": 43.722575,
+     "lon": 10.405112,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/476753728",
+     "tipo": "building=university",
+     "nome": "",
+     "lat": 43.722717,
+     "lon": 10.405055,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/546095513",
+     "tipo": "building=university",
+     "nome": "",
+     "lat": 43.722362,
+     "lon": 10.400084,
+     "ingressi": 3,
+     "check_date": ""
+    },
+    {
+     "osm": "way/137827239",
+     "tipo": "building=university",
+     "nome": "Istituto di Fisiologia (ed. principale)",
+     "lat": 43.722359,
+     "lon": 10.405348,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/873158918",
+     "tipo": "kindergarten",
+     "nome": "L'isola delle farfalle",
+     "lat": 43.726095,
+     "lon": 10.403031,
+     "ingressi": 4,
+     "check_date": ""
+    },
+    {
+     "osm": "node/2700695076",
+     "tipo": "kindergarten",
+     "nome": "Scuola dell’Infanzia \"Perodi\"",
+     "lat": 43.722113,
+     "lon": 10.404549,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/238675978",
+     "tipo": "kindergarten",
+     "nome": "Scuola dell’Infanzia “Parmeggiani”",
+     "lat": 43.726638,
+     "lon": 10.409996,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/106644872",
+     "tipo": "school",
+     "nome": "Centro Sociale Suore Immacolatine",
+     "lat": 43.721585,
+     "lon": 10.406966,
+     "ingressi": 0,
+     "check_date": "2025-08-27"
+    },
+    {
+     "osm": "way/306667933",
+     "tipo": "school",
+     "nome": "Istituto Arcivescovile Paritario - Santa Caterina",
+     "lat": 43.721711,
+     "lon": 10.405319,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "way/217910056",
+     "tipo": "school",
+     "nome": "Liceo Giosuè Carducci",
+     "lat": 43.722432,
+     "lon": 10.40425,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "way/476755332",
+     "tipo": "university",
+     "nome": "",
+     "lat": 43.722707,
+     "lon": 10.405531,
+     "ingressi": 1,
+     "check_date": ""
+    },
+    {
+     "osm": "node/5258131767",
+     "tipo": "university",
+     "nome": "Aula magna / centro congressi",
+     "lat": 43.721732,
+     "lon": 10.408189,
+     "ingressi": 0,
+     "check_date": "2025-08-27"
+    },
+    {
+     "osm": "node/4702380316",
+     "tipo": "university",
+     "nome": "Istituto di Fisiologia",
+     "lat": 43.722248,
+     "lon": 10.405433,
+     "ingressi": 0,
+     "check_date": ""
+    },
+    {
+     "osm": "node/5258131768",
+     "tipo": "university",
+     "nome": "Ufficio immatricolazioni Matricolandosi",
+     "lat": 43.721536,
+     "lon": 10.408267,
+     "ingressi": 0,
+     "check_date": "2025-08-27"
+    }
+   ],
+   "civici_sit_nel_riquadro": 1464,
+   "candidato": {
+    "tipo": "scuola",
+    "etichetta": "Istituto Arcivescovile Santa Caterina, piazza Santa Caterina 4 (nido, infanzia, primaria, medie, liceo)",
+    "osm": "way/306667933",
+    "lat": 43.721711,
+    "lon": 10.405319,
+    "ingressi_osm_nel_riquadro": 1,
+    "fonti": "SIT (nido privato Il Birichino, stesso indirizzo); MIM paritarie PI1M001001, PI1E00100Q, PI1A03600R, PIPS02500D; OSM",
+    "dentro_riquadro": true,
+    "fermate_gtfs_entro_300m": [
+     {
+      "codice": "PI4362",
+      "nome": "SAN ZENO 2",
+      "dist_m": 69,
+      "corse_oggi": 43,
+      "linee": "4"
+     },
+     {
+      "codice": "PI4039",
+      "nome": "BUONARROTI 2",
+      "dist_m": 165,
+      "corse_oggi": 43,
+      "linee": "4"
+     },
+     {
+      "codice": "PI4347",
+      "nome": "SANTA CATERINA",
+      "dist_m": 203,
+      "corse_oggi": 43,
+      "linee": "4"
+     },
+     {
+      "codice": "PI4361",
+      "nome": "SAN ZENO 1",
+      "dist_m": 219,
+      "corse_oggi": 113,
+      "linee": "3+ 4"
+     },
+     {
+      "codice": "PI5406",
+      "nome": "Porta a Lucca incr. Via Bianchi",
+      "dist_m": 255,
+      "corse_oggi": 10,
+      "linee": "E3"
+     },
+     {
+      "codice": "PI4040",
+      "nome": "BUONARROTI 3",
+      "dist_m": 257,
+      "corse_oggi": 113,
+      "linee": "3+ 4"
+     },
+     {
+      "codice": "PI5413",
+      "nome": "Porta a Lucca fr.incr. Via Bianchi",
+      "dist_m": 263,
+      "corse_oggi": 10,
+      "linee": "E3"
+     },
+     {
+      "codice": "PI0571",
+      "nome": "BAGNI DI NERONE 2",
+      "dist_m": 267,
+      "corse_oggi": 79,
+      "linee": "110 120 130 21 60 70"
+     },
+     {
+      "codice": "PI0152",
+      "nome": "BAGNI DI NERONE 1",
+      "dist_m": 272,
+      "corse_oggi": 76,
+      "linee": "110 120 130 60 70 71"
+     },
+     {
+      "codice": "PI4104",
+      "nome": "PARLASCIO",
+      "dist_m": 283,
+      "corse_oggi": 43,
+      "linee": "4"
+     },
+     {
+      "codice": "PI0278",
+      "nome": "BRENNERO SAN ZENO 1",
+      "dist_m": 288,
+      "corse_oggi": 75,
+      "linee": "110 120 130 60 70"
+     },
+     {
+      "codice": "PI4038",
+      "nome": "BUONARROTI 1",
+      "dist_m": 289,
+      "corse_oggi": 43,
+      "linee": "4"
+     }
+    ],
+    "civici_entro_500m": 1735,
+    "civici_entro_1000m": 6749
+   }
+  }
+ }
+}

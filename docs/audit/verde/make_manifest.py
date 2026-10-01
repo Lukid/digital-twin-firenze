@@ -4,6 +4,7 @@ import os,json,hashlib,datetime,re,glob
 SIT="https://sit.comune.pisa.it/arcgis/rest/services/"
 def url(f):
     b=os.path.basename(f)
+    if 'riquadri_iniziali' in f or b=='ricalcolo_zone_canoniche.json': return '(riquadri iniziali, sostituiti dai canonici di docs/audit/ZONE.json)' if 'riquadri' in f else '(derivato: ricalcolo su docs/audit/ZONE.json)'
     if b=='zone.json': return '(bbox definiti in questo audit, non una fonte)'
     if m:=re.match(r'ckan_(\d+)\.json',b):
         i=int(m.group(1)); 
@@ -26,7 +27,7 @@ def url(f):
      'spod_1_rest_licenses.json':'http://opendata.comune.pisa.it/SpodCkanApi/api/1/rest/licenses','spod_2_rest_package.json':'http://opendata.comune.pisa.it/SpodCkanApi/api/2/rest/package'}.get(b) \
      or (re.match(r'osm_Z\d',b) and 'https://overpass-api.de/api/interpreter (osm_alberi.py)') or ('https://opendata.comune.pisa.it/'+b[3:-5].replace('_','/',1)+' (variante, vedi riproduci.sh)' if b.startswith('od_') else '?')
 rows=[]
-for f in sorted(glob.glob('campioni/*')+['zone.json']):
+for f in sorted(glob.glob('campioni/*')+glob.glob('campioni/riquadri_iniziali/*')+['zone.json']):
     if os.path.isdir(f): continue
     d=open(f,'rb').read()
     rows.append({'path':f,'url':url(f),'timestamp_utc':datetime.datetime.fromtimestamp(os.path.getmtime(f),datetime.timezone.utc).isoformat(timespec='seconds'),'bytes':len(d),'sha256':hashlib.sha256(d).hexdigest()})

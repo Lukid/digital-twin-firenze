@@ -1,0 +1,51 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-01T14:04:31Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 7239666981,
+  "lat": 43.7059181,
+  "lon": 10.4424279,
+  "tags": {
+    "entrance": "main",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7291790131,
+  "lat": 43.7040629,
+  "lon": 10.4419627,
+  "tags": {
+    "emergency": "emergency_ward_entrance",
+    "emergency_ward_entrance": "all",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8824398202,
+  "lat": 43.7050981,
+  "lon": 10.4430787,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10886183658,
+  "lat": 43.7081139,
+  "lon": 10.4431127,
+  "tags": {
+    "entrance": "yes"
+  }
+}
+
+  ]
+}

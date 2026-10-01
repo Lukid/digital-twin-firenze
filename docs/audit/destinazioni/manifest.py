@@ -27,6 +27,7 @@ def url(n):
     m = re.match(r'sit_civici_(Z\d)\.geojson', n)
     if m: return SIT + 'Civici_puntuali_View/FeatureServer/0/query (distance=raggio_m dal centro di ' + m.group(1) + ' in zone.json, outSR=4326, f=geojson)'
     if re.match(r'osm_Z\d\.json', n): return OV
+    if re.match(r'osmc_Z\d\.json', n): return 'https://overpass-api.de/api/interpreter (riquadro canonico di ../ZONE.json, query in ricalcolo_osm.sh)'
     if n.startswith('gtfs_') and not n.startswith('gtfs_fermate') and not n.startswith('gtfs_verifica'): return GT + ' (estratto dallo ZIP, non conservato: 185529498 byte, sha256 2c00c8a604c60fb72c409715dcc8f2f20ef151f0fe389c5a3d08db2f217102c7, scaricato 2026-10-01T13:22Z)'
     if n.startswith('trenitalia_'): return 'https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/4f85393b-357d-443d-8378-65de4198505f/download/trenitalia.gtfs (estratto dallo ZIP, non conservato: 6127610 byte, sha256 a262c5bdfccd98a5c7e7ae08eea8eecb3189222f34c1015f5d4608faf3efc152, scaricato 2026-10-01T13:40Z)'
     return 'derivato: analizza.py / verifica_gtfs.py / treni_pisa.py da fonti elencate in REPORT.md'

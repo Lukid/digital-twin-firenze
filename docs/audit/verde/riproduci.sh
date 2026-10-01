@@ -22,3 +22,4 @@ curl -sL $B2/1/rest/licenses -o campioni/spod_1_rest_licenses.json; curl -sL $B2
 for p in catalogo-opendata categoria/ambiente content/api; do curl -sL "https://opendata.comune.pisa.it/$p" -o "campioni/od_$(echo $p|tr / _).html"; done
 python3 make_manifest.py
 find campioni -size 0 -print   # deve stampare nulla
+python3 sit_verde.py; python3 osm_alberi.py && python3 analisi_osm.py   # zone.json = riquadri canonici ZONE.json; i primi riquadri sono in campioni/riquadri_iniziali/

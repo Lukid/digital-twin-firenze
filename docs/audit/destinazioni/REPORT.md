@@ -77,3 +77,23 @@ Ingresso da verificare ovunque. Dettaglio in `candidati_caso_A.json`.
 ## File
 
 `manifest.json`, `riproduci.sh`, `zone.json`, `analizza.py`, `verifica_gtfs.py`, `treni_pisa.py`, `osm_zona.sh`, `osm_tutte.sh`, `manifest.py`, `campioni/` (6,9 MB).
+
+## Addendum: ricalcolo sui riquadri canonici
+
+Riquadri in `docs/audit/ZONE.json`. I numeri per cerchio delle sezioni 2-4 non valgono per i riquadri: valgono quelli qui sotto. Dati in `campioni/ricalcolo_zone_canoniche.json` e `candidati_canonici.json`; manifest aggiornato (50 file, nessuno a 0 byte). Script nuovi `ricalcolo.py`, `ricalcolo_osm.sh` aggiunti a `riproduci.sh` (non rieseguito per intero dopo l'aggiunta).
+
+Conteggi (fermate GTFS / servite oggi / linee / passaggi; scuole SIT; sedi MIM; OSM scuole e universitari; civici SIT):
+- Z1: 23 / 23 / 22 / 4.701; SIT 6; MIM 9; OSM 12 scuole, 33 universitari; civici 4.060
+- Z2: 38 / 37 / 34 / 6.860; SIT 5; MIM 6; OSM 9 scuole, 1 universitario; civici 2.135
+- Z3: 10 / 10 / 6 / 1.099; SIT 0; MIM 0; OSM 0 e 0 (zero risultati, non prova di assenza); civici 304
+- Z4: 34 / 31 / 13 / 1.627; SIT 4; MIM 6; OSM 12 scuole, 9 universitari; civici 1.464
+
+Confronto MIM grezzo per via.
+
+Candidate dentro il riquadro (ingresso da verificare):
+- Z1: Liceo Artistico Russoli, via San Frediano 13 (43,71885; 10,39935). Invariata.
+- Z2: Primaria Battisti, via Corridoni 42 (43,70737; 10,40463). Invariata.
+- Z3: nessuna scuola. Fermata Martin Lutero 4, PI4254 (43,70742; 10,43850), 164 corse oggi, 6 fermate entro 300 m, civici 412 / 1.023 entro 500 / 1.000 m. Alternativa: Ospedale Cisanello - Pinchera PI4034. Gereschi e le scuole di via di Parigi e via Puglia sono a ovest, fuori dal riquadro.
+- Z4: Istituto Arcivescovile Santa Caterina, piazza Santa Caterina 4 (43,72171; 10,40532). SIT (nido privato allo stesso indirizzo), MIM paritarie (4 codici), OSM. 1 solo ingresso OSM; il punto è a circa 20 m dal bordo sud del riquadro. 12 fermate entro 300 m, civici 1.735 / 6.749. Alternativa con più ingressi: nido L'Isola delle Farfalle, via Lucchese (SIT + OSM, 4 ingressi, senza MIM).
+
+Origini invariate: civici SIT entro 1.000 m dalla destinazione.

@@ -1,0 +1,2931 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-01T13:55:13Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 213847571,
+  "lat": 43.7107991,
+  "lon": 10.4012780,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "36",
+    "addr:postcode": "56125",
+    "addr:street": "Via Benedetto Croce",
+    "amenity": "school",
+    "check_date": "2025-09-24",
+    "contact:email": "pips02000a@istruzione.it",
+    "contact:fax": "+39 050 29220",
+    "contact:phone": "+39 050 20036;+39 050 28212",
+    "name": "Liceo scientifico \"Ulisse Dini\"",
+    "ref": "PIPS02000A",
+    "website": "https://www.liceodini.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 241507010,
+  "lat": 43.7107490,
+  "lon": 10.4021048,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "34",
+    "addr:postcode": "56125",
+    "addr:street": "Via Benedetto Croce",
+    "amenity": "school",
+    "contact:email": "piis00700e@istruzione.it;piis00700e@pec.istruzione.it",
+    "contact:phone": "+39 050 6200431",
+    "name": "Istituto Tecnico Commerciale \"Antonio Pacinotti\"",
+    "website": "https://iisgalileipacinotti.it/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 241507012,
+  "lat": 43.7106772,
+  "lon": 10.4028818,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "32",
+    "addr:postcode": "56125",
+    "addr:street": "Via Benedetto Croce",
+    "amenity": "school",
+    "contact:phone": "+39 050 23230",
+    "name": "Liceo Classico \"Galileo Galilei\"",
+    "website": "https://iisgalileipacinotti.it/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1422857596,
+  "lat": 43.7085314,
+  "lon": 10.3985458,
+  "tags": {
+    "entrance": "main",
+    "railway": "train_station_entrance"
+  }
+},
+{
+  "type": "node",
+  "id": 3689242962,
+  "lat": 43.7107876,
+  "lon": 10.3976020,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "2",
+    "addr:postcode": "56125",
+    "addr:street": "Via Silvio Pellico",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3689242971,
+  "lat": 43.7108269,
+  "lon": 10.3973100,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4894060571,
+  "lat": 43.7123617,
+  "lon": 10.3933619,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4894134515,
+  "lat": 43.7111703,
+  "lon": 10.3958157,
+  "tags": {
+    "amenity": "school",
+    "name": "Scuola di Musica"
+  }
+},
+{
+  "type": "node",
+  "id": 5022098660,
+  "lat": 43.7081005,
+  "lon": 10.4013168,
+  "tags": {
+    "addr:housenumber": "115",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5022098662,
+  "lat": 43.7081858,
+  "lon": 10.4010793,
+  "tags": {
+    "addr:housenumber": "117",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5100488601,
+  "lat": 43.7095498,
+  "lon": 10.3980018,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Via Pietro Mascagni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5100488615,
+  "lat": 43.7103187,
+  "lon": 10.3967380,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5100703719,
+  "lat": 43.7098590,
+  "lon": 10.3995321,
+  "tags": {
+    "addr:housenumber": "123",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5100792469,
+  "lat": 43.7090129,
+  "lon": 10.3990348,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5100804737,
+  "lat": 43.7093532,
+  "lon": 10.3996000,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368977,
+  "lat": 43.7073106,
+  "lon": 10.4034734,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368980,
+  "lat": 43.7072626,
+  "lon": 10.4036110,
+  "tags": {
+    "addr:housenumber": "43",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368981,
+  "lat": 43.7071912,
+  "lon": 10.4038142,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368982,
+  "lat": 43.7071379,
+  "lon": 10.4039647,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368983,
+  "lat": 43.7070909,
+  "lon": 10.4040966,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368984,
+  "lat": 43.7070446,
+  "lon": 10.4042290,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368985,
+  "lat": 43.7069250,
+  "lon": 10.4045732,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368986,
+  "lat": 43.7074105,
+  "lon": 10.4032317,
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368987,
+  "lat": 43.7074828,
+  "lon": 10.4030288,
+  "tags": {
+    "addr:housenumber": "55",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368992,
+  "lat": 43.7075672,
+  "lon": 10.4027891,
+  "tags": {
+    "addr:housenumber": "65",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101368993,
+  "lat": 43.7076346,
+  "lon": 10.4025973,
+  "tags": {
+    "addr:housenumber": "75",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369004,
+  "lat": 43.7077863,
+  "lon": 10.4021681,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369008,
+  "lat": 43.7076998,
+  "lon": 10.4024128,
+  "tags": {
+    "addr:housenumber": "83",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369011,
+  "lat": 43.7077515,
+  "lon": 10.4022686,
+  "tags": {
+    "addr:housenumber": "91",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369014,
+  "lat": 43.7078362,
+  "lon": 10.4020257,
+  "tags": {
+    "addr:housenumber": "99",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369015,
+  "lat": 43.7078784,
+  "lon": 10.4019043,
+  "tags": {
+    "addr:housenumber": "103",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369016,
+  "lat": 43.7079284,
+  "lon": 10.4017573,
+  "tags": {
+    "addr:housenumber": "109",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369522,
+  "lat": 43.7080531,
+  "lon": 10.4018085,
+  "tags": {
+    "addr:housenumber": "78",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5101369523,
+  "lat": 43.7079904,
+  "lon": 10.4019733,
+  "tags": {
+    "addr:housenumber": "76",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5293466103,
+  "lat": 43.7065235,
+  "lon": 10.3969384,
+  "tags": {
+    "entrance": "gate"
+  }
+},
+{
+  "type": "node",
+  "id": 5954931536,
+  "lat": 43.7070032,
+  "lon": 10.3975217,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6532183886,
+  "lat": 43.7071206,
+  "lon": 10.4044383,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447646,
+  "lat": 43.7122947,
+  "lon": 10.3926423,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447648,
+  "lat": 43.7124082,
+  "lon": 10.3937909,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447649,
+  "lat": 43.7123204,
+  "lon": 10.3928940,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447650,
+  "lat": 43.7123070,
+  "lon": 10.3927721,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447651,
+  "lat": 43.7123321,
+  "lon": 10.3930037,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447652,
+  "lat": 43.7123443,
+  "lon": 10.3931336,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6992447653,
+  "lat": 43.7123534,
+  "lon": 10.3932696,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Piazza San Paolo a Ripa d'Arno",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897738,
+  "lat": 43.7095415,
+  "lon": 10.3978626,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897739,
+  "lat": 43.7096642,
+  "lon": 10.3978905,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897741,
+  "lat": 43.7093608,
+  "lon": 10.3978258,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Pietro Mascagni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897746,
+  "lat": 43.7100599,
+  "lon": 10.3974845,
+  "tags": {
+    "addr:housenumber": "25",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7046897747,
+  "lat": 43.7100955,
+  "lon": 10.3972283,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7172233255,
+  "lat": 43.7111164,
+  "lon": 10.3989225,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Piazza Vittorio Emanuele II",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7172233257,
+  "lat": 43.7111006,
+  "lon": 10.3992136,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Piazza Vittorio Emanuele II",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7415957568,
+  "lat": 43.7052304,
+  "lon": 10.4036767,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "8b",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7415983891,
+  "lat": 43.7050317,
+  "lon": 10.4035282,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "8a",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7840112115,
+  "lat": 43.7098542,
+  "lon": 10.3960249,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7843973009,
+  "lat": 43.7099217,
+  "lon": 10.3984649,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7843973010,
+  "lat": 43.7099296,
+  "lon": 10.3983975,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016006,
+  "lat": 43.7051837,
+  "lon": 10.4031208,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "10",
+    "addr:postcode": "56121",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016017,
+  "lat": 43.7051753,
+  "lon": 10.4026596,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016018,
+  "lat": 43.7052374,
+  "lon": 10.4024950,
+  "tags": {
+    "addr:housenumber": "53",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016019,
+  "lat": 43.7050041,
+  "lon": 10.4029762,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016032,
+  "lat": 43.7049636,
+  "lon": 10.4031086,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016033,
+  "lat": 43.7049187,
+  "lon": 10.4032350,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016034,
+  "lat": 43.7049227,
+  "lon": 10.4032973,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016035,
+  "lat": 43.7048955,
+  "lon": 10.4033705,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016036,
+  "lat": 43.7048411,
+  "lon": 10.4035071,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016037,
+  "lat": 43.7047866,
+  "lon": 10.4036395,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016039,
+  "lat": 43.7045730,
+  "lon": 10.4041225,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016040,
+  "lat": 43.7045340,
+  "lon": 10.4042994,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7844016043,
+  "lat": 43.7046967,
+  "lon": 10.4028691,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7985815631,
+  "lat": 43.7118693,
+  "lon": 10.3971194,
+  "tags": {
+    "addr:housenumber": "89",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7985815633,
+  "lat": 43.7116461,
+  "lon": 10.3972101,
+  "tags": {
+    "addr:housenumber": "93",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356198,
+  "lat": 43.7106165,
+  "lon": 10.3947683,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356201,
+  "lat": 43.7106454,
+  "lon": 10.3931627,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356206,
+  "lat": 43.7106415,
+  "lon": 10.3927603,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356209,
+  "lat": 43.7106407,
+  "lon": 10.3926204,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356210,
+  "lat": 43.7106373,
+  "lon": 10.3923747,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8321356211,
+  "lat": 43.7107299,
+  "lon": 10.3920914,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944285,
+  "lat": 43.7117681,
+  "lon": 10.3986002,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Massimo D'Azeglio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944290,
+  "lat": 43.7114160,
+  "lon": 10.3986305,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Massimo D'Azeglio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944304,
+  "lat": 43.7112229,
+  "lon": 10.3985258,
+  "tags": {
+    "addr:housenumber": "18a",
+    "addr:street": "Piazza Vittorio Emanuele II",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8528944305,
+  "lat": 43.7110761,
+  "lon": 10.3977320,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8528958099,
+  "lat": 43.7115542,
+  "lon": 10.3981558,
+  "tags": {
+    "addr:housenumber": "71",
+    "addr:street": "Via Giuseppe Mazzini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8528958100,
+  "lat": 43.7114218,
+  "lon": 10.3980898,
+  "tags": {
+    "addr:housenumber": "73",
+    "addr:street": "Via Giuseppe Mazzini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8528958101,
+  "lat": 43.7117248,
+  "lon": 10.3982400,
+  "tags": {
+    "addr:housenumber": "69",
+    "addr:street": "Via Giuseppe Mazzini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8528958104,
+  "lat": 43.7119165,
+  "lon": 10.3985862,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Massimo D'Azeglio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8957791704,
+  "lat": 43.7081164,
+  "lon": 10.3919819,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Quarantola",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8957791714,
+  "lat": 43.7098661,
+  "lon": 10.3915354,
+  "tags": {
+    "addr:housenumber": "48",
+    "addr:street": "Via Quarantola",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762171,
+  "lat": 43.7101696,
+  "lon": 10.3967619,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762172,
+  "lat": 43.7101790,
+  "lon": 10.3967010,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762173,
+  "lat": 43.7101970,
+  "lon": 10.3965853,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762174,
+  "lat": 43.7102309,
+  "lon": 10.3963578,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762175,
+  "lat": 43.7101501,
+  "lon": 10.3968823,
+  "tags": {
+    "addr:housenumber": "35/a",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762176,
+  "lat": 43.7097763,
+  "lon": 10.3968534,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762177,
+  "lat": 43.7096594,
+  "lon": 10.3968735,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10079762178,
+  "lat": 43.7095920,
+  "lon": 10.3971114,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10621051284,
+  "lat": 43.7121495,
+  "lon": 10.3994344,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516039,
+  "lat": 43.7098846,
+  "lon": 10.4003840,
+  "tags": {
+    "addr:housenumber": "103",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516041,
+  "lat": 43.7098908,
+  "lon": 10.4006392,
+  "tags": {
+    "addr:housenumber": "93",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516048,
+  "lat": 43.7100106,
+  "lon": 10.4007588,
+  "tags": {
+    "addr:housenumber": "90",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516049,
+  "lat": 43.7100078,
+  "lon": 10.4006447,
+  "tags": {
+    "addr:housenumber": "92",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516067,
+  "lat": 43.7099058,
+  "lon": 10.4018651,
+  "tags": {
+    "addr:housenumber": "61",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516068,
+  "lat": 43.7099050,
+  "lon": 10.4017600,
+  "tags": {
+    "addr:housenumber": "65",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516069,
+  "lat": 43.7099040,
+  "lon": 10.4016129,
+  "tags": {
+    "addr:housenumber": "69",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516073,
+  "lat": 43.7099101,
+  "lon": 10.4021046,
+  "tags": {
+    "addr:housenumber": "57",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516077,
+  "lat": 43.7099098,
+  "lon": 10.4022750,
+  "tags": {
+    "addr:housenumber": "53",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516078,
+  "lat": 43.7100438,
+  "lon": 10.4020952,
+  "tags": {
+    "addr:housenumber": "50",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516079,
+  "lat": 43.7100371,
+  "lon": 10.4018123,
+  "tags": {
+    "addr:housenumber": "54",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516081,
+  "lat": 43.7100305,
+  "lon": 10.4016020,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516083,
+  "lat": 43.7099088,
+  "lon": 10.4024332,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516084,
+  "lat": 43.7099073,
+  "lon": 10.4025518,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516087,
+  "lat": 43.7099045,
+  "lon": 10.4026488,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "43",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516088,
+  "lat": 43.7098872,
+  "lon": 10.4027926,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516091,
+  "lat": 43.7100065,
+  "lon": 10.4028345,
+  "tags": {
+    "addr:housenumber": "38",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516097,
+  "lat": 43.7099443,
+  "lon": 10.4033150,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719516098,
+  "lat": 43.7099187,
+  "lon": 10.4035078,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520513,
+  "lat": 43.7097344,
+  "lon": 10.4030254,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520517,
+  "lat": 43.7096770,
+  "lon": 10.4029790,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520524,
+  "lat": 43.7096319,
+  "lon": 10.4029322,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520525,
+  "lat": 43.7094182,
+  "lon": 10.4027047,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520537,
+  "lat": 43.7094352,
+  "lon": 10.4005982,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520538,
+  "lat": 43.7095346,
+  "lon": 10.4006669,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520541,
+  "lat": 43.7096539,
+  "lon": 10.4007487,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520546,
+  "lat": 43.7098161,
+  "lon": 10.4008589,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520548,
+  "lat": 43.7098393,
+  "lon": 10.4010119,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Cristoforo Colombo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520556,
+  "lat": 43.7100121,
+  "lon": 10.4008399,
+  "tags": {
+    "addr:housenumber": "86",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520559,
+  "lat": 43.7100180,
+  "lon": 10.4011158,
+  "tags": {
+    "addr:housenumber": "76",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520563,
+  "lat": 43.7100227,
+  "lon": 10.4012872,
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520564,
+  "lat": 43.7100248,
+  "lon": 10.4013730,
+  "tags": {
+    "addr:housenumber": "66",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719520565,
+  "lat": 43.7100239,
+  "lon": 10.4013374,
+  "tags": {
+    "addr:housenumber": "68",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719591396,
+  "lat": 43.7105657,
+  "lon": 10.4006122,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719591397,
+  "lat": 43.7105480,
+  "lon": 10.4008868,
+  "tags": {
+    "addr:housenumber": "97",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719591398,
+  "lat": 43.7105375,
+  "lon": 10.4010765,
+  "tags": {
+    "addr:housenumber": "91",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719591403,
+  "lat": 43.7105243,
+  "lon": 10.4013389,
+  "tags": {
+    "addr:housenumber": "79",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10719592408,
+  "lat": 43.7104339,
+  "lon": 10.4026196,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10719592409,
+  "lat": 43.7104517,
+  "lon": 10.4024016,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829559325,
+  "lat": 43.7096672,
+  "lon": 10.4043219,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829559328,
+  "lat": 43.7096256,
+  "lon": 10.4045951,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829574045,
+  "lat": 43.7090249,
+  "lon": 10.4010815,
+  "tags": {
+    "addr:housenumber": "99",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829574046,
+  "lat": 43.7089366,
+  "lon": 10.4013416,
+  "tags": {
+    "addr:housenumber": "97",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575105,
+  "lat": 43.7088666,
+  "lon": 10.4015198,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575106,
+  "lat": 43.7088283,
+  "lon": 10.4016241,
+  "tags": {
+    "addr:housenumber": "93",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575107,
+  "lat": 43.7087495,
+  "lon": 10.4018355,
+  "tags": {
+    "addr:housenumber": "89",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575110,
+  "lat": 43.7085834,
+  "lon": 10.4020008,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10829575111,
+  "lat": 43.7083912,
+  "lon": 10.4018610,
+  "tags": {
+    "addr:housenumber": "38",
+    "addr:street": "Via Alessandro della Spina",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881385,
+  "lat": 43.7048342,
+  "lon": 10.4005922,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via Guglielmo Marconi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881387,
+  "lat": 43.7051155,
+  "lon": 10.4005515,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881396,
+  "lat": 43.7048504,
+  "lon": 10.4009049,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881397,
+  "lat": 43.7047818,
+  "lon": 10.4010283,
+  "tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881399,
+  "lat": 43.7043128,
+  "lon": 10.4008911,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10959881401,
+  "lat": 43.7040610,
+  "lon": 10.4008264,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11042358742,
+  "lat": 43.7118602,
+  "lon": 10.3996193,
+  "tags": {
+    "addr:housenumber": "138",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11042358745,
+  "lat": 43.7115757,
+  "lon": 10.3995174,
+  "tags": {
+    "addr:housenumber": "156",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026816,
+  "lat": 43.7106959,
+  "lon": 10.4020644,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026817,
+  "lat": 43.7107496,
+  "lon": 10.4012307,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026818,
+  "lat": 43.7106458,
+  "lon": 10.4028975,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026832,
+  "lat": 43.7105489,
+  "lon": 10.4031949,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11167026833,
+  "lat": 43.7105316,
+  "lon": 10.4033943,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381193,
+  "lat": 43.7105025,
+  "lon": 10.3914757,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381194,
+  "lat": 43.7104065,
+  "lon": 10.3914022,
+  "tags": {
+    "addr:housenumber": "56",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381195,
+  "lat": 43.7103484,
+  "lon": 10.3912537,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381196,
+  "lat": 43.7102313,
+  "lon": 10.3911928,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171381197,
+  "lat": 43.7100888,
+  "lon": 10.3912308,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307470732,
+  "lat": 43.7108992,
+  "lon": 10.3913037,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307529063,
+  "lat": 43.7108441,
+  "lon": 10.3911450,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307547961,
+  "lat": 43.7109475,
+  "lon": 10.3914034,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307553409,
+  "lat": 43.7109118,
+  "lon": 10.3913397,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307555403,
+  "lat": 43.7108586,
+  "lon": 10.3911867,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11307561450,
+  "lat": 43.7109212,
+  "lon": 10.3913664,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Porta a Mare",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11479442212,
+  "lat": 43.7103084,
+  "lon": 10.4045779,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Benedetto Croce",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11821260966,
+  "lat": 43.7094218,
+  "lon": 10.3977686,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11821271872,
+  "lat": 43.7098813,
+  "lon": 10.4001069,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "111",
+    "addr:postcode": "56125",
+    "addr:street": "Viale Francesco Bonaini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11821276489,
+  "lat": 43.7093306,
+  "lon": 10.3985505,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Viale Antonio Gramsci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12035841364,
+  "lat": 43.7096692,
+  "lon": 10.3970951,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Alfredo Catalani",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265360,
+  "lat": 43.7105975,
+  "lon": 10.3916321,
+  "tags": {
+    "addr:housenumber": "143",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265361,
+  "lat": 43.7105535,
+  "lon": 10.3918647,
+  "tags": {
+    "addr:housenumber": "135",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265362,
+  "lat": 43.7105459,
+  "lon": 10.3920661,
+  "tags": {
+    "addr:housenumber": "131",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265363,
+  "lat": 43.7105403,
+  "lon": 10.3922966,
+  "tags": {
+    "addr:housenumber": "121",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265364,
+  "lat": 43.7105346,
+  "lon": 10.3924917,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265366,
+  "lat": 43.7105321,
+  "lon": 10.3926236,
+  "tags": {
+    "addr:housenumber": "111",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265367,
+  "lat": 43.7105299,
+  "lon": 10.3927627,
+  "tags": {
+    "addr:housenumber": "109",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046265368,
+  "lat": 43.7105285,
+  "lon": 10.3929205,
+  "tags": {
+    "addr:housenumber": "107",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272769,
+  "lat": 43.7105275,
+  "lon": 10.3930781,
+  "tags": {
+    "addr:housenumber": "103",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272770,
+  "lat": 43.7105271,
+  "lon": 10.3932148,
+  "tags": {
+    "addr:housenumber": "101",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272771,
+  "lat": 43.7105259,
+  "lon": 10.3933617,
+  "tags": {
+    "addr:housenumber": "99",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272772,
+  "lat": 43.7105256,
+  "lon": 10.3933998,
+  "tags": {
+    "addr:housenumber": "97",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272773,
+  "lat": 43.7105240,
+  "lon": 10.3935154,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272774,
+  "lat": 43.7105217,
+  "lon": 10.3936672,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272775,
+  "lat": 43.7105194,
+  "lon": 10.3938119,
+  "tags": {
+    "addr:housenumber": "91",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272776,
+  "lat": 43.7105177,
+  "lon": 10.3939677,
+  "tags": {
+    "addr:housenumber": "97",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272777,
+  "lat": 43.7105156,
+  "lon": 10.3941296,
+  "tags": {
+    "addr:housenumber": "85",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272778,
+  "lat": 43.7105136,
+  "lon": 10.3942495,
+  "tags": {
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272779,
+  "lat": 43.7105052,
+  "lon": 10.3944182,
+  "tags": {
+    "addr:housenumber": "79",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046272781,
+  "lat": 43.7104897,
+  "lon": 10.3946067,
+  "tags": {
+    "addr:housenumber": "75",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302652,
+  "lat": 43.7102332,
+  "lon": 10.3939182,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302653,
+  "lat": 43.7101992,
+  "lon": 10.3943343,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302654,
+  "lat": 43.7100271,
+  "lon": 10.3942461,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302655,
+  "lat": 43.7102641,
+  "lon": 10.3946053,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046302657,
+  "lat": 43.7102493,
+  "lon": 10.3946637,
+  "tags": {
+    "addr:housenumber": "73A",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046320771,
+  "lat": 43.7104212,
+  "lon": 10.3951244,
+  "tags": {
+    "addr:housenumber": "69",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12046320772,
+  "lat": 43.7104112,
+  "lon": 10.3951952,
+  "tags": {
+    "addr:housenumber": "67",
+    "addr:street": "Via Cesare Battisti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12823793442,
+  "lat": 43.7102762,
+  "lon": 10.3913355,
+  "tags": {
+    "addr:housenumber": "54",
+    "addr:street": "Via Quarantola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12953848589,
+  "lat": 43.7041618,
+  "lon": 10.4012641,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via dell'Aeroporto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021212,
+  "lat": 43.7075735,
+  "lon": 10.4031565,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021213,
+  "lat": 43.7076477,
+  "lon": 10.4029424,
+  "tags": {
+    "addr:housenumber": "60",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021214,
+  "lat": 43.7076620,
+  "lon": 10.4029012,
+  "tags": {
+    "addr:housenumber": "62",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021215,
+  "lat": 43.7077434,
+  "lon": 10.4026666,
+  "tags": {
+    "addr:housenumber": "66",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021216,
+  "lat": 43.7078836,
+  "lon": 10.4022721,
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021217,
+  "lat": 43.7078152,
+  "lon": 10.4024597,
+  "tags": {
+    "addr:housenumber": "68",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794021219,
+  "lat": 43.7079457,
+  "lon": 10.4021004,
+  "tags": {
+    "addr:housenumber": "74",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794932697,
+  "lat": 43.7081728,
+  "lon": 10.4014487,
+  "tags": {
+    "addr:housenumber": "86",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794932698,
+  "lat": 43.7082344,
+  "lon": 10.4012744,
+  "tags": {
+    "addr:housenumber": "90",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794932699,
+  "lat": 43.7082647,
+  "lon": 10.4011891,
+  "tags": {
+    "addr:housenumber": "94",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794932700,
+  "lat": 43.7083494,
+  "lon": 10.4009487,
+  "tags": {
+    "addr:housenumber": "104",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794933201,
+  "lat": 43.7083725,
+  "lon": 10.4008834,
+  "tags": {
+    "addr:housenumber": "108",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794933202,
+  "lat": 43.7084544,
+  "lon": 10.4006541,
+  "tags": {
+    "addr:housenumber": "112",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794933203,
+  "lat": 43.7085035,
+  "lon": 10.4005173,
+  "tags": {
+    "addr:housenumber": "118",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118732,
+  "lat": 43.7074039,
+  "lon": 10.4036250,
+  "tags": {
+    "addr:housenumber": "54",
+    "addr:street": "Via Filippo Corridoni",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118733,
+  "lat": 43.7076584,
+  "lon": 10.4036340,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118744,
+  "lat": 43.7079426,
+  "lon": 10.4041173,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118745,
+  "lat": 43.7078788,
+  "lon": 10.4042974,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118746,
+  "lat": 43.7078930,
+  "lon": 10.4042575,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804118752,
+  "lat": 43.7078442,
+  "lon": 10.4043950,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368962,
+  "lat": 43.7078768,
+  "lon": 10.4046157,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368963,
+  "lat": 43.7080727,
+  "lon": 10.4040613,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368964,
+  "lat": 43.7080562,
+  "lon": 10.4041080,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368966,
+  "lat": 43.7079249,
+  "lon": 10.4044801,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804368967,
+  "lat": 43.7079831,
+  "lon": 10.4043152,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983515,
+  "lat": 43.7082181,
+  "lon": 10.4038668,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983517,
+  "lat": 43.7082409,
+  "lon": 10.4035859,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983518,
+  "lat": 43.7082974,
+  "lon": 10.4034254,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983519,
+  "lat": 43.7083290,
+  "lon": 10.4033356,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983520,
+  "lat": 43.7083773,
+  "lon": 10.4031984,
+  "tags": {
+    "addr:housenumber": "38",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983521,
+  "lat": 43.7084216,
+  "lon": 10.4030726,
+  "tags": {
+    "addr:housenumber": "40",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983523,
+  "lat": 43.7085109,
+  "lon": 10.4028264,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983525,
+  "lat": 43.7085877,
+  "lon": 10.4026162,
+  "tags": {
+    "addr:housenumber": "46",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983526,
+  "lat": 43.7086415,
+  "lon": 10.4024685,
+  "tags": {
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983530,
+  "lat": 43.7081666,
+  "lon": 10.4035137,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983531,
+  "lat": 43.7082316,
+  "lon": 10.4033300,
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983532,
+  "lat": 43.7082647,
+  "lon": 10.4032364,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983535,
+  "lat": 43.7083368,
+  "lon": 10.4030313,
+  "tags": {
+    "addr:housenumber": "53A",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983536,
+  "lat": 43.7083832,
+  "lon": 10.4028985,
+  "tags": {
+    "addr:housenumber": "55",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 13804983538,
+  "lat": 43.7084550,
+  "lon": 10.4026975,
+  "tags": {
+    "addr:housenumber": "63",
+    "addr:street": "Via Amerigo Vespucci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002207,
+  "lat": 43.7087692,
+  "lon": 10.4042338,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002208,
+  "lat": 43.7089965,
+  "lon": 10.4043887,
+  "tags": {
+    "addr:housenumber": "22",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002209,
+  "lat": 43.7090957,
+  "lon": 10.4044571,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002212,
+  "lat": 43.7091518,
+  "lon": 10.4044952,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13805002213,
+  "lat": 43.7089175,
+  "lon": 10.4044925,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Via Antonio Fratti",
+    "entrance": "staircase"
+  }
+},
+{
+  "type": "node",
+  "id": 14058349078,
+  "lat": 43.7050735,
+  "lon": 10.4028177,
+  "tags": {
+    "addr:housenumber": "43",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14058349079,
+  "lat": 43.7048123,
+  "lon": 10.4026253,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Via Alessandro da Morrona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14148891821,
+  "lat": 43.7043042,
+  "lon": 10.4019630,
+  "tags": {
+    "addr:housenumber": "62a",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "shop"
+  }
+},
+{
+  "type": "node",
+  "id": 14148891822,
+  "lat": 43.7043144,
+  "lon": 10.4019442,
+  "tags": {
+    "addr:housenumber": "62",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "shop"
+  }
+},
+{
+  "type": "node",
+  "id": 14148891823,
+  "lat": 43.7043324,
+  "lon": 10.4019114,
+  "tags": {
+    "addr:housenumber": "60",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "garage"
+  }
+},
+{
+  "type": "node",
+  "id": 14148891824,
+  "lat": 43.7043420,
+  "lon": 10.4018940,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Via Giuseppe Montanelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 110083622,
+  "bounds": {
+    "minlat": 43.7093488,
+    "minlon": 10.4007166,
+    "maxlat": 43.7096308,
+    "maxlon": 10.4010907
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:street": "Via Cristoforo Colombo",
+    "building": "university",
+    "name": "Dipartimento di Scienze politiche (sezione staccata)"
+  }
+},
+{
+  "type": "way",
+  "id": 127284351,
+  "bounds": {
+    "minlat": 43.7106404,
+    "minlon": 10.4011031,
+    "maxlat": 43.7114131,
+    "maxlon": 10.4030713
+  },
+  "tags": {
+    "building": "school",
+    "building:colour": "e6bd9d",
+    "building:levels": "4",
+    "building:material": "plaster",
+    "roof:material": "roof_tiles",
+    "roof:shape": "hipped"
+  }
+},
+{
+  "type": "way",
+  "id": 146344392,
+  "bounds": {
+    "minlat": 43.7037534,
+    "minlon": 10.3985591,
+    "maxlat": 43.7041529,
+    "maxlon": 10.3992531
+  },
+  "tags": {
+    "addr:housenumber": "117",
+    "addr:postcode": "56121",
+    "addr:street": "Via Sant'Agostino",
+    "building": "school",
+    "building:levels": "2",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 240399513,
+  "bounds": {
+    "minlat": 43.7106404,
+    "minlon": 10.4011031,
+    "maxlat": 43.7117860,
+    "maxlon": 10.4030713
+  },
+  "tags": {
+    "amenity": "school",
+    "education": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 547880008,
+  "bounds": {
+    "minlat": 43.7058327,
+    "minlon": 10.3967265,
+    "maxlat": 43.7066370,
+    "maxlon": 10.3980583
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via di Goletta",
+    "amenity": "school",
+    "check_date": "2026-05-04",
+    "name": "Scuola dell'infanzia San Francesco"
+  }
+},
+{
+  "type": "way",
+  "id": 580462112,
+  "bounds": {
+    "minlat": 43.7036266,
+    "minlon": 10.3984884,
+    "maxlat": 43.7042026,
+    "maxlon": 10.3993301
+  },
+  "tags": {
+    "addr:housenumber": "117",
+    "addr:street": "Via Sant'Agostino",
+    "amenity": "school",
+    "check_date": "2026-05-04",
+    "isced:level": "1",
+    "name": "Scuola Elementare \"N. Sauro\"",
+    "operator": "Istituto Comprensivo \"R. Fucini\"",
+    "operator:wikidata": "Q52903949",
+    "phone": "+39 050 29069",
+    "wikidata": "Q52857993"
+  }
+},
+{
+  "type": "way",
+  "id": 695634299,
+  "bounds": {
+    "minlat": 43.7069341,
+    "minlon": 10.4041804,
+    "maxlat": 43.7078029,
+    "maxlon": 10.4050736
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "42",
+    "addr:postcode": "56121",
+    "addr:street": "Via Filippo Corridoni",
+    "amenity": "school",
+    "isced:level": "1",
+    "name": "Scuola Primaria “C. Battisti”",
+    "operator": "Istituto Comprensivo \"R. Fucini\"",
+    "operator:wikidata": "Q52903949",
+    "phone": "+39 050 29310",
+    "wikidata": "Q52899615"
+  }
+},
+{
+  "type": "relation",
+  "id": 15966352,
+  "bounds": {
+    "minlat": 43.7117220,
+    "minlon": 10.4014245,
+    "maxlat": 43.7120848,
+    "maxlon": 10.4023002
+  },
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Simone Sancasciani",
+    "amenity": "school",
+    "name": "Succursale IC Fucini",
+    "operator": "I.C. Renato Fucini",
+    "operator:type": "public",
+    "operator:wikidata": "Q52903949",
+    "type": "multipolygon",
+    "wikidata": "Q52901576"
+  }
+}
+
+  ]
+}

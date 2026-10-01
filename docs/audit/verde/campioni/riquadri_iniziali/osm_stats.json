@@ -1,0 +1,114 @@
+{
+ "Z1": {
+  "timestamp_utc": "2026-10-01T13:27:27.459734+00:00",
+  "alberi_nodi": 272,
+  "tree_row": 5,
+  "aree_verdi_way_rel": 95,
+  "attributi": {
+   "species": 7,
+   "species:it": 0,
+   "genus": 3,
+   "taxon": 7,
+   "height": 4,
+   "est_height": 0,
+   "diameter_crown": 1,
+   "crown_diameter": 0,
+   "circumference": 3,
+   "diameter": 0,
+   "leaf_type": 29,
+   "leaf_cycle": 11,
+   "start_date": 2,
+   "ref": 0,
+   "source": 0,
+   "denotation": 13
+  },
+  "timestamp_osm_nodi_min_max": [
+   "2014-09-02T14:15:22Z",
+   "2026-09-14T22:49:53Z"
+  ]
+ },
+ "Z2": {
+  "timestamp_utc": "2026-10-01T13:27:38.843028+00:00",
+  "alberi_nodi": 426,
+  "tree_row": 7,
+  "aree_verdi_way_rel": 31,
+  "attributi": {
+   "species": 5,
+   "species:it": 0,
+   "genus": 0,
+   "taxon": 0,
+   "height": 4,
+   "est_height": 0,
+   "diameter_crown": 0,
+   "crown_diameter": 0,
+   "circumference": 0,
+   "diameter": 0,
+   "leaf_type": 34,
+   "leaf_cycle": 7,
+   "start_date": 0,
+   "ref": 0,
+   "source": 0,
+   "denotation": 4
+  },
+  "timestamp_osm_nodi_min_max": [
+   "2015-09-11T07:20:58Z",
+   "2026-07-29T10:27:42Z"
+  ]
+ },
+ "Z3": {
+  "timestamp_utc": "2026-10-01T13:27:45.716342+00:00",
+  "alberi_nodi": 50,
+  "tree_row": 8,
+  "aree_verdi_way_rel": 12,
+  "attributi": {
+   "species": 0,
+   "species:it": 0,
+   "genus": 0,
+   "taxon": 0,
+   "height": 0,
+   "est_height": 0,
+   "diameter_crown": 0,
+   "crown_diameter": 0,
+   "circumference": 0,
+   "diameter": 0,
+   "leaf_type": 0,
+   "leaf_cycle": 0,
+   "start_date": 0,
+   "ref": 0,
+   "source": 0,
+   "denotation": 0
+  },
+  "timestamp_osm_nodi_min_max": [
+   "2022-03-01T22:17:56Z",
+   "2025-02-12T09:25:29Z"
+  ]
+ },
+ "Z4": {
+  "timestamp_utc": "2026-10-01T13:28:09.567349+00:00",
+  "alberi_nodi": 516,
+  "tree_row": 64,
+  "aree_verdi_way_rel": 101,
+  "attributi": {
+   "species": 0,
+   "species:it": 0,
+   "genus": 1,
+   "taxon": 0,
+   "height": 6,
+   "est_height": 0,
+   "diameter_crown": 0,
+   "crown_diameter": 0,
+   "circumference": 0,
+   "diameter": 0,
+   "leaf_type": 15,
+   "leaf_cycle": 1,
+   "start_date": 0,
+   "ref": 0,
+   "source": 0,
+   "denotation": 0
+  },
+  "timestamp_osm_nodi_min_max": [
+   "2014-02-25T20:49:00Z",
+   "2026-08-08T23:58:41Z"
+  ]
+ }
+}

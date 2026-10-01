@@ -1,0 +1,4652 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-01T13:54:11Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 339093139,
+  "lat": 43.7177172,
+  "lon": 10.3969459,
+  "tags": {
+    "amenity": "university",
+    "name": "Facoltà di Lettere"
+  }
+},
+{
+  "type": "node",
+  "id": 431423712,
+  "lat": 43.7201292,
+  "lon": 10.3999545,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via dei Martiri",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1215869801,
+  "lat": 43.7149178,
+  "lon": 10.4073230,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 1677276904,
+  "lat": 43.7206078,
+  "lon": 10.4026444,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "33",
+    "addr:postcode": "56127",
+    "addr:street": "Piazza Martiri della Libertà",
+    "amenity": "university",
+    "name": "Scuola Superiore Sant'Anna",
+    "phone": "+39 050 883111",
+    "website": "https://www.santannapisa.it/",
+    "wikidata": "Q774609",
+    "wikipedia": "it:Scuola superiore di studi universitari e di perfezionamento Sant'Anna"
+  }
+},
+{
+  "type": "node",
+  "id": 1715982941,
+  "lat": 43.7201299,
+  "lon": 10.4078976,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "3",
+    "addr:postcode": "56127",
+    "addr:street": "Largo Bruno Pontecorvo",
+    "amenity": "university",
+    "check_date": "2025-08-27",
+    "faculty": "physics",
+    "name": "Dipartimento di Fisica 'E. Fermi'",
+    "operator": "University of Pisa"
+  }
+},
+{
+  "type": "node",
+  "id": 1952577549,
+  "lat": 43.7188240,
+  "lon": 10.4061194,
+  "tags": {
+    "barrier": "gate",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2075977607,
+  "lat": 43.7187048,
+  "lon": 10.4062232,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2453452240,
+  "lat": 43.7167063,
+  "lon": 10.4074594,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 2463332403,
+  "lat": 43.7200603,
+  "lon": 10.4072125,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housename": "eXploit",
+    "addr:housenumber": "2",
+    "addr:postcode": "56127",
+    "addr:street": "Largo Bruno Pontecorvo",
+    "amenity": "university",
+    "building:levels": "1",
+    "check_date": "2024-08-22",
+    "int_name": "Student Rooms",
+    "name": "Aula AM-1",
+    "operator": "eXploit",
+    "source": "local knowledge",
+    "website": "https://exploitpisa.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 2505346142,
+  "lat": 43.7146191,
+  "lon": 10.3970524,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2505346145,
+  "lat": 43.7146522,
+  "lon": 10.3974617,
+  "tags": {
+    "entrance": "park"
+  }
+},
+{
+  "type": "node",
+  "id": 2909353725,
+  "lat": 43.7203807,
+  "lon": 10.3999951,
+  "tags": {
+    "entrance": "entrance"
+  }
+},
+{
+  "type": "node",
+  "id": 3078104146,
+  "lat": 43.7182200,
+  "lon": 10.4043250,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "75",
+    "addr:postcode": "56127",
+    "addr:street": "Via San Francesco",
+    "entrance": "service"
+  }
+},
+{
+  "type": "node",
+  "id": 3078104147,
+  "lat": 43.7182329,
+  "lon": 10.4044805,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "73",
+    "addr:postcode": "56127",
+    "addr:street": "Via San Francesco",
+    "entrance": "service"
+  }
+},
+{
+  "type": "node",
+  "id": 3078104148,
+  "lat": 43.7180618,
+  "lon": 10.4043022,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 3080228736,
+  "lat": 43.7180881,
+  "lon": 10.4056924,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "5",
+    "addr:postcode": "56127",
+    "addr:street": "Piazza Alessandro d'Ancona",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3081240277,
+  "lat": 43.7184997,
+  "lon": 10.4079053,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 3086164676,
+  "lat": 43.7165017,
+  "lon": 10.4055391,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "4",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ludovico Coccapani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3086164677,
+  "lat": 43.7165564,
+  "lon": 10.4055345,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "6",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ludovico Coccapani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3086164678,
+  "lat": 43.7173093,
+  "lon": 10.4054600,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "40",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ludovico Coccapani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3086164679,
+  "lat": 43.7179574,
+  "lon": 10.4053352,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "58",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ludovico Coccapani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3092246733,
+  "lat": 43.7166408,
+  "lon": 10.4054724,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "3",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ludovico Coccapani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3097097125,
+  "lat": 43.7180877,
+  "lon": 10.4067069,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "45",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ettore Sighieri",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3097097126,
+  "lat": 43.7181903,
+  "lon": 10.4066791,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "47",
+    "addr:postcode": "56127",
+    "addr:street": "Via Ettore Sighieri",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3105655629,
+  "lat": 43.7185370,
+  "lon": 10.4068869,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3105655630,
+  "lat": 43.7186359,
+  "lon": 10.4068560,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3105655631,
+  "lat": 43.7188366,
+  "lon": 10.4068264,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3105659492,
+  "lat": 43.7197740,
+  "lon": 10.4060166,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3133937936,
+  "lat": 43.7164293,
+  "lon": 10.4058990,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "1",
+    "addr:postcode": "56127",
+    "addr:street": "Via Sant'Andrea",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3481864308,
+  "lat": 43.7174514,
+  "lon": 10.4076520,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3483952525,
+  "lat": 43.7166543,
+  "lon": 10.3988015,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "43",
+    "addr:postcode": "56126",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "amenity": "university",
+    "check_date": "2025-03-28",
+    "name": "Università di Pisa - Rettorato"
+  }
+},
+{
+  "type": "node",
+  "id": 3695848052,
+  "lat": 43.7175066,
+  "lon": 10.3963539,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "25",
+    "addr:postcode": "56126",
+    "addr:street": "Via Santa Maria",
+    "amenity": "university",
+    "contact:facebook": "almaartis.academy",
+    "contact:mobile": "+39 3775 251997",
+    "contact:phone": "+39 050 2200713",
+    "email": "info@almaartis.it",
+    "name": "Alma Artis Academy - Accademia di Belle Arti",
+    "website": "https://www.almaartis.it/"
+  }
+},
+{
+  "type": "node",
+  "id": 3769040422,
+  "lat": 43.7183626,
+  "lon": 10.4014449,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Piazza San Felice",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3769040423,
+  "lat": 43.7183393,
+  "lon": 10.4014044,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Piazza San Felice",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3867535298,
+  "lat": 43.7182832,
+  "lon": 10.4050869,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "49",
+    "addr:postcode": "56127",
+    "addr:street": "Via San Francesco",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3867535299,
+  "lat": 43.7182781,
+  "lon": 10.4050253,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "51",
+    "addr:postcode": "56127",
+    "addr:street": "Via San Francesco",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3867535300,
+  "lat": 43.7182720,
+  "lon": 10.4049522,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "53",
+    "addr:postcode": "56127",
+    "addr:street": "Via San Francesco",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4061796497,
+  "lat": 43.7189552,
+  "lon": 10.3955347,
+  "tags": {
+    "access": "private",
+    "barrier": "gate",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 4408732663,
+  "lat": 43.7187456,
+  "lon": 10.3986698,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "15",
+    "addr:postcode": "56126",
+    "addr:street": "Via Pasquale Paoli",
+    "amenity": "university",
+    "name": "Dipartimento di Civiltà e Forme del Sapere",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "node",
+  "id": 4408732667,
+  "lat": 43.7199674,
+  "lon": 10.3971558,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "85",
+    "addr:postcode": "56125",
+    "addr:street": "Via Santa Maria",
+    "amenity": "university",
+    "check_date": "2024-04-25",
+    "name": "Facoltà di Lingue e Letterature Straniere",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "node",
+  "id": 5129102162,
+  "lat": 43.7184524,
+  "lon": 10.3960131,
+  "tags": {
+    "amenity": "university",
+    "name": "Facoltà di Biologia"
+  }
+},
+{
+  "type": "node",
+  "id": 5162808006,
+  "lat": 43.7189454,
+  "lon": 10.4030433,
+  "tags": {
+    "addr:housenumber": "23a",
+    "addr:street": "Via Santa Cecilia",
+    "amenity": "school",
+    "name": "CILT",
+    "phone": "+39 392 381 27 27",
+    "school": "language",
+    "website": "https://ciltsite.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5162808007,
+  "lat": 43.7170607,
+  "lon": 10.4048473,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Cesare Beccaria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5202510680,
+  "lat": 43.7179345,
+  "lon": 10.3969028,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5202510681,
+  "lat": 43.7177849,
+  "lon": 10.3967976,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5202510682,
+  "lat": 43.7176993,
+  "lon": 10.3971576,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via del Collegio Ricci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5202510683,
+  "lat": 43.7175571,
+  "lon": 10.3966334,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5206176736,
+  "lat": 43.7177634,
+  "lon": 10.3973688,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5206176738,
+  "lat": 43.7177810,
+  "lon": 10.3972199,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5206176745,
+  "lat": 43.7180950,
+  "lon": 10.3970171,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5206176746,
+  "lat": 43.7182124,
+  "lon": 10.3970867,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5206234609,
+  "lat": 43.7185678,
+  "lon": 10.3952720,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Derna",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5206234611,
+  "lat": 43.7184545,
+  "lon": 10.3956614,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5206234612,
+  "lat": 43.7183968,
+  "lon": 10.3958464,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5206235222,
+  "lat": 43.7182746,
+  "lon": 10.3962395,
+  "tags": {
+    "entrance": "exit"
+  }
+},
+{
+  "type": "node",
+  "id": 5206235247,
+  "lat": 43.7180599,
+  "lon": 10.3953163,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5206235258,
+  "lat": 43.7172871,
+  "lon": 10.3963073,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5258131764,
+  "lat": 43.7205451,
+  "lon": 10.4074498,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5505868229,
+  "lat": 43.7203388,
+  "lon": 10.3954192,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5525804425,
+  "lat": 43.7196634,
+  "lon": 10.4039433,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 5607581313,
+  "lat": 43.7140488,
+  "lon": 10.3988086,
+  "tags": {
+    "addr:housenumber": "61",
+    "addr:street": "Via Giuseppe Mazzini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6044638882,
+  "lat": 43.7157431,
+  "lon": 10.3999533,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6070255539,
+  "lat": 43.7156988,
+  "lon": 10.3997556,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6261461124,
+  "lat": 43.7195449,
+  "lon": 10.3990401,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6261461125,
+  "lat": 43.7195415,
+  "lon": 10.3997733,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6261461126,
+  "lat": 43.7194306,
+  "lon": 10.3997580,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Piazza dei Cavalieri",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6261461127,
+  "lat": 43.7191368,
+  "lon": 10.3998223,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6261461128,
+  "lat": 43.7192251,
+  "lon": 10.4007074,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6272264202,
+  "lat": 43.7156874,
+  "lon": 10.4006370,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Lungarno Gambacorti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6272264205,
+  "lat": 43.7155907,
+  "lon": 10.4011894,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6272491487,
+  "lat": 43.7178182,
+  "lon": 10.4008730,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6272528436,
+  "lat": 43.7191420,
+  "lon": 10.3986561,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6274473846,
+  "lat": 43.7162960,
+  "lon": 10.3970365,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6274608316,
+  "lat": 43.7183864,
+  "lon": 10.4009195,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6290932048,
+  "lat": 43.7186418,
+  "lon": 10.4057123,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Andrea Vacca Berlinghieri",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6331269689,
+  "lat": 43.7197741,
+  "lon": 10.4058581,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6372892271,
+  "lat": 43.7208786,
+  "lon": 10.4002395,
+  "tags": {
+    "entrance": "exit"
+  }
+},
+{
+  "type": "node",
+  "id": 6484548386,
+  "lat": 43.7199566,
+  "lon": 10.3972342,
+  "tags": {
+    "addr:housenumber": "83",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6484548387,
+  "lat": 43.7200237,
+  "lon": 10.3971981,
+  "tags": {
+    "addr:housenumber": "85",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6484548388,
+  "lat": 43.7200909,
+  "lon": 10.3971621,
+  "tags": {
+    "addr:housenumber": "85a",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6487424586,
+  "lat": 43.7189717,
+  "lon": 10.3975463,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Santa Maria",
+    "amenity": "university",
+    "check_date": "2025-08-10",
+    "name": "Dipartimento di filologia, letteratura e linguistica",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "node",
+  "id": 6518674534,
+  "lat": 43.7180746,
+  "lon": 10.3980876,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Piazza Evangelista Torricelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6518674535,
+  "lat": 43.7182517,
+  "lon": 10.3980932,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Piazza Evangelista Torricelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6771549080,
+  "lat": 43.7166079,
+  "lon": 10.3988188,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6771821300,
+  "lat": 43.7168233,
+  "lon": 10.3991672,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Filippo Serafini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 6771821301,
+  "lat": 43.7171060,
+  "lon": 10.3991876,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6771821302,
+  "lat": 43.7172985,
+  "lon": 10.3998135,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6771821303,
+  "lat": 43.7174010,
+  "lon": 10.3998135,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6840212919,
+  "lat": 43.7178289,
+  "lon": 10.3968313,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6929978963,
+  "lat": 43.7138048,
+  "lon": 10.4036308,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via San Martino",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6929978965,
+  "lat": 43.7138554,
+  "lon": 10.4035052,
+  "tags": {
+    "addr:housenumber": "43",
+    "addr:street": "Via San Martino",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6952238778,
+  "lat": 43.7145938,
+  "lon": 10.3962849,
+  "tags": {
+    "addr:housenumber": "40",
+    "addr:street": "Via La Maddalena",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7121777944,
+  "lat": 43.7184671,
+  "lon": 10.4031245,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "3",
+    "addr:postcode": "56127",
+    "addr:street": "Via Santa Cecilia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7208365608,
+  "lat": 43.7206226,
+  "lon": 10.3971441,
+  "tags": {
+    "addr:housenumber": "82",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7208365616,
+  "lat": 43.7201761,
+  "lon": 10.3974066,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Piazza Felice Cavallotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7208365633,
+  "lat": 43.7207819,
+  "lon": 10.3971505,
+  "tags": {
+    "addr:housenumber": "88",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7227786264,
+  "lat": 43.7206978,
+  "lon": 10.3991163,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7452414722,
+  "lat": 43.7164465,
+  "lon": 10.4044616,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7452457043,
+  "lat": 43.7168525,
+  "lon": 10.4039877,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7452457044,
+  "lat": 43.7169241,
+  "lon": 10.4039725,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7452457045,
+  "lat": 43.7171902,
+  "lon": 10.4039789,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7452457046,
+  "lat": 43.7170431,
+  "lon": 10.4038067,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7459151094,
+  "lat": 43.7183250,
+  "lon": 10.3971511,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7459151096,
+  "lat": 43.7184325,
+  "lon": 10.3972068,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7459151097,
+  "lat": 43.7184086,
+  "lon": 10.3971947,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7459151110,
+  "lat": 43.7188667,
+  "lon": 10.3974352,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7459151111,
+  "lat": 43.7187537,
+  "lon": 10.3973803,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7459358247,
+  "lat": 43.7207371,
+  "lon": 10.3990178,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via della Faggiola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7459358248,
+  "lat": 43.7206895,
+  "lon": 10.3990117,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via della Faggiola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7459358249,
+  "lat": 43.7207649,
+  "lon": 10.3990221,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via della Faggiola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7459358250,
+  "lat": 43.7205676,
+  "lon": 10.3989956,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via della Faggiola",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7459358251,
+  "lat": 43.7204422,
+  "lon": 10.3989910,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via della Faggiola",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7459358253,
+  "lat": 43.7208168,
+  "lon": 10.3990281,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Via della Faggiola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7462959470,
+  "lat": 43.7199357,
+  "lon": 10.3982901,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via dei Mille",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7462959473,
+  "lat": 43.7198738,
+  "lon": 10.3980902,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via dei Mille",
+    "entrance": "emergency"
+  }
+},
+{
+  "type": "node",
+  "id": 7462959476,
+  "lat": 43.7199244,
+  "lon": 10.3985275,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via dei Mille",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7462959477,
+  "lat": 43.7198620,
+  "lon": 10.3983176,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7462959481,
+  "lat": 43.7198983,
+  "lon": 10.3988246,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:country": "IT",
+    "addr:housenumber": "2",
+    "addr:postcode": "56126",
+    "addr:street": "Via dei Mille",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7462970392,
+  "lat": 43.7198524,
+  "lon": 10.3984591,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via dei Mille",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7462970439,
+  "lat": 43.7200338,
+  "lon": 10.3978201,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Piazza Felice Cavallotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7462989799,
+  "lat": 43.7202160,
+  "lon": 10.3976216,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Piazza Felice Cavallotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532936079,
+  "lat": 43.7161822,
+  "lon": 10.3949900,
+  "tags": {
+    "addr:housenumber": "5",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7532936080,
+  "lat": 43.7163411,
+  "lon": 10.3952037,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Santa Lucia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7532955144,
+  "lat": 43.7168106,
+  "lon": 10.3962580,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532955145,
+  "lat": 43.7169516,
+  "lon": 10.3962557,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532955148,
+  "lat": 43.7170710,
+  "lon": 10.3962641,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532955166,
+  "lat": 43.7171538,
+  "lon": 10.3962739,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7532957891,
+  "lat": 43.7166243,
+  "lon": 10.3952236,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Via Santa Lucia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7532957892,
+  "lat": 43.7168316,
+  "lon": 10.3951035,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via Trento",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532957893,
+  "lat": 43.7166619,
+  "lon": 10.3949359,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Roma",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532957896,
+  "lat": 43.7164194,
+  "lon": 10.3948734,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Roma",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532957898,
+  "lat": 43.7167859,
+  "lon": 10.3948551,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Via Roma",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532957901,
+  "lat": 43.7168991,
+  "lon": 10.3947526,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Trieste",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532957902,
+  "lat": 43.7169125,
+  "lon": 10.3945769,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Via Trieste",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7532957904,
+  "lat": 43.7165462,
+  "lon": 10.3947733,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Roma",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7595044452,
+  "lat": 43.7205744,
+  "lon": 10.4019226,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7733561572,
+  "lat": 43.7202261,
+  "lon": 10.4009830,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7733561573,
+  "lat": 43.7200053,
+  "lon": 10.4009740,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7832867008,
+  "lat": 43.7141000,
+  "lon": 10.4047765,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7832867009,
+  "lat": 43.7138731,
+  "lon": 10.4053140,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7832867010,
+  "lat": 43.7139927,
+  "lon": 10.4050272,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7832876069,
+  "lat": 43.7137204,
+  "lon": 10.4056503,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7844027126,
+  "lat": 43.7197452,
+  "lon": 10.4074326,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "5",
+    "addr:postcode": "56127",
+    "addr:street": "Largo Bruno Pontecorvo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7844027129,
+  "lat": 43.7205366,
+  "lon": 10.4079751,
+  "tags": {
+    "entrance": "emergency"
+  }
+},
+{
+  "type": "node",
+  "id": 7852950417,
+  "lat": 43.7141267,
+  "lon": 10.4031654,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Flaminio dal Borgo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7852950418,
+  "lat": 43.7142853,
+  "lon": 10.4033848,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Piazza San Sepolcro",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7852950426,
+  "lat": 43.7148043,
+  "lon": 10.4033750,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7852950427,
+  "lat": 43.7146196,
+  "lon": 10.4033923,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Piazza San Sepolcro",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7884728433,
+  "lat": 43.7144079,
+  "lon": 10.4021882,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "77",
+    "addr:postcode": "56125",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7884728435,
+  "lat": 43.7143255,
+  "lon": 10.4023746,
+  "tags": {
+    "addr:housenumber": "75",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7884768273,
+  "lat": 43.7182521,
+  "lon": 10.3969159,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "53",
+    "addr:postcode": "56126",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7952965224,
+  "lat": 43.7177987,
+  "lon": 10.3996519,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Piazza San Frediano",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7952965229,
+  "lat": 43.7178675,
+  "lon": 10.3994144,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via L'Arancio",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7952965230,
+  "lat": 43.7180113,
+  "lon": 10.3996662,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7953024313,
+  "lat": 43.7168644,
+  "lon": 10.3979145,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7953024336,
+  "lat": 43.7165654,
+  "lon": 10.3985471,
+  "tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7953024337,
+  "lat": 43.7164688,
+  "lon": 10.3979608,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 7985735977,
+  "lat": 43.7185032,
+  "lon": 10.4009379,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via del Castelletto",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7985735978,
+  "lat": 43.7185160,
+  "lon": 10.4009102,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via del Castelletto",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7988601767,
+  "lat": 43.7165250,
+  "lon": 10.4013172,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "9",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8171384736,
+  "lat": 43.7189396,
+  "lon": 10.3973098,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "67",
+    "addr:postcode": "56126",
+    "addr:street": "Via Santa Maria",
+    "entrance": "main",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8504521310,
+  "lat": 43.7183721,
+  "lon": 10.3998764,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via San Frediano",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8504521311,
+  "lat": 43.7182357,
+  "lon": 10.3998687,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697748315,
+  "lat": 43.7155483,
+  "lon": 10.4048693,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781717,
+  "lat": 43.7154709,
+  "lon": 10.4050771,
+  "tags": {
+    "addr:housenumber": "25",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781718,
+  "lat": 43.7154316,
+  "lon": 10.4051743,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781720,
+  "lat": 43.7153670,
+  "lon": 10.4053245,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781721,
+  "lat": 43.7150945,
+  "lon": 10.4059267,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781722,
+  "lat": 43.7152167,
+  "lon": 10.4056580,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781723,
+  "lat": 43.7149575,
+  "lon": 10.4062373,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781724,
+  "lat": 43.7149032,
+  "lon": 10.4063667,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781725,
+  "lat": 43.7148688,
+  "lon": 10.4064519,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Lungarno Mediceo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781737,
+  "lat": 43.7145836,
+  "lon": 10.4073877,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8697781738,
+  "lat": 43.7144716,
+  "lon": 10.4074525,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8731814215,
+  "lat": 43.7165445,
+  "lon": 10.3976490,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Piazza Francesco Carrara",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 8731849623,
+  "lat": 43.7167235,
+  "lon": 10.3976034,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Piazza Francesco Carrara",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8731849624,
+  "lat": 43.7169706,
+  "lon": 10.3974370,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Piazza Francesco Carrara",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8888033677,
+  "lat": 43.7179068,
+  "lon": 10.3988327,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Piazza Dante",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9039964515,
+  "lat": 43.7183575,
+  "lon": 10.4015719,
+  "tags": {
+    "access": "customers",
+    "addr:city": "Pisa",
+    "addr:country": "IT",
+    "addr:housenumber": "14",
+    "addr:postcode": "56126",
+    "addr:province": "PI",
+    "addr:street": "Via Ulisse Dini",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9122567035,
+  "lat": 43.7196893,
+  "lon": 10.4060111,
+  "tags": {
+    "access": "customers",
+    "addr:city": "Pisa",
+    "addr:country": "IT",
+    "addr:housenumber": "7",
+    "addr:postcode": "56127",
+    "addr:province": "PI",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9234830917,
+  "lat": 43.7142603,
+  "lon": 10.4025377,
+  "tags": {
+    "access": "customers",
+    "addr:city": "Pisa",
+    "addr:country": "IT",
+    "addr:housenumber": "71",
+    "addr:postcode": "56125",
+    "addr:province": "PI",
+    "addr:street": "Via San Martino",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9285632499,
+  "lat": 43.7130433,
+  "lon": 10.4076170,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9285632500,
+  "lat": 43.7131524,
+  "lon": 10.4072914,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9285632501,
+  "lat": 43.7133755,
+  "lon": 10.4065176,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9285632503,
+  "lat": 43.7136033,
+  "lon": 10.4059005,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9889508779,
+  "lat": 43.7141992,
+  "lon": 10.4045832,
+  "tags": {
+    "addr:housenumber": "1614",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10108325433,
+  "lat": 43.7141340,
+  "lon": 10.3960794,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10108325438,
+  "lat": 43.7139687,
+  "lon": 10.3961581,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10108325441,
+  "lat": 43.7143710,
+  "lon": 10.3957909,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10108745284,
+  "lat": 43.7137398,
+  "lon": 10.3963754,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10127878747,
+  "lat": 43.7187925,
+  "lon": 10.4031850,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Santa Cecilia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10127878748,
+  "lat": 43.7189734,
+  "lon": 10.4031903,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via Santa Cecilia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10127878749,
+  "lat": 43.7192111,
+  "lon": 10.4032037,
+  "tags": {
+    "addr:housenumber": "28",
+    "addr:street": "Via Santa Cecilia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10127878750,
+  "lat": 43.7193800,
+  "lon": 10.4032199,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via Santa Cecilia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10127878751,
+  "lat": 43.7187252,
+  "lon": 10.4031828,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Santa Cecilia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10127878752,
+  "lat": 43.7186810,
+  "lon": 10.4031814,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128546310,
+  "lat": 43.7141184,
+  "lon": 10.4006685,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128546314,
+  "lat": 43.7138398,
+  "lon": 10.4005457,
+  "tags": {
+    "addr:housenumber": "59",
+    "addr:street": "Corso Italia",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10128563995,
+  "lat": 43.7130883,
+  "lon": 10.4001166,
+  "tags": {
+    "addr:housenumber": "88",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128564000,
+  "lat": 43.7134237,
+  "lon": 10.4002679,
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128904436,
+  "lat": 43.7145969,
+  "lon": 10.4009618,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128904437,
+  "lat": 43.7143710,
+  "lon": 10.4007036,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10128904441,
+  "lat": 43.7143698,
+  "lon": 10.4007910,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10199231717,
+  "lat": 43.7165539,
+  "lon": 10.4011257,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10215207267,
+  "lat": 43.7166984,
+  "lon": 10.4000070,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10604151261,
+  "lat": 43.7195073,
+  "lon": 10.4022313,
+  "tags": {
+    "addr:housenumber": "60",
+    "addr:street": "Via Guglielmo Oberdan",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10604151263,
+  "lat": 43.7193395,
+  "lon": 10.4022260,
+  "tags": {
+    "addr:housenumber": "52",
+    "addr:street": "Via Guglielmo Oberdan",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10604151270,
+  "lat": 43.7192286,
+  "lon": 10.4022224,
+  "tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Via Guglielmo Oberdan",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10604151273,
+  "lat": 43.7190774,
+  "lon": 10.4022171,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Via Guglielmo Oberdan",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10615758863,
+  "lat": 43.7189080,
+  "lon": 10.4022113,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "24",
+    "addr:street": "Via Guglielmo Oberdan",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10615758867,
+  "lat": 43.7187483,
+  "lon": 10.4022074,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Via Guglielmo Oberdan",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10615758883,
+  "lat": 43.7184706,
+  "lon": 10.4020038,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via Guglielmo Oberdan",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10615758885,
+  "lat": 43.7186129,
+  "lon": 10.4020105,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via Guglielmo Oberdan",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10615758893,
+  "lat": 43.7195341,
+  "lon": 10.4021041,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "57",
+    "addr:street": "Via Guglielmo Oberdan",
+    "entrance": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10697119023,
+  "lat": 43.7176454,
+  "lon": 10.4048005,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10766369823,
+  "lat": 43.7173538,
+  "lon": 10.4053375,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Via Carmignani",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10906063364,
+  "lat": 43.7162131,
+  "lon": 10.3954162,
+  "tags": {
+    "access": "private",
+    "door": "double",
+    "entrance": "main",
+    "level": "0",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10906063365,
+  "lat": 43.7159440,
+  "lon": 10.3956426,
+  "tags": {
+    "access": "private",
+    "door": "double",
+    "entrance": "main",
+    "level": "0",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10906063366,
+  "lat": 43.7160742,
+  "lon": 10.3955029,
+  "tags": {
+    "door": "hinged",
+    "entrance": "secondary",
+    "level": "0",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10907512912,
+  "lat": 43.7163675,
+  "lon": 10.3956203,
+  "tags": {
+    "entrance": "main",
+    "level": "0"
+  }
+},
+{
+  "type": "node",
+  "id": 10907512913,
+  "lat": 43.7164261,
+  "lon": 10.3957603,
+  "tags": {
+    "entrance": "secondary",
+    "level": "0"
+  }
+},
+{
+  "type": "node",
+  "id": 10957686501,
+  "lat": 43.7188991,
+  "lon": 10.3955910,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10957686504,
+  "lat": 43.7188853,
+  "lon": 10.3956425,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10957733609,
+  "lat": 43.7198272,
+  "lon": 10.3966779,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 10957733612,
+  "lat": 43.7198043,
+  "lon": 10.3964639,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10979384238,
+  "lat": 43.7179466,
+  "lon": 10.3946035,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Risorgimento",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11042358747,
+  "lat": 43.7134954,
+  "lon": 10.4003008,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11133620518,
+  "lat": 43.7136430,
+  "lon": 10.4004627,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11171413239,
+  "lat": 43.7184410,
+  "lon": 10.4071353,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "33",
+    "addr:postcode": "56127",
+    "addr:street": "Via San Francesco",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171413240,
+  "lat": 43.7184188,
+  "lon": 10.4069091,
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "37",
+    "addr:postcode": "56127",
+    "addr:street": "Via San Francesco",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11171413241,
+  "lat": 43.7183435,
+  "lon": 10.4067926,
+  "tags": {
+    "addr:housenumber": "32",
+    "addr:street": "Via Ettore Sighieri",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11241150644,
+  "lat": 43.7164939,
+  "lon": 10.4015073,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11241189872,
+  "lat": 43.7165963,
+  "lon": 10.4008392,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Lungarno Antonio Pacinotti",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11324927884,
+  "lat": 43.7206203,
+  "lon": 10.3978371,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11324927885,
+  "lat": 43.7206859,
+  "lon": 10.3978385,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11324927886,
+  "lat": 43.7207858,
+  "lon": 10.3978343,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11324927887,
+  "lat": 43.7209611,
+  "lon": 10.3978023,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11324927888,
+  "lat": 43.7206539,
+  "lon": 10.3978378,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11324927890,
+  "lat": 43.7208309,
+  "lon": 10.3978286,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11327665929,
+  "lat": 43.7208450,
+  "lon": 10.3977434,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11453109856,
+  "lat": 43.7207013,
+  "lon": 10.3977696,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11829179855,
+  "lat": 43.7196835,
+  "lon": 10.3961978,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11829179856,
+  "lat": 43.7197808,
+  "lon": 10.3957196,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11829179862,
+  "lat": 43.7197494,
+  "lon": 10.3964561,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11889251147,
+  "lat": 43.7155912,
+  "lon": 10.3999021,
+  "tags": {
+    "entrance": "exit"
+  }
+},
+{
+  "type": "node",
+  "id": 11919413883,
+  "lat": 43.7159236,
+  "lon": 10.3946196,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Piazza Solferino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11919413884,
+  "lat": 43.7161299,
+  "lon": 10.3945368,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Piazza Solferino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11919413888,
+  "lat": 43.7154914,
+  "lon": 10.3944105,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11919413890,
+  "lat": 43.7155633,
+  "lon": 10.3946708,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 11919413911,
+  "lat": 43.7155370,
+  "lon": 10.3945762,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "garage"
+  }
+},
+{
+  "type": "node",
+  "id": 11942857940,
+  "lat": 43.7190258,
+  "lon": 10.4032628,
+  "tags": {
+    "amenity": "university",
+    "name": "Scuola Superiore Sant'Anna - Palazzo Pilo Boyl",
+    "operator:wikidata": "Q774609",
+    "website": "https://www.santannapisa.it/it/sede/palazzo-pilo-boyl"
+  }
+},
+{
+  "type": "node",
+  "id": 11987549734,
+  "lat": 43.7200673,
+  "lon": 10.3961856,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12035903416,
+  "lat": 43.7164028,
+  "lon": 10.4052033,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12035903437,
+  "lat": 43.7160646,
+  "lon": 10.4051893,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via della Scuola",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12049099234,
+  "lat": 43.7171193,
+  "lon": 10.3949259,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via Roma",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12049099235,
+  "lat": 43.7172394,
+  "lon": 10.3949587,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via Roma",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12049099237,
+  "lat": 43.7173507,
+  "lon": 10.3949890,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Via Roma",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12049099238,
+  "lat": 43.7174534,
+  "lon": 10.3950170,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12049099239,
+  "lat": 43.7175826,
+  "lon": 10.3950518,
+  "tags": {
+    "addr:housenumber": "27",
+    "addr:street": "Via Roma",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12049099240,
+  "lat": 43.7177019,
+  "lon": 10.3950841,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Via Roma",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12154346742,
+  "lat": 43.7142581,
+  "lon": 10.4044583,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12154346743,
+  "lat": 43.7142856,
+  "lon": 10.4044001,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Lungarno Galileo Galilei",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12154352711,
+  "lat": 43.7133073,
+  "lon": 10.4031090,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12154352712,
+  "lat": 43.7132699,
+  "lon": 10.4029976,
+  "tags": {
+    "entrance": "main",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12154352713,
+  "lat": 43.7133399,
+  "lon": 10.4029703,
+  "tags": {
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12154367012,
+  "lat": 43.7131044,
+  "lon": 10.4043641,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:place": "Piazza San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12154367015,
+  "lat": 43.7132725,
+  "lon": 10.4045106,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12154367016,
+  "lat": 43.7133714,
+  "lon": 10.4043902,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via San Martino",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12169770832,
+  "lat": 43.7130764,
+  "lon": 10.3966839,
+  "tags": {
+    "addr:housenumber": "59",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12169770837,
+  "lat": 43.7132327,
+  "lon": 10.3966160,
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12169770838,
+  "lat": 43.7133782,
+  "lon": 10.3965438,
+  "tags": {
+    "addr:housenumber": "43",
+    "addr:street": "Via Francesco Crispi",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12345958364,
+  "lat": 43.7146447,
+  "lon": 10.4017761,
+  "tags": {
+    "addr:housenumber": "87",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12345958366,
+  "lat": 43.7145904,
+  "lon": 10.4018713,
+  "tags": {
+    "addr:housenumber": "83",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12345958372,
+  "lat": 43.7147834,
+  "lon": 10.4016458,
+  "tags": {
+    "addr:housenumber": "108",
+    "addr:street": "Via San Martino",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12382509090,
+  "lat": 43.7179530,
+  "lon": 10.4072738,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Giovanni Di Simone",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12382509091,
+  "lat": 43.7184066,
+  "lon": 10.4074528,
+  "tags": {
+    "addr:housenumber": "22",
+    "addr:street": "Via Giovanni Di Simone",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12382509099,
+  "lat": 43.7182270,
+  "lon": 10.4074927,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12382525604,
+  "lat": 43.7175818,
+  "lon": 10.4076109,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Mario Lalli",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12412827007,
+  "lat": 43.7185824,
+  "lon": 10.4013577,
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Via Ulisse Dini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12426250242,
+  "lat": 43.7202589,
+  "lon": 10.3978308,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12426250243,
+  "lat": 43.7203646,
+  "lon": 10.3977667,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12520770550,
+  "lat": 43.7199925,
+  "lon": 10.4021592,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Via Giosuè Carducci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12520770553,
+  "lat": 43.7201428,
+  "lon": 10.4021669,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Via Giosuè Carducci",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12520770555,
+  "lat": 43.7202141,
+  "lon": 10.4021663,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Via Giosuè Carducci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12520770557,
+  "lat": 43.7202994,
+  "lon": 10.4021604,
+  "tags": {
+    "addr:housenumber": "25",
+    "addr:street": "Via Giosuè Carducci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12520770562,
+  "lat": 43.7209750,
+  "lon": 10.4021361,
+  "tags": {
+    "addr:housenumber": "63",
+    "addr:street": "Via Giosuè Carducci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12520770565,
+  "lat": 43.7208740,
+  "lon": 10.4021359,
+  "tags": {
+    "addr:housenumber": "57",
+    "addr:street": "Via Giosuè Carducci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12520770568,
+  "lat": 43.7207854,
+  "lon": 10.4021355,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Via Giosuè Carducci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12520770570,
+  "lat": 43.7207097,
+  "lon": 10.4021381,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Via Giosuè Carducci",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 12650926249,
+  "lat": 43.7169899,
+  "lon": 10.3946332,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Trieste",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12650926251,
+  "lat": 43.7169999,
+  "lon": 10.3944901,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Trieste",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12650926252,
+  "lat": 43.7170059,
+  "lon": 10.3943946,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Trieste",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12864751412,
+  "lat": 43.7160532,
+  "lon": 10.4072026,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via Santa Bibbiana",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12864790500,
+  "lat": 43.7137103,
+  "lon": 10.3959351,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via San Paolo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12864791101,
+  "lat": 43.7137295,
+  "lon": 10.3956503,
+  "tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Via San Paolo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13152588814,
+  "lat": 43.7173088,
+  "lon": 10.4009622,
+  "tags": {
+    "addr:housenumber": "25",
+    "addr:street": "Via Domenico Cavalca",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13152932065,
+  "lat": 43.7188120,
+  "lon": 10.4010689,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via Ulisse Dini",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13302373985,
+  "lat": 43.7148080,
+  "lon": 10.4012700,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13302377214,
+  "lat": 43.7146623,
+  "lon": 10.4010327,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13316283453,
+  "lat": 43.7131832,
+  "lon": 10.4002719,
+  "tags": {
+    "addr:housenumber": "79",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13316283454,
+  "lat": 43.7133045,
+  "lon": 10.4003228,
+  "tags": {
+    "addr:housenumber": "73",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13372177954,
+  "lat": 43.7130111,
+  "lon": 10.4062293,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Via Giovanni Bovio",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13580491114,
+  "lat": 43.7153104,
+  "lon": 10.3941663,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Lungarno Ranieri Simonelli",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13605365374,
+  "lat": 43.7197917,
+  "lon": 10.3964377,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13605365375,
+  "lat": 43.7197854,
+  "lon": 10.3963031,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13650140655,
+  "lat": 43.7204859,
+  "lon": 10.3977804,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13650140656,
+  "lat": 43.7206060,
+  "lon": 10.3977712,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13650140657,
+  "lat": 43.7206418,
+  "lon": 10.3977706,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13650140658,
+  "lat": 43.7205904,
+  "lon": 10.3978365,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13650140659,
+  "lat": 43.7205895,
+  "lon": 10.3977715,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13650140660,
+  "lat": 43.7205304,
+  "lon": 10.3978358,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13650140661,
+  "lat": 43.7205465,
+  "lon": 10.3977814,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13650140662,
+  "lat": 43.7203408,
+  "lon": 10.3978330,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13650140663,
+  "lat": 43.7206270,
+  "lon": 10.3977708,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via Don Gaetano Boschi",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694861537,
+  "lat": 43.7197656,
+  "lon": 10.4064121,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694872418,
+  "lat": 43.7197713,
+  "lon": 10.4061114,
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694881609,
+  "lat": 43.7196968,
+  "lon": 10.4052777,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694882264,
+  "lat": 43.7197557,
+  "lon": 10.4051792,
+  "tags": {
+    "addr:housenumber": "38",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694885420,
+  "lat": 43.7197456,
+  "lon": 10.4047839,
+  "tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694885695,
+  "lat": 43.7197746,
+  "lon": 10.4057769,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Via San Lorenzo",
+    "camera:mount": "wall",
+    "camera:type": "fixed",
+    "entrance": "yes",
+    "indoor": "no",
+    "man_made": "surveillance",
+    "surveillance": "outdoor",
+    "surveillance:type": "camera",
+    "surveillance:zone": "entrance"
+  }
+},
+{
+  "type": "node",
+  "id": 13694886346,
+  "lat": 43.7196935,
+  "lon": 10.4059307,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694886496,
+  "lat": 43.7196832,
+  "lon": 10.4067880,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694888868,
+  "lat": 43.7197681,
+  "lon": 10.4062243,
+  "tags": {
+    "addr:housenumber": "14",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694892825,
+  "lat": 43.7197662,
+  "lon": 10.4062917,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694893109,
+  "lat": 43.7197733,
+  "lon": 10.4068237,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694893246,
+  "lat": 43.7197431,
+  "lon": 10.4045966,
+  "tags": {
+    "addr:housenumber": "50",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694894034,
+  "lat": 43.7196908,
+  "lon": 10.4050648,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694894554,
+  "lat": 43.7197440,
+  "lon": 10.4046639,
+  "tags": {
+    "addr:housenumber": "48",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694894701,
+  "lat": 43.7197743,
+  "lon": 10.4055404,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13694894702,
+  "lat": 43.7197447,
+  "lon": 10.4047168,
+  "tags": {
+    "addr:housenumber": "46",
+    "addr:street": "Via San Lorenzo",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13732586528,
+  "lat": 43.7180457,
+  "lon": 10.3967991,
+  "tags": {
+    "addr:housenumber": "49",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13732586532,
+  "lat": 43.7174899,
+  "lon": 10.3963991,
+  "tags": {
+    "addr:housenumber": "25",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13732586541,
+  "lat": 43.7177797,
+  "lon": 10.3966025,
+  "tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13732586542,
+  "lat": 43.7178039,
+  "lon": 10.3966204,
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13952951467,
+  "lat": 43.7202202,
+  "lon": 10.3970943,
+  "tags": {
+    "addr:housenumber": "89",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13952951468,
+  "lat": 43.7202979,
+  "lon": 10.3970552,
+  "tags": {
+    "addr:housenumber": "93",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13952997278,
+  "lat": 43.7203992,
+  "lon": 10.3970216,
+  "tags": {
+    "addr:housenumber": "101",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13952997282,
+  "lat": 43.7204857,
+  "lon": 10.3970035,
+  "tags": {
+    "addr:housenumber": "107",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13952997283,
+  "lat": 43.7207824,
+  "lon": 10.3969943,
+  "tags": {
+    "addr:housenumber": "121",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13952997285,
+  "lat": 43.7206973,
+  "lon": 10.3969920,
+  "tags": {
+    "addr:housenumber": "115",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13952997288,
+  "lat": 43.7208482,
+  "lon": 10.3969996,
+  "tags": {
+    "addr:housenumber": "125",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13955698009,
+  "lat": 43.7177629,
+  "lon": 10.4043388,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Piazza San Paolo all'Orto",
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 13997575405,
+  "lat": 43.7160918,
+  "lon": 10.4062865,
+  "tags": {
+    "entrance": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 14000775796,
+  "lat": 43.7187720,
+  "lon": 10.3963211,
+  "tags": {
+    "access": "customers",
+    "door": "hinged",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14000775798,
+  "lat": 43.7186546,
+  "lon": 10.3960982,
+  "tags": {
+    "access": "employees",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14181783760,
+  "lat": 43.7185581,
+  "lon": 10.4018019,
+  "tags": {
+    "addr:housenumber": "1A",
+    "addr:street": "Via delle Sette Volte",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14181783761,
+  "lat": 43.7185865,
+  "lon": 10.4018039,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via delle Sette Volte",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14200879020,
+  "lat": 43.7187199,
+  "lon": 10.3947790,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Via Derna",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14200886456,
+  "lat": 43.7186757,
+  "lon": 10.3949101,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via Derna",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14201385715,
+  "lat": 43.7189064,
+  "lon": 10.3941808,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Via Derna",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14201402737,
+  "lat": 43.7187907,
+  "lon": 10.3945549,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Via Derna",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14201412745,
+  "lat": 43.7186304,
+  "lon": 10.3950546,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Via Derna",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14201419701,
+  "lat": 43.7188599,
+  "lon": 10.3943352,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Via Derna",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14226875793,
+  "lat": 43.7187491,
+  "lon": 10.4031229,
+  "tags": {
+    "access": "customers",
+    "addr:city": "Pisa",
+    "addr:housenumber": "21",
+    "addr:postcode": "56127",
+    "addr:street": "Via Santa Cecilia",
+    "entrance": "shop",
+    "level": "0",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14232664390,
+  "lat": 43.7136107,
+  "lon": 10.4003518,
+  "tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Corso Italia",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14234929982,
+  "lat": 43.7189882,
+  "lon": 10.3974934,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14234929985,
+  "lat": 43.7193918,
+  "lon": 10.3973804,
+  "tags": {
+    "addr:housenumber": "75",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14234929986,
+  "lat": 43.7188098,
+  "lon": 10.3972402,
+  "tags": {
+    "addr:housenumber": "65",
+    "addr:street": "Via Santa Maria",
+    "entrance": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 92930420,
+  "bounds": {
+    "minlat": 43.7200016,
+    "minlon": 10.4009341,
+    "maxlat": 43.7202267,
+    "maxlon": 10.4013383
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "check_date": "2026-07-16",
+    "name": "Polo Carmignani",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 93145078,
+  "bounds": {
+    "minlat": 43.7196379,
+    "minlon": 10.3994473,
+    "maxlat": 43.7199585,
+    "maxlon": 10.3999837
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "university",
+    "name": "Palazzo dell'Orologio",
+    "name:ko": "시계 궁전",
+    "wikidata": "Q753046",
+    "wikipedia": "it:Palazzo dell'Orologio"
+  }
+},
+{
+  "type": "way",
+  "id": 106644868,
+  "bounds": {
+    "minlat": 43.7200265,
+    "minlon": 10.4070345,
+    "maxlat": 43.7203121,
+    "maxlon": 10.4072773
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "1",
+    "addr:postcode": "56127",
+    "addr:street": "Via Filippo Buonarroti",
+    "building": "university",
+    "building:levels": "4",
+    "name": "Ex-DMA",
+    "operator": "Università di Pisa",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "way",
+  "id": 140894054,
+  "bounds": {
+    "minlat": 43.7187189,
+    "minlon": 10.3989111,
+    "maxlat": 43.7190785,
+    "maxlon": 10.3996696
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 156114845,
+  "bounds": {
+    "minlat": 43.7128176,
+    "minlon": 10.4022141,
+    "maxlat": 43.7131703,
+    "maxlon": 10.4027318
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 156114847,
+  "bounds": {
+    "minlat": 43.7131055,
+    "minlon": 10.4024099,
+    "maxlat": 43.7133596,
+    "maxlon": 10.4027126
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 156114855,
+  "bounds": {
+    "minlat": 43.7128846,
+    "minlon": 10.4013826,
+    "maxlat": 43.7131579,
+    "maxlon": 10.4017608
+  },
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "Via del Carmine",
+    "amenity": "kindergarten",
+    "building": "yes",
+    "name": "Scuola dell’infanzia Matilde Calandrini",
+    "phone": "+39 050 910731",
+    "wikidata": "Q52948292"
+  }
+},
+{
+  "type": "way",
+  "id": 158441765,
+  "bounds": {
+    "minlat": 43.7194517,
+    "minlon": 10.4074313,
+    "maxlat": 43.7200799,
+    "maxlon": 10.4082782
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "5",
+    "addr:postcode": "56127",
+    "addr:street": "Largo Bruno Pontecorvo",
+    "amenity": "university",
+    "building": "university",
+    "building:levels": "3",
+    "check_date": "2026-03-24",
+    "check_date:opening_hours": "2026-03-24",
+    "faculty": "mathematics",
+    "fax": "+39 050 2210 678",
+    "name": "Dipartimento di Matematica",
+    "opening_hours": "Mo-Fr 08:00-20:30",
+    "operator": "Università degli Studi di Pisa",
+    "website": "https://www.dm.unipi.it",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 163739527,
+  "bounds": {
+    "minlat": 43.7200430,
+    "minlon": 10.3959114,
+    "maxlat": 43.7202261,
+    "maxlon": 10.3964825
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "2",
+    "roof:levels": "1",
+    "roof:shape": "hipped"
+  }
+},
+{
+  "type": "way",
+  "id": 174083473,
+  "bounds": {
+    "minlat": 43.7126114,
+    "minlon": 10.3945522,
+    "maxlat": 43.7130213,
+    "maxlon": 10.3952008
+  },
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Via della Qualquonia",
+    "amenity": "school",
+    "check_date": "2025-03-23",
+    "isced:level": "2",
+    "name": "Scuola pubblica media \"Giuseppe Toniolo\"",
+    "operator": "Istituto Comprensivo \"G. Toniolo\"",
+    "operator:wikidata": "Q52749076",
+    "phone": "+39 050 26363",
+    "wikidata": "Q52750566"
+  }
+},
+{
+  "type": "way",
+  "id": 183979949,
+  "bounds": {
+    "minlat": 43.7180609,
+    "minlon": 10.4077886,
+    "maxlat": 43.7185196,
+    "maxlon": 10.4083576
+  },
+  "tags": {
+    "amenity": "school",
+    "building": "hut",
+    "building:levels": "3",
+    "name": "Scuola Primaria D. Chiesa"
+  }
+},
+{
+  "type": "way",
+  "id": 185310436,
+  "bounds": {
+    "minlat": 43.7174591,
+    "minlon": 10.4051581,
+    "maxlat": 43.7178618,
+    "maxlon": 10.4053882
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "1",
+    "addr:postcode": "56127",
+    "addr:street": "Via Giuseppe Vernaccini",
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 217538423,
+  "bounds": {
+    "minlat": 43.7194515,
+    "minlon": 10.4074001,
+    "maxlat": 43.7224393,
+    "maxlon": 10.4091744
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:postcode": "56127",
+    "addr:street": "Via Filippo Buonarroti",
+    "amenity": "university",
+    "name": "Polo Fibonacci",
+    "operator": "Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 232482921,
+  "bounds": {
+    "minlat": 43.7184732,
+    "minlon": 10.3987872,
+    "maxlat": 43.7192230,
+    "maxlon": 10.3999188
+  },
+  "tags": {
+    "amenity": "school",
+    "isced:level": "3",
+    "name": "Liceo Artistico \"F. Russoli\"",
+    "website": "https://liceoartisticorussoli.edu.it/",
+    "wikidata": "Q52805632"
+  }
+},
+{
+  "type": "way",
+  "id": 245798233,
+  "bounds": {
+    "minlat": 43.7126979,
+    "minlon": 10.3950515,
+    "maxlat": 43.7133659,
+    "maxlon": 10.3956602
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 253812706,
+  "bounds": {
+    "minlat": 43.7169584,
+    "minlon": 10.3990019,
+    "maxlat": 43.7170458,
+    "maxlon": 10.3991517
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 253818103,
+  "bounds": {
+    "minlat": 43.7179451,
+    "minlon": 10.3976065,
+    "maxlat": 43.7184363,
+    "maxlon": 10.3980988
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "name": "Palazzo Matteucci",
+    "operator": "Università di Pisa",
+    "operator:wikidata": "Q645663",
+    "wikidata": "Q16586240",
+    "wikipedia": "it:Palazzo Matteucci"
+  }
+},
+{
+  "type": "way",
+  "id": 295858896,
+  "bounds": {
+    "minlat": 43.7208496,
+    "minlon": 10.3964110,
+    "maxlat": 43.7210943,
+    "maxlon": 10.3965818
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "3",
+    "addr:postcode": "56126",
+    "addr:street": "Via Porta Buozzi",
+    "building": "university",
+    "name": "Aula Savi",
+    "website": "https://www.cfs.unipi.it/studiare-a-cfs/aule/",
+    "wheelchair": "designated",
+    "wikidata": "Q131598906"
+  }
+},
+{
+  "type": "way",
+  "id": 306667933,
+  "bounds": {
+    "minlat": 43.7209025,
+    "minlon": 10.4040045,
+    "maxlat": 43.7225202,
+    "maxlon": 10.4066336
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "4",
+    "addr:postcode": "56127",
+    "addr:street": "Piazza Santa Caterina",
+    "amenity": "school",
+    "denomination": "catholic",
+    "name": "Istituto Arcivescovile Paritario - Santa Caterina",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 307741524,
+  "bounds": {
+    "minlat": 43.7179954,
+    "minlon": 10.4079598,
+    "maxlat": 43.7180780,
+    "maxlon": 10.4081239
+  },
+  "tags": {
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 368829395,
+  "bounds": {
+    "minlat": 43.7127716,
+    "minlon": 10.4022141,
+    "maxlat": 43.7134544,
+    "maxlon": 10.4029274
+  },
+  "tags": {
+    "addr:street": "Via Pietro Gori",
+    "amenity": "school",
+    "check_date": "2024-10-01",
+    "isced:level": "1",
+    "name": "Scuola Primaria \"E. Zerboglio\"",
+    "operator": "Istituto Comprensivo \"R. Fucini\"",
+    "operator:wikidata": "Q52903949",
+    "phone": "+39 050 910770",
+    "wikidata": "Q52856290"
+  }
+},
+{
+  "type": "way",
+  "id": 377333611,
+  "bounds": {
+    "minlat": 43.7183050,
+    "minlon": 10.3948808,
+    "maxlat": 43.7186617,
+    "maxlon": 10.3953258
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:postcode": "56126",
+    "addr:street": "Via Derna",
+    "amenity": "library",
+    "building": "university",
+    "email": "info.sna@sba.unipi.it",
+    "name": "Biblioteca di Scienze naturali e ambientali",
+    "opening_hours": "24/7",
+    "operator": "Università di Pisa",
+    "operator:type": "public",
+    "phone": "+39 050 221 1883; +39 050 221 1885",
+    "website": "http://www.sba.unipi.it/it/biblioteche/polo-3/scienze-naturali-e-ambientali",
+    "wikidata": "Q86520771"
+  }
+},
+{
+  "type": "way",
+  "id": 592379357,
+  "bounds": {
+    "minlat": 43.7126581,
+    "minlon": 10.3950515,
+    "maxlat": 43.7131927,
+    "maxlon": 10.3956987
+  },
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Via Francesco Niosi",
+    "amenity": "school",
+    "name": "Scuola Primaria \"Cambini\"",
+    "operator": "Istituto Comprensivo \"G. Toniolo\"",
+    "operator:wikidata": "Q52749076",
+    "phone": "+39 050 24528",
+    "wikidata": "Q52747605"
+  }
+},
+{
+  "type": "way",
+  "id": 634725321,
+  "bounds": {
+    "minlat": 43.7174202,
+    "minlon": 10.4050914,
+    "maxlat": 43.7178618,
+    "maxlon": 10.4053882
+  },
+  "tags": {
+    "amenity": "kindergarten"
+  }
+},
+{
+  "type": "way",
+  "id": 676049659,
+  "bounds": {
+    "minlat": 43.7197736,
+    "minlon": 10.4053420,
+    "maxlat": 43.7205248,
+    "maxlon": 10.4061074
+  },
+  "tags": {
+    "amenity": "school",
+    "name": "Collegio \"Tiziano Terzani\"",
+    "operator": "Scuola superiore di studi universitari e di perfezionamento Sant'Anna",
+    "operator:wikidata": "Q774609"
+  }
+},
+{
+  "type": "way",
+  "id": 721870995,
+  "bounds": {
+    "minlat": 43.7165898,
+    "minlon": 10.3986488,
+    "maxlat": 43.7168557,
+    "maxlon": 10.3989558
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "4",
+    "name": "Palazzo alla Giornata",
+    "wikidata": "Q3891131",
+    "wikipedia": "it:Palazzo alla Giornata"
+  }
+},
+{
+  "type": "way",
+  "id": 721900738,
+  "bounds": {
+    "minlat": 43.7166236,
+    "minlon": 10.3989204,
+    "maxlat": 43.7169631,
+    "maxlon": 10.3991867
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "university",
+    "name": "Dipartimento di Scienze Politiche",
+    "operator": "Università di Pisa",
+    "operator:wikidata": "Q645663",
+    "phone": "+39 050 2212464",
+    "website": "https://www.sp.unipi.it/"
+  }
+},
+{
+  "type": "way",
+  "id": 762196368,
+  "bounds": {
+    "minlat": 43.7183387,
+    "minlon": 10.4028944,
+    "maxlat": 43.7186025,
+    "maxlon": 10.4031271
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "name": "Scuola Superiore Sant'Anna - Palazzo Toscanelli",
+    "name:etymology:wikidata": "Q164294",
+    "operator": "Scuola Superiore Sant'Anna",
+    "operator:wikidata": "Q774609",
+    "operator:wikipedia": "Scuola superiore di studi universitari e di perfezionamento Sant'Anna"
+  }
+},
+{
+  "type": "way",
+  "id": 779992709,
+  "bounds": {
+    "minlat": 43.7181656,
+    "minlon": 10.3965148,
+    "maxlat": 43.7184968,
+    "maxlon": 10.3970292
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "name": "Dipartimento di Scienze della Terra",
+    "operator": "Università di Pisa",
+    "operator:wikidata": "Q645663",
+    "operator:wikipedia": "it:Università di Pisa"
+  }
+},
+{
+  "type": "way",
+  "id": 779992710,
+  "bounds": {
+    "minlat": 43.7188982,
+    "minlon": 10.3970633,
+    "maxlat": 43.7191332,
+    "maxlon": 10.3973790
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "check_date": "2025-08-10",
+    "name": "Dipartimento di Anglistica",
+    "operator": "Università di Pisa",
+    "operator:type": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 797909283,
+  "bounds": {
+    "minlat": 43.7183567,
+    "minlon": 10.3980643,
+    "maxlat": 43.7192440,
+    "maxlon": 10.3987806
+  },
+  "tags": {
+    "building": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 798085977,
+  "bounds": {
+    "minlat": 43.7198173,
+    "minlon": 10.3940787,
+    "maxlat": 43.7208009,
+    "maxlon": 10.3956213
+  },
+  "tags": {
+    "amenity": "university",
+    "faculty": "medicine",
+    "name": "Scuola di Medicina",
+    "operator": "Università di Pisa",
+    "operator:type": "university",
+    "operator:wikidata": "Q645663"
+  }
+},
+{
+  "type": "way",
+  "id": 828432256,
+  "bounds": {
+    "minlat": 43.7197767,
+    "minlon": 10.3999286,
+    "maxlat": 43.7209361,
+    "maxlon": 10.4013838
+  },
+  "tags": {
+    "amenity": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 987805652,
+  "bounds": {
+    "minlat": 43.7200783,
+    "minlon": 10.4074493,
+    "maxlat": 43.7216068,
+    "maxlon": 10.4080592
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "2",
+    "name": "Polo Fibonacci, edificio B",
+    "operator": "Università di Pisa",
+    "roof:shape": "sawtooth"
+  }
+},
+{
+  "type": "way",
+  "id": 1173691845,
+  "bounds": {
+    "minlat": 43.7199255,
+    "minlon": 10.4022111,
+    "maxlat": 43.7214220,
+    "maxlon": 10.4032316
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Scuola Superiore Sant'Anna"
+  }
+},
+{
+  "type": "relation",
+  "id": 165512,
+  "bounds": {
+    "minlat": 43.7194172,
+    "minlon": 10.4001288,
+    "maxlat": 43.7198971,
+    "maxlon": 10.4010080
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "7",
+    "addr:postcode": "56126",
+    "addr:street": "Piazza dei Cavalieri",
+    "alt_name": "Scuola Normale Superiore",
+    "building": "university",
+    "building:levels": "4",
+    "name": "Palazzo della Carovana",
+    "roof:levels": "0",
+    "tourism": "attraction",
+    "type": "multipolygon",
+    "wheelchair": "limited",
+    "wikidata": "Q2265910",
+    "wikipedia": "it:Palazzo della Carovana"
+  }
+},
+{
+  "type": "relation",
+  "id": 1729449,
+  "bounds": {
+    "minlat": 43.7171048,
+    "minlon": 10.3988280,
+    "maxlat": 43.7175835,
+    "maxlon": 10.3998135
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:street": "Via Curtatone e Montanara",
+    "amenity": "university",
+    "building": "yes",
+    "building:levels": "3",
+    "faculty": "law",
+    "name": "Palazzo della Sapienza",
+    "name:ko": "사피엔차 대학교",
+    "roof:material": "roof_tiles",
+    "roof:shape": "gabled",
+    "type": "multipolygon",
+    "wikidata": "Q3891485",
+    "wikipedia": "it:Palazzo della Sapienza (Pisa)"
+  }
+},
+{
+  "type": "relation",
+  "id": 4032458,
+  "bounds": {
+    "minlat": 43.7176204,
+    "minlon": 10.4058934,
+    "maxlat": 43.7196865,
+    "maxlon": 10.4090899
+  },
+  "tags": {
+    "amenity": "school",
+    "isced:level": "0-2",
+    "name": "Istituto Leonardo Fibonacci",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 4421673,
+  "bounds": {
+    "minlat": 43.7194172,
+    "minlon": 10.4001288,
+    "maxlat": 43.7198971,
+    "maxlon": 10.4010080
+  },
+  "tags": {
+    "addr:city": "Pisa",
+    "addr:housenumber": "7",
+    "addr:postcode": "56126",
+    "addr:street": "Piazza dei Cavalieri",
+    "amenity": "university",
+    "name": "Scuola Normale Superiore",
+    "type": "multipolygon",
+    "website": "https://www.sns.it/",
+    "wikidata": "Q672416",
+    "wikipedia": "it:Scuola normale superiore di Pisa"
+  }
+},
+{
+  "type": "relation",
+  "id": 5141516,
+  "bounds": {
+    "minlat": 43.7191595,
+    "minlon": 10.4060935,
+    "maxlat": 43.7196848,
+    "maxlon": 10.4070090
+  },
+  "tags": {
+    "building": "school",
+    "isced:level": "1",
+    "name": "Nicola Pisano",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 8148845,
+  "bounds": {
+    "minlat": 43.7200375,
+    "minlon": 10.3943483,
+    "maxlat": 43.7206554,
+    "maxlon": 10.3956094
+  },
+  "tags": {
+    "building": "university",
+    "type": "multipolygon"
+  }
+}
+
+  ]
+}

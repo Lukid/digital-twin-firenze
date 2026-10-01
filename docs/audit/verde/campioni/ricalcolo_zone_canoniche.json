@@ -1,0 +1,298 @@
+{
+ "riquadri": {
+  "Z1": [
+   43.713,
+   10.394,
+   43.721,
+   10.408
+  ],
+  "Z2": [
+   43.704,
+   10.391,
+   43.7125,
+   10.405
+  ],
+  "Z3": [
+   43.701,
+   10.436,
+   43.71,
+   10.451
+  ],
+  "Z4": [
+   43.7215,
+   10.4,
+   43.7295,
+   10.416
+  ]
+ },
+ "area_km2": {
+  "Z1": 1.0,
+  "Z2": 1.06,
+  "Z3": 1.21,
+  "Z4": 1.14
+ },
+ "osm": {
+  "Z1": {
+   "alberi_nodi": 284,
+   "posizione_%": 100,
+   "specie_(species|taxon|genus)": 14,
+   "altezza_height": 4,
+   "chioma_diameter_crown": 1,
+   "circonferenza_tronco": 3,
+   "leaf_type": 29,
+   "tree_row": 6,
+   "tree_row_con_height": 0,
+   "tree_row_con_species": 0,
+   "esempi_height": [
+    "19",
+    "21.5m",
+    "2",
+    "25"
+   ],
+   "denotation": {
+    "urban": 2,
+    "park": 9,
+    "gingko_biloba": 1,
+    "platanus_hispanica": 1
+   },
+   "aree_verdi_tipi": {
+    "garden": 18,
+    "park": 26,
+    "grass": 39
+   },
+   "pct": {
+    "specie_(species|taxon|genus)": 4.9,
+    "altezza_height": 1.4,
+    "chioma_diameter_crown": 0.4,
+    "leaf_type": 10.2,
+    "circonferenza_tronco": 1.1
+   },
+   "data_nodi_min_max": [
+    "2014-09-02T14:15:22Z",
+    "2026-09-14T22:49:53Z"
+   ],
+   "timestamp_query": "2026-10-01T13:56:08.266450+00:00"
+  },
+  "Z2": {
+   "alberi_nodi": 373,
+   "posizione_%": 100,
+   "specie_(species|taxon|genus)": 2,
+   "altezza_height": 1,
+   "chioma_diameter_crown": 0,
+   "circonferenza_tronco": 0,
+   "leaf_type": 34,
+   "tree_row": 8,
+   "tree_row_con_height": 0,
+   "tree_row_con_species": 0,
+   "esempi_height": [
+    "0.2"
+   ],
+   "denotation": {
+    "urban": 2
+   },
+   "aree_verdi_tipi": {
+    "park": 6,
+    "grass": 21,
+    "garden": 1,
+    "dog_park": 1
+   },
+   "pct": {
+    "specie_(species|taxon|genus)": 0.5,
+    "altezza_height": 0.3,
+    "chioma_diameter_crown": 0.0,
+    "leaf_type": 9.1,
+    "circonferenza_tronco": 0.0
+   },
+   "data_nodi_min_max": [
+    "2015-09-11T07:20:58Z",
+    "2026-07-29T10:27:42Z"
+   ],
+   "timestamp_query": "2026-10-01T13:56:52.031728+00:00"
+  },
+  "Z3": {
+   "alberi_nodi": 123,
+   "posizione_%": 100,
+   "specie_(species|taxon|genus)": 1,
+   "altezza_height": 0,
+   "chioma_diameter_crown": 0,
+   "circonferenza_tronco": 0,
+   "leaf_type": 1,
+   "tree_row": 0,
+   "tree_row_con_height": 0,
+   "tree_row_con_species": 0,
+   "esempi_height": [],
+   "denotation": {
+    "urban": 1
+   },
+   "aree_verdi_tipi": {
+    "grass": 23,
+    "park": 9,
+    "wood": 1,
+    "garden": 2
+   },
+   "pct": {
+    "specie_(species|taxon|genus)": 0.8,
+    "altezza_height": 0.0,
+    "chioma_diameter_crown": 0.0,
+    "leaf_type": 0.8,
+    "circonferenza_tronco": 0.0
+   },
+   "data_nodi_min_max": [
+    "2016-12-06T17:41:14Z",
+    "2026-05-05T08:44:41Z"
+   ],
+   "timestamp_query": "2026-10-01T13:57:08.477833+00:00"
+  },
+  "Z4": {
+   "alberi_nodi": 432,
+   "posizione_%": 100,
+   "specie_(species|taxon|genus)": 1,
+   "altezza_height": 0,
+   "chioma_diameter_crown": 0,
+   "circonferenza_tronco": 0,
+   "leaf_type": 1,
+   "tree_row": 28,
+   "tree_row_con_height": 0,
+   "tree_row_con_species": 0,
+   "esempi_height": [],
+   "denotation": {},
+   "aree_verdi_tipi": {
+    "park": 9,
+    "grass": 30,
+    "garden": 5,
+    "forest": 1,
+    "wood": 1,
+    "dog_park": 1
+   },
+   "pct": {
+    "specie_(species|taxon|genus)": 0.2,
+    "altezza_height": 0.0,
+    "chioma_diameter_crown": 0.0,
+    "leaf_type": 0.2,
+    "circonferenza_tronco": 0.0
+   },
+   "data_nodi_min_max": [
+    "2014-03-26T15:45:52Z",
+    "2026-09-26T11:05:49Z"
+   ],
+   "timestamp_query": "2026-10-01T13:57:10.805569+00:00"
+  }
+ },
+ "copernicus_street_tree_poligoni": {
+  "Z1": 45,
+  "Z2": 35,
+  "Z3": 26,
+  "Z4": 45
+ },
+ "psi_sit": {
+  "PSI/5 Parco: Aree interne e Aree contigue": {
+   "Z1": 0,
+   "Z2": 0,
+   "Z3": 0,
+   "Z4": 0
+  },
+  "PSI/7 Riserve all'interno del Parco": {
+   "Z1": 0,
+   "Z2": 0,
+   "Z3": 0,
+   "Z4": 0
+  },
+  "PSI/38 Ippovie all'interno del Parco MSRM": {
+   "Z1": 0,
+   "Z2": 0,
+   "Z3": 0,
+   "Z4": 0
+  },
+  "PSI/43 La vegetazione ripariale": {
+   "Z1": 5,
+   "Z2": 2,
+   "Z3": 3,
+   "Z4": 0
+  },
+  "PSI/104 Parchi territoriali": {
+   "Z1": 0,
+   "Z2": 0,
+   "Z3": 4,
+   "Z4": 1
+  },
+  "PSI/105 Verde sportivo": {
+   "Z1": 0,
+   "Z2": 0,
+   "Z3": 0,
+   "Z4": 8
+  },
+  "PSI/155 Parco antenne Tirrenia": {
+   "Z1": 0,
+   "Z2": 0,
+   "Z3": 0,
+   "Z4": 0
+  },
+  "PSI/171 Aree agricole di particolare pregio paesaggistico e culturale": {
+   "Z1": 1,
+   "Z2": 1,
+   "Z3": 1,
+   "Z4": 1
+  },
+  "PSI/202 La vegetazione ripariale": {
+   "Z1": 5,
+   "Z2": 2,
+   "Z3": 3,
+   "Z4": 0
+  },
+  "PSI/205 Potenzialità agricola dei suoli": {
+   "Z1": 1,
+   "Z2": 2,
+   "Z3": 6,
+   "Z4": 3
+  },
+  "PSI/218 Viale alberato": {
+   "Z1": 0,
+   "Z2": 0,
+   "Z3": 0,
+   "Z4": 2
+  },
+  "PSI/222 La vegetazione ripariale": {
+   "Z1": 5,
+   "Z2": 2,
+   "Z3": 3,
+   "Z4": 0
+  },
+  "PSI/237 Viale alberato": {
+   "Z1": 0,
+   "Z2": 0,
+   "Z3": 0,
+   "Z4": 2
+  },
+  "PSI/238 La vegetazione ripariale": {
+   "Z1": 5,
+   "Z2": 2,
+   "Z3": 3,
+   "Z4": 0
+  },
+  "PSI/243 Aree verdi all'interno del centro storico vincolate per Decreto (art.136 TU Beni Culturali)": {
+   "Z1": 82,
+   "Z2": 20,
+   "Z3": 0,
+   "Z4": 8
+  },
+  "PSI/313 Parco": {
+   "Z1": 0,
+   "Z2": 0,
+   "Z3": 0,
+   "Z4": 0
+  },
+  "Toponomastica_comunale/1 parchi giardini luoghi di interesse": {
+   "Z1": 2,
+   "Z2": 1,
+   "Z3": 1,
+   "Z4": 4
+  }
+ },
+ "densita_alberi_osm_per_km2": {
+  "Z1": 284,
+  "Z2": 352,
+  "Z3": 102,
+  "Z4": 379
+ },
+ "nota": "ricalcolo su docs/audit/ZONE.json; valori precedenti in campioni/riquadri_iniziali/"
+}
