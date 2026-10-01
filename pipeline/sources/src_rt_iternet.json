@@ -1,0 +1,42 @@
+{
+ "source_id": "src_rt_iternet",
+ "title": "Grafo stradale regionale Iter.net",
+ "publisher": "Regione Toscana",
+ "dataset_url": "http://www502.regione.toscana.it/geoscopio/download/grafo_stradale/iternet.zip",
+ "provenance": {
+  "origin": "official_download"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://dati.toscana.it/",
+  "evidence_note": "Atto regionale 2013 sui dati aperti: CC BY o CC BY-SA, non riportata sul file (audit cataloghi).",
+  "reserve_note": "Licenza non sul file e BY/BY-SA da accertare."
+ },
+ "content_period": {
+  "note": "epoca non dichiarata nel file; StatPortal indica aprile 2015; file del 2025-10-10"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "shapefile, CRS dai file .prj"
+ },
+ "units": {},
+ "schema_fields": [
+  "elem_strad",
+  "civici"
+ ],
+ "checks": [
+  {
+   "name": "ispezionato in AOI",
+   "result": "pass",
+   "detail": "vedi ispezione_big.json"
+  },
+  {
+   "name": "non normalizzato in data/norm",
+   "result": "warn",
+   "detail": "ispezione soltanto"
+  }
+ ],
+ "resource_url": "http://www502.regione.toscana.it/geoscopio/download/grafo_stradale/iternet.zip"
+}

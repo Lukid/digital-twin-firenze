@@ -1,0 +1,59 @@
+{
+ "source_id": "src_rt_unita_volumetriche",
+ "title": "Unita' volumetriche del DB topografico regionale (WFS)",
+ "publisher": "Regione Toscana",
+ "dataset_url": "https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm",
+ "provenance": {
+  "origin": "ogc_service"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm",
+  "evidence_note": "Nessuna licenza sul layer; vale la politica regionale sui dati geografici aperti (CC BY o CC BY-SA, atto 2013).",
+  "reserve_note": "Licenza non scritta sul layer: dedotta dalla politica regionale. Verificare prima di ridistribuire."
+ },
+ "content_period": {
+  "start": "2010-01-01",
+  "end": "2010-12-31",
+  "note": "volo 2010 (campo anno); data di aggiornamento del servizio non dichiarata"
+ },
+ "crs": {
+  "declared": "EPSG:7791",
+  "vertical_datum": "not_declared",
+  "note": "richiesto direttamente in EPSG:7791, nessuna trasformazione"
+ },
+ "units": {
+  "height_m": "m",
+  "ground_elev_m": "m",
+  "roof_elev_m": "m",
+  "area_m2": "m2"
+ },
+ "schema_fields": [
+  "uv_id",
+  "edifc_id",
+  "uv_av",
+  "uv_qs",
+  "uv_qe",
+  "uv_por",
+  "anno"
+ ],
+ "checks": [
+  {
+   "name": "volumi in AOI",
+   "result": "pass",
+   "detail": "3107 volumi"
+  },
+  {
+   "name": "coincidenza con DBT10K (un_vol)",
+   "result": "pass",
+   "detail": "3107 oggetti in AOI in entrambi; vertici a 0,35 m (crs_check.json, voce C)"
+  },
+  {
+   "name": "portici (uv_por) popolato",
+   "result": "warn",
+   "detail": "attributo non popolato (audit edifici)"
+  }
+ ],
+ "resource_url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato"
+}

@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_osm_pisa_20261001",
+ "source_id": "src_osm_pisa",
+ "retrieved_at": "2026-10-01T15:30:05Z",
+ "bytes": 384249534,
+ "sha256": "69d65bfc52e0daf14ccd57fee67216af9b91d747cdb79841ec2337a2f2b086f5",
+ "local_path": "data/raw/osm_pisa/20261001/centro-260930.osm.pbf",
+ "status": "ok",
+ "stored": false,
+ "url": "https://download.geofabrik.de/europe/italy/centro-260930.osm.pbf",
+ "media_type": "application/x-osm+pbf",
+ "license_state": "clear",
+ "content_period": {
+  "note": "estratto regionale Centro Italia da distributore di estratti OSM, timestamp nel nome del file (ore 00 UTC del 2026-09-30 circa); il ritaglio all'AOI avviene in normalizzazione, il file originario resta intatto"
+ }
+}

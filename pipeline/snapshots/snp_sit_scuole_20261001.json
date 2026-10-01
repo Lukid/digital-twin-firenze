@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_sit_scuole_20261001",
+ "source_id": "src_sit_scuole",
+ "retrieved_at": "2026-10-01T15:39:31Z",
+ "bytes": 32833,
+ "sha256": "8f480a9f4bb5bb750517ea792abd99beb892021e3a345c02a54d5f0aab232c26",
+ "local_path": "data/raw/sit_scuole/20261001/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/Scuole_infanzia_materne_primarie_e_secondarie/FeatureServer/0/query?where=1%3D1&geometry=10.384496031494045,43.69925173047817,10.411508848378325,43.71724722851131&inSR=4326&outSR=3003&f=geojson",
+ "media_type": "application/geo+json",
+ "license_state": "unproven",
+ "content_period": {
+  "note": "stato del servizio alla data di scarico (data di modifica solo se dichiarata nel layer)"
+ }
+}

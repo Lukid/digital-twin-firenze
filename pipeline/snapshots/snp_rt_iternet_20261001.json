@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_rt_iternet_20261001",
+ "source_id": "src_rt_iternet",
+ "retrieved_at": "2026-10-01T15:30:11Z",
+ "bytes": 460484895,
+ "sha256": "1720f9271a1e294b1801cfe34b007781bde0f3a0390ddfee1c25f14c42321a17",
+ "local_path": "data/raw/rt_iternet/20261001/iternet.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "http://www502.regione.toscana.it/geoscopio/download/grafo_stradale/iternet.zip",
+ "media_type": "application/zip",
+ "license_state": "clear_with_reserve",
+ "content_period": {
+  "note": "grafo stradale regionale, file del 2025-10-10 (Last-Modified); epoca dei dati non dichiarata, StatPortal indica aprile 2015"
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "source_id": "src_sit_edifici_scolastici",
+ "title": "Edifici scolastici del Comune di Pisa (SIT)",
+ "publisher": "Comune di Pisa",
+ "dataset_url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/edifici_scolastici/FeatureServer/4",
+ "provenance": {
+  "origin": "ogc_service"
+ },
+ "license": {
+  "state": "unproven",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted",
+  "evidence_note": "Servizio ArcGIS pubblico senza licenza.",
+  "reserve_note": "Nessuna licenza dichiarata sul servizio (copyrightText vuoto, scheda del sito senza condizioni di riuso): un endpoint pubblico non prova una licenza. Uso interno al prototipo finche' il Comune non conferma per iscritto."
+ },
+ "content_period": {
+  "note": "layer aggiornato il 2025-11-24 (audit)"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "nativo 102091"
+ },
+ "units": {
+  "SHAPE__Area": "m2"
+ },
+ "schema_fields": [
+  "fid"
+ ],
+ "checks": [
+  {
+   "name": "edifici in AOI",
+   "result": "pass",
+   "detail": "18 poligoni"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "source_id": "src_sit_civici",
+ "title": "Civici puntuali del Comune di Pisa (SIT)",
+ "publisher": "Comune di Pisa",
+ "dataset_url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted/Civici_puntuali_View/FeatureServer/0",
+ "provenance": {
+  "origin": "ogc_service"
+ },
+ "license": {
+  "state": "unproven",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://sit.comune.pisa.it/arcgis/rest/services/Hosted",
+  "evidence_note": "Servizio ArcGIS pubblico senza licenza.",
+  "reserve_note": "Nessuna licenza dichiarata sul servizio (copyrightText vuoto, scheda del sito senza condizioni di riuso): un endpoint pubblico non prova una licenza. Uso interno al prototipo finche' il Comune non conferma per iscritto."
+ },
+ "content_period": {
+  "note": "campo dt_agg per civico; ultimo aggiornamento del layer 2026-09-30 (audit)"
+ },
+ "crs": {
+  "declared": "EPSG:3857",
+  "vertical_datum": "not_declared",
+  "note": "CRS nativo del layer 102100 (Web Mercator), non 3003 come per gli altri layer SIT"
+ },
+ "units": {},
+ "schema_fields": [
+  "objectid_1",
+  "num_civico",
+  "indirizzo",
+  "sezione_censuaria_istat"
+ ],
+ "checks": [
+  {
+   "name": "civici in AOI",
+   "result": "pass",
+   "detail": "7606 punti"
+  },
+  {
+   "name": "licenza",
+   "result": "warn",
+   "detail": "non dimostrata"
+  }
+ ]
+}

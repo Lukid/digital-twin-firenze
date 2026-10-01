@@ -1,0 +1,64 @@
+{
+ "data": "20261001",
+ "A_3003_to_7791": {
+  "nessuno_shift_di_datum (adottata)": {
+   "edifici_sit": 18,
+   "coppie_iou_ge_0.5": 11,
+   "iou_mediano": 0.54,
+   "centroidi": {
+    "n": 11,
+    "dE_medio_m": 2.01,
+    "dN_medio_m": -3.0,
+    "dE_mediana_m": 1.21,
+    "dN_mediana_m": -1.06,
+    "modulo_mediano_m": 2.31,
+    "modulo_p95_m": 10.33,
+    "modulo_max_m": 11.41
+   },
+   "vertici_entro_3m": {
+    "n": 128,
+    "dE_medio_m": 0.86,
+    "dN_medio_m": -0.71,
+    "dE_mediana_m": 1.03,
+    "dN_mediana_m": -0.63,
+    "modulo_mediano_m": 1.43,
+    "modulo_p95_m": 2.5,
+    "modulo_max_m": 2.93
+   }
+  },
+  "helmert3_MonteMario_WGS84": {
+   "edifici_sit": 18,
+   "coppie_iou_ge_0.5": 0,
+   "iou_mediano": 0.07,
+   "centroidi": null,
+   "vertici_entro_3m": null
+  }
+ },
+ "B_lonlat_to_7791": {
+  "oggetti_confrontati": 295,
+  "vertici": 2237,
+  "n": 2237,
+  "dE_medio_m": 0.03,
+  "dN_medio_m": -0.07,
+  "dE_mediana_m": 0.03,
+  "dN_mediana_m": -0.07,
+  "modulo_mediano_m": 0.08,
+  "modulo_p95_m": 0.13,
+  "modulo_max_m": 0.15,
+  "nota": "scarto fra la riproiezione fatta dal servizio (7791 nativo) e quella di pyproj da lon/lat trattati come RDN2008 geografico; le coordinate 4326 hanno 7 decimali (circa 1 cm)"
+ },
+ "C_dbt10k_3003_vs_wfs_7791": {
+  "nessuno_shift_di_datum (adottata)": {
+   "oggetti_uniti": 3107,
+   "n": 25652,
+   "dE_medio_m": 0.32,
+   "dN_medio_m": -0.13,
+   "dE_mediana_m": 0.32,
+   "dN_mediana_m": -0.13,
+   "modulo_mediano_m": 0.35,
+   "modulo_p95_m": 0.36,
+   "modulo_max_m": 0.38
+  }
+ },
+ "nota_griglia": "La griglia IGM Monte Mario->RDN2008 (35160622_47161840_R40_F00.gsb, precisione 0,1 m) non e' in pyproj ne' in PROJ-data (cdn.proj.org): l'operazione ufficiale non e' applicabile in locale."
+}

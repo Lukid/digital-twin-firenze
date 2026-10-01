@@ -1,0 +1,19 @@
+{
+ "snapshot_id": "snp_gtfs_trenitalia_20261001",
+ "source_id": "src_gtfs_trenitalia",
+ "retrieved_at": "2026-10-01T15:29:41Z",
+ "bytes": 6127610,
+ "sha256": "a262c5bdfccd98a5c7e7ae08eea8eecb3189222f34c1015f5d4608faf3efc152",
+ "local_path": "data/raw/gtfs_trenitalia/20261001/trenitalia.gtfs.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/4f85393b-357d-443d-8378-65de4198505f/download/trenitalia.gtfs",
+ "media_type": "application/zip",
+ "content_period": {
+  "start": "2026-01-15",
+  "end": "2026-12-12",
+  "note": "feed senza feed_info.txt: minimo e massimo di calendar_dates.txt"
+ },
+ "expires_at": "2026-12-12",
+ "license_state": "clear_with_reserve"
+}

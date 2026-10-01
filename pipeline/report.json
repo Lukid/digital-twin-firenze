@@ -1,0 +1,212 @@
+{
+ "aoi": {
+  "aoi_id": "aoi_z2",
+  "buffer_m": 500,
+  "z2_ll_SWNE": [
+   43.704,
+   10.391,
+   43.7125,
+   10.405
+  ],
+  "z2_en": [
+   612059.81,
+   4839937.71,
+   613203.67,
+   4840900.77
+  ],
+  "buf_en": [
+   611559.81,
+   4839437.71,
+   613703.67,
+   4841400.77
+  ],
+  "buf_ll_SWNE": [
+   43.69925173047817,
+   10.384496031494045,
+   43.71724722851131,
+   10.411508848378325
+  ]
+ },
+ "giorno": "20261001",
+ "layer": {
+  "gtfs_at_toscana.gpkg:stops": {
+   "in_AOI_buffer": 92,
+   "in_Z2": 40
+  },
+  "gtfs_trenitalia.gpkg:stops": {
+   "in_AOI_buffer": 1,
+   "in_Z2": 1
+  },
+  "osm_pisa.gpkg:highway": {
+   "in_AOI_buffer": 2251,
+   "in_Z2": 737
+  },
+  "osm_pisa.gpkg:points": {
+   "in_AOI_buffer": 4880,
+   "in_Z2": 1859
+  },
+  "osm_pisa.gpkg:buildings": {
+   "in_AOI_buffer": 2879,
+   "in_Z2": 938
+  },
+  "rt_unita_volumetriche.gpkg:building_volume": {
+   "in_AOI_buffer": 3107,
+   "in_Z2": 1034
+  },
+  "sit_civici.gpkg:civici": {
+   "in_AOI_buffer": 7606,
+   "in_Z2": 2224
+  },
+  "sit_edifici_scolastici.gpkg:edifici_scolastici": {
+   "in_AOI_buffer": 18,
+   "in_Z2": 6
+  },
+  "sit_scuole.gpkg:scuole": {
+   "in_AOI_buffer": 18,
+   "in_Z2": 6
+  }
+ },
+ "snapshot": {
+  "snp_gtfs_at_toscana_20261001": {
+   "status": "ok",
+   "bytes": 185529498,
+   "sha256": "2c00c8a604c60fb72c409715dcc8f2f20ef151f0fe389c5a3d08db2f217102c7",
+   "license_state": "clear_with_reserve",
+   "expires_at": "2026-10-21"
+  },
+  "snp_gtfs_trenitalia_20261001": {
+   "status": "ok",
+   "bytes": 6127610,
+   "sha256": "a262c5bdfccd98a5c7e7ae08eea8eecb3189222f34c1015f5d4608faf3efc152",
+   "license_state": "clear_with_reserve",
+   "expires_at": "2026-12-12"
+  },
+  "snp_osm_pisa_20261001": {
+   "status": "ok",
+   "bytes": 384249534,
+   "sha256": "69d65bfc52e0daf14ccd57fee67216af9b91d747cdb79841ec2337a2f2b086f5",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_rt_dbt10k_pisa_20261001": {
+   "status": "ok",
+   "bytes": 411509203,
+   "sha256": "63bb7e264dafd87351c960af5fe546f103f71b5cfc421896530434dadac0b14f",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_rt_dsm2021_20261001": {
+   "status": "ok",
+   "bytes": 16846880,
+   "sha256": "88ef7aed9a0890777788abb958b118fb5268a26f79c26167b826b25fe59ec4c2",
+   "license_state": "clear_with_reserve",
+   "expires_at": null
+  },
+  "snp_rt_dtm10_20261001": {
+   "status": "ok",
+   "bytes": 168322,
+   "sha256": "4d6a4f8c1cc9ff8a87b30b4c08ba3b15aa68659db78f483eb6a06e8e33b7b36b",
+   "license_state": "clear_with_reserve",
+   "expires_at": null
+  },
+  "snp_rt_iternet_20261001": {
+   "status": "ok",
+   "bytes": 460484895,
+   "sha256": "1720f9271a1e294b1801cfe34b007781bde0f3a0390ddfee1c25f14c42321a17",
+   "license_state": "clear_with_reserve",
+   "expires_at": null
+  },
+  "snp_rt_unita_volumetriche_20261001": {
+   "status": "ok",
+   "bytes": 8194161,
+   "sha256": "0d2397b5d1195b278edf8a3dceac9f81ed9039a48842f7dca3be39d17ec86223",
+   "license_state": "clear_with_reserve",
+   "expires_at": null
+  },
+  "snp_sit_civici_20261001": {
+   "status": "ok",
+   "bytes": 7273823,
+   "sha256": "b1acea5703362bc497b8df8afe374ef6864cbd8ad470dd976973fd1be43af915",
+   "license_state": "unproven",
+   "expires_at": null
+  },
+  "snp_sit_edifici_scolastici_20261001": {
+   "status": "ok",
+   "bytes": 28263,
+   "sha256": "6c99fcb794a0df4889ff4d6815ecb09da4383c32672f7bfb76f58ddba012eceb",
+   "license_state": "unproven",
+   "expires_at": null
+  },
+  "snp_sit_scuole_20261001": {
+   "status": "ok",
+   "bytes": 32833,
+   "sha256": "8f480a9f4bb5bb750517ea792abd99beb892021e3a345c02a54d5f0aab232c26",
+   "license_state": "unproven",
+   "expires_at": null
+  }
+ },
+ "crs": {
+  "data": "20261001",
+  "A_3003_to_7791": {
+   "nessuno_shift_di_datum (adottata)": {
+    "edifici_sit": 18,
+    "coppie_iou_ge_0.5": 11,
+    "iou_mediano": 0.54,
+    "centroidi": {
+     "n": 11,
+     "dE_medio_m": 2.01,
+     "dN_medio_m": -3.0,
+     "dE_mediana_m": 1.21,
+     "dN_mediana_m": -1.06,
+     "modulo_mediano_m": 2.31,
+     "modulo_p95_m": 10.33,
+     "modulo_max_m": 11.41
+    },
+    "vertici_entro_3m": {
+     "n": 128,
+     "dE_medio_m": 0.86,
+     "dN_medio_m": -0.71,
+     "dE_mediana_m": 1.03,
+     "dN_mediana_m": -0.63,
+     "modulo_mediano_m": 1.43,
+     "modulo_p95_m": 2.5,
+     "modulo_max_m": 2.93
+    }
+   },
+   "helmert3_MonteMario_WGS84": {
+    "edifici_sit": 18,
+    "coppie_iou_ge_0.5": 0,
+    "iou_mediano": 0.07,
+    "centroidi": null,
+    "vertici_entro_3m": null
+   }
+  },
+  "B_lonlat_to_7791": {
+   "oggetti_confrontati": 295,
+   "vertici": 2237,
+   "n": 2237,
+   "dE_medio_m": 0.03,
+   "dN_medio_m": -0.07,
+   "dE_mediana_m": 0.03,
+   "dN_mediana_m": -0.07,
+   "modulo_mediano_m": 0.08,
+   "modulo_p95_m": 0.13,
+   "modulo_max_m": 0.15,
+   "nota": "scarto fra la riproiezione fatta dal servizio (7791 nativo) e quella di pyproj da lon/lat trattati come RDN2008 geografico; le coordinate 4326 hanno 7 decimali (circa 1 cm)"
+  },
+  "C_dbt10k_3003_vs_wfs_7791": {
+   "nessuno_shift_di_datum (adottata)": {
+    "oggetti_uniti": 3107,
+    "n": 25652,
+    "dE_medio_m": 0.32,
+    "dN_medio_m": -0.13,
+    "dE_mediana_m": 0.32,
+    "dN_mediana_m": -0.13,
+    "modulo_mediano_m": 0.35,
+    "modulo_p95_m": 0.36,
+    "modulo_max_m": 0.38
+   }
+  },
+  "nota_griglia": "La griglia IGM Monte Mario->RDN2008 (35160622_47161840_R40_F00.gsb, precisione 0,1 m) non e' in pyproj ne' in PROJ-data (cdn.proj.org): l'operazione ufficiale non e' applicabile in locale."
+ }
+}
