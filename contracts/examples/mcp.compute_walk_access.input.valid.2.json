@@ -1,0 +1,23 @@
+{
+ "baseline_id": "bas_z2_20261001",
+ "origins": {
+  "kind": "civici_sit_z2"
+ },
+ "destination_ids": [
+  "dst_school_piee82101p"
+ ],
+ "entrance_ids": [
+  "ent_osm_n6532183886"
+ ],
+ "profile": {
+  "speed_m_s": 0.8,
+  "crossing_penalty_s": 10,
+  "stairs": "excluded",
+  "snap_limit_m": 40
+ },
+ "thresholds_min": [
+  5,
+  10,
+  15
+ ]
+}
