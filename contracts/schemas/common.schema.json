@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dt-pisa.example/contracts/schemas/common.schema.json",
+  "title": "Definizioni comuni",
+  "description": "Tipi condivisi da tutti gli schemi. Vedi conventions.json per le regole che i pattern fanno rispettare.",
+  "$defs": {
+    "classification": {
+      "description": "Natura di ogni valore: misurato (rilevato da fonte o campo), derivato (calcolato in modo deterministico da misurati), stimato (ipotesi o modello con incertezza), scenario (valore di un intervento ipotetico).",
+      "enum": ["measured", "derived", "estimated", "scenario"]
+    },
+    "license_state": {
+      "description": "Stato della licenza: chiara, con riserva, in conflitto, non dimostrata.",
+      "enum": ["clear", "clear_with_reserve", "conflict", "unproven"]
+    },
+    "accessibility_state": {
+      "description": "Stato di accessibilità di un'origine: raggiungibile, isolato sulla rete verificata, dati insufficienti, vietato da restrizione documentata, fuori dal modello.",
+      "enum": ["reachable", "isolated", "insufficient_data", "forbidden", "outside_model"]
+    },
+    "verification_state": {
+      "enum": ["verified_on_site", "desk_candidate", "unverified"]
+    },
+    "id_source": {"type": "string", "pattern": "^src_[a-z0-9_]{2,60}$"},
+    "id_snapshot": {"type": "string", "pattern": "^snp_[a-z0-9_]{2,60}_[0-9]{8}(_[0-9]{2})?$"},
+    "id_baseline": {"type": "string", "pattern": "^bas_[a-z0-9_]{2,60}$"},
+    "id_aoi": {"type": "string", "pattern": "^aoi_[a-z0-9_]{2,40}$"},
+    "id_destination": {"type": "string", "pattern": "^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$"},
+    "id_entrance": {"type": "string", "pattern": "^ent_[a-z]{2,8}_[A-Za-z0-9_.-]{1,60}$"},
+    "id_job": {"type": "string", "pattern": "^job_[0-9a-f]{16}$"},
+    "id_manifest": {"type": "string", "pattern": "^man_[0-9a-f]{16}$"},
+    "id_scenario": {"type": "string", "pattern": "^scn_[a-z0-9_]{2,60}$"},
+    "id_feature": {
+      "description": "ID di oggetto geografico: tipo(3 lettere)_fonte(2-8)_ID originario. Mai posizione in elenco.",
+      "type": "string",
+      "pattern": "^[a-z]{3}_[a-z0-9]{2,8}_[A-Za-z0-9_.-]{1,80}$"
+    },
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "timestamp": {
+      "description": "RFC 3339 con offset esplicito. Nei file generati: UTC con suffisso Z.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "local_time": {"type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"},
+    "url": {"type": "string", "pattern": "^https?://[^\\s]+$"},
+    "crs_operational": {
+      "description": "CRS metrico operativo: RDN2008 / UTM 32N con assi E,N. Non usare EPSG:6707 (stesso CRS ma assi N,E).",
+      "const": "EPSG:7791"
+    },
+    "easting": {"type": "number", "minimum": 166000, "maximum": 834000},
+    "northing": {"type": "number", "minimum": 3900000, "maximum": 5300000},
+    "position": {
+      "description": "[E, N] in metri, EPSG:7791. Ordine fisso E poi N. I limiti respingono la coppia scambiata e le lon/lat.",
+      "type": "array",
+      "prefixItems": [{"$ref": "#/$defs/easting"}, {"$ref": "#/$defs/northing"}],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "bbox_en": {
+      "description": "[Emin, Nmin, Emax, Nmax] in EPSG:7791",
+      "type": "array",
+      "prefixItems": [{"$ref": "#/$defs/easting"}, {"$ref": "#/$defs/northing"}, {"$ref": "#/$defs/easting"}, {"$ref": "#/$defs/northing"}],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "ring": {"type": "array", "minItems": 4, "items": {"$ref": "#/$defs/position"}},
+    "polygon_coords": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/ring"}},
+    "geometry": {
+      "description": "Geometria GeoJSON con coordinate in EPSG:7791 (non WGS84 come da RFC 7946).",
+      "oneOf": [
+        {"type": "object", "required": ["type", "coordinates"], "additionalProperties": false,
+         "properties": {"type": {"const": "Point"}, "coordinates": {"$ref": "#/$defs/position"}}},
+        {"type": "object", "required": ["type", "coordinates"], "additionalProperties": false,
+         "properties": {"type": {"const": "LineString"}, "coordinates": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/position"}}}},
+        {"type": "object", "required": ["type", "coordinates"], "additionalProperties": false,
+         "properties": {"type": {"const": "Polygon"}, "coordinates": {"$ref": "#/$defs/polygon_coords"}}},
+        {"type": "object", "required": ["type", "coordinates"], "additionalProperties": false,
+         "properties": {"type": {"const": "MultiPolygon"}, "coordinates": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/polygon_coords"}}}}
+      ]
+    },
+    "unit": {
+      "description": "Unità ammesse (SI + minuto per le soglie). '1' = adimensionale.",
+      "enum": ["m", "m2", "m3", "s", "min", "h", "m/s", "deg", "1", "percent", "count", "count/km2", "km2"]
+    },
+    "uncertainty": {
+      "type": "object",
+      "required": ["kind"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"enum": ["interval", "std", "none_declared"]},
+        "low": {"type": "number"},
+        "high": {"type": "number"},
+        "std": {"type": "number", "minimum": 0},
+        "basis": {"type": "string", "minLength": 3}
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "interval"}}, "required": ["kind"]}, "then": {"required": ["low", "high"]}},
+        {"if": {"properties": {"kind": {"const": "std"}}, "required": ["kind"]}, "then": {"required": ["std"]}}
+      ]
+    },
+    "classified_value": {
+      "description": "Valore con unità e classificazione obbligatorie. Se stimato, l'incertezza è obbligatoria.",
+      "type": "object",
+      "required": ["value", "unit", "classification"],
+      "additionalProperties": false,
+      "properties": {
+        "value": {"type": "number"},
+        "unit": {"$ref": "#/$defs/unit"},
+        "classification": {"$ref": "#/$defs/classification"},
+        "uncertainty": {"$ref": "#/$defs/uncertainty"},
+        "source_ref": {"type": "string", "minLength": 2, "description": "snapshot_id, snapshot, o campo di origine"}
+      },
+      "if": {"properties": {"classification": {"const": "estimated"}}, "required": ["classification"]},
+      "then": {"required": ["uncertainty"]}
+    },
+    "metric": {
+      "type": "object",
+      "required": ["metric_id", "value", "unit", "classification"],
+      "additionalProperties": false,
+      "properties": {
+        "metric_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{1,60}$"},
+        "label": {"type": "string"},
+        "value": {"type": "number"},
+        "unit": {"$ref": "#/$defs/unit"},
+        "classification": {"$ref": "#/$defs/classification"},
+        "uncertainty": {"$ref": "#/$defs/uncertainty"},
+        "scope": {"type": "string", "description": "A cosa si riferisce (soglia, ricevitore, scenario)"}
+      },
+      "if": {"properties": {"classification": {"const": "estimated"}}, "required": ["classification"]},
+      "then": {"required": ["uncertainty"]}
+    },
+    "content_period": {
+      "description": "Periodo a cui si riferisce il contenuto (non la data di scarico). Estremi opzionali se la fonte non li dichiara: in quel caso 'note' è obbligatoria.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "start": {"$ref": "#/$defs/date"},
+        "end": {"$ref": "#/$defs/date"},
+        "note": {"type": "string", "minLength": 3}
+      },
+      "anyOf": [{"required": ["start"]}, {"required": ["note"]}]
+    },
+    "license": {
+      "type": "object",
+      "required": ["state", "permitted_use"],
+      "additionalProperties": false,
+      "properties": {
+        "state": {"$ref": "#/$defs/license_state"},
+        "identifier": {"type": "string", "description": "SPDX o dicitura della fonte, se dichiarata"},
+        "evidence_url": {"$ref": "#/$defs/url"},
+        "evidence_note": {"type": "string"},
+        "reserve_note": {"type": "string", "minLength": 10, "description": "Cosa manca o confligge. Obbligatoria se lo stato non è 'clear'."},
+        "permitted_use": {"enum": ["redistribution", "internal_prototype", "none"]}
+      },
+      "allOf": [
+        {"if": {"properties": {"state": {"const": "clear"}}, "required": ["state"]}, "else": {"required": ["reserve_note"]}},
+        {"if": {"properties": {"state": {"enum": ["conflict", "unproven"]}}, "required": ["state"]}, "then": {"properties": {"permitted_use": {"enum": ["internal_prototype", "none"]}}}}
+      ]
+    },
+    "limit": {
+      "type": "object",
+      "required": ["code", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "code": {"type": "string", "pattern": "^[a-z][a-z0-9_]{2,60}$"},
+        "text": {"type": "string", "minLength": 5}
+      }
+    },
+    "tool_error": {
+      "type": "object",
+      "required": ["error"],
+      "additionalProperties": false,
+      "properties": {
+        "error": {
+          "type": "object",
+          "required": ["code", "message"],
+          "additionalProperties": false,
+          "properties": {
+            "code": {"enum": ["ambiguous_destination", "unknown_id", "insufficient_data", "limit_exceeded", "outside_capability", "invalid_params", "incompatible_baseline"]},
+            "message": {"type": "string", "minLength": 5},
+            "candidates": {"type": "array", "items": {"type": "string"}},
+            "smaller_request": {"type": "object", "description": "Richiesta più piccola praticabile, stessi campi dell'input."}
+          }
+        }
+      }
+    }
+  }
+}

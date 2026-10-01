@@ -1,0 +1,21 @@
+{
+ "job_id": "job_877a41bd5f95939a",
+ "status": "succeeded",
+ "result_manifest_id": "man_877a41bd5f95939a",
+ "headline_metrics": [
+  {
+   "metric_id": "served_share_10min",
+   "label": "Quota di origini campione servite entro 10 minuti (valore d'esempio)",
+   "value": 0.31,
+   "unit": "1",
+   "classification": "estimated",
+   "scope": "soglia 10 min, 1,2 m/s",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.25,
+    "high": 0.37,
+    "basis": "sensibilità a 0,8-1,4 m/s"
+   }
+  }
+ ]
+}

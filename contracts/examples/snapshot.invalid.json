@@ -1,0 +1,18 @@
+{
+ "snapshot_id": "snp_gtfs_at_toscana_20261001",
+ "source_id": "src_gtfs_at_toscana",
+ "retrieved_at": "2026-10-01T13:22:00Z",
+ "url": "https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs",
+ "bytes": 185529498,
+ "sha256": "2C00C8A604C60FB72C409715DCC8F2F20EF151F0",
+ "media_type": "application/zip",
+ "content_period": {
+  "start": "2026-10-01",
+  "end": "2026-10-21",
+  "note": "feed_start_date e feed_end_date del feed; scade il 21 ottobre, va congelato"
+ },
+ "license_state": "clear_with_reserve",
+ "status": "ok",
+ "expires_at": "2026-10-21",
+ "stored": false
+}

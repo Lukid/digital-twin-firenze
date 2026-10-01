@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dt-pisa.example/contracts/schemas/snapshot.schema.json",
+  "title": "Snapshot di fonte",
+  "description": "Copia congelata di una fonte. Uno scarico fallito non sostituisce l'ultimo snapshot valido.",
+  "type": "object",
+  "required": [
+    "snapshot_id",
+    "source_id",
+    "retrieved_at",
+    "url",
+    "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "snapshot_id": {
+      "$ref": "common.schema.json#/$defs/id_snapshot"
+    },
+    "source_id": {
+      "$ref": "common.schema.json#/$defs/id_source"
+    },
+    "retrieved_at": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "url": {
+      "type": "string",
+      "minLength": 5,
+      "description": "URL esatto della richiesta, o descrizione se la fonte non ha URL stabile"
+    },
+    "bytes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "sha256": {
+      "$ref": "common.schema.json#/$defs/sha256"
+    },
+    "media_type": {
+      "type": "string"
+    },
+    "local_path": {
+      "type": "string"
+    },
+    "content_period": {
+      "$ref": "common.schema.json#/$defs/content_period"
+    },
+    "license_state": {
+      "$ref": "common.schema.json#/$defs/license_state"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "failed"
+      ]
+    },
+    "previous_snapshot_id": {
+      "$ref": "common.schema.json#/$defs/id_snapshot"
+    },
+    "expires_at": {
+      "$ref": "common.schema.json#/$defs/date",
+      "description": "Scadenza del contenuto (es. fine validità GTFS)"
+    },
+    "stored": {
+      "type": "boolean",
+      "description": "false se il file è troppo grande per essere conservato nel repository: restano URL, byte e sha256"
+    },
+    "error": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ok"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "bytes",
+          "sha256",
+          "content_period"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failed"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "error",
+          "previous_snapshot_id"
+        ]
+      }
+    }
+  ]
+}

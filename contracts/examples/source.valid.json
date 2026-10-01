@@ -1,0 +1,63 @@
+{
+ "source_id": "src_gtfs_at_toscana",
+ "title": "GTFS Autolinee Toscane (trasporto pubblico locale)",
+ "publisher": "Regione Toscana / Autolinee Toscane",
+ "dataset_url": "https://dati.toscana.it/dataset/rt-oraritb",
+ "resource_url": "https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs",
+ "provenance": {
+  "origin": "official_download"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "identifier": "cc-by",
+  "evidence_url": "https://dati.toscana.it/dataset/rt-oraritb",
+  "evidence_note": "Campo license_id del catalogo regionale.",
+  "reserve_note": "Le condizioni specifiche del feed non sono state trovate: vale solo il campo del catalogo.",
+  "permitted_use": "internal_prototype"
+ },
+ "content_period": {
+  "start": "2026-10-01",
+  "end": "2026-10-21",
+  "note": "feed_start_date e feed_end_date del feed; scade il 21 ottobre, va congelato"
+ },
+ "crs": {
+  "declared": "EPSG:4326",
+  "vertical_datum": "not_declared",
+  "note": "lat/lon WGS84 come da specifica GTFS"
+ },
+ "units": {
+  "stop_lat": "deg",
+  "stop_lon": "deg",
+  "arrival_time": "HH:MM:SS giorno di servizio, ore fino a 26"
+ },
+ "schema_fields": [
+  "stop_id",
+  "stop_code",
+  "stop_name",
+  "stop_lat",
+  "stop_lon",
+  "wheelchair_boarding"
+ ],
+ "checks": [
+  {
+   "name": "fermate con id duplicato",
+   "result": "pass",
+   "detail": "0 su 33.872"
+  },
+  {
+   "name": "corse orfane in stop_times",
+   "result": "pass",
+   "detail": "0 su 5.907.403 righe"
+  },
+  {
+   "name": "wheelchair_boarding valorizzato",
+   "result": "warn",
+   "detail": "vuoto su tutte le 33.872 fermate"
+  },
+  {
+   "name": "calendar.txt con giorni attivi",
+   "result": "warn",
+   "detail": "nessun servizio attivo in calendar.txt, il servizio è in calendar_dates (13.052 eccezioni)"
+  }
+ ]
+}

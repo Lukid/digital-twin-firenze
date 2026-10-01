@@ -1,0 +1,21 @@
+{
+ "baseline_id": "bas_z2_20261001",
+ "origins": {
+  "kind": "grid",
+  "aoi_id": "aoi_z2",
+  "spacing_m": 20
+ },
+ "destination_ids": [
+  "dst_school_piee82101p",
+  "dst_stop_pi4390"
+ ],
+ "profile": {
+  "speed_m_s": 12
+ },
+ "thresholds_min": [
+  5,
+  10,
+  15
+ ],
+ "sql": "select * from civici"
+}

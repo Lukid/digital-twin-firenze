@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_osm_pisa_20261001",
+ "source_id": "src_osm_pisa",
+ "retrieved_at": "2026-10-01T13:18:11Z",
+ "url": "estratto Overpass area Z2 (timestamp_osm_base)",
+ "bytes": 835286,
+ "sha256": "b4dff9224020cf9de91b1d30c29e84ec6239feffdca9b697e427e7567f4105cf",
+ "media_type": "application/json",
+ "local_path": "docs/audit/rete/campioni/osm_Z2.json",
+ "content_period": {
+  "note": "stato di OpenStreetMap al 2026-10-01T13:18:11Z, senza data di rilievo per oggetto"
+ },
+ "license_state": "clear",
+ "status": "ok",
+ "stored": true
+}

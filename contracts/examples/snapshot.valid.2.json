@@ -1,0 +1,18 @@
+{
+ "snapshot_id": "snp_rt_unita_volumetriche_20261001",
+ "source_id": "src_rt_unita_volumetriche",
+ "retrieved_at": "2026-10-01T13:23:16Z",
+ "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=rt_edif.unitavolumetriche (bbox S,W,N,E = 43.704,10.391,43.7125,10.405, area Z2)",
+ "bytes": 931733,
+ "sha256": "45dcd0e8f43d424948b999ac701a46a9da2680efcd6cc833cd9d4db75575a25e",
+ "media_type": "application/json",
+ "local_path": "docs/audit/edifici/campioni/rt_uv_Z2.json",
+ "content_period": {
+  "start": "2010-07-19",
+  "end": "2010-07-19",
+  "note": "data del volo; vale solo per gli oggetti presenti nel 2010"
+ },
+ "license_state": "clear_with_reserve",
+ "status": "ok",
+ "stored": true
+}

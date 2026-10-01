@@ -1,0 +1,22 @@
+{
+ "common_conditions": {
+  "date": "2026-07-15",
+  "times": [
+   "14:00"
+  ],
+  "receiver": "way_osm_5036121",
+  "baseline_id": "bas_z2_20261001"
+ },
+ "deltas": [
+  {
+   "metric_id": "shade_fraction",
+   "baseline_value": 0.18,
+   "scenario_value": 0.2,
+   "delta": 0.02,
+   "unit": "1",
+   "classification": "estimated",
+   "discriminates": false
+  }
+ ],
+ "incompatibilities": []
+}

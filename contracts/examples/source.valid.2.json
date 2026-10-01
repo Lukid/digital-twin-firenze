@@ -1,0 +1,54 @@
+{
+ "source_id": "src_rt_unita_volumetriche",
+ "title": "Unità volumetriche del database topografico regionale",
+ "publisher": "Regione Toscana",
+ "dataset_url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato",
+ "resource_url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=rt_edif.unitavolumetriche",
+ "provenance": {
+  "origin": "ogc_service",
+  "note": "restituzione fotogrammetrica, volo 19 luglio 2010"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "identifier": "CC BY o CC BY-SA (politica open geodata regionale)",
+  "evidence_note": "Nessuna licenza sul layer: si applica la politica regionale.",
+  "reserve_note": "Licenza non scritta sul layer; versione CC BY o CC BY-SA da accertare con la Regione.",
+  "permitted_use": "internal_prototype"
+ },
+ "content_period": {
+  "start": "2010-07-19",
+  "end": "2010-07-19",
+  "note": "data del volo; vale solo per gli oggetti presenti nel 2010"
+ },
+ "crs": {
+  "declared": "RDN2008 / UTM 32N",
+  "vertical_datum": "not_declared",
+  "note": "datum verticale non dichiarato, coerente con DSM e DTM entro circa 1 m"
+ },
+ "units": {
+  "uv_av": "m (altezza del corpo)",
+  "uv_qs": "m (quota suolo)",
+  "uv_qe": "m (quota di gronda o colmo)"
+ },
+ "schema_fields": [
+  "uv_id",
+  "edifc_id",
+  "uv_av",
+  "uv_qs",
+  "uv_qe",
+  "uv_por",
+  "anno"
+ ],
+ "checks": [
+  {
+   "name": "altezza uv_av valorizzata",
+   "result": "pass",
+   "detail": "998 su 998 in Z2"
+  },
+  {
+   "name": "attributo portici uv_por",
+   "result": "warn",
+   "detail": "'al suolo' ovunque: non popolato, non assenza di portici"
+  }
+ ]
+}

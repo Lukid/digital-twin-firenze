@@ -1,0 +1,75 @@
+{
+ "manifest_id": "man_78a15cb7b88e4900",
+ "job_id": "job_78a15cb7b88e4900",
+ "tool": "compute_shadow",
+ "aoi_id": "aoi_z2",
+ "baseline_id": "bas_z2_20261001",
+ "datasets": [
+  {
+   "snapshot_id": "snp_rt_unita_volumetriche_20261001",
+   "source_id": "src_rt_unita_volumetriche",
+   "sha256": "45dcd0e8f43d424948b999ac701a46a9da2680efcd6cc833cd9d4db75575a25e",
+   "license_state": "clear_with_reserve"
+  }
+ ],
+ "params": {
+  "receivers": [
+   "way_osm_5036121"
+  ],
+  "date": "2026-07-15",
+  "times": [
+   "14:00"
+  ],
+  "space_step_m": 1,
+  "time_step_min": 5
+ },
+ "method": {
+  "name": "geometric_ray",
+  "version": "0.1.0",
+  "description": "Posizione del sole e intersezione dei raggi con volumi opachi di edifici documentati."
+ },
+ "crs": "EPSG:7791",
+ "vertical_datum_status": "not_confirmed",
+ "timezone": "Europe/Rome",
+ "timing": {
+  "started_at": "2026-10-02T08:00:01Z",
+  "finished_at": "2026-10-02T08:00:41Z",
+  "duration_s": 40
+ },
+ "metrics": [
+  {
+   "metric_id": "shade_fraction",
+   "label": "Frazione ombreggiata del percorso alle 14:00 locali (valore d'esempio)",
+   "value": 0.18,
+   "unit": "1",
+   "classification": "estimated",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.12,
+    "high": 0.25,
+    "basis": "altezze uv_av +/- 2 m (scarto 2,3 m rispetto al DSM)"
+   }
+  }
+ ],
+ "limits": [
+  {
+   "code": "example_illustrative_values",
+   "text": "Valori d'esempio per collaudare il contratto: non sono un risultato di analisi."
+  },
+  {
+   "code": "buildings_only",
+   "text": "Ombra da edifici documentati del 2010: alberi e portici non inclusi."
+  }
+ ],
+ "validation_status": "not_validated_locally",
+ "assets": [
+  {
+   "asset_id": "ast_z2_campione",
+   "path": "contracts/sample/z2_campione.geojson",
+   "media_type": "application/geo+json",
+   "bytes": 23876,
+   "sha256": "4243f04a22759e848e9e06ab88cd030ccd3635a61567356d440722045ca89766",
+   "role": "input_copy"
+  }
+ ]
+}

@@ -1,0 +1,142 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://dt-pisa.example/contracts/schemas/sample.schema.json",
+ "title": "Campione geografico",
+ "description": "FeatureCollection GeoJSON in EPSG:7791 (E,N, metri) con classificazione di ogni attributo in 'cls'. La regola 'ogni attributo ha una classe' è controllata da validate.py.",
+ "type": "object",
+ "required": [
+  "type",
+  "crs",
+  "conventions",
+  "provenance",
+  "features"
+ ],
+ "additionalProperties": true,
+ "properties": {
+  "type": {
+   "const": "FeatureCollection"
+  },
+  "crs": {
+   "const": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::7791"
+    }
+   }
+  },
+  "conventions": {
+   "type": "object",
+   "required": [
+    "crs",
+    "axis_order",
+    "unit",
+    "vertical_datum",
+    "timezone"
+   ],
+   "properties": {
+    "crs": {
+     "$ref": "common.schema.json#/$defs/crs_operational"
+    },
+    "axis_order": {
+     "const": "E,N"
+    },
+    "unit": {
+     "const": "m"
+    },
+    "vertical_datum": {
+     "const": "not_confirmed"
+    },
+    "timezone": {
+     "const": "Europe/Rome"
+    }
+   }
+  },
+  "provenance": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "source_id",
+     "file",
+     "sha256"
+    ],
+    "properties": {
+     "source_id": {
+      "$ref": "common.schema.json#/$defs/id_source"
+     },
+     "file": {
+      "type": "string"
+     },
+     "sha256": {
+      "$ref": "common.schema.json#/$defs/sha256"
+     }
+    }
+   }
+  },
+  "features": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "type",
+     "geometry",
+     "properties"
+    ],
+    "properties": {
+     "type": {
+      "const": "Feature"
+     },
+     "geometry": {
+      "$ref": "common.schema.json#/$defs/geometry"
+     },
+     "properties": {
+      "type": "object",
+      "required": [
+       "id",
+       "layer",
+       "source_id",
+       "cls"
+      ],
+      "properties": {
+       "id": {
+        "anyOf": [
+         {
+          "$ref": "common.schema.json#/$defs/id_feature"
+         },
+         {
+          "$ref": "common.schema.json#/$defs/id_destination"
+         },
+         {
+          "$ref": "common.schema.json#/$defs/id_entrance"
+         }
+        ]
+       },
+       "layer": {
+        "enum": [
+         "destination",
+         "entrance",
+         "stop",
+         "network_edge",
+         "crossing",
+         "building_volume"
+        ]
+       },
+       "source_id": {
+        "$ref": "common.schema.json#/$defs/id_source"
+       },
+       "cls": {
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": {
+         "$ref": "common.schema.json#/$defs/classification"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

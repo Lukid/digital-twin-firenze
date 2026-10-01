@@ -34,7 +34,7 @@ Un'animazione d'ombra non verifica il calcolo. Il prototipo deve usare un motore
 |---|---|---|
 | D01 | Confermato dall'utente | Primo pubblico: Comune e partner tecnici/ricerca; utilizzo interno per demo e feedback |
 | D02 | Confermato dall'utente | Casi prioritari: accessibilità pedonale e ombreggiamento; caso concreto scelto dopo audit e interlocutore |
-| D03 | Parzialmente definito | Zona limitata di Pisa; selezione fra almeno tre candidate, senza assegnare ora un quartiere |
+| D03 | Confermato dall'utente (1 ottobre 2026) | Pilota Z2 Stazione / Sant'Antonio / Corso Italia, riquadro in `docs/audit/ZONE.json`; scelta motivata in `docs/audit-pilota.md`. Z1 alternativa |
 | D04 | Confermato dall'utente | Volumi semplificati; precisione adeguata alla domanda; dettaglio di altezze/chiome per le ombre |
 | D05 | Aperto | Budget, calendario, tempo di revisione umana e capacità di rilievo locale |
 | D06 | Confermato come impostazione | Sviluppo nostro + agenti AI; competenze GIS e di dominio per analisi specialistiche; nessun partner già confermato |

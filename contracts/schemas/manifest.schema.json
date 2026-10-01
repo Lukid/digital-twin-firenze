@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dt-pisa.example/contracts/schemas/manifest.schema.json",
+  "title": "Manifest di risultato",
+  "description": "Ogni numero mostrato all'utente rimanda a un manifest. Nessun manifest, nessun risultato.",
+  "type": "object",
+  "required": ["manifest_id", "job_id", "tool", "baseline_id", "datasets", "params", "method", "crs", "timezone", "timing", "metrics", "limits", "validation_status", "assets"],
+  "additionalProperties": false,
+  "properties": {
+    "manifest_id": {"$ref": "common.schema.json#/$defs/id_manifest"},
+    "job_id": {"$ref": "common.schema.json#/$defs/id_job"},
+    "tool": {"enum": ["compute_walk_access", "compute_shadow", "compare_scenarios"]},
+    "aoi_id": {"$ref": "common.schema.json#/$defs/id_aoi"},
+    "baseline_id": {"$ref": "common.schema.json#/$defs/id_baseline"},
+    "scenario_id": {"$ref": "common.schema.json#/$defs/id_scenario"},
+    "scenario_version": {"type": "integer", "minimum": 1},
+    "datasets": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["snapshot_id", "source_id", "sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "snapshot_id": {"$ref": "common.schema.json#/$defs/id_snapshot"},
+          "source_id": {"$ref": "common.schema.json#/$defs/id_source"},
+          "sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+          "license_state": {"$ref": "common.schema.json#/$defs/license_state"}
+        }
+      }
+    },
+    "params": {"type": "object"},
+    "method": {
+      "type": "object",
+      "required": ["name", "version", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+([-+][A-Za-z0-9.]+)?$"},
+        "description": {"type": "string", "minLength": 10}
+      }
+    },
+    "crs": {"$ref": "common.schema.json#/$defs/crs_operational"},
+    "vertical_datum_status": {"enum": ["not_confirmed", "confirmed"], "default": "not_confirmed"},
+    "timezone": {"const": "Europe/Rome"},
+    "timing": {
+      "type": "object",
+      "required": ["started_at", "finished_at", "duration_s"],
+      "additionalProperties": false,
+      "properties": {
+        "started_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+        "finished_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+        "duration_s": {"type": "number", "minimum": 0}
+      }
+    },
+    "metrics": {"type": "array", "minItems": 1, "items": {"$ref": "common.schema.json#/$defs/metric"}},
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "accessibility_counts": {
+          "description": "Conteggio delle origini per stato. Le componenti isolate restano nel conteggio.",
+          "type": "object",
+          "propertyNames": {"$ref": "common.schema.json#/$defs/accessibility_state"},
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "note": {"type": "string"}
+      }
+    },
+    "limits": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/limit"}},
+    "validation_status": {"enum": ["not_validated_locally", "partially_validated", "validated_locally"]},
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["asset_id", "path", "media_type", "bytes", "sha256", "role"],
+        "additionalProperties": false,
+        "properties": {
+          "asset_id": {"type": "string", "pattern": "^ast_[a-z0-9_]{2,60}$"},
+          "path": {"type": "string"},
+          "media_type": {"type": "string"},
+          "bytes": {"type": "integer", "minimum": 1},
+          "sha256": {"$ref": "common.schema.json#/$defs/sha256"},
+          "role": {"enum": ["result_geometry", "result_table", "report", "input_copy"]}
+        }
+      }
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"tool": {"const": "compute_walk_access"}}, "required": ["tool"]}, "then": {"required": ["coverage"], "properties": {"coverage": {"required": ["accessibility_counts"]}}}}
+  ]
+}
