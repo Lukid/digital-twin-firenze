@@ -1,0 +1,1095 @@
+{
+ "geojson": {
+  "42cd1073-521f-4040-9491-e993d03663a4": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=6370&type=99&format=url&file_format=geojson&file_id=23066",
+   "byte": 23179544,
+   "sha256": "a25afacacb71012badc0c6487443b76409b5cd7de93545bdb2490f00f464dfa8",
+   "elementi": 82225,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+   },
+   "tipi_geometria": [
+    "Point"
+   ],
+   "campi": [
+    "CIRCONF_CM",
+    "CODSITO_ALBERO",
+    "ID",
+    "NOME_COMUNE",
+    "QUARTIERE",
+    "SPECIE"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    11.21937318,
+    43.79229803
+   ]
+  },
+  "rifugi_climatici_aree_fresche": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=7776&type=99&format=url&file_format=geojson&file_id=22820",
+   "byte": 157348,
+   "sha256": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
+   "elementi": 41,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+   },
+   "tipi_geometria": [
+    "MultiPolygon"
+   ],
+   "campi": [
+    "cod_area",
+    "descrizione",
+    "id",
+    "ingresso",
+    "nome_area",
+    "percentuale_ombreggi"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    [
+     [
+      [
+       11.2336515,
+       43.73643835
+      ],
+      [
+       11.23365175,
+       43.73641233
+      ],
+      [
+       11.23365089,
+       43.73640934
+      ],
+      [
+       11.23365024,
+       43.73632959
+      ],
+      [
+       11.23352223,
+       43.73622014
+      ],
+      [
+       11.23339387,
+       43.73611039
+      ],
+      [
+       11.23328771,
+       43.73601962
+      ],
+      [
+       11.23318534,
+       43.73593209
+      ],
+      [
+       11.23312576,
+       43.73589616
+      ],
+      [
+       11.23305875,
+       43.73587046
+      ],
+      [
+       11.23292099,
+       43.73583103
+      ],
+      [
+       11.23282242,
+       43.73580611
+      ],
+      [
+       11.23269962,
+       43.73578294
+      ],
+      [
+       11.23237019,
+       43.73575716
+      ],
+      [
+       11.23201658,
+       43.73575379
+      ],
+      [
+       11.23187954,
+       43.73573495
+      ],
+      [
+       11.2316909,
+       43.7357129
+      ],
+      [
+       11.23153355,
+       43.73569462
+      ],
+      [
+       11.23094038,
+       43.73563021
+      ],
+      [
+       11.23079771,
+       43.73562639
+      ],
+      [
+       11.23067991,
+       43.73562791
+      ],
+      [
+       11.23053155,
+       43.73563198
+      ],
+      [
+       11.23046903,
+       43.73562699
+      ],
+      [
+       11.2303951,
+       43.73560547
+      ],
+      [
+       11.23022339,
+       43.73552932
+      ],
+      [
+       11.23011571,
+       43.73544499
+      ],
+      [
+       11.22963912,
+       43.73501618
+      ],
+      [
+       11.22952939,
+       43.73488651
+      ],
+      [
+       11.22949165,
+       43.73485673
+      ],
+      [
+       11.22942558,
+       43.73482624
+      ],
+      [
+       11.22932248,
+       43.73480037
+      ],
+      [
+       11.22921872,
+       43.73477976
+      ],
+      [
+       11.22909076,
+       43.73475841
+      ],
+      [
+       11.22882864,
+       43.73471778
+      ],
+      [
+       11.2283346,
+       43.73458411
+      ],
+      [
+       11.2278885,
+       43.73446341
+      ],
+      [
+       11.2277857,
+       43.7344356
+      ],
+      [
+       11.22784044,
+       43.7347805
+      ],
+      [
+       11.22780572,
+       43.73514922
+      ],
+      [
+       11.22774204,
+       43.73514845
+      ],
+      [
+       11.22730984,
+       43.73514321
+      ],
+      [
+       11.22729153,
+       43.73514298
+      ],
+      [
+       11.2272916,
+       43.73513188
+      ],
+      [
+       11.22729163,
+       43.73512815
+      ],
+      [
+       11.22670424,
+       43.73513795
+      ],
+      [
+       11.22670473,
+       43.73516577
+      ],
+      [
+       11.22765815,
+       43.73538108
+      ],
+      [
+       11.22765867,
+       43.73538046
+      ],
+      [
+       11.2277189,
+       43.73539244
+      ],
+      [
+       11.22865157,
+       43.73560173
+      ],
+      [
+       11.22869512,
+       43.73561145
+      ],
+      [
+       11.22913024,
+       43.735709
+      ],
+      [
+       11.22918109,
+       43.73572048
+      ],
+      [
+       11.22984398,
+       43.73586923
+      ],
+      [
+       11.22984481,
+       43.7358694
+      ],
+      [
+       11.22992696,
+       43.7358889
+      ],
+      [
+       11.23024246,
+       43.73596355
+      ],
+      [
+       11.23032034,
+       43.73591035
+      ],
+      [
+       11.23033364,
+       43.73591337
+      ],
+      [
+       11.23033971,
+       43.73589898
+      ],
+      [
+       11.23038417,
+       43.73591514
+      ],
+      [
+       11.23038044,
+       43.73592397
+      ],
+      [
+       11.23089374,
+       43.73604033
+      ],
+      [
+       11.23089747,
+       43.73603149
+      ],
+      [
+       11.23097674,
+       43.73604686
+      ],
+      [
+       11.23098116,
+       43.73606263
+      ],
+      [
+       11.23097815,
+       43.73606402
+      ],
+      [
+       11.23097719,
+       43.73606649
+      ],
+      [
+       11.2309853,
+       43.73613204
+      ],
+      [
+       11.23098667,
+       43.73613446
+      ],
+      [
+       11.23098966,
+       43.73613594
+      ],
+      [
+       11.23170279,
+       43.73629485
+      ],
+      [
+       11.23170382,
+       43.73629503
+      ],
+      [
+       11.23170455,
+       43.73629513
+      ],
+      [
+       11.23178699,
+       43.73630973
+      ],
+      [
+       11.23178901,
+       43.7363105
+      ],
+      [
+       11.23230573,
+       43.73642734
+      ],
+      [
+       11.23230654,
+       43.73642732
+      ],
+      [
+       11.23230722,
+       43.73642714
+      ],
+      [
+       11.23230783,
+       43.73642681
+      ],
+      [
+       11.23234896,
+       43.73643894
+      ],
+      [
+       11.23281526,
+       43.73655011
+      ],
+      [
+       11.2328466,
+       43.73655787
+      ],
+      [
+       11.23286887,
+       43.73656257
+      ],
+      [
+       11.23292951,
+       43.73650025
+      ],
+      [
+       11.23349516,
+       43.73663937
+      ],
+      [
+       11.23354207,
+       43.73665091
+      ],
+      [
+       11.23356996,
+       43.73665839
+      ],
+      [
+       11.23359455,
+       43.7366024
+      ],
+      [
+       11.23363485,
+       43.73651067
+      ],
+      [
+       11.2336515,
+       43.73643835
+      ]
+     ],
+     [
+      [
+       11.22942214,
+       43.73522353
+      ],
+      [
+       11.22927884,
+       43.73544788
+      ],
+      [
+       11.22920247,
+       43.73556743
+      ],
+      [
+       11.2286604,
+       43.73537526
+      ],
+      [
+       11.22813899,
+       43.7351904
+      ],
+      [
+       11.2282086,
+       43.73508346
+      ],
+      [
+       11.22835525,
+       43.73485819
+      ],
+      [
+       11.22841799,
+       43.7347618
+      ],
+      [
+       11.22894539,
+       43.73493736
+      ],
+      [
+       11.22948928,
+       43.73511842
+      ],
+      [
+       11.22942214,
+       43.73522353
+      ]
+     ],
+     [
+      [
+       11.22953374,
+       43.73531256
+      ],
+      [
+       11.22999418,
+       43.73547347
+      ],
+      [
+       11.22977034,
+       43.73579926
+      ],
+      [
+       11.22968884,
+       43.73577004
+      ],
+      [
+       11.22932989,
+       43.73564135
+      ],
+      [
+       11.22953374,
+       43.73531256
+      ]
+     ],
+     [
+      [
+       11.23005168,
+       43.73560101
+      ],
+      [
+       11.23023336,
+       43.73564491
+      ],
+      [
+       11.23012426,
+       43.73589365
+      ],
+      [
+       11.22994683,
+       43.73585431
+      ],
+      [
+       11.23005168,
+       43.73560101
+      ]
+     ],
+     [
+      [
+       11.23119049,
+       43.73602976
+      ],
+      [
+       11.23126322,
+       43.7358516
+      ],
+      [
+       11.23174881,
+       43.73595394
+      ],
+      [
+       11.23167292,
+       43.73613369
+      ],
+      [
+       11.23148658,
+       43.73609355
+      ],
+      [
+       11.23132904,
+       43.73605961
+      ],
+      [
+       11.23119049,
+       43.73602976
+      ]
+     ],
+     [
+      [
+       11.23253694,
+       43.73604433
+      ],
+      [
+       11.23240836,
+       43.73634324
+      ],
+      [
+       11.23181678,
+       43.73621254
+      ],
+      [
+       11.23194676,
+       43.73591082
+      ],
+      [
+       11.23253694,
+       43.73604433
+      ]
+     ]
+    ]
+   ]
+  },
+  "rifugi_climatici_biblioteche": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=7777&type=99&format=url&file_format=geojson&file_id=22823",
+   "byte": 3228,
+   "sha256": "2b2685f9008ee030b1a23c29ae59116fc9dce7ee9071840638c9823ea34253c8",
+   "elementi": 7,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::3003"
+    }
+   },
+   "tipi_geometria": [
+    "Point"
+   ],
+   "campi": [
+    "civico",
+    "id",
+    "indirizzo",
+    "mail",
+    "nome",
+    "note",
+    "orario",
+    "telefono"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    1681921.63092,
+    4849074.13289
+   ]
+  },
+  "life_escapos_mobile_measurements": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=7840&type=99&format=url&file_format=geojson&file_id=22977",
+   "byte": 32282,
+   "sha256": "8f5a3343f039944913c0f3447f70b373b30ed9c26b7e160d00e1b21a25f6d1aa",
+   "elementi": 50,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::7791"
+    }
+   },
+   "tipi_geometria": [
+    "Point"
+   ],
+   "campi": [
+    "abg_mg",
+    "c_mg",
+    "can_h_m",
+    "canopy_area_m2",
+    "cens_id",
+    "co2_mg",
+    "co_kg",
+    "crn_w_m",
+    "dbh_cm",
+    "h_m",
+    "id",
+    "lai",
+    "no2_kg",
+    "o3_kg",
+    "pm10_kg",
+    "pm25_kg",
+    "seg_id",
+    "so2_kg",
+    "species"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    678677.28097308,
+    4852876.01887465
+   ]
+  },
+  "escapos_mobile_measurements": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=7839&type=99&format=url&file_format=geojson&file_id=22974",
+   "byte": 45268,
+   "sha256": "5e6ab6f814bd52cfdc3f0ef9221a81e5d7500c4f3fc89285895c55b4b0c7c9e3",
+   "elementi": 50,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::7791"
+    }
+   },
+   "tipi_geometria": [
+    "Point"
+   ],
+   "campi": [
+    "co2_mob",
+    "co2_stat",
+    "date",
+    "hour",
+    "i_stat",
+    "id",
+    "lf_hf_power_0",
+    "lf_hf_power_1",
+    "lf_hf_power_2",
+    "lf_hf_power_3",
+    "lf_hf_power_4",
+    "mean_hrv_0",
+    "mean_hrv_1",
+    "mean_hrv_2",
+    "mean_hrv_3",
+    "mean_hrv_4",
+    "mean_rr_0",
+    "mean_rr_1",
+    "mean_rr_2",
+    "mean_rr_3",
+    "mean_rr_4",
+    "n_hotspot",
+    "pc_stat",
+    "pm10_mob",
+    "pm2_5_mob",
+    "rh_mob",
+    "rh_stat",
+    "rmssd_0",
+    "rmssd_1",
+    "rmssd_2",
+    "rmssd_3",
+    "rmssd_4",
+    "route",
+    "ta_mob",
+    "temp_stat",
+    "tg_mob",
+    "voc_mob",
+    "w_stat"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    679087.03173844,
+    4852756.06212871
+   ]
+  },
+  "lifeescapos_nuovopignone": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=7838&type=99&format=url&file_format=geojson&file_id=22971",
+   "byte": 16161,
+   "sha256": "e6145ad790efe4e1aec7f1df2d246dc39a4a4d379381277ba91403ff1dab2018",
+   "elementi": 50,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::7791"
+    }
+   },
+   "tipi_geometria": [
+    "Point"
+   ],
+   "campi": [
+    "co2",
+    "date",
+    "hour",
+    "i",
+    "id",
+    "pc",
+    "rh",
+    "temp",
+    "w_max"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    679048.85302097,
+    4852693.15445333
+   ]
+  },
+  "lifeescapos_giardinolippi": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=7837&type=99&format=url&file_format=geojson&file_id=22968",
+   "byte": 15636,
+   "sha256": "9491c02a140d486b21985eaa4094458a3a10673e9346cdda726356d48cc0b00f",
+   "elementi": 50,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::7791"
+    }
+   },
+   "tipi_geometria": [
+    "Point"
+   ],
+   "campi": [
+    "date",
+    "hour",
+    "i",
+    "id",
+    "pc",
+    "rh",
+    "temp",
+    "w_angle",
+    "w_max"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    679182.69912317,
+    4852857.08836697
+   ]
+  },
+  "anagrafica-scuole-statali-2026_27": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=7857&type=99&format=url&file_format=geojson&file_id=23125",
+   "byte": 87071,
+   "sha256": "5a9ab7914290ea32d62aa869c8073063062a575cb3f7c82c8198d5c96d7145b3",
+   "elementi": 222,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+   },
+   "tipi_geometria": [
+    "Point"
+   ],
+   "campi": [
+    "annoscolas",
+    "cap",
+    "codicescuo",
+    "email",
+    "indirizzo",
+    "nome",
+    "tipologia",
+    "website"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    11.16975774,
+    43.79517437
+   ]
+  },
+  "anagrafica-scuole-paritarie-2026_27": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=7856&type=99&format=url&file_format=geojson&file_id=23121",
+   "byte": 43585,
+   "sha256": "3fe96d4fcaa2c8953a7156c1be1b2d5434d614f83f13f7e06c7f44ca19dc961f",
+   "elementi": 109,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+   },
+   "tipi_geometria": [
+    "Point"
+   ],
+   "campi": [
+    "annoscolas",
+    "cap",
+    "codicescuo",
+    "email",
+    "indirizzo",
+    "nome",
+    "tipologia",
+    "website"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    11.17609741,
+    43.7964083
+   ]
+  },
+  "4b49d9a5-6b91-451d-b7c3-73ea6cd3e83b": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=6373&type=99&format=url&file_format=geojson&file_id=23070",
+   "byte": 332812,
+   "sha256": "b0e2f057ba5bba3bd9dbe51c89cb308f01978a881ba195f9cf66bcfb8c027046",
+   "elementi": 394,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+   },
+   "tipi_geometria": [
+    "MultiPolygon"
+   ],
+   "campi": [
+    "accessib_bici",
+    "accessib_elettr_cose",
+    "accessib_elettr_persone",
+    "attoinizio",
+    "datainizio",
+    "id",
+    "luogo",
+    "note",
+    "superficie",
+    "tipo"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    [
+     [
+      [
+       11.25415794,
+       43.77569285
+      ],
+      [
+       11.25404847,
+       43.77543166
+      ],
+      [
+       11.25400323,
+       43.77544795
+      ],
+      [
+       11.25406387,
+       43.7756035
+      ],
+      [
+       11.25412769,
+       43.77578744
+      ],
+      [
+       11.25413739,
+       43.77581732
+      ],
+      [
+       11.25423422,
+       43.77603644
+      ],
+      [
+       11.25428908,
+       43.77601835
+      ],
+      [
+       11.25419521,
+       43.7757853
+      ],
+      [
+       11.25415794,
+       43.77569285
+      ]
+     ]
+    ]
+   ]
+  },
+  "d0ffa579-e002-4dc3-94b4-d69207cae114": {
+   "url": "https://data.comune.fi.it/datastore/download.php?id=6855&type=99&format=url&file_format=geojson&file_id=23062",
+   "byte": 5362326,
+   "sha256": "59d28c8bc3c84c9703bdb412100e8275c2562b35bdbb6db46bf883aac83959ef",
+   "elementi": 1687,
+   "crs": {
+    "type": "name",
+    "properties": {
+     "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+   },
+   "tipi_geometria": [
+    "MultiPolygon"
+   ],
+   "campi": [
+    "CODICE_AREA",
+    "ID",
+    "NOME_AREA",
+    "QUARTIERE",
+    "SUPERF_MQ",
+    "USO_AREA"
+   ],
+   "campi_licenza": [],
+   "primo_vertice": [
+    [
+     [
+      [
+       11.18189178,
+       43.79659907
+      ],
+      [
+       11.18199124,
+       43.79673979
+      ],
+      [
+       11.18199333,
+       43.79675271
+      ],
+      [
+       11.18199055,
+       43.79676852
+      ],
+      [
+       11.18198267,
+       43.79678443
+      ],
+      [
+       11.18197575,
+       43.79679581
+      ],
+      [
+       11.18208276,
+       43.79675434
+      ],
+      [
+       11.18197596,
+       43.7965999
+      ],
+      [
+       11.18189178,
+       43.79659907
+      ]
+     ]
+    ]
+   ]
+  }
+ },
+ "harvest_url": {
+  "42cd1073-521f-4040-9491-e993d03663a4": {
+   "url": "https://data.comune.fi.it/datastore/dataset/42cd1073-521f-4040-9491-e993d03663a4",
+   "code": 404
+  },
+  "fc7e03ee-9406-42ce-b176-0767b67ed299": {
+   "url": "https://data.comune.fi.it/datastore/dataset/fc7e03ee-9406-42ce-b176-0767b67ed299",
+   "code": 404
+  },
+  "dtm-lidar-2023": {
+   "url": "https://data.comune.fi.it/datastore/dataset/dtm-lidar-2023",
+   "code": 404
+  },
+  "dsm-lidar-2023": {
+   "url": "https://data.comune.fi.it/datastore/dataset/dsm-lidar-2023",
+   "code": 404
+  },
+  "dtm-2017": {
+   "url": "https://data.comune.fi.it/datastore/dataset/dtm-2017",
+   "code": 404
+  },
+  "dsm-2017": {
+   "url": "https://data.comune.fi.it/datastore/dataset/dsm-2017",
+   "code": 404
+  },
+  "11430710-56eb-4444-bd6f-c5433155afc5": {
+   "url": "https://data.comune.fi.it/datastore/dataset/11430710-56eb-4444-bd6f-c5433155afc5",
+   "code": 404
+  },
+  "92033b63-0598-4449-9007-22127abe505a": {
+   "url": "https://data.comune.fi.it/datastore/dataset/92033b63-0598-4449-9007-22127abe505a",
+   "code": 404
+  },
+  "31cf0d64-0d85-476e-9fc6-47074ebf68a2": {
+   "url": "https://data.comune.fi.it/datastore/dataset/31cf0d64-0d85-476e-9fc6-47074ebf68a2",
+   "code": 404
+  },
+  "97af40a2-09f8-456c-9e7f-b85a023db16d": {
+   "url": "https://data.comune.fi.it/datastore/dataset/97af40a2-09f8-456c-9e7f-b85a023db16d",
+   "code": 404
+  },
+  "1e76a893-a97d-4ce6-a6f8-58483ba5ecdd": {
+   "url": "https://data.comune.fi.it/datastore/dataset/1e76a893-a97d-4ce6-a6f8-58483ba5ecdd",
+   "code": 404
+  },
+  "df2ed9e1-920e-4f6d-a8cc-9d9301be8d6d": {
+   "url": "https://data.comune.fi.it/datastore/dataset/df2ed9e1-920e-4f6d-a8cc-9d9301be8d6d",
+   "code": 404
+  },
+  "3440cb38-f330-4da1-ae37-156e4ecf5110": {
+   "url": "https://data.comune.fi.it/datastore/dataset/3440cb38-f330-4da1-ae37-156e4ecf5110",
+   "code": 404
+  },
+  "8baec998-6091-4132-9f6f-23b535caa549": {
+   "url": "https://data.comune.fi.it/datastore/dataset/8baec998-6091-4132-9f6f-23b535caa549",
+   "code": 404
+  },
+  "770fe5f0-029a-4527-8fc4-aead295bcc9c": {
+   "url": "https://data.comune.fi.it/datastore/dataset/770fe5f0-029a-4527-8fc4-aead295bcc9c",
+   "code": 404
+  },
+  "rifugi_climatici_aree_fresche": {
+   "url": "https://data.comune.fi.it/datastore/dataset/rifugi_climatici_aree_fresche",
+   "code": 404
+  },
+  "rifugi_climatici_biblioteche": {
+   "url": "https://data.comune.fi.it/datastore/dataset/rifugi_climatici_biblioteche",
+   "code": 404
+  },
+  "2d881d20-8b0c-47c7-8acb-a4dd42fe71ee": {
+   "url": "https://data.comune.fi.it/datastore/dataset/2d881d20-8b0c-47c7-8acb-a4dd42fe71ee",
+   "code": 404
+  },
+  "life_escapos_mobile_measurements": {
+   "url": "https://data.comune.fi.it/datastore/dataset/life_escapos_mobile_measurements",
+   "code": 404
+  },
+  "escapos_mobile_measurements": {
+   "url": "https://data.comune.fi.it/datastore/dataset/escapos_mobile_measurements",
+   "code": 404
+  },
+  "lifeescapos_nuovopignone": {
+   "url": "https://data.comune.fi.it/datastore/dataset/LifeEscapos_NuovoPignone",
+   "code": 404
+  },
+  "lifeescapos_giardinolippi": {
+   "url": "https://data.comune.fi.it/datastore/dataset/LifeEscapos_GiardinoLippi",
+   "code": 404
+  },
+  "6a0a42f0-3b1f-4498-8de1-a57b592cee59": {
+   "url": "https://data.comune.fi.it/datastore/dataset/6a0a42f0-3b1f-4498-8de1-a57b592cee59",
+   "code": 404
+  },
+  "607b8031-252b-4442-950a-7b4452d9db8f": {
+   "url": "https://data.comune.fi.it/datastore/dataset/607b8031-252b-4442-950a-7b4452d9db8f",
+   "code": 404
+  },
+  "23160550-904f-4765-8fc9-89c88dc60226": {
+   "url": "https://data.comune.fi.it/datastore/dataset/23160550-904f-4765-8fc9-89c88dc60226",
+   "code": 404
+  },
+  "5e08844a-c0d8-4d64-a3b2-d1ab58d9283f": {
+   "url": "https://data.comune.fi.it/datastore/dataset/5e08844a-c0d8-4d64-a3b2-d1ab58d9283f",
+   "code": 404
+  },
+  "anagrafica-scuole-statali-2026_27": {
+   "url": "https://data.comune.fi.it/datastore/dataset/anagrafica-scuole-statali-2026_27",
+   "code": 404
+  },
+  "anagrafica-scuole-paritarie-2026_27": {
+   "url": "https://data.comune.fi.it/datastore/dataset/anagrafica-scuole-paritarie-2026_27",
+   "code": 404
+  },
+  "edifici-scolastici-citta-metropolitana-di-firenze": {
+   "url": "http://dati.cittametropolitana.fi.it/dataset/311010b2-0e12-41af-9835-7fe2ea48c0ac",
+   "code": 200
+  },
+  "4b49d9a5-6b91-451d-b7c3-73ea6cd3e83b": {
+   "url": "https://data.comune.fi.it/datastore/dataset/4b49d9a5-6b91-451d-b7c3-73ea6cd3e83b",
+   "code": 404
+  },
+  "a44ea551-7b09-4d0d-af64-7c08159e9316": {
+   "url": "https://data.comune.fi.it/datastore/dataset/a44ea551-7b09-4d0d-af64-7c08159e9316",
+   "code": 404
+  },
+  "d0ffa579-e002-4dc3-94b4-d69207cae114": {
+   "url": "https://data.comune.fi.it/datastore/dataset/d0ffa579-e002-4dc3-94b4-d69207cae114",
+   "code": 404
+  }
+ }
+}

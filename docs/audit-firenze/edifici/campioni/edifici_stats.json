@@ -1,0 +1,408 @@
+{
+ "conteggi": {
+  "FA": {
+   "uv_regione": 972,
+   "osm": 370,
+   "cassone_comune": 39
+  },
+  "FB": {
+   "uv_regione": 1459,
+   "osm": 543,
+   "cassone_comune": 85
+  },
+  "FA|FB": {
+   "uv_regione": 1924,
+   "osm": 725,
+   "cassone_comune": 98
+  }
+ },
+ "area_m2_totale": {
+  "FA": {
+   "uv": 390837,
+   "osm": 471027,
+   "cassone": 332201
+  },
+  "FB": {
+   "uv": 430741,
+   "osm": 486817,
+   "cassone": 718564
+  },
+  "FA|FB": {
+   "uv": 592612,
+   "osm": 689190,
+   "cassone": 834561
+  }
+ },
+ "cassone_totale_città": 2058,
+ "cassone_colonne": [
+  "csediid",
+  "csedi_s",
+  "csedi_sup",
+  "csedi_per"
+ ],
+ "cassone_ha_Z": true,
+ "uv_attributi": {
+  "FA": {
+   "n": 972,
+   "uv_av_valorizzata": 972,
+   "uv_av_p10_p50_p90": [
+    2.6,
+    7.4,
+    29.2
+   ],
+   "portico_uv_dpor": {
+    "Al Suolo": 964,
+    "Seminterrata": 8
+   },
+   "anno": {
+    "2011": 972
+   },
+   "dtvolo": {
+    "2011": 972
+   },
+   "scala": {
+    "02": 972
+   },
+   "uso": {
+    "Residenziale": 527,
+    "Industriale": 232,
+    "-": 175,
+    "Sede Di Tribunale": 19,
+    "Centrale Elettrica": 9,
+    "Sede Di Scuola, Universita', Laboratorio Di Ricerca": 6,
+    "Luogo Di Culto": 3,
+    "Depuratore": 1
+   },
+   "stato": {
+    "In Esercizio": 768,
+    "-": 160,
+    "In Costruzione": 36,
+    "In Disuso/diruto": 8
+   },
+   "sotterraneo": {
+    "Non Sotterraneo": 806,
+    "-": 160,
+    "Sotterraneo": 6
+   },
+   "classe_uv_cl": {
+    "020101": 972
+   }
+  },
+  "FB": {
+   "n": 1459,
+   "uv_av_valorizzata": 1459,
+   "uv_av_p10_p50_p90": [
+    3.0,
+    8.8,
+    27.1
+   ],
+   "portico_uv_dpor": {
+    "Al Suolo": 1438,
+    "Seminterrata": 20,
+    "Soffitto Di Loggia": 1
+   },
+   "anno": {
+    "2011": 1459
+   },
+   "dtvolo": {
+    "2011": 1459
+   },
+   "scala": {
+    "02": 1459
+   },
+   "uso": {
+    "Residenziale": 950,
+    "Industriale": 231,
+    "-": 150,
+    "Sede Di Tribunale": 51,
+    "Sede Di Scuola, Universita', Laboratorio Di Ricerca": 26,
+    "Sede Regione": 18,
+    "Centrale Elettrica": 16,
+    "Luogo Di Culto": 13
+   },
+   "stato": {
+    "In Esercizio": 1313,
+    "-": 134,
+    "In Disuso/diruto": 11,
+    "In Costruzione": 1
+   },
+   "sotterraneo": {
+    "Non Sotterraneo": 1307,
+    "-": 134,
+    "Sotterraneo": 18
+   },
+   "classe_uv_cl": {
+    "020101": 1459
+   }
+  }
+ },
+ "osm_attributi": {
+  "FA": {
+   "n": 370,
+   "height": 1,
+   "building:levels": 5,
+   "min_height": 0,
+   "building:min_level": 0,
+   "roof:height": 0,
+   "building:part": 0,
+   "tag_building": {
+    "yes": 286,
+    "apartments": 43,
+    "roof": 7,
+    "industrial": 5,
+    "office": 5,
+    "hotel": 3,
+    "school": 3,
+    "service": 3
+   },
+   "con_altezza_o_piani": 5
+  },
+  "FB": {
+   "n": 543,
+   "height": 0,
+   "building:levels": 27,
+   "min_height": 0,
+   "building:min_level": 0,
+   "roof:height": 0,
+   "building:part": 1,
+   "tag_building": {
+    "yes": 400,
+    "apartments": 93,
+    "office": 10,
+    "residential": 6,
+    "industrial": 4,
+    "hotel": 4,
+    "retail": 4,
+    "roof": 4
+   },
+   "con_altezza_o_piani": 27
+  }
+ },
+ "sovrapposizione": {
+  "FA": {
+   "osm_con_centroide_in_uv": 0.784,
+   "uv_con_centroide_in_osm": 0.719,
+   "osm_area_coperta_da_uv": 0.735,
+   "uv_area_coperta_da_osm": 0.893,
+   "uv_area_coperta_da_cassone": 0.315,
+   "osm_area_coperta_da_cassone": 0.248
+  },
+  "FB": {
+   "osm_con_centroide_in_uv": 0.845,
+   "uv_con_centroide_in_osm": 0.789,
+   "osm_area_coperta_da_uv": 0.786,
+   "uv_area_coperta_da_osm": 0.899,
+   "uv_area_coperta_da_cassone": 0.6,
+   "osm_area_coperta_da_cassone": 0.527
+  }
+ },
+ "raster": {
+  "2023": {
+   "cella_m": 0.5,
+   "shape": [
+    4000,
+    5000
+   ],
+   "nodata_dsm": 0.05,
+   "nodata_dtm": 0.05,
+   "estensione_E_N": [
+    677500,
+    4851000,
+    680000,
+    4853000
+   ],
+   "nodata_nDSM_FA": 0.0,
+   "nodata_nDSM_FB": 0.0
+  },
+  "2017": {
+   "cella_m": 1.0,
+   "shape": [
+    3000,
+    2000
+   ],
+   "nodata_dsm": 0.0,
+   "nodata_dtm": 0.0,
+   "estensione_E_N": [
+    677842,
+    4850653,
+    679842,
+    4853653
+   ],
+   "nodata_nDSM_FA": 0.0,
+   "nodata_nDSM_FB": 0.0
+  }
+ },
+ "ndsm_vs_uv": {
+  "n_uv_testati": 1419,
+  "ALL": {
+   "ndsm23_med - uv_av": {
+    "n": 1419,
+    "mediana": 0.37,
+    "p10": -2.06,
+    "p90": 2.76,
+    "MAE": 1.84
+   },
+   "ndsm23_p90 - uv_av": {
+    "n": 1419,
+    "mediana": 1.22,
+    "p10": -0.99,
+    "p90": 4.84,
+    "MAE": 2.62
+   },
+   "ndsm17_med - uv_av": {
+    "n": 1377,
+    "mediana": 0.39,
+    "p10": -1.8,
+    "p90": 2.54,
+    "MAE": 1.8
+   },
+   "ndsm23_med - ndsm17_med": {
+    "n": 1377,
+    "mediana": -0.03,
+    "p10": -0.47,
+    "p90": 0.32,
+    "MAE": 0.51
+   }
+  },
+  "FA": {
+   "ndsm23_med - uv_av": {
+    "n": 716,
+    "mediana": 0.07,
+    "p10": -2.31,
+    "p90": 2.09,
+    "MAE": 1.67
+   },
+   "ndsm23_p90 - uv_av": {
+    "n": 716,
+    "mediana": 0.92,
+    "p10": -1.36,
+    "p90": 4.26,
+    "MAE": 2.41
+   },
+   "ndsm17_med - uv_av": {
+    "n": 693,
+    "mediana": 0.12,
+    "p10": -2.14,
+    "p90": 2.14,
+    "MAE": 1.63
+   },
+   "ndsm23_med - ndsm17_med": {
+    "n": 693,
+    "mediana": -0.02,
+    "p10": -0.43,
+    "p90": 0.28,
+    "MAE": 0.43
+   }
+  },
+  "FB": {
+   "ndsm23_med - uv_av": {
+    "n": 703,
+    "mediana": 0.63,
+    "p10": -1.66,
+    "p90": 3.19,
+    "MAE": 2.02
+   },
+   "ndsm23_p90 - uv_av": {
+    "n": 703,
+    "mediana": 1.43,
+    "p10": -0.5,
+    "p90": 5.26,
+    "MAE": 2.84
+   },
+   "ndsm17_med - uv_av": {
+    "n": 684,
+    "mediana": 0.62,
+    "p10": -1.46,
+    "p90": 2.99,
+    "MAE": 1.98
+   },
+   "ndsm23_med - ndsm17_med": {
+    "n": 684,
+    "mediana": -0.04,
+    "p10": -0.51,
+    "p90": 0.35,
+    "MAE": 0.6
+   }
+  },
+  "quota_entro_1m": 0.552,
+  "quota_entro_2m": 0.757,
+  "quota_entro_1m_ndsm17": 0.535,
+  "per_classe_altezza_uv": {
+   "<4": {
+    "n": 267,
+    "mediana": 0.15,
+    "p10": -3.04,
+    "p90": 5.36,
+    "MAE": 3.22
+   },
+   "4-8": {
+    "n": 355,
+    "mediana": 0.14,
+    "p10": -3.03,
+    "p90": 1.84,
+    "MAE": 1.72
+   },
+   "8-15": {
+    "n": 339,
+    "mediana": 0.6,
+    "p10": -0.99,
+    "p90": 1.97,
+    "MAE": 1.34
+   },
+   ">15": {
+    "n": 458,
+    "mediana": 0.39,
+    "p10": -1.47,
+    "p90": 2.79,
+    "MAE": 1.51
+   }
+  }
+ },
+ "portici_uv": {
+  "n_uv_non_al_suolo_testati": 15,
+  "valori": {
+   "Al Suolo": 1912,
+   "Seminterrata": 27,
+   "Soffitto Di Loggia": 1
+  }
+ },
+ "quota_spiccato_uv_vs_dtm23": {
+  "n": 1419,
+  "mediana": -0.14,
+  "p10": -1.12,
+  "p90": 1.08,
+  "MAE": 0.78,
+  "mediana_scarto_usata_come_datum": -0.14,
+  "uv_con_spiccato_oltre_2_5m_sopra_il_suolo": 53,
+  "uv_con_spiccato_oltre_2_5m_sotto_il_suolo": 48,
+  "uv_con_spiccato_oltre_2_5m_sopra_il_suolo_per_portico": {
+   "Al Suolo": 50,
+   "Seminterrata": 2,
+   "Soffitto Di Loggia": 1
+  }
+ },
+ "osm_vs_ndsm": {
+  "n": 30,
+  "ndsm - h_osm": {
+   "n": 30,
+   "mediana": 3.52,
+   "p10": -0.68,
+   "p90": 7.15,
+   "MAE": 3.92
+  }
+ },
+ "osm_ndsm_mediana_sotto_1_5m": {
+  "n_testati": 864,
+  "n_sotto": 21
+ },
+ "celle_alte_senza_impronta": {
+  "FA": {
+   "area_nDSM_gt3m_m2": 663071,
+   "di_cui_fuori_da_tutte_le_impronte_m2": 114063
+  },
+  "FB": {
+   "area_nDSM_gt3m_m2": 680697,
+   "di_cui_fuori_da_tutte_le_impronte_m2": 84131
+  }
+ }
+}

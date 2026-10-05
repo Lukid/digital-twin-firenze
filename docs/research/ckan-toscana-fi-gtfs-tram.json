@@ -1,0 +1,113 @@
+{
+ "file": [
+  "agency.txt",
+  "calendar_dates.txt",
+  "routes.txt",
+  "shapes.txt",
+  "stop_times.txt",
+  "stops.txt",
+  "trips.txt"
+ ],
+ "route_type": [
+  "0"
+ ],
+ "routes": [
+  [
+   "T2",
+   "Servizio Tramvia Firenze - Linea T2"
+  ],
+  [
+   "T1.3",
+   "Servizio Tramvia Firenze - Linea T1.3"
+  ]
+ ],
+ "fermate_totali": 61,
+ "fermate_nel_riquadro_contesto": [
+  [
+   "Poggetto",
+   "43.7939701054963",
+   "11.2447980174432"
+  ],
+  [
+   "Vittorio Emanuele Ii",
+   "43.7958712112307",
+   "11.2415139153139"
+  ],
+  [
+   "Morgagni-Universita",
+   "43.7995953955465",
+   "11.2439861801234"
+  ],
+  [
+   "Careggi - Ospedale",
+   "43.8033027414408",
+   "11.2465976104274"
+  ],
+  [
+   "Dalmazia",
+   "43.7957187575488",
+   "11.2405055032793"
+  ],
+  [
+   "Pisacane",
+   "43.7931788976951",
+   "11.2439676941197"
+  ],
+  [
+   "Morgagni-Universita",
+   "43.7996234832044",
+   "11.2439084219064"
+  ],
+  [
+   "Redi",
+   "43.7854244019569",
+   "11.2422472820131"
+  ],
+  [
+   "Ponte All Asse",
+   "43.7867799053123",
+   "11.2397031488272"
+  ],
+  [
+   "Buonsignori - Leonardo Da Vinci",
+   "43.7886199418641",
+   "11.2347428978577"
+  ],
+  [
+   "San Donato - Universita",
+   "43.790700526842",
+   "11.2265739860996"
+  ],
+  [
+   "Novoli - Regione Toscana",
+   "43.792077378184",
+   "11.2234933841151"
+  ],
+  [
+   "Novoli - Torre Degli Agli",
+   "43.7943774712194",
+   "11.2179415495459"
+  ],
+  [
+   "Novoli - Palazzi Rossi",
+   "43.7964065757965",
+   "11.2137598810265"
+  ],
+  [
+   "Guidoni",
+   "43.7997134588302",
+   "11.208415294382"
+  ],
+  [
+   "Peretola Aeroporto",
+   "43.8030164782332",
+   "11.2025903817835"
+  ]
+ ],
+ "calendar_start_min": "20260810",
+ "calendar_end_max": "20261230",
+ "feed_info": [],
+ "sha256": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
+ "byte": 1191740,
+ "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/1f62d551-65f4-49f8-9a99-e19b02077be3/download/gest.gtfs"
+}

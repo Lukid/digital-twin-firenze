@@ -1,0 +1,115 @@
+{
+ "fonti": "vedi REPORT.md",
+ "file": [
+  {
+   "path": "../../../data/raw/fi_audit_20261001/barriere.zip",
+   "bytes": 111667,
+   "sha256": "0f687cebb744beb670a47d81d711f0c620f18f3a4bfbe3c4af252246a32c26dd"
+  },
+  {
+   "path": "../../../data/raw/fi_audit_20261001/rifugi.geojson",
+   "bytes": 157348,
+   "sha256": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f"
+  },
+  {
+   "path": "../../../data/raw/fi_audit_20261001/walking/walking_city_1.kmz",
+   "bytes": 4366,
+   "sha256": "e3a72aef9913a16f7c1b7e22b4915d206b9adc669edf1acad12b38ff94553287"
+  },
+  {
+   "path": "../../../data/raw/fi_audit_20261001/walking/walking_city_2.kmz",
+   "bytes": 5069,
+   "sha256": "49c0fee93d46e9deda81e188244269a678486504d97f206420ab45196f54fc33"
+  },
+  {
+   "path": "../../../data/raw/fi_audit_20261001/walking/walking_city_3.kmz",
+   "bytes": 2184,
+   "sha256": "908c45c86c8740240b0e193320cb9d8ebcff5b1c9e8acabc3b7be7b460160737"
+  },
+  {
+   "path": "../../../data/raw/fi_audit_20261001/walking/walking_city_4.kmz",
+   "bytes": 1961,
+   "sha256": "b857e5d8fc0a49b4fd36975e3b04690fae6d666ed71cfc5bea0d7bea06f64bd3"
+  },
+  {
+   "path": "../../../data/raw/fi_audit_20261001/walking/walking_city_5.kmz",
+   "bytes": 2632,
+   "sha256": "f1fa4bfe9649c9d73468f8014a8f4a0e95da098c86691bd166e8af0726dcb04b"
+  },
+  {
+   "path": "../../../data/raw/fi_audit_20261001/walking/walking_city_6.kmz",
+   "bytes": 2279,
+   "sha256": "5ebc448f77252288fb716894d9b959db6146e987c28b8a2aa5e3d75e0d380586"
+  },
+  {
+   "path": "../../../data/raw/fi_audit_20261001/walking/walking_city_7.kmz",
+   "bytes": 1436,
+   "sha256": "bc5947d8109fab4a56743faf669d698b823c945ed49fe1bdee808d192f8ccb2f"
+  },
+  {
+   "path": "analizza_dati.py",
+   "bytes": 3689,
+   "sha256": "e39b7ed013255ca8c3437c48dd7d912bbf5fbfb40efd097089373bd93fd6d18f"
+  },
+  {
+   "path": "analizza_osm.py",
+   "bytes": 4349,
+   "sha256": "b60d9fe16475ef5df4003ad93114754867f64d2cfee416f87cb92e5f496f7a9e"
+  },
+  {
+   "path": "campioni/_osm_manifest.json",
+   "bytes": 672,
+   "sha256": "1fbb45e76b06640a557c8a2fe632dc18072e803c3bebe991aac2f2f6dbbaf166"
+  },
+  {
+   "path": "campioni/ckan_barriere_firenze.json",
+   "bytes": 20553,
+   "sha256": "59ce7a12c1e480d53bcbf1faab3d9939a3e9cb81cc83698f51ef0af4a4716407"
+  },
+  {
+   "path": "campioni/ckan_walking_city.json",
+   "bytes": 54368,
+   "sha256": "f93aee592dbf8681b456fdcdb21abbb048e85a8ae069f29f0465d40ddc9bef20"
+  },
+  {
+   "path": "campioni/metriche_dati.json",
+   "bytes": 2039,
+   "sha256": "ae66799bc379e9081a1c9d8a11c36c13e16826d5aa112b0f70f7fb8bdc1817ef"
+  },
+  {
+   "path": "campioni/metriche_osm.json",
+   "bytes": 2883,
+   "sha256": "e750a9efaf9700a0f504d575ff887a82c5a24fee0256e4d6dd26d4ac9e90931e"
+  },
+  {
+   "path": "campioni/osm_FA.json",
+   "bytes": 561256,
+   "sha256": "822988f7a39acd0112db3d1f319511f6f6cc3c468fb71e93066a78c202373837"
+  },
+  {
+   "path": "campioni/osm_FB.json",
+   "bytes": 981348,
+   "sha256": "5e6c3383d8756274ae2a75fdb2a085aaa72eb9803476b246a0c49492d7d80082"
+  },
+  {
+   "path": "manifest.py",
+   "bytes": 652,
+   "sha256": "8ce0406bc17db8239f3eb600d928625b3ed06a8f72ed3465e128134cc07b1d81"
+  },
+  {
+   "path": "riproduci.sh",
+   "bytes": 657,
+   "sha256": "7096d651098ccecf8b0dda0388e40e2fc7d6c539a4dfc2b0b1a473ceb57c7e30"
+  },
+  {
+   "path": "scarica_altri.py",
+   "bytes": 1134,
+   "sha256": "63aa264182f6cd92ea17ee2de7b80311dc611cb9d818ccb60ae2a9fc8a46b4eb"
+  },
+  {
+   "path": "scarica_osm.py",
+   "bytes": 1957,
+   "sha256": "b451cd5096b9040a44e9c634703aa49b429cb00f9feec1c2b0dd904023fbc365"
+  }
+ ]
+}

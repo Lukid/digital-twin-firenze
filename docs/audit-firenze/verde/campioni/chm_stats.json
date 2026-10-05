@@ -1,0 +1,76 @@
+{
+ "tutti": {
+  "chm_max - h": {
+   "n": 50,
+   "mediana": 0.15,
+   "p10": 0.04,
+   "p90": 0.68,
+   "MAE": 0.28
+  },
+  "chm_p95 - h": {
+   "n": 50,
+   "mediana": -0.19,
+   "p10": -0.64,
+   "p90": 0.0,
+   "MAE": 0.31
+  }
+ },
+ "lontani_da_edifici_3m": {
+  "chm_max - h": {
+   "n": 50,
+   "mediana": 0.15,
+   "p10": 0.04,
+   "p90": 0.68,
+   "MAE": 0.28
+  },
+  "chm_p95 - h": {
+   "n": 50,
+   "mediana": -0.19,
+   "p10": -0.64,
+   "p90": 0.0,
+   "MAE": 0.31
+  }
+ },
+ "vicini_a_edifici": 0,
+ "correlazione_chm_max_h": 0.992,
+ "rapporto_mediano_chm_max/h_lontani": 1.024,
+ "per_classe_h<6": {
+  "n": 7,
+  "mediana": 0.11,
+  "p10": 0.05,
+  "p90": 0.48,
+  "MAE": 0.22
+ },
+ "per_classe_6<=h<10": {
+  "n": 37,
+  "mediana": 0.15,
+  "p10": 0.04,
+  "p90": 0.44,
+  "MAE": 0.23
+ },
+ "per_classe_h>=10": {
+  "n": 6,
+  "mediana": 0.54,
+  "p10": 0.22,
+  "p90": 1.29,
+  "MAE": 0.68
+ },
+ "censimento_FA_FB": {
+  "n": 3468,
+  "lontani_da_edifici": 3319,
+  "chm_max_2m_p10_p50_p90": [
+   1.8,
+   6.7,
+   14.4
+  ],
+  "con_chm_sotto_2m": 357,
+  "correlazione_circonferenza_chm": 0.042
+ },
+ "siti_alberi_Z_vs_DTM23": {
+  "n": 2244,
+  "mediana": -0.07,
+  "p10": -0.16,
+  "p90": 0.08,
+  "MAE": 0.1
+ }
+}

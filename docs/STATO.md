@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 1 ottobre 2026, fine della seconda sessione. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
+Aggiornato al 5 ottobre 2026: F01 consegnato, riquadro da approvare. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -36,11 +36,15 @@ Anteprima storica: `preview/` (superata da `scene/`).
 ## Decisioni aperte (dell'utente)
 
 Firenze:
-1. Riquadro definitivo e destinazioni (F01).
+1. Riquadro definitivo e destinazioni: proposta pronta in `docs/audit-firenze.md` (FB allargato a 2 km², destinazione principale il Polo delle Scienze Sociali; rete con margine di 700 m).
 2. Perimetro di D11: livelli della scena e se adottare l'approccio di Padova (T15).
 3. Dati ARPAT: chiedere ad ARPAT il consenso per proxy e dati (T16).
 4. Contatto con Comune di Firenze o DISIT: concorrenza o collaborazione.
 5. Uso del campione Life Escapos, licenza non commerciale: solo verifica interna?
+
+Firenze, nate da F01:
+- Rete per l'accessibilità con margine di 700 m oltre il riquadro.
+- DB topografico regionale 1:2.000: licenza in conflitto (CC BY contro CC BY-SA), serve solo se le unità volumetriche via WFS non bastano.
 
 Pisa (primo pilota):
 6. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.
@@ -64,7 +68,7 @@ Pisa (primo pilota):
 
 ## Prossimi passi
 
-1. **F01 audit di Firenze** (`docs/BACKLOG.md`, ciclo Firenze): fissare il riquadro (candidato in `docs/RIFERIMENTO-PADOVA.md`, sezione 5), contare le destinazioni (scuole, università di Novoli, fermate del tram, eventualmente Careggi), inventario delle fonti con il server MCP CKAN, licenze, confronto con i gemelli di Comune e DISIT.
+1. **Approvare il riquadro di F01** (`docs/audit-firenze.md`, sezione 4). Audit in `docs/audit-firenze/` (destinazioni, rete, edifici, verde, cataloghi), ognuno con `riproduci.sh` rieseguito dall'integratore il 5/10.
 2. F02 contratti a più aree, poi F03 acquisizione, poi F04 rete e F05 edifici e verde (altezze da DSM 2023, verifica sui 50 alberi Life Escapos).
 3. Analisi, servizio MCP e scena sul nuovo riquadro, riusando i motori di Pisa.
 4. In parallelo, da decidere: approccio di scena di Padova (T15, rifare il confronto di ADR-T08), dati ARPAT di Firenze (T16, consenso ARPAT), fonti dal portale (T17).

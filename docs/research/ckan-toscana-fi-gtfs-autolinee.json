@@ -1,0 +1,236 @@
+{
+ "url": "https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs",
+ "byte": 176482531,
+ "sha256": "b36bdf2ceda550dce54ef6c632945d7092f5bb70bef7567cbbe87945ce61e548",
+ "agenzie": [
+  "at - Arezzo extraurbano",
+  "at - Arezzo urbano",
+  "at - Carrara urbano",
+  "at - Cecina urbano",
+  "at - Certaldo urbano",
+  "at - Chianciano Terme urbano",
+  "at - Chiusi urbano",
+  "at - Colle Val d'Elsa urbano",
+  "at - Empoli extraurbano",
+  "at - Empoli urbano",
+  "at - Firenze extraurbano",
+  "at - Firenze urbano",
+  "at - Follonica urbano",
+  "at - Funicolari",
+  "at - Grosseto extraurbano",
+  "at - Grosseto urbano",
+  "at - Livorno extraurbano",
+  "at - Livorno urbano",
+  "at - Lucca extraurbano",
+  "at - Lucca urbano",
+  "at - MIV urbano",
+  "at - Massa Carrara extraurbano",
+  "at - Massa Carrara urbano",
+  "at - Massa urbano",
+  "at - Montecatini urbano",
+  "at - Montepulciano urbano",
+  "at - Pescia urbano",
+  "at - Piombino urbano",
+  "at - Pisa extraurbano",
+  "at - Pisa urbano",
+  "at - Pistoia extraurbano",
+  "at - Pistoia urbano",
+  "at - Poggibonsi urbano",
+  "at - Portoferraio urbano",
+  "at - Prato extraurbano",
+  "at - Prato urbano",
+  "at - Regionali",
+  "at - Rosignano urbano",
+  "at - San Gimignano urbano",
+  "at - Siena extraurbano",
+  "at - Siena urbano",
+  "at - Viareggio urbano",
+  "at - Volterra urbano"
+ ],
+ "route_type_conteggio": {
+  "3": 946
+ },
+ "fermate_totali": 33833,
+ "fermate_nel_riquadro_contesto": 238,
+ "linee_che_servono_il_riquadro": 40,
+ "linee_riquadro_per_tipo": {
+  "3": 40
+ },
+ "linee_riquadro_esempi": [
+  [
+   "131R",
+   "3"
+  ],
+  [
+   "17",
+   "3"
+  ],
+  [
+   "2",
+   "3"
+  ],
+  [
+   "20",
+   "3"
+  ],
+  [
+   "212",
+   "3"
+  ],
+  [
+   "213",
+   "3"
+  ],
+  [
+   "22",
+   "3"
+  ],
+  [
+   "23",
+   "3"
+  ],
+  [
+   "28",
+   "3"
+  ],
+  [
+   "29",
+   "3"
+  ],
+  [
+   "30",
+   "3"
+  ],
+  [
+   "301 A",
+   "3"
+  ],
+  [
+   "307 A",
+   "3"
+  ],
+  [
+   "319 A",
+   "3"
+  ],
+  [
+   "322 A",
+   "3"
+  ],
+  [
+   "33",
+   "3"
+  ],
+  [
+   "345BIS A",
+   "3"
+  ],
+  [
+   "35",
+   "3"
+  ],
+  [
+   "351 A",
+   "3"
+  ],
+  [
+   "357 A",
+   "3"
+  ],
+  [
+   "360 A",
+   "3"
+  ],
+  [
+   "365 A",
+   "3"
+  ],
+  [
+   "40",
+   "3"
+  ],
+  [
+   "43",
+   "3"
+  ],
+  [
+   "5",
+   "3"
+  ],
+  [
+   "51PQF",
+   "3"
+  ],
+  [
+   "55",
+   "3"
+  ],
+  [
+   "56",
+   "3"
+  ],
+  [
+   "57",
+   "3"
+  ],
+  [
+   "59",
+   "3"
+  ],
+  [
+   "66",
+   "3"
+  ],
+  [
+   "68",
+   "3"
+  ],
+  [
+   "80",
+   "3"
+  ],
+  [
+   "901",
+   "3"
+  ],
+  [
+   "930",
+   "3"
+  ],
+  [
+   "DD",
+   "3"
+  ],
+  [
+   "R03",
+   "3"
+  ],
+  [
+   "R04",
+   "3"
+  ],
+  [
+   "R1",
+   "3"
+  ],
+  [
+   "ST6",
+   "3"
+  ]
+ ],
+ "calendar_start_min": "20261005",
+ "calendar_end_max": "20261025",
+ "feed_info": [
+  {
+   "feed_publisher_name": "Autolinee Toscane",
+   "feed_publisher_url": "https://www.at-bus.it/",
+   "feed_lang": "it",
+   "feed_start_date": "20261005",
+   "feed_end_date": "20261025",
+   "feed_version": "",
+   "feed_contact_email": "",
+   "feed_contact_url": "",
+   "auto-feed_version": ""
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+  "nota": "Riquadri di lavoro F01 (EPSG:4326, S,W,N,E). Non approvati: la scelta è dell'utente (decisione aperta 1).",
+  "data": "2026-10-05",
+  "zone": {
+    "FA": {
+      "nome": "Candidato D12, Novoli - Firenze Nova",
+      "bbox": [
+        43.796,
+        11.213,
+        43.808,
+        11.229
+      ]
+    },
+    "FB": {
+      "nome": "Variante spostata a sud-est, verso il campus di Novoli",
+      "bbox": [
+        43.792,
+        11.218,
+        43.804,
+        11.234
+      ]
+    },
+    "FP": {
+      "nome": "Proposta F01: FB allargato a 2 km², non approvata",
+      "bbox": [
+        43.79178,
+        11.21694,
+        43.80422,
+        11.23506
+      ]
+    }
+  },
+  "contesto": {
+    "nome": "Riquadro allargato di 1 km per contare destinazioni e Careggi",
+    "bbox": [
+      43.783,
+      11.2,
+      43.817,
+      11.247
+    ]
+  }
+}

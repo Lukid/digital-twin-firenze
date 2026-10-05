@@ -1,0 +1,4534 @@
+{
+ "timestamp_utc": "2026-10-05T10:07:50.915793+00:00",
+ "queries": [
+  {
+   "q": "alberi",
+   "count": 28,
+   "results": [
+    {
+     "name": "42cd1073-521f-4040-9491-e993d03663a4",
+     "title": "Alberi",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-10-05T05:03:18.181478",
+     "formats": [
+      "GeoJSON",
+      "RDF",
+      "SHP"
+     ]
+    },
+    {
+     "name": "alberi-pubblici-stato-fitosanitario",
+     "title": "Alberi pubblici - Stato fitosanitario degli alberi comunali",
+     "org": "comune-di-montelupo-fiorentino",
+     "license_id": "cc-by",
+     "modified": "2026-10-05T02:13:54.226800",
+     "formats": [
+      "CSV",
+      "JSON"
+     ]
+    },
+    {
+     "name": "alberi-pubblici-parametri-dendrometrici-degli-alberi-comunali",
+     "title": "Alberi pubblici - Parametri dendrometrici degli alberi comunali",
+     "org": "comune-di-montelupo-fiorentino",
+     "license_id": "cc-by",
+     "modified": "2026-10-05T02:14:34.827755",
+     "formats": [
+      "CSV",
+      "JSON"
+     ]
+    },
+    {
+     "name": "alberi-da-frutto",
+     "title": "Alberi da frutto",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-10-05T05:06:23.817700",
+     "formats": [
+      "GeoJSON",
+      "SHP"
+     ]
+    },
+    {
+     "name": "alberi-prato",
+     "title": "Alberi Prato",
+     "org": "comune-di-prato",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-05T13:00:21.821084",
+     "formats": [
+      "CSV",
+      "KMZ",
+      "esri shapefile puntuale compresso"
+     ]
+    },
+    {
+     "name": "alberi-pubblici",
+     "title": "Alberi pubblici - Specie arboree",
+     "org": "comune-di-montelupo-fiorentino",
+     "license_id": "cc-by",
+     "modified": "2026-10-05T02:14:46.399530",
+     "formats": [
+      "CSV",
+      "JSON"
+     ]
+    },
+    {
+     "name": "alberi-pubblici-localizzazione",
+     "title": "Alberi pubblici - Localizzazione",
+     "org": "comune-di-montelupo-fiorentino",
+     "license_id": "cc-by",
+     "modified": "2026-10-05T02:14:05.657091",
+     "formats": [
+      "GeoJSON",
+      "JSON"
+     ]
+    },
+    {
+     "name": "fc7e03ee-9406-42ce-b176-0767b67ed299",
+     "title": "Accessori - Siti Alberi",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:12:03.791974",
+     "formats": [
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "regione-toscana-aree-protette-ed-alberi-monumentali",
+     "title": "Regione Toscana - Aree Protette ed Alberi Monumentali",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2020-03-31T12:29:55.237571",
+     "formats": [
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "olivetisociali",
+     "title": "Oliveti sociali",
+     "org": "comune-di-prato",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-05T13:00:15.527065",
+     "formats": [
+      "CSV",
+      "KML",
+      "esri shapefile puntuale compresso"
+     ]
+    },
+    {
+     "name": "ptcp-2013-carta-dello-statuto-del-territorio-art-14-immobili-e-aree-di-notevole-interesse-pubbl",
+     "title": "PTCP 2013 - Carta dello Statuto del Territorio Art. 14  Immobili e aree di notevole interesse pubblico - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:06:14.572600",
+     "formats": [
+      "WEBGIS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "emergenze_riconosciute_punti",
+     "title": "Emergenze riconosciute dagli strumenti di tutela - punti",
+     "org": "comune-di-grosseto",
+     "license_id": "cc-by",
+     "modified": "2024-01-30T08:25:24.754861",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "rifugi_climatici_aree_fresche",
+     "title": "Rifugi Climatici Aree Fresche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-06-19T05:24:13.865708",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "efa",
+     "title": "Aree di interesse ecologico (EFA) individuate al fine di salvaguardare e migliorare la biodiversità nelle aziende agricole",
+     "org": "artea",
+     "license_id": "cc-by",
+     "modified": "2021-09-09T08:30:34.328695",
+     "formats": [
+      "SHP"
+     ]
+    },
+    {
+     "name": "disciplina-dei-suoli-e-degli-insediamenti-strato-puntuale-vers011",
+     "title": "Disciplina dei suoli e degli insediamenti - Strato puntuale - vers01",
+     "org": "comune-di-viareggio",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T14:45:27.486119",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "censimento-arboreo-comunale",
+     "title": "Censimento arboreo comunale",
+     "org": "comune-di-montelupo-fiorentino",
+     "license_id": "cc-by",
+     "modified": "2026-10-05T02:13:57.785073",
+     "formats": [
+      "JSON"
+     ]
+    },
+    {
+     "name": "disciplina-dei-suoli-e-degli-insediamenti-strato-puntuale-vers08",
+     "title": "Disciplina dei suoli e degli insediamenti - Strato puntuale - vers08",
+     "org": "comune-di-viareggio",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T14:45:24.967186",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "disciplina-dei-suoli-e-degli-insediamenti-strato-puntuale-vers07",
+     "title": "Disciplina dei suoli e degli insediamenti - Strato puntuale - vers07",
+     "org": "comune-di-viareggio",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T14:45:22.839795",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "disciplina-dei-suoli-e-degli-insediamenti-strato-puntuale-vers02",
+     "title": "Disciplina dei suoli e degli insediamenti - Strato puntuale - vers02",
+     "org": "comune-di-viareggio",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T14:45:21.998130",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "disciplina-dei-suoli-e-degli-insediamenti-strato-puntuale-vers06",
+     "title": "Disciplina dei suoli e degli insediamenti - Strato puntuale - vers06",
+     "org": "comune-di-viareggio",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T14:45:20.732765",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "rilievo celerimetrico",
+   "count": 3,
+   "results": [
+    {
+     "name": "2017b6d6-49aa-422b-8539-9411cac52910",
+     "title": "Orografia - Punti Quotati",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:06:51.972813",
+     "formats": [
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "d6b74e38-c039-4a91-af86-2803df67ca8d",
+     "title": "InfoGeodetiche - Vertice di rete",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:10:38.657233",
+     "formats": [
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "b56979b2-21d7-4066-84fa-d531b65e5c05",
+     "title": "InfoGeodetiche - Punto rilevato a terra",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:56.369288",
+     "formats": [
+      "SHP",
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "LiDAR",
+   "count": 80,
+   "results": [
+    {
+     "name": "microplastiche-numero-m2-forma-e-colore",
+     "title": "Microplastiche in mare - numero di oggetti per metro quadro, forma e colore - anni 2019-2022",
+     "org": "arpat",
+     "license_id": "cc-by",
+     "modified": "2023-08-22T16:56:52.509026",
+     "formats": [
+      "CSV",
+      "PDF"
+     ]
+    },
+    {
+     "name": "dbt10k-li-pi-pt-po-si",
+     "title": "DataBase Topografico Regionale in scala 1:10.000",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-31T13:55:42.373316",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "sgcfipili-p069-km5-svincolo",
+     "title": "Regione Toscana - SGCFIPILI - Postazione P069 - km 5-svincolo – Sistema di monitoraggio traffico",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2026-03-25T09:23:12.973423",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "sgcfipili-p072-km15-svincolo",
+     "title": "Regione Toscana - SGCFIPILI - Postazione P072 - km 15-svincolo – Sistema di monitoraggio traffico",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2026-03-25T09:21:52.223566",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "sgcfipili-p074-km18-svincolo",
+     "title": "Regione Toscana - SGCFIPILI - Postazione P074 - km 18-svincolo – Sistema di monitoraggio traffico",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2026-03-25T09:21:03.275860",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "sgcfipili-p075-km19-svincolo",
+     "title": "Regione Toscana - SGCFIPILI - Postazione P075 - km 19-svincolo – Sistema di monitoraggio traffico",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2026-03-25T09:20:39.368322",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "sgcfipili-p078-km23-svincolo",
+     "title": "Regione Toscana - SGCFIPILI - Postazione P078 - km 23-svincolo – Sistema di monitoraggio traffico",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2026-03-25T09:17:58.838562",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "sgcfipili-p080-km28-svincolo",
+     "title": "Regione Toscana - SGCFIPILI - Postazione P080 - km 28-svincolo – Sistema di monitoraggio traffico",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2026-03-25T09:17:18.139765",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "sgcfipili-p083-km35-svincolo",
+     "title": "Regione Toscana - SGCFIPILI - Postazione P083 - km 35-svincolo – Sistema di monitoraggio traffico",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2026-03-25T09:09:45.282089",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "sgcfipili-p086-km38-svincolo",
+     "title": "Regione Toscana - SGCFIPILI - Postazione P086 - km 38-svincolo – Sistema di monitoraggio traffico",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2026-03-25T09:08:11.101586",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "sgcfipili-p089-km38-svincolo",
+     "title": "Regione Toscana - SGCFIPILI - Postazione P089 - km 38-svincolo – Sistema di monitoraggio traffico",
+     "org": "regione-toscana",
+     "license_id": "cc-by-sa",
+     "modified": "2026-03-25T09:06:04.301471",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "contratti-anno-2024",
+     "title": "Contratti anno 2024",
+     "org": "provincia-di-livorno",
+     "license_id": "",
+     "modified": "2024-12-20T08:52:18.671688",
+     "formats": [
+      "XLSX"
+     ]
+    },
+    {
+     "name": "contratti-stipulati-anno-2023",
+     "title": "Contratti stipulati anno 2023",
+     "org": "provincia-di-livorno",
+     "license_id": "",
+     "modified": "2024-12-20T08:46:47.185380",
+     "formats": [
+      "XLSX"
+     ]
+    },
+    {
+     "name": "contratti-stipulati-anno-2022",
+     "title": "Contratti stipulati anno 2022",
+     "org": "provincia-di-livorno",
+     "license_id": "",
+     "modified": "2024-12-20T08:41:56.999712",
+     "formats": [
+      "XLSX"
+     ]
+    },
+    {
+     "name": "formazione-dipendenti-2023",
+     "title": "Formazione dipendenti 2023",
+     "org": "provincia-di-livorno",
+     "license_id": "other-pd",
+     "modified": "2024-12-18T11:05:47.994578",
+     "formats": [
+      "XLSX"
+     ]
+    },
+    {
+     "name": "dettaglio-offerta-formativa-erogata-ai-dipendenti",
+     "title": "Dettaglio offerta formativa erogata ai dipendenti",
+     "org": "provincia-di-livorno",
+     "license_id": "other-pd",
+     "modified": "2024-12-19T13:05:32.858405",
+     "formats": [
+      "XLSX"
+     ]
+    },
+    {
+     "name": "campagna-anti-phishing-2024-provincia-di-livorno",
+     "title": "Campagna anti-phishing 2024 Provincia di Livorno",
+     "org": "provincia-di-livorno",
+     "license_id": "other-pd",
+     "modified": "2024-12-19T12:53:09.108204",
+     "formats": [
+      "XLSX"
+     ]
+    },
+    {
+     "name": "artea-piani-colturali-grafici-annualita-2020",
+     "title": "ARTEA Piani Colturali Grafici 2020",
+     "org": "artea",
+     "license_id": "cc-by",
+     "modified": "2022-01-19T08:28:32.968256",
+     "formats": [
+      "ODS",
+      "SHP"
+     ]
+    },
+    {
+     "name": "artea-piani-colturali-grafici-2023",
+     "title": "ARTEA Piani Colturali Grafici 2023",
+     "org": "artea",
+     "license_id": "cc-by",
+     "modified": "2024-01-08T10:58:06.133128",
+     "formats": [
+      "ODS",
+      "SHP"
+     ]
+    },
+    {
+     "name": "artea-piani-colturali-grafici-annualita-2021",
+     "title": "ARTEA Piani Colturali Grafici 2021",
+     "org": "artea",
+     "license_id": "cc-by",
+     "modified": "2022-01-19T08:40:22.277612",
+     "formats": [
+      "ODS",
+      "SHP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "DTM",
+   "count": 25,
+   "results": [
+    {
+     "name": "dtm-supercorta",
+     "title": "DTM-Supercorta",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:02:34.834491",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm_2007",
+     "title": "DTM 2007",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:19.232527",
+     "formats": [
+      "URL",
+      "WMS"
+     ]
+    },
+    {
+     "name": "dtm-hillshade",
+     "title": "DTM_HILLSHADE",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:20.145134",
+     "formats": [
+      "URL",
+      "WMS"
+     ]
+    },
+    {
+     "name": "dtm-lidar-2023",
+     "title": "DTM 2023",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:20.610775",
+     "formats": [
+      "URL",
+      "WMS"
+     ]
+    },
+    {
+     "name": "dtm-2017",
+     "title": "DTM 2017",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:19.697549",
+     "formats": [
+      "URL",
+      "WMS"
+     ]
+    },
+    {
+     "name": "dtm_via_rubattorno",
+     "title": "DTM_Via_Rubattorno",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T12:16:53.673387",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm_via_campinelli",
+     "title": "DTM_Via_Campinelli",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T12:10:52.408238",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm_via_vaticano",
+     "title": "DTM_Via_Vaticano",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T11:55:05.879573",
+     "formats": [
+      "tif"
+     ]
+    },
+    {
+     "name": "dtm_via_pozzarello",
+     "title": "DTM_Via_Pozzarello",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:49:09.267622",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm-via-della-resistenza",
+     "title": "DTM-Via-della-Resistenza",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:00:29.837088",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm-via-francesco-carrara",
+     "title": "DTM-Via-Francesco-Carrara",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:59:01.374762",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm-piazza-sandro-pertini",
+     "title": "DTM-Piazza-Sandro-Pertini",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:57:42.487225",
+     "formats": [
+      "tif"
+     ]
+    },
+    {
+     "name": "dtm-via_dei_girasoli",
+     "title": "DTM-Via_dei_Girasoli",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:01:39.548018",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm_via_di_melazzano",
+     "title": "DTM_Via_di_Melazzano",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T11:56:18.871772",
+     "formats": [
+      "zip (tiff)"
+     ]
+    },
+    {
+     "name": "dtm-abitato-le-colmate",
+     "title": "DTM-Abitato-Le-Colmate",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:04:17.680940",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm-via-del-terzo",
+     "title": "DTM-Via-del-Terzo",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2026-05-25T06:28:45.492054",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm_via_castello_di_monsummano",
+     "title": "DTM_Via_Castello_di_Monsummano",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T12:07:11.782852",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm_via_porto_dei_masoni",
+     "title": "DTM_Via_Porto_dei_Masoni",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:41:38.142547",
+     "formats": [
+      "zip (tiff)"
+     ]
+    },
+    {
+     "name": "dtm_via_ponte_di_monsummano",
+     "title": "DTM_Via_Ponte_di_Monsummano",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2026-05-21T14:31:28.150136",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dtm-via-vione-del-padule-torrenti",
+     "title": "DTM-Via-Vione-del-Padule-Torrenti",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:56:50.278027",
+     "formats": [
+      "TIFF"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "DSM",
+   "count": 26,
+   "results": [
+    {
+     "name": "dsm-hillshade",
+     "title": "DSM_HILLSHADE",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:18.292577",
+     "formats": [
+      "URL",
+      "WMS"
+     ]
+    },
+    {
+     "name": "dsm-2007",
+     "title": "DSM 2007",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:17.258679",
+     "formats": [
+      "URL"
+     ]
+    },
+    {
+     "name": "dsm-lidar-2023",
+     "title": "DSM 2023",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:18.755746",
+     "formats": [
+      "URL",
+      "WMS"
+     ]
+    },
+    {
+     "name": "dsm-2017",
+     "title": "DSM 2017",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:17.834684",
+     "formats": [
+      "URL",
+      "WMS"
+     ]
+    },
+    {
+     "name": "dsm_via_rubattorno",
+     "title": "DSM_Via_Rubattorno",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T12:00:51.395933",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dsm_via_buriano",
+     "title": "DSM_Via_Buriano",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T11:55:54.319853",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dsm_via_vaticano",
+     "title": "DSM_Via_Vaticano",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T11:57:23.825547",
+     "formats": [
+      "tif"
+     ]
+    },
+    {
+     "name": "dsm_via_occhibelli",
+     "title": "DSM_Via_Occhibelli",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T10:18:01.036532",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dsm_via_campinelli",
+     "title": "DSM_Via_Campinelli",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T10:31:03.764011",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dsm_via_pozzarello",
+     "title": "DSM_Via_Pozzarello",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:53:41.352259",
+     "formats": [
+      "tif"
+     ]
+    },
+    {
+     "name": "dsm_via_monsummano_castello",
+     "title": "DSM_Via_Monsummano_Castello",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T10:38:35.098320",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dsm-via-del-terzo",
+     "title": "DSM-Via-del-Terzo",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2026-05-25T06:31:23.726294",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dsm_via__di_melazzano",
+     "title": "DSM_Via_di_Melazzano",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:00:48.928482",
+     "formats": [
+      "tif"
+     ]
+    },
+    {
+     "name": "dsm-via-vione-del-padule",
+     "title": "DSM-Via Vione del Padule",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T14:05:15.525545",
+     "formats": [
+      "JPEG"
+     ]
+    },
+    {
+     "name": "dsm_via_dei_giarasoli",
+     "title": "DSM_Via_dei_Girasoli",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:40:41.820077",
+     "formats": [
+      "zip (tiff)"
+     ]
+    },
+    {
+     "name": "dsm_via_della_resistenza",
+     "title": "DSM_Via_della_Resistenza",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:45:40.640603",
+     "formats": [
+      "JPEG"
+     ]
+    },
+    {
+     "name": "dsm_via_francesco_carrara",
+     "title": "DSM_Via_Francesco_Carrara",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:43:00.757896",
+     "formats": [
+      "zip (tiff)"
+     ]
+    },
+    {
+     "name": "dsm_supercorta_monsummano_alto",
+     "title": "DSM_Supercorta_Monsummano_Alto",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:37:13.946435",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "dsm_piazza_sandro_pertini",
+     "title": "DSM_Piazza_Sandro_Pertini",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:44:40.918785",
+     "formats": [
+      "zip (tiff)"
+     ]
+    },
+    {
+     "name": "dsm_piazza_carlo_alberto_dalla_chiesa",
+     "title": "DSM_Piazza_Carlo_Alberto_Dalla_Chiesa",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T10:09:19.963767",
+     "formats": [
+      "TIFF"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "civici",
+   "count": 55,
+   "results": [
+    {
+     "name": "11430710-56eb-4444-bd6f-c5433155afc5",
+     "title": "Civici",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-10-05T05:02:12.980307",
+     "formats": [
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "numeri-civici-santa-luce",
+     "title": "numeri civici",
+     "org": "comune-di-santa-luce",
+     "license_id": "cc-by",
+     "modified": "2026-05-18T17:08:43.709322",
+     "formats": [
+      "gpk"
+     ]
+    },
+    {
+     "name": "numeri-civici",
+     "title": "NUMERI CIVICI",
+     "org": "comune-di-chianni",
+     "license_id": "cc-by",
+     "modified": "2026-05-08T09:13:19.409492",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi-e-numeri-civici",
+     "title": "Toponimi e numeri civici",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:19:05.539309",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi-e-numeri-civici1",
+     "title": "Toponimi e numeri civici",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:45:43.557849",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi-e-numeri-civici5",
+     "title": "Toponimi e numeri civici",
+     "org": "comune-di-san-vincenzo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:15:15.868096",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi-e-numeri-civici4",
+     "title": "Toponimi e numeri civici",
+     "org": "comune-di-castelfranco-piandisco",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-30T15:01:08.780485",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi-e-numeri-civici3",
+     "title": "Toponimi e Numeri Civici",
+     "org": "comune-di-montemurlo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:01:13.901176",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi_e_numeri_civici5",
+     "title": "Toponimi e numeri civici",
+     "org": "comune-di-cantagallo",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-06T01:00:14.155254",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi_e_numeri_civici3",
+     "title": "Toponimi e numeri civici",
+     "org": "comune-di-montevarchi",
+     "license_id": "iodl2",
+     "modified": "2023-09-06T00:15:16.085574",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi_e_numeri_civici1",
+     "title": "Toponimi e numeri civici",
+     "org": "comune-di-vernio",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-05T23:45:14.661190",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi_e_numeri_civici",
+     "title": "Toponimi e numeri civici",
+     "org": "comune-di-piombino",
+     "license_id": "cc-by",
+     "modified": "2023-09-05T23:30:11.299646",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "670f268a-832e-4c90-8045-2a343d54192d",
+     "title": "Numeri Civici Francesi a Firenze",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:35.053797",
+     "formats": [
+      "KML",
+      "SHP"
+     ]
+    },
+    {
+     "name": "numeri-civici-del-comune-di-siena",
+     "title": "Numeri civici del Comune di Siena",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:45:44.402256",
+     "formats": [
+      "CSV",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "numero_civico2",
+     "title": "Numeri Civici del Comune di Vaiano",
+     "org": "comune-di-vaiano",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-06T00:00:06.717651",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "zone-gravate-da-usi-civici-demanio-civico",
+     "title": "Zone gravate da usi civici - Demanio civico",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:29.305511",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "numeri-civici-dei-comuni-dellunione-del-pratomagno",
+     "title": "Numeri civici dei comuni dell'Unione del Pratomagno",
+     "org": "unione-dei-comuni-del-pratomagno",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-29T13:30:05.604520",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "toponimi_e_numeri_civici2",
+     "title": "Toponimi e numeri civici del Comune di Vaiano",
+     "org": "comune-di-vaiano",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-06T00:00:10.868964",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "zone-gravate-da-usi-civici-terre-gravate-da-legnatico",
+     "title": "Zone gravate da usi civici - Terre gravate da legnatico",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:29.571936",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "grafo-civici",
+     "title": "Grafo Stradale, Numeri Civici, Cippi Chilometrici - Grafo Ferroviario, Stazioni, Scali",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-10-13T12:38:34.377411",
+     "formats": [
+      "SHP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "barriere architettoniche",
+   "count": 1,
+   "results": [
+    {
+     "name": "92033b63-0598-4449-9007-22127abe505a",
+     "title": "Censimento delle barriere architettoniche e urbanistiche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:05.553100",
+     "formats": [
+      "KML",
+      "SHP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Walking City",
+   "count": 7,
+   "results": [
+    {
+     "name": "8baec998-6091-4132-9f6f-23b535caa549",
+     "title": "Walking City - Percorso 6",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:02.160311",
+     "formats": [
+      "KML"
+     ]
+    },
+    {
+     "name": "1e76a893-a97d-4ce6-a6f8-58483ba5ecdd",
+     "title": "Walking City - Percorso 3",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:06:51.246021",
+     "formats": [
+      "KML"
+     ]
+    },
+    {
+     "name": "770fe5f0-029a-4527-8fc4-aead295bcc9c",
+     "title": "Walking City - Percorso 7",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:48.328572",
+     "formats": [
+      "KML"
+     ]
+    },
+    {
+     "name": "3440cb38-f330-4da1-ae37-156e4ecf5110",
+     "title": "Walking City - Percorso 5",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:05.692602",
+     "formats": [
+      "KML"
+     ]
+    },
+    {
+     "name": "31cf0d64-0d85-476e-9fc6-47074ebf68a2",
+     "title": "Walking City - Percorso 1",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:03.730601",
+     "formats": [
+      "KML"
+     ]
+    },
+    {
+     "name": "df2ed9e1-920e-4f6d-a8cc-9d9301be8d6d",
+     "title": "Walking City - Percorso 4",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:05.957096",
+     "formats": [
+      "KML"
+     ]
+    },
+    {
+     "name": "97af40a2-09f8-456c-9e7f-b85a023db16d",
+     "title": "Walking City - Percorso 2",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:11.325388",
+     "formats": [
+      "KML"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "rifugi climatici",
+   "count": 2,
+   "results": [
+    {
+     "name": "rifugi_climatici_biblioteche",
+     "title": "Rifugi Climatici Biblioteche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-06-19T05:24:15.530885",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "rifugi_climatici_aree_fresche",
+     "title": "Rifugi Climatici Aree Fresche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-06-19T05:24:13.865708",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Escapos",
+   "count": 4,
+   "results": [
+    {
+     "name": "life_escapos_mobile_measurements",
+     "title": "Life Escapos - Alberature pubbliche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-nc-4.0",
+     "modified": "2026-02-13T06:03:11.703081",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "escapos_mobile_measurements",
+     "title": "Life Escapos - Misurazioni mobili",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-nc-4.0",
+     "modified": "2026-02-13T06:02:27.224457",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "lifeescapos_nuovopignone",
+     "title": "Life Escapos - Stazioni meteo fisse - Nuovo Pignone",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-nc-4.0",
+     "modified": "2026-02-13T06:03:12.272619",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "lifeescapos_giardinolippi",
+     "title": "Life Escapos - Stazioni meteo fisse - Giardino Lippi",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-nc-4.0",
+     "modified": "2026-02-13T06:03:11.081405",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "edificato",
+   "count": 103,
+   "results": [
+    {
+     "name": "edificato",
+     "title": "Edificato",
+     "org": "comune-di-piombino",
+     "license_id": "cc-by",
+     "modified": "2023-09-05T23:30:07.311776",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato4",
+     "title": "Edificato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:19:03.759196",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato8",
+     "title": "Edificato",
+     "org": "comune-livorno",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:01:07.292726",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato6",
+     "title": "Edificato",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:45:43.983068",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato9",
+     "title": "Edificato",
+     "org": "comune-di-montemurlo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:01:14.727504",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato11",
+     "title": "Edificato",
+     "org": "comune-di-castelfranco-piandisco",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-30T15:01:22.969621",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato5",
+     "title": "Edificato",
+     "org": "comune-di-cantagallo",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-06T01:00:16.589570",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato3",
+     "title": "Edificato",
+     "org": "comune-di-montevarchi",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-06T00:15:17.593824",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato1",
+     "title": "Edificato",
+     "org": "comune-di-vernio",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-05T23:45:17.790844",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore32",
+     "title": "Edificato minore",
+     "org": "comune-livorno",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:01:05.869821",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore1",
+     "title": "Edificato minore",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:58.071771",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore22",
+     "title": "Edificato minore",
+     "org": "comune-di-montemurlo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:01:29.568196",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore",
+     "title": "Edificato minore",
+     "org": "comune-di-poggibonsi",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T00:30:26.662649",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore14",
+     "title": "Edificato minore",
+     "org": "comune-di-vinci",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-04T10:15:13.958795",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore2",
+     "title": "Edificato minore",
+     "org": "comune-di-cecina",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-02T14:30:10.688270",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore5",
+     "title": "Edificato minore",
+     "org": "comune-di-collesalvetti",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T20:15:21.240736",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore18",
+     "title": "Edificato minore",
+     "org": "comune-di-pescaglia",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T19:45:09.542529",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore3",
+     "title": "Edificato minore",
+     "org": "comune-di-viareggio",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T14:45:19.440844",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore28",
+     "title": "Edificato minore",
+     "org": "comune-di-volterra",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T13:30:12.023421",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "edificato-minore27",
+     "title": "Edificato minore",
+     "org": "comune-calenzano",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-30T19:15:12.636070",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Firenze edifici",
+   "count": 31,
+   "results": [
+    {
+     "name": "edifici-scolastici-citta-metropolitana-di-firenze",
+     "title": "Edifici scolastici - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:24.135625",
+     "formats": [
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "mappatura-degli-edifici-occupati-da-scuole-secondarie-di-2-grado-citta-metropolitana-di-firenze",
+     "title": "Mappatura degli edifici occupati da scuole secondarie di 2° grado - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:28.095577",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "ptcp-1998-art-7-tutela-paesaggistica-ed-ambientale-del-territorio-aperto-abitati-minori-ed-edif",
+     "title": "PTCP 1998 - Art.7 Tutela paesaggistica ed ambientale del territorio aperto, abitati minori ed edifici sparsi - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:06:13.916256",
+     "formats": [
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "2d881d20-8b0c-47c7-8acb-a4dd42fe71ee",
+     "title": "Luoghi freschi a Firenze",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:02.008612",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "f1776bc9-64ef-40d8-a490-087c4f33ab41",
+     "title": "Censimento della popolazione del 2011 (dati provvisori)",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:45.263992",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "anagrafe-delle-strutture-edilizie-delle-scuole-secondarie-superiori-citta-metropolitana-di-fire",
+     "title": "Anagrafe delle strutture edilizie delle scuole secondarie superiori (anno 2017) - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:31.742786",
+     "formats": [
+      "CSV",
+      "PDF",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "ptcp-2013-carta-dello-statuto-del-territorio-art-22-edificato-citta-metropolitana-di-firenze",
+     "title": "PTCP 2013 - Carta dello Statuto del Territorio Art. 22  Edificato - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:30.309790",
+     "formats": [
+      "WEBGIS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "scuole-secondarie-di-2-grado-citta-metropolitana-di-firenze",
+     "title": "Scuole secondarie di 2° grado - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:05:34.719583",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "dati-cartografici-del-catasto-wms-agenzia-del-territorio-citta-metropolitana-di-firenze",
+     "title": "Dati cartografici del Catasto (WMS) - Agenzia del Territorio - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2023-09-05T11:00:13.761061",
+     "formats": [
+      "",
+      "WMS"
+     ]
+    },
+    {
+     "name": "carta-provinciale-1-10-000-citta-metropolitana-di-firenze",
+     "title": "Carta Provinciale 1:10.000 - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:42.571789",
+     "formats": [
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "388b3681-23d8-43a0-bd47-1122fb218222",
+     "title": "Architetture del '900",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:09.082052",
+     "formats": [
+      "KML",
+      "RDF",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "d621f5a3-e006-42b5-be8d-b17a52e8534c",
+     "title": "Terrazze panoramiche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:10:37.448275",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "b2a3b700-8e5e-471b-8437-51486b821d56",
+     "title": "Librerie indipendenti",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:54.258286",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "rifugi_climatici_biblioteche",
+     "title": "Rifugi Climatici Biblioteche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-06-19T05:24:15.530885",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "5cac40ee-e401-4e45-bbd2-7b0d4d6d5904",
+     "title": "Musei",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:29.470230",
+     "formats": [
+      "KML",
+      "RDF",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "423df06f-02c0-4917-a740-a355ce7abbc9",
+     "title": "Consolati",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:13.748165",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "92033b63-0598-4449-9007-22127abe505a",
+     "title": "Censimento delle barriere architettoniche e urbanistiche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:05.553100",
+     "formats": [
+      "KML",
+      "SHP"
+     ]
+    },
+    {
+     "name": "d82ba484-cf9c-40a2-ba2c-da6093160424",
+     "title": "Box office",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:10:39.132838",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "8fb7a88a-54ff-496d-9b81-39d69bab0d28",
+     "title": "Uffici Informazioni Turistiche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:04.068835",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "2c35673b-f5da-40f2-b44d-dccb8cd338b4",
+     "title": "Uffici reclami turistici",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:01.400404",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Firenze altezza edifici",
+   "count": 32,
+   "results": [
+    {
+     "name": "edifici-scolastici-citta-metropolitana-di-firenze",
+     "title": "Edifici scolastici - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:24.135625",
+     "formats": [
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "mappatura-degli-edifici-occupati-da-scuole-secondarie-di-2-grado-citta-metropolitana-di-firenze",
+     "title": "Mappatura degli edifici occupati da scuole secondarie di 2° grado - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:28.095577",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "ptcp-1998-art-7-tutela-paesaggistica-ed-ambientale-del-territorio-aperto-abitati-minori-ed-edif",
+     "title": "PTCP 1998 - Art.7 Tutela paesaggistica ed ambientale del territorio aperto, abitati minori ed edifici sparsi - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:06:13.916256",
+     "formats": [
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "2d881d20-8b0c-47c7-8acb-a4dd42fe71ee",
+     "title": "Luoghi freschi a Firenze",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:02.008612",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "f1776bc9-64ef-40d8-a490-087c4f33ab41",
+     "title": "Censimento della popolazione del 2011 (dati provvisori)",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:45.263992",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "anagrafe-delle-strutture-edilizie-delle-scuole-secondarie-superiori-citta-metropolitana-di-fire",
+     "title": "Anagrafe delle strutture edilizie delle scuole secondarie superiori (anno 2017) - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:31.742786",
+     "formats": [
+      "CSV",
+      "PDF",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "ptcp-2013-carta-dello-statuto-del-territorio-art-22-edificato-citta-metropolitana-di-firenze",
+     "title": "PTCP 2013 - Carta dello Statuto del Territorio Art. 22  Edificato - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:30.309790",
+     "formats": [
+      "WEBGIS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "scuole-secondarie-di-2-grado-citta-metropolitana-di-firenze",
+     "title": "Scuole secondarie di 2° grado - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:05:34.719583",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "dati-cartografici-del-catasto-wms-agenzia-del-territorio-citta-metropolitana-di-firenze",
+     "title": "Dati cartografici del Catasto (WMS) - Agenzia del Territorio - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2023-09-05T11:00:13.761061",
+     "formats": [
+      "",
+      "WMS"
+     ]
+    },
+    {
+     "name": "carta-provinciale-1-10-000-citta-metropolitana-di-firenze",
+     "title": "Carta Provinciale 1:10.000 - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:42.571789",
+     "formats": [
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "388b3681-23d8-43a0-bd47-1122fb218222",
+     "title": "Architetture del '900",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:09.082052",
+     "formats": [
+      "KML",
+      "RDF",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "d621f5a3-e006-42b5-be8d-b17a52e8534c",
+     "title": "Terrazze panoramiche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:10:37.448275",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "b2a3b700-8e5e-471b-8437-51486b821d56",
+     "title": "Librerie indipendenti",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:54.258286",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "rifugi_climatici_biblioteche",
+     "title": "Rifugi Climatici Biblioteche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-06-19T05:24:15.530885",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "5cac40ee-e401-4e45-bbd2-7b0d4d6d5904",
+     "title": "Musei",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:29.470230",
+     "formats": [
+      "KML",
+      "RDF",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "423df06f-02c0-4917-a740-a355ce7abbc9",
+     "title": "Consolati",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:13.748165",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "92033b63-0598-4449-9007-22127abe505a",
+     "title": "Censimento delle barriere architettoniche e urbanistiche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:05.553100",
+     "formats": [
+      "KML",
+      "SHP"
+     ]
+    },
+    {
+     "name": "d82ba484-cf9c-40a2-ba2c-da6093160424",
+     "title": "Box office",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:10:39.132838",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "8fb7a88a-54ff-496d-9b81-39d69bab0d28",
+     "title": "Uffici Informazioni Turistiche",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:04.068835",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "2c35673b-f5da-40f2-b44d-dccb8cd338b4",
+     "title": "Uffici reclami turistici",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:01.400404",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "GTFS",
+   "count": 1,
+   "results": [
+    {
+     "name": "rt-oraritb",
+     "title": "Regione Toscana - Orari trasporto pubblico",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2026-09-08T19:00:05.107264",
+     "formats": [
+      "TXT",
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "tramvia",
+   "count": 19,
+   "results": [
+    {
+     "name": "passeggeri-sulla-linea-1-della-tramvia-anni-2010-2014",
+     "title": "Passeggeri sulla Linea 1 della tramvia. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:45.800928",
+     "formats": [
+      "CSV",
+      "HTML",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "tramvia-cantieri-321-odierna",
+     "title": "Tramvia Linea 3.2.1 - Cantieri in data odierna",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-10-05T05:40:50.698084",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "tramvia-modifiche-viabilita-321-odierna",
+     "title": "Tramvia Linea 3.2.1 - Modifiche viabilità in data odierna",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-10-05T05:40:52.657424",
+     "formats": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "23160550-904f-4765-8fc9-89c88dc60226",
+     "title": "Linee tram",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:06:53.285035",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "607b8031-252b-4442-950a-7b4452d9db8f",
+     "title": "Fermate tram",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:31.000496",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "327d9b53-a853-4811-975d-a560f7a7a4c5",
+     "title": "Aree cantiere",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:05.166719",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "po_rete_tramviaria-stato_adottato",
+     "title": "PO | Rete tramviaria - Stato adottato",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-03-14T06:04:47.039950",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "po_rete_tramviaria-stato_vigente",
+     "title": "PO | Rete tramviaria - Stato vigente",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-03-14T06:04:47.589756",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "eee8ef35-67d1-4646-9b91-2d1645d376fa",
+     "title": "Viabilità - Giunzione Ferroviaria",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:28.352177",
+     "formats": [
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "35e4893a-788d-4fe1-9e16-8a2797978901",
+     "title": "Viabilità - Elemento Ferroviario",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:07.451566",
+     "formats": [
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "9942c0be-a1bf-4716-ac97-d90c29de1b42",
+     "title": "Viabilità - Sede di Trasporto su Ferro",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:11.930117",
+     "formats": [
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "ps_mappa_9_linea_tramviaria",
+     "title": "PS - MAPPA 9 - LINEA TRAMVIARIA",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:17:42.526124",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "ru_fattibilita_rete_tramviaria",
+     "title": "RU - FATTIBILITA' - RETE TRAMVIARIA",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:20:15.739539",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "ru_disciplina_del_suolo_e_degli_insediamenti_rete_tramviaria",
+     "title": "RU - DISCIPLINA DEL SUOLO E DEGLI INSEDIAMENTI - RETE TRAMVIARIA",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:20:10.714189",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "ps_mappe_11_12_13_linea_tramviaria",
+     "title": "PS - MAPPE 11| 12| 13 - LINEA TRAMVIARIA",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:17:48.607897",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "ps_mappa_14_linea_tramviaria",
+     "title": "PS - MAPPA 14 - LINEA TRAMVIARIA",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:17:09.812723",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "ps_mappa_10_linea_tramviaria",
+     "title": "PS - MAPPA 10 - LINEA TRAMVIARIA",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:16:50.292982",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "domanda-di-trasporto-pubblico-locale-anni-2008-2013",
+     "title": "Domanda di trasporto pubblico locale. Anni 2008-2013",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:11:15.474949",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "ptcp-2013-carta-dello-statuto-del-territorio-art-31-ferrovie-e-linee-ferrotramviarie-citta-metr",
+     "title": "PTCP 2013 - Carta dello Statuto del Territorio Art. 31 Ferrovie e linee ferrotramviarie - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:37.725496",
+     "formats": [
+      "WEBGIS",
+      "WMS",
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "quartieri",
+   "count": 134,
+   "results": [
+    {
+     "name": "quartieri-storici1",
+     "title": "Vecchi Quartieri",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:17:59.315947",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "quartieri-storici",
+     "title": "Quartieri Storici",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:17:58.646952",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "5e08844a-c0d8-4d64-a3b2-d1ab58d9283f",
+     "title": "Aree quartieri",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:29.973934",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "residenti-per-possesso-di-un-personal-computer-nel-quartiere-5-anni-2010-2013",
+     "title": "Residenti per possesso di un personal computer nel Quartiere 5. Anni 2010-2013",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:18:18.042573",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "residenti-per-possesso-di-un-personal-computer-nel-quartiere-4-anni-2010-2013",
+     "title": "Residenti per possesso di un personal computer nel Quartiere 4. Anni 2010-2013",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:18:17.129596",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "residenti-per-possesso-di-un-personal-computer-nel-quartiere-3-anni-2010-2014",
+     "title": "Residenti per possesso di un personal computer nel Quartiere 3. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:18:16.647905",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "residenti-per-possesso-di-un-personal-computer-nel-quartiere-2-anni-2010-2014",
+     "title": "Residenti per possesso di un personal computer nel Quartiere 2. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:18:16.199870",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "residenti-per-possesso-di-un-personal-computer-nel-quartiere-1-anni-2010-2014",
+     "title": "Residenti per possesso di un personal computer nel Quartiere 1. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:18:15.698483",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "utenti-anziani-nei-servizi-socio-sanitari-per-eta-nel-quartiere-2-anni-2007-2013",
+     "title": "Utenti anziani nei servizi socio-sanitari per età nel Quartiere 2. Anni 2007-2013",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:21:48.438254",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "utenti-anziani-nei-servizi-socio-sanitari-per-eta-nel-quartiere-1-anni-2007-2013",
+     "title": "Utenti anziani nei servizi socio-sanitari per età nel Quartiere 1. Anni 2007-2013",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:21:47.941404",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-titolo-di-studio-nel-quartiere-5-anni-2010-2013",
+     "title": "Forze di lavoro nel Comune di Firenze occupati per tipo di titolo di studio nel Quartiere 5. Anni 2010-2013",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:36.248077",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-titolo-di-studio-nel-quartiere-4-anni-2010-2014",
+     "title": "Forze di lavoro nel Comune di Firenze occupati per tipo di titolo di studio nel Quartiere 4. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:35.748891",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-titolo-di-studio-nel-quartiere-3-anni-2010-2014",
+     "title": "Forze di lavoro nel Comune di Firenze occupati per tipo di titolo di studio nel Quartiere 3. Anni 2010–2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:35.260657",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-titolo-di-studio-nel-quartiere-3-anni-2010-2013",
+     "title": "Forze di lavoro nel Comune di Firenze occupati per tipo di titolo di studio nel Quartiere 3. Anni 2010–2013",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:34.708369",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-titolo-di-studio-nel-quartiere-2-anni-2010-2014",
+     "title": "Forze di lavoro nel Comune di Firenze occupati per tipo di titolo di studio nel Quartiere 2. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:34.152381",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-occupazione-nel-quartiere-5-anni-2010-2014",
+     "title": "Forze di lavoro nel Comune di Firenze occupati per tipo di occupazione nel Quartiere 5. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:33.084769",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-occupazione-nel-quartiere-4-anni-2010-2014",
+     "title": "Forze di lavoro nel Comune di Firenze occupati per tipo di occupazione nel Quartiere 4. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:32.591379",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-occupazione-nel-quartiere-3-anni-2010-2014",
+     "title": "Forze di lavoro nel Comune di Firenze occupati per tipo di occupazione nel Quartiere 3. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:32.116097",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-occupazione-nel-quartiere-2-anni-2010-2014",
+     "title": "Forze di lavoro nel Comune di Firenze occupati per tipo di occupazione nel Quartiere 2. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:31.506239",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    },
+    {
+     "name": "occupati-per-tipo-di-occupazione-nel-quartiere-1-anni-2010-2014",
+     "title": "Forze di lavoro nel Comune di Firenze: occupati per tipo di occupazione nel Quartiere 1. Anni 2010-2014",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:15:30.936137",
+     "formats": [
+      "CSV",
+      "PDF",
+      "XLS"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "scuole",
+   "count": 141,
+   "results": [
+    {
+     "name": "scuole",
+     "title": "Scuole",
+     "org": "comune-livorno",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:00:57.865084",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "fc3dd017-9901-4a13-a6a9-3940d958585a",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2025/26 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:12:03.136406",
+     "formats": [
+      "CSV",
+      "GML",
+      "GeoJSON",
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "anagrafica-scuole-statali-2026_27",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2026/27 - Scuole statali",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-09-19T05:06:26.337068",
+     "formats": [
+      "CSV",
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "anagrafica-scuole-paritarie-2026_27",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2026/27 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-09-19T05:06:23.928777",
+     "formats": [
+      "CSV",
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "c626b6e0-1114-40d0-b579-2ce3e21ce5b2",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2025/26 - Scuole statali",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:09:28.083036",
+     "formats": [
+      "CSV",
+      "GML",
+      "GeoJSON",
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "f2956949-bb9e-4925-8360-c52322930083",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2021/22 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:11:45.751324",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "977bec43-9029-4552-92e6-34404e70ca88",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2023/24 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:08:10.715232",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "87793fac-a58f-4488-a173-eef4198a8873",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2020/21 - Scuole statali",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:07:58.003586",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "0d484184-a2fc-42f1-862b-eddfac080775",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2017/18 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:06:34.338875",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "fe1125c4-b450-4d35-b060-15f14579a844",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2020/21 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:12:04.689393",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "e8ab1ca4-0975-4d90-a5af-bd9510dd8f8b",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2018/19 - Scuole statali",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:11:24.592735",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "d478654b-9d1d-4139-8a9e-036e02fdd4a1",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2019/20 - Scuole statali",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:10:35.017278",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "a60fc138-c700-4fd8-bdd6-898305ab1355",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2023/24 - Scuole statali",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:08:17.414361",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "a4b8cd65-46ff-48f5-9b89-85682ad9db3e",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2018/19 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:08:15.840349",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "87bc16b7-d9ab-4ad0-8c08-f4b00f951bb3",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2022/23 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:07:59.318661",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "6bf001d0-a491-4983-8d51-db27cbf888da",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2021/22 - Scuole statali",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:07:39.503884",
+     "formats": [
+      "SHP",
+      "URL",
+      "WMS"
+     ]
+    },
+    {
+     "name": "2ff32eaf-74d7-4dac-a638-b16e4c4b241d",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2017/18 - Scuole statali",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:07:02.572205",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "29963a40-1b96-434a-9f38-3bab63302a87",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2016/17 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:07:00.673335",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "28a29c8d-594d-4496-8b12-80b1688c7fb4",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2024/25 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:06:59.911509",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    },
+    {
+     "name": "23cd28af-a3ec-4316-9f1b-2637a4d1a409",
+     "title": "Informazioni anagrafiche scuole anno scolastico 2016/17 - Scuole statali",
+     "org": "comune-di-firenze",
+     "license_id": "iodl2",
+     "modified": "2026-02-11T11:06:53.966544",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "anagrafe edilizia scolastica",
+   "count": 6,
+   "results": [
+    {
+     "name": "edilizia-scolastica",
+     "title": "Edilizia Scolastica",
+     "org": "regione-toscana",
+     "license_id": "other-nc",
+     "modified": "2023-09-05T08:42:00.940470",
+     "formats": [
+      "CSV",
+      "PDF"
+     ]
+    },
+    {
+     "name": "anagrafe-delle-strutture-edilizie-delle-scuole-secondarie-superiori-citta-metropolitana-di-fire",
+     "title": "Anagrafe delle strutture edilizie delle scuole secondarie superiori (anno 2017) - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:31.742786",
+     "formats": [
+      "CSV",
+      "PDF",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "popolazione-scolastica-delle-scuole-superiori-periodo-2010-2016",
+     "title": "Popolazione scolastica delle Scuole Secondarie di Secondo Grado (periodo 2010-2016) - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:05:06.977314",
+     "formats": [
+      "CSV",
+      "PDF"
+     ]
+    },
+    {
+     "name": "scuole-secondarie-di-2-grado-citta-metropolitana-di-firenze",
+     "title": "Scuole secondarie di 2° grado - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:05:34.719583",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "mappatura-degli-edifici-occupati-da-scuole-secondarie-di-2-grado-citta-metropolitana-di-firenze",
+     "title": "Mappatura degli edifici occupati da scuole secondarie di 2° grado - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:28.095577",
+     "formats": [
+      "WMS"
+     ]
+    },
+    {
+     "name": "edifici-scolastici-citta-metropolitana-di-firenze",
+     "title": "Edifici scolastici - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "license_id": "cc-by",
+     "modified": "2026-04-24T16:04:24.135625",
+     "formats": [
+      "WMS",
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "dbt10k",
+   "count": 4986,
+   "results": [
+    {
+     "name": "dbt2k-elementi-puntuali",
+     "title": "DBT2K - Elementi puntuali",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:18:49.376871",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "dbt2k-elementi-puntuali-approvato",
+     "title": "DBT2K - Elementi puntuali - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:36.918944",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "viabilita-stradale-dbprior10k",
+     "title": "Viabilità stradale (DBPrior10k)",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:51.312608",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "database-topografico-1_10k",
+     "title": "Database topografico 1_10k",
+     "org": "comune-di-santa-luce",
+     "license_id": "cc-by",
+     "modified": "2026-05-18T16:43:34.677071",
+     "formats": [
+      "gpk"
+     ]
+    },
+    {
+     "name": "viabilita-stradale-dbprior10k-approvato",
+     "title": "Viabilità stradale (DBPrior10k) - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:49.492751",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "top10k",
+     "title": "Regione Toscana - Toponomastica CTR10K",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-31T11:36:08.000680",
+     "formats": [
+      "SHP"
+     ]
+    },
+    {
+     "name": "ortofotocarta2k",
+     "title": "Ortofotocarta2K",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-30T14:44:44.083110",
+     "formats": [
+      "TIFF",
+      "WMS"
+     ]
+    },
+    {
+     "name": "database-topografico-2k",
+     "title": "Database topografico 2k",
+     "org": "comune-di-santa-luce",
+     "license_id": "cc-by",
+     "modified": "2026-05-18T17:45:52.753984",
+     "formats": [
+      "gpk"
+     ]
+    },
+    {
+     "name": "cartografia-4k-del-1963",
+     "title": "Cartografia 4K del 1963",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:29.952379",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "cartografia-1k-del-1952",
+     "title": "Cartografia 1K del 1952",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:28.513083",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "cartografia-2k-del-1952",
+     "title": "Cartografia 2K del 1952",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:28.998484",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "cartografia-2k-del-1963",
+     "title": "Cartografia 2K del 1963",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:29.491758",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "cartografia-2k-del-1963-riquadro-1",
+     "title": "Cartografia 2K del 1963 - Riquadro 1",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:24.148167",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "cartografia-2k-del-1963-riquadro-4",
+     "title": "Cartografia 2K del 1963 - Riquadro 4",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:25.806900",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "cartografia-2k-del-1963-riquadro-3",
+     "title": "Cartografia 2K del 1963 - Riquadro 3",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:25.204696",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "cartografia-2k-del-1963-riquadro-2",
+     "title": "Cartografia 2K del 1963 - Riquadro 2",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:24.667620",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "interventi-strutturali-per-la-riduzione-del-rischio-idraulico-nel-bacino-dellarno-scala-10k-app",
+     "title": "Interventi strutturali per la riduzione del Rischio Idraulico nel bacino dell’Arno – scala 10k  - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:26.490145",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "dbt10k-li-pi-pt-po-si",
+     "title": "DataBase Topografico Regionale in scala 1:10.000",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-31T13:55:42.373316",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "dbt2k",
+     "title": "DataBase Topografico Regionale in scala 1:2.000",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-30T15:15:26.505224",
+     "formats": [
+      "SHP"
+     ]
+    },
+    {
+     "name": "dem10mt",
+     "title": "Altimetria 10 metri",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-31T13:54:42.723292",
+     "formats": [
+      "ascii grid"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "database topografico",
+   "count": 20,
+   "results": [
+    {
+     "name": "database-topografico-2k",
+     "title": "Database topografico 2k",
+     "org": "comune-di-santa-luce",
+     "license_id": "cc-by",
+     "modified": "2026-05-18T17:45:52.753984",
+     "formats": [
+      "gpk"
+     ]
+    },
+    {
+     "name": "database-topografico-1-10-000",
+     "title": "Database topografico 1:10.000",
+     "org": "comune-di-chianni",
+     "license_id": "cc-by",
+     "modified": "2026-05-08T09:09:12.145243",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "database-topografico-1_10k",
+     "title": "Database topografico 1_10k",
+     "org": "comune-di-santa-luce",
+     "license_id": "cc-by",
+     "modified": "2026-05-18T16:43:34.677071",
+     "formats": [
+      "gpk"
+     ]
+    },
+    {
+     "name": "database-topografico-1-2-000",
+     "title": "Database topografico 1:2.000",
+     "org": "comune-di-chianni",
+     "license_id": "cc-by",
+     "modified": "2026-05-08T09:11:15.016247",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "dbt10k-li-pi-pt-po-si",
+     "title": "DataBase Topografico Regionale in scala 1:10.000",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-31T13:55:42.373316",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "dbt2k",
+     "title": "DataBase Topografico Regionale in scala 1:2.000",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-30T15:15:26.505224",
+     "formats": [
+      "SHP"
+     ]
+    },
+    {
+     "name": "unita-volumetriche-santa-luce",
+     "title": "Unità volumetriche",
+     "org": "comune-di-santa-luce",
+     "license_id": "cc-by",
+     "modified": "2026-05-16T10:46:25.684772",
+     "formats": [
+      "gpk"
+     ]
+    },
+    {
+     "name": "ctc_2023",
+     "title": "CTC_2023",
+     "org": "comune-livorno",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:01:03.033287",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "dbt2k-elementi-puntuali",
+     "title": "DBT2K - Elementi puntuali",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:18:49.376871",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "dbt2k-elementi-puntuali-approvato",
+     "title": "DBT2K - Elementi puntuali - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:36.918944",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione-viabilita-e-indirizzi",
+     "title": "Gestione viabilità e Indirizzi",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:19:03.304232",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione-viabilita-e-indirizzi5",
+     "title": "Gestione Viabilità e Indirizzi",
+     "org": "comune-di-san-vincenzo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:15:22.491730",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione-viabilita-e-indirizzi1",
+     "title": "Gestione viabilità e Indirizzi",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:40.597433",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione-viabilita-e-indirizzi3",
+     "title": "Gestione viabilità e Indirizzi",
+     "org": "comune-di-montemurlo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:01:19.801754",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione-viabilita-e-indirizzi4",
+     "title": "Gestione viabilità e Indirizzi",
+     "org": "comune-di-castelfranco-piandisco",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-30T15:00:32.135420",
+     "formats": [
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione_viabilita_e_indirizzi4",
+     "title": "Gestione viabilità e Indirizzi",
+     "org": "comune-di-cantagallo",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-06T01:00:15.745127",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione_viabilita_e_indirizzi3",
+     "title": "Gestione viabilità e Indirizzi",
+     "org": "comune-di-montevarchi",
+     "license_id": "iodl2",
+     "modified": "2023-09-06T00:15:16.819601",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione_viabilita_e_indirizzi2",
+     "title": "Gestione viabilità e Indirizzi del Comune di Vaiano",
+     "org": "comune-di-vaiano",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-06T00:00:08.471590",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione_viabilita_e_indirizzi1",
+     "title": "Gestione viabilità e Indirizzi",
+     "org": "comune-di-vernio",
+     "license_id": "cc-by-sa",
+     "modified": "2023-09-05T23:45:15.425696",
+     "formats": [
+      "ZIP"
+     ]
+    },
+    {
+     "name": "gestione_viabilita_e_indirizzi",
+     "title": "Gestione viabilità e Indirizzi",
+     "org": "comune-di-piombino",
+     "license_id": "cc-by",
+     "modified": "2023-09-05T23:30:11.905255",
+     "formats": [
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "CTR",
+   "count": 34,
+   "results": [
+    {
+     "name": "inqctr",
+     "title": "Regione Toscana - Inquadramenti CTR",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-30T14:56:59.858671",
+     "formats": [
+      "SHP"
+     ]
+    },
+    {
+     "name": "ctr2k",
+     "title": "Regione Toscana - CTR 1:2.000",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-31T13:53:20.602970",
+     "formats": [
+      "DXF",
+      "SHP",
+      "TIFF",
+      "WMS"
+     ]
+    },
+    {
+     "name": "ctr10k",
+     "title": "Regione Toscana - CTR 1:10.000",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-31T12:41:11.743024",
+     "formats": [
+      "DXF",
+      "SHP",
+      "TIFF",
+      "WMS"
+     ]
+    },
+    {
+     "name": "top10k",
+     "title": "Regione Toscana - Toponomastica CTR10K",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-31T11:36:08.000680",
+     "formats": [
+      "SHP"
+     ]
+    },
+    {
+     "name": "dem10mt",
+     "title": "Altimetria 10 metri",
+     "org": "regione-toscana",
+     "license_id": "cc-by",
+     "modified": "2020-03-31T13:54:42.723292",
+     "formats": [
+      "ascii grid"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-scritte-cartografiche",
+     "title": "Carta Tecnica Regionale (1996) -Scritte cartografiche",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:21:07.444721",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-scritte-cartografiche-approvato",
+     "title": "Carta Tecnica Regionale (1996) -Scritte cartografiche - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:21:07.187559",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-elementi-a-geometria-lineare",
+     "title": "Carta Tecnica Regionale (1996) - Elementi a geometria lineare",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:21:07.948016",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-elementi-a-geometria-areale",
+     "title": "Carta Tecnica Regionale (1996) - Elementi a geometria areale",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:21:07.697667",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-curve-di-livello",
+     "title": "Carta Tecnica Regionale (1996) - Curve di livello",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:21:06.423332",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-elementi-a-geometria-lineare-approvato",
+     "title": "Carta Tecnica Regionale (1996) - Elementi a geometria lineare - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:35.941915",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-elementi-a-geometria-areale-approvato",
+     "title": "Carta Tecnica Regionale (1996) - Elementi a geometria areale - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:35.700092",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-curve-di-livello-approvato",
+     "title": "Carta Tecnica Regionale (1996) - Curve di livello - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:35.178353",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-elementi-a-geometria-puntuale-esclusi-punti-quotati",
+     "title": "Carta Tecnica Regionale (1996) - Elementi a geometria puntuale (esclusi punti quotati)",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:21:08.197807",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "elementi-testuali-della-carta-tecnica-comunale-in-scala-1-2-000",
+     "title": "Elementi testuali della Carta Tecnica comunale in scala 1:2.000",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:21:06.172149",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-elementi-a-geometria-puntuale-punti-quotati-approvato",
+     "title": "Carta Tecnica Regionale (1996) - Elementi a geometria puntuale - Punti quotati - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:36.657275",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-elementi-a-geometria-puntuale-punti-quotatii",
+     "title": "Carta Tecnica Regionale (1996) - Elementi a geometria puntuale - Punti quotatiI",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:18:44.715999",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "carta-tecnica-regionale-1996-elementi-a-geometria-puntuale-esclusi-punti-quotati-approvato",
+     "title": "Carta Tecnica Regionale (1996) - Elementi a geometria puntuale (esclusi punti quotati) - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:36.186241",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "elementi-testuali-della-carta-tecnica-comunale-in-scala-1-2-000-approvato",
+     "title": "Elementi testuali della Carta Tecnica comunale in scala 1:2.000 - Approvato",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:20:34.154995",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "curve-di-livello-della-carta-tecnica-comunale-in-scala-1-2-000",
+     "title": "Curve di livello della Carta Tecnica comunale in scala 1:2.000",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:19:06.484614",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "ortofoto",
+   "count": 167,
+   "results": [
+    {
+     "name": "ortofoto_via_pozzarello",
+     "title": "Ortofoto_Via_Pozzarello",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:12:05.852394",
+     "formats": [
+      "JPEG"
+     ]
+    },
+    {
+     "name": "ortofoto_via_occhibelli",
+     "title": "Ortofoto_Via_Occhibelli",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T10:01:34.994018",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "ortofoto_le_colmate",
+     "title": "Ortofoto_Le_Colmate",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T14:00:49.216997",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "ortofoto_supercorta_cava",
+     "title": "Ortofoto_Supercorta_Cava",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:55:47.394563",
+     "formats": [
+      "JPEG"
+     ]
+    },
+    {
+     "name": "ortofoto_via_vaticano",
+     "title": "Ortofoto_Via_Vaticano",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:02:42.021805",
+     "formats": [
+      "tif"
+     ]
+    },
+    {
+     "name": "ortofoto_via_orlandini",
+     "title": "Ortofoto_Via_Orlandini",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "odc-by",
+     "modified": "2025-04-03T14:02:32.625600",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "ortofoto_piazza_dalla_chiesa",
+     "title": "Ortofoto_Piazza_Dalla_Chiesa",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-05-26T06:31:53.709201",
+     "formats": [
+      "zip (tiff)"
+     ]
+    },
+    {
+     "name": "ortofoto_via_campitelli_multispettrale",
+     "title": "Ortofoto_Via_Campitelli_multispettrale",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T09:28:18.357711",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "ortofoto_colle_monsummano_alto",
+     "title": "Ortofoto_Colle_Monsummano_Alto",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T09:37:24.139513",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "ortofoto_via_campitelli_rgb",
+     "title": "Ortofoto_Via_Campitelli_RGB",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-07-31T09:22:19.094120",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "ortofoto_via_delle_rave",
+     "title": "Ortofoto_Via_delle_Rave",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-05-26T06:40:38.060838",
+     "formats": [
+      "zip (tiff)"
+     ]
+    },
+    {
+     "name": "ortofoto_le_colmate_torrenti",
+     "title": "Ortofoto_Le_Colmate_torrenti",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:59:55.334177",
+     "formats": [
+      "JPEG"
+     ]
+    },
+    {
+     "name": "ortofoto_via_della_resistenza",
+     "title": "Ortofoto_Via_della_Resistenza",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:58:03.460519",
+     "formats": [
+      "JPEG"
+     ]
+    },
+    {
+     "name": "ortofoto_via_francesco_carrara",
+     "title": "Ortofoto_Via_Francesco_Carrara",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:53:58.865967",
+     "formats": [
+      "JPEG"
+     ]
+    },
+    {
+     "name": "ortofoto_via_dei_girasoli",
+     "title": "Ortofoto_Via_Dei_Girasoli",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:49:19.355721",
+     "formats": [
+      "zip (tiff)"
+     ]
+    },
+    {
+     "name": "ortofoto_piazza_sandro_pertini",
+     "title": "Ortofoto_Piazza_Sandro_Pertini",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T13:57:05.751274",
+     "formats": [
+      "JPEG"
+     ]
+    },
+    {
+     "name": "ortofoto_via_di_melazzano",
+     "title": "Ortofoto_Via_di_Melazzano",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-04-03T12:01:44.461684",
+     "formats": [
+      "tif"
+     ]
+    },
+    {
+     "name": "ortofoto-via-del-terzo",
+     "title": "Ortofoto-Via-del-Terzo",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2026-05-25T06:25:30.875022",
+     "formats": [
+      "TIFF"
+     ]
+    },
+    {
+     "name": "ortofoto_nievole_le_colmate",
+     "title": "Ortofoto_Nievole_Le_Colmate",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2026-05-21T14:27:18.027779",
+     "formats": [
+      ""
+     ]
+    },
+    {
+     "name": "ortofoto_via_di_melazzano_controllo",
+     "title": "Ortofoto_Via_di_Melazzano_controllo",
+     "org": "comune-di-monsummano-terme",
+     "license_id": "cc-by",
+     "modified": "2025-05-26T05:52:20.998998",
+     "formats": [
+      "tif"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "OpenStreetMap",
+   "count": 3255,
+   "results": [
+    {
+     "name": "4c994148-0bf0-4de5-bda3-2157dda2c9a2",
+     "title": "Mappa sonora - Firenze Sound Map",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:07:20.233496",
+     "formats": [
+      "KML",
+      "SHP"
+     ]
+    },
+    {
+     "name": "open-data-covid19",
+     "title": "Open Data Covid19",
+     "org": "ars",
+     "license_id": "cc-by",
+     "modified": "2025-12-17T14:00:21.197908",
+     "formats": [
+      "CSV"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data2",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:17:07.061772",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data31",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-san-vincenzo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:15:25.222275",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data33",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-livorno",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:01:03.488928",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:53.917207",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data17",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-montemurlo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:01:21.584102",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data1",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-poggibonsi",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T00:30:18.951350",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data15",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-vinci",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-04T10:15:10.094364",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data19",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-monte-argentario",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-03T10:30:13.468353",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data3",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-cecina",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-02T14:30:08.630236",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data7",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-collesalvetti",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T20:15:15.285731",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data20",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-pescaglia",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T19:45:08.619593",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data4",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "parco-regionale-della-maremma",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T14:45:35.050901",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data6",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-viareggio",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T14:45:12.324990",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data29",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-volterra",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T13:30:10.622069",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data5",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-terranuova-bracciolini",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-30T20:45:17.013133",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data22",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-santa-fiora",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-30T20:45:09.739807",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data28",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-calenzano",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-30T19:15:09.072008",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "statistiche-sugli-accessi-portale-open-data27",
+     "title": "Statistiche sugli accessi portale Open Data",
+     "org": "comune-di-castelfranco-piandisco",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-30T15:00:37.925252",
+     "formats": [
+      "CSV",
+      "JSON",
+      "RDF",
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "OSM",
+   "count": 0,
+   "results": []
+  },
+  {
+   "q": "marciapiedi",
+   "count": 79,
+   "results": [
+    {
+     "name": "area-stradale1",
+     "title": "Area stradale",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:19:05.772337",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "aree-di-circolazione-pedonale1",
+     "title": "Aree di circolazione pedonale",
+     "org": "comune-di-arezzo",
+     "license_id": "CC-BY",
+     "modified": "2025-05-16T01:19:04.532486",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale33",
+     "title": "Area stradale",
+     "org": "comune-livorno",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:01:05.393698",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale2",
+     "title": "Area stradale",
+     "org": "comune-di-siena",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:47:58.521930",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale17",
+     "title": "Area stradale",
+     "org": "comune-di-montemurlo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T01:01:16.578455",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale35",
+     "title": "Area stradale",
+     "org": "comune-di-poggibonsi",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T00:30:25.312863",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale9",
+     "title": "Area stradale",
+     "org": "comune-di-barga",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-04T14:30:11.627650",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale15",
+     "title": "Area stradale",
+     "org": "comune-di-vinci",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-04T10:15:13.061042",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale3",
+     "title": "Area stradale",
+     "org": "comune-di-cecina",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-02T14:30:12.707747",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale6",
+     "title": "Area stradale",
+     "org": "comune-di-collesalvetti",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T20:15:16.642428",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale20",
+     "title": "Area stradale",
+     "org": "comune-di-pescaglia",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T19:45:12.602360",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale4",
+     "title": "Area stradale",
+     "org": "comune-di-viareggio",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T14:45:19.880810",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale29",
+     "title": "Area stradale",
+     "org": "comune-di-volterra",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-01T13:30:13.377581",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale28",
+     "title": "Area stradale",
+     "org": "comune-calenzano",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-30T19:15:13.546550",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale25",
+     "title": "Area stradale",
+     "org": "comune-di-fosdinovo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-29T20:45:19.987435",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale10",
+     "title": "Area stradale",
+     "org": "comune-di-gavorrano",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-28T21:15:09.873491",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale8",
+     "title": "Area stradale",
+     "org": "comune-di-reggello",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-28T20:15:17.884934",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale13",
+     "title": "Area stradale",
+     "org": "sinalunga",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-28T10:00:17.898811",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale14",
+     "title": "Area stradale",
+     "org": "comune-di-subbiano",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-09-28T10:00:12.051679",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "area-stradale31",
+     "title": "Area stradale",
+     "org": "comune-di-san-vincenzo",
+     "license_id": "Creative Commons Attribuzione 4.0 Internazionale (CC BY 4.0)",
+     "modified": "2026-10-05T02:15:19.645673",
+     "formats": [
+      "GML",
+      "GeoJSON",
+      "KML",
+      "RDF",
+      "SHP",
+      "WFS",
+      "WMS",
+      "ZIP"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "attraversamenti pedonali",
+   "count": 1,
+   "results": [
+    {
+     "name": "0d9fc6ec-cd6c-4bad-b7b1-a4ef70e82c2b",
+     "title": "Impianti semaforici",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:06:35.023703",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    }
+   ]
+  },
+  {
+   "q": "ingressi edifici",
+   "count": 0,
+   "results": []
+  },
+  {
+   "q": "illuminazione pubblica",
+   "count": 3,
+   "results": [
+    {
+     "name": "arredo-urbano-illuminazione-pubblica-pali-luce",
+     "title": "Pali luce",
+     "org": "comune-di-montelupo-fiorentino",
+     "license_id": "cc-by",
+     "modified": "2026-05-07T13:13:22.362166",
+     "formats": [
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "punti-luce",
+     "title": "Punti luce",
+     "org": "comune-di-montelupo-fiorentino",
+     "license_id": "cc-by",
+     "modified": "2026-05-07T12:58:27.551705",
+     "formats": [
+      "SHP",
+      "ZIP"
+     ]
+    },
+    {
+     "name": "a5c9996c-f5d1-4f46-ab39-8bb1a4a5d7fe",
+     "title": "Smart Lighting",
+     "org": "comune-di-firenze",
+     "license_id": "cc-by-4.0",
+     "modified": "2026-02-11T11:08:16.910288",
+     "formats": [
+      "KML",
+      "SHP",
+      "WMS"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+osm,nome,amenity,building,tipo_geom,area_m2,polo_scienze_sociali,in_FA,in_FB,dist_bordo_FA_m,dist_bordo_FB_m,ingressi_osm_entro_15m
+w83491245,,,university,Polygon,1681,0,0,0,-1351,-949,0
+w120272974,,,university,Polygon,83,0,0,0,-1406,-1004,0
+w120272976,,,university,Polygon,304,0,0,0,-1434,-1032,0
+w120272977,,,university,Polygon,491,0,0,0,-1396,-994,0
+w780493693,,,university,Polygon,245,0,0,0,-1444,-999,0
+w82646722,Alloggi universitari e sale studio,university,yes,Polygon,1726,0,0,1,-395,82,0
+n2361881346,Aula studio,university,,Point,,0,0,1,-393,68,
+w224343455,Dip Medicina Sperimentale e Clinica - Sezione Fisiologia,,university,Polygon,1468,0,0,0,-1257,-855,2
+w43977147,"Dipartimento di Matematica e Informatica ""Ulisse Dini""",,university,Polygon,1355,0,0,0,-1286,-884,10
+w462866042,Dipartimento di Odontoiatria,,university,Polygon,322,0,0,0,-647,-152,0
+w83491255,"Dipartimento di Statistica, Informatica, Applicazioni ""G. Parenti""",,university,Polygon,1308,0,0,0,-1255,-853,1
+w83491263,Ex Farmacologia,,university,Polygon,837,0,0,0,-1271,-869,2
+n12485122501,First Lab,university,,Point,,0,0,1,-436,47,
+w83512467,NIC - Ricerca e Formazione,university,office,Polygon,2022,0,0,0,-1437,-1035,0
+w83491248,Patologia e Oncologia Sperimentali - Dipartimento di Scienze Biomediche Sperimentali e Cliniche,,university,Polygon,3444,0,0,0,-1388,-986,2
+w57728745,Plesso Didattico Viale Morgagni,,university,Polygon,5785,0,0,0,-1320,-918,14
+w83537185,Polo delle Scienze Sociali,university,,Polygon,25261,1,0,1,-361,123,2
+w82646720,Polo delle Scienze Sociali - Edificio D1,university,yes,Polygon,566,1,0,1,-367,164,0
+w82646738,Polo delle Scienze Sociali - Edificio D14,university,yes,Polygon,835,1,0,1,-388,68,1
+w82646735,Polo delle Scienze Sociali - Edificio D15,university,yes,Polygon,809,1,0,1,-369,83,0
+w83512468,Scuola di Scienze della Salute Umana,university,public,Polygon,866,0,0,0,-1375,-981,0
+w110364127,Servizi Informatici di Ateneo - SIAF,university,,Polygon,3045,0,0,0,-1066,-677,0
+w780494626,"Università degli Studi di Firenze - Dipartimento di Scienze e Tecnologie Agrarie, Alimentari Ambientali e Forestali - Sede Donizzetti",university,,Polygon,413,0,0,0,-1315,-871,0
+w780535894,"Università degli Studi di Firenze - Dipartimento di Scienze e Tecnologie Agrarie, Alimentari, Ambientali e Forestali - Sede Maragliano",university,,Polygon,1265,0,0,0,-1003,-514,0

@@ -1,0 +1,484 @@
+{
+ "data_servizio_gtfs": "20261007",
+ "feed_info_AT": "\"Autolinee Toscane\",https://www.at-bus.it/,it,20261005,20261025,,,,",
+ "gest_date_calendar_dates": [
+  "20260810",
+  "20261230",
+  143
+ ],
+ "gtfs_attivi": {
+  "GEST_servizi": 2,
+  "GEST_corse": 860,
+  "AT_servizi": 684,
+  "AT_corse": 28583
+ },
+ "geometria_riquadri": {
+  "FA": {
+   "area_km2": 1.717,
+   "larghezza_m": 1323,
+   "altezza_m": 1367,
+   "semilato_minimo_m": 661
+  },
+  "FB": {
+   "area_km2": 1.717,
+   "larghezza_m": 1323,
+   "altezza_m": 1367,
+   "semilato_minimo_m": 662
+  },
+  "CTX": {
+   "area_km2": 14.288,
+   "larghezza_m": 3882,
+   "altezza_m": 3878,
+   "semilato_minimo_m": 1939
+  }
+ },
+ "conteggi_scuole": {
+  "scuole_MIM_statali": {
+   "FA": 0,
+   "FB": 3,
+   "CTX": 48
+  },
+  "scuole_Comune_paritarie": {
+   "FA": 0,
+   "FB": 0,
+   "CTX": 11
+  },
+  "CM_edifici_scolastici_poligoni": {
+   "FA": 9,
+   "FB": 29,
+   "CTX": 312
+  },
+  "CM_accessi_scolastici_punti": {
+   "FA": 0,
+   "FB": 2,
+   "CTX": 49
+  },
+  "OSM_scuole_amenity(school|kindergarten|college)": {
+   "FA": 3,
+   "FB": 4,
+   "CTX": 30
+  },
+  "OSM_scuole_amenity_con_nome": {
+   "FA": 2,
+   "FB": 4,
+   "CTX": 27
+  },
+  "OSM_building=school_senza_amenity_orfani": {
+   "FA": 1,
+   "FB": 0,
+   "CTX": 3
+  },
+  "OSM_entrance=*_totali": {
+   "FA": 2,
+   "FB": 5,
+   "CTX": 64
+  },
+  "sedi_distinte_MIM_statali_(codici_entro_30m_uniti)": {
+   "FA": 0,
+   "FB": 1,
+   "CTX": 24
+  },
+  "sedi_distinte_paritarie": {
+   "FA": 0,
+   "FB": 0,
+   "CTX": 9
+  }
+ },
+ "coordinate_mim_sospette": [
+  {
+   "codice_a": "FICT702009",
+   "nome_a": "CENTRO TERRIT.DISTR.11-13",
+   "indirizzo_a": "VIA SAN DONATO 46/48/50",
+   "codice_b": "FIIC86000C",
+   "nome_b": "BEATO ANGELICO",
+   "indirizzo_b": "VIA LEONCAVALLO 12"
+  },
+  {
+   "codice_a": "FICT702009",
+   "nome_a": "CENTRO TERRIT.DISTR.11-13",
+   "indirizzo_a": "VIA SAN DONATO 46/48/50",
+   "codice_b": "FIMM86001D",
+   "nome_b": "BEATO ANGELICO",
+   "indirizzo_b": "VIA LEONCAVALLO 12"
+  },
+  {
+   "codice_a": "FICT702009",
+   "nome_a": "CENTRO TERRIT.DISTR.11-13",
+   "indirizzo_a": "VIA SAN DONATO 46/48/50",
+   "codice_b": "FIAA86003B",
+   "nome_b": "LEONCAVALLO",
+   "indirizzo_b": "VIA LEONCAVALLO 12"
+  },
+  {
+   "codice_a": "FIMM700011",
+   "nome_a": "NUOVO COMPLESSO PENITENZIARIO",
+   "indirizzo_a": "VIA MINERVINI",
+   "codice_b": "FIEE86002G",
+   "nome_b": "VAMBA",
+   "indirizzo_b": "VIA GIARDINO DELLA BIZZARRIA1"
+  },
+  {
+   "codice_a": "FIMM700011",
+   "nome_a": "NUOVO COMPLESSO PENITENZIARIO",
+   "indirizzo_a": "VIA MINERVINI",
+   "codice_b": "FIAA86002A",
+   "nome_b": "VAMBA",
+   "indirizzo_b": "VIA GIARDINO DELLA BIZZARRIA 1"
+  }
+ ],
+ "concordanza_scuole": {
+  "FA": {
+   "scuole_MIM_o_paritarie": 0,
+   "con_osm_entro_150m": 0,
+   "con_cm_accesso_stesso_codice": 0,
+   "senza_alcuna_corrispondenza_osm_cm": 0,
+   "osm_senza_mim": 1
+  },
+  "FB": {
+   "scuole_MIM_o_paritarie": 3,
+   "con_osm_entro_150m": 3,
+   "con_cm_accesso_stesso_codice": 2,
+   "senza_alcuna_corrispondenza_osm_cm": 0,
+   "osm_senza_mim": 2
+  },
+  "CTX": {
+   "scuole_MIM_o_paritarie": 59,
+   "con_osm_entro_150m": 54,
+   "con_cm_accesso_stesso_codice": 44,
+   "senza_alcuna_corrispondenza_osm_cm": 4,
+   "osm_senza_mim": 3
+  }
+ },
+ "universita_polo": {
+  "poligoni_osm": [
+   "w82646720 Polo delle Scienze Sociali - Edificio D1",
+   "w82646735 Polo delle Scienze Sociali - Edificio D15",
+   "w82646738 Polo delle Scienze Sociali - Edificio D14",
+   "w83537185 Polo delle Scienze Sociali"
+  ],
+  "area_m2": 25261,
+  "centroide_lonlat": [
+   11.230959,
+   43.792984
+  ],
+  "ingressi_osm_entro_15m": 2,
+  "ingressi_tipi": {
+   "main": 2
+  },
+  "ingressi_con_accessibilita_wheelchair": 0,
+  "centroide_dist_bordo_FA_m": -370,
+  "ingressi_dentro_FA": 0,
+  "quota_area_polo_dentro_FA": 0.0,
+  "centroide_dist_bordo_FB_m": 109,
+  "ingressi_dentro_FB": 2,
+  "quota_area_polo_dentro_FB": 0.99,
+  "centroide_dist_bordo_CTX_m": 1109,
+  "ingressi_dentro_CTX": 2,
+  "quota_area_polo_dentro_CTX": 1.0
+ },
+ "fermate_gtfs": {
+  "GEST_tram_FA": {
+   "fermate_nel_feed": 1,
+   "fermate_con_servizio_il_giorno": 1,
+   "linee_con_servizio": [
+    "T2"
+   ],
+   "n_linee": 1
+  },
+  "GEST_tram_FB": {
+   "fermate_nel_feed": 1,
+   "fermate_con_servizio_il_giorno": 1,
+   "linee_con_servizio": [
+    "T2"
+   ],
+   "n_linee": 1
+  },
+  "GEST_tram_CTX": {
+   "fermate_nel_feed": 16,
+   "fermate_con_servizio_il_giorno": 16,
+   "linee_con_servizio": [
+    "T1.3",
+    "T2"
+   ],
+   "n_linee": 2
+  },
+  "AT_bus_FA": {
+   "fermate_nel_feed": 37,
+   "fermate_con_servizio_il_giorno": 37,
+   "linee_con_servizio": [
+    "131R",
+    "23",
+    "29",
+    "301",
+    "307",
+    "322",
+    "351",
+    "5",
+    "57",
+    "59",
+    "A",
+    "ST6"
+   ],
+   "n_linee": 12
+  },
+  "AT_bus_FB": {
+   "fermate_nel_feed": 55,
+   "fermate_con_servizio_il_giorno": 55,
+   "linee_con_servizio": [
+    "131R",
+    "23",
+    "29",
+    "301",
+    "307",
+    "319",
+    "322",
+    "351",
+    "365",
+    "5",
+    "55",
+    "57",
+    "59",
+    "A",
+    "ST6"
+   ],
+   "n_linee": 15
+  },
+  "AT_bus_CTX": {
+   "fermate_nel_feed": 238,
+   "fermate_con_servizio_il_giorno": 233,
+   "linee_con_servizio": [
+    "131R",
+    "17",
+    "2",
+    "20",
+    "212",
+    "213",
+    "22",
+    "23",
+    "28",
+    "29",
+    "30",
+    "301",
+    "307",
+    "319",
+    "322",
+    "33",
+    "345BIS",
+    "35",
+    "351",
+    "357",
+    "360",
+    "365",
+    "40",
+    "43",
+    "5",
+    "51PQF",
+    "55",
+    "56",
+    "57",
+    "59",
+    "66",
+    "68",
+    "80",
+    "901",
+    "930",
+    "A",
+    "DD",
+    "R03",
+    "R04",
+    "R1",
+    "ST6"
+   ],
+   "n_linee": 41
+  }
+ },
+ "fermate_osm": {
+  "OSM_tram_stop_FA": {
+   "nodi": 2,
+   "nomi_distinti": 1
+  },
+  "OSM_tram_stop_FB": {
+   "nodi": 2,
+   "nomi_distinti": 1
+  },
+  "OSM_tram_stop_CTX": {
+   "nodi": 27,
+   "nomi_distinti": 15
+  },
+  "OSM_bus_stop_FA": {
+   "nodi": 27,
+   "nomi_distinti": 27
+  },
+  "OSM_bus_stop_FB": {
+   "nodi": 38,
+   "nomi_distinti": 38
+  },
+  "OSM_bus_stop_CTX": {
+   "nodi": 199,
+   "nomi_distinti": 193
+  }
+ },
+ "careggi": {
+  "Azienda Ospedaliera Universitaria di Careggi": {
+   "osm": "w25293016",
+   "area_m2": 362128,
+   "dist_FA_m": 1066,
+   "dist_FB_m": 687,
+   "bordo_riquadro_dentro_poligono": {
+    "FA": false,
+    "FB": false
+   },
+   "centroide_dist_centro_FA_m": 2239,
+   "centroide_dist_centro_FB_m": 2064
+  },
+  "Centro Traumatologico Ortopedico": {
+   "osm": "w25656749",
+   "area_m2": 53525,
+   "dist_FA_m": 1381,
+   "dist_FB_m": 979,
+   "bordo_riquadro_dentro_poligono": {
+    "FA": false,
+    "FB": false
+   },
+   "centroide_dist_centro_FA_m": 2189,
+   "centroide_dist_centro_FB_m": 1815
+  },
+  "Ospedale pediatrico Meyer": {
+   "osm": "w162433225",
+   "area_m2": 125615,
+   "dist_FA_m": 1710,
+   "dist_FB_m": 1405,
+   "bordo_riquadro_dentro_poligono": {
+    "FA": false,
+    "FB": false
+   },
+   "centroide_dist_centro_FA_m": 2686,
+   "centroide_dist_centro_FB_m": 2529
+  },
+  "Meyer Health Campus": {
+   "osm": "w783296513",
+   "area_m2": 15813,
+   "dist_FA_m": 2023,
+   "dist_FB_m": 1683,
+   "bordo_riquadro_dentro_poligono": {
+    "FA": false,
+    "FB": false
+   },
+   "centroide_dist_centro_FA_m": 2856,
+   "centroide_dist_centro_FB_m": 2629
+  }
+ },
+ "candidati_top5_distanza_dal_bordo": {
+  "FA_scuola": [],
+  "FA_università": [],
+  "FA_tram": [
+   {
+    "tipo": "tram",
+    "nome": "Novoli - Palazzi Rossi (T2)",
+    "codice": "FM9058_103",
+    "FA": 45,
+    "FB": -341
+   }
+  ],
+  "FB_scuola": [
+   {
+    "tipo": "scuola",
+    "nome": "NUOVO COMPLESSO PENITENZIARIO",
+    "codice": "FIMM700011",
+    "FA": -43,
+    "FB": 174
+   },
+   {
+    "tipo": "scuola",
+    "nome": "VAMBA",
+    "codice": "FIEE86002G",
+    "FA": -43,
+    "FB": 174
+   },
+   {
+    "tipo": "scuola",
+    "nome": "VAMBA",
+    "codice": "FIAA86002A",
+    "FA": -43,
+    "FB": 174
+   }
+  ],
+  "FB_università": [
+   {
+    "tipo": "università",
+    "nome": "Polo delle Scienze Sociali (centroide)",
+    "codice": "OSM",
+    "FA": -370,
+    "FB": 109
+   }
+  ],
+  "FB_tram": [
+   {
+    "tipo": "tram",
+    "nome": "Novoli - Regione Toscana (T2)",
+    "codice": "FM9056_103",
+    "FA": -436,
+    "FB": 9
+   }
+  ]
+ },
+ "proposte_riquadro_2km2": {
+  "A_polo_scienze_sociali": {
+   "centro_lonlat": [
+    11.230959,
+    43.792984
+   ],
+   "bbox_SWNE": [
+    43.78677,
+    11.2219,
+    43.7992,
+    11.24002
+   ],
+   "area_km2": 2.01,
+   "scuole_MIM_statali": 17,
+   "scuole_paritarie": 2,
+   "fermate_tram_GEST": 4,
+   "fermate_bus_AT_con_servizio": 65,
+   "polo_scienze_sociali_quota_area_dentro": 1.0,
+   "careggi_dist_m": 653
+  },
+  "B_centro_FB_ridimensionato": {
+   "centro_lonlat": [
+    11.226,
+    43.798
+   ],
+   "bbox_SWNE": [
+    43.79178,
+    11.21694,
+    43.80422,
+    11.23506
+   ],
+   "area_km2": 2.02,
+   "scuole_MIM_statali": 4,
+   "scuole_paritarie": 0,
+   "fermate_tram_GEST": 2,
+   "fermate_bus_AT_con_servizio": 58,
+   "polo_scienze_sociali_quota_area_dentro": 1.0,
+   "careggi_dist_m": 599
+  },
+  "C_centro_FA_ridimensionato": {
+   "centro_lonlat": [
+    11.221,
+    43.802
+   ],
+   "bbox_SWNE": [
+    43.79578,
+    11.21194,
+    43.80822,
+    11.23006
+   ],
+   "area_km2": 2.02,
+   "scuole_MIM_statali": 2,
+   "scuole_paritarie": 0,
+   "fermate_tram_GEST": 1,
+   "fermate_bus_AT_con_servizio": 41,
+   "polo_scienze_sociali_quota_area_dentro": 0.0,
+   "careggi_dist_m": 981
+  }
+ }
+}

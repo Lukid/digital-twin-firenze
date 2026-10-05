@@ -1,0 +1,2948 @@
+{
+ "layers": [
+  {
+   "layer": "alberi pubblici (censimento)",
+   "dataset": [
+    {
+     "layer": "alberi pubblici (censimento)",
+     "id": "42cd1073-521f-4040-9491-e993d03663a4",
+     "titolo": "Alberi",
+     "org": "comune-di-firenze",
+     "formati": [
+      "GeoJSON",
+      "RDF",
+      "SHP"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "05-10-2026",
+     "emesso": "17-10-2011",
+     "scheda_aggiornata": "2026-10-05",
+     "frequenza": "DAILY",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "RDF",
+       "nome": "Alberi pubblici (Formato dei dati: rdf)",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 90553331,
+       "url_finale": "https://linkedopendata.comune.fi.it/download/rdf/alberi_pubblici.ttl",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6370&type=99&format=url&file_format=rdf&file_id=22416"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Alberi pubblici (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 3442398,
+       "url_finale": "https://datigis.comune.fi.it/shp/alberi_pubblici.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6370&type=99&format=url&file_format=shp&file_id=21083"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Alberi pubblici (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 23179544,
+       "url_finale": "https://datigis.comune.fi.it/json/alberi_pubblici.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6370&type=99&format=url&file_format=geojson&file_id=23066"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=6370&type=99&format=url&file_format=geojson&file_id=23066",
+      "byte": 23179544,
+      "sha256": "a25afacacb71012badc0c6487443b76409b5cd7de93545bdb2490f00f464dfa8",
+      "elementi": 82225,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::4326"
+       }
+      },
+      "tipi_geometria": [
+       "Point"
+      ],
+      "campi": [
+       "CIRCONF_CM",
+       "CODSITO_ALBERO",
+       "ID",
+       "NOME_COMUNE",
+       "QUARTIERE",
+       "SPECIE"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       11.21937318,
+       43.79229803
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layer": "siti alberi da rilievo celerimetrico",
+   "dataset": [
+    {
+     "layer": "siti alberi da rilievo celerimetrico",
+     "id": "fc7e03ee-9406-42ce-b176-0767b67ed299",
+     "titolo": "Accessori - Siti Alberi",
+     "org": "comune-di-firenze",
+     "formati": [
+      "SHP",
+      "ZIP"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "17-08-2017",
+     "emesso": "18-07-2014",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "SAlbero p (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 1119994,
+       "url_finale": "https://datigis.comune.fi.it/shp/sAlbero_p.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6489&type=99&format=url&file_format=shp&file_id=20212"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "SAlbero p dxf (Formato dei dati: zip)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 949425,
+       "url_finale": "https://datigis.comune.fi.it/shp/sAlbero_p_dxf.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6489&type=99&format=url&file_format=zip&file_id=20213"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "DTM LiDAR 2023",
+   "dataset": [
+    {
+     "layer": "DTM LiDAR 2023",
+     "id": "dtm-lidar-2023",
+     "titolo": "DTM 2023",
+     "org": "comune-di-firenze",
+     "formati": [
+      "URL",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "27-06-2023",
+     "emesso": "29-12-2023",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "URL",
+       "nome": "MDT LIDAR 2023 ASCII (Formato dei dati: url)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 922675701,
+       "url_finale": "https://datigis.comune.fi.it/grid/MDT_LIDAR_2023_ASCII.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7683&type=99&format=url&file_format=url&file_id=22484"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "DSM LiDAR 2023",
+   "dataset": [
+    {
+     "layer": "DSM LiDAR 2023",
+     "id": "dsm-lidar-2023",
+     "titolo": "DSM 2023",
+     "org": "comune-di-firenze",
+     "formati": [
+      "URL",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "27-06-2023",
+     "emesso": "29-12-2023",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "URL",
+       "nome": "MDS LIDAR 2023 ASCII (Formato dei dati: url)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 1038346174,
+       "url_finale": "https://datigis.comune.fi.it/grid/MDS_LIDAR_2023_ASCII.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7684&type=99&format=url&file_format=url&file_id=22564"
+      },
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "DTM e DSM LiDAR 2017",
+   "dataset": [
+    {
+     "layer": "DTM e DSM LiDAR 2017",
+     "id": "dtm-2017",
+     "titolo": "DTM 2017",
+     "org": "comune-di-firenze",
+     "formati": [
+      "URL",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "02-05-2017",
+     "emesso": "15-03-2019",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "URL",
+       "nome": "MDT LIDAR 2017 ASCII (Formato dei dati: url)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 186749009,
+       "url_finale": "https://datigis.comune.fi.it/grid/MDT_LIDAR_2017_ASCII.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6896&type=99&format=url&file_format=url&file_id=20974"
+      }
+     ],
+     "contenuto_json": null
+    },
+    {
+     "layer": "DTM e DSM LiDAR 2017",
+     "id": "dsm-2017",
+     "titolo": "DSM 2017",
+     "org": "comune-di-firenze",
+     "formati": [
+      "URL",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "02-05-2017",
+     "emesso": "15-03-2019",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "URL",
+       "nome": "MDS LIDAR 2017 ASCII (Formato dei dati: url)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 208096345,
+       "url_finale": "https://datigis.comune.fi.it/grid/MDS_LIDAR_2017_ASCII.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6898&type=99&format=url&file_format=url&file_id=20867"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "civici",
+   "dataset": [
+    {
+     "layer": "civici",
+     "id": "11430710-56eb-4444-bd6f-c5433155afc5",
+     "titolo": "Civici",
+     "org": "comune-di-firenze",
+     "formati": [
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "05-10-2026",
+     "emesso": "17-10-2011",
+     "scheda_aggiornata": "2026-10-05",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "Civici (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 6134033,
+       "url_finale": "https://datigis.comune.fi.it/shp/civici.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6400&type=99&format=url&file_format=shp&file_id=20004"
+      },
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "barriere architettoniche",
+   "dataset": [
+    {
+     "layer": "barriere architettoniche",
+     "id": "92033b63-0598-4449-9007-22127abe505a",
+     "titolo": "Censimento delle barriere architettoniche e urbanistiche",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML",
+      "SHP"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "03-06-2015",
+     "emesso": "03-06-2015",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "Mappa accessibilita (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 111667,
+       "url_finale": "https://datigis.comune.fi.it/shp/mappa_accessibilita.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6769&type=99&format=url&file_format=shp&file_id=20664"
+      },
+      {
+       "formato": "KML",
+       "nome": "Mappa accessibilita (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 123291,
+       "url_finale": "https://datigis.comune.fi.it/kml/mappa_accessibilita.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6769&type=99&format=url&file_format=kml&file_id=20665"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "percorsi Walking City (7 base)",
+   "dataset": [
+    {
+     "layer": "percorsi Walking City (7 base)",
+     "id": "31cf0d64-0d85-476e-9fc6-47074ebf68a2",
+     "titolo": "Walking City - Percorso 1",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "20-10-2017",
+     "emesso": "20-10-2017",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "KML",
+       "nome": "Percorsi cascine (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 4366,
+       "url_finale": "https://datigis.comune.fi.it/kml/percorsi_cascine.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6493&type=99&format=url&file_format=kml&file_id=20216"
+      }
+     ],
+     "contenuto_json": null
+    },
+    {
+     "layer": "percorsi Walking City (7 base)",
+     "id": "97af40a2-09f8-456c-9e7f-b85a023db16d",
+     "titolo": "Walking City - Percorso 2",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "20-10-2017",
+     "emesso": "20-10-2017",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "KML",
+       "nome": "Percorsi michelangelo (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 5069,
+       "url_finale": "https://datigis.comune.fi.it/kml/percorsi_michelangelo.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6494&type=99&format=url&file_format=kml&file_id=20217"
+      }
+     ],
+     "contenuto_json": null
+    },
+    {
+     "layer": "percorsi Walking City (7 base)",
+     "id": "1e76a893-a97d-4ce6-a6f8-58483ba5ecdd",
+     "titolo": "Walking City - Percorso 3",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "20-10-2017",
+     "emesso": "20-10-2017",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "KML",
+       "nome": "Percorsi collina bellosguardo (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2184,
+       "url_finale": "https://datigis.comune.fi.it/kml/percorsi_collina_bellosguardo.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6495&type=99&format=url&file_format=kml&file_id=20218"
+      }
+     ],
+     "contenuto_json": null
+    },
+    {
+     "layer": "percorsi Walking City (7 base)",
+     "id": "df2ed9e1-920e-4f6d-a8cc-9d9301be8d6d",
+     "titolo": "Walking City - Percorso 4",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "20-10-2017",
+     "emesso": "20-10-2017",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "KML",
+       "nome": "Percorsi ville collina castello (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 1961,
+       "url_finale": "https://datigis.comune.fi.it/kml/percorsi_ville_collina_castello.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6496&type=99&format=url&file_format=kml&file_id=20219"
+      }
+     ],
+     "contenuto_json": null
+    },
+    {
+     "layer": "percorsi Walking City (7 base)",
+     "id": "3440cb38-f330-4da1-ae37-156e4ecf5110",
+     "titolo": "Walking City - Percorso 5",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "20-10-2017",
+     "emesso": "20-10-2017",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "KML",
+       "nome": "Percorsi Settignano Parco Mensola (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2632,
+       "url_finale": "https://datigis.comune.fi.it/kml/percorsi_Settignano_Parco_Mensola.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6497&type=99&format=url&file_format=kml&file_id=20220"
+      }
+     ],
+     "contenuto_json": null
+    },
+    {
+     "layer": "percorsi Walking City (7 base)",
+     "id": "8baec998-6091-4132-9f6f-23b535caa549",
+     "titolo": "Walking City - Percorso 6",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "20-10-2017",
+     "emesso": "20-10-2017",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "KML",
+       "nome": "Percorsi Galluzzo Due Strade Pozzolatico (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2279,
+       "url_finale": "https://datigis.comune.fi.it/kml/percorsi_Galluzzo_Due_Strade_Pozzolatico.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6498&type=99&format=url&file_format=kml&file_id=20221"
+      }
+     ],
+     "contenuto_json": null
+    },
+    {
+     "layer": "percorsi Walking City (7 base)",
+     "id": "770fe5f0-029a-4527-8fc4-aead295bcc9c",
+     "titolo": "Walking City - Percorso 7",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "20-10-2017",
+     "emesso": "20-10-2017",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "KML",
+       "nome": "Percorsi arno albereta (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 1436,
+       "url_finale": "https://datigis.comune.fi.it/kml/percorsi_arno_albereta.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6499&type=99&format=url&file_format=kml&file_id=20222"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "rifugi climatici",
+   "dataset": [
+    {
+     "layer": "rifugi climatici",
+     "id": "rifugi_climatici_aree_fresche",
+     "titolo": "Rifugi Climatici Aree Fresche",
+     "org": "comune-di-firenze",
+     "formati": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "18-06-2026",
+     "emesso": "21-08-2025",
+     "scheda_aggiornata": "2026-06-19",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "Rifugi climatici aree fresche (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 63568,
+       "url_finale": "https://datigis.comune.fi.it/shp/rifugi_climatici_aree_fresche.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7776&type=99&format=url&file_format=shp&file_id=22819"
+      },
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Rifugi climatici aree fresche (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 157348,
+       "url_finale": "https://datigis.comune.fi.it/json/rifugi_climatici_aree_fresche.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7776&type=99&format=url&file_format=geojson&file_id=22820"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=7776&type=99&format=url&file_format=geojson&file_id=22820",
+      "byte": 157348,
+      "sha256": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
+      "elementi": 41,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::4326"
+       }
+      },
+      "tipi_geometria": [
+       "MultiPolygon"
+      ],
+      "campi": [
+       "cod_area",
+       "descrizione",
+       "id",
+       "ingresso",
+       "nome_area",
+       "percentuale_ombreggi"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       [
+        [
+         [
+          11.2336515,
+          43.73643835
+         ],
+         [
+          11.23365175,
+          43.73641233
+         ],
+         [
+          11.23365089,
+          43.73640934
+         ],
+         [
+          11.23365024,
+          43.73632959
+         ],
+         [
+          11.23352223,
+          43.73622014
+         ],
+         [
+          11.23339387,
+          43.73611039
+         ],
+         [
+          11.23328771,
+          43.73601962
+         ],
+         [
+          11.23318534,
+          43.73593209
+         ],
+         [
+          11.23312576,
+          43.73589616
+         ],
+         [
+          11.23305875,
+          43.73587046
+         ],
+         [
+          11.23292099,
+          43.73583103
+         ],
+         [
+          11.23282242,
+          43.73580611
+         ],
+         [
+          11.23269962,
+          43.73578294
+         ],
+         [
+          11.23237019,
+          43.73575716
+         ],
+         [
+          11.23201658,
+          43.73575379
+         ],
+         [
+          11.23187954,
+          43.73573495
+         ],
+         [
+          11.2316909,
+          43.7357129
+         ],
+         [
+          11.23153355,
+          43.73569462
+         ],
+         [
+          11.23094038,
+          43.73563021
+         ],
+         [
+          11.23079771,
+          43.73562639
+         ],
+         [
+          11.23067991,
+          43.73562791
+         ],
+         [
+          11.23053155,
+          43.73563198
+         ],
+         [
+          11.23046903,
+          43.73562699
+         ],
+         [
+          11.2303951,
+          43.73560547
+         ],
+         [
+          11.23022339,
+          43.73552932
+         ],
+         [
+          11.23011571,
+          43.73544499
+         ],
+         [
+          11.22963912,
+          43.73501618
+         ],
+         [
+          11.22952939,
+          43.73488651
+         ],
+         [
+          11.22949165,
+          43.73485673
+         ],
+         [
+          11.22942558,
+          43.73482624
+         ],
+         [
+          11.22932248,
+          43.73480037
+         ],
+         [
+          11.22921872,
+          43.73477976
+         ],
+         [
+          11.22909076,
+          43.73475841
+         ],
+         [
+          11.22882864,
+          43.73471778
+         ],
+         [
+          11.2283346,
+          43.73458411
+         ],
+         [
+          11.2278885,
+          43.73446341
+         ],
+         [
+          11.2277857,
+          43.7344356
+         ],
+         [
+          11.22784044,
+          43.7347805
+         ],
+         [
+          11.22780572,
+          43.73514922
+         ],
+         [
+          11.22774204,
+          43.73514845
+         ],
+         [
+          11.22730984,
+          43.73514321
+         ],
+         [
+          11.22729153,
+          43.73514298
+         ],
+         [
+          11.2272916,
+          43.73513188
+         ],
+         [
+          11.22729163,
+          43.73512815
+         ],
+         [
+          11.22670424,
+          43.73513795
+         ],
+         [
+          11.22670473,
+          43.73516577
+         ],
+         [
+          11.22765815,
+          43.73538108
+         ],
+         [
+          11.22765867,
+          43.73538046
+         ],
+         [
+          11.2277189,
+          43.73539244
+         ],
+         [
+          11.22865157,
+          43.73560173
+         ],
+         [
+          11.22869512,
+          43.73561145
+         ],
+         [
+          11.22913024,
+          43.735709
+         ],
+         [
+          11.22918109,
+          43.73572048
+         ],
+         [
+          11.22984398,
+          43.73586923
+         ],
+         [
+          11.22984481,
+          43.7358694
+         ],
+         [
+          11.22992696,
+          43.7358889
+         ],
+         [
+          11.23024246,
+          43.73596355
+         ],
+         [
+          11.23032034,
+          43.73591035
+         ],
+         [
+          11.23033364,
+          43.73591337
+         ],
+         [
+          11.23033971,
+          43.73589898
+         ],
+         [
+          11.23038417,
+          43.73591514
+         ],
+         [
+          11.23038044,
+          43.73592397
+         ],
+         [
+          11.23089374,
+          43.73604033
+         ],
+         [
+          11.23089747,
+          43.73603149
+         ],
+         [
+          11.23097674,
+          43.73604686
+         ],
+         [
+          11.23098116,
+          43.73606263
+         ],
+         [
+          11.23097815,
+          43.73606402
+         ],
+         [
+          11.23097719,
+          43.73606649
+         ],
+         [
+          11.2309853,
+          43.73613204
+         ],
+         [
+          11.23098667,
+          43.73613446
+         ],
+         [
+          11.23098966,
+          43.73613594
+         ],
+         [
+          11.23170279,
+          43.73629485
+         ],
+         [
+          11.23170382,
+          43.73629503
+         ],
+         [
+          11.23170455,
+          43.73629513
+         ],
+         [
+          11.23178699,
+          43.73630973
+         ],
+         [
+          11.23178901,
+          43.7363105
+         ],
+         [
+          11.23230573,
+          43.73642734
+         ],
+         [
+          11.23230654,
+          43.73642732
+         ],
+         [
+          11.23230722,
+          43.73642714
+         ],
+         [
+          11.23230783,
+          43.73642681
+         ],
+         [
+          11.23234896,
+          43.73643894
+         ],
+         [
+          11.23281526,
+          43.73655011
+         ],
+         [
+          11.2328466,
+          43.73655787
+         ],
+         [
+          11.23286887,
+          43.73656257
+         ],
+         [
+          11.23292951,
+          43.73650025
+         ],
+         [
+          11.23349516,
+          43.73663937
+         ],
+         [
+          11.23354207,
+          43.73665091
+         ],
+         [
+          11.23356996,
+          43.73665839
+         ],
+         [
+          11.23359455,
+          43.7366024
+         ],
+         [
+          11.23363485,
+          43.73651067
+         ],
+         [
+          11.2336515,
+          43.73643835
+         ]
+        ],
+        [
+         [
+          11.22942214,
+          43.73522353
+         ],
+         [
+          11.22927884,
+          43.73544788
+         ],
+         [
+          11.22920247,
+          43.73556743
+         ],
+         [
+          11.2286604,
+          43.73537526
+         ],
+         [
+          11.22813899,
+          43.7351904
+         ],
+         [
+          11.2282086,
+          43.73508346
+         ],
+         [
+          11.22835525,
+          43.73485819
+         ],
+         [
+          11.22841799,
+          43.7347618
+         ],
+         [
+          11.22894539,
+          43.73493736
+         ],
+         [
+          11.22948928,
+          43.73511842
+         ],
+         [
+          11.22942214,
+          43.73522353
+         ]
+        ],
+        [
+         [
+          11.22953374,
+          43.73531256
+         ],
+         [
+          11.22999418,
+          43.73547347
+         ],
+         [
+          11.22977034,
+          43.73579926
+         ],
+         [
+          11.22968884,
+          43.73577004
+         ],
+         [
+          11.22932989,
+          43.73564135
+         ],
+         [
+          11.22953374,
+          43.73531256
+         ]
+        ],
+        [
+         [
+          11.23005168,
+          43.73560101
+         ],
+         [
+          11.23023336,
+          43.73564491
+         ],
+         [
+          11.23012426,
+          43.73589365
+         ],
+         [
+          11.22994683,
+          43.73585431
+         ],
+         [
+          11.23005168,
+          43.73560101
+         ]
+        ],
+        [
+         [
+          11.23119049,
+          43.73602976
+         ],
+         [
+          11.23126322,
+          43.7358516
+         ],
+         [
+          11.23174881,
+          43.73595394
+         ],
+         [
+          11.23167292,
+          43.73613369
+         ],
+         [
+          11.23148658,
+          43.73609355
+         ],
+         [
+          11.23132904,
+          43.73605961
+         ],
+         [
+          11.23119049,
+          43.73602976
+         ]
+        ],
+        [
+         [
+          11.23253694,
+          43.73604433
+         ],
+         [
+          11.23240836,
+          43.73634324
+         ],
+         [
+          11.23181678,
+          43.73621254
+         ],
+         [
+          11.23194676,
+          43.73591082
+         ],
+         [
+          11.23253694,
+          43.73604433
+         ]
+        ]
+       ]
+      ]
+     }
+    },
+    {
+     "layer": "rifugi climatici",
+     "id": "rifugi_climatici_biblioteche",
+     "titolo": "Rifugi Climatici Biblioteche",
+     "org": "comune-di-firenze",
+     "formati": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "18-06-2026",
+     "emesso": "21-08-2025",
+     "scheda_aggiornata": "2026-06-19",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "Rifugi climatici biblioteche (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 1898,
+       "url_finale": "https://datigis.comune.fi.it/shp/rifugi_climatici_biblioteche.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7777&type=99&format=url&file_format=shp&file_id=22822"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Rifugi climatici biblioteche (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 3228,
+       "url_finale": "https://datigis.comune.fi.it/json/rifugi_climatici_biblioteche.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7777&type=99&format=url&file_format=geojson&file_id=22823"
+      },
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=7777&type=99&format=url&file_format=geojson&file_id=22823",
+      "byte": 3228,
+      "sha256": "2b2685f9008ee030b1a23c29ae59116fc9dce7ee9071840638c9823ea34253c8",
+      "elementi": 7,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::3003"
+       }
+      },
+      "tipi_geometria": [
+       "Point"
+      ],
+      "campi": [
+       "civico",
+       "id",
+       "indirizzo",
+       "mail",
+       "nome",
+       "note",
+       "orario",
+       "telefono"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       1681921.63092,
+       4849074.13289
+      ]
+     }
+    },
+    {
+     "layer": "rifugi climatici",
+     "id": "2d881d20-8b0c-47c7-8acb-a4dd42fe71ee",
+     "titolo": "Luoghi freschi a Firenze",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "04-07-2019",
+     "emesso": "01-08-2012",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Luoghi freschi a firenze (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2421,
+       "url_finale": "https://datigis.comune.fi.it/shp/luoghi_freschi_a_firenze.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6425&type=99&format=url&file_format=shp&file_id=20072"
+      },
+      {
+       "formato": "KML",
+       "nome": "Luoghi freschi a firenze (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2397,
+       "url_finale": "https://datigis.comune.fi.it/kml/luoghi_freschi_a_firenze.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6425&type=99&format=url&file_format=kml&file_id=20073"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "Life Escapos",
+   "dataset": [
+    {
+     "layer": "Life Escapos",
+     "id": "life_escapos_mobile_measurements",
+     "titolo": "Life Escapos - Alberature pubbliche",
+     "org": "comune-di-firenze",
+     "formati": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-nc-4.0 (cc-by-nc-4.0)",
+     "licenza_risorse": [
+      "CC BY-NC 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "12-02-2026",
+     "emesso": "12-02-2026",
+     "scheda_aggiornata": "2026-02-13",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Escapos tree census (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 250247,
+       "url_finale": "https://datigis.comune.fi.it/shp/escapos_tree_census.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7840&type=99&format=url&file_format=shp&file_id=22976"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Escapos tree census (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 32282,
+       "url_finale": "https://datigis.comune.fi.it/json/escapos_tree_census.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7840&type=99&format=url&file_format=geojson&file_id=22977"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=7840&type=99&format=url&file_format=geojson&file_id=22977",
+      "byte": 32282,
+      "sha256": "8f5a3343f039944913c0f3447f70b373b30ed9c26b7e160d00e1b21a25f6d1aa",
+      "elementi": 50,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::7791"
+       }
+      },
+      "tipi_geometria": [
+       "Point"
+      ],
+      "campi": [
+       "abg_mg",
+       "c_mg",
+       "can_h_m",
+       "canopy_area_m2",
+       "cens_id",
+       "co2_mg",
+       "co_kg",
+       "crn_w_m",
+       "dbh_cm",
+       "h_m",
+       "id",
+       "lai",
+       "no2_kg",
+       "o3_kg",
+       "pm10_kg",
+       "pm25_kg",
+       "seg_id",
+       "so2_kg",
+       "species"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       678677.28097308,
+       4852876.01887465
+      ]
+     }
+    },
+    {
+     "layer": "Life Escapos",
+     "id": "escapos_mobile_measurements",
+     "titolo": "Life Escapos - Misurazioni mobili",
+     "org": "comune-di-firenze",
+     "formati": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-nc-4.0 (cc-by-nc-4.0)",
+     "licenza_risorse": [
+      "CC BY-NC 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "12-02-2026",
+     "emesso": "12-02-2026",
+     "scheda_aggiornata": "2026-02-13",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Escapos mobile measurements (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 21527,
+       "url_finale": "https://datigis.comune.fi.it/shp/escapos_mobile_measurements.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7839&type=99&format=url&file_format=shp&file_id=22973"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Escapos mobile measurements (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 45268,
+       "url_finale": "https://datigis.comune.fi.it/json/escapos_mobile_measurements.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7839&type=99&format=url&file_format=geojson&file_id=22974"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=7839&type=99&format=url&file_format=geojson&file_id=22974",
+      "byte": 45268,
+      "sha256": "5e6ab6f814bd52cfdc3f0ef9221a81e5d7500c4f3fc89285895c55b4b0c7c9e3",
+      "elementi": 50,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::7791"
+       }
+      },
+      "tipi_geometria": [
+       "Point"
+      ],
+      "campi": [
+       "co2_mob",
+       "co2_stat",
+       "date",
+       "hour",
+       "i_stat",
+       "id",
+       "lf_hf_power_0",
+       "lf_hf_power_1",
+       "lf_hf_power_2",
+       "lf_hf_power_3",
+       "lf_hf_power_4",
+       "mean_hrv_0",
+       "mean_hrv_1",
+       "mean_hrv_2",
+       "mean_hrv_3",
+       "mean_hrv_4",
+       "mean_rr_0",
+       "mean_rr_1",
+       "mean_rr_2",
+       "mean_rr_3",
+       "mean_rr_4",
+       "n_hotspot",
+       "pc_stat",
+       "pm10_mob",
+       "pm2_5_mob",
+       "rh_mob",
+       "rh_stat",
+       "rmssd_0",
+       "rmssd_1",
+       "rmssd_2",
+       "rmssd_3",
+       "rmssd_4",
+       "route",
+       "ta_mob",
+       "temp_stat",
+       "tg_mob",
+       "voc_mob",
+       "w_stat"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       679087.03173844,
+       4852756.06212871
+      ]
+     }
+    },
+    {
+     "layer": "Life Escapos",
+     "id": "lifeescapos_nuovopignone",
+     "titolo": "Life Escapos - Stazioni meteo fisse - Nuovo Pignone",
+     "org": "comune-di-firenze",
+     "formati": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-nc-4.0 (cc-by-nc-4.0)",
+     "licenza_risorse": [
+      "CC BY-NC 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "12-02-2026",
+     "emesso": "12-02-2026",
+     "scheda_aggiornata": "2026-02-13",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Escapos fixed station pignone (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 122276,
+       "url_finale": "https://datigis.comune.fi.it/shp/escapos_fixed_station_pignone.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7838&type=99&format=url&file_format=shp&file_id=22970"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Escapos fixed station pignone (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 16161,
+       "url_finale": "https://datigis.comune.fi.it/json/escapos_fixed_station_pignone.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7838&type=99&format=url&file_format=geojson&file_id=22971"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=7838&type=99&format=url&file_format=geojson&file_id=22971",
+      "byte": 16161,
+      "sha256": "e6145ad790efe4e1aec7f1df2d246dc39a4a4d379381277ba91403ff1dab2018",
+      "elementi": 50,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::7791"
+       }
+      },
+      "tipi_geometria": [
+       "Point"
+      ],
+      "campi": [
+       "co2",
+       "date",
+       "hour",
+       "i",
+       "id",
+       "pc",
+       "rh",
+       "temp",
+       "w_max"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       679048.85302097,
+       4852693.15445333
+      ]
+     }
+    },
+    {
+     "layer": "Life Escapos",
+     "id": "lifeescapos_giardinolippi",
+     "titolo": "Life Escapos - Stazioni meteo fisse - Giardino Lippi",
+     "org": "comune-di-firenze",
+     "formati": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-nc-4.0 (cc-by-nc-4.0)",
+     "licenza_risorse": [
+      "CC BY-NC 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "12-02-2026",
+     "emesso": "12-02-2026",
+     "scheda_aggiornata": "2026-02-13",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Escapos fixed station lippi (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 78569,
+       "url_finale": "https://datigis.comune.fi.it/shp/escapos_fixed_station_lippi.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7837&type=99&format=url&file_format=shp&file_id=22967"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Escapos fixed station lippi (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 15636,
+       "url_finale": "https://datigis.comune.fi.it/json/escapos_fixed_station_lippi.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7837&type=99&format=url&file_format=geojson&file_id=22968"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=7837&type=99&format=url&file_format=geojson&file_id=22968",
+      "byte": 15636,
+      "sha256": "9491c02a140d486b21985eaa4094458a3a10673e9346cdda726356d48cc0b00f",
+      "elementi": 50,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::7791"
+       }
+      },
+      "tipi_geometria": [
+       "Point"
+      ],
+      "campi": [
+       "date",
+       "hour",
+       "i",
+       "id",
+       "pc",
+       "rh",
+       "temp",
+       "w_angle",
+       "w_max"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       679182.69912317,
+       4852857.08836697
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layer": "edifici, Comune (cassone edilizio da rilievo celerimetrico)",
+   "dataset": [
+    {
+     "layer": "edifici, Comune (cassone edilizio da rilievo celerimetrico)",
+     "id": "6a0a42f0-3b1f-4498-8de1-a57b592cee59",
+     "titolo": "Antropico - Cassone Edilizio",
+     "org": "comune-di-firenze",
+     "formati": [
+      "SHP",
+      "ZIP"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "07-08-2017",
+     "emesso": "18-07-2014",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "CsEdi s (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2731038,
+       "url_finale": "https://datigis.comune.fi.it/shp/csEdi_s.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6545&type=99&format=url&file_format=shp&file_id=20308"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "CsEdi s dxf (Formato dei dati: zip)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 4198590,
+       "url_finale": "https://datigis.comune.fi.it/shp/csEdi_s_dxf.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6545&type=99&format=url&file_format=zip&file_id=20309"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "edifici, DB topografico regionale 1:2.000",
+   "dataset": [
+    {
+     "layer": "edifici, DB topografico regionale 1:2.000",
+     "id": "dbt2k",
+     "titolo": "DataBase Topografico Regionale in scala 1:2.000",
+     "org": "regione-toscana",
+     "formati": [
+      "SHP"
+     ],
+     "licenza_scheda": "cc-by (Creative Commons Attribution)",
+     "licenza_risorse": [
+      "CC BY-SA 4.0"
+     ],
+     "flags": [
+      "scheda e risorse in conflitto",
+      "versione CC non indicata"
+     ],
+     "dato_modified": "15-10-2015",
+     "emesso": "",
+     "scheda_aggiornata": "2020-03-30",
+     "frequenza": "ANNUAL",
+     "srs_scheda": null,
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "DBT2K_progetti_Qgis",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 18520,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0VAEaI1AJnwEAjETDJGsrIgCWLSysLGQM2cXKb5gnmrCDhV2Yz0YAA2WP66EoaGDkTIXMSMAOZYssFWiRiIhLrScmDCaoYSBo6EAMy5sjwAZmZUyGoYVsHBfEZEIAC6RCpCouIgAApcyABuVsxWxAAEVFbTg1Y8KFPTEUX8w2MTYKtz0wAyVqNxjMhrkRKbI%2BOTM%2FsLSzPrV0Rbt7v38wDKVoLPl2u2zus3mw2IKAuGyIAFU0N8LhIAOwAWnWZX4cO%2BskMAE4AKwAFjREmR%2FAAkoxRr5FFZzgAxOJYZbEULTAAqyB4CjO%2FAAalhkohiAAvOmMLDTRlcZnC0KY%2BE43FIgAcsl0%2BIA0vwAOLxWrTZbxKis2hEI4Sr7TUws6bVJY2GYo6YJM5Q14gAAi7IAstMigAPIrTNgjRL6mzIfjev2B4PkqgjYLIRKR%2FgAQR4AAccIhpgAKZlZrlWMVmLAASmmMemVkTyGTqdM%2FG%2ByZzBZzjBojBFxCrNbrSZTabeU0Y81M5CYrPm%2BxCxB4PCs9oUZYlLrA9GWjs2Y4nyCnjBnoOmXCeR%2FIvnOxE32%2BbRB9xCz7ZvW%2BstihugLnrUB0SPH9XFCQAegiCR8QrDM3CsawXXIcgJiWYQIWOKwMxlSUsxGFREHsIh02CTQsDPaZKECS8hBndCsElAAldMfW%2BdNaJbckWKIdliLPFASLI4Vx2jKwZVw44ZlZYJ6HGMw0KIAAtcsTyw6g1GmW4ZJAeT109NhBmmSVyR1QZ%2BE0yUeFGBJhUSVMIUlfNFFwtQykMPTpgqaYYQAUX9MpwNAyIykgog0DMaxAnochph1LAG2He8vQhYhNAXSUopiptzlowVxVNfg0HsmZkjSx1ZiwFoZk5bkEhmQxIA1CQ1FJD1vgwJ8sHtNlMLDOxzgARR1clvmjAAhBYsHqRsRxANBPCsCjIXDZR7G6EBiwbAZaPZNBmPZNh2Q8rb%2BA2hihvJdlyTQDyADlvhhZjyUOzb2XYkANu%2Bek2Eu7SuiIakuCgMoAF8AYIOA6GIKgqEGZAs3oLN%2BFISA4DMapxFAAMoHxfFDCc3FHMiPEkUMFUiDESBCVxImJAANl0PRcVxFUVV0KmejoNgwFMLgZWtNIOcUUz6GCaYUAbE8eFKrA11s4IZmqGUOdWUxGFrIWAGpVOImgKwIaZiwnXmFG5nh6H3Q8J1cLMYKsAgAB5NC4AA%2BHMuFraYAEd6GPAAdehSSwFVQWzaTNGaSVmmrIb2RU34XSwoSfb9iRpmnO0JlleJrTMFXpjSRhcF14ic%2FOSqz1MEqhc9SPdE1E8JhUGVFywNQ7cd%2FhaEgYR6CwYG0agFUyjKJnDDUQldCRAkkSRfESagcmJH7yIGsJKeynxHIkDoNADYSepDUF3WmEhOuuJTFCTmmBOJH93WuSXEO2RvHwaG58SZh1E2TVt%2B2HY%2FJXrEESUiB6C4UlGyJCXB6BrnmM7IuhpDaRhKrOFCtchDEWZOLZu3825QE7t3ToQMQbgDoCyGQUMYZwyIAjCgPBEh0EuqVGWhxBSCBNBfX2V8A7i1CGuCE5xkyGmQpCGgpsmD7mVloPMNVaaNRUl7Rg3wJY8K7OcJgLpgjCGLoI5AOszzG3UTMYsi4rD31AcXeBZd9ismEJKOR1hiwTUlPsE01gQBA3wUAA&x=677784.9382277&y=4803798.2282864&scale=1028568.998456573",
+       "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0VAEaI1AJnwEAjETDJGsrIgCWLSysLGQM2cXKb5gnmrCDhV2Yz0YAA2WP66EoaGDkTIXMSMAOZYssFWiRiIhLrScmDCaoYSBo6EAMy5sjwAZmZUyGoYVsHBfEZEIAC6RCpCouIgAApcyABuVsxWxAAEVFbTg1Y8KFPTEUX8w2MTYKtz0wAyVqNxjMhrkRKbI%2BOTM%2FsLSzPrV0Rbt7v38wDKVoLPl2u2zus3mw2IKAuGyIAFU0N8LhIAOwAWnWZX4cO%2BskMAE4AKwAFjREmR%2FAAkoxRr5FFZzgAxOJYZbEULTAAqyB4CjO%2FAAalhkohiAAvOmMLDTRlcZnC0KY%2BE43FIgAcsl0%2BIA0vwAOLxWrTZbxKis2hEI4Sr7TUws6bVJY2GYo6YJM5Q14gAAi7IAstMigAPIrTNgjRL6mzIfjev2B4PkqgjYLIRKR%2FgAQR4AAccIhpgAKZlZrlWMVmLAASmmMemVkTyGTqdM%2FG%2ByZzBZzjBojBFxCrNbrSZTabeU0Y81M5CYrPm%2BxCxB4PCs9oUZYlLrA9GWjs2Y4nyCnjBnoOmXCeR%2FIvnOxE32%2BbRB9xCz7ZvW%2BstihugLnrUB0SPH9XFCQAegiCR8QrDM3CsawXXIcgJiWYQIWOKwMxlSUsxGFREHsIh02CTQsDPaZKECS8hBndCsElAAldMfW%2BdNaJbckWKIdliLPFASLI4Vx2jKwZVw44ZlZYJ6HGMw0KIAAtcsTyw6g1GmW4ZJAeT109NhBmmSVyR1QZ%2BE0yUeFGBJhUSVMIUlfNFFwtQykMPTpgqaYYQAUX9MpwNAyIykgog0DMaxAnochph1LAG2He8vQhYhNAXSUopiptzlowVxVNfg0HsmZkjSx1ZiwFoZk5bkEhmQxIA1CQ1FJD1vgwJ8sHtNlMLDOxzgARR1clvmjAAhBYsHqRsRxANBPCsCjIXDZR7G6EBiwbAZaPZNBmPZNh2Q8rb%2BA2hihvJdlyTQDyADlvhhZjyUOzb2XYkANu%2Bek2Eu7SuiIakuCgMoAF8AYIOA6GIKgqEGZAs3oLN%2BFISA4DMapxFAAMoHxfFDCc3FHMiPEkUMFUiDESBCVxImJAANl0PRcVxFUVV0KmejoNgwFMLgZWtNIOcUUz6GCaYUAbE8eFKrA11s4IZmqGUOdWUxGFrIWAGpVOImgKwIaZiwnXmFG5nh6H3Q8J1cLMYKsAgAB5NC4AA%2BHMuFraYAEd6GPAAdehSSwFVQWzaTNGaSVmmrIb2RU34XSwoSfb9iRpmnO0JlleJrTMFXpjSRhcF14ic%2FOSqz1MEqhc9SPdE1E8JhUGVFywNQ7cd%2FhaEgYR6CwYG0agFUyjKJnDDUQldCRAkkSRfESagcmJH7yIGsJKeynxHIkDoNADYSepDUF3WmEhOuuJTFCTmmBOJH93WuSXEO2RvHwaG58SZh1E2TVt%2B2HY%2FJXrEESUiB6C4UlGyJCXB6BrnmM7IuhpDaRhKrOFCtchDEWZOLZu3825QE7t3ToQMQbgDoCyGQUMYZwyIAjCgPBEh0EuqVGWhxBSCBNBfX2V8A7i1CGuCE5xkyGmQpCGgpsmD7mVloPMNVaaNRUl7Rg3wJY8K7OcJgLpgjCGLoI5AOszzG3UTMYsi4rD31AcXeBZd9ismEJKOR1hiwTUlPsE01gQBA3wUAA&x=677784.9382277&y=4803798.2282864&scale=1028568.998456573"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "edifici, DB topografico regionale 1:10.000",
+   "dataset": [
+    {
+     "layer": "edifici, DB topografico regionale 1:10.000",
+     "id": "dbt10k-li-pi-pt-po-si",
+     "titolo": "DataBase Topografico Regionale in scala 1:10.000",
+     "org": "regione-toscana",
+     "formati": [
+      "ZIP"
+     ],
+     "licenza_scheda": "cc-by (Creative Commons Attribution)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [
+      "versione CC non indicata"
+     ],
+     "dato_modified": "20-04-2015",
+     "emesso": "",
+     "scheda_aggiornata": "2020-03-31",
+     "frequenza": "UNKNOWN",
+     "srs_scheda": null,
+     "url": [
+      {
+       "formato": "ZIP",
+       "nome": "DBT10K-LI_2010",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 235028084,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_049_LIVORNO_2010_2010.7z",
+       "url": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_049_LIVORNO_2010_2010.7z"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "DBT10K-PI_2010",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 411509203,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_050_PISA_2010_2010.7z",
+       "url": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_050_PISA_2010_2010.7z"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "DBT10K-PO_2010",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 118517400,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_100_PRATO_2010_2010.7z",
+       "url": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_100_PRATO_2010_2010.7z"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "DBT10K-PT_2010",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 287459416,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_047_PISTOIA_2010_2010.7z",
+       "url": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_047_PISTOIA_2010_2010.7z"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "DBT10K-SI_2010",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 486801022,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_052_SIENA_2010_2010.7z",
+       "url": "http://www502.regione.toscana.it/geoscopio/download/dbtopografico/dbt10k/7z/DBT10K_052_SIENA_2010_2010.7z"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "CTR regionale 1:2.000 e 1:10.000",
+   "dataset": [
+    {
+     "layer": "CTR regionale 1:2.000 e 1:10.000",
+     "id": "ctr2k",
+     "titolo": "Regione Toscana - CTR 1:2.000",
+     "org": "regione-toscana",
+     "formati": [
+      "DXF",
+      "SHP",
+      "TIFF",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by (Creative Commons Attribution)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [
+      "versione CC non indicata"
+     ],
+     "dato_modified": "15-10-2015",
+     "emesso": "",
+     "scheda_aggiornata": "2020-03-31",
+     "frequenza": "UNKNOWN",
+     "srs_scheda": null,
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "CTR2K_SHP",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 18520,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0YYQCZcanhgAOhAIxEeyADbJ5yIci6NrYW7KyIAlizcqT0ucXIAI3lBHg1BYXdZRnowCyworQljY18Qe2JGAHMsWQt3LIxEQi0%2FeWE1Ywl8AlMQQgBmMp4AM1sqZDUMdwsLPlqiEABdIhUhUXEQAAUuZAA3d2Z3YgACKncVqfceFGWVpKr%2BGfnFsD31lYAZdzn7R33kiSPZhaXVi83t1YOnomPXs7vDYAZXcgm%2Bj2eJzeaw2M2IKAehyIAFU0MCHhIAOwAWgODX4aOBsmMAE4AKwAFjxEmx%2FAAkow5hFFO5kCsAGL2LA7YjxFYAFWQPAUjn4ADUsDlEMQAF5sxhYTnc3nxQnokmkrEADlkWnJAGl%2BABxLjENorHZmqh82hEa6KoErZy8lYtbaeVY4laZe4%2FfgAEQFAFkVlUAB5VFZsWZZM3u5yBkNhiSRiQrelUWZWLKeZD8ACCPAMOEQKwAFDyDML3PLbFgAJQrIOh9xZyzIXOJojAqwlislxg0Riy4hNlsrNvZzt5o7LRgbZzkJh8jYXOLEHg8dwJuUKpXEMD0HaeueZRfIZeMVewlZcL7X8gRdmH48ebsgYPEAz918nrxIloFYBmolxZDwYakpSAD0SQSOSDaFkE7geD65DkIs2zCAiNzuIWXBYEqBizCoiA%2BEQBYWIEWD3islAxE%2BQirvhhErAASgWwbAgWbH8MC9K8UQAo0feKC0fRMoLoG7gEWRNyrHyFj0Asth4UQABa9a3sR1BqCsrxqSAmmKs2bBTCsSr0saUz8MZSo8HMmQylkuYIkq5aKGRagNMYFkrE0KwogAomGDTwbByQNIhRBoLYHgxPQ5ArMaWAdl2%2BZEAGCLEIEm5KilaV5uxUoKra%2FBoJ5qw5IVChrFgvSrEKIqZKsxiQPqEhqLSvwgMCGDflg7r8kRsbeOyACKxr0sCgYAEKbFgHQ5rOMWhO4jGInGyg%2BCMIDVpYkxsQKaA8QKbACkFJ38EdnGzfSAr0mgQUAHLAiiPH0tdx0CoJIBHcCHJsM9AZsMMRDMlwUANAAvtDBBwHQxBUFQUzIAY9BGEQpCQHAtgtOIoDhlA5LksYPmkt5yRklixjakQYiQJSpK0xIABsWhqFopKktq2paKzox0GwYDOFwBHOvkIuKPZ9AWCsKCWLePD1VgdYmeWFirC0BEi3sziMJOcsANT6TRNANgQKzVouksKOLPD0BeV6LgEBgoe4BAADyBFwAB8JZcJOKwAI70DeAA69C0lg2qwsWqmBD0So9M2s0CnpoI%2BsRMmR9H6Yrm6iw8thzq2IbKz5IwuBWzRFfss197OHVcsBmnWgGreiwqARW5YGo3t%2B%2FwtCQMI9BYHDhNQNqDQNHzxhqJSWhYhSWJYuS9NQEzEjT8kXWUmvDTkqUSB0GgtuZB0lqy1bTCIl3ImdjhtwrLnEgx1bwrbon%2FKHmAi00QeBqyVHY2i9j7X2AF9YeEEEqRA9AyJKn5FhLg9A1YbADnXS0dsio0DXDhTuQgAG937uAoeUBR7jyGLDeG4A6C8hkKjdGmMSBkBAOQHgWQ6DPXqprK4UpBA2hflHN%2BsdlbxDVgidkVhLTYURLg0uztS4GzQD9MM7Uuq0knAbNoXByCSMtP1EsQ0%2B4v0YMCFWEihzsiYD6Cwwh66yOQJbe8Ds7GrGrFudw39EH12wU3C4fJhBKnDkIdw1ZlpKguDaDwIBYZUKAAAA%3D%3D&x=664355.56&y=4802362.75&scale=1060945.2623305083",
+       "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0YYQCZcanhgAOhAIxEeyADbJ5yIci6NrYW7KyIAlizcqT0ucXIAI3lBHg1BYXdZRnowCyworQljY18Qe2JGAHMsWQt3LIxEQi0%2FeWE1Ywl8AlMQQgBmMp4AM1sqZDUMdwsLPlqiEABdIhUhUXEQAAUuZAA3d2Z3YgACKncVqfceFGWVpKr%2BGfnFsD31lYAZdzn7R33kiSPZhaXVi83t1YOnomPXs7vDYAZXcgm%2Bj2eJzeaw2M2IKAehyIAFU0MCHhIAOwAWgODX4aOBsmMAE4AKwAFjxEmx%2FAAkow5hFFO5kCsAGL2LA7YjxFYAFWQPAUjn4ADUsDlEMQAF5sxhYTnc3nxQnokmkrEADlkWnJAGl%2BABxLjENorHZmqh82hEa6KoErZy8lYtbaeVY4laZe4%2FfgAEQFAFkVlUAB5VFZsWZZM3u5yBkNhiSRiQrelUWZWLKeZD8ACCPAMOEQKwAFDyDML3PLbFgAJQrIOh9xZyzIXOJojAqwlislxg0Riy4hNlsrNvZzt5o7LRgbZzkJh8jYXOLEHg8dwJuUKpXEMD0HaeueZRfIZeMVewlZcL7X8gRdmH48ebsgYPEAz918nrxIloFYBmolxZDwYakpSAD0SQSOSDaFkE7geD65DkIs2zCAiNzuIWXBYEqBizCoiA%2BEQBYWIEWD3islAxE%2BQirvhhErAASgWwbAgWbH8MC9K8UQAo0feKC0fRMoLoG7gEWRNyrHyFj0Asth4UQABa9a3sR1BqCsrxqSAmmKs2bBTCsSr0saUz8MZSo8HMmQylkuYIkq5aKGRagNMYFkrE0KwogAomGDTwbByQNIhRBoLYHgxPQ5ArMaWAdl2%2BZEAGCLEIEm5KilaV5uxUoKra%2FBoJ5qw5IVChrFgvSrEKIqZKsxiQPqEhqLSvwgMCGDflg7r8kRsbeOyACKxr0sCgYAEKbFgHQ5rOMWhO4jGInGyg%2BCMIDVpYkxsQKaA8QKbACkFJ38EdnGzfSAr0mgQUAHLAiiPH0tdx0CoJIBHcCHJsM9AZsMMRDMlwUANAAvtDBBwHQxBUFQUzIAY9BGEQpCQHAtgtOIoDhlA5LksYPmkt5yRklixjakQYiQJSpK0xIABsWhqFopKktq2paKzox0GwYDOFwBHOvkIuKPZ9AWCsKCWLePD1VgdYmeWFirC0BEi3sziMJOcsANT6TRNANgQKzVouksKOLPD0BeV6LgEBgoe4BAADyBFwAB8JZcJOKwAI70DeAA69C0lg2qwsWqmBD0So9M2s0CnpoI%2BsRMmR9H6Yrm6iw8thzq2IbKz5IwuBWzRFfss197OHVcsBmnWgGreiwqARW5YGo3t%2B%2FwtCQMI9BYHDhNQNqDQNHzxhqJSWhYhSWJYuS9NQEzEjT8kXWUmvDTkqUSB0GgtuZB0lqy1bTCIl3ImdjhtwrLnEgx1bwrbon%2FKHmAi00QeBqyVHY2i9j7X2AF9YeEEEqRA9AyJKn5FhLg9A1YbADnXS0dsio0DXDhTuQgAG937uAoeUBR7jyGLDeG4A6C8hkKjdGmMSBkBAOQHgWQ6DPXqprK4UpBA2hflHN%2BsdlbxDVgidkVhLTYURLg0uztS4GzQD9MM7Uuq0knAbNoXByCSMtP1EsQ0%2B4v0YMCFWEihzsiYD6Cwwh66yOQJbe8Ds7GrGrFudw39EH12wU3C4fJhBKnDkIdw1ZlpKguDaDwIBYZUKAAAA%3D%3D&x=664355.56&y=4802362.75&scale=1060945.2623305083"
+      },
+      {
+       "formato": "TIFF",
+       "nome": "CTR2K_TIFF",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 18520,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0YYQCZcaxAEsAZoQCMRHsgA2yeciHIujG2DuysBlu5Wnpc4uQAjeUEeDUFhfVlGejBLLEitCRMTHxAHYkYAcyxZS31MjERCLV95YTUTCXwCMxBCAGZSnkM7KmQ1DH1LSz4aohAAXSIVIVFxEAAFLmQAN31mfWIAAip9JYn9HhRFpcTK%2FinZ%2BbAd1aWAGX0ZhyddpIkD6bmF5bP1zeW9h6JD55PXtYAZX0gk%2B90eRxeKzWU2IKDu%2ByIAFU0IC7hIAOwAWj29X4KMBshMAE4AKwAFhxEkx%2FAAkowZuFFPpkEsAGIOLBbYhxJYAFWQPAUTn4ADUsNlEMQAF4sxhYdmc7lxfGoonEjEADlkWlJAGl%2BABxLjEFpLLYmqg82hES7ygFLFzcpaGTb6BRLLFLDK3L78AAifIAsktKgAPSpLNjTTIm10uAPB0MSCMSJa0qjTayZd3IfgAQR4AAccIglgAKLlFwX6WV2LAASiWgZD%2BkzVmQOYTREB1hLFZLjBojGlxCbLaWbazndzB0WjDWLnITB5azOsWIPB4RndMrlCuIYHoW13c4yi%2BQy8Yq%2BhSy4H2v5HCrMPx48eaIQeIRf7r5PngRLQK39NRzkyHhQ2JckAHpEgkUkGwLQJ9AMb1yHIeZNmEOErn0AsuCwBUi2mFREG8Ih80sAIsHvJZKGiJ8hFXfDCKWAAlfMg0BfM2P4QFaV4og%2BRo%2B8UFo%2BipQXAN9AIsirmWHlLHoOY7DwogAC161vYjqDUJZnjUkBNPlZs2AmJYFVpQ0Jn4YyFR4GYMilTIczhBVy0UMi1HqEwLKWRoliRABRUN6ng2CknqRCiDQOwDGiehyCWQ0sA7LsPxAf04WIAJNwVFK0tzdiJTla1%2BDQTzlmyQqPRobplgFIUMmWExIF1CQ1Gpb4QEBDBvywV1eSImMvFZABFQ1aUBAMACF1iwNps1nGKQn0Rj4VjZRvCGEBqyscY2L5NAeL5Ng%2BSC47%2BEOziZtpPlaTQIKADlASRHjaSuo6%2BUEkBDsBNk2Ce%2F02EGIhGS4KB6gAXyhgg4DoYgqCoCZkCLegi34UhIDgOxjBgUAwygUlSRMHziW8pISQxExNSIMRIHJYkaYkAA2LQ1C0YliU1TUtBZ4Y6DYMAXC4AjHTyYXFHs%2BhLCWFArFvHgsDiOsTPLSxlkMAjhZ2FxGEnWWAGp9JomgGwIJZq0XCWFDFnh6AvK9F38IsUP0AgAB4Ai4AA%2BEsuEnJYAEd6BvAAdehqSwTVoWLVSAi6BUumbGa%2BT04FvWImSI6jtMVxdeYuWwx07ANpY8kYXBLZo8vWSa%2B8XBWZWU75LQ9VveYVAIrcsDUL3ff4WhIGEegsFhgmoE1ep6l5kw1HJLQMTJDEMVJOmoEZiQp6STryVX%2BpSRKJA6DQG2Mjac0Zctph4U7kTOxw64lhziRo8twVtwT3lDzABaaIPeqyUHZWk9t7H2AE9YGEEAqRA9AyIKl5FhLg9BVZrH9rXc0tsio0DXDhDuQh%2F49z7mAweUAR5jwGDDOG4A6DchkCjNGGMiBYwoDwTIdAnrKw1hcCUggrTP0jq%2FGOSsValXhNYc02F4Q4JLk7Eu%2Bs0DfVDG1Tq1JJz6xaFwcgcJWT3TZGyPSYdGCAmVlgVW59WRMG9JYYQdcpHIAtvee2NjljVi3PoL%2BCC65YMbmcHkwgFRGIMNWJaCozhWgMCAGGlCgAAA&x=664355.56&y=4802362.75&scale=1060945.2623305083",
+       "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0YYQCZcaxAEsAZoQCMRHsgA2yeciHIujG2DuysBlu5Wnpc4uQAjeUEeDUFhfVlGejBLLEitCRMTHxAHYkYAcyxZS31MjERCLV95YTUTCXwCMxBCAGZSnkM7KmQ1DH1LSz4aohAAXSIVIVFxEAAFLmQAN31mfWIAAip9JYn9HhRFpcTK%2FinZ%2BbAd1aWAGX0ZhyddpIkD6bmF5bP1zeW9h6JD55PXtYAZX0gk%2B90eRxeKzWU2IKDu%2ByIAFU0IC7hIAOwAWj29X4KMBshMAE4AKwAFhxEkx%2FAAkowZuFFPpkEsAGIOLBbYhxJYAFWQPAUTn4ADUsNlEMQAF4sxhYdmc7lxfGoonEjEADlkWlJAGl%2BABxLjEFpLLYmqg82hES7ygFLFzcpaGTb6BRLLFLDK3L78AAifIAsktKgAPSpLNjTTIm10uAPB0MSCMSJa0qjTayZd3IfgAQR4AAccIglgAKLlFwX6WV2LAASiWgZD%2BkzVmQOYTREB1hLFZLjBojGlxCbLaWbazndzB0WjDWLnITB5azOsWIPB4RndMrlCuIYHoW13c4yi%2BQy8Yq%2BhSy4H2v5HCrMPx48eaIQeIRf7r5PngRLQK39NRzkyHhQ2JckAHpEgkUkGwLQJ9AMb1yHIeZNmEOErn0AsuCwBUi2mFREG8Ih80sAIsHvJZKGiJ8hFXfDCKWAAlfMg0BfM2P4QFaV4og%2BRo%2B8UFo%2BipQXAN9AIsirmWHlLHoOY7DwogAC161vYjqDUJZnjUkBNPlZs2AmJYFVpQ0Jn4YyFR4GYMilTIczhBVy0UMi1HqEwLKWRoliRABRUN6ng2CknqRCiDQOwDGiehyCWQ0sA7LsPxAf04WIAJNwVFK0tzdiJTla1%2BDQTzlmyQqPRobplgFIUMmWExIF1CQ1Gpb4QEBDBvywV1eSImMvFZABFQ1aUBAMACF1iwNps1nGKQn0Rj4VjZRvCGEBqyscY2L5NAeL5Ng%2BSC47%2BEOziZtpPlaTQIKADlASRHjaSuo6%2BUEkBDsBNk2Ce%2F02EGIhGS4KB6gAXyhgg4DoYgqCoCZkCLegi34UhIDgOxjBgUAwygUlSRMHziW8pISQxExNSIMRIHJYkaYkAA2LQ1C0YliU1TUtBZ4Y6DYMAXC4AjHTyYXFHs%2BhLCWFArFvHgsDiOsTPLSxlkMAjhZ2FxGEnWWAGp9JomgGwIJZq0XCWFDFnh6AvK9F38IsUP0AgAB4Ai4AA%2BEsuEnJYAEd6BvAAdehqSwTVoWLVSAi6BUumbGa%2BT04FvWImSI6jtMVxdeYuWwx07ANpY8kYXBLZo8vWSa%2B8XBWZWU75LQ9VveYVAIrcsDUL3ff4WhIGEegsFhgmoE1ep6l5kw1HJLQMTJDEMVJOmoEZiQp6STryVX%2BpSRKJA6DQG2Mjac0Zctph4U7kTOxw64lhziRo8twVtwT3lDzABaaIPeqyUHZWk9t7H2AE9YGEEAqRA9AyIKl5FhLg9BVZrH9rXc0tsio0DXDhDuQh%2F49z7mAweUAR5jwGDDOG4A6DchkCjNGGMiBYwoDwTIdAnrKw1hcCUggrTP0jq%2FGOSsValXhNYc02F4Q4JLk7Eu%2Bs0DfVDG1Tq1JJz6xaFwcgcJWT3TZGyPSYdGCAmVlgVW59WRMG9JYYQdcpHIAtvee2NjljVi3PoL%2BCC65YMbmcHkwgFRGIMNWJaCozhWgMCAGGlCgAAA&x=664355.56&y=4802362.75&scale=1060945.2623305083"
+      },
+      {
+       "formato": "DXF",
+       "nome": "CTR2K_DXF",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 18520,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0YYQCZcaqgA8AZoQCMRHsgA2yeciHIujG2DuysiAJYt3K09LnE5ABG8oI8GoLCHrKM9GCWWNFaEiYmfiAOxIwA5liylh7ZGIiEWv7ywmomEvgEZiCEAMzlPIZ2VMhqGB6Wlnx1RCAAukQqQqLiIAAKXMgAbh7MHsQABFQeK1MePCjLK8nV%2FDPzi2B76ysAMh5zDk77KRJHswtLqxeb26sHT0THr2d3hsAMoeQTfR7PE5vNYbGbEFAPQ5EACqaGBDwkAHYALQHRr8NHA2QmACcAFYACx4iTY%2FgASUYc0iig8yBWADEHFgdsQEisACrIHgKJz8ABqWFyiGIAC82YwsJzubyEoT0STSViAByyLTkgDS%2FAA4lxiG0VjszVQ%2BbQiNdFUCVi5eStDNsvKscSssvcfvwACICgCyK2q%2BmqKzYs2yZvdLkDIbDEgjEhW9Kos2s2S8yH4AEEeAAHHCIFYACh5ReFHnldiwAEoVkHQx5M1ZkDmE0RgdYSxWS4waIxZcQmy2Vm2s53c0dlowNi5yEw%2BRsLvFiDweB543KFUriGB6DtPXOsovkMvGKvYSsuF9r%2BRIuzD8fPN2QMHiEX%2B6%2BT94kS0CsAzUS5sh4MNSUpAB6ZIJHJBsC2CDxPB9chyEWbZhARG4PALLgsCVItZhURBfCIfNLCCLB7xWShYifIRV3wwiVgAJXzYNgXzNj%2BGBeleKIAUaPvFBaPomUF0DDwCLIm5Vj5Sx6AWOw8KIAAtetb2I6g1BWV41JATTFWbNgphWJV6WNKZ%2BGMpUeDmLIZWyHMESVctFDItRGhMCyVmaFYUQAUTDRp4NglJGkQog0DsTxYnocgVmNLAOy7PMiADBFiCCTclRStLc3YqUFVtfg0E81ZckKhQ1iwXpViFEUslWExIH1CQ1FpX4QGBDBvywd1%2BSImMfHZABFY16WBQMACFNiwDps1nGKwg8RjEVjZRfBGEBqysSY2IFNAeIFNgBSCk7%2BCOzjZvpAV6TQIKADlgRRHj6Wu46BUEkAjuBDk2GegM2GGIhmS4KBGgAX2hgg4DoYgqCoKZkCLegi34UhIDgOxjBgUB9CgclyRMHzSW8lIySxExtSIMRIEpUlaYkAA2LQ1C0UlSW1bUtFZ0Y6DYMAXC4AjnQKEXFHs%2BhLBWFArFvHh6qwOsTPLSxVkMAiRb2FxGEnOWAGp9JomgGwIFZq0XSWFHFnh6AvK9F0CIsUI8AgAB4gi4AA%2BEsuEnFYAEd6BvAAdehaSwbVYWLVSgh6JUembWaBT00EfWImTI%2BjtMVzdRYeWw507ENlYCkYXArZoiv2Wa%2B8XDquWAzTrQDVvRYVAIrcsDUb2%2Ff4WhIGEegsDhwmoG1RpGj5kw1EpLQsQpLEsXJemoCZiRp5SLrKTXxpyTKJA6DQW2sg6S1ZatphES7kTOxw24VlziQY6t4Vt0T%2FlDzARaaIPA1ZKjsbRex9r7AC%2BtPCCCVIgegZElT8iwlwegasNgBzrpaO2RUaBrhwp3IQADe793AUPKAo9x5DFhvDcAdBeQyFRujTGRBsYUB4NkOgz16qayuFKQQNoX5RzfrHZWCQ1YInZNYS02FES4NLs7UuBs0A%2FTDO1LqtJJwGzaFwcgEjmwAA0OT%2BQDJaQQo5TYnjQXpcOjBgQq3EUOdkTAfSWGEPXGRyBLb3gdq41Y1YtweG%2Fog%2Bu2Cm4XD5MIJUNjPDVmWkqC4NpPAgFhlQoAAA&x=664355.56&y=4802362.75&scale=1060945.2623305083",
+       "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0YYQCZcaqgA8AZoQCMRHsgA2yeciHIujG2DuysiAJYt3K09LnE5ABG8oI8GoLCHrKM9GCWWNFaEiYmfiAOxIwA5liylh7ZGIiEWv7ywmomEvgEZiCEAMzlPIZ2VMhqGB6Wlnx1RCAAukQqQqLiIAAKXMgAbh7MHsQABFQeK1MePCjLK8nV%2FDPzi2B76ysAMh5zDk77KRJHswtLqxeb26sHT0THr2d3hsAMoeQTfR7PE5vNYbGbEFAPQ5EACqaGBDwkAHYALQHRr8NHA2QmACcAFYACx4iTY%2FgASUYc0iig8yBWADEHFgdsQEisACrIHgKJz8ABqWFyiGIAC82YwsJzubyEoT0STSViAByyLTkgDS%2FAA4lxiG0VjszVQ%2BbQiNdFUCVi5eStDNsvKscSssvcfvwACICgCyK2q%2BmqKzYs2yZvdLkDIbDEgjEhW9Kos2s2S8yH4AEEeAAHHCIFYACh5ReFHnldiwAEoVkHQx5M1ZkDmE0RgdYSxWS4waIxZcQmy2Vm2s53c0dlowNi5yEw%2BRsLvFiDweB543KFUriGB6DtPXOsovkMvGKvYSsuF9r%2BRIuzD8fPN2QMHiEX%2B6%2BT94kS0CsAzUS5sh4MNSUpAB6ZIJHJBsC2CDxPB9chyEWbZhARG4PALLgsCVItZhURBfCIfNLCCLB7xWShYifIRV3wwiVgAJXzYNgXzNj%2BGBeleKIAUaPvFBaPomUF0DDwCLIm5Vj5Sx6AWOw8KIAAtetb2I6g1BWV41JATTFWbNgphWJV6WNKZ%2BGMpUeDmLIZWyHMESVctFDItRGhMCyVmaFYUQAUTDRp4NglJGkQog0DsTxYnocgVmNLAOy7PMiADBFiCCTclRStLc3YqUFVtfg0E81ZckKhQ1iwXpViFEUslWExIH1CQ1FpX4QGBDBvywd1%2BSImMfHZABFY16WBQMACFNiwDps1nGKwg8RjEVjZRfBGEBqysSY2IFNAeIFNgBSCk7%2BCOzjZvpAV6TQIKADlgRRHj6Wu46BUEkAjuBDk2GegM2GGIhmS4KBGgAX2hgg4DoYgqCoKZkCLegi34UhIDgOxjBgUB9CgclyRMHzSW8lIySxExtSIMRIEpUlaYkAA2LQ1C0UlSW1bUtFZ0Y6DYMAXC4AjnQKEXFHs%2BhLBWFArFvHh6qwOsTPLSxVkMAiRb2FxGEnOWAGp9JomgGwIFZq0XSWFHFnh6AvK9F0CIsUI8AgAB4gi4AA%2BEsuEnFYAEd6BvAAdehaSwbVYWLVSgh6JUembWaBT00EfWImTI%2BjtMVzdRYeWw507ENlYCkYXArZoiv2Wa%2B8XDquWAzTrQDVvRYVAIrcsDUb2%2Ff4WhIGEegsDhwmoG1RpGj5kw1EpLQsQpLEsXJemoCZiRp5SLrKTXxpyTKJA6DQW2sg6S1ZatphES7kTOxw24VlziQY6t4Vt0T%2FlDzARaaIPA1ZKjsbRex9r7AC%2BtPCCCVIgegZElT8iwlwegasNgBzrpaO2RUaBrhwp3IQADe793AUPKAo9x5DFhvDcAdBeQyFRujTGRBsYUB4NkOgz16qayuFKQQNoX5RzfrHZWCQ1YInZNYS02FES4NLs7UuBs0A%2FTDO1LqtJJwGzaFwcgEjmwAA0OT%2BQDJaQQo5TYnjQXpcOjBgQq3EUOdkTAfSWGEPXGRyBLb3gdq41Y1YtweG%2Fog%2Bu2Cm4XD5MIJUNjPDVmWkqC4NpPAgFhlQoAAA&x=664355.56&y=4802362.75&scale=1060945.2623305083"
+      },
+      {
+       "formato": "DXF",
+       "nome": "CTR2K_DXF_VESTITI",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 18520,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0YYQCZcaqgA8AZmoBuWHokIBGIj2QAbZPORDkXRk7AvZWRAEsWXxVraTlicgAjeUEeDUFhP1lGejB7LEStCSsrEJA3YkYAcyxZez9CjEsCLVD5YTUrCXwCGxBCAGZankMXKmQ1DD97ez4WohAAXSIVIVFxEAAFLmQTP2Y%2FYgACKj9Nhb8LZA3NzMb%2BJZW1sGOdzYAZPxM3DxOsiXPl1fWt272DrdO7yIFy%2B1x%2BuwAyn5BAC3h9Lt9trslsQUK8zkQAKpoCGvCQAdgAtKd2vxsRDZFYAJwAVgALMSJAT%2BABJRhmISKPzITYAMTc5kQxDSmwAKsgeAoPPwAGpYYpCgBe3MYWD5AoswtoWJxlKp%2BIAHLItDSANL8ADiXGIPU2FmtVC1%2FAeqvBmy8ms2hgOAS2hM2BRegP4ABFRQBZTaNfSNTZsZaFa3eryhiNRiQxiSbFlUZaOQoBZD8ACCPAADjhEJsABTmMsSvzKlxYACUmzDkb8uYcyALKaIEMcFZrFcYNEYiuIbY7my7ed7hfOG0Yuy85CYwt2t1SxB4PD8yeITdVAbA9AsvqXBVXyHXjE3SM2XH%2B9%2FI8R5xDPF%2F7IHDxDLw6fue%2FiBOiWg1iGah3IUPBRlSdIAPSZBINItiWkR%2BP4AbkOQawHMIqKPH4JZcFgaplssKiIMERDFvYERYM%2BmyUMkb6cmUJFkZsABKxbhhCxbcfwEIskJRCioxz4oExLFCiuoZ%2BKR1GPFswr2PQqwuMRRAAFrNo%2BFHUGomxfNpIB6SeIZsAsmxqiyFoLPwFlqjwJgFEKhQFqiarVoo1FqO0Vi2ZsnSbJiACiUbtChSFZO0aFEGgLj%2BMk9DkJsFpYD2fZFkQIaosQES7mqmXZYWPHyiqTqJX5WzFGVCjbFgwxbOKkoFFsViQCaEhqEyQIgBCGD%2Flg3oiuRCZBDyACKFoshCoYAEJ7FgfT5ouiUxH4bFoomyjBFMID1g48zcaKaCCaKbCiuFF38GdfGLSyoosmg4UAHIQpigksvd52imJIBnRCvJsO9VmTEQZhcFA7QAL5wwQcB0MQVBUAsyBlvQZb8KQkBwC4hjiKA%2BhQDSNJWIFVIBVk1L4lYBpEGIkB0lSDMSAAbFoahaFSVIGgaWgc9MdBsGAXhcKR7plOLigufQ9ibCgDiPjwzVYMePn2FshikeLxxeIws6KwA1CZjE0C2BCbPWq4ywoUs8PQN53qu4RlphfgEAAPBEXAAHwVlws6bAAjvQD4ADr0EyWAGki5ZaREQxqkM7aLaKxlQgGFGKdHsdZhuXprIK1rui4xubGUjC4DbjFVzy7XPl4TWKyGGdaKaj5rCopF7lgai%2BwH%2FC0JAwj0FgiMk1ABrtO0gtWGodJaPitL4viNJM1ArMSLPWR9XSG%2FtDSNRIHQaD2wUfR2grNtMGiPeSb2hFPJs%2BcSHHNsSvuycip%2BYCrUYmqNSWwLTO0dD7P2%2FtQKG38IINUiB6DUTVCKfCXB6DHl2EHBudoHblRoFuQi3chBAP7oPKBI8oDj0nhMBGSNwB0E1DIDGWMcZEDxhQHghQ6DvWatre48pBCOjfjHD%2B8c1ZpGPKiHkjg7QETRAQ8urty5GzQADKM3U%2BpMlnEbHoXByDSPbAADV5Co82F5MHGUjowCE6spFjh5EwAM9hhCN3kcga2z4nYuK2PWPcfhf4oMbnglutxhTCDVNY%2Fw9Z1pqluI6fwIAEa0KAAA%3D%3D&x=664355.56&y=4802362.75&scale=1060945.2623305083",
+       "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4IgxiBcDaoZIAuB7MBhAFgUzAaxADQgCGUoAtsgCZZQgCuAdmNngPKLYBOAzoSFkaIuATyjQADES6IA%2BmGIzkiHMQB0YYQCZcaqgA8AZmoBuWHokIBGIj2QAbZPORDkXRk7AvZWRAEsWXxVraTlicgAjeUEeDUFhP1lGejB7LEStCSsrEJA3YkYAcyxZez9CjEsCLVD5YTUrCXwCGxBCAGZankMXKmQ1DD97ez4WohAAXSIVIVFxEAAFLmQTP2Y%2FYgACKj9Nhb8LZA3NzMb%2BJZW1sGOdzYAZPxM3DxOsiXPl1fWt272DrdO7yIFy%2B1x%2BuwAyn5BAC3h9Lt9trslsQUK8zkQAKpoCGvCQAdgAtKd2vxsRDZFYAJwAVgALMSJAT%2BABJRhmISKPzITYAMTc5kQxDSmwAKsgeAoPPwAGpYYpCgBe3MYWD5AoswtoWJxlKp%2BIAHLItDSANL8ADiXGIPU2FmtVC1%2FAeqvBmy8ms2hgOAS2hM2BRegP4ABFRQBZTaNfSNTZsZaFa3eryhiNRiQxiSbFlUZaOQoBZD8ACCPAADjhEJsABTmMsSvzKlxYACUmzDkb8uYcyALKaIEMcFZrFcYNEYiuIbY7my7ed7hfOG0Yuy85CYwt2t1SxB4PD8yeITdVAbA9AsvqXBVXyHXjE3SM2XH%2B9%2FI8R5xDPF%2F7IHDxDLw6fue%2FiBOiWg1iGah3IUPBRlSdIAPSZBINItiWkR%2BP4AbkOQawHMIqKPH4JZcFgaplssKiIMERDFvYERYM%2BmyUMkb6cmUJFkZsABKxbhhCxbcfwEIskJRCioxz4oExLFCiuoZ%2BKR1GPFswr2PQqwuMRRAAFrNo%2BFHUGomxfNpIB6SeIZsAsmxqiyFoLPwFlqjwJgFEKhQFqiarVoo1FqO0Vi2ZsnSbJiACiUbtChSFZO0aFEGgLj%2BMk9DkJsFpYD2fZFkQIaosQES7mqmXZYWPHyiqTqJX5WzFGVCjbFgwxbOKkoFFsViQCaEhqEyQIgBCGD%2Flg3oiuRCZBDyACKFoshCoYAEJ7FgfT5ouiUxH4bFoomyjBFMID1g48zcaKaCCaKbCiuFF38GdfGLSyoosmg4UAHIQpigksvd52imJIBnRCvJsO9VmTEQZhcFA7QAL5wwQcB0MQVBUAsyBlvQZb8KQkBwC4hjiKA%2BhQDSNJWIFVIBVk1L4lYBpEGIkB0lSDMSAAbFoahaFSVIGgaWgc9MdBsGAXhcKR7plOLigufQ9ibCgDiPjwzVYMePn2FshikeLxxeIws6KwA1CZjE0C2BCbPWq4ywoUs8PQN53qu4RlphfgEAAPBEXAAHwVlws6bAAjvQD4ADr0EyWAGki5ZaREQxqkM7aLaKxlQgGFGKdHsdZhuXprIK1rui4xubGUjC4DbjFVzy7XPl4TWKyGGdaKaj5rCopF7lgai%2BwH%2FC0JAwj0FgiMk1ABrtO0gtWGodJaPitL4viNJM1ArMSLPWR9XSG%2FtDSNRIHQaD2wUfR2grNtMGiPeSb2hFPJs%2BcSHHNsSvuycip%2BYCrUYmqNSWwLTO0dD7P2%2FtQKG38IINUiB6DUTVCKfCXB6DHl2EHBudoHblRoFuQi3chBAP7oPKBI8oDj0nhMBGSNwB0E1DIDGWMcZEDxhQHghQ6DvWatre48pBCOjfjHD%2B8c1ZpGPKiHkjg7QETRAQ8urty5GzQADKM3U%2BpMlnEbHoXByDSPbAADV5Co82F5MHGUjowCE6spFjh5EwAM9hhCN3kcga2z4nYuK2PWPcfhf4oMbnglutxhTCDVNY%2Fw9Z1pqluI6fwIAEa0KAAA%3D%3D&x=664355.56&y=4802362.75&scale=1060945.2623305083"
+      },
+      {
+       "formato": "WMS",
+       "nome": "Geoscopio_wms CTR",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 57298,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/servizi/wms/CTR.htm",
+       "url": "http://www502.regione.toscana.it/geoscopio/servizi/wms/CTR.htm"
+      }
+     ],
+     "contenuto_json": null
+    },
+    {
+     "layer": "CTR regionale 1:2.000 e 1:10.000",
+     "id": "ctr10k",
+     "titolo": "Regione Toscana - CTR 1:10.000",
+     "org": "regione-toscana",
+     "formati": [
+      "DXF",
+      "SHP",
+      "TIFF",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by (Creative Commons Attribution)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [
+      "versione CC non indicata"
+     ],
+     "dato_modified": "15-10-2015",
+     "emesso": "",
+     "scheda_aggiornata": "2020-03-31",
+     "frequenza": "UNKNOWN",
+     "srs_scheda": null,
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "CTR10K_SHP",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 18520,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4YwXA2qYOQC4HsQGEAWBTEBrGAaAhmMALYIAm6YARAK4B2IG2A8nBgE4DOVu6dc7AJ6QADLirs4AfRD5JCOJnwA6EAICMIrMs6oADj3XjJU%2FMQBGMvp1V8BASyl0aIADbpHAJhHr1PT8bSauzKmlg8AMyBUpwAZgh0ZAjKqPaurtwAurh6CAiukFQASgAqyACCpcwlAKIVPMUl5QCyAEIAkiXtyDUAcgDKAKqV7Q2lyCVFYyX9AGLMvQAizFSZAL5r60AAA&x=664355.56&y=4802362.75&scale=1055832.2731144577",
+       "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4YwXA2qYOQC4HsQGEAWBTEBrGAaAhmMALYIAm6YARAK4B2IG2A8nBgE4DOVu6dc7AJ6QADLirs4AfRD5JCOJnwA6EAICMIrMs6oADj3XjJU%2FMQBGMvp1V8BASyl0aIADbpHAJhHr1PT8bSauzKmlg8AMyBUpwAZgh0ZAjKqPaurtwAurh6CAiukFQASgAqyACCpcwlAKIVPMUl5QCyAEIAkiXtyDUAcgDKAKqV7Q2lyCVFYyX9AGLMvQAizFSZAL5r60AAA&x=664355.56&y=4802362.75&scale=1055832.2731144577"
+      },
+      {
+       "formato": "TIFF",
+       "nome": "CTR10K_TIFF",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 18520,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4YwXA2qYOQC4HsQGEAWBTEBrGAaAhmMALYIAm6YARAK4B2IG2A8nBgE4DOVu6dc7AJ6QADLirs4AfRD5JCOJnwA6EAICMIrMrgBLAGY914yVPzEARjL6dVfAbql0aIADbpHAJhHr1PTybSauzKmlg8AMyBUpz6CHRkCMqouq6u3AC6uAAOCAiukFQASgAqyACCpcwlAKIVPMUl5QCyAEIAkiXtyDUAcgDKAKqV7Q2lyCVFYyX9AGLMvQAizFQZAL5r60AAA&x=664355.56&y=4802362.75&scale=1055832.2731144577",
+       "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4YwXA2qYOQC4HsQGEAWBTEBrGAaAhmMALYIAm6YARAK4B2IG2A8nBgE4DOVu6dc7AJ6QADLirs4AfRD5JCOJnwA6EAICMIrMrgBLAGY914yVPzEARjL6dVfAbql0aIADbpHAJhHr1PTybSauzKmlg8AMyBUpz6CHRkCMqouq6u3AC6uAAOCAiukFQASgAqyACCpcwlAKIVPMUl5QCyAEIAkiXtyDUAcgDKAKqV7Q2lyCVFYyX9AGLMvQAizFQZAL5r60AAA&x=664355.56&y=4802362.75&scale=1055832.2731144577"
+      },
+      {
+       "formato": "TIFF",
+       "nome": "CTR10K_TIFF_LEGENDA",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 18520,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4YwXA2qYOQC4HsQGEAWBTEBrGAaAhmMALYIAm6YARAK4B2IG2A8nBgE4DOVu6dc7AJ6QADLirs4AfRD5JCOJnwA6EAICMIrCAA2yuAEsAZj3XjJU%2FMQBGMvp1V8BBqXRq70LgEwj16nl7m0mrsyppYPADMQVKcRgh0ZAjKqAY6OtwAurgADggIOpBUAEoAKsgAgmXMpQCilTwlpRUAsgBCAJKlHci1AHIAygCqVR2NZcilxeOlAwBizH0AIsxUmQC%2B6xtAA&x=664355.56&y=4802362.75&scale=1055832.2731144577",
+       "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4YwXA2qYOQC4HsQGEAWBTEBrGAaAhmMALYIAm6YARAK4B2IG2A8nBgE4DOVu6dc7AJ6QADLirs4AfRD5JCOJnwA6EAICMIrCAA2yuAEsAZj3XjJU%2FMQBGMvp1V8BBqXRq70LgEwj16nl7m0mrsyppYPADMQVKcRgh0ZAjKqAY6OtwAurgADggIOpBUAEoAKsgAgmXMpQCilTwlpRUAsgBCAJKlHci1AHIAygCqVR2NZcilxeOlAwBizH0AIsxUmQC%2B6xtAA&x=664355.56&y=4802362.75&scale=1055832.2731144577"
+      },
+      {
+       "formato": "DXF",
+       "nome": "CTR10K_DXF",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 18520,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4YwXA2qYOQC4HsQGEAWBTEBrGAaAhmMALYIAm6YARAK4B2IG2A8nBgE4DOVu6dc7AJ6QADLirs4AfRD5JCOJnwA6EAICMIrMrIAPAGY914yVPzEARjL6dVfAQEspdGiAA26JwCYR69Ty8TaTV2ZU0sHgBmIKlOfQQ6MgRlVAc3N24AXVwABwQEN0gqACUAFWQAQTLmUoBRSp4S0oqAWQAhAElSjuRagDkAZQBVKo7GsuRS4vHSgYAxZj6AEWYqTIBfdY2gA&x=664355.56&y=4802362.75&scale=1055832.2731144577",
+       "url": "http://www502.regione.toscana.it/geoscopio/cartoteca.html?cmdUrlComp=N4YwXA2qYOQC4HsQGEAWBTEBrGAaAhmMALYIAm6YARAK4B2IG2A8nBgE4DOVu6dc7AJ6QADLirs4AfRD5JCOJnwA6EAICMIrMrIAPAGY914yVPzEARjL6dVfAQEspdGiAA26JwCYR69Ty8TaTV2ZU0sHgBmIKlOfQQ6MgRlVAc3N24AXVwABwQEN0gqACUAFWQAQTLmUoBRSp4S0oqAWQAhAElSjuRagDkAZQBVKo7GsuRS4vHSgYAxZj6AEWYqTIBfdY2gA&x=664355.56&y=4802362.75&scale=1055832.2731144577"
+      },
+      {
+       "formato": "WMS",
+       "nome": "Geoscopio_wms CTR",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 57298,
+       "url_finale": "http://www502.regione.toscana.it/geoscopio/servizi/wms/CTR.htm",
+       "url": "http://www502.regione.toscana.it/geoscopio/servizi/wms/CTR.htm"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "GTFS (tram, bus, treni)",
+   "dataset": [
+    {
+     "layer": "GTFS (tram, bus, treni)",
+     "id": "rt-oraritb",
+     "titolo": "Regione Toscana - Orari trasporto pubblico",
+     "org": "regione-toscana",
+     "formati": [
+      "TXT",
+      "ZIP"
+     ],
+     "licenza_scheda": "cc-by (Creative Commons Attribution)",
+     "licenza_risorse": [
+      "CC BY 4.0",
+      "non indicata"
+     ],
+     "flags": [
+      "licenza assente su alcune risorse",
+      "versione CC non indicata"
+     ],
+     "dato_modified": "01-11-2023",
+     "emesso": "11-06-2014",
+     "scheda_aggiornata": "2026-09-08",
+     "frequenza": "UPDATE_CONT",
+     "srs_scheda": null,
+     "url": [
+      {
+       "formato": "ZIP",
+       "nome": "TRENITALIA.gtfs",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 6127610,
+       "url_finale": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/4f85393b-357d-443d-8378-65de4198505f/download/trenitalia.gtfs",
+       "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/4f85393b-357d-443d-8378-65de4198505f/download/trenitalia.gtfs"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "TFT.gtfs",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 19320,
+       "url_finale": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/59aeacbc-99ee-410b-ac1e-622b5574a666/download/tft.gtfs",
+       "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/59aeacbc-99ee-410b-ac1e-622b5574a666/download/tft.gtfs"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "TOREMAR.gtfs",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 209544,
+       "url_finale": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/56539a5a-e0be-49eb-b3ac-052a42ad0de0/download/toremar.gtfs",
+       "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/56539a5a-e0be-49eb-b3ac-052a42ad0de0/download/toremar.gtfs"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "GEST.gtfs",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 1191740,
+       "url_finale": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/1f62d551-65f4-49f8-9a99-e19b02077be3/download/gest.gtfs",
+       "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/1f62d551-65f4-49f8-9a99-e19b02077be3/download/gest.gtfs"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "AUTOLINEE_TOSCANE.gtfs",
+       "codice": 200,
+       "contenuto": "zip",
+       "byte": null,
+       "url_finale": "https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs",
+       "url": "https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "01-ColbusScolastico",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 1816561,
+       "url_finale": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/5fb6d2bd-8146-456a-91fe-23009ffae253/download/01-colbusscolastico.gtfs",
+       "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/5fb6d2bd-8146-456a-91fe-23009ffae253/download/01-colbusscolastico.gtfs"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "02-ColbusNonScolastico",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2437976,
+       "url_finale": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/61fada72-e2de-4dee-aa23-66629152fa0d/download/02-colbusnonscolastico.gtfs",
+       "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/61fada72-e2de-4dee-aa23-66629152fa0d/download/02-colbusnonscolastico.gtfs"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "03-ATScolastico",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2097641,
+       "url_finale": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/8b38e763-e349-404c-a274-442312f7e3b2/download/03-atscolastico.gtfs",
+       "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/8b38e763-e349-404c-a274-442312f7e3b2/download/03-atscolastico.gtfs"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "04-ATNonScolastico",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 393141,
+       "url_finale": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/6969571a-96d7-490d-a944-17af386717b6/download/04-atnonscolastico.gtfs",
+       "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/6969571a-96d7-490d-a944-17af386717b6/download/04-atnonscolastico.gtfs"
+      },
+      {
+       "formato": "TXT",
+       "nome": "Ambiti Territoriali",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 870,
+       "url_finale": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/5672a72d-65aa-4535-b57c-3f50d4a6d126/download/ambiti.txt",
+       "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/5672a72d-65aa-4535-b57c-3f50d4a6d126/download/ambiti.txt"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "fermate e linee tram (Comune)",
+   "dataset": [
+    {
+     "layer": "fermate e linee tram (Comune)",
+     "id": "607b8031-252b-4442-950a-7b4452d9db8f",
+     "titolo": "Fermate tram",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "11-03-2025",
+     "emesso": "13-03-2012",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "SHP",
+       "nome": "Tram fermate (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2899,
+       "url_finale": "https://datigis.comune.fi.it/shp/tram_fermate.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6416&type=99&format=url&file_format=shp&file_id=20045"
+      },
+      {
+       "formato": "KML",
+       "nome": "Tram fermate (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 4193,
+       "url_finale": "https://datigis.comune.fi.it/kml/tram_fermate.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6416&type=99&format=url&file_format=kml&file_id=20047"
+      },
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      }
+     ],
+     "contenuto_json": null
+    },
+    {
+     "layer": "fermate e linee tram (Comune)",
+     "id": "23160550-904f-4765-8fc9-89c88dc60226",
+     "titolo": "Linee tram",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "11-03-2025",
+     "emesso": "13-03-2012",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Tram tracciato (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 16369,
+       "url_finale": "https://datigis.comune.fi.it/shp/tram_tracciato.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6424&type=99&format=url&file_format=shp&file_id=20069"
+      },
+      {
+       "formato": "KML",
+       "nome": "Tram tracciato (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 24414,
+       "url_finale": "https://datigis.comune.fi.it/kml/tram_tracciato.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6424&type=99&format=url&file_format=kml&file_id=20071"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "quartieri",
+   "dataset": [
+    {
+     "layer": "quartieri",
+     "id": "5e08844a-c0d8-4d64-a3b2-d1ab58d9283f",
+     "titolo": "Aree quartieri",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "16-02-2012",
+     "emesso": "17-10-2011",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "KML",
+       "nome": "Quartieri (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 34583,
+       "url_finale": "https://datigis.comune.fi.it/kml/quartieri.kmz",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6374&type=99&format=url&file_format=kml&file_id=19940"
+      },
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Quartieri (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 30791,
+       "url_finale": "https://datigis.comune.fi.it/shp/quartieri.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6374&type=99&format=url&file_format=shp&file_id=19938"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "scuole (Comune, da MIM)",
+   "dataset": [
+    {
+     "layer": "scuole (Comune, da MIM)",
+     "id": "anagrafica-scuole-statali-2026_27",
+     "titolo": "Informazioni anagrafiche scuole anno scolastico 2026/27 - Scuole statali",
+     "org": "comune-di-firenze",
+     "formati": [
+      "CSV",
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "iodl2 (iodl2)",
+     "licenza_risorse": [
+      "IODL 2.0"
+     ],
+     "flags": [],
+     "dato_modified": "18-09-2026",
+     "emesso": "17-09-2026",
+     "scheda_aggiornata": "2026-09-19",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "WGS84",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Miur scuole statali 2026 27 (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 87071,
+       "url_finale": "https://datigis.comune.fi.it/json/miur_scuole_statali_2026_27.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7857&type=99&format=url&file_format=geojson&file_id=23125"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Miur scuole statali 2026 27 (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 16098,
+       "url_finale": "https://datigis.comune.fi.it/shp/miur_scuole_statali_2026_27.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7857&type=99&format=url&file_format=shp&file_id=23126"
+      },
+      {
+       "formato": "CSV",
+       "nome": "Miur scuole statali 2026 27 (Formato dei dati: csv)",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 46881,
+       "url_finale": "https://datigis.comune.fi.it/csv/miur_scuole_statali_2026_27.csv",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7857&type=99&format=url&file_format=csv&file_id=23128"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=7857&type=99&format=url&file_format=geojson&file_id=23125",
+      "byte": 87071,
+      "sha256": "5a9ab7914290ea32d62aa869c8073063062a575cb3f7c82c8198d5c96d7145b3",
+      "elementi": 222,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::4326"
+       }
+      },
+      "tipi_geometria": [
+       "Point"
+      ],
+      "campi": [
+       "annoscolas",
+       "cap",
+       "codicescuo",
+       "email",
+       "indirizzo",
+       "nome",
+       "tipologia",
+       "website"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       11.16975774,
+       43.79517437
+      ]
+     }
+    },
+    {
+     "layer": "scuole (Comune, da MIM)",
+     "id": "anagrafica-scuole-paritarie-2026_27",
+     "titolo": "Informazioni anagrafiche scuole anno scolastico 2026/27 - Scuole paritarie",
+     "org": "comune-di-firenze",
+     "formati": [
+      "CSV",
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "iodl2 (iodl2)",
+     "licenza_risorse": [
+      "IODL 2.0"
+     ],
+     "flags": [],
+     "dato_modified": "18-09-2026",
+     "emesso": "17-09-2026",
+     "scheda_aggiornata": "2026-09-19",
+     "frequenza": "NOT_PLANNED",
+     "srs_scheda": "WGS84",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Miur scuole paritarie 2026 27 (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 43585,
+       "url_finale": "https://datigis.comune.fi.it/json/miur_scuole_paritarie_2026_27.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7856&type=99&format=url&file_format=geojson&file_id=23121"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Miur scuole paritarie 2026 27 (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 8891,
+       "url_finale": "https://datigis.comune.fi.it/shp/miur_scuole_paritarie_2026_27.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7856&type=99&format=url&file_format=shp&file_id=23129"
+      },
+      {
+       "formato": "CSV",
+       "nome": "Miur scuole paritarie 2026 27 (Formato dei dati: csv)",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 24112,
+       "url_finale": "https://datigis.comune.fi.it/csv/miur_scuole_paritarie_2026_27.csv",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=7856&type=99&format=url&file_format=csv&file_id=23123"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=7856&type=99&format=url&file_format=geojson&file_id=23121",
+      "byte": 43585,
+      "sha256": "3fe96d4fcaa2c8953a7156c1be1b2d5434d614f83f13f7e06c7f44ca19dc961f",
+      "elementi": 109,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::4326"
+       }
+      },
+      "tipi_geometria": [
+       "Point"
+      ],
+      "campi": [
+       "annoscolas",
+       "cap",
+       "codicescuo",
+       "email",
+       "indirizzo",
+       "nome",
+       "tipologia",
+       "website"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       11.17609741,
+       43.7964083
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "layer": "edifici scolastici (Città metropolitana)",
+   "dataset": [
+    {
+     "layer": "edifici scolastici (Città metropolitana)",
+     "id": "edifici-scolastici-citta-metropolitana-di-firenze",
+     "titolo": "Edifici scolastici - Città Metropolitana di Firenze",
+     "org": "citta-metropolitana-firenze",
+     "formati": [
+      "WMS",
+      "ZIP"
+     ],
+     "licenza_scheda": "cc-by (Creative Commons Attribution)",
+     "licenza_risorse": [
+      "non indicata"
+     ],
+     "flags": [
+      "licenza assente su alcune risorse",
+      "versione CC non indicata"
+     ],
+     "dato_modified": "13-02-2014",
+     "emesso": "13-02-2014",
+     "scheda_aggiornata": "2026-04-24",
+     "frequenza": "IRREG",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "form_ed_scolastici_accessi",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": null,
+       "url_finale": "https://mappe.cittametropolitana.fi.it/geoserver/wms?SERVICE=WMS",
+       "url": "https://mappe.cittametropolitana.fi.it/geoserver/wms?SERVICE=WMS"
+      },
+      {
+       "formato": "WMS",
+       "nome": "form_ed_scolastici",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": null,
+       "url_finale": "https://mappe.cittametropolitana.fi.it/geoserver/wms?SERVICE=WMS",
+       "url": "https://mappe.cittametropolitana.fi.it/geoserver/wms?SERVICE=WMS"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "form_ed_scolastici_accessi.zip",
+       "codice": 200,
+       "contenuto": "zip",
+       "byte": 43792,
+       "url_finale": "https://dati.cittametropolitana.fi.it/geonetwork/srv/api/records/cmfi:a507767e-63e2-4856-9711-5e9a9ea96a76/attachments/form_ed_scolastici_accessi.zip",
+       "url": "https://dati.cittametropolitana.fi.it/geonetwork/srv/api/records/cmfi:a507767e-63e2-4856-9711-5e9a9ea96a76/attachments/form_ed_scolastici_accessi.zip"
+      },
+      {
+       "formato": "ZIP",
+       "nome": "form_ed_scolastici.zip",
+       "codice": 200,
+       "contenuto": "zip",
+       "byte": 341006,
+       "url_finale": "https://dati.cittametropolitana.fi.it/geonetwork/srv/api/records/cmfi:a507767e-63e2-4856-9711-5e9a9ea96a76/attachments/form_ed_scolastici.zip",
+       "url": "https://dati.cittametropolitana.fi.it/geonetwork/srv/api/records/cmfi:a507767e-63e2-4856-9711-5e9a9ea96a76/attachments/form_ed_scolastici.zip"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "aree pedonali e aree stradali (Comune)",
+   "dataset": [
+    {
+     "layer": "aree pedonali e aree stradali (Comune)",
+     "id": "4b49d9a5-6b91-451d-b7c3-73ea6cd3e83b",
+     "titolo": "Aree pedonali",
+     "org": "comune-di-firenze",
+     "formati": [
+      "GeoJSON",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "09-02-2026",
+     "emesso": "17-10-2011",
+     "scheda_aggiornata": "2026-09-24",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Areepedonali (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 78673,
+       "url_finale": "https://datigis.comune.fi.it/shp/areepedonali.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6373&type=99&format=url&file_format=shp&file_id=19935"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Areepedonali (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 332812,
+       "url_finale": "https://datigis.comune.fi.it/json/areepedonali.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6373&type=99&format=url&file_format=geojson&file_id=23070"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=6373&type=99&format=url&file_format=geojson&file_id=23070",
+      "byte": 332812,
+      "sha256": "b0e2f057ba5bba3bd9dbe51c89cb308f01978a881ba195f9cf66bcfb8c027046",
+      "elementi": 394,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::4326"
+       }
+      },
+      "tipi_geometria": [
+       "MultiPolygon"
+      ],
+      "campi": [
+       "accessib_bici",
+       "accessib_elettr_cose",
+       "accessib_elettr_persone",
+       "attoinizio",
+       "datainizio",
+       "id",
+       "luogo",
+       "note",
+       "superficie",
+       "tipo"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       [
+        [
+         [
+          11.25415794,
+          43.77569285
+         ],
+         [
+          11.25404847,
+          43.77543166
+         ],
+         [
+          11.25400323,
+          43.77544795
+         ],
+         [
+          11.25406387,
+          43.7756035
+         ],
+         [
+          11.25412769,
+          43.77578744
+         ],
+         [
+          11.25413739,
+          43.77581732
+         ],
+         [
+          11.25423422,
+          43.77603644
+         ],
+         [
+          11.25428908,
+          43.77601835
+         ],
+         [
+          11.25419521,
+          43.7757853
+         ],
+         [
+          11.25415794,
+          43.77569285
+         ]
+        ]
+       ]
+      ]
+     }
+    },
+    {
+     "layer": "aree pedonali e aree stradali (Comune)",
+     "id": "a44ea551-7b09-4d0d-af64-7c08159e9316",
+     "titolo": "Aree stradali",
+     "org": "comune-di-firenze",
+     "formati": [
+      "KML",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "26-05-2025",
+     "emesso": "17-10-2011",
+     "scheda_aggiornata": "2026-02-11",
+     "frequenza": "WEEKLY",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it:443/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "http://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Areestradali (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 2005699,
+       "url_finale": "https://datigis.comune.fi.it/shp/areestradali.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6379&type=99&format=url&file_format=shp&file_id=19953"
+      },
+      {
+       "formato": "KML",
+       "nome": "Areestradali (Formato dei dati: kml)",
+       "codice": 206,
+       "contenuto": "html",
+       "byte": 1902,
+       "url_finale": "https://data.comune.fi.it/datastore/download.php?id=6379&type=99&format=url&file_format=kml&file_id=19955",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6379&type=99&format=url&file_format=kml&file_id=19955"
+      }
+     ],
+     "contenuto_json": null
+    }
+   ]
+  },
+  {
+   "layer": "aree verdi (Comune)",
+   "dataset": [
+    {
+     "layer": "aree verdi (Comune)",
+     "id": "d0ffa579-e002-4dc3-94b4-d69207cae114",
+     "titolo": "Aree verdi",
+     "org": "comune-di-firenze",
+     "formati": [
+      "GeoJSON",
+      "RDF",
+      "SHP",
+      "WMS"
+     ],
+     "licenza_scheda": "cc-by-4.0 (cc-by-4.0)",
+     "licenza_risorse": [
+      "CC BY 4.0"
+     ],
+     "flags": [],
+     "dato_modified": "05-10-2026",
+     "emesso": "17-10-2011",
+     "scheda_aggiornata": "2026-10-05",
+     "frequenza": "AS_NEEDED",
+     "srs_scheda": "ROMA40/OVEST",
+     "url": [
+      {
+       "formato": "RDF",
+       "nome": "Aree verdi (Formato dei dati: rdf)",
+       "codice": 206,
+       "contenuto": "binario/testo",
+       "byte": 8196010,
+       "url_finale": "https://linkedopendata.comune.fi.it/download/rdf/aree_verdi.ttl",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6855&type=99&format=url&file_format=rdf&file_id=22414"
+      },
+      {
+       "formato": "SHP",
+       "nome": "Aree verdi (Formato dei dati: shp)",
+       "codice": 206,
+       "contenuto": "zip",
+       "byte": 1899828,
+       "url_finale": "https://datigis.comune.fi.it/shp/aree_verdi.zip",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6855&type=99&format=url&file_format=shp&file_id=21081"
+      },
+      {
+       "formato": "GeoJSON",
+       "nome": "Aree verdi (Formato dei dati: geojson)",
+       "codice": 206,
+       "contenuto": "json",
+       "byte": 5362326,
+       "url_finale": "https://datigis.comune.fi.it/json/aree_verdi.json",
+       "url": "https://data.comune.fi.it/datastore/download.php?id=6855&type=99&format=url&file_format=geojson&file_id=23062"
+      },
+      {
+       "formato": "WMS",
+       "nome": "Web Map Service (Distribuzione WMS)",
+       "codice": 200,
+       "contenuto": "xml",
+       "byte": 4021539,
+       "url_finale": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0",
+       "url": "https://tms.comune.fi.it/tiles/service/wms?request=GetCapabilities&service=WMS&tiled=TRUE&version=1.3.0"
+      }
+     ],
+     "contenuto_json": {
+      "url": "https://data.comune.fi.it/datastore/download.php?id=6855&type=99&format=url&file_format=geojson&file_id=23062",
+      "byte": 5362326,
+      "sha256": "59d28c8bc3c84c9703bdb412100e8275c2562b35bdbb6db46bf883aac83959ef",
+      "elementi": 1687,
+      "crs": {
+       "type": "name",
+       "properties": {
+        "name": "urn:ogc:def:crs:EPSG::4326"
+       }
+      },
+      "tipi_geometria": [
+       "MultiPolygon"
+      ],
+      "campi": [
+       "CODICE_AREA",
+       "ID",
+       "NOME_AREA",
+       "QUARTIERE",
+       "SUPERF_MQ",
+       "USO_AREA"
+      ],
+      "campi_licenza": [],
+      "primo_vertice": [
+       [
+        [
+         [
+          11.18189178,
+          43.79659907
+         ],
+         [
+          11.18199124,
+          43.79673979
+         ],
+         [
+          11.18199333,
+          43.79675271
+         ],
+         [
+          11.18199055,
+          43.79676852
+         ],
+         [
+          11.18198267,
+          43.79678443
+         ],
+         [
+          11.18197575,
+          43.79679581
+         ],
+         [
+          11.18208276,
+          43.79675434
+         ],
+         [
+          11.18197596,
+          43.7965999
+         ],
+         [
+          11.18189178,
+          43.79659907
+         ]
+        ]
+       ]
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "conflitti": [
+  {
+   "id": "dbt2k",
+   "titolo": "DataBase Topografico Regionale in scala 1:2.000",
+   "flags": [
+    "scheda e risorse in conflitto",
+    "versione CC non indicata"
+   ],
+   "scheda": "cc-by (Creative Commons Attribution)",
+   "risorse": [
+    "CC BY-SA 4.0"
+   ]
+  },
+  {
+   "id": "dbt10k-li-pi-pt-po-si",
+   "titolo": "DataBase Topografico Regionale in scala 1:10.000",
+   "flags": [
+    "versione CC non indicata"
+   ],
+   "scheda": "cc-by (Creative Commons Attribution)",
+   "risorse": [
+    "CC BY 4.0"
+   ]
+  },
+  {
+   "id": "ctr2k",
+   "titolo": "Regione Toscana - CTR 1:2.000",
+   "flags": [
+    "versione CC non indicata"
+   ],
+   "scheda": "cc-by (Creative Commons Attribution)",
+   "risorse": [
+    "CC BY 4.0"
+   ]
+  },
+  {
+   "id": "ctr10k",
+   "titolo": "Regione Toscana - CTR 1:10.000",
+   "flags": [
+    "versione CC non indicata"
+   ],
+   "scheda": "cc-by (Creative Commons Attribution)",
+   "risorse": [
+    "CC BY 4.0"
+   ]
+  },
+  {
+   "id": "rt-oraritb",
+   "titolo": "Regione Toscana - Orari trasporto pubblico",
+   "flags": [
+    "licenza assente su alcune risorse",
+    "versione CC non indicata"
+   ],
+   "scheda": "cc-by (Creative Commons Attribution)",
+   "risorse": [
+    "CC BY 4.0",
+    "non indicata"
+   ]
+  },
+  {
+   "id": "edifici-scolastici-citta-metropolitana-di-firenze",
+   "titolo": "Edifici scolastici - Città Metropolitana di Firenze",
+   "flags": [
+    "licenza assente su alcune risorse",
+    "versione CC non indicata"
+   ],
+   "scheda": "cc-by (Creative Commons Attribution)",
+   "risorse": [
+    "non indicata"
+   ]
+  }
+ ]
+}

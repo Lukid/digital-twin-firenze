@@ -1,0 +1,310 @@
+{
+ "n_alberi_città": 82235,
+ "n_escapos": 50,
+ "n_siti_città": 32472,
+ "colonne_alberi": [
+  "id",
+  "ID",
+  "CODSITO_ALBERO",
+  "QUARTIERE",
+  "SPECIE",
+  "NOME_COMUNE",
+  "CIRCONF_CM"
+ ],
+ "colonne_escapos": [
+  "id",
+  "seg_id",
+  "cens_id",
+  "species",
+  "dbh_cm",
+  "h_m",
+  "crn_w_m",
+  "can_h_m",
+  "abg_mg",
+  "c_mg",
+  "lai",
+  "canopy_area_m2",
+  "co2_mg",
+  "o3_kg",
+  "pm10_kg",
+  "pm25_kg",
+  "no2_kg",
+  "so2_kg",
+  "co_kg"
+ ],
+ "colonne_siti": [
+  "salberoid",
+  "salbero_p",
+  "Z"
+ ],
+ "area_km2": {
+  "FA": 1.717,
+  "FB": 1.717,
+  "FA&FB": 0.787,
+  "FA|FB": 2.647
+ },
+ "FA": {
+  "alberi": 1614,
+  "escapos": 50,
+  "siti": 994,
+  "alberi_specie_vuote": 0,
+  "circonf_cm": {
+   "n": 1614,
+   "zero_o_nulla": 20,
+   "p10_med_p90": [
+    14.1,
+    53.4,
+    144.4
+   ]
+  },
+  "alberi_per_ettaro": 9.4,
+  "top_specie": {
+   "Tilia x europaea": 197,
+   "Fraxinus excelsior": 172,
+   "Celtis australis": 138,
+   "Cupressus sempervirens": 117,
+   "Platanus x acerifolia": 72,
+   "Quercus ilex": 70,
+   "Pinus pinea": 65,
+   "Platanus Platanor \"Vallis Clausa\"": 59
+  },
+  "quartiere": {
+   "5": 1614
+  },
+  "id_unici": 1,
+  "codsito_unici": 1612
+ },
+ "FB": {
+  "alberi": 2469,
+  "escapos": 14,
+  "siti": 1748,
+  "alberi_specie_vuote": 0,
+  "circonf_cm": {
+   "n": 2469,
+   "zero_o_nulla": 26,
+   "p10_med_p90": [
+    18.8,
+    56.5,
+    163.3
+   ]
+  },
+  "alberi_per_ettaro": 14.38,
+  "top_specie": {
+   "Tilia x europaea": 293,
+   "Celtis australis": 267,
+   "Fraxinus excelsior": 253,
+   "Cupressus sempervirens": 196,
+   "Platanus x acerifolia": 170,
+   "Liriodendron tulipifera": 88,
+   "Pinus pinea": 77,
+   "Tilia tomentosa": 61
+  },
+  "quartiere": {
+   "5": 2468
+  },
+  "id_unici": 1,
+  "codsito_unici": 2469
+ },
+ "FA&FB": {
+  "alberi": 615,
+  "escapos": 14,
+  "siti": 498,
+  "alberi_specie_vuote": 0,
+  "circonf_cm": {
+   "n": 615,
+   "zero_o_nulla": 13,
+   "p10_med_p90": [
+    28.3,
+    62.8,
+    141.4
+   ]
+  },
+  "alberi_per_ettaro": 7.82,
+  "top_specie": {
+   "Tilia x europaea": 107,
+   "Fraxinus excelsior": 99,
+   "Celtis australis": 59,
+   "Carpinus betulus": 31,
+   "Tilia tomentosa": 28,
+   "Pyrus calleryana var. chanticleer": 26,
+   "Parrotia persica \"Vanessa\"": 21,
+   "Platanus x acerifolia": 21
+  },
+  "quartiere": {
+   "5": 615
+  },
+  "id_unici": 1,
+  "codsito_unici": 615
+ },
+ "FA|FB": {
+  "alberi": 3468,
+  "escapos": 50,
+  "siti": 2244,
+  "alberi_specie_vuote": 0,
+  "circonf_cm": {
+   "n": 3468,
+   "zero_o_nulla": 33,
+   "p10_med_p90": [
+    15.7,
+    53.4,
+    160.0
+   ]
+  },
+  "alberi_per_ettaro": 13.1,
+  "top_specie": {
+   "Tilia x europaea": 383,
+   "Celtis australis": 346,
+   "Fraxinus excelsior": 326,
+   "Cupressus sempervirens": 294,
+   "Platanus x acerifolia": 221,
+   "Pinus pinea": 122,
+   "Quercus ilex": 98,
+   "Liriodendron tulipifera": 88
+  },
+  "quartiere": {
+   "5": 3467
+  },
+  "id_unici": 1,
+  "codsito_unici": 3466
+ },
+ "siti_Z_ok": 1.0,
+ "siti_id_range": [
+  1,
+  32472
+ ],
+ "censimento_CODSITO_range": [
+  1,
+  136217
+ ],
+ "censimento_vs_siti": {
+  "dist_m_p50_p90_p99": [
+   22.29,
+   203.8,
+   545.32
+  ],
+  "quota_entro_1m": 0.201,
+  "quota_entro_3m": 0.301,
+  "stesso_id_numerico": 0.0,
+  "FA": {
+   "n": 1614,
+   "p50_p90": [
+    6.1,
+    123.94
+   ],
+   "quota_entro_3m": 0.442
+  },
+  "FB": {
+   "n": 2469,
+   "p50_p90": [
+    2.51,
+    52.31
+   ],
+   "quota_entro_3m": 0.516
+  }
+ },
+ "escapos": {
+  "colonne": [
+   "id",
+   "seg_id",
+   "cens_id",
+   "species",
+   "dbh_cm",
+   "h_m",
+   "crn_w_m",
+   "can_h_m",
+   "abg_mg",
+   "c_mg",
+   "lai",
+   "canopy_area_m2",
+   "co2_mg",
+   "o3_kg",
+   "pm10_kg",
+   "pm25_kg",
+   "no2_kg",
+   "so2_kg",
+   "co_kg"
+  ],
+  "nota": "cens_id = ID del censimento",
+  "cens_id_in_ID": 50,
+  "cens_id_in_CODSITO": 29,
+  "nearest": {
+   "dist_m_p50_p90_max": [
+    0.72,
+    1.88,
+    3.14
+   ],
+   "nearest_ha_stesso_ID": 50,
+   "nearest_ha_stesso_CODSITO": 0,
+   "stessa_specie": 50
+  },
+  "join_ID": {
+   "n": 50,
+   "dist_p50_p90_max": [
+    0.72,
+    1.88,
+    3.14
+   ],
+   "specie_uguale": 50
+  },
+  "join_CODSITO_ALBERO": {
+   "n": 29,
+   "dist_p50_p90_max": [
+    6028.32,
+    8432.81,
+    8449.93
+   ],
+   "specie_uguale": 0
+  },
+  "dbh_vs_circonf_censimento": {
+   "n": 49,
+   "rapporto_med_dbh_escapos/dbh_cens": 1.0,
+   "scarto_mediano_cm": 0.0
+  },
+  "parametri": {
+   "dbh_cm": {
+    "min": 9.99,
+    "p50": 14.99,
+    "max": 84.96,
+    "nulli": 0
+   },
+   "h_m": {
+    "min": 3.5,
+    "p50": 6.68,
+    "max": 17.0,
+    "nulli": 0
+   },
+   "crn_w_m": {
+    "min": 2.22,
+    "p50": 6.31,
+    "max": 15.19,
+    "nulli": 0
+   },
+   "can_h_m": {
+    "min": 2.56,
+    "p50": 3.71,
+    "max": 8.23,
+    "nulli": 0
+   },
+   "canopy_area_m2": {
+    "min": 3.86,
+    "p50": 31.24,
+    "max": 181.26,
+    "nulli": 0
+   },
+   "lai": {
+    "min": 1.94,
+    "p50": 3.5,
+    "max": 4.5,
+    "nulli": 0
+   }
+  },
+  "top_specie": {
+   "Celtis australis": 36,
+   "Cupressus sempervirens": 7,
+   "Quercus ilex": 4,
+   "Populus nigra": 2,
+   "Picea abies": 1
+  },
+  "rapporto_h_chioma_base": 0.585
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "barriere_totale": {
+  "schede": 2064,
+  "grado": {
+   "Non Accessibile": 843,
+   "Parzialmente Accessibile": 695,
+   "Accessibile": 526
+  },
+  "colonne": [
+   "pk_id",
+   "quartiere",
+   "utoe",
+   "scheda",
+   "destinaz_u",
+   "indirizzo",
+   "grado_acce",
+   "url"
+  ]
+ },
+ "walking_city_totale": {
+  "percorsi": 7,
+  "tratti": 115,
+  "km": 95.4
+ },
+ "FA": {
+  "area_km2": 1.72,
+  "barriere": 30,
+  "grado": {
+   "Parzialmente Accessibile": 17,
+   "Accessibile": 7,
+   "Non Accessibile": 6
+  },
+  "destinazioni_top": {
+   "giardino": 6,
+   "uffici": 5,
+   "asilo nido": 2,
+   "scuola": 2,
+   "palestra": 1,
+   "ufficio toponomastica": 1,
+   "campo da calcio, tennis e bocciodromo": 1,
+   "sportello al pubblico": 1
+  },
+  "agganciate_10m": 4,
+  "agganciate_pct": 13.3,
+  "distanza_mediana_m": 19.5,
+  "grado_agganciate": {
+   "Parzialmente Accessibile": 2,
+   "Non Accessibile": 1,
+   "Accessibile": 1
+  },
+  "n_archi_osm": 646,
+  "rifugi_intersecano": 0,
+  "rifugi_ombra_pct": [],
+  "rifugi_nomi": [],
+  "rifugio_piu_vicino_dal_bordo_m": 465.0,
+  "rifugio_piu_vicino": "Giardino di Piazza delle Medaglie d'Oro",
+  "walking_city_piu_vicino_m": 477.0,
+  "walking_city_km": 0.0,
+  "walking_city_percorsi": []
+ },
+ "FB": {
+  "area_km2": 1.72,
+  "barriere": 52,
+  "grado": {
+   "Accessibile": 21,
+   "Parzialmente Accessibile": 18,
+   "Non Accessibile": 13
+  },
+  "destinazioni_top": {
+   "giardino": 9,
+   "uffici": 7,
+   "universit?": 6,
+   "chiesa": 2,
+   "cimitero": 2,
+   "scuola": 2,
+   "sportello al pubblico": 1,
+   "bocciodromo": 1
+  },
+  "agganciate_10m": 11,
+  "agganciate_pct": 21.2,
+  "distanza_mediana_m": 16.6,
+  "grado_agganciate": {
+   "Parzialmente Accessibile": 6,
+   "Accessibile": 3,
+   "Non Accessibile": 2
+  },
+  "n_archi_osm": 1109,
+  "rifugi_intersecano": 0,
+  "rifugi_ombra_pct": [],
+  "rifugi_nomi": [],
+  "rifugio_piu_vicino_dal_bordo_m": 45.0,
+  "rifugio_piu_vicino": "Giardino di Piazza delle Medaglie d'Oro",
+  "walking_city_piu_vicino_m": 33.0,
+  "walking_city_km": 0.0,
+  "walking_city_percorsi": []
+ }
+}
