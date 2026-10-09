@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Passo 2: grafo pedonale Z2+500 m dalle regole di network/regole.json.
-Input: data/norm/network/osm_estratto.pkl (passo 1). Output: data/norm/network/{rete_z2.gpkg, rete_z2.graphml, rete_z2.pkl},
-network/{rete_manifest.json, componenti.json}."""
+Input: osm_estratto.pkl (passo 1). Output: <rete_lib.OUT>/{rete_z2.gpkg, .graphml, .pkl} e <rete_lib.RES>/{rete_manifest.json, componenti.json}
+(Pisa: data/norm/network/ e network/; altre aree: vedi rete_lib.AREE)."""
 import collections, hashlib, json, pathlib, pickle, sys
 import geopandas as gpd, networkx as nx
 from shapely.geometry import LineString, Point, Polygon
@@ -10,10 +10,11 @@ from shapely.strtree import STRtree
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "pipeline"))
 from lib import AOI
-OUT = ROOT / "data/norm/network"; NET = ROOT / "network"
+sys.path.insert(0, str(ROOT / "network"))
+from rete_lib import OUT, RES, STEM, AREA, OSM_SNAP as SNAP
+NET = ROOT / "network"; OUT.mkdir(parents=True, exist_ok=True); RES.mkdir(parents=True, exist_ok=True)
 R = json.load(open(NET / "regole.json"))
 X0, Y0, X1, Y1 = AOI["buf_en"]; Z = AOI["z2_en"]
-SNAP = json.load(open(ROOT / "pipeline/snapshots/snp_osm_pisa_20261001.json"))
 D = pickle.load(open(OUT / "osm_estratto.pkl", "rb"))
 NT = D["nodes_tag"]
 
@@ -180,15 +181,15 @@ def gdf(rows, cols=None): return gpd.GeoDataFrame(rows, geometry="geometry", crs
 nodi = gdf([{"node_id": n, **{k: v for k, v in d.items() if k not in ("x", "y")}, "geometry": Point(d["x"], d["y"])} for n, d in G.nodes(data=True)])
 nodi["grado"] = [G.degree(n) for n in nodi.node_id]
 archi = gdf([{**{k: v for k, v in d.items() if k != "geom"}, "geometry": d["geom"]} for _, _, d in G.edges(data=True)])
-gp = OUT / "rete_z2.gpkg"
+gp = OUT / f"{STEM}.gpkg"
 if gp.exists(): gp.unlink()
 for name, g in (("nodi", nodi), ("archi", archi), ("archi_esclusi", gdf(excl_rows)), ("nodi_bloccati", gdf(bloccati) if bloccati else gdf([{"node_id": None, "motivo": None, "geometry": Point(0, 0)}]).iloc[0:0])):
     g.to_file(gp, layer=name, driver="GPKG")
 H = nx.Graph()   # GraphML: attributi scalari, senza geometria (la geometria è nel GeoPackage)
 for n, d in G.nodes(data=True): H.add_node(n, **{k: v for k, v in d.items() if v is not None})
 for u, v, k, d in G.edges(keys=True, data=True): H.add_edge(u, v, **{kk: vv for kk, vv in d.items() if kk != "geom" and vv is not None}) if not H.has_edge(u, v) else None
-nx.write_graphml(H, OUT / "rete_z2.graphml")
-pickle.dump({"G": G, "binari": binari, "banchine": banchine, "bloccati": bloccati, "esclusi": excl_rows}, open(OUT / "rete_z2.pkl", "wb"))
+nx.write_graphml(H, OUT / f"{STEM}.graphml")
+pickle.dump({"G": G, "binari": binari, "banchine": banchine, "bloccati": bloccati, "esclusi": excl_rows}, open(OUT / f"{STEM}.pkl", "wb"))
 
 # ---- report componenti
 ex_geoms = [r["geometry"] for r in excl_rows]; ex_tree = STRtree(ex_geoms)
@@ -219,11 +220,11 @@ for i, c in enumerate(comps, 1):
         if not why: why.append("nessuna connessione mappata in OSM: lacuna di mappatura o vero isolamento, da verificare")
         r.update(gap_dalla_principale_m=round(gap, 1), motivi=why)
     rows.append(r)
-json.dump(rows, open(NET / "componenti.json", "w"), ensure_ascii=False, indent=1)
+json.dump(rows, open(RES / "componenti.json", "w"), ensure_ascii=False, indent=1)
 
 def km(f): return round(sum(d["length_m"] for _, _, d in G.edges(data=True) if f(d)) / 1000, 3)
 Zed = lambda d: G.nodes[d["nod_da"]]["in_z2"]
-man = {"graph_id": f"grf_z2_osm_{SNAP['snapshot_id'][-8:]}", "aoi_id": "aoi_z2", "crs": "EPSG:7791", "snapshot_id": SNAP["snapshot_id"], "sha256_osm": SNAP["sha256"],
+man = {"graph_id": f"grf_{AREA['gid']}_osm_{SNAP['snapshot_id'][-8:]}", "aoi_id": AOI["aoi_id"], "crs": "EPSG:7791", "snapshot_id": SNAP["snapshot_id"], "sha256_osm": SNAP["sha256"],
        "regole_sha256": hashlib.sha256((NET / "regole.json").read_bytes()).hexdigest(), "area_buffer_en": AOI["buf_en"], "z2_en": Z,
        "nodi": G.number_of_nodes(), "archi": G.number_of_edges(), "km_totali": km(lambda d: True), "km_in_z2": km(Zed),
        "archi_per_tipo": dict(collections.Counter(d["tipo_arco"] for _, _, d in G.edges(data=True))),
@@ -238,7 +239,7 @@ man = {"graph_id": f"grf_z2_osm_{SNAP['snapshot_id'][-8:]}", "aoi_id": "aoi_z2",
        "esclusi_per_motivo": dict(collections.Counter(r["motivo"] for r in excl_rows).most_common()),
        "km_esclusi_per_motivo": {m: round(sum(r["length_m"] for r in excl_rows if r["motivo"] == m) / 1000, 3) for m in sorted({r["motivo"] for r in excl_rows})},
        "way_area_poligono_escluse": sum(1 for w in D["ways"] if w["tags"].get("area") == "yes" and "highway" in w["tags"] and "railway" not in w["tags"]),
-       "nodi_layer_sospetti": sospetti, "componenti": len(comps), "formati": ["rete_z2.gpkg (nodi, archi, archi_esclusi, nodi_bloccati): riferimento", "rete_z2.pkl (MultiGraph con geometrie): riferimento per gli script", "rete_z2.graphml: solo scambio, archi paralleli fusi in uno"]}
-json.dump(man, open(NET / "rete_manifest.json", "w"), ensure_ascii=False, indent=1)
+       "nodi_layer_sospetti": sospetti, "componenti": len(comps), "formati": [f"{STEM}.gpkg (nodi, archi, archi_esclusi, nodi_bloccati): riferimento", f"{STEM}.pkl (MultiGraph con geometrie): riferimento per gli script", f"{STEM}.graphml: solo scambio, archi paralleli fusi in uno"]}
+json.dump(man, open(RES / "rete_manifest.json", "w"), ensure_ascii=False, indent=1)
 print(json.dumps({k: v for k, v in man.items() if k not in ("nodi_layer_sospetti",)}, ensure_ascii=False, indent=1)[:3500])
 print([(r["componente"], r["km"], r["km_in_z2"], r.get("motivi")) for r in rows[:12]])

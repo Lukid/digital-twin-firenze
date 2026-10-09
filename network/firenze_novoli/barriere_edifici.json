@@ -1,0 +1,668 @@
+{
+ "nota": "schede di edifici del rilievo 2013 (grado Accessibile / Parzialmente / Non accessibile): attributo dell'edificio, non dell'ostacolo sul percorso. Aggancio: edificio OSM più vicino entro 25 m, solo informativo",
+ "schede_nel_riquadro": 63,
+ "per_grado": {
+  "Accessibile": 25,
+  "Non Accessibile": 16,
+  "Parzialmente Accessibile": 22
+ },
+ "agganciate_a_edificio": 58,
+ "schede": [
+  {
+   "bar_id": "bar_fi_2277",
+   "scheda": "1671",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Via Magellano",
+   "edificio_osm": "bld_osm_w449187885",
+   "dist_edificio_m": 3.9,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2175",
+   "scheda": "1603",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Uffici",
+   "indirizzo": "Piazza Eugenio Artom snc",
+   "edificio_osm": "bld_osm_w136450822",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2176",
+   "scheda": "1604",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Uffici",
+   "indirizzo": "Piazza Eugenio Artom 17-18",
+   "edificio_osm": "bld_osm_w136450828",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2177",
+   "scheda": "1605",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Sportello al pubblico",
+   "indirizzo": "Piazza Arton 17-18",
+   "edificio_osm": "bld_osm_w473819648",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2185",
+   "scheda": "1611",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Bocciodromo",
+   "indirizzo": "Via Dell'Accademia",
+   "edificio_osm": "bld_osm_w473819667",
+   "dist_edificio_m": 3.7,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2187",
+   "scheda": "1613",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Magazzino di vendita",
+   "indirizzo": "Piazza Eugenio Artom snc",
+   "edificio_osm": "bld_osm_w449188776",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2190",
+   "scheda": "1614",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Chiesa",
+   "indirizzo": "Via Lippi e Macia snc",
+   "edificio_osm": "bld_osm_w307536891",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2191",
+   "scheda": "1615",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Spazi parrocchiali",
+   "indirizzo": "Via Lippi e Macia 10",
+   "edificio_osm": "bld_osm_w83534354",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2218",
+   "scheda": "1675",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Parcheggio",
+   "indirizzo": "Via del Giardino Della Bizzarria",
+   "edificio_osm": "bld_osm_w224493514",
+   "dist_edificio_m": 22.3,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2235",
+   "scheda": "1631",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Universit?",
+   "indirizzo": "Via Delle Pandette 9",
+   "edificio_osm": "bld_osm_w1183659916",
+   "dist_edificio_m": 0.0,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2236",
+   "scheda": "1632",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Universit?",
+   "indirizzo": "Via Delle Pandette",
+   "edificio_osm": "bld_osm_w82646738",
+   "dist_edificio_m": 0.0,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2237",
+   "scheda": "1633",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Universit?",
+   "indirizzo": "Via Delle Pandette",
+   "edificio_osm": "bld_osm_w82646735",
+   "dist_edificio_m": 0.0,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2238",
+   "scheda": "1634",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Biblioteca",
+   "indirizzo": "Via Delle Pandette 2",
+   "edificio_osm": "bld_osm_w82646719",
+   "dist_edificio_m": 0.0,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2249",
+   "scheda": "1645",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Piscina",
+   "indirizzo": "Via Fratelli Caboto snc",
+   "edificio_osm": "bld_osm_w110355066",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2250",
+   "scheda": "1646",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Impianto sportivo",
+   "indirizzo": "Via Fratelli Caboto",
+   "edificio_osm": "bld_osm_w473057272",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2251",
+   "scheda": "1647",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Centro anziani",
+   "indirizzo": "Via Fratelli Caboto 47",
+   "edificio_osm": "bld_osm_w449187900",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2252",
+   "scheda": "1648",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Via Della Verna",
+   "edificio_osm": null,
+   "dist_edificio_m": 31.7,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2253",
+   "scheda": "1649",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Uffici",
+   "indirizzo": "Via Di Novoli 26",
+   "edificio_osm": "bld_osm_w224493511",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2254",
+   "scheda": "1650",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Uffici e mensa",
+   "indirizzo": "Via Di Novoli 26",
+   "edificio_osm": "bld_osm_w113219866",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2258",
+   "scheda": "1654",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Mensa universitaria",
+   "indirizzo": "Via Miele",
+   "edificio_osm": "bld_osm_r1610040",
+   "dist_edificio_m": 0.0,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2259",
+   "scheda": "1655",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Residenza Universitaria",
+   "indirizzo": "Via Miele 3",
+   "edificio_osm": "bld_osm_r16010998",
+   "dist_edificio_m": 4.6,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2260",
+   "scheda": "1656",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Uffici diritto allo studio",
+   "indirizzo": "Via Miele 3",
+   "edificio_osm": "bld_osm_r16010998",
+   "dist_edificio_m": 0.5,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2261",
+   "scheda": "1657",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Poste",
+   "indirizzo": "Via Fratelli Caboto",
+   "edificio_osm": "bld_osm_w449187900",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2262",
+   "scheda": "1658",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Piscina e palestra",
+   "indirizzo": "Via Dei Caboto 30-32",
+   "edificio_osm": "bld_osm_w449187884",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2263",
+   "scheda": "1659",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Chiesa",
+   "indirizzo": "Via Caciolle 1",
+   "edificio_osm": "bld_osm_w110355063",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2264",
+   "scheda": "1660",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Cimitero",
+   "indirizzo": "Via Da Caciolle 13",
+   "edificio_osm": "bld_osm_w473057267",
+   "dist_edificio_m": 9.5,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2265",
+   "scheda": "1661",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Scuola",
+   "indirizzo": "Via Dei Giardini Della Bizzarria 1",
+   "edificio_osm": "bld_osm_w83534363",
+   "dist_edificio_m": 0.0,
+   "destinazioni": [
+    "dst_school_fiee86002g",
+    "dst_school_fiaa86002a"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2266",
+   "scheda": "1662",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Asilo nido",
+   "indirizzo": "Via Torre Degli Agli snc",
+   "edificio_osm": "bld_osm_w83534363",
+   "dist_edificio_m": 0.0,
+   "destinazioni": [
+    "dst_school_fiee86002g",
+    "dst_school_fiaa86002a"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2267",
+   "scheda": "1663",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Struttura ricettiva",
+   "indirizzo": "Via Della Torre Degli Agli 1",
+   "edificio_osm": "bld_osm_w224491476",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2270",
+   "scheda": "1666",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Via Filippo Buonaccorsi",
+   "edificio_osm": "bld_osm_w83540270",
+   "dist_edificio_m": 8.9,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2271",
+   "scheda": "1667",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Viale Guidoni",
+   "edificio_osm": "bld_osm_w449188034",
+   "dist_edificio_m": 20.4,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2272",
+   "scheda": "1668",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Universit?",
+   "indirizzo": "Via Delle Pandette 35",
+   "edificio_osm": "bld_osm_r1610041",
+   "dist_edificio_m": 8.1,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2273",
+   "scheda": "1669",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Universit?",
+   "indirizzo": "Via Delle Pandette 32",
+   "edificio_osm": "bld_osm_w82646720",
+   "dist_edificio_m": 0.0,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2276",
+   "scheda": "1670",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Via di Novoli",
+   "edificio_osm": null,
+   "dist_edificio_m": 32.3,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2285",
+   "scheda": "1677",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Piazza Enrico Mattei",
+   "edificio_osm": "bld_osm_w1418257918",
+   "dist_edificio_m": 19.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2286",
+   "scheda": "1678",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Cimitero",
+   "indirizzo": "Via Panciatichi 62",
+   "edificio_osm": null,
+   "dist_edificio_m": 25.6,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2287",
+   "scheda": "1679",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Uffici, sede operativa, mensa e magazzino",
+   "indirizzo": "Piazza Mattei 3",
+   "edificio_osm": "bld_osm_w473819611",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2288",
+   "scheda": "1680",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Mensa",
+   "indirizzo": "Piazza Mattei 3",
+   "edificio_osm": "bld_osm_w473819623",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2289",
+   "scheda": "1681",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Uffici",
+   "indirizzo": "Piazza Mattei 3",
+   "edificio_osm": "bld_osm_w474328932",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2290",
+   "scheda": "1682",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Uffici e magazzini",
+   "indirizzo": "Piazza Mattei 3",
+   "edificio_osm": "bld_osm_w235899195",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2298",
+   "scheda": "1690",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Uffici",
+   "indirizzo": "Piazza Mattei 3",
+   "edificio_osm": "bld_osm_w474328938",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2299",
+   "scheda": "1691",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Campi da tennis",
+   "indirizzo": "Via Barsanti",
+   "edificio_osm": "bld_osm_w474328943",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2415",
+   "scheda": "1692",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Viale Guidoni",
+   "edificio_osm": "bld_osm_w400963062",
+   "dist_edificio_m": 9.2,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2466",
+   "scheda": "1709",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Scuola",
+   "indirizzo": "Via Dei Caboto 34",
+   "edificio_osm": "bld_osm_w473057279",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2467",
+   "scheda": "1710",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Scuola materna, asilo nido",
+   "indirizzo": "Via Dei Caboto snc",
+   "edificio_osm": "bld_osm_w473057286",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2468",
+   "scheda": "1711",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Palestra",
+   "indirizzo": "Via Magellano 11",
+   "edificio_osm": "bld_osm_w473057249",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2469",
+   "scheda": "1712",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Impianto sportivo",
+   "indirizzo": "Via Di Carciolle 6",
+   "edificio_osm": null,
+   "dist_edificio_m": 59.1,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2470",
+   "scheda": "1713",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Circolo ricreativo",
+   "indirizzo": "Via Magellano 13R",
+   "edificio_osm": "bld_osm_w473057273",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2471",
+   "scheda": "1714",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Uffici",
+   "indirizzo": "Viale Guidoni 42",
+   "edificio_osm": "bld_osm_w374235547",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2472",
+   "scheda": "1715",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Auditorium",
+   "indirizzo": "Viale Guidoni 42",
+   "edificio_osm": "bld_osm_w374234735",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2473",
+   "scheda": "1716",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Portineria",
+   "indirizzo": "Via Lippi e Macia 2B",
+   "edificio_osm": "bld_osm_w224491507",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2494",
+   "scheda": "1693",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Universit?",
+   "indirizzo": "Via delle Pandette 21",
+   "edificio_osm": "bld_osm_w1183659915",
+   "dist_edificio_m": 0.0,
+   "destinazioni": [
+    "dst_university_w83537185"
+   ]
+  },
+  {
+   "bar_id": "bar_fi_2501",
+   "scheda": "1700",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Guardia medica",
+   "indirizzo": "Via Caciolle 3B",
+   "edificio_osm": "bld_osm_w473057280",
+   "dist_edificio_m": 1.1,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2506",
+   "scheda": "1705",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Chiesa",
+   "indirizzo": "Via Flavio T. Baracchini",
+   "edificio_osm": "bld_osm_w83480484",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2507",
+   "scheda": "1706",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Sala polifunzionale",
+   "indirizzo": "Via Mario Morosi 36",
+   "edificio_osm": "bld_osm_w224491514",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2508",
+   "scheda": "1707",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Palestra",
+   "indirizzo": "Via Caboto 34",
+   "edificio_osm": "bld_osm_w473057279",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2509",
+   "scheda": "1708",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Tribunale - Procura - Corte d'Appello - C.I.S.I.A.",
+   "indirizzo": "Viale Guidoni 61 (San Donato)",
+   "edificio_osm": "bld_osm_w83535818",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2517",
+   "scheda": "1717",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Uffici",
+   "indirizzo": "Via Lippi e Macia 2B",
+   "edificio_osm": "bld_osm_w224491479",
+   "dist_edificio_m": 0.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2518",
+   "scheda": "1718",
+   "grado_accessibilita": "Parzialmente Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Piazza Val D'elsa",
+   "edificio_osm": "bld_osm_w83526124",
+   "dist_edificio_m": 22.4,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2519",
+   "scheda": "1719",
+   "grado_accessibilita": "Non Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Via Val di Marina",
+   "edificio_osm": "bld_osm_w83526023",
+   "dist_edificio_m": 14.1,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2618",
+   "scheda": "1728",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Viale A.Guidoni",
+   "edificio_osm": null,
+   "dist_edificio_m": 40.0,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2619",
+   "scheda": "1729",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Giardino",
+   "indirizzo": "Via Torre degli Agli",
+   "edificio_osm": "bld_osm_w116234386",
+   "dist_edificio_m": 20.4,
+   "destinazioni": []
+  },
+  {
+   "bar_id": "bar_fi_2620",
+   "scheda": "1730",
+   "grado_accessibilita": "Accessibile",
+   "destinazione_uso": "Piazza",
+   "indirizzo": "Piazza Ugo di Toscana",
+   "edificio_osm": "bld_osm_w83537183",
+   "dist_edificio_m": 23.3,
+   "destinazioni": []
+  }
+ ]
+}

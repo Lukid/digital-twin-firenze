@@ -1,0 +1,369 @@
+{
+ "graph_id": "grf_firenze_novoli_osm_20261009",
+ "classificazione": "ingressi OSM, accessi CM e punti GTFS = measured; classe dell'ingresso e aggancio = derived; tutto da_verificare",
+ "destinazioni": [
+  {
+   "destination_id": "dst_university_w83537185",
+   "categoria": "university",
+   "nome": "Polo delle Scienze Sociali (Università degli Studi di Firenze)",
+   "indirizzo": "via delle Pandette",
+   "id_note": "Il Polo non ha un codice ufficiale: id da OSM way 83537185 (perimetro d'insieme). Edifici OSM: D1, D14, D15 (way) e D4, D5, D6 (relazioni).",
+   "fonte": "OSM way 83537185",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (campus, orari, cancelli, ingresso per disabili)",
+   "barriere_comune": {
+    "nota": "schede di edifici del rilievo 2013 (grado Accessibile / Parzialmente / Non accessibile): attributo dell'edificio, non dell'ostacolo sul percorso",
+    "schede": [
+     {
+      "scheda": "1631",
+      "bar_id": "bar_fi_2235",
+      "destinazione_uso": "Universit?",
+      "indirizzo": "Via Delle Pandette 9",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1631.pdf"
+     },
+     {
+      "scheda": "1632",
+      "bar_id": "bar_fi_2236",
+      "destinazione_uso": "Universit?",
+      "indirizzo": "Via Delle Pandette",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1632.pdf"
+     },
+     {
+      "scheda": "1633",
+      "bar_id": "bar_fi_2237",
+      "destinazione_uso": "Universit?",
+      "indirizzo": "Via Delle Pandette",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1633.pdf"
+     },
+     {
+      "scheda": "1634",
+      "bar_id": "bar_fi_2238",
+      "destinazione_uso": "Biblioteca",
+      "indirizzo": "Via Delle Pandette 2",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1634.pdf"
+     },
+     {
+      "scheda": "1654",
+      "bar_id": "bar_fi_2258",
+      "destinazione_uso": "Mensa universitaria",
+      "indirizzo": "Via Miele",
+      "grado_accessibilita": "Parzialmente Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1654.pdf"
+     },
+     {
+      "scheda": "1655",
+      "bar_id": "bar_fi_2259",
+      "destinazione_uso": "Residenza Universitaria",
+      "indirizzo": "Via Miele 3",
+      "grado_accessibilita": "Parzialmente Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1655.pdf"
+     },
+     {
+      "scheda": "1656",
+      "bar_id": "bar_fi_2260",
+      "destinazione_uso": "Uffici diritto allo studio",
+      "indirizzo": "Via Miele 3",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1656.pdf"
+     },
+     {
+      "scheda": "1668",
+      "bar_id": "bar_fi_2272",
+      "destinazione_uso": "Universit?",
+      "indirizzo": "Via Delle Pandette 35",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1668.pdf"
+     },
+     {
+      "scheda": "1669",
+      "bar_id": "bar_fi_2273",
+      "destinazione_uso": "Universit?",
+      "indirizzo": "Via Delle Pandette 32",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1669.pdf"
+     },
+     {
+      "scheda": "1693",
+      "bar_id": "bar_fi_2494",
+      "destinazione_uso": "Universit?",
+      "indirizzo": "Via delle Pandette 21",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1693.pdf"
+     }
+    ]
+   },
+   "ingressi": [
+    {
+     "entrance_id": "ent_osm_n11152998932",
+     "classe": "ingresso_osm",
+     "fonte_ingresso": "OSM entrance=main, indirizzo Via delle Pandette 2",
+     "stato_verifica": "da_verificare",
+     "osm_node": 11152998932,
+     "dentro_perimetro": true,
+     "su_edificio": [
+      "bld_osm_w82646719"
+     ],
+     "tags": {
+      "addr:housenumber": "2",
+      "addr:street": "Via delle Pandette",
+      "entrance": "main"
+     },
+     "xy": [
+      679432.84,
+      4851231.53
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_80835013_941158354_4796237987",
+      "u": "nod_osm_941158354",
+      "v": "nod_osm_4796237987",
+      "offset_m": 43.7,
+      "dist_m": 2.92,
+      "proj": [
+       679430.8928440261,
+       4851233.704795132
+      ],
+      "scartati": [],
+      "raccordo_m": 2.92,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_osm_n11152998933",
+     "classe": "ingresso_osm",
+     "fonte_ingresso": "OSM entrance=main, indirizzo assente",
+     "stato_verifica": "da_verificare",
+     "osm_node": 11152998933,
+     "dentro_perimetro": true,
+     "su_edificio": [
+      "bld_osm_r1610040",
+      "bld_osm_r16010998"
+     ],
+     "tags": {
+      "entrance": "main"
+     },
+     "xy": [
+      679534.56,
+      4851306.14
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_115947092_1308601631_12883593940",
+      "u": "nod_osm_1308601631",
+      "v": "nod_osm_12883593940",
+      "offset_m": 20.56,
+      "dist_m": 9.6,
+      "proj": [
+       679527.889038787,
+       4851299.239347894
+      ],
+      "scartati": [],
+      "raccordo_m": 9.6,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_osm_n11152998932"
+  },
+  {
+   "destination_id": "dst_school_fiee86002g",
+   "categoria": "school",
+   "nome": "Scuola primaria Vamba",
+   "indirizzo": "via del Giardino della Bizzarria 1",
+   "codice_mim": "FIEE86002G",
+   "fonte": "MIM scuole statali 2026/27 (punto) e OSM way 781536026 (perimetro)",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (orari, ingresso alunni o pubblico). Un solo accesso nei dati, condiviso dai due codici",
+   "barriere_comune": {
+    "nota": "schede di edifici del rilievo 2013 (grado Accessibile / Parzialmente / Non accessibile): attributo dell'edificio, non dell'ostacolo sul percorso",
+    "schede": [
+     {
+      "scheda": "1661",
+      "bar_id": "bar_fi_2265",
+      "destinazione_uso": "Scuola",
+      "indirizzo": "Via Dei Giardini Della Bizzarria 1",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1661.pdf"
+     },
+     {
+      "scheda": "1662",
+      "bar_id": "bar_fi_2266",
+      "destinazione_uso": "Asilo nido",
+      "indirizzo": "Via Torre Degli Agli snc",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1662.pdf"
+     }
+    ]
+   },
+   "ingressi": [
+    {
+     "entrance_id": "ent_cm_FIEE86002G_0",
+     "classe": "accesso_citta_metropolitana",
+     "fonte_ingresso": "accesso della Città metropolitana acc_cm_FIEE86002G_0 (Via Giardino della Bizzaria), a 27 m dal punto MIM",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      678629.35,
+      4851588.29
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_780567104_7288952723_7288952981",
+      "u": "nod_osm_7288952723",
+      "v": "nod_osm_7288952981",
+      "offset_m": 35.93,
+      "dist_m": 3.45,
+      "proj": [
+       678629.1890344829,
+       4851584.8450356815
+      ],
+      "scartati": [],
+      "raccordo_m": 3.45,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_cm_FIEE86002G_0"
+  },
+  {
+   "destination_id": "dst_school_fiaa86002a",
+   "categoria": "school",
+   "nome": "Scuola infanzia Vamba",
+   "indirizzo": "via del Giardino della Bizzarria 1",
+   "codice_mim": "FIAA86002A",
+   "fonte": "MIM scuole statali 2026/27 (punto) e OSM way 781536026 (perimetro)",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (orari, ingresso alunni o pubblico). Un solo accesso nei dati, condiviso dai due codici",
+   "barriere_comune": {
+    "nota": "schede di edifici del rilievo 2013 (grado Accessibile / Parzialmente / Non accessibile): attributo dell'edificio, non dell'ostacolo sul percorso",
+    "schede": [
+     {
+      "scheda": "1661",
+      "bar_id": "bar_fi_2265",
+      "destinazione_uso": "Scuola",
+      "indirizzo": "Via Dei Giardini Della Bizzarria 1",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1661.pdf"
+     },
+     {
+      "scheda": "1662",
+      "bar_id": "bar_fi_2266",
+      "destinazione_uso": "Asilo nido",
+      "indirizzo": "Via Torre Degli Agli snc",
+      "grado_accessibilita": "Accessibile",
+      "url_scheda": "http://datigis.comune.fi.it/barriere_architettoniche/scheda_1662.pdf"
+     }
+    ]
+   },
+   "ingressi": [
+    {
+     "entrance_id": "ent_cm_FIAA86002A_0",
+     "classe": "accesso_citta_metropolitana",
+     "fonte_ingresso": "accesso della Città metropolitana acc_cm_FIAA86002A_0 (Via Giardino della Bizzaria), a 27 m dal punto MIM",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      678629.35,
+      4851588.29
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_780567104_7288952723_7288952981",
+      "u": "nod_osm_7288952723",
+      "v": "nod_osm_7288952981",
+      "offset_m": 35.93,
+      "dist_m": 3.45,
+      "proj": [
+       678629.1890344829,
+       4851584.8450356815
+      ],
+      "scartati": [],
+      "raccordo_m": 3.45,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_cm_FIAA86002A_0"
+  },
+  {
+   "destination_id": "dst_tram_fm9056",
+   "categoria": "tram",
+   "nome": "Novoli - Regione Toscana",
+   "stop_code": "FM9056",
+   "linee": "T2",
+   "corse_giorno_rif": 422,
+   "fonte": "GTFS GEST (tram)",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (marciapiede e banchina: nessun dato nel feed)",
+   "ingressi": [
+    {
+     "entrance_id": "ent_gtfs_fm9056",
+     "classe": "ingresso_fermata",
+     "fonte_ingresso": "punto GTFS (le stop_position OSM sono sul binario)",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      678889.94,
+      4851182.54
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_639684458_11264983069_11264983079",
+      "u": "nod_osm_11264983069",
+      "v": "nod_osm_11264983079",
+      "offset_m": 5.48,
+      "dist_m": 4.56,
+      "proj": [
+       678892.2374073231,
+       4851186.480672041
+      ],
+      "scartati": [],
+      "raccordo_m": 4.56,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_gtfs_fm9056"
+  },
+  {
+   "destination_id": "dst_tram_fm9057",
+   "categoria": "tram",
+   "nome": "Novoli - Torre Degli Agli",
+   "stop_code": "FM9057",
+   "linee": "T2",
+   "corse_giorno_rif": 422,
+   "fonte": "GTFS GEST (tram)",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (marciapiede e banchina: nessun dato nel feed)",
+   "ingressi": [
+    {
+     "entrance_id": "ent_gtfs_fm9057",
+     "classe": "ingresso_fermata",
+     "fonte_ingresso": "punto GTFS (le stop_position OSM sono sul binario)",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      678436.41,
+      4851426.02
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_353999367_5936606358_11052695849",
+      "u": "nod_osm_5936606358",
+      "v": "nod_osm_11052695849",
+      "offset_m": 33.24,
+      "dist_m": 1.35,
+      "proj": [
+       678437.1587376322,
+       4851427.1441931
+      ],
+      "scartati": [],
+      "raccordo_m": 1.35,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_gtfs_fm9057"
+  }
+ ]
+}

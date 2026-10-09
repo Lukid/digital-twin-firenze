@@ -1,0 +1,105 @@
+{
+ "graph_id": "grf_firenze_novoli_osm_20261009",
+ "aoi_id": "aoi_firenze_novoli",
+ "crs": "EPSG:7791",
+ "snapshot_id": "snp_osm_firenze_20261009",
+ "sha256_osm": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+ "regole_sha256": "7334ecafeafe39ede0654d6cbde541ca0c2c7380c9098a21b3b6c81fd6e8eec3",
+ "area_buffer_en": [
+  677626.54,
+  4850435.36,
+  680521.44,
+  4853256.26
+ ],
+ "z2_en": [
+  678326.54,
+  4851135.36,
+  679821.44,
+  4852556.26
+ ],
+ "nodi": 6600,
+ "archi": 9009,
+ "km_totali": 294.074,
+ "km_in_z2": 91.257,
+ "archi_per_tipo": {
+  "strada": 4000,
+  "sentiero": 2618,
+  "attraversamento": 1520,
+  "scala": 37,
+  "ponte": 47,
+  "marciapiede_disegnato": 707,
+  "sottopasso": 80
+ },
+ "km_per_tipo": {
+  "attraversamento": 10.601,
+  "marciapiede_disegnato": 34.607,
+  "ponte": 1.181,
+  "scala": 0.308,
+  "sentiero": 103.779,
+  "sottopasso": 1.787,
+  "strada": 141.811
+ },
+ "km_per_marciapiede": {
+  "presente": 13.098,
+  "separato": 34.146,
+  "assente": 3.157,
+  "ignoto": 92.096,
+  "non_applicabile": 151.576
+ },
+ "km_non_certificati": 95.253,
+ "archi_scala": 37,
+ "archi_sottopasso": 81,
+ "archi_ponte": 51,
+ "nodi_crossing": 889,
+ "nodi_barriera_passabile": 109,
+ "nodi_bloccanti": 13,
+ "nodi_bordo_buffer": 316,
+ "vicoli_ciechi_veri_in_z2": 185,
+ "vicoli_ciechi_bordo": 113,
+ "esclusi_per_motivo": {
+  "access=private": 584,
+  "classe_non_pedonale_senza_foot": 274,
+  "access=no": 58,
+  "area_poligono": 53,
+  "foot=no": 48,
+  "access=customers": 32,
+  "highway=construction": 23,
+  "tunnel_stradale_senza_marciapiede": 20,
+  "banchina_ferroviaria": 18,
+  "highway=proposed": 17,
+  "highway=track_non_ammesso": 15,
+  "highway=traffic_calming_non_ammesso": 15,
+  "ferrovia_railway": 14,
+  "highway=raceway": 10,
+  "highway=traffic_island_non_ammesso": 3,
+  "foot=use_sidepath": 1
+ },
+ "km_esclusi_per_motivo": {
+  "access=customers": 0.804,
+  "access=no": 1.753,
+  "access=private": 19.997,
+  "area_poligono": 7.517,
+  "banchina_ferroviaria": 1.066,
+  "classe_non_pedonale_senza_foot": 11.499,
+  "ferrovia_railway": 1.092,
+  "foot=no": 2.173,
+  "foot=use_sidepath": 0.022,
+  "highway=construction": 1.203,
+  "highway=proposed": 3.938,
+  "highway=raceway": 0.191,
+  "highway=track_non_ammesso": 3.562,
+  "highway=traffic_calming_non_ammesso": 1.64,
+  "highway=traffic_island_non_ammesso": 0.218,
+  "tunnel_stradale_senza_marciapiede": 0.483
+ },
+ "way_area_poligono_escluse": 57,
+ "nodi_layer_sospetti": [
+  "nod_osm_9747051944"
+ ],
+ "componenti": 52,
+ "formati": [
+  "rete_firenze_novoli.gpkg (nodi, archi, archi_esclusi, nodi_bloccati): riferimento",
+  "rete_firenze_novoli.pkl (MultiGraph con geometrie): riferimento per gli script",
+  "rete_firenze_novoli.graphml: solo scambio, archi paralleli fusi in uno"
+ ]
+}

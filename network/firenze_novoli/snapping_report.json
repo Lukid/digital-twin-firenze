@@ -1,0 +1,142 @@
+{
+ "parametri": {
+  "origini_max_m": 40,
+  "ingressi_max_m": 40,
+  "candidati": 6,
+  "destinazione_di_riferimento": "dst_university_w83537185",
+  "ingresso_di_riferimento": "ent_osm_n11152998932"
+ },
+ "origini_totali_riquadro": 3296,
+ "per_tipo_civico": {
+  "R": 201,
+  "N": 3095
+ },
+ "agganciate": 3128,
+ "non_agganciate_insufficient_data": 168,
+ "stato_rispetto_al_polo": {
+  "reachable": 3112,
+  "forbidden": 15,
+  "isolated": 1,
+  "insufficient_data": 168
+ },
+ "non_agganciate_motivi": {
+  "tutti i candidati scartati: edificio": 82,
+  "nessun arco percorribile entro N m": 49,
+  "tutti i candidati scartati: edificio, tratto_escluso": 16,
+  "tutti i candidati scartati: tratto_escluso": 21
+ },
+ "distanza_arco_piu_vicino_senza_vincoli_m": {
+  "p50": 3.6,
+  "p75": 10.2,
+  "p90": 19.3,
+  "p95": 28.2,
+  "p99": 46.4,
+  "max": 62.8
+ },
+ "raccordo_registrato_m": {
+  "p50": 3.4,
+  "p75": 9.0,
+  "p90": 17.8,
+  "p95": 25.3,
+  "p99": 35.5,
+  "max": 39.6
+ },
+ "civici_oltre_20_m": 254,
+ "civici_primo_candidato_scartato": 252,
+ "per_componente": {
+  "cmp_01": 3112,
+  "cmp_21": 12,
+  "cmp_16": 1,
+  "cmp_07": 1,
+  "cmp_02": 1,
+  "cmp_27": 1
+ },
+ "agganciati_a_componenti_isolate": 16,
+ "per_tipo_arco_agganciato": {
+  "marciapiede_disegnato": 496,
+  "sentiero": 2065,
+  "strada": 560,
+  "sottopasso": 7
+ },
+ "per_marciapiede_arco_agganciato": {
+  "non_applicabile": 2565,
+  "ignoto": 507,
+  "separato": 12,
+  "presente": 41,
+  "assente": 3
+ },
+ "destinazioni": [
+  {
+   "id": "dst_university_w83537185",
+   "ingressi": [
+    {
+     "id": "ent_osm_n11152998932",
+     "classe": "ingresso_osm",
+     "stato": "agganciato",
+     "raccordo_m": 2.92,
+     "componente": "cmp_01"
+    },
+    {
+     "id": "ent_osm_n11152998933",
+     "classe": "ingresso_osm",
+     "stato": "agganciato",
+     "raccordo_m": 9.6,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 10
+  },
+  {
+   "id": "dst_school_fiee86002g",
+   "ingressi": [
+    {
+     "id": "ent_cm_FIEE86002G_0",
+     "classe": "accesso_citta_metropolitana",
+     "stato": "agganciato",
+     "raccordo_m": 3.45,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 2
+  },
+  {
+   "id": "dst_school_fiaa86002a",
+   "ingressi": [
+    {
+     "id": "ent_cm_FIAA86002A_0",
+     "classe": "accesso_citta_metropolitana",
+     "stato": "agganciato",
+     "raccordo_m": 3.45,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 2
+  },
+  {
+   "id": "dst_tram_fm9056",
+   "ingressi": [
+    {
+     "id": "ent_gtfs_fm9056",
+     "classe": "ingresso_fermata",
+     "stato": "agganciato",
+     "raccordo_m": 4.56,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
+  },
+  {
+   "id": "dst_tram_fm9057",
+   "ingressi": [
+    {
+     "id": "ent_gtfs_fm9057",
+     "classe": "ingresso_fermata",
+     "stato": "agganciato",
+     "raccordo_m": 1.35,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
+  }
+ ]
+}
