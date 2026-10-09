@@ -1,0 +1,244 @@
+{
+ "aoi": {
+  "aoi_id": "aoi_firenze_novoli",
+  "buffer_m": 700,
+  "z2_ll_SWNE": [
+   43.79178,
+   11.21694,
+   43.80422,
+   11.23506
+  ],
+  "z2_en": [
+   678326.54,
+   4851135.36,
+   679821.44,
+   4852556.26
+  ],
+  "buf_en": [
+   677626.54,
+   4850435.36,
+   680521.44,
+   4853256.26
+  ],
+  "buf_ll_SWNE": [
+   43.784958883460085,
+   11.207554138794018,
+   43.81103925831569,
+   11.244455327698159
+  ]
+ },
+ "giorno": "20261009",
+ "layer": {
+  "cm_edscol_firenze.gpkg:edifici_scolastici": {
+   "in_area_allargata": 229,
+   "in_riquadro": 32
+  },
+  "cm_edscol_firenze.gpkg:accessi": {
+   "in_area_allargata": 36,
+   "in_riquadro": 6
+  },
+  "fi_alberi.gpkg:alberi": {
+   "in_area_allargata": 8491,
+   "in_riquadro": 2917
+  },
+  "fi_barriere.gpkg:barriere": {
+   "in_area_allargata": 222,
+   "in_riquadro": 63
+  },
+  "fi_civici.gpkg:civici": {
+   "in_area_allargata": 13987,
+   "in_riquadro": 3296
+  },
+  "fi_escapos_alberi.gpkg:alberi_escapos": {
+   "in_area_allargata": 50,
+   "in_riquadro": 24
+  },
+  "fi_rifugi_aree.gpkg:rifugi_aree": {
+   "in_area_allargata": 7,
+   "in_riquadro": 1
+  },
+  "fi_rifugi_biblioteche.gpkg:rifugi_biblioteche": {
+   "in_area_allargata": 1,
+   "in_riquadro": 0
+  },
+  "fi_scuole_statali.gpkg:scuole": {
+   "in_area_allargata": 37,
+   "in_riquadro": 7
+  },
+  "fi_tram_fermate.gpkg:tram_fermate": {
+   "in_area_allargata": 10,
+   "in_riquadro": 2
+  },
+  "gtfs_at_firenze.gpkg:stops": {
+   "in_area_allargata": 189,
+   "in_riquadro": 59
+  },
+  "gtfs_gest_firenze.gpkg:stops": {
+   "in_area_allargata": 12,
+   "in_riquadro": 2
+  },
+  "osm_firenze.gpkg:highway": {
+   "in_area_allargata": 4596,
+   "in_riquadro": 1502
+  },
+  "osm_firenze.gpkg:points": {
+   "in_area_allargata": 20281,
+   "in_riquadro": 5829
+  },
+  "osm_firenze.gpkg:buildings": {
+   "in_area_allargata": 3885,
+   "in_riquadro": 714
+  },
+  "rt_uv_firenze_novoli.gpkg:building_volume": {
+   "in_area_allargata": 7987,
+   "in_riquadro": 1876
+  }
+ },
+ "raster": {
+  "fi_dsm2023_0.5m": {
+   "file": "fi_dsm2023_0.5m.tif",
+   "tessere": 49,
+   "shape": [
+    5643,
+    5790
+   ],
+   "res_m": 0.5,
+   "nodata_pct": 0.0,
+   "min": 25.25,
+   "max": 122.18,
+   "mean": 51.87,
+   "bounds": [
+    677626.5,
+    4850435.0,
+    680521.5,
+    4853256.5
+   ]
+  },
+  "fi_dtm2023_0.5m": {
+   "file": "fi_dtm2023_0.5m.tif",
+   "tessere": 49,
+   "shape": [
+    5643,
+    5790
+   ],
+   "res_m": 0.5,
+   "nodata_pct": 0.0,
+   "min": 27.6,
+   "max": 74.03,
+   "mean": 47.45,
+   "bounds": [
+    677626.5,
+    4850435.0,
+    680521.5,
+    4853256.5
+   ]
+  }
+ },
+ "snapshot": {
+  "snp_cm_edscol_firenze_20261009": {
+   "status": "ok",
+   "bytes": 384798,
+   "sha256": "791cc1192fa54892486df8343d848c76cd7d4117f00bf64ecef8c4e1047f1050",
+   "license_state": "clear_with_reserve",
+   "expires_at": null
+  },
+  "snp_fi_alberi_20261009": {
+   "status": "ok",
+   "bytes": 23193658,
+   "sha256": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_fi_barriere_20261009": {
+   "status": "ok",
+   "bytes": 111667,
+   "sha256": "0f687cebb744beb670a47d81d711f0c620f18f3a4bfbe3c4af252246a32c26dd",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_fi_civici_20261009": {
+   "status": "ok",
+   "bytes": 6134033,
+   "sha256": "3c501a28c48a56ac8e9b65e3233f3073284cab4e6126205dc04f72d60507c505",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_fi_dsm2023_20261009": {
+   "status": "ok",
+   "bytes": 343512516,
+   "sha256": "1c6c250f2b91c77858667f8816e132c17f19916639f6e6e1a2578a45a5290451",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_fi_dtm2023_20261009": {
+   "status": "ok",
+   "bytes": 343460065,
+   "sha256": "3c8fdac2c02ab5cbb8353760c40962ea95ae9c6162130f30d9ac805608a79d02",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_fi_escapos_alberi_20261009": {
+   "status": "ok",
+   "bytes": 32282,
+   "sha256": "8f5a3343f039944913c0f3447f70b373b30ed9c26b7e160d00e1b21a25f6d1aa",
+   "license_state": "clear_with_reserve",
+   "expires_at": null
+  },
+  "snp_fi_rifugi_aree_20261009": {
+   "status": "ok",
+   "bytes": 157348,
+   "sha256": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_fi_rifugi_biblioteche_20261009": {
+   "status": "ok",
+   "bytes": 3228,
+   "sha256": "2b2685f9008ee030b1a23c29ae59116fc9dce7ee9071840638c9823ea34253c8",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_fi_scuole_statali_20261009": {
+   "status": "ok",
+   "bytes": 87071,
+   "sha256": "5a9ab7914290ea32d62aa869c8073063062a575cb3f7c82c8198d5c96d7145b3",
+   "license_state": "clear_with_reserve",
+   "expires_at": null
+  },
+  "snp_fi_tram_fermate_20261009": {
+   "status": "ok",
+   "bytes": 2899,
+   "sha256": "631e460c143af00d2fb4bfbd42a06241a73471b28a88171d12c21ee28fca4085",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_gtfs_at_firenze_20261009": {
+   "status": "ok",
+   "bytes": 184543418,
+   "sha256": "6ca6c95f0556b6bdb170cfd8f684b8e976ffd083119b92c711f988e7169795e7",
+   "license_state": "clear_with_reserve",
+   "expires_at": "2026-10-29"
+  },
+  "snp_gtfs_gest_firenze_20261009": {
+   "status": "ok",
+   "bytes": 1191740,
+   "sha256": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
+   "license_state": "clear_with_reserve",
+   "expires_at": "2026-12-30"
+  },
+  "snp_osm_firenze_20261009": {
+   "status": "ok",
+   "bytes": 384857630,
+   "sha256": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+   "license_state": "clear",
+   "expires_at": null
+  },
+  "snp_rt_uv_firenze_novoli_20261009": {
+   "status": "ok",
+   "bytes": 21217704,
+   "sha256": "2197d5f1105871037b7f419721a4fcb766d67be50e4adafa1ea9e1319b8f89ad",
+   "license_state": "clear_with_reserve",
+   "expires_at": null
+  }
+ }
+}

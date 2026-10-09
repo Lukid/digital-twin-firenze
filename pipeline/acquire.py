@@ -31,8 +31,8 @@ def osm():
     return {"files": [p], "url": OSM_URL, "media_type": "application/x-osm+pbf", "license_state": "clear",
             "content_period": {"note": "estratto regionale Centro Italia da distributore di estratti OSM, timestamp nel nome del file (ore 00 UTC del 2026-09-30 circa); il ritaglio all'AOI avviene in normalizzazione, il file originario resta intatto"}}
 
-def wfs_uv():
-    d = rawdir("rt_unita_volumetriche"); crs = "urn:ogc:def:crs:EPSG::7791"; files = []; st = 0
+def wfs_uv(slug="rt_unita_volumetriche"):
+    d = rawdir(slug); crs = "urn:ogc:def:crs:EPSG::7791"; files = []; st = 0
     def chk(r):
         if b"ExceptionReport" in r.content[:2000] or b"FeatureCollection" not in r.content[:4000]: raise ValueError("risposta WFS non valida: " + r.text[:200])
     while True:

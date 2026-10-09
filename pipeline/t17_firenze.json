@@ -1,0 +1,216 @@
+{
+ "verificato_il": "20261009",
+ "fonti": [
+  {
+   "source_id": "src_fi_alberi",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/42cd1073-521f-4040-9491-e993d03663a4",
+   "catalogo_live": {
+    "nome": "42cd1073-521f-4040-9491-e993d03663a4",
+    "titolo": "Alberi",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-10-09"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_civici",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/11430710-56eb-4444-bd6f-c5433155afc5",
+   "catalogo_live": {
+    "nome": "11430710-56eb-4444-bd6f-c5433155afc5",
+    "titolo": "Civici",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-10-05"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_barriere",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/92033b63-0598-4449-9007-22127abe505a",
+   "catalogo_live": {
+    "nome": "92033b63-0598-4449-9007-22127abe505a",
+    "titolo": "Censimento delle barriere architettoniche e urbanistiche",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_rifugi_aree",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/rifugi_climatici_aree_fresche",
+   "catalogo_live": {
+    "nome": "rifugi_climatici_aree_fresche",
+    "titolo": "Rifugi Climatici Aree Fresche",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-06-19"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_rifugi_biblioteche",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/rifugi_climatici_biblioteche",
+   "catalogo_live": {
+    "nome": "rifugi_climatici_biblioteche",
+    "titolo": "Rifugi Climatici Biblioteche",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-06-19"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_rt_uv_firenze_novoli",
+   "dataset_catalogo": null,
+   "catalogo_live": null,
+   "lacuna": "Le unità volumetriche di Firenze non sono su dati.toscana.it (il portale le ha per altri 40 comuni, non per Firenze): fonte il servizio WFS del Geoscopio. Da chiedere alla Regione: pubblicazione del layer per Firenze.",
+   "licenza_dichiarata": "clear_with_reserve"
+  },
+  {
+   "source_id": "src_fi_dtm2023",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/dtm-lidar-2023",
+   "catalogo_live": {
+    "nome": "dtm-lidar-2023",
+    "titolo": "DTM 2023",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_dsm2023",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/dsm-lidar-2023",
+   "catalogo_live": {
+    "nome": "dsm-lidar-2023",
+    "titolo": "DSM 2023",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_osm_firenze",
+   "dataset_catalogo": null,
+   "catalogo_live": null,
+   "lacuna": "OSM non è su dati.toscana.it (fonte aperta esterna, ODbL): marciapiedi, attraversamenti e ingressi non hanno altra fonte nel catalogo.",
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_gtfs_gest_firenze",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/rt-oraritb",
+   "catalogo_live": {
+    "nome": "rt-oraritb",
+    "titolo": "Regione Toscana - Orari trasporto pubblico",
+    "license_id": "cc-by",
+    "licenza_risorse": [
+     "assente",
+     "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+    ],
+    "metadata_modified": "2026-09-08"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear_with_reserve"
+  },
+  {
+   "source_id": "src_gtfs_at_firenze",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/rt-oraritb",
+   "catalogo_live": {
+    "nome": "rt-oraritb",
+    "titolo": "Regione Toscana - Orari trasporto pubblico",
+    "license_id": "cc-by",
+    "licenza_risorse": [
+     "assente",
+     "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+    ],
+    "metadata_modified": "2026-09-08"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear_with_reserve"
+  },
+  {
+   "source_id": "src_fi_tram_fermate",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/607b8031-252b-4442-950a-7b4452d9db8f",
+   "catalogo_live": {
+    "nome": "607b8031-252b-4442-950a-7b4452d9db8f",
+    "titolo": "Fermate tram",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_scuole_statali",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/anagrafica-scuole-statali-2026_27",
+   "catalogo_live": {
+    "nome": "anagrafica-scuole-statali-2026_27",
+    "titolo": "Informazioni anagrafiche scuole anno scolastico 2026/27 - Scuole statali",
+    "license_id": "iodl2",
+    "licenza_risorse": [
+     "https://www.dati.gov.it/content/italian-open-data-license-v20"
+    ],
+    "metadata_modified": "2026-09-19"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear_with_reserve"
+  },
+  {
+   "source_id": "src_cm_edscol_firenze",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/edifici-scolastici-citta-metropolitana-di-firenze",
+   "catalogo_live": {
+    "nome": "edifici-scolastici-citta-metropolitana-di-firenze",
+    "titolo": "Edifici scolastici - Città Metropolitana di Firenze",
+    "license_id": "cc-by",
+    "licenza_risorse": [
+     "assente"
+    ],
+    "metadata_modified": "2026-04-24"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear_with_reserve"
+  },
+  {
+   "source_id": "src_fi_escapos_alberi",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/life_escapos_mobile_measurements",
+   "catalogo_live": {
+    "nome": "life_escapos_mobile_measurements",
+    "titolo": "Life Escapos - Alberature pubbliche",
+    "license_id": "cc-by-nc-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by-nc/4.0/"
+    ],
+    "metadata_modified": "2026-02-13"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear_with_reserve"
+  }
+ ]
+}

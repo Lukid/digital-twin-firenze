@@ -1,0 +1,43 @@
+{
+ "source_id": "src_fi_escapos_alberi",
+ "title": "Life Escapos, alberature pubbliche (solo verifica interna)",
+ "publisher": "Comune di Firenze (progetto Life Escapos)",
+ "dataset_url": "https://dati.toscana.it/dataset/life_escapos_mobile_measurements",
+ "resource_url": "https://datigis.comune.fi.it/json/escapos_tree_census.json",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/life_escapos_mobile_measurements"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://dati.toscana.it/dataset/life_escapos_mobile_measurements",
+  "evidence_note": "Scheda e risorse del catalogo regionale: CC BY-NC 4.0 (package_show del 2026-10-09).",
+  "identifier": "CC-BY-NC-4.0",
+  "reserve_note": "Licenza non commerciale: il progetto è svolto per un ente su incarico, quindi l'uso è un'area grigia. Solo verifica interna delle altezze da LiDAR, mai ridistribuito, mai in baseline, nessun valore in file versionati."
+ },
+ "content_period": {
+  "note": "dato dichiarato del 2026-02-12; solo alberi (non le misure fisiologiche di persone)"
+ },
+ "crs": {
+  "declared": "EPSG:7791",
+  "vertical_datum": "not_declared",
+  "note": "il GeoJSON dichiara EPSG:7791"
+ },
+ "units": {
+  "h_m": "m",
+  "dbh_cm": "cm"
+ },
+ "checks": [
+  {
+   "name": "provenienza di h_m",
+   "result": "warn",
+   "detail": "non documentata: può derivare dallo stesso LiDAR, non è una validazione indipendente"
+  },
+  {
+   "name": "uso",
+   "result": "warn",
+   "detail": "Life Escapos (CC BY-NC 4.0): solo per la verifica interna delle altezze; nessuna ridistribuzione, nessun valore in file versionati."
+  }
+ ]
+}

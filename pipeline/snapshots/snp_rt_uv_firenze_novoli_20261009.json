@@ -1,0 +1,18 @@
+{
+ "snapshot_id": "snp_rt_uv_firenze_novoli_20261009",
+ "source_id": "src_rt_uv_firenze_novoli",
+ "retrieved_at": "2026-10-09T15:16:16Z",
+ "bytes": 21217704,
+ "sha256": "2197d5f1105871037b7f419721a4fcb766d67be50e4adafa1ea9e1319b8f89ad",
+ "local_path": "data/raw/rt_uv_firenze_novoli/20261009/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato&SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=rt_edif.unitavolumetriche&SRSNAME=urn:ogc:def:crs:EPSG::7791&BBOX=677626.54,4850435.36,680521.44,4853256.26,urn:ogc:def:crs:EPSG::7791",
+ "media_type": "application/gml+xml",
+ "license_state": "clear_with_reserve",
+ "content_period": {
+  "start": "2011-01-01",
+  "end": "2011-12-31",
+  "note": "volo 2011 (campo anno nei dati); il servizio non dichiara la data di aggiornamento"
+ }
+}

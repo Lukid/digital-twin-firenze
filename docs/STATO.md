@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 9 ottobre 2026: F01 e F02 consegnati, riquadro approvato (D13). Prossimo: F03. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
+Aggiornato al 9 ottobre 2026: F01, F02 e F03 consegnati, riquadro approvato (D13). Prossimo: F04 e F05. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -64,7 +64,8 @@ Pisa (primo pilota):
 ## Prossimi passi
 
 1. F02 consegnato: registro delle aree `contracts/aree.json`, schema della baseline, origini `address_points` (`contracts/ADR-F02.md`).
-2. **F03 acquisizione** su `aoi_firenze_novoli` (riquadro più rete con margine di 700 m), con la prima baseline di Firenze; poi F04 rete e F05 edifici e verde (altezze da DSM 2023, verifica interna sugli alberi Life Escapos che cadono in FP, da contare in F03).
+2. F03 consegnato (`pipeline/REPORT-F03.md`): 15 fonti di Firenze con snapshot e sha256, T17 applicato, baseline `bas_firenze_novoli_20261009`. Comando: `DT_DAY=20261009 pipeline/run_firenze.sh`. GTFS bus valido fino al 29/10/2026.
+   **Prossimo: F04 rete e F05 edifici e verde, in parallelo** (altezze da DSM 2023; verifica interna sui 24 alberi Life Escapos in FP; misurare lo scarto 3003 → 7791 su Firenze).
 3. Analisi, servizio MCP e scena sul nuovo riquadro, riusando i motori di Pisa.
 4. In parallelo, da decidere: approccio di scena di Padova (T15, rifare il confronto di ADR-T08), dati ARPAT di Firenze (T16, consenso ARPAT), fonti dal portale (T17).
 5. Su Pisa resta aperto solo ciò che serve a chiudere il primo pilota: difetti di T12 utili anche a Firenze (elenco scenari, ombra per orario, più destinazioni) e, se si vuole, il sopralluogo T11.

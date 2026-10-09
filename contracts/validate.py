@@ -55,7 +55,7 @@ ids = {a["aoi_id"]: a for a in aree["aree"]}
 for a in aree["aree"]:
     f, key = a["fonte_riquadro"].split("#"); zone = load(R.parent/f)["zone"]
     if zone[key]["bbox"] != a["bbox_ll_swne"]: errors.append(f"aree.json: {a['aoi_id']} non coincide con {a['fonte_riquadro']}")
-for p in [R.parent/"scenarios/baseline.json"]:
+for p in [R.parent/"scenarios/baseline.json", *sorted((R.parent/"pipeline/baselines").glob("bas_*.json"))]:   # Pisa + baseline delle altre aree (F03)
     b = load(p); run("baseline", "", "valid", b, str(p.relative_to(R.parent)))
     if b["aoi_id"] not in ids: errors.append(f"{p.name}: area {b['aoi_id']} assente da aree.json")
     elif b["baseline_id"] not in ids[b["aoi_id"]].get("baseline_ids", []): errors.append(f"{p.name}: {b['baseline_id']} non elencata in aree.json")

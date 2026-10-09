@@ -1,0 +1,93 @@
+{
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "version": 1,
+ "frozen_at": "2026-10-09T15:17:42Z",
+ "aoi_id": "aoi_firenze_novoli",
+ "descrizione": "Prima baseline di Firenze Novoli - Firenze Nova (riquadro FP D13, rete con margine di 700 m): snapshot di F03. Life Escapos escluso: snapshot per verifica interna, non input dei motori.",
+ "snapshot": [
+  {
+   "snapshot_id": "snp_fi_alberi_20261009",
+   "source_id": "src_fi_alberi",
+   "sha256": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_civici_20261009",
+   "source_id": "src_fi_civici",
+   "sha256": "3c501a28c48a56ac8e9b65e3233f3073284cab4e6126205dc04f72d60507c505",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_barriere_20261009",
+   "source_id": "src_fi_barriere",
+   "sha256": "0f687cebb744beb670a47d81d711f0c620f18f3a4bfbe3c4af252246a32c26dd",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_rifugi_aree_20261009",
+   "source_id": "src_fi_rifugi_aree",
+   "sha256": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_rifugi_biblioteche_20261009",
+   "source_id": "src_fi_rifugi_biblioteche",
+   "sha256": "2b2685f9008ee030b1a23c29ae59116fc9dce7ee9071840638c9823ea34253c8",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_rt_uv_firenze_novoli_20261009",
+   "source_id": "src_rt_uv_firenze_novoli",
+   "sha256": "2197d5f1105871037b7f419721a4fcb766d67be50e4adafa1ea9e1319b8f89ad",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_fi_dtm2023_20261009",
+   "source_id": "src_fi_dtm2023",
+   "sha256": "3c8fdac2c02ab5cbb8353760c40962ea95ae9c6162130f30d9ac805608a79d02",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_dsm2023_20261009",
+   "source_id": "src_fi_dsm2023",
+   "sha256": "1c6c250f2b91c77858667f8816e132c17f19916639f6e6e1a2578a45a5290451",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_osm_firenze_20261009",
+   "source_id": "src_osm_firenze",
+   "sha256": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_gtfs_gest_firenze_20261009",
+   "source_id": "src_gtfs_gest_firenze",
+   "sha256": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_gtfs_at_firenze_20261009",
+   "source_id": "src_gtfs_at_firenze",
+   "sha256": "6ca6c95f0556b6bdb170cfd8f684b8e976ffd083119b92c711f988e7169795e7",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_fi_tram_fermate_20261009",
+   "source_id": "src_fi_tram_fermate",
+   "sha256": "631e460c143af00d2fb4bfbd42a06241a73471b28a88171d12c21ee28fca4085",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_scuole_statali_20261009",
+   "source_id": "src_fi_scuole_statali",
+   "sha256": "5a9ab7914290ea32d62aa869c8073063062a575cb3f7c82c8198d5c96d7145b3",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_cm_edscol_firenze_20261009",
+   "source_id": "src_cm_edscol_firenze",
+   "sha256": "791cc1192fa54892486df8343d848c76cd7d4117f00bf64ecef8c4e1047f1050",
+   "license_state": "clear_with_reserve"
+  }
+ ]
+}

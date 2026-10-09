@@ -1,0 +1,48 @@
+{
+ "source_id": "src_fi_civici",
+ "title": "Civici del Comune di Firenze",
+ "publisher": "Comune di Firenze",
+ "dataset_url": "https://dati.toscana.it/dataset/11430710-56eb-4444-bd6f-c5433155afc5",
+ "resource_url": "https://datigis.comune.fi.it/shp/civici.zip",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/11430710-56eb-4444-bd6f-c5433155afc5"
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://dati.toscana.it/dataset/11430710-56eb-4444-bd6f-c5433155afc5",
+  "evidence_note": "Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).",
+  "identifier": "CC-BY-4.0"
+ },
+ "content_period": {
+  "note": "dataset dichiarato aggiornato al bisogno (AS_NEEDED), ultima modifica 2026-10-05; stato alla data di scarico"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "shapefile con .prj in Monte Mario Italia zona 1; convertito in EPSG:7791 come a Pisa (nessuno shift di datum), scarto non misurato su Firenze"
+ },
+ "units": {},
+ "checks": [
+  {
+   "name": "civici in area allargata",
+   "result": "pass",
+   "detail": "13987 oggetti"
+  },
+  {
+   "name": "civici come punti d'indirizzo",
+   "result": "pass",
+   "detail": "origins address_points (ADR-F02), non persone"
+  }
+ ],
+ "schema_fields": [
+  "PK_ID",
+  "ID",
+  "CODICESTRA",
+  "CODICECIVI",
+  "STRADA",
+  "NUMEROCIVI",
+  "TIPO"
+ ]
+}

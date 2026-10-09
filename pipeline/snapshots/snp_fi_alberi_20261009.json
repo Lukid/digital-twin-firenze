@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_alberi_20261009",
+ "source_id": "src_fi_alberi",
+ "retrieved_at": "2026-10-09T15:09:45Z",
+ "bytes": 23193658,
+ "sha256": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
+ "local_path": "data/raw/fi_alberi/20261009/alberi_pubblici.json",
+ "status": "ok",
+ "stored": false,
+ "url": "https://datigis.comune.fi.it/json/alberi_pubblici.json",
+ "media_type": "application/geo+json",
+ "content_period": {
+  "note": "dataset dichiarato aggiornato ogni giorno: stato alla data di scarico"
+ },
+ "license_state": "clear"
+}

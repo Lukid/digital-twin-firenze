@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_tram_fermate_20261009",
+ "source_id": "src_fi_tram_fermate",
+ "retrieved_at": "2026-10-09T15:11:43Z",
+ "bytes": 2899,
+ "sha256": "631e460c143af00d2fb4bfbd42a06241a73471b28a88171d12c21ee28fca4085",
+ "local_path": "data/raw/fi_tram_fermate/20261009/tram_fermate.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://datigis.comune.fi.it/shp/tram_fermate.zip",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "dato dichiarato del 2025-03-11"
+ },
+ "license_state": "clear"
+}

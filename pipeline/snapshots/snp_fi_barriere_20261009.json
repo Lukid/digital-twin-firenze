@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_barriere_20261009",
+ "source_id": "src_fi_barriere",
+ "retrieved_at": "2026-10-09T15:09:47Z",
+ "bytes": 111667,
+ "sha256": "0f687cebb744beb670a47d81d711f0c620f18f3a4bfbe3c4af252246a32c26dd",
+ "local_path": "data/raw/fi_barriere/20261009/mappa_accessibilita.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://datigis.comune.fi.it/shp/mappa_accessibilita.zip",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "archivio dichiarato aggiornato al 2013"
+ },
+ "license_state": "clear"
+}

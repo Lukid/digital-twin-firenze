@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_osm_firenze_20261009",
+ "source_id": "src_osm_firenze",
+ "retrieved_at": "2026-10-09T15:07:52Z",
+ "bytes": 384857630,
+ "sha256": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+ "local_path": "data/raw/osm_firenze/20261009/centro-261008.osm.pbf",
+ "status": "ok",
+ "stored": false,
+ "url": "https://download.geofabrik.de/europe/italy/centro-261008.osm.pbf",
+ "media_type": "application/x-osm+pbf",
+ "content_period": {
+  "note": "estratto regionale Centro Italia, timestamp nel nome del file (2026-10-08, ore 00 UTC circa); il ritaglio all'area allargata avviene in normalizzazione, il file originario resta intatto"
+ },
+ "license_state": "clear"
+}

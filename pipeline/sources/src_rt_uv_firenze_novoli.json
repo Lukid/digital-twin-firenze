@@ -1,0 +1,55 @@
+{
+ "source_id": "src_rt_uv_firenze_novoli",
+ "title": "Unità volumetriche del DB topografico regionale (WFS), area di Firenze",
+ "publisher": "Regione Toscana",
+ "dataset_url": "https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm",
+ "resource_url": "https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato",
+ "provenance": {
+  "origin": "ogc_service",
+  "note": "T17: lacuna del catalogo. Le unità volumetriche di Firenze non sono su dati.toscana.it (il portale le ha per altri 40 comuni, non per Firenze): fonte il servizio WFS del Geoscopio. Da chiedere alla Regione: pubblicazione del layer per Firenze."
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm",
+  "evidence_note": "Nessuna licenza sul layer; vale la politica regionale sui dati geografici aperti (CC BY o CC BY-SA, atto 2013), come a Pisa.",
+  "reserve_note": "Licenza non scritta sul layer: dedotta dalla politica regionale. Verificare prima di ridistribuire."
+ },
+ "content_period": {
+  "start": "2011-01-01",
+  "end": "2011-12-31",
+  "note": "volo 2011 (campo anno, audit edifici); data di aggiornamento del servizio non dichiarata"
+ },
+ "crs": {
+  "declared": "EPSG:7791",
+  "vertical_datum": "not_declared",
+  "note": "richiesto direttamente in EPSG:7791; spiccato UV meno DTM 2023: mediana -0,14 m su 1.419 impronte (audit edifici), datum coerente ma non dichiarato dalla fonte"
+ },
+ "units": {
+  "height_m": "m",
+  "ground_elev_m": "m",
+  "roof_elev_m": "m",
+  "area_m2": "m2"
+ },
+ "checks": [
+  {
+   "name": "building_volume in area allargata",
+   "result": "pass",
+   "detail": "7987 oggetti"
+  },
+  {
+   "name": "portici (uv_dpor)",
+   "result": "warn",
+   "detail": "un solo oggetto con loggia nell'audit: nessuna fonte per portici e volumi sospesi"
+  }
+ ],
+ "schema_fields": [
+  "uv_id",
+  "edifc_id",
+  "uv_av",
+  "uv_qs",
+  "uv_qe",
+  "uv_dpor",
+  "anno"
+ ]
+}

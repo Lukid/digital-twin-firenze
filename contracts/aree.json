@@ -20,7 +20,7 @@
       "decisione": "D13",
       "stato": "approvata",
       "fonte_riquadro": "docs/audit-firenze/RIQUADRO.json#FP",
-      "baseline_ids": []
+      "baseline_ids": ["bas_firenze_novoli_20261009"]
     }
   ]
 }

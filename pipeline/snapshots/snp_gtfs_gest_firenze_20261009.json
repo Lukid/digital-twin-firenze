@@ -1,0 +1,19 @@
+{
+ "snapshot_id": "snp_gtfs_gest_firenze_20261009",
+ "source_id": "src_gtfs_gest_firenze",
+ "retrieved_at": "2026-10-09T15:09:58Z",
+ "bytes": 1191740,
+ "sha256": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
+ "local_path": "data/raw/gtfs_gest_firenze/20261009/gest.gtfs.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/1f62d551-65f4-49f8-9a99-e19b02077be3/download/gest.gtfs",
+ "media_type": "application/zip",
+ "content_period": {
+  "start": "2026-08-10",
+  "end": "2026-12-30",
+  "note": "feed senza feed_info.txt: minimo e massimo di calendar_dates.txt"
+ },
+ "expires_at": "2026-12-30",
+ "license_state": "clear_with_reserve"
+}
