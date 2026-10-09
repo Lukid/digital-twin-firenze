@@ -1,0 +1,38 @@
+{
+ "metodo": "poligoni Città metropolitana (3003 nativo) -> 7791 senza shift di datum, contro unità volumetriche regionali (7791 nativo); vertici entro 3 m, coppie con IoU >= 0,5",
+ "edifici_cm_nel_dato": 2544,
+ "con_unità_volumetrica_vicina": 242,
+ "coppie_iou_ge_0.5": 132,
+ "iou_mediano": 0.63,
+ "centroidi": {
+  "n": 132,
+  "dE_medio_m": -0.35,
+  "dN_medio_m": -0.83,
+  "dE_mediana_m": -0.17,
+  "dN_mediana_m": -0.84,
+  "modulo_mediano_m": 0.86,
+  "modulo_p95_m": 1.27,
+  "modulo_max_m": 7.47
+ },
+ "vertici_entro_3m": {
+  "n": 1321,
+  "dE_medio_m": -0.16,
+  "dN_medio_m": -0.77,
+  "dE_mediana_m": -0.17,
+  "dN_mediana_m": -0.84,
+  "modulo_mediano_m": 0.86,
+  "modulo_p95_m": 1.33,
+  "modulo_max_m": 2.9
+ },
+ "pisa_vertici_entro_3m_per_confronto": {
+  "n": 128,
+  "dE_medio_m": 0.86,
+  "dN_medio_m": -0.71,
+  "dE_mediana_m": 1.03,
+  "dN_mediana_m": -0.63,
+  "modulo_mediano_m": 1.43,
+  "modulo_p95_m": 2.5,
+  "modulo_max_m": 2.93
+ },
+ "nota": "Differenza = unità volumetrica meno poligono CM trasformato. A Pisa lo stesso confronto (edifici SIT, 128 vertici) dava modulo mediano 1,43 m; con lo stesso dato in due CRS (DBT10K) 0,35 m. Qui il confronto è tra dati disegnati a mano da fonti diverse (volo regionale del 2011), quindi è un limite superiore dello scarto di trasformazione."
+}

@@ -43,8 +43,8 @@ G1 chiude la fattibilità di A. G2 chiude la fattibilità geometrica di B. G3 è
 | F01 Audit e riquadro (consegnato il 5/10/2026, [audit-firenze.md](audit-firenze.md); riquadro approvato il 9/10, D13) | metodo T01 | Riquadro di 1,5-2 km² fra Novoli e Firenze Nova; destinazioni (scuole, università, fermate del tram, Careggi se nel raggio); inventario delle fonti dal portale regionale con il server MCP CKAN e lacune; confronto con i gemelli esistenti | Riquadro e destinazioni motivati; licenza di ogni fonte verificata (Life Escapos è CC BY-NC 4.0) |
 | F02 Contratti (consegnato il 9/10/2026, [ADR-F02](../contracts/ADR-F02.md)) | T02 | Estensione di `contracts/` a più aree (`aoi_id`, baseline per area) | Pisa e Firenze validano con gli stessi schemi |
 | F03 Acquisizione (consegnato il 9/10/2026, [REPORT-F03](../pipeline/REPORT-F03.md)) | T03 | Snapshot di alberi, civici, barriere, rifugi climatici, edifici, DTM e DSM LiDAR 2023, OSM, GTFS tram e bus | Manifest con sha256; T17 applicato |
-| F04 Rete e ingressi | T04 | Grafo pedonale; barriere architettoniche censite come attributi | Percorsi campione e casi vietati controllabili |
-| F05 Edifici e verde | T05 | Altezze edifici da DSM 2023; alberi censiti con altezza e chioma da LiDAR, verificate sui 50 alberi Life Escapos | Chiome misurate e stimate separate; scarto sul campione dichiarato |
+| F04 Rete e ingressi (consegnato il 9/10/2026, [REPORT-F04](../network/REPORT-F04.md)) | T04 | Grafo pedonale; barriere architettoniche censite come attributi | Percorsi campione e casi vietati controllabili |
+| F05 Edifici e verde (consegnato il 9/10/2026, [REPORT-F05](../geometry/REPORT-F05.md)) | T05 | Altezze edifici da DSM 2023; alberi censiti con altezza e chioma da LiDAR, verificate sui 50 alberi Life Escapos | Chiome misurate e stimate separate; scarto sul campione dichiarato |
 | F06-F10 Analisi | motori T06, T09, T10 | Accessibilità, ombre, scenari sul nuovo riquadro | Stessi test dei motori, nuovi casi |
 | F07 Servizio MCP | T07, T12 | Server con più aree; domande di T12 ripetute su Firenze | Replay e confronto con la mappa |
 | F11 Campo | T11 | Protocollo e punti per Firenze | Come T11 |

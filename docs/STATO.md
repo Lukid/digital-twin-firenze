@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 9 ottobre 2026: F01, F02 e F03 consegnati, riquadro approvato (D13). Prossimo: F04 e F05. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
+Aggiornato al 9 ottobre 2026: F01-F05 consegnati, riquadro approvato (D13). Prossimo: analisi F06-F10. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -40,11 +40,12 @@ Firenze:
 1. Perimetro di D11: livelli della scena e se adottare l'approccio di Padova (T15).
 2. Dati ARPAT: chiedere ad ARPAT il consenso per proxy e dati (T16).
 3. Contatto con Comune di Firenze o DISIT: concorrenza o collaborazione.
+4. Ombre (F06): includere i 66 ettari di chioma senza albero censito (giardini privati, parchi) ricavati dal LiDAR, o dichiarare ombra solo da edifici e alberi pubblici.
 
 Pisa (primo pilota):
-4. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.
-5. Licenza dei layer SIT, richiesta del censimento alberi, segnalazione dei layer SIT scrivibili.
-6. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
+5. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.
+6. Licenza dei layer SIT, richiesta del censimento alberi, segnalazione dei layer SIT scrivibili.
+7. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
 
 ## Risultati principali su Pisa (non validati sul posto)
 
@@ -65,10 +66,11 @@ Pisa (primo pilota):
 
 1. F02 consegnato: registro delle aree `contracts/aree.json`, schema della baseline, origini `address_points` (`contracts/ADR-F02.md`).
 2. F03 consegnato (`pipeline/REPORT-F03.md`): 15 fonti di Firenze con snapshot e sha256, T17 applicato, baseline `bas_firenze_novoli_20261009`. Comando: `DT_DAY=20261009 pipeline/run_firenze.sh`. GTFS bus valido fino al 29/10/2026.
-   **Prossimo: F04 rete e F05 edifici e verde, in parallelo** (altezze da DSM 2023; verifica interna sui 24 alberi Life Escapos in FP; misurare lo scarto 3003 → 7791 su Firenze).
-3. Analisi, servizio MCP e scena sul nuovo riquadro, riusando i motori di Pisa.
-4. In parallelo, da decidere: approccio di scena di Padova (T15, rifare il confronto di ADR-T08), dati ARPAT di Firenze (T16, consenso ARPAT), fonti dal portale (T17).
-5. Su Pisa resta aperto solo ciò che serve a chiudere il primo pilota: difetti di T12 utili anche a Firenze (elenco scenari, ombra per orario, più destinazioni) e, se si vuole, il sopralluogo T11.
+3. F04 consegnato (`network/REPORT-F04.md`): rete OSM di 294 km (91 nel riquadro), Polo `dst_university_w83537185` con 2 ingressi, Vamba, 2 fermate T2; 3.112 civici su 3.296 raggiungibili dal Polo; scarto 3003 → 7791 mediano 0,86 m. Comando `network/build_firenze.sh`.
+4. F05 consegnato (`geometry/REPORT-F05.md`): 1.952 edifici nel riquadro (1.442 con altezza LiDAR 2023), 2.917 alberi (2.050 chiome misurate, 867 stimate), verifica interna Escapos solo come coerenza. Comando `bash geometry/build_firenze.sh`.
+   **Prossimo: analisi F06-F10** (accessibilità, ombre, scenari) riusando i motori di Pisa; `analysis/accessibilita.py`, `service/core.py` e `scenarios/costruisci.py` hanno ancora nomi fissi di Pisa.
+5. In parallelo, da decidere: approccio di scena di Padova (T15, rifare il confronto di ADR-T08), dati ARPAT di Firenze (T16, consenso ARPAT), fonti dal portale (T17).
+6. Su Pisa resta aperto solo ciò che serve a chiudere il primo pilota: difetti di T12 utili anche a Firenze (elenco scenari, ombra per orario, più destinazioni) e, se si vuole, il sopralluogo T11.
 
 Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
 

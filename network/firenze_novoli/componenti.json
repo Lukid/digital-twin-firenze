@@ -1,0 +1,998 @@
+[
+ {
+  "componente": "cmp_01",
+  "nodi": 6393,
+  "archi": 8810,
+  "km": 282.806,
+  "km_in_z2": 84.193,
+  "principale": true,
+  "tipi": {
+   "strada": 3821,
+   "sentiero": 2600,
+   "attraversamento": 1519,
+   "scala": 36,
+   "ponte": 47,
+   "marciapiede_disegnato": 707,
+   "sottopasso": 80
+  },
+  "highway": {
+   "primary": 285,
+   "pedestrian": 92,
+   "residential": 1428,
+   "footway": 4547,
+   "secondary": 351,
+   "unclassified": 538,
+   "service": 929,
+   "tertiary": 301,
+   "cycleway": 242,
+   "tertiary_link": 2,
+   "steps": 36,
+   "path": 43,
+   "primary_link": 8,
+   "secondary_link": 8
+  }
+ },
+ {
+  "componente": "cmp_02",
+  "nodi": 75,
+  "archi": 104,
+  "km": 6.531,
+  "km_in_z2": 4.847,
+  "principale": false,
+  "tipi": {
+   "strada": 104
+  },
+  "highway": {
+   "service": 104
+  },
+  "gap_dalla_principale_m": 7.9,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private, tunnel_stradale_senza_marciapiede",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_03",
+  "nodi": 6,
+  "archi": 6,
+  "km": 0.49,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 6
+  },
+  "highway": {
+   "service": 6
+  },
+  "gap_dalla_principale_m": 21.1,
+  "motivi": [
+   "adiacente a tratti esclusi: access=no, access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_04",
+  "nodi": 8,
+  "archi": 7,
+  "km": 0.347,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 7
+  },
+  "highway": {
+   "unclassified": 3,
+   "service": 4
+  },
+  "gap_dalla_principale_m": 14.5,
+  "motivi": [
+   "taglio del buffer: la rete prosegue fuori dal riquadro",
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede"
+  ]
+ },
+ {
+  "componente": "cmp_05",
+  "nodi": 9,
+  "archi": 10,
+  "km": 0.326,
+  "km_in_z2": 0.326,
+  "principale": false,
+  "tipi": {
+   "strada": 10
+  },
+  "highway": {
+   "service": 10
+  },
+  "gap_dalla_principale_m": 9.7,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_06",
+  "nodi": 4,
+  "archi": 3,
+  "km": 0.325,
+  "km_in_z2": 0.236,
+  "principale": false,
+  "tipi": {
+   "strada": 3
+  },
+  "highway": {
+   "service": 3
+  },
+  "gap_dalla_principale_m": 52.1,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_07",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.316,
+  "km_in_z2": 0.316,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 5.6,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_08",
+  "nodi": 1,
+  "archi": 1,
+  "km": 0.227,
+  "km_in_z2": 0.227,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "pedestrian": 1
+  },
+  "gap_dalla_principale_m": 0.4,
+  "motivi": [
+   "possibile connessione mancante: a 0.4 m dalla componente principale senza nodo condiviso"
+  ]
+ },
+ {
+  "componente": "cmp_09",
+  "nodi": 6,
+  "archi": 6,
+  "km": 0.216,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 5,
+   "sentiero": 1
+  },
+  "highway": {
+   "residential": 5,
+   "footway": 1
+  },
+  "gap_dalla_principale_m": 10.3,
+  "motivi": [
+   "taglio del buffer: la rete prosegue fuori dal riquadro"
+  ]
+ },
+ {
+  "componente": "cmp_10",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.16,
+  "km_in_z2": 0.16,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 90.5,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_11",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.154,
+  "km_in_z2": 0.154,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 21.4,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_12",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.14,
+  "km_in_z2": 0.14,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 16.0,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_13",
+  "nodi": 1,
+  "archi": 1,
+  "km": 0.139,
+  "km_in_z2": 0.139,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "pedestrian": 1
+  },
+  "gap_dalla_principale_m": 2.3,
+  "motivi": [
+   "possibile connessione mancante: a 2.3 m dalla componente principale senza nodo condiviso",
+   "adiacente a tratti esclusi: classe_non_pedonale_senza_foot"
+  ]
+ },
+ {
+  "componente": "cmp_14",
+  "nodi": 4,
+  "archi": 3,
+  "km": 0.138,
+  "km_in_z2": 0.138,
+  "principale": false,
+  "tipi": {
+   "strada": 3
+  },
+  "highway": {
+   "service": 3
+  },
+  "gap_dalla_principale_m": 132.3,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_15",
+  "nodi": 3,
+  "archi": 2,
+  "km": 0.136,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 2
+  },
+  "highway": {
+   "service": 2
+  },
+  "gap_dalla_principale_m": 16.4,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_16",
+  "nodi": 2,
+  "archi": 2,
+  "km": 0.134,
+  "km_in_z2": 0.134,
+  "principale": false,
+  "tipi": {
+   "sentiero": 2
+  },
+  "highway": {
+   "footway": 2
+  },
+  "gap_dalla_principale_m": 13.0,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private"
+  ]
+ },
+ {
+  "componente": "cmp_17",
+  "nodi": 6,
+  "archi": 5,
+  "km": 0.12,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 5
+  },
+  "highway": {
+   "service": 5
+  },
+  "gap_dalla_principale_m": 6.5,
+  "motivi": [
+   "taglio del buffer: la rete prosegue fuori dal riquadro",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_18",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.096,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 37.7,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_19",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.089,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 13.1,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_20",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.088,
+  "km_in_z2": 0.088,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 92.6,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_21",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.086,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 13.4,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_22",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.084,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 54.2,
+  "motivi": [
+   "taglio del buffer: la rete prosegue fuori dal riquadro",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_23",
+  "nodi": 4,
+  "archi": 3,
+  "km": 0.08,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 3
+  },
+  "highway": {
+   "residential": 3
+  },
+  "gap_dalla_principale_m": 3.8,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private"
+  ]
+ },
+ {
+  "componente": "cmp_24",
+  "nodi": 3,
+  "archi": 2,
+  "km": 0.068,
+  "km_in_z2": 0.068,
+  "principale": false,
+  "tipi": {
+   "strada": 2
+  },
+  "highway": {
+   "service": 2
+  },
+  "gap_dalla_principale_m": 115.0,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_25",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.063,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "residential": 1
+  },
+  "gap_dalla_principale_m": 10.0,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede"
+  ]
+ },
+ {
+  "componente": "cmp_26",
+  "nodi": 4,
+  "archi": 3,
+  "km": 0.059,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 3
+  },
+  "highway": {
+   "service": 3
+  },
+  "gap_dalla_principale_m": 6.3,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_27",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.05,
+  "km_in_z2": 0.05,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 16.2,
+  "motivi": [
+   "adiacente a tratti esclusi: ferrovia_railway",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_28",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.046,
+  "km_in_z2": 0.046,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 96.7,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_29",
+  "nodi": 1,
+  "archi": 1,
+  "km": 0.043,
+  "km_in_z2": 0.043,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "pedestrian": 1
+  },
+  "gap_dalla_principale_m": 1.8,
+  "motivi": [
+   "possibile connessione mancante: a 1.8 m dalla componente principale senza nodo condiviso"
+  ]
+ },
+ {
+  "componente": "cmp_30",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.041,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 6.2,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_31",
+  "nodi": 5,
+  "archi": 4,
+  "km": 0.038,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "sentiero": 2,
+   "strada": 2
+  },
+  "highway": {
+   "footway": 2,
+   "service": 2
+  },
+  "gap_dalla_principale_m": 16.1,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede"
+  ]
+ },
+ {
+  "componente": "cmp_32",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.038,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "path": 1
+  },
+  "gap_dalla_principale_m": 9.0,
+  "motivi": [
+   "taglio del buffer: la rete prosegue fuori dal riquadro"
+  ]
+ },
+ {
+  "componente": "cmp_33",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.035,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "residential": 1
+  },
+  "gap_dalla_principale_m": 3.7,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private"
+  ]
+ },
+ {
+  "componente": "cmp_34",
+  "nodi": 1,
+  "archi": 1,
+  "km": 0.034,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "pedestrian": 1
+  },
+  "gap_dalla_principale_m": 2.1,
+  "motivi": [
+   "possibile connessione mancante: a 2.1 m dalla componente principale senza nodo condiviso",
+   "vicino a un'area a poligono non modellata (piazza o banchina)"
+  ]
+ },
+ {
+  "componente": "cmp_35",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.032,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "residential": 1
+  },
+  "gap_dalla_principale_m": 51.2,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private"
+  ]
+ },
+ {
+  "componente": "cmp_36",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.031,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "residential": 1
+  },
+  "gap_dalla_principale_m": 48.4,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private"
+  ]
+ },
+ {
+  "componente": "cmp_37",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.029,
+  "km_in_z2": 0.029,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 82.3,
+  "motivi": [
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_38",
+  "nodi": 1,
+  "archi": 1,
+  "km": 0.027,
+  "km_in_z2": 0.027,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "pedestrian": 1
+  },
+  "gap_dalla_principale_m": 1.4,
+  "motivi": [
+   "possibile connessione mancante: a 1.4 m dalla componente principale senza nodo condiviso",
+   "adiacente a tratti esclusi: classe_non_pedonale_senza_foot"
+  ]
+ },
+ {
+  "componente": "cmp_39",
+  "nodi": 3,
+  "archi": 2,
+  "km": 0.027,
+  "km_in_z2": 0.027,
+  "principale": false,
+  "tipi": {
+   "strada": 2
+  },
+  "highway": {
+   "service": 2
+  },
+  "gap_dalla_principale_m": 15.4,
+  "motivi": [
+   "adiacente a tratti esclusi: ferrovia_railway",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_40",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.026,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 15.5,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_41",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.023,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 14.4,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_42",
+  "nodi": 1,
+  "archi": 1,
+  "km": 0.021,
+  "km_in_z2": 0.021,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "pedestrian": 1
+  },
+  "gap_dalla_principale_m": 2.7,
+  "motivi": [
+   "possibile connessione mancante: a 2.7 m dalla componente principale senza nodo condiviso",
+   "adiacente a tratti esclusi: classe_non_pedonale_senza_foot"
+  ]
+ },
+ {
+  "componente": "cmp_43",
+  "nodi": 1,
+  "archi": 1,
+  "km": 0.017,
+  "km_in_z2": 0.017,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "pedestrian": 1
+  },
+  "gap_dalla_principale_m": 2.2,
+  "motivi": [
+   "possibile connessione mancante: a 2.2 m dalla componente principale senza nodo condiviso"
+  ]
+ },
+ {
+  "componente": "cmp_44",
+  "nodi": 1,
+  "archi": 1,
+  "km": 0.017,
+  "km_in_z2": 0.017,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "pedestrian": 1
+  },
+  "gap_dalla_principale_m": 0.6,
+  "motivi": [
+   "possibile connessione mancante: a 0.6 m dalla componente principale senza nodo condiviso"
+  ]
+ },
+ {
+  "componente": "cmp_45",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.014,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "footway": 1
+  },
+  "gap_dalla_principale_m": 3.3,
+  "motivi": [
+   "nessuna connessione mappata in OSM: lacuna di mappatura o vero isolamento, da verificare"
+  ]
+ },
+ {
+  "componente": "cmp_46",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.014,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 14.3,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_47",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.013,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 31.0,
+  "motivi": [
+   "adiacente a tratti esclusi: tunnel_stradale_senza_marciapiede",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_48",
+  "nodi": 3,
+  "archi": 2,
+  "km": 0.013,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "scala": 1,
+   "sentiero": 1
+  },
+  "highway": {
+   "steps": 1,
+   "footway": 1
+  },
+  "gap_dalla_principale_m": 6.5,
+  "motivi": [
+   "taglio del buffer: la rete prosegue fuori dal riquadro",
+   "adiacente a tratti esclusi: banchina_ferroviaria",
+   "contiene scale o sottopasso con una sola estremità collegata"
+  ]
+ },
+ {
+  "componente": "cmp_49",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.01,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "attraversamento": 1
+  },
+  "highway": {
+   "footway": 1
+  },
+  "gap_dalla_principale_m": 16.0,
+  "motivi": [
+   "taglio del buffer: la rete prosegue fuori dal riquadro",
+   "adiacente a tratti esclusi: banchina_ferroviaria"
+  ]
+ },
+ {
+  "componente": "cmp_50",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.01,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "strada": 1
+  },
+  "highway": {
+   "service": 1
+  },
+  "gap_dalla_principale_m": 36.5,
+  "motivi": [
+   "taglio del buffer: la rete prosegue fuori dal riquadro",
+   "adiacente a tratti esclusi: access=private",
+   "solo viabilità di servizio (cortile, parcheggio, passo carraio) non collegata"
+  ]
+ },
+ {
+  "componente": "cmp_51",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.005,
+  "km_in_z2": 0.0,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "footway": 1
+  },
+  "gap_dalla_principale_m": 34.0,
+  "motivi": [
+   "adiacente a tratti esclusi: access=customers"
+  ]
+ },
+ {
+  "componente": "cmp_52",
+  "nodi": 2,
+  "archi": 1,
+  "km": 0.001,
+  "km_in_z2": 0.001,
+  "principale": false,
+  "tipi": {
+   "sentiero": 1
+  },
+  "highway": {
+   "footway": 1
+  },
+  "gap_dalla_principale_m": 2.9,
+  "motivi": [
+   "possibile connessione mancante: a 2.9 m dalla componente principale senza nodo condiviso",
+   "adiacente a tratti esclusi: classe_non_pedonale_senza_foot"
+  ]
+ }
+]

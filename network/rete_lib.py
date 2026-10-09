@@ -1,16 +1,27 @@
 """Funzioni comuni T04: caricamento grafo, snapping documentato, percorso minimo da punti agganciati."""
-import json, pathlib, pickle
+import json, os, pathlib, pickle
 import geopandas as gpd, networkx as nx
 from shapely.geometry import LineString, Point
 from shapely.ops import substring
 from shapely.strtree import STRtree
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-OUT = ROOT / "data/norm/network"; NET = ROOT / "network"
+NET = ROOT / "network"   # codice e regole (uguali per ogni area)
 REGOLE = json.load(open(NET / "regole.json"))
 
+# Nomi per area (variabile DT_AOI come in pipeline/lib.py, default Pisa: percorsi e nomi storici invariati).
+# osm = fonte OSM (cartella raw, snapshot, GeoPackage); gid = parte dell'id del grafo; stem = nome dei file della rete;
+# out = dati pesanti (non versionati); res = manifest, report e file piccoli (versionati).
+AOI_ID = os.environ.get("DT_AOI", "aoi_z2")
+AREE = {"aoi_z2": dict(osm="osm_pisa", gid="z2", stem="rete_z2", out="data/norm/network", res="network", osm_gpkg="data/norm/osm_pisa.gpkg"),
+        "aoi_firenze_novoli": dict(osm="osm_firenze", gid="firenze_novoli", stem="rete_firenze_novoli", out="data/norm/firenze_novoli/network", res="network/firenze_novoli",
+                                   osm_gpkg="data/norm/firenze_novoli/osm_firenze.gpkg")}
+AREA = AREE[AOI_ID]
+OUT = ROOT / AREA["out"]; RES = ROOT / AREA["res"]; STEM = AREA["stem"]; OSM_GPKG = ROOT / AREA["osm_gpkg"]
+OSM_SNAP = json.load(open(sorted((ROOT / "pipeline/snapshots").glob(f"snp_{AREA['osm']}_*.json"))[-1]))
+
 def carica():
-    d = pickle.load(open(OUT / "rete_z2.pkl", "rb"))
+    d = pickle.load(open(OUT / f"{STEM}.pkl", "rb"))
     return d["G"], d
 
 class Snapper:
@@ -48,6 +59,11 @@ class Snapper:
                 return {"stato": "agganciato", "edge_id": k, "u": u, "v": v, "offset_m": round(off, 2), "dist_m": round(d, 2), "proj": (proj.x, proj.y), "scartati": scartati}
             scartati.append({"edge_id": self.keys[i][2], "dist_m": round(d, 2), "motivo": why})
         return {"stato": "insufficient_data", "motivo": "nessun arco percorribile entro %s m" % max_m if not cand else "tutti i candidati scartati: " + ", ".join(sorted({s['motivo'] for s in scartati})), "scartati": scartati}
+
+def punto_perimetro(poly, G):
+    """Punto del perimetro di un poligono più vicino a un arco della rete (per le destinazioni senza ingresso mappato: va dichiarato come tale)."""
+    from shapely.ops import nearest_points, unary_union
+    return nearest_points(poly.exterior, unary_union([d["geom"] for _, _, d in G.edges(data=True) if d["geom"].distance(poly) < 100]))[0]
 
 def distanza_vicino(snapper, p):
     """Distanza dal punto all'arco più vicino senza controlli (per le statistiche)."""

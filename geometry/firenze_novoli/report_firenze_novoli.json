@@ -1,0 +1,253 @@
+{
+ "area": {
+  "fp_bbox_7791": [
+   678326.54,
+   4851135.36,
+   679821.44,
+   4852556.26
+  ],
+  "allargata_bbox_7791": [
+   677626.54,
+   4850435.36,
+   680521.44,
+   4853256.26
+  ],
+  "margine_m": 700
+ },
+ "edifici": {
+  "fp": {
+   "volumi": 1952,
+   "uv_2011": 1876,
+   "nuovi_osm": 73,
+   "coperture_osm": 3,
+   "classe_h": {
+    "derived": 1442,
+    "measured": 510
+   },
+   "flag_uv": {
+    "ok": 1224,
+    "non_confrontato": 435,
+    "lidar_piu_alto": 98,
+    "demolizione_probabile": 51,
+    "lidar_piu_basso": 44,
+    "lidar_sotto_1m": 21,
+    "scarto_con_vegetazione": 3
+   },
+   "flag_nuovi": {
+    "nessuno": 57,
+    "sotto_2_5m": 15,
+    "vegetazione_possibile": 4
+   },
+   "senza_altezza": 0,
+   "non_presenti_2023": 51
+  },
+  "allargata": {
+   "volumi": 8266,
+   "uv_2011": 7987,
+   "nuovi_osm": 238,
+   "coperture_osm": 41,
+   "classe_h": {
+    "derived": 6004,
+    "measured": 2262
+   },
+   "flag_uv": {
+    "ok": 5270,
+    "non_confrontato": 1978,
+    "lidar_piu_alto": 308,
+    "demolizione_probabile": 183,
+    "lidar_piu_basso": 147,
+    "lidar_sotto_1m": 86,
+    "scarto_con_vegetazione": 15
+   },
+   "flag_nuovi": {
+    "nessuno": 177,
+    "sotto_2_5m": 86,
+    "vegetazione_possibile": 8,
+    "lidar_insufficiente": 6,
+    "vegetazione_possibile,sotto_2_5m": 2
+   },
+   "senza_altezza": 6,
+   "non_presenti_2023": 183
+  },
+  "osm_stato_allargata": {
+   "con_uv": 2882,
+   "parziale": 702,
+   "senza_uv": 301
+  },
+  "nuovi_confermati_lidar_ge_2_5m": 185,
+  "nuovi_sotto_2_5m_o_senza_lidar": 94,
+  "uv_non_coperte_da_osm_osm_cov_lt_0_3": {
+   "totale": 1445,
+   "di_cui_demolizione_probabile": 131,
+   "di_cui_nDSM_alto_ge_2_5m": 790
+  },
+  "demolizione_probabile_con_osm_cov_ge_0_8": 36,
+  "calibrazione": {
+   "n_impronte": 5930,
+   "bias_ndsm_meno_uv_av_m": 0.61,
+   "p10_m": -1.33,
+   "p90_m": 2.43,
+   "mae_m": 1.75,
+   "mediana_m": 0.61,
+   "intervallo_lidar_pm_m": 1.88,
+   "soglia_flag_m": 3.0
+  },
+  "datum_verticale": {
+   "stato": "non_confermato",
+   "uv_qs_meno_dtm_2023_mediana_m": -0.03,
+   "sigma_robusta_m": 0.61,
+   "mae_m": 0.7,
+   "n": 7960
+  },
+  "portico_sospeso": "ignoto su tutti i volumi (nessuna fonte)"
+ },
+ "alberi": {
+  "fp": {
+   "totale": 2917,
+   "chioma_misurata": 2050,
+   "chioma_stimata": 867,
+   "motivo_stima": {
+    "poche_celle_chioma": 655,
+    "sotto_2_5m": 169,
+    "in_edificio": 42,
+    "coperto_da_edificio": 1
+   },
+   "stima_da_specie_classe": 399,
+   "vicino_edificio": 174,
+   "chioma_confinante": 920,
+   "doppioni_entro_1m": 6,
+   "circ_anomala_o_nulla": 33
+  },
+  "allargata": {
+   "totale": 8491,
+   "chioma_misurata": 6218,
+   "chioma_stimata": 2273,
+   "motivo_stima": {
+    "poche_celle_chioma": 1616,
+    "sotto_2_5m": 556,
+    "in_edificio": 99,
+    "coperto_da_edificio": 2
+   },
+   "stima_da_specie_classe": 971,
+   "vicino_edificio": 570,
+   "chioma_confinante": 3745,
+   "doppioni_entro_1m": 47,
+   "circ_anomala": 8,
+   "circ_nulla_o_anomala_classe_ignota": 161
+  },
+  "classe_circonferenza_fp": {
+   "piccolo": 1843,
+   "medio": 567,
+   "grande": 474,
+   "ignota": 33
+  },
+  "altezza_misurata_fp_p10_p50_p90_m": [
+   5.2,
+   8.7,
+   16.2
+  ],
+  "diametro_chioma_misurata_fp_p10_p50_p90_m": [
+   2.9,
+   5.8,
+   10.6
+  ],
+  "area_chioma_lidar_allargata_m2": {
+   "totale_ge_2_5m_fuori_edifici": 958301.0,
+   "assegnata_ad_alberi_misurati": 293414.0,
+   "assegnata_ad_alberi_stimati": 7297.0,
+   "senza_albero_censito": 657590.0
+  },
+  "specie_classe_empiriche": 39,
+  "vegetazione_senza_albero": {
+   "cluster_ge_20m2_fp": 911,
+   "area_m2_fp": 122085.0,
+   "di_cui_lisci_candidati_edifici_fp": 62,
+   "cluster_allargata": 4117,
+   "area_m2_allargata": 553710.0
+  }
+ },
+ "verifica_escapos": {
+  "licenza": "CC BY-NC 4.0, solo verifica interna: in git solo aggregati; la tabella per albero è in data/norm/firenze_novoli/geometry/escapos_verifica.csv",
+  "indipendenza": "h_m e dbh_cm non sono indipendenti: dbh = circonferenza del censimento / pi e h_m ha precisione piena, provenienza non documentata, probabile derivazione dallo stesso LiDAR. L'accordo non prova l'indipendenza.",
+  "fp": {
+   "n_alberi": 24,
+   "n_chioma_misurata": 24,
+   "n_chioma_stimata": 0,
+   "altezza_chm_p95_misurati": {
+    "n": 24,
+    "mediana_scarto_m": -0.08,
+    "mae_m": 0.13,
+    "r": 0.965
+   },
+   "altezza_chm_max_misurati": {
+    "n": 24,
+    "mediana_scarto_m": 0.08,
+    "mae_m": 0.12,
+    "r": 0.976
+   },
+   "altezza_pipeline_tutti_misurata_o_stimata": {
+    "n": 24,
+    "mediana_scarto_m": -0.08,
+    "mae_m": 0.13,
+    "r": 0.965
+   },
+   "diametro_chioma_misurati_contro_crn_w_m": {
+    "n": 24,
+    "mediana_scarto_m": -0.32,
+    "mae_m": 0.6,
+    "r": 0.644
+   },
+   "stima_da_sola_circonferenza_altezza": {
+    "n": 24,
+    "mediana_scarto_m": -0.27,
+    "mae_m": 0.46,
+    "r": null,
+    "copertura_intervallo_min_max": 1.0
+   }
+  },
+  "allargata_50": {
+   "n_alberi": 50,
+   "n_chioma_misurata": 48,
+   "n_chioma_stimata": 2,
+   "altezza_chm_p95_misurati": {
+    "n": 48,
+    "mediana_scarto_m": -0.1,
+    "mae_m": 0.2,
+    "r": 0.99
+   },
+   "altezza_chm_max_misurati": {
+    "n": 48,
+    "mediana_scarto_m": 0.14,
+    "mae_m": 0.23,
+    "r": 0.995
+   },
+   "altezza_pipeline_tutti_misurata_o_stimata": {
+    "n": 50,
+    "mediana_scarto_m": -0.1,
+    "mae_m": 0.4,
+    "r": 0.811
+   },
+   "diametro_chioma_misurati_contro_crn_w_m": {
+    "n": 48,
+    "mediana_scarto_m": 0.04,
+    "mae_m": 0.69,
+    "r": 0.892
+   },
+   "stima_da_sola_circonferenza_altezza": {
+    "n": 50,
+    "mediana_scarto_m": -0.32,
+    "mae_m": 1.1,
+    "r": 0.715,
+    "copertura_intervallo_min_max": 0.88
+   }
+  }
+ },
+ "regole": {
+  "altezza_edificio": "nDSM 2023 (DSM-DTM) mediana sull'impronta UV erosa 1.0 m, se area >= 40 m2 e >= 20 celle; altrimenti uv_av 2011. Con vegetazione vicina e scarto grande, o demolizione probabile, resta uv_av",
+  "flag": "scarto nDSM-uv_av dopo bias >= 3.0 m: lidar_piu_alto/basso; nDSM < 1 m con uv_av >= 3 m: demolizione_probabile (presente_2023 falso); alberi entro 2 m: scarto_con_vegetazione",
+  "edifici_nuovi": "edificio OSM con UV < 30%: geometria = OSM meno UV; altezza nDSM mediana; sotto 2.5 m flag sotto_2_5m",
+  "alberi_misurati": "posizione = censimento; celle CHM >= 2.5 m fuori edifici assegnate all'albero più vicino entro 7.5 m (Voronoi, alberi dentro edifici esclusi); altezza = p95 entro 3.0 m; diametro = cerchio equivalente dell'area celle",
+  "alberi_stimati": "in_edificio; >= 50% della finestra 3 m sotto edificio; < 12 celle di chioma entro 3 m; altezza > 40 m. Classe da circonferenza, valori da specie+classe (>= 30 misurati) o da parametri_chiome.json",
+  "intervalli": "altezza misurata +-(1.0 m + 10%), diametro +-30% (ipotesi, non tarati su misure indipendenti); imposta sempre estimated"
+ }
+}
