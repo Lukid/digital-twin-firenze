@@ -1,7 +1,7 @@
 {
   "versione": "1.1.0",
   "data": "2026-10-09",
-  "stato": "proposta T02, da approvare",
+  "stato": "T02 approvato il 1 ottobre 2026, esteso da F02 il 9 ottobre 2026",
   "id": {
     "regola": "Gli ID sono stabili: derivano dall'ID originario della fonte o da una chiave di contenuto, mai dalla posizione in un elenco. Un ID non si riusa per un altro oggetto. Una nuova versione del dato mantiene gli ID degli oggetti che la fonte identifica ancora.",
     "formati": {

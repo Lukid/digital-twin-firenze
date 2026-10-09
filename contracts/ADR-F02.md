@@ -1,6 +1,6 @@
 # ADR-F02: contratti a più aree
 
-Stato: consegnato il 9 ottobre 2026. Estende ADR-T02 al pilota di Firenze (D12, riquadro D13). Controllo: `contracts/.venv/bin/python contracts/validate.py` (46 validi passano, 23 non validi respinti); `service/test_service.py` e `nl/test_nl.py` ripassano senza modifiche.
+Stato: consegnato il 9 ottobre 2026. Estende ADR-T02 al pilota di Firenze (D12, riquadro D13). Controllo: `contracts/.venv/bin/python contracts/validate.py` (45 validi passano, 23 non validi respinti); `service/test_service.py` e `nl/test_nl.py` ripassano senza modifiche.
 
 ## Decisioni
 
@@ -13,7 +13,7 @@ Stato: consegnato il 9 ottobre 2026. Estende ADR-T02 al pilota di Firenze (D12, 
 
 ## Rinviato
 
-- Baseline di Firenze: nasce in F03 con gli snapshot veri. Gli esempi MCP su Firenze usano un `baseline_id` illustrativo.
+- Baseline di Firenze: nasce in F03 con gli snapshot veri. Gli esempi MCP su Firenze usano `baseline_id` e `destination_id` illustrativi, non codici ufficiali.
 - `service/core.py` ha area e baseline di Pisa scritte nel codice: si legge il registro in F07.
 - `pipeline/lib.py` legge il riquadro da `ZONE.json`: passa al registro in F03.
 - Campione geografico di Firenze in EPSG:7791 con `cls`: in F03 (gli estratti F01 sono in CRS84 e senza classi).
