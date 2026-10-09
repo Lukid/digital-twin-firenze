@@ -79,6 +79,9 @@ Da contare in F03 sul riquadro scelto: alberi Life Escapos, edifici, civici.
 
 ## 4. Decisioni per l'utente
 
+Decise il 9 ottobre 2026 (D13 nel piano): riquadro FP, rete con margine di 700 m, Life Escapos solo per verifica interna (i due campioni vanno tolti da git prima di aggiungere un remote), DB topografico solo se le UV non bastano.
+
+
 1. Riquadro: proposta FB allargato, alternative sopra.
 2. Rete con margine di 700 m oltre il riquadro: sì o no.
 3. Life Escapos (CC BY-NC 4.0): usarlo solo per verifica interna, chiedere un permesso al Comune, o non usarlo. Se non si usa, vanno tolti da git i due campioni che ne riportano i valori (`verde/campioni/chm_vs_escapos.csv` ed `escapos_vs_censimento.csv`) prima di aggiungere un remote. In ogni caso non dimostra il CHM: serve una misura di campo.
