@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 5 ottobre 2026: F01 consegnato, riquadro da approvare. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
+Aggiornato al 9 ottobre 2026: F01 consegnato, riquadro approvato (D13). Prossimo: F02. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -29,6 +29,7 @@ Anteprima storica: `preview/` (superata da `scene/`).
 ## Decisioni prese dall'utente
 
 - Nuovo pilota Firenze, Novoli - Firenze Nova (D12, 1 ottobre 2026), nonostante i gemelli già esistenti di Comune e DISIT.
+- Riquadro Firenze FP, 2,02 km² (D13, 9 ottobre 2026): destinazione principale Polo delle Scienze Sociali, poi fermate T2 e scuola Vamba; rete con margine di 700 m solo OSM; Life Escapos solo per verifica interna; DB topografico solo se le UV WFS non bastano.
 - Riferimento di presentazione e di approccio: gemello di Padova (D11, perimetro ancora aperto).
 - Primo pilota Pisa Z2 (D03), CRS EPSG:7791 (vale anche per Firenze), stato di accessibilità `outside_model` incluso.
 - Motore grafico: libreria cartografica web con estrusioni (ADR-T08, proposta dell'agente, da rivedere con la via di Padova).
@@ -36,20 +37,14 @@ Anteprima storica: `preview/` (superata da `scene/`).
 ## Decisioni aperte (dell'utente)
 
 Firenze:
-1. Riquadro definitivo e destinazioni: proposta pronta in `docs/audit-firenze.md` (FB allargato a 2 km², destinazione principale il Polo delle Scienze Sociali; rete con margine di 700 m).
-2. Perimetro di D11: livelli della scena e se adottare l'approccio di Padova (T15).
-3. Dati ARPAT: chiedere ad ARPAT il consenso per proxy e dati (T16).
-4. Contatto con Comune di Firenze o DISIT: concorrenza o collaborazione.
-5. Uso del campione Life Escapos, licenza non commerciale: solo verifica interna?
-
-Firenze, nate da F01:
-- Rete per l'accessibilità con margine di 700 m oltre il riquadro.
-- DB topografico regionale 1:2.000: licenza in conflitto (CC BY contro CC BY-SA), serve solo se le unità volumetriche via WFS non bastano.
+1. Perimetro di D11: livelli della scena e se adottare l'approccio di Padova (T15).
+2. Dati ARPAT: chiedere ad ARPAT il consenso per proxy e dati (T16).
+3. Contatto con Comune di Firenze o DISIT: concorrenza o collaborazione.
 
 Pisa (primo pilota):
-6. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.
-7. Licenza dei layer SIT, richiesta del censimento alberi, segnalazione dei layer SIT scrivibili.
-8. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
+4. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.
+5. Licenza dei layer SIT, richiesta del censimento alberi, segnalazione dei layer SIT scrivibili.
+6. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
 
 ## Risultati principali su Pisa (non validati sul posto)
 
@@ -68,11 +63,10 @@ Pisa (primo pilota):
 
 ## Prossimi passi
 
-1. **Approvare il riquadro di F01** (`docs/audit-firenze.md`, sezione 4). Audit in `docs/audit-firenze/` (destinazioni, rete, edifici, verde, cataloghi), ognuno con `riproduci.sh` rieseguito dall'integratore il 5/10.
-2. F02 contratti a più aree, poi F03 acquisizione, poi F04 rete e F05 edifici e verde (altezze da DSM 2023, verifica sui 50 alberi Life Escapos).
-3. Analisi, servizio MCP e scena sul nuovo riquadro, riusando i motori di Pisa.
-4. In parallelo, da decidere: approccio di scena di Padova (T15, rifare il confronto di ADR-T08), dati ARPAT di Firenze (T16, consenso ARPAT), fonti dal portale (T17).
-5. Su Pisa resta aperto solo ciò che serve a chiudere il primo pilota: difetti di T12 utili anche a Firenze (elenco scenari, ombra per orario, più destinazioni) e, se si vuole, il sopralluogo T11.
+1. **F02 contratti a più aree** sul riquadro FP (`docs/audit-firenze/RIQUADRO.json`), poi F03 acquisizione, poi F04 rete e F05 edifici e verde (altezze da DSM 2023, verifica interna sugli alberi Life Escapos che cadono in FP, da contare in F03).
+2. Analisi, servizio MCP e scena sul nuovo riquadro, riusando i motori di Pisa.
+3. In parallelo, da decidere: approccio di scena di Padova (T15, rifare il confronto di ADR-T08), dati ARPAT di Firenze (T16, consenso ARPAT), fonti dal portale (T17).
+4. Su Pisa resta aperto solo ciò che serve a chiudere il primo pilota: difetti di T12 utili anche a Firenze (elenco scenari, ombra per orario, più destinazioni) e, se si vuole, il sopralluogo T11.
 
 Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
 

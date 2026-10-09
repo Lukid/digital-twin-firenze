@@ -1,5 +1,5 @@
 {
-  "nota": "Riquadri di lavoro F01 (EPSG:4326, S,W,N,E). Non approvati: la scelta è dell'utente (decisione aperta 1).",
+  "nota": "Riquadri di lavoro F01 (EPSG:4326, S,W,N,E). FP approvato dall'utente il 9 ottobre 2026 (D13); FA e FB restano per confronto.",
   "data": "2026-10-05",
   "zone": {
     "FA": {
@@ -21,7 +21,7 @@
       ]
     },
     "FP": {
-      "nome": "Proposta F01: FB allargato a 2 km², non approvata",
+      "nome": "Riquadro approvato (D13, 9 ottobre 2026): FB allargato a 2 km²",
       "bbox": [
         43.79178,
         11.21694,
@@ -38,5 +38,6 @@
       43.817,
       11.247
     ]
-  }
+  },
+  "rete_margine_m": 700
 }
