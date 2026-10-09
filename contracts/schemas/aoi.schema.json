@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dt-pisa.example/contracts/schemas/aoi.schema.json",
+  "title": "Registro delle aree",
+  "description": "Elenco delle aree del progetto. Ogni baseline, job e manifest rimanda a un aoi_id di questo registro (contracts/aree.json). Il riquadro è in lon/lat come nelle fonti di decisione; la versione in EPSG:7791 si deriva in acquisizione.",
+  "type": "object",
+  "required": ["aree"],
+  "additionalProperties": false,
+  "properties": {
+    "aree": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/area"}}
+  },
+  "$defs": {
+    "area": {
+      "type": "object",
+      "required": ["aoi_id", "nome", "comune", "bbox_ll_swne", "network_margin_m", "decisione", "stato", "fonte_riquadro"],
+      "additionalProperties": false,
+      "properties": {
+        "aoi_id": {"$ref": "common.schema.json#/$defs/id_aoi"},
+        "nome": {"type": "string", "minLength": 3},
+        "comune": {"type": "string", "minLength": 2},
+        "bbox_ll_swne": {
+          "description": "[Sud, Ovest, Nord, Est] in gradi (RDN2008 geografico, trattato come WGS84). Ordine delle fonti di decisione (ZONE.json, RIQUADRO.json).",
+          "type": "array",
+          "prefixItems": [
+            {"type": "number", "minimum": 35, "maximum": 48},
+            {"type": "number", "minimum": 6, "maximum": 19},
+            {"type": "number", "minimum": 35, "maximum": 48},
+            {"type": "number", "minimum": 6, "maximum": 19}
+          ],
+          "items": false, "minItems": 4, "maxItems": 4
+        },
+        "network_margin_m": {"type": "number", "minimum": 0, "maximum": 3000, "description": "Margine della rete pedonale oltre il riquadro, in metri"},
+        "decisione": {"type": "string", "pattern": "^D[0-9]{2}$", "description": "Decisione del piano che fissa l'area"},
+        "stato": {"enum": ["approvata", "consegnata", "chiusa"]},
+        "fonte_riquadro": {"type": "string", "minLength": 5, "description": "File e chiave da cui viene il riquadro, controllati da validate.py"},
+        "baseline_ids": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/id_baseline"}}
+      }
+    }
+  }
+}

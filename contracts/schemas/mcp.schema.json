@@ -370,10 +370,27 @@
       {
        "type": "object",
        "required": [
+        "kind",
+        "aoi_id"
+       ],
+       "additionalProperties": false,
+       "description": "Civici dell'area indicata (punti d'indirizzo, non residenti). Fonte e licenza dei civici sono quelle della baseline dell'area.",
+       "properties": {
+        "kind": {
+         "const": "address_points"
+        },
+        "aoi_id": {
+         "$ref": "common.schema.json#/$defs/id_aoi"
+        }
+       }
+      },
+      {
+       "type": "object",
+       "required": [
         "kind"
        ],
        "additionalProperties": false,
-       "description": "Civici SIT dell'area pilota Z2 (punti d'indirizzo, non residenti; licenza non dimostrata, solo uso interno).",
+       "description": "Civici SIT di Pisa Z2, forma storica di address_points con aoi_z2: resta valida perché i job già calcolati ne hanno l'hash (punti d'indirizzo, non residenti; licenza non dimostrata, solo uso interno).",
        "properties": {
         "kind": {
          "const": "civici_sit_z2"
@@ -921,7 +938,7 @@
       },
       "warnings": {
        "type": "array",
-       "description": "Segnalazioni di validazione (interventi dentro edifici, su carreggiata senza marciapiede, su un arco molto usato, fuori Z2). Non bloccano la creazione.",
+       "description": "Segnalazioni di validazione (interventi dentro edifici, su carreggiata senza marciapiede, su un arco molto usato, fuori dall'area). Non bloccano la creazione.",
        "items": {
         "type": "object",
         "required": [
