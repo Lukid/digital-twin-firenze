@@ -7,23 +7,27 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 RAW, NORM = ROOT / "data/raw", ROOT / "data/norm"
 SNAP, SRCDIR = ROOT / "pipeline/snapshots", ROOT / "pipeline/sources"
 DAY = os.environ.get("DT_DAY") or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%d")
-BUFFER_M = 500
 UA = {"User-Agent": "digital-twin-pisa-T03/0.1 (prototipo; lettura pubblica)"}
 OP = "EPSG:7791"
 
-# --- AOI: Z2 (ZONE.json) + buffer 500 m, in EPSG:7791 (E,N) e in lon/lat (S,W,N,E) per i servizi
+# --- AOI: riquadro e margine dal registro contracts/aree.json (variabile DT_AOI, default aoi_z2), in EPSG:7791 (E,N) e in lon/lat (S,W,N,E)
+# I nomi delle chiavi sono storici (z2_*): per ogni area indicano il riquadro, buf_* il riquadro più il margine della rete.
 _to_en = Transformer.from_crs(6706, 7791, always_xy=True)   # lon/lat trattati come RDN2008 geografico (ADR-T02 p.4)
 _to_ll = Transformer.from_crs(7791, 6706, always_xy=True)
 def _bounds(pts): xs, ys = zip(*pts); return min(xs), min(ys), max(xs), max(ys)
-def aoi():
-    s, w, n, e = json.load(open(ROOT / "docs/audit/ZONE.json"))["zone"]["Z2"]["bbox"]
+def aoi(aoi_id):
+    a = next(x for x in json.load(open(ROOT / "contracts/aree.json"))["aree"] if x["aoi_id"] == aoi_id)
+    s, w, n, e = a["bbox_ll_swne"]; m = a["network_margin_m"]
     z2 = _bounds([_to_en.transform(x, y) for x in (w, e) for y in (s, n)])
-    b = (z2[0] - BUFFER_M, z2[1] - BUFFER_M, z2[2] + BUFFER_M, z2[3] + BUFFER_M)
+    b = (z2[0] - m, z2[1] - m, z2[2] + m, z2[3] + m)
     ll = _bounds([_to_ll.transform(x, y) for x in (b[0], b[2]) for y in (b[1], b[3])])
-    return {"aoi_id": "aoi_z2", "buffer_m": BUFFER_M, "z2_ll_SWNE": [s, w, n, e],
+    return {"aoi_id": aoi_id, "buffer_m": m, "z2_ll_SWNE": [s, w, n, e],
             "z2_en": [round(v, 2) for v in z2], "buf_en": [round(v, 2) for v in b],
             "buf_ll_SWNE": [ll[1], ll[0], ll[3], ll[2]]}
-AOI = aoi()
+AOI = aoi(os.environ.get("DT_AOI", "aoi_z2"))
+BUFFER_M = AOI["buffer_m"]
+# Pisa resta in data/norm/ (percorsi storici); le altre aree in data/norm/<area>/
+NORM = NORM if AOI["aoi_id"] == "aoi_z2" else NORM / AOI["aoi_id"].removeprefix("aoi_")
 def to_en(lon, lat): return _to_en.transform(lon, lat)
 
 def sha256(p, chunk=1 << 20):
@@ -50,8 +54,8 @@ def get(url, tries=4, params=None, check=None, timeout=180):
 
 def download(url, dest, tries=4):
     """File grande: stream su .part con ripresa (Range). Salta se il file c'e' gia' ed e' completo."""
-    dest = pathlib.Path(dest)
-    head = requests.head(url, headers=UA, allow_redirects=True, timeout=60)
+    dest = pathlib.Path(dest); ID = dict(UA, **{"Accept-Encoding": "identity"})   # niente compressione al volo: Content-Length e byte scaricati devono coincidere
+    head = requests.head(url, headers=ID, allow_redirects=True, timeout=60)
     size = int(head.headers.get("Content-Length", 0))
     if dest.exists() and (not size or dest.stat().st_size == size): return dest
     part = dest.with_suffix(dest.suffix + ".part")
@@ -59,7 +63,7 @@ def download(url, dest, tries=4):
     for i in range(tries):
         try:
             have = part.stat().st_size if part.exists() else 0
-            h = dict(UA, **({"Range": f"bytes={have}-"} if have else {}))
+            h = dict(ID, **({"Range": f"bytes={have}-"} if have else {}))
             with requests.get(url, headers=h, stream=True, timeout=120) as r:
                 if r.status_code == 416: have = size
                 else:

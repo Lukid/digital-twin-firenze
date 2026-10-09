@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_cm_edscol_firenze_20261009",
+ "source_id": "src_cm_edscol_firenze",
+ "retrieved_at": "2026-10-09T15:12:35Z",
+ "bytes": 384798,
+ "sha256": "791cc1192fa54892486df8343d848c76cd7d4117f00bf64ecef8c4e1047f1050",
+ "local_path": "data/raw/cm_edscol_firenze/20261009/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://dati.cittametropolitana.fi.it/geonetwork/srv/api/records/cmfi:a507767e-63e2-4856-9711-5e9a9ea96a76/attachments/form_ed_scolastici.zip",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "dato dichiarato del 2014-02-13, scheda del 2026-04-24"
+ },
+ "license_state": "clear_with_reserve"
+}

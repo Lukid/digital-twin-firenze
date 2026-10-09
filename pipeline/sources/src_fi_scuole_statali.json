@@ -1,0 +1,46 @@
+{
+ "source_id": "src_fi_scuole_statali",
+ "title": "Anagrafe scuole statali 2026/27 (MIM, ripubblicata dal Comune di Firenze)",
+ "publisher": "Comune di Firenze (dati MIM)",
+ "dataset_url": "https://dati.toscana.it/dataset/anagrafica-scuole-statali-2026_27",
+ "resource_url": "https://datigis.comune.fi.it/json/miur_scuole_statali_2026_27.json",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/anagrafica-scuole-statali-2026_27"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://dati.toscana.it/dataset/anagrafica-scuole-statali-2026_27",
+  "evidence_note": "Scheda e risorse del catalogo regionale: IODL 2.0 (package_show del 2026-10-09).",
+  "identifier": "IODL-2.0",
+  "reserve_note": "IODL 2.0 non è CC BY: richiede attribuzione; l'equivalenza con CC BY e la compatibilità con gli altri layer non sono state valutate giuridicamente. La fonte primaria MIM non ha licenza verificata."
+ },
+ "content_period": {
+  "note": "anagrafe anno scolastico 2026/27, dato dichiarato del 2026-09-18"
+ },
+ "crs": {
+  "declared": "EPSG:4326",
+  "vertical_datum": "not_declared",
+  "note": "lon/lat trattati come RDN2008 geografico; due coordinate MIM sbagliate nel contesto (audit destinazioni)"
+ },
+ "units": {},
+ "checks": [
+  {
+   "name": "scuole in area allargata",
+   "result": "pass",
+   "detail": "37 punti"
+  },
+  {
+   "name": "coordinate",
+   "result": "warn",
+   "detail": "FIMM700011 cade sul punto di Vamba (errore di geocodifica noto)"
+  }
+ ],
+ "schema_fields": [
+  "codicescuo",
+  "nome",
+  "indirizzo",
+  "tipologia"
+ ]
+}

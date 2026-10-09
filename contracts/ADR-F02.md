@@ -15,5 +15,5 @@ Stato: consegnato il 9 ottobre 2026. Estende ADR-T02 al pilota di Firenze (D12, 
 
 - Baseline di Firenze: nasce in F03 con gli snapshot veri. Gli esempi MCP su Firenze usano `baseline_id` e `destination_id` illustrativi, non codici ufficiali.
 - `service/core.py` ha area e baseline di Pisa scritte nel codice: si legge il registro in F07.
-- `pipeline/lib.py` legge il riquadro da `ZONE.json`: passa al registro in F03.
+- `pipeline/lib.py` legge il riquadro da `ZONE.json`: passato al registro in F03 (variabile `DT_AOI`).
 - Campione geografico di Firenze in EPSG:7791 con `cls`: in F03 (gli estratti F01 sono in CRS84 e senza classi).

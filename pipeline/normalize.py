@@ -41,8 +41,8 @@ def tags(s):
     except Exception: return {}
 
 # ---------------------------------------------------------------- OSM
-def norm_osm():
-    pbf = raw("osm_pisa", "*.osm.pbf")[0]; snap = sha("osm_pisa"); out = "osm_pisa.gpkg"
+def norm_osm(slug="osm_pisa", source_id="src_osm_pisa"):
+    pbf = raw(slug, "*.osm.pbf")[0]; snap = sha(slug); out = f"{slug}.gpkg"
     ini = pathlib.Path(lib.__file__).parent / ".venv"  # solo per il percorso di base
     import pyogrio
     base = open(pathlib.Path(pyogrio.__file__).parent / "gdal_data/osmconf.ini").read()
@@ -63,7 +63,7 @@ def norm_osm():
         g[k] = g["t"].map(lambda d: d.get(k))
     g["length_m"] = g.geometry.length.round(2); g["tags"] = g["t"].map(json.dumps)
     cls = {k: M for k in ("highway", "name", "sidewalk", "footway", "foot", "surface", "lit", "tactile_paving", "kerb", "wheelchair", "incline", "width", "tags")}; cls["length_m"] = D
-    finish(g[["id", "highway", "name", "sidewalk", "footway", "foot", "surface", "lit", "tactile_paving", "kerb", "wheelchair", "incline", "width", "length_m", "tags", "geometry"]], "src_osm_pisa", snap, cls, out, "highway")
+    finish(g[["id", "highway", "name", "sidewalk", "footway", "foot", "surface", "lit", "tactile_paving", "kerb", "wheelchair", "incline", "width", "length_m", "tags", "geometry"]], source_id, snap, cls, out, "highway")
     # nodi con tag (attraversamenti, ingressi, fermate, alberi, civici, ...)
     g = rd("points"); g["t"] = t(g); g = g[g["t"].map(len) > 0].copy()
     g["id"] = "nod_osm_" + g["osm_id"].astype(str)
@@ -74,19 +74,19 @@ def norm_osm():
     g["kind"] = g["t"].map(kind); g["name"] = g["t"].map(lambda d: d.get("name")); g["tags"] = g["t"].map(json.dumps)
     # coordinate originarie lon/lat conservate (traccia dello scarto RDN2008/WGS84)
     ll = pyogrio.read_dataframe(pbf, layer="points", bbox=bb) if False else None
-    finish(g[["id", "kind", "name", "tags", "geometry"]], "src_osm_pisa", snap, {"kind": D, "name": M, "tags": M}, out, "points")
+    finish(g[["id", "kind", "name", "tags", "geometry"]], source_id, snap, {"kind": D, "name": M, "tags": M}, out, "points")
     # edifici
     g = rd("multipolygons"); g["t"] = t(g); g = g[g["t"].map(lambda d: "building" in d)].copy()
     g["id"] = np.where(g["osm_way_id"].notna(), "bld_osm_w" + g["osm_way_id"].fillna(0).astype("int64").astype(str), "bld_osm_r" + g["osm_id"].astype(str))
     for k in ("building", "name", "height", "building:levels", "building:part", "min_height", "roof:shape"): g[k.replace(":", "_")] = g["t"].map(lambda d: d.get(k))
     g["area_m2"] = g.geometry.area.round(2); g["tags"] = g["t"].map(json.dumps)
     cols = ["building", "name", "height", "building_levels", "building_part", "min_height", "roof_shape", "tags"]
-    finish(g[["id"] + cols + ["area_m2", "geometry"]], "src_osm_pisa", snap, {**{k: M for k in cols}, "area_m2": D}, out, "buildings")
+    finish(g[["id"] + cols + ["area_m2", "geometry"]], source_id, snap, {**{k: M for k in cols}, "area_m2": D}, out, "buildings")
 
 # ---------------------------------------------------------------- Unita' volumetriche
-def norm_uv():
+def norm_uv(slug="rt_unita_volumetriche", source_id="src_rt_unita_volumetriche"):
     ns = {"gml": "http://www.opengis.net/gml/3.2", "wfs": "http://www.opengis.net/wfs/2.0"}; rows = []
-    for f in raw("rt_unita_volumetriche", "uv_*.gml"):
+    for f in raw(slug, "uv_*.gml"):
         for m in ET.parse(f).getroot().iter("{%s}member" % ns["wfs"]):
             ft = m[0]; rec = {}
             for c in ft:
@@ -111,8 +111,8 @@ def norm_uv():
     meas = [c for c in meas if c in g]
     cols = ["id"] + meas + ["height_m", "ground_elev_m", "roof_elev_m", "survey_year", "area_m2", "geometry"]
     cls = {**{c: M for c in meas}, "height_m": M, "ground_elev_m": M, "roof_elev_m": M, "survey_year": M, "area_m2": D}
-    p = NORM / "rt_unita_volumetriche.gpkg"; p.unlink(missing_ok=True)
-    finish(g[cols], "src_rt_unita_volumetriche", sha("rt_unita_volumetriche"), cls, p.name, "building_volume")
+    p = NORM / f"{slug}.gpkg"; p.unlink(missing_ok=True)
+    finish(g[cols], source_id, sha(slug), cls, p.name, "building_volume")
 
 # ---------------------------------------------------------------- SIT
 def sit(slug, source_id, native, idcol, prefix, cols_out=None):

@@ -1,0 +1,53 @@
+{
+ "source_id": "src_cm_edscol_firenze",
+ "title": "Edifici scolastici della Città metropolitana di Firenze (poligoni e accessi)",
+ "publisher": "Città metropolitana di Firenze",
+ "dataset_url": "https://dati.toscana.it/dataset/edifici-scolastici-citta-metropolitana-di-firenze",
+ "resource_url": "https://dati.cittametropolitana.fi.it/geonetwork/srv/api/records/cmfi:a507767e-63e2-4856-9711-5e9a9ea96a76/attachments/form_ed_scolastici.zip",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/edifici-scolastici-citta-metropolitana-di-firenze"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://dati.toscana.it/dataset/edifici-scolastici-citta-metropolitana-di-firenze",
+  "evidence_note": "Campo license_id della scheda: 'cc-by'.",
+  "identifier": "cc-by",
+  "reserve_note": "Le risorse non portano licenza e la versione CC non è indicata: vale solo il campo della scheda."
+ },
+ "content_period": {
+  "note": "dato dichiarato del 2014-02-13, scheda aggiornata il 2026-04-24, frequenza IRREG"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "shapefile con .prj in Monte Mario Italia zona 1; convertito in EPSG:7791"
+ },
+ "units": {},
+ "checks": [
+  {
+   "name": "edifici in area allargata",
+   "result": "pass",
+   "detail": "229 poligoni"
+  },
+  {
+   "name": "accessi in area allargata",
+   "result": "pass",
+   "detail": "36 punti"
+  },
+  {
+   "name": "gradi coperti",
+   "result": "pass",
+   "detail": "tutti i gradi, dai nidi alle superiori (chiude il dubbio di F01 sulle sole secondarie)"
+  }
+ ],
+ "schema_fields": [
+  "COD_MECCAN",
+  "GRADO",
+  "DENOM",
+  "CODICE",
+  "TIPOLOGIA",
+  "DENOMINAZI"
+ ]
+}

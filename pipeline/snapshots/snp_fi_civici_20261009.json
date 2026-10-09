@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_civici_20261009",
+ "source_id": "src_fi_civici",
+ "retrieved_at": "2026-10-09T15:09:46Z",
+ "bytes": 6134033,
+ "sha256": "3c501a28c48a56ac8e9b65e3233f3073284cab4e6126205dc04f72d60507c505",
+ "local_path": "data/raw/fi_civici/20261009/civici.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://datigis.comune.fi.it/shp/civici.zip",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "dataset aggiornato al bisogno (ultima modifica dichiarata 2026-10-05): stato alla data di scarico"
+ },
+ "license_state": "clear"
+}

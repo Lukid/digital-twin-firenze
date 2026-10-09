@@ -1,0 +1,61 @@
+{
+ "source_id": "src_osm_firenze",
+ "title": "OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)",
+ "publisher": "OpenStreetMap contributors, estratto di un distributore di estratti OSM",
+ "dataset_url": "https://download.geofabrik.de/europe/italy/centro.html",
+ "resource_url": "https://download.geofabrik.de/europe/italy/centro-261008.osm.pbf",
+ "provenance": {
+  "origin": "crowdsourced",
+  "note": "T17: lacuna del catalogo. OSM non è su dati.toscana.it (fonte aperta esterna, ODbL): marciapiedi, attraversamenti e ingressi non hanno altra fonte nel catalogo."
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://www.openstreetmap.org/copyright",
+  "evidence_note": "Dati OpenStreetMap sotto ODbL.",
+  "identifier": "ODbL-1.0"
+ },
+ "content_period": {
+  "note": "stato di OpenStreetMap al 2026-10-08 (timestamp dell'estratto), senza data di rilievo per oggetto"
+ },
+ "crs": {
+  "declared": "EPSG:4326",
+  "vertical_datum": "not_declared",
+  "note": "lon/lat trattati come RDN2008 geografico (scarto misurato a Pisa: mediana 0,08 m)"
+ },
+ "units": {
+  "length_m": "m",
+  "area_m2": "m2"
+ },
+ "checks": [
+  {
+   "name": "strade in area allargata",
+   "result": "pass",
+   "detail": "4596 tratti"
+  },
+  {
+   "name": "nodi con tag in area allargata",
+   "result": "pass",
+   "detail": "20281 nodi"
+  },
+  {
+   "name": "edifici in area allargata",
+   "result": "pass",
+   "detail": "3885 edifici"
+  },
+  {
+   "name": "marciapiedi e ingressi",
+   "result": "warn",
+   "detail": "pochi (audit rete: 1,9 km di footway=sidewalk, 5 ingressi in FB)"
+  }
+ ],
+ "schema_fields": [
+  "id",
+  "highway",
+  "sidewalk",
+  "crossing",
+  "entrance",
+  "building",
+  "height"
+ ]
+}

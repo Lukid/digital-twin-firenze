@@ -1,0 +1,52 @@
+{
+ "source_id": "src_gtfs_gest_firenze",
+ "title": "GTFS tram (GEST), Firenze",
+ "publisher": "Regione Toscana / GEST",
+ "dataset_url": "https://dati.toscana.it/dataset/rt-oraritb",
+ "resource_url": "https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/1f62d551-65f4-49f8-9a99-e19b02077be3/download/gest.gtfs",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/rt-oraritb"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://dati.toscana.it/dataset/rt-oraritb",
+  "evidence_note": "Campo license_id della scheda del catalogo regionale: 'cc-by'.",
+  "identifier": "cc-by",
+  "reserve_note": "La risorsa GEST non porta licenza e la versione CC non è indicata: vale solo il campo della scheda."
+ },
+ "content_period": {
+  "start": "2026-08-10",
+  "end": "2026-12-30",
+  "note": "minimo e massimo di calendar_dates.txt (nessun feed_info.txt); contiene solo T2 e T1.3, la T1 non compare"
+ },
+ "crs": {
+  "declared": "EPSG:4326",
+  "vertical_datum": "not_declared",
+  "note": "lat/lon come da specifica GTFS"
+ },
+ "units": {
+  "stop_lat": "deg",
+  "stop_lon": "deg",
+  "trips_on_ref_date": "count"
+ },
+ "checks": [
+  {
+   "name": "fermate in area allargata",
+   "result": "pass",
+   "detail": "12 fermate"
+  },
+  {
+   "name": "linea T1",
+   "result": "warn",
+   "detail": "assente dal feed (solo T2 e T1.3)"
+  }
+ ],
+ "schema_fields": [
+  "stop_id",
+  "stop_code",
+  "stop_name",
+  "wheelchair_boarding"
+ ]
+}

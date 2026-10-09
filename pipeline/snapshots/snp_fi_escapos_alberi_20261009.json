@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_escapos_alberi_20261009",
+ "source_id": "src_fi_escapos_alberi",
+ "retrieved_at": "2026-10-09T15:12:35Z",
+ "bytes": 32282,
+ "sha256": "8f5a3343f039944913c0f3447f70b373b30ed9c26b7e160d00e1b21a25f6d1aa",
+ "local_path": "data/raw/fi_escapos_alberi/20261009/escapos_tree_census.json",
+ "status": "ok",
+ "stored": false,
+ "url": "https://datigis.comune.fi.it/json/escapos_tree_census.json",
+ "media_type": "application/geo+json",
+ "content_period": {
+  "note": "dato dichiarato del 2026-02-12"
+ },
+ "license_state": "clear_with_reserve"
+}

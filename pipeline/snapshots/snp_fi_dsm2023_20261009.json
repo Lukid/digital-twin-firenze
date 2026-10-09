@@ -1,0 +1,18 @@
+{
+ "snapshot_id": "snp_fi_dsm2023_20261009",
+ "source_id": "src_fi_dsm2023",
+ "retrieved_at": "2026-10-09T15:13:51Z",
+ "bytes": 343512516,
+ "sha256": "1c6c250f2b91c77858667f8816e132c17f19916639f6e6e1a2578a45a5290451",
+ "local_path": "data/raw/fi_dsm2023/20261009/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://datigis.comune.fi.it/grid/MDS_LIDAR_2023_ASCII.zip",
+ "media_type": "text/plain",
+ "content_period": {
+  "start": "2023-06-27",
+  "end": "2023-06-27",
+  "note": "volo 2023-06-27 (foglie presenti), celle da 0,5 m; 49 tessere da 500 m estratte con richieste Range dallo zip cittadino"
+ },
+ "license_state": "clear"
+}

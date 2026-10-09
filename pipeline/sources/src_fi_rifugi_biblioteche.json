@@ -1,0 +1,34 @@
+{
+ "source_id": "src_fi_rifugi_biblioteche",
+ "title": "Rifugi climatici, biblioteche (Comune di Firenze)",
+ "publisher": "Comune di Firenze",
+ "dataset_url": "https://dati.toscana.it/dataset/rifugi_climatici_biblioteche",
+ "resource_url": "https://datigis.comune.fi.it/json/rifugi_climatici_biblioteche.json",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/rifugi_climatici_biblioteche"
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://dati.toscana.it/dataset/rifugi_climatici_biblioteche",
+  "evidence_note": "Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).",
+  "identifier": "CC-BY-4.0"
+ },
+ "content_period": {
+  "note": "dato dichiarato del 2026-06-18, frequenza AS_NEEDED"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "il GeoJSON dichiara EPSG:3003 (audit cataloghi); letto con il CRS dichiarato e convertito"
+ },
+ "units": {},
+ "checks": [
+  {
+   "name": "biblioteche in area allargata",
+   "result": "pass",
+   "detail": "1 punti (zero è un esito ammesso)"
+  }
+ ]
+}

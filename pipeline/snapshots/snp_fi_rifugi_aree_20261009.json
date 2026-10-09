@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_rifugi_aree_20261009",
+ "source_id": "src_fi_rifugi_aree",
+ "retrieved_at": "2026-10-09T15:09:47Z",
+ "bytes": 157348,
+ "sha256": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
+ "local_path": "data/raw/fi_rifugi_aree/20261009/rifugi_aree_fresche.json",
+ "status": "ok",
+ "stored": false,
+ "url": "https://datigis.comune.fi.it/json/rifugi_climatici_aree_fresche.json",
+ "media_type": "application/geo+json",
+ "content_period": {
+  "note": "dato dichiarato del 2026-06-18"
+ },
+ "license_state": "clear"
+}

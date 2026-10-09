@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_rifugi_biblioteche_20261009",
+ "source_id": "src_fi_rifugi_biblioteche",
+ "retrieved_at": "2026-10-09T15:09:47Z",
+ "bytes": 3228,
+ "sha256": "2b2685f9008ee030b1a23c29ae59116fc9dce7ee9071840638c9823ea34253c8",
+ "local_path": "data/raw/fi_rifugi_biblioteche/20261009/rifugi_biblioteche.json",
+ "status": "ok",
+ "stored": false,
+ "url": "https://datigis.comune.fi.it/json/rifugi_climatici_biblioteche.json",
+ "media_type": "application/geo+json",
+ "content_period": {
+  "note": "dato dichiarato del 2026-06-18"
+ },
+ "license_state": "clear"
+}

@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_scuole_statali_20261009",
+ "source_id": "src_fi_scuole_statali",
+ "retrieved_at": "2026-10-09T15:12:34Z",
+ "bytes": 87071,
+ "sha256": "5a9ab7914290ea32d62aa869c8073063062a575cb3f7c82c8198d5c96d7145b3",
+ "local_path": "data/raw/fi_scuole_statali/20261009/miur_scuole_statali_2026_27.json",
+ "status": "ok",
+ "stored": false,
+ "url": "https://datigis.comune.fi.it/json/miur_scuole_statali_2026_27.json",
+ "media_type": "application/geo+json",
+ "content_period": {
+  "note": "anagrafe 2026/27, dato dichiarato del 2026-09-18"
+ },
+ "license_state": "clear_with_reserve"
+}

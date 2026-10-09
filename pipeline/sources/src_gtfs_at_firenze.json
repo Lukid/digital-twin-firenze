@@ -1,0 +1,52 @@
+{
+ "source_id": "src_gtfs_at_firenze",
+ "title": "GTFS Autolinee Toscane, copia di Firenze",
+ "publisher": "Regione Toscana / Autolinee Toscane",
+ "dataset_url": "https://dati.toscana.it/dataset/rt-oraritb",
+ "resource_url": "https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/rt-oraritb"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://dati.toscana.it/dataset/rt-oraritb",
+  "evidence_note": "Scheda del catalogo regionale: 'cc-by'; risorsa Autolinee Toscane: CC BY 4.0.",
+  "identifier": "cc-by",
+  "reserve_note": "Versione CC non indicata sulla scheda e condizioni specifiche del feed non trovate: vale il campo del catalogo."
+ },
+ "content_period": {
+  "start": "2026-10-09",
+  "end": "2026-10-29",
+  "note": "finestra mobile di tre settimane: feed_start_date e feed_end_date da feed_info.txt"
+ },
+ "crs": {
+  "declared": "EPSG:4326",
+  "vertical_datum": "not_declared",
+  "note": "lat/lon come da specifica GTFS"
+ },
+ "units": {
+  "stop_lat": "deg",
+  "stop_lon": "deg",
+  "trips_on_ref_date": "count"
+ },
+ "checks": [
+  {
+   "name": "fermate in area allargata",
+   "result": "pass",
+   "detail": "189 fermate"
+  },
+  {
+   "name": "scadenza",
+   "result": "warn",
+   "detail": "il feed scade il 2026-10-29: rifare lo snapshot per ogni uso dopo quella data (la copia dell'audit scadeva il 2026-10-25)"
+  }
+ ],
+ "schema_fields": [
+  "stop_id",
+  "stop_code",
+  "stop_name",
+  "wheelchair_boarding"
+ ]
+}
