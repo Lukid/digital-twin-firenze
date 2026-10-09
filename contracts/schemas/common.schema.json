@@ -158,6 +158,18 @@
         {"if": {"properties": {"state": {"enum": ["conflict", "unproven"]}}, "required": ["state"]}, "then": {"properties": {"permitted_use": {"enum": ["internal_prototype", "none"]}}}}
       ]
     },
+    "dataset_ref": {
+      "description": "Riferimento a uno snapshot usato: id, fonte, sha256 e stato della licenza. Comune a manifest e baseline.",
+      "type": "object",
+      "required": ["snapshot_id", "source_id", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "snapshot_id": {"$ref": "#/$defs/id_snapshot"},
+        "source_id": {"$ref": "#/$defs/id_source"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "license_state": {"$ref": "#/$defs/license_state"}
+      }
+    },
     "limit": {
       "type": "object",
       "required": ["code", "text"],

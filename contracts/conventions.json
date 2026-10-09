@@ -1,14 +1,14 @@
 {
-  "versione": "1.0.0",
-  "data": "2026-10-01",
+  "versione": "1.1.0",
+  "data": "2026-10-09",
   "stato": "proposta T02, da approvare",
   "id": {
     "regola": "Gli ID sono stabili: derivano dall'ID originario della fonte o da una chiave di contenuto, mai dalla posizione in un elenco. Un ID non si riusa per un altro oggetto. Una nuova versione del dato mantiene gli ID degli oggetti che la fonte identifica ancora.",
     "formati": {
       "source_id": "src_<slug>, es. src_gtfs_at_toscana",
       "snapshot_id": "snp_<slug>_<AAAAMMGG di scarico UTC>[_NN], es. snp_gtfs_at_toscana_20261001",
-      "baseline_id": "bas_<slug>: insieme congelato di snapshot, es. bas_z2_20261001",
-      "aoi_id": "aoi_<slug>, es. aoi_z2",
+      "baseline_id": "bas_<area>_<AAAAMMGG>: insieme congelato di snapshot di una sola area, es. bas_z2_20261001, bas_firenze_novoli_<data>",
+      "aoi_id": "aoi_<slug>, registrato in contracts/aree.json, es. aoi_z2, aoi_firenze_novoli",
       "destination_id": "dst_<categoria>_<codice ufficiale minuscolo>, es. dst_school_piee82101p, dst_stop_pi4390",
       "entrance_id": "ent_<fonte>_<tipo+id>, es. ent_osm_n6532183886",
       "feature_id": "<tipo 3 lettere>_<fonte>_<ID originario>, es. bld_rt_RT0201010300640612, way_osm_5036121, nod_osm_31770726",
@@ -18,6 +18,11 @@
       "asset_id": "ast_<slug>"
     },
     "json_canonico": "chiavi ordinate, UTF-8, separatori compatti, numeri come da parser standard"
+  },
+  "aree": {
+    "registro": "contracts/aree.json, schema aoi.schema.json: id, comune, riquadro in lon/lat (S,O,N,E), margine della rete, decisione e baseline",
+    "regola": "Ogni baseline appartiene a una sola area e la dichiara con aoi_id. Il riquadro del registro coincide con il file di decisione indicato in fonte_riquadro (controllato da validate.py). Stessi schemi, CRS e convenzioni per tutte le aree.",
+    "origini": "Civici di un'area: origins {kind: address_points, aoi_id}. La forma storica {kind: civici_sit_z2} resta valida per Pisa perché i job già calcolati ne hanno l'hash."
   },
   "crs": {
     "operativo": "EPSG:7791",

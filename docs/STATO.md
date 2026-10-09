@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 9 ottobre 2026: F01 consegnato, riquadro approvato (D13). Prossimo: F02. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
+Aggiornato al 9 ottobre 2026: F01 e F02 consegnati, riquadro approvato (D13). Prossimo: F03. **Cambio di territorio: il pilota passa a Firenze, Novoli - Firenze Nova (D12).** Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -63,10 +63,11 @@ Pisa (primo pilota):
 
 ## Prossimi passi
 
-1. **F02 contratti a più aree** sul riquadro FP (`docs/audit-firenze/RIQUADRO.json`), poi F03 acquisizione, poi F04 rete e F05 edifici e verde (altezze da DSM 2023, verifica interna sugli alberi Life Escapos che cadono in FP, da contare in F03).
-2. Analisi, servizio MCP e scena sul nuovo riquadro, riusando i motori di Pisa.
-3. In parallelo, da decidere: approccio di scena di Padova (T15, rifare il confronto di ADR-T08), dati ARPAT di Firenze (T16, consenso ARPAT), fonti dal portale (T17).
-4. Su Pisa resta aperto solo ciò che serve a chiudere il primo pilota: difetti di T12 utili anche a Firenze (elenco scenari, ombra per orario, più destinazioni) e, se si vuole, il sopralluogo T11.
+1. F02 consegnato: registro delle aree `contracts/aree.json`, schema della baseline, origini `address_points` (`contracts/ADR-F02.md`).
+2. **F03 acquisizione** su `aoi_firenze_novoli` (riquadro più rete con margine di 700 m), con la prima baseline di Firenze; poi F04 rete e F05 edifici e verde (altezze da DSM 2023, verifica interna sugli alberi Life Escapos che cadono in FP, da contare in F03).
+3. Analisi, servizio MCP e scena sul nuovo riquadro, riusando i motori di Pisa.
+4. In parallelo, da decidere: approccio di scena di Padova (T15, rifare il confronto di ADR-T08), dati ARPAT di Firenze (T16, consenso ARPAT), fonti dal portale (T17).
+5. Su Pisa resta aperto solo ciò che serve a chiudere il primo pilota: difetti di T12 utili anche a Firenze (elenco scenari, ombra per orario, più destinazioni) e, se si vuole, il sopralluogo T11.
 
 Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
 

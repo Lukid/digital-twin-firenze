@@ -1,0 +1,14 @@
+{
+  "aree": [
+    {
+      "aoi_id": "aoi_firenze_novoli",
+      "nome": "Firenze, riquadro con lon e lat scambiate",
+      "comune": "Firenze",
+      "bbox_ll_swne": [11.21694, 43.79178, 11.23506, 43.80422],
+      "network_margin_m": 700,
+      "decisione": "D13",
+      "stato": "approvata",
+      "fonte_riquadro": "docs/audit-firenze/RIQUADRO.json#FP"
+    }
+  ]
+}

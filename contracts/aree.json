@@ -1,0 +1,26 @@
+{
+  "aree": [
+    {
+      "aoi_id": "aoi_z2",
+      "nome": "Pisa Z2, Stazione / Sant'Antonio / Corso Italia",
+      "comune": "Pisa",
+      "bbox_ll_swne": [43.704, 10.391, 43.7125, 10.405],
+      "network_margin_m": 500,
+      "decisione": "D03",
+      "stato": "consegnata",
+      "fonte_riquadro": "docs/audit/ZONE.json#Z2",
+      "baseline_ids": ["bas_z2_20261001"]
+    },
+    {
+      "aoi_id": "aoi_firenze_novoli",
+      "nome": "Firenze, Novoli - Firenze Nova (riquadro FP)",
+      "comune": "Firenze",
+      "bbox_ll_swne": [43.79178, 11.21694, 43.80422, 11.23506],
+      "network_margin_m": 700,
+      "decisione": "D13",
+      "stato": "approvata",
+      "fonte_riquadro": "docs/audit-firenze/RIQUADRO.json#FP",
+      "baseline_ids": []
+    }
+  ]
+}

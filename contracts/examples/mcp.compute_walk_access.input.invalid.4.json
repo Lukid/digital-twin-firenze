@@ -1,0 +1,17 @@
+{
+ "baseline_id": "bas_firenze_novoli_20261015",
+ "origins": {
+  "kind": "address_points"
+ },
+ "destination_ids": [
+  "dst_university_polo_scienze_sociali"
+ ],
+ "profile": {
+  "speed_m_s": 1.2
+ },
+ "thresholds_min": [
+  5,
+  10,
+  15
+ ]
+}

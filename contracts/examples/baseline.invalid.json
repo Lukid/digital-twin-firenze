@@ -1,0 +1,19 @@
+{
+ "baseline_id": "bas_z2_20261001",
+ "version": 1,
+ "frozen_at": "2026-10-01T20:00:00Z",
+ "snapshot": [
+  {
+   "snapshot_id": "snp_gtfs_at_toscana_20261001",
+   "source_id": "src_gtfs_at_toscana",
+   "sha256": "2c00c8a604c60fb72c409715dcc8f2f20ef151f0fe389c5a3d08db2f217102c7",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_osm_pisa_20261001",
+   "source_id": "src_osm_pisa",
+   "sha256": "69d65bfc52e0daf14ccd57fee67216af9b91d747cdb79841ec2337a2f2b086f5",
+   "license_state": "clear"
+  }
+ ]
+}

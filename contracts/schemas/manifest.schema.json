@@ -14,20 +14,7 @@
     "baseline_id": {"$ref": "common.schema.json#/$defs/id_baseline"},
     "scenario_id": {"$ref": "common.schema.json#/$defs/id_scenario"},
     "scenario_version": {"type": "integer", "minimum": 1},
-    "datasets": {
-      "type": "array", "minItems": 1,
-      "items": {
-        "type": "object",
-        "required": ["snapshot_id", "source_id", "sha256"],
-        "additionalProperties": false,
-        "properties": {
-          "snapshot_id": {"$ref": "common.schema.json#/$defs/id_snapshot"},
-          "source_id": {"$ref": "common.schema.json#/$defs/id_source"},
-          "sha256": {"$ref": "common.schema.json#/$defs/sha256"},
-          "license_state": {"$ref": "common.schema.json#/$defs/license_state"}
-        }
-      }
-    },
+    "datasets": {"type": "array", "minItems": 1, "items": {"$ref": "common.schema.json#/$defs/dataset_ref"}},
     "params": {"type": "object"},
     "method": {
       "type": "object",

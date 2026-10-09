@@ -49,6 +49,17 @@ for p in sorted((R/"examples").glob("*.json")):
     run(t[0], ".".join(t[1:i]), t[i], load(p), p.name)
 run("sample", "", "valid", load(R/"sample/z2_campione.geojson"), "sample/z2_campione.geojson")
 
+# F02: registro delle aree e baseline reali, con i rimandi fra loro
+aree = load(R/"aree.json"); run("aoi", "", "valid", aree, "aree.json")
+ids = {a["aoi_id"]: a for a in aree["aree"]}
+for a in aree["aree"]:
+    f, key = a["fonte_riquadro"].split("#"); zone = load(R.parent/f)["zone"]
+    if zone[key]["bbox"] != a["bbox_ll_swne"]: errors.append(f"aree.json: {a['aoi_id']} non coincide con {a['fonte_riquadro']}")
+for p in [R.parent/"scenarios/baseline.json"]:
+    b = load(p); run("baseline", "", "valid", b, str(p.relative_to(R.parent)))
+    if b["aoi_id"] not in ids: errors.append(f"{p.name}: area {b['aoi_id']} assente da aree.json")
+    elif b["baseline_id"] not in ids[b["aoi_id"]].get("baseline_ids", []): errors.append(f"{p.name}: {b['baseline_id']} non elencata in aree.json")
+
 for (schema, d), k in sorted(seen.items()):
     if not k["valid"]: errors.append(f"{schema} {d}: nessun esempio valido")
     if not k["invalid"] and not d: errors.append(f"{schema}: nessun esempio non valido")
