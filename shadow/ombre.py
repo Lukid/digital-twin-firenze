@@ -329,6 +329,9 @@ _hash_job = lambda tool, inputs, params: "job_" + hashlib.sha256(canon({"tool": 
 def _snap_ids(obstacles): return SNAPSHOT_IDS["edifici"] + (SNAPSHOT_IDS["alberi"] if obstacles == "buildings_and_trees" else [])
 
 
+TIPI_RICEVITORE = {"path": ("LineString",), "surface": ("Polygon", "MultiPolygon")}   # quelli che campionamento e aree sanno trattare
+
+
 def _validate(receivers, when, method, walk_speed_m_s):
     if when.get("timezone") != "Europe/Rome": raise ValueError("timezone ammessa: Europe/Rome")
     if method.get("name") != "geometric_ray": raise ValueError("metodo ammesso: geometric_ray")
@@ -338,6 +341,12 @@ def _validate(receivers, when, method, walk_speed_m_s):
     if not 1 <= len(receivers) <= 50 or not 1 <= len(when["times"]) <= 96: raise ValueError("ricevitori 1-50, orari 1-96")
     for r in receivers:
         if r["kind"] not in ("path", "surface"): raise ValueError("kind ammesso: path, surface")
+        rid, tipi = r.get("receiver_id"), TIPI_RICEVITORE[r["kind"]]
+        try: g = shapely.geometry.shape(r["geometry"]) if isinstance(r["geometry"], dict) else r["geometry"]
+        except Exception: raise ValueError(f"{rid}: geometria non leggibile") from None
+        if g.geom_type not in tipi: raise ValueError(f"{rid}: kind {r['kind']} vuole {' o '.join(tipi)}, non {g.geom_type}")
+        if not g.is_valid: raise ValueError(f"{rid}: geometria non valida ({shapely.is_valid_reason(g)})")
+        if (g.length if r["kind"] == "path" else g.area) <= 0: raise ValueError(f"{rid}: {'lunghezza' if r['kind'] == 'path' else 'area'} nulla")
 
 
 def _sample(L, step):

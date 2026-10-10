@@ -123,7 +123,8 @@
    "name": "geometric_ray",
    "version": "0.3.0",
    "file": "shadow/ombre.py",
-   "file_sha256": "44730c5bab37cef85c904b741552fad7bf48d6282517142c0df111a36b613500"
+   "file_sha256": "1b3c190b1156e50ecabe7d5bd27922a4b8df64481fd9cedeb30e69258bf21631",
+   "sha256_nota": "file modificato il 2026-10-10 per la revisione R1: solo il controllo dei ricevitori in ingresso (tipo, validità, misura positiva); calcolo invariato (sha256 precedente 44730c5bab37cef85c904b741552fad7bf48d6282517142c0df111a36b613500)"
   },
   "accessibilita": {
    "name": "shortest_path_walk_time",

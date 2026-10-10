@@ -17,8 +17,9 @@ Lettura mirata di acquisizione e normalizzazione (`pipeline/lib.py`, `fonti_fire
 
 ## Difetti aperti
 
-P1 = da correggere prima di affidare il servizio a input liberi degli utenti. P2 = difetto da correggere nel consolidamento del POC. Stato al 10 ottobre 2026, dopo la revisione: R2, R3, R4, R5 e R6 corretti, con un test ciascuno; R1 aperto.
+P1 = da correggere prima di affidare il servizio a input liberi degli utenti. P2 = difetto da correggere nel consolidamento del POC. Stato al 10 ottobre 2026, dopo la revisione: tutti e sei i difetti corretti, con un test ciascuno.
 
+- R1: `_validate` del motore ombre controlla tipo (LineString per `path`, Polygon o MultiPolygon per `surface`), validità e misura positiva di ogni ricevitore; il servizio risponde `invalid_params`. Vale anche per gli scenari, che passano dallo stesso motore. Cinque casi in `service/test_service.py`. Hash del motore aggiornato in `scenarios/firenze_novoli/baseline.json` con nota; confronto S1/S2/S5/S6 identico al versionato.
 - R2: `_write` usa un temporaneo con nome univoco; test con otto scritture concorrenti in `service/test_service.py`.
 - R3: ogni riga conserva `attesa_s`, cioè la penalità accumulata nel costo; quote e percentili per velocità ricalcolati riga per riga. Analisi rigenerata con `analysis/run.sh`: quote e geojson invariati; gli estremi bassi dei percentili del profilo ridotto salgono fino a 0,3 minuti (Polo `travel_time_p50`: da 12,39 a 12,47). Hash del motore aggiornato in `scenarios/firenze_novoli/baseline.json` con nota; confronto S1/S2/S5/S6 rieseguito identico al versionato.
 - R4: il servizio calcola un'impronta della cache con gli hash del codice dei motori e del servizio, più dimensione e data di geometrie, vegetazione LiDAR, grafo e origini. Se l'impronta cambia, cancella job, manifest, confronti e alias in cache; gli scenari degli utenti restano. Gli job_id non cambiano. Vale anche per R3: dopo una correzione dei motori il servizio non restituisce più risultati vecchi. Test in `service/test_service.py`.
@@ -120,3 +121,7 @@ Il test NL controlla e riproduce il registro già esistente: non è un nuovo gir
 Nessun download, installazione, commit o pubblicazione. Nessun nuovo giro NL, verifica nel browser, prova su telefono o sopralluogo. Non ricostruita l'intera pipeline. Nessuna scansione completa dei segreti o audit delle dipendenze: la valutazione di sicurezza riguarda il codice e i confini osservati. Le licenze sono state controllate come metadati e contratti locali, senza nuova verifica sui siti delle fonti.
 
 Per il POC i risultati centrali verificati restano riproducibili. Prima di un uso operativo servono le correzioni indicate e la validazione sul posto di ingressi, marciapiedi e ombra reale.
+
+## Controllo dei numeri nei documenti
+
+Dopo il commit `f836d95` ogni numero aggiunto dalla revisione a F04, F06, F08, F09 e F10 è stato confrontato in automatico con i file di risultato (`riepilogo.json` e manifest di F06, `confronto.json` e scenari di F08, `percorsi_campione.json` di F04, indice della scena). Tutti coincidono, tranne quattro lunghezze dei percorsi campione di F04 (R02, R03, R04, R06): erano prese dal ricalcolo di F06 e differivano di 0,1 m. Ora riportano i valori di `percorsi_campione.json`.
