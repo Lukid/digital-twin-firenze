@@ -116,6 +116,7 @@ def landsat():
         r = requests.post(STAC + "/search", json=body, headers=UA, timeout=120); r.raise_for_status(); r = r.json()
         assert not any(x["rel"] == "next" for x in r.get("links", [])), "risposta STAC su più pagine"
         items += r["features"]
+    # token SAS anonimo: personale e non cedibile (Supplemental Terms di Planetary Computer), resta in memoria e non va scritto nei file
     tok = requests.get("https://planetarycomputer.microsoft.com/api/sas/v1/token/landsateuwest/landsat-c2", headers=UA, timeout=60).json()["token"]
     x0, y0, x1, y1 = AOI["z2_en"]; box_ = (x0 - LANDSAT_PAD, y0 - LANDSAT_PAD, x1 + LANDSAT_PAD, y1 + LANDSAT_PAD)
     with rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR", GDAL_HTTP_MAX_RETRY="4", GDAL_HTTP_RETRY_DELAY="3"):
@@ -349,7 +350,7 @@ def S():
    lic=lic("clear", "public-domain", "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
            "Pagina USGS: \"There are no restrictions on the use of Landsat products.\" Politica dati USGS: \"All public domain imagery may be used, shared, transferred, or redistributed without restriction.\" "
            "Citazione chiesta: DOI 10.5066/P9OGBGM6 (Landsat 8-9 OLI/TIRS C2 L2); credito suggerito \"Landsat Collection 2 Level-2 image courtesy of the U.S. Geological Survey\".",
-           "Il canale di accesso (Planetary Computer) dichiara license \"proprietary\" con collegamento alla politica USGS (Public Domain); il token SAS anonimo è personale e non cedibile (Supplemental Terms): non va scritto nei file.", use="redistribution"),
+           "Dati USGS di pubblico dominio, scaricati tramite Microsoft Planetary Computer.", use="redistribution"),
    period={"start": "2023-06-01", "end": "2026-09-30", "note": "passaggi estivi (giugno-settembre) 2023-2026 alle 09:58-09:59 UTC circa; tenute solo le date con almeno l'80% di celle valide sul riquadro FP"},
    crs={"declared": "EPSG:32632", "vertical_datum": "not_declared", "note": "COG in WGS84 UTM 32N a 30 m; ritagli ricampionati per vicinanza sul reticolo EPSG:7791 a 30 m della scena (scarto fra i due sistemi sotto il metro)"},
    units={"st_b10": "K = DN x 0,00341802 + 149,0 (nodata 0); convertito in °C", "qa_pixel": "bit"}, fields=["ST_B10", "QA_PIXEL"], fetch=landsat,
