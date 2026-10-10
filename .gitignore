@@ -6,3 +6,12 @@ data/
 service/cache/
 .playwright-mcp/
 .playwright-mcp/
+
+# segreti
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+*credentials*

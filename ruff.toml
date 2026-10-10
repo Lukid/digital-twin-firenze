@@ -1,0 +1,8 @@
+# Solo errori veri: nomi non definiti, import ripetuti, sintassi.
+# Fuori di proposito: import *, lambda assegnate, import dopo os.environ["DT_AOI"], import inutilizzati.
+target-version = "py312"
+extend-exclude = ["docs", "data", "**/.venv"]
+
+[lint]
+select = ["F", "E9"]
+ignore = ["F401", "F403", "F405", "F841", "F541"]
