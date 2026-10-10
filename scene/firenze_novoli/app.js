@@ -228,7 +228,7 @@ async function main() {
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   function scheda(titolo, righe, livello) {
     $('schedaTit').textContent = titolo;
-    $('schedaDati').innerHTML = righe.map(([k, v]) => riga(k, v == null ? v : esc(v))).join('');
+    $('schedaDati').innerHTML = righe.map(([k, v]) => riga(k, v == null ? v : esc(String(v).replace(/(\d)\.(\d)/g, '$1,$2'))))  // decimali con la virgola.join('');
     const fonti = idx.livelli[livello].fonti.map((id) => idx.fonti.find((f) => f.id === id));
     $('schedaFonte').innerHTML = '<strong>Fonte</strong><br>' + fonti.map((f) => `${esc(f.titolo)}, ${esc(f.ente)}. Licenza ${esc(f.licenza)}${f.riserva ? ' (con riserva)' : ''}. Scaricato il ${f.scaricato}. <a href="${f.url}" target="_blank" rel="noopener">scheda del dato</a>`).join('<br>');
     $('scheda').hidden = false;

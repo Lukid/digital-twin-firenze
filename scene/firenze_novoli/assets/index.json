@@ -1,6 +1,6 @@
 {
  "versione": 1,
- "generato": "2026-10-10T09:10:09Z",
+ "generato": "2026-10-10T09:12:17Z",
  "aoi_id": "aoi_firenze_novoli",
  "area": {
   "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
@@ -190,7 +190,7 @@
    "titolo": "Unità volumetriche del DB topografico regionale (WFS), area di Firenze",
    "ente": "Regione Toscana",
    "url": "https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm",
-   "licenza": "licenza regionale non scritta sul layer",
+   "licenza": "non scritta sul layer (licenza regionale)",
    "stato_licenza": "clear_with_reserve",
    "riserva": "Licenza non scritta sul layer: dedotta dalla politica regionale. Verificare prima di ridistribuire.",
    "scaricato": "2026-10-09",
