@@ -1,0 +1,84 @@
+# F10: servizio di analisi e MCP su Firenze Novoli
+
+Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` (circa 9 s, TUTTO OK). Non validato sul posto.
+
+## Cosa è cambiato
+
+- `core.py` non ha più costanti di Pisa. Area, baseline e cartelle vengono dal registro `contracts/aree.json` (variabile `DT_AOI`, default `aoi_firenze_novoli`, come i motori).
+  - Baseline: `bas_firenze_novoli_20261009`.
+  - Origini: `address_points` con `aoi_id`. La forma storica `civici_sit_z2` dà `outside_capability` e non compare nello schema mostrato al client.
+  - Destinazioni da `network/firenze_novoli/destinazioni.json`.
+  - Percorsi campione da `network/firenze_novoli/percorsi_campione.geojson`, solo quelli raggiungibili (R01-R10), con id `pth_fi_R01` e seguenti come in `shadow/run.py`.
+  - Job storici letti da `analysis/firenze_novoli/manifest/` e `shadow/firenze_novoli/manifest/`.
+- Fonti approvate: solo le 14 della baseline, con lo snapshot del 9 ottobre. Fonte o snapshot fuori baseline: `unknown_id` con l'elenco di quelle ammesse.
+- Cache dei job: `service/cache/firenze_novoli/` (modificabile con `DT_CACHE_DIR` dentro il progetto).
+- Server MCP rinominato `dt-firenze`. Tool e nomi invariati.
+- Ombra: nuova opzione `obstacles = buildings_trees_and_lidar_vegetation` (edifici, alberi censiti e vegetazione LiDAR, D14), con 9 casi. Estensione additiva di `contracts/schemas/mcp.schema.json`.
+- Replay: porta `aoi_id` nelle origini e i casi dell'ombra dal manifest.
+- Scenari: `create_local_scenario` e `compare_scenarios` chiamano `scenarios/` in modo generico. Aree di attesa lette per chiave `area_attesa_*`. Alternative proposte negli errori: solo `scn_fi_*`.
+
+## Tool MCP (9, stessi nomi)
+
+- `list_approved_sources`, `inspect_dataset`, `list_destinations`, `compute_walk_access`, `compute_shadow`, `get_job_status`, `get_result_manifest`, `create_local_scenario`, `compare_scenarios`.
+- `additionalProperties: false` su tutti gli input. Errori con `isError=true` e codice (`invalid_params`, `unknown_id`, `ambiguous_destination`, `outside_capability`, `limit_exceeded`, `incompatible_baseline`).
+
+## Destinazioni e alias
+
+- `dst_university_w83537185`, Polo delle Scienze Sociali: polo, università, ateneo, pandette, scienze sociali, polo scienze sociali.
+- `dst_school_fiee86002g`, scuola primaria Vamba: primaria vamba, scuola primaria.
+- `dst_school_fiaa86002a`, scuola infanzia Vamba: infanzia vamba, scuola infanzia.
+- `vamba`, `scuola vamba` e `scuola` danno entrambe le scuole.
+- `dst_tram_fm9056`, fermata T2 Novoli - Regione Toscana: fermata regione, regione toscana, regione.
+- `dst_tram_fm9057`, fermata T2 Novoli - Torre Degli Agli: torre degli agli, fermata torre degli agli, agli.
+- `tram`, `t2`, `fermata` e `fermata tram` danno entrambe le fermate.
+- Il confronto ignora maiuscole e accenti; cerca anche in nome, id, indirizzo e codice MIM.
+- `compute_walk_access` non sceglie mai per nome: con un nome o senza destinazione risponde `ambiguous_destination` con i candidati.
+- Le fermate del tram hanno categoria `stop`: il contratto non ha `tram`.
+
+## Comandi
+
+- Test: `service/.venv/bin/python service/test_service.py`.
+- CLI: `service/.venv/bin/python service/cli.py <strumento> '<json>'`, oppure `list`, oppure `replay <job_id>`.
+- API HTTP: `service/.venv/bin/python service/api.py` (solo 127.0.0.1, porta 8792, `POST /tools/<nome>`).
+- MCP: `service/.venv/bin/python service/mcp_server.py` (stdio). Nel client il server va registrato come `dt-firenze` (`.mcp.json` nella radice del progetto).
+
+## Esempi di chiamata
+
+Accessibilità al Polo a 1,2 m/s (stesso `job_id` di F06, `job_90ef3449d76b161a`):
+
+```
+service/.venv/bin/python service/cli.py compute_walk_access '{"baseline_id":"bas_firenze_novoli_20261009","origins":{"kind":"address_points","aoi_id":"aoi_firenze_novoli"},"destination_ids":["dst_university_w83537185"],"profile":{"speed_m_s":1.2},"thresholds_min":[5,10,15]}'
+```
+
+Trovare la fermata dal nome:
+
+```
+service/.venv/bin/python service/cli.py list_destinations '{"aoi_id":"aoi_firenze_novoli","category":"stop","name_query":"torre degli agli"}'
+```
+
+Ombra su R02 il 15 settembre alle 12:30, con alberi e vegetazione LiDAR:
+
+```
+service/.venv/bin/python service/cli.py compute_shadow '{"baseline_id":"bas_firenze_novoli_20261009","receivers":[{"route_id":"R02"}],"when":{"date":"2026-09-15","timezone":"Europe/Rome","times":["12:30"]},"method":{"name":"geometric_ray","space_step_m":1,"time_step_min":5,"obstacles":"buildings_trees_and_lidar_vegetation"}}'
+```
+
+## Test coperti
+
+- Stesso input = stesso `job_id` e cache. Il job sul Polo riproduce quello di F06.
+- Validazione dello schema in ingresso (8 input non validi, origini di altre aree, baseline di Pisa) e in uscita per ogni tool.
+- Alias delle destinazioni ed errore chiaro su destinazione ambigua o mancante.
+- Fonti: solo quelle della baseline.
+- Ombra con parametri ridotti: cache, vegetazione LiDAR, ora ambigua e inesistente, sole sotto l'orizzonte, limite di costo.
+- Replay di job nuovi e storici.
+- Nessuna stringa "Pisa", "Z2", "Pellico" o "Battisti" nelle risposte, nei manifest e negli schemi mostrati al client.
+- Server MCP avviato con un client stdio reale (`dt-firenze`, 9 tool).
+
+## Limiti
+
+- Una sola destinazione per job. Griglia e punti: `outside_capability`.
+- Senza `entrance_ids` si usa l'ingresso predefinito. Per il Polo i due ingressi OSM sono da verificare.
+- Limiti: area massima 4 km², 50.000 origini, 600 s per l'accessibilità; ombra fino a 1.500 combinazioni (ricevitori per orari per casi). Calcolo sincrono, senza coda.
+- Il `job_id` dell'accessibilità è previsto prima del calcolo replicando i parametri di `analysis/accessibilita.py`: se cambiano, va aggiornato `core._prevedi_job_id` (un assert lo segnala).
+- Ricevitori dell'ombra solo da percorso campione o geometria esplicita, sull'asse della rete.
+- Il `.pth` del venv usa un percorso assoluto.
+- `nl/` (verifica in linguaggio naturale) resta di Pisa. Per Firenze servono nuove domande e registro (Polo, Vamba, T2, R01/R02, scenari `scn_fi_*`), confronto con le mappe di `analysis/firenze_novoli/` e `shadow/firenze_novoli/`, nome del server `dt-firenze`.

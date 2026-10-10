@@ -688,9 +688,10 @@
        "enum": [
         "documented_buildings_only",
         "buildings_and_scenario",
-        "buildings_and_trees"
+        "buildings_and_trees",
+        "buildings_trees_and_lidar_vegetation"
        ],
-       "description": "buildings_and_trees: edifici documentati più chiome idealizzate in tre casi (minimo, tipico, massimo), stimate per classe."
+       "description": "buildings_and_trees: edifici documentati più chiome idealizzate in tre casi (minimo, tipico, massimo), stimate per classe. buildings_trees_and_lidar_vegetation: in più la vegetazione rilevata dal LiDAR senza albero censito (prismi opachi, tre casi)."
       }
      }
     },
@@ -795,7 +796,10 @@
          "alberi_min",
          "alberi_tipico",
          "alberi_max",
-         "alberi_tipico_cilindro"
+         "alberi_tipico_cilindro",
+         "veg_lidar_min",
+         "veg_lidar_tipico",
+         "veg_lidar_max"
         ]
        }
       },

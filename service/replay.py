@@ -7,7 +7,7 @@ import core
 
 def _input_da_manifest(m):
     p = m["params"]
-    return {"baseline_id": m["baseline_id"], "origins": {"kind": p["origins"]["kind"]}, "destination_ids": p["destination_ids"], "entrance_ids": p["entrance_ids"],
+    return {"baseline_id": m["baseline_id"], "origins": {"kind": p["origins"]["kind"], "aoi_id": p["origins"]["aoi_id"]}, "destination_ids": p["destination_ids"], "entrance_ids": p["entrance_ids"],
             "profile": p["profile"], "thresholds_min": p["thresholds_min"]}
 
 
@@ -17,7 +17,7 @@ def replay(job_id):
     if m["tool"] not in ("compute_walk_access", "compute_shadow"): return core.err("outside_capability", f"Replay non disponibile per {m['tool']}.")
     if m["tool"] == "compute_shadow":
         p = m["params"]   # geometrie, orari e metodo sono nei parametri del job: nessun dato esterno
-        kw = {"baseline_id": m["baseline_id"], "receivers": p["receivers"], "when": p["when"], "method": p["method"], "walk_speed_m_s": p["walk_speed_m_s"]}
+        kw = {"baseline_id": m["baseline_id"], "receivers": p["receivers"], "when": p["when"], "method": p["method"], "walk_speed_m_s": p["walk_speed_m_s"], "casi": p["casi"]}
         if m.get("scenario_id"): kw["scenario_id"] = m["scenario_id"]   # lo scenario si rilegge per id (immutabile)
         r = core._esegui_shadow(kw, store=False)
     else:

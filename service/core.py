@@ -1,33 +1,52 @@
-"""T07: nucleo del servizio. CLI, API HTTP e server MCP chiamano solo run_tool(nome, argomenti).
+"""Nucleo del servizio (T07, portato su Firenze in F10). CLI, API HTTP e server MCP chiamano solo run_tool(nome, argomenti).
 
 Ogni input è validato contro contracts/schemas/mcp.schema.json prima di qualunque calcolo. I numeri vengono dalle
 funzioni deterministiche di analysis/ (compute_walk_access). job_id = hash dell'input canonico (ADR-T02): se il manifest
 esiste nella cache si restituisce quello, senza ricalcolare. Nessun SQL, nessun codice libero.
 Risposta: sempre un dict, risultato oppure {"error": {code, message, ...}}."""
-import hashlib, json, os, pathlib, re, sys, tempfile
+import hashlib, json, os, pathlib, re, sys, tempfile, unicodedata
 from functools import lru_cache
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CONTRACTS = ROOT / "contracts"
-CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache")   # deve stare sotto ROOT (i percorsi degli asset sono relativi a ROOT)
-BASELINE_ID, AOI_ID = "bas_z2_20261001", "aoi_z2"
+# Area, baseline e cartelle vengono dal registro delle aree (stesso criterio dei motori: variabile DT_AOI, default Firenze Novoli).
+AOI_ID = os.environ.get("DT_AOI", "aoi_firenze_novoli")
+AREA = next(a for a in json.load(open(CONTRACTS / "aree.json"))["aree"] if a["aoi_id"] == AOI_ID)
+SLUG = AOI_ID.removeprefix("aoi_")
+BASELINE_ID = AREA["baseline_ids"][-1]
+BASELINE = json.load(open(ROOT / "pipeline/baselines" / f"{BASELINE_ID}.json"))
+NET = ROOT / "network" / SLUG
+CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache" / SLUG)   # cache per area; deve stare sotto ROOT (i percorsi degli asset sono relativi a ROOT)
 ID_DEST = re.compile(r"^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$")
-ENGINE_ORIGINS = "civici_sit_z2"
+ENGINE_ORIGINS = "address_points"
 TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios"]
-THEMES = {  # tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso)
-    "edifici": ["src_rt_unita_volumetriche", "src_rt_dbt10k_pisa", "src_sit_edifici_scolastici", "src_osm_pisa"],
-    "quote": ["src_rt_dsm2021", "src_rt_dtm10"], "rete_pedonale": ["src_osm_pisa", "src_rt_iternet"],
-    "verde": [], "destinazioni": ["src_sit_scuole", "src_sit_edifici_scolastici", "src_osm_pisa", "src_gtfs_at_toscana", "src_gtfs_trenitalia"],
-    "trasporto": ["src_gtfs_at_toscana", "src_gtfs_trenitalia"],
-    "licenze": ["src_gtfs_at_toscana", "src_gtfs_trenitalia", "src_osm_pisa", "src_rt_dbt10k_pisa", "src_rt_dsm2021", "src_rt_dtm10", "src_rt_iternet",
-                "src_rt_unita_volumetriche", "src_sit_civici", "src_sit_edifici_scolastici", "src_sit_scuole"]}
-GAPS_NOTI = {"verde": "Nessun censimento di alberi o chiome tra le fonti ammesse: serve rilievo locale o fonte da acquisire.",
-             "edifici": "Edifici posteriori al 2010 senza altezza misurata (da DSM 2021 o rilievo); portici e volumi sospesi non rilevati.",
-             "quote": "Datum verticale non confermato; DTM 10 m con epoca non dichiarata."}
+# Fonti ammesse = solo quelle della baseline dell'area. Tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso).
+_BASE = {s["source_id"]: s["snapshot_id"] for s in BASELINE["snapshot"]}
+_T = {"edifici": ["src_rt_uv_firenze_novoli", "src_osm_firenze"], "quote": ["src_fi_dsm2023", "src_fi_dtm2023"], "rete_pedonale": ["src_osm_firenze", "src_fi_barriere"],
+      "verde": ["src_fi_alberi"], "trasporto": ["src_fi_tram_fermate", "src_gtfs_gest_firenze", "src_gtfs_at_firenze"],
+      "destinazioni": ["src_fi_scuole_statali", "src_cm_edscol_firenze", "src_fi_rifugi_aree", "src_fi_rifugi_biblioteche", "src_osm_firenze", "src_fi_tram_fermate", "src_gtfs_gest_firenze", "src_gtfs_at_firenze"],
+      "licenze": list(_BASE)}
+THEMES = {t: [x for x in v if x in _BASE] for t, v in _T.items()}
+GAPS_NOTI = {"verde": "Censimento alberi solo pubblico: chiome in parte stimate e imposta sempre stimata; vegetazione privata solo da LiDAR (prismi opachi, senza distinguere le specie).",
+             "edifici": "Altezze LiDAR 2023 su unità volumetriche 2011; edifici nuovi solo dove li ha OSM; portici ignoti trattati come pieni.",
+             "quote": "Datum verticale non confermato.",
+             "rete_pedonale": "Rete solo OSM: lato del marciapiede, larghezze e pendenze ignoti."}
+
+# Alias italiani delle destinazioni (chiave senza accenti, minuscola) -> id. Un alias con più id è ambiguo: il client chiede all'utente.
+_DEST_ALIAS = {
+    "polo": ["dst_university_w83537185"], "universita": ["dst_university_w83537185"], "ateneo": ["dst_university_w83537185"], "pandette": ["dst_university_w83537185"],
+    "scienze sociali": ["dst_university_w83537185"], "polo scienze sociali": ["dst_university_w83537185"], "polo delle scienze sociali": ["dst_university_w83537185"],
+    "scuola": ["dst_school_fiee86002g", "dst_school_fiaa86002a"], "vamba": ["dst_school_fiee86002g", "dst_school_fiaa86002a"], "scuola vamba": ["dst_school_fiee86002g", "dst_school_fiaa86002a"],
+    "primaria vamba": ["dst_school_fiee86002g"], "scuola primaria": ["dst_school_fiee86002g"], "infanzia vamba": ["dst_school_fiaa86002a"], "scuola infanzia": ["dst_school_fiaa86002a"],
+    "tram": ["dst_tram_fm9056", "dst_tram_fm9057"], "t2": ["dst_tram_fm9056", "dst_tram_fm9057"], "fermata": ["dst_tram_fm9056", "dst_tram_fm9057"], "fermata tram": ["dst_tram_fm9056", "dst_tram_fm9057"],
+    "fermata regione": ["dst_tram_fm9056"], "regione toscana": ["dst_tram_fm9056"], "regione": ["dst_tram_fm9056"],
+    "torre degli agli": ["dst_tram_fm9057"], "fermata torre degli agli": ["dst_tram_fm9057"], "agli": ["dst_tram_fm9057"]}
+CATEGORIA_CONTRATTO = {"tram": "stop"}   # il contratto ha school, university, stop, station, hospital: la fermata del tram è una fermata
 
 canon = lambda o: json.dumps(o, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
 err = lambda code, msg, **k: {"error": {"code": code, "message": msg, **k}}
 _load = lambda p: json.loads(pathlib.Path(p).read_text())
+norm = lambda t: re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", "".join(c for c in unicodedata.normalize("NFD", (t or "").lower()) if unicodedata.category(c) != "Mn"))).strip()
 
 
 # ---------- validazione ----------
@@ -65,6 +84,8 @@ def schema_for_client(tool):
     if "oneOf" in s:   # inspect_dataset: uno tra source_id e snapshot_id; il controllo vero resta nel nucleo
         s = {"type": "object", "additionalProperties": False, "properties": {k: v for o in s["oneOf"] for k, v in o["properties"].items()},
              "description": "Indicare source_id oppure snapshot_id."}
+    if tool == "compute_walk_access":   # forma storica civici_sit_z2 (pilota precedente): resta valida per i contratti ma non si mostra al client
+        o = s["properties"]["origins"]; o["oneOf"] = [x for x in o["oneOf"] if x["properties"]["kind"].get("const") != "civici_sit_z2"]
     s.pop("$schema", None)
     return s
 
@@ -72,38 +93,44 @@ def schema_for_client(tool):
 # ---------- dati di progetto ----------
 @lru_cache(maxsize=1)
 def destinazioni():
-    return _load(ROOT / "network/destinazioni.json")["destinazioni"]
+    return _load(NET / "destinazioni.json")["destinazioni"]
 
 
 def _ver(s): return {"verificato": "verified_on_site"}.get(s, "unverified")
 
 
 def _dest_out(d):
-    o = {"destination_id": d["destination_id"], "category": d["categoria"], "name": d["nome"], "verification": "verified_on_site" if d["stato_verifica"] == "verificato" else "desk_candidate",
+    o = {"destination_id": d["destination_id"], "category": CATEGORIA_CONTRATTO.get(d["categoria"], d["categoria"]), "name": d["nome"], "verification": "verified_on_site" if d["stato_verifica"] == "verificato" else "desk_candidate",
          "entrances": [{"entrance_id": e["entrance_id"], "position": e["xy"], "verification": _ver(e["stato_verifica"])} for e in d["ingressi"]]}
     if d.get("condizioni_accesso"): o["access_conditions"] = d["condizioni_accesso"]
     return o
 
 
 def _candidati(query=None):
-    q = (query or "").lower().strip()
-    return [d for d in destinazioni() if not q or q in d["nome"].lower() or q in d["destination_id"] or q in (d.get("indirizzo") or "").lower()]
+    """Destinazioni che corrispondono al testo: alias italiani, poi nome, id e indirizzo (senza accenti né maiuscole)."""
+    q = norm(query)
+    if not q: return destinazioni()
+    ids = _DEST_ALIAS.get(q)
+    if ids: return [d for d in destinazioni() if d["destination_id"] in ids]
+    return [d for d in destinazioni() if q in norm(d["nome"]) or q in norm(d["destination_id"]) or q in norm(d.get("indirizzo")) or q in norm(d.get("codice_mim"))]
 
 
 def _snapshot_ok(source_id):
-    ss = [s for s in (_load(p) for p in sorted((ROOT / "pipeline/snapshots").glob("*.json"))) if s["source_id"] == source_id and s["status"] == "ok"]
-    return ss[-1] if ss else None
+    """Snapshot della baseline per la fonte, se valido (status ok). Fuori baseline: None."""
+    p = ROOT / "pipeline/snapshots" / f"{_BASE.get(source_id, 'x')}.json"
+    if not p.exists(): return None
+    s = _load(p); return s if s["status"] == "ok" else None
 
 
 def _source(source_id):
     p = ROOT / "pipeline/sources" / f"{source_id}.json"
-    return _load(p) if p.exists() else None
+    return _load(p) if source_id in _BASE and p.exists() else None
 
 
 # ---------- strumenti di sola lettura ----------
 def list_approved_sources(a):
-    out, gaps = [], []
     if a["aoi_id"] != AOI_ID: return err("unknown_id", f"Area sconosciuta: {a['aoi_id']}. Disponibile: {AOI_ID}.", candidates=[AOI_ID])
+    out, gaps = [], []
     for sid in THEMES[a["theme"]]:
         src, snap = _source(sid), _snapshot_ok(sid)
         if not src or not snap: gaps.append({"theme": a["theme"], "text": f"{sid}: nessuno snapshot valido."}); continue
@@ -119,25 +146,25 @@ def inspect_dataset(a):
     snap = None
     if "snapshot_id" in a:
         p = ROOT / "pipeline/snapshots" / f"{a['snapshot_id']}.json"
-        if not p.exists(): return err("unknown_id", f"Snapshot sconosciuto: {a['snapshot_id']}.")
+        if a["snapshot_id"] not in _BASE.values() or not p.exists(): return err("unknown_id", f"Snapshot fuori dalla baseline {BASELINE_ID}: {a['snapshot_id']}.", candidates=sorted(_BASE.values()))
         snap = _load(p); sid = snap["source_id"]
     else: sid = a["source_id"]
     src = _source(sid)
-    if not src: return err("unknown_id", f"Fonte sconosciuta: {sid}.", candidates=sorted(p.stem for p in (ROOT / "pipeline/sources").glob("src_*.json")))
+    if not src: return err("unknown_id", f"Fonte sconosciuta: {sid}.", candidates=sorted(_BASE))
     snap = snap or _snapshot_ok(sid)
     if not snap: return err("insufficient_data", f"{sid}: nessuno snapshot valido da ispezionare.")
-    man = _load(ROOT / "network/rete_manifest.json"); u = src.get("units", {})
+    man = _load(NET / "rete_manifest.json"); u = src.get("units", {})
     lic = {k: v for k, v in src["license"].items() if k in ("state", "identifier", "evidence_url", "evidence_note", "reserve_note", "permitted_use")}
     return {"source_id": sid, "snapshot_id": snap["snapshot_id"],
-            "fields": [{"name": f, "unit": u.get(f, "1"), "classification": "measured"} for f in src["schema_fields"]],
+            "fields": [{"name": f, "unit": u.get(f, "1"), "classification": "measured"} for f in src.get("schema_fields", [])],
             "extent": man["area_buffer_en"], "content_period": snap["content_period"] if "start" in snap["content_period"] else src["content_period"], "license": lic,
             "quality": [c["name"] + ": " + c["result"] + " (" + str(c["detail"]) + ")" for c in src.get("checks", [])] +
-                       ["extent = riquadro del grafo pilota Z2, non l'estensione della fonte", "unità '1' = non dichiarata dalla fonte; classificazione measured = valore grezzo di fonte"]}
+                       ["extent = riquadro del grafo dell'area pilota, non l'estensione della fonte", "unità '1' = non dichiarata dalla fonte; classificazione measured = valore grezzo di fonte"]}
 
 
 def list_destinations(a):
     if a["aoi_id"] != AOI_ID: return err("unknown_id", f"Area sconosciuta: {a['aoi_id']}.", candidates=[AOI_ID])
-    return {"destinations": [_dest_out(d) for d in _candidati(a.get("name_query")) if d["categoria"] == a["category"]]}
+    return {"destinations": [_dest_out(d) for d in _candidati(a.get("name_query")) if CATEGORIA_CONTRATTO.get(d["categoria"], d["categoria"]) == a["category"]]}
 
 
 # ---------- job e cache ----------
@@ -146,8 +173,8 @@ def _paths(job_id):
 
 
 def _read_job(job_id, what):
-    """Cerca prima nella cache del servizio, poi tra i manifest versionati di analysis/ (T06), shadow/ (T09) e nl/ (T12)."""
-    for d in (CACHE, ROOT / "analysis/manifest", ROOT / "shadow/manifest", ROOT / "nl/manifest"):
+    """Cerca prima nella cache del servizio, poi tra i manifest versionati di analysis/<area>/ e shadow/<area>/."""
+    for d in (CACHE, ROOT / "analysis" / SLUG / "manifest", ROOT / "shadow" / SLUG / "manifest"):
         p = d / f"{job_id}.{what}.json"
         if p.exists(): return _load(p)
     return None
@@ -179,8 +206,10 @@ def _risolvi_walk(a):
     d = next((x for x in destinazioni() if x["destination_id"] == ids[0]), None)
     if not d: return err("unknown_id", f"Destinazione sconosciuta: {ids[0]}.", candidates=[x["destination_id"] for x in _candidati(ids[0].split("_", 2)[-1])][:10])
     if a["baseline_id"] != BASELINE_ID: return err("incompatible_baseline", f"Baseline disponibile: {BASELINE_ID}.", candidates=[BASELINE_ID])
-    if a["origins"]["kind"] != ENGINE_ORIGINS:
-        return err("outside_capability", f"Il motore calcola solo con origini '{ENGINE_ORIGINS}' (civici SIT di Z2); punti e griglia non sono ancora supportati.", smaller_request={**a, "origins": {"kind": ENGINE_ORIGINS}})
+    o = a["origins"]
+    if o["kind"] != ENGINE_ORIGINS or o.get("aoi_id") != AOI_ID:
+        return err("outside_capability", f"Il motore calcola solo con origini '{ENGINE_ORIGINS}' dell'area {AOI_ID} (civici come punti d'indirizzo); punti e griglia non sono ancora supportati.",
+                   smaller_request={**a, "origins": {"kind": ENGINE_ORIGINS, "aoi_id": AOI_ID}})
     ents = {e["entrance_id"] for e in d["ingressi"]}
     bad = [i for i in a.get("entrance_ids", []) if i not in ents]
     if bad: return err("invalid_params", f"Ingressi non appartenenti a {ids[0]}: {bad}.", candidates=sorted(ents))
@@ -199,7 +228,7 @@ def _limiti(A, kw):
 def _prevedi_job_id(A, kw):
     """job_id calcolato prima dell'esecuzione con gli stessi parametri che la libreria mette nel job."""
     c = A.contesto(); d = c["dest"][kw["destination_id"]]; ids = kw["entrance_ids"] or [d["ingresso_predefinito"]]
-    params = {"destination_ids": [kw["destination_id"]], "entrance_ids": sorted(ids), "origins": {"kind": ENGINE_ORIGINS, "count": len(c["civ"])},
+    params = {"destination_ids": [kw["destination_id"]], "entrance_ids": sorted(ids), "origins": {"kind": ENGINE_ORIGINS, "aoi_id": AOI_ID, "count": len(c["civ"])},
               "profile": {**kw["profile"], "snap_limit_m": float(kw["snap_limit_m"])}, "thresholds_min": sorted(float(t) for t in kw["thresholds_min"]),
               "deviazione_alta": dict(A.DEVIAZIONE_ALTA), "method_version": A.VERSIONE,
               "graph": {"graph_id": c["man"]["graph_id"], "graph_sha256": c["graph_sha256"], "regole_sha256": c["regole_sha256"]}}
@@ -229,7 +258,9 @@ def compute_walk_access(a):
     return kw if "error" in kw else _esegui(kw)
 
 
-SHADOW_MAX_COMBINAZIONI = 1500   # ricevitori x orari x casi: circa 90 s di calcolo (T09: 2058 combinazioni = 2 minuti)
+SHADOW_MAX_COMBINAZIONI = 1500   # ricevitori x orari x casi: limite di costo del job (il calcolo è sincrono); i tempi veri sono nel REPORT-F10
+OBST_VEG = "buildings_trees_and_lidar_vegetation"   # estensione del contratto: edifici, alberi censiti e vegetazione LiDAR (D14)
+CASI_VEG = ["base", "base_h_min", "base_h_max", "alberi_min", "alberi_tipico", "alberi_max", "veg_lidar_min", "veg_lidar_tipico", "veg_lidar_max"]
 
 
 def _percorso_campione(rid):
@@ -237,11 +268,11 @@ def _percorso_campione(rid):
     from pyproj import Transformer
     from shapely.geometry import mapping, shape
     from shapely import set_precision
-    fs = {f["properties"]["id"]: f for f in _load(ROOT / "network/percorsi_campione.geojson")["features"] if f["properties"].get("stato") == "reachable" and "geometry" in f and f["geometry"]["type"] == "LineString"}
+    fs = {f["properties"]["id"]: f for f in _load(NET / "percorsi_campione.geojson")["features"] if f["properties"].get("stato") == "reachable" and "geometry" in f and f["geometry"]["type"] == "LineString"}
     if rid not in fs: return None, sorted(fs)
     to = Transformer.from_crs(4326, 7791, always_xy=True)
     g = shapely.ops.transform(lambda x, y, z=None: to.transform(x, y), shape(fs[rid]["geometry"]))
-    return {"receiver_id": f"pth_t04_{rid}", "kind": "path", "geometry": mapping(set_precision(g, 0.01))}, sorted(fs)
+    return {"receiver_id": f"pth_fi_{rid}", "kind": "path", "geometry": mapping(set_precision(g, 0.01))}, sorted(fs)
 
 
 def _risolvi_shadow(a):
@@ -254,7 +285,7 @@ def _risolvi_shadow(a):
     if sid:
         S, _ = _sc()
         try: scn = S.carica(sid)
-        except S.ScenarioError as e: return err(e.code, str(e), candidates=e.candidates)
+        except S.ScenarioError as e: return err(e.code, str(e), candidates=_cand_scn(e))
         if scn["baseline_id"] != a["baseline_id"]: return err("incompatible_baseline", f"Lo scenario {sid} parte dalla baseline {scn['baseline_id']}.", candidates=[scn["baseline_id"]])
     rec = []
     for r in a["receivers"]:
@@ -289,12 +320,14 @@ def _esegui_shadow(kw, store=True):
     if store and ak.exists():
         jid = _load(ak)["job_id"]; jp, mp = _paths(jid)
         if jp.exists() and mp.exists(): return _risposta_shadow(_load(jp), _load(mp), _load(CACHE / f"{jid}.summary.json"), True, _load(ak)["cases"])
+    method, casi_kw = kw["method"], kw.get("casi")
+    if method["obstacles"] == OBST_VEG: method, casi_kw = {**method, "obstacles": "buildings_and_trees"}, CASI_VEG   # il motore chiede i casi veg_lidar_* con casi=[...]
     try:
         if kw.get("scenario_id"):   # baseline + interventi dello scenario (scenarios/scenari.py)
             S, _ = _sc(); cond = {"date": kw["when"]["date"], "times": kw["when"]["times"], "walk_speed_m_s": kw["walk_speed_m_s"], "fasce": [], "el_min_deg": O.EL_MIN_SUPPORTATA,
                                   "method": {k: kw["method"][k] for k in ("name", "space_step_m", "time_step_min")}}
             res = S.calcola_ombra(S.carica(kw["scenario_id"]), kw["receivers"], cond)
-        else: res = O.compute_shadow(kw["baseline_id"], kw["receivers"], kw["when"], kw["method"], walk_speed_m_s=kw["walk_speed_m_s"])
+        else: res = O.compute_shadow(kw["baseline_id"], kw["receivers"], kw["when"], method, walk_speed_m_s=kw["walk_speed_m_s"], casi=casi_kw)
     except O.OraInesistente as e: return err("invalid_params", f"Ora inesistente: {str(e).split(' (')[0]} (salto dell'ora legale). Indicare un orario diverso.")
     except O.OraAmbigua as e: return err("invalid_params", f"Ora ambigua: {str(e).split(':')[0]} (fine ora legale). Chiedere all'utente se intende la prima (ora legale) o la seconda (ora solare), oppure scegliere un altro orario.")
     except ValueError as e: return err("invalid_params", str(e))
@@ -310,7 +343,7 @@ def _limite_shadow(a):
     """Costo = ricevitori x orari x casi. Oltre il limite: errore con la richiesta più piccola praticabile (stessi campi dell'input)."""
     sys.path.insert(0, str(ROOT / "shadow"))
     import ombre as O
-    n_casi = len(O.CASI_PER_OSTACOLI[a["method"]["obstacles"]]); times = a["when"]["times"]; recs = a["receivers"]
+    n_casi = len(CASI_VEG) if a["method"]["obstacles"] == OBST_VEG else len(O.CASI_PER_OSTACOLI[a["method"]["obstacles"]]); times = a["when"]["times"]; recs = a["receivers"]
     comb = len(recs) * len(times) * n_casi
     if comb <= SHADOW_MAX_COMBINAZIONI: return None
     passo = -(-comb // SHADOW_MAX_COMBINAZIONI); small = {**a, "when": {**a["when"], "times": times[::passo]}}
@@ -330,7 +363,7 @@ def compute_shadow(a):
 def _fuori(msg): return err("outside_capability", msg + ". Nessun risultato numerico disponibile per questa richiesta.")
 
 
-# ---------- scenari (T10) ----------
+# ---------- scenari (chiamati in modo generico: le librerie sono in scenarios/, portate su Firenze a parte) ----------
 def _sc():
     """Librerie di scenarios/ (scenari, confronto), caricate al primo uso."""
     for d in ("scenarios", "shadow"):
@@ -339,13 +372,18 @@ def _sc():
     return scenari, confronto
 
 
+def _cand_scn(e):
+    """Alternative proposte da scenarios/: solo gli scenari di Firenze (id scn_fi_*), mai quelli del pilota precedente."""
+    return [c for c in (e.candidates or []) if str(c).startswith("scn_fi_")]
+
+
 def create_local_scenario(a):
     """Crea e salva uno scenario versionato (id = hash del contenuto: stesso input, stesso scenario). Segnala, senza bloccare, gli interventi dentro edifici o su carreggiata."""
     S, _ = _sc()
     try:
         scn = S.crea_scenario(a["baseline_id"], a["scenario_title"], a["operations"], autore="client MCP")
         v = S.valida(scn); _, creato = S.salva(scn)
-    except S.ScenarioError as e: return err(e.code, str(e), **({"candidates": e.candidates} if e.candidates else {}))
+    except S.ScenarioError as e: return err(e.code, str(e), **({"candidates": _cand_scn(e)} if _cand_scn(e) else {}))
     return {"scenario_id": scn["scenario_id"], "version": scn["version"], "cached": not creato, "warnings": v["warnings"], "feasibility": v["feasibility"], "interventions": S.riepilogo_interventi(scn)}
 
 
@@ -355,19 +393,24 @@ def _dati_baseline(S):
 
 def _metrica_delta(mid, label, d, unit, scope):
     m = {"metric_id": mid[:60], "label": label, "value": d["delta"], "unit": unit, "classification": "scenario", "scope": scope}
-    m["uncertainty"] = {"kind": "interval", "low": min(d["intervallo"]), "high": max(d["intervallo"]), "basis": "delta accoppiato su altezze degli edifici (h_min/h_max di T05) e, su R01, lato del marciapiede (asse spostato di 3 m)"}
+    m["uncertainty"] = {"kind": "interval", "low": min(d["intervallo"]), "high": max(d["intervallo"]), "basis": "delta accoppiato su altezze degli edifici (h_min/h_max degli edifici) e, su R01, lato del marciapiede (asse spostato di 3 m)"}
     return m
+
+
+def _attesa(e):
+    """Aree di attesa di uno scenario: chiavi area_attesa_<nome> (il nome dipende dall'area, non è fisso)."""
+    return {k: v for k, v in e.items() if k.startswith("area_attesa")}
 
 
 def _compatta(e):
     """Riepilogo di uno scenario per la risposta: R01 e area di attesa per intero, per gli altri percorsi solo il delta dei minuti al sole."""
     out = {k: e[k] for k in ("titolo", "stato", "job_id", "manifest_id", "interventi", "segnalazioni", "fattibilita", "incompatibilita") if k in e}
     if e.get("stato") != "confrontato": return out
-    out.update(R01=e["percorsi"]["R01"], area_attesa_pellico=e["area_attesa_pellico"], archi_usati=e["archi_usati"], accessibilita={k: v for k, v in e["accessibilita"].items() if k != "ricalcolo"},
+    out.update(R01=e["percorsi"]["R01"], **_attesa(e), archi_usati=e["archi_usati"], accessibilita={k: v for k, v in e["accessibilita"].items() if k != "ricalcolo"},
                fasce_utili_R01=e["fasce_utili_R01"], percorsi_campione_minuti_sole={r: {f: m["minuti_sole"] for f, m in t.items()} for r, t in e["percorsi"].items() if r != "R01"},
                assets=e["assets"], robustezza=e.get("robustezza", {}))
     if "con_alberi_esistenti" in e:
-        c = e["con_alberi_esistenti"]; out["con_alberi_esistenti"] = c if c.get("stato") != "confrontato" else {"stato": "confrontato", "job_id": c["job_id"], "R01": c["percorsi"]["R01"], "area_attesa_pellico": c["area_attesa_pellico"],
+        c = e["con_alberi_esistenti"]; out["con_alberi_esistenti"] = c if c.get("stato") != "confrontato" else {"stato": "confrontato", "job_id": c["job_id"], "R01": c["percorsi"]["R01"], **_attesa(c),
                                                                                                            "archi_usati": c["archi_usati"], "fasce_utili_R01": c["fasce_utili_R01"]}
         out["sovrapposizioni_alberi_esistenti"] = e["sovrapposizioni_alberi_esistenti"]
     return out
@@ -436,7 +479,7 @@ def _compare_scenari(a):
     import datetime; t0 = datetime.datetime.now(datetime.timezone.utc); S, C = _sc()
     if a["baseline_id"] != BASELINE_ID: return err("incompatible_baseline", f"Baseline disponibile: {BASELINE_ID}.", candidates=[BASELINE_ID])
     try: scns = [S.carica(i) for i in a["scenario_ids"]]
-    except S.ScenarioError as e: return err(e.code, str(e), candidates=e.candidates)
+    except S.ScenarioError as e: return err(e.code, str(e), candidates=_cand_scn(e))
     dif = S.verifica_baseline()
     if dif: return err("incompatible_baseline", "La baseline non coincide con il record congelato: " + "; ".join(dif)[:250])
     wv = a.get("with_variants", True); ctx = a.get("context", "solo_edifici")
@@ -461,11 +504,13 @@ def _compare_scenari(a):
                         mid = f"sc{n}_r01_{f}_{nome}{suf}"; sc = f"{sid}, R01, {riep['condizioni_comuni']['data']}, fascia {f}{lab}"
                         deltas.append({"metric_id": mid[:60], "baseline_value": d["baseline"], "scenario_value": d["scenario"], "delta": d["delta"], "delta_low": d["intervallo"][0], "delta_high": d["intervallo"][1],
                                        "unit": unit, "classification": "scenario", "discriminates": d["discrimina"], "scope": sc}); met.append(_metrica_delta(mid, f"Delta {nome} R01", d, unit, sc))
-                for f, d in ee["area_attesa_pellico"].items():
-                    if not d: continue
-                    mid = f"sc{n}_attesa_{f}_shade{suf}"; sc = f"{sid}, area di attesa Pellico, fascia {f}{lab}"
-                    deltas.append({"metric_id": mid[:60], "baseline_value": d["baseline"], "scenario_value": d["scenario"], "delta": d["delta"], "delta_low": d["intervallo"][0], "delta_high": d["intervallo"][1],
-                                   "unit": "1", "classification": "scenario", "discriminates": d["discrimina"], "scope": sc}); met.append(_metrica_delta(mid, "Delta ombra area di attesa", d, "1", sc))
+                for akey, tab in _attesa(ee).items():
+                    nome = akey.removeprefix("area_attesa_").replace("_", " ")
+                    for f, d in tab.items():
+                        if not d: continue
+                        mid = f"sc{n}_attesa_{f}_shade{suf}"; sc = f"{sid}, area di attesa {nome}, fascia {f}{lab}"
+                        deltas.append({"metric_id": mid[:60], "baseline_value": d["baseline"], "scenario_value": d["scenario"], "delta": d["delta"], "delta_low": d["intervallo"][0], "delta_high": d["intervallo"][1],
+                                       "unit": "1", "classification": "scenario", "discriminates": d["discrimina"], "scope": sc}); met.append(_metrica_delta(mid, "Delta ombra area di attesa", d, "1", sc))
         if not met: return err("incompatible_baseline", "Confronto respinto: " + "; ".join(i["text"] for i in inc)[:300])
         cc = {"baseline_id": riep["baseline_id"], "reference": riep["riferimento"]["scenario_id"], "date": riep["condizioni_comuni"]["data"], "fasce": [f["id"] for f in riep["condizioni_comuni"]["fasce"]],
               "method": riep["condizioni_comuni"]["method"], "walk_speed_m_s": riep["condizioni_comuni"]["walk_speed_m_s"], "ricevitori": len(riep["condizioni_comuni"]["ricevitori"]),
