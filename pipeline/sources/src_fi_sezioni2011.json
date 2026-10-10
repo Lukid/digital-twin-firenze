@@ -1,0 +1,45 @@
+{
+ "source_id": "src_fi_sezioni2011",
+ "title": "Sezioni di censimento 2011 (Comune di Firenze)",
+ "publisher": "Comune di Firenze",
+ "dataset_url": "https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07",
+ "resource_url": "https://data.comune.fi.it/datastore/download.php?id=6440&type=99&format=url&file_format=shp&file_id=20109",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07"
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07",
+  "evidence_note": "Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.",
+  "identifier": "CC-BY-4.0"
+ },
+ "content_period": {
+  "start": "2011-10-09",
+  "end": "2011-10-09",
+  "note": "confini delle sezioni del censimento 2011; file dello zip del 2020-10-14"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "CRS letto dal .prj dello shapefile e convertito in EPSG:7791"
+ },
+ "units": {},
+ "checks": [
+  {
+   "name": "sezioni in area allargata",
+   "result": "pass",
+   "detail": "278 oggetti"
+  },
+  {
+   "name": "residenti",
+   "result": "warn",
+   "detail": "popolazione del censimento 2011 (src_rt_censimento2011): quindici anni fa, nessun dato per sezione più recente sul catalogo"
+  }
+ ],
+ "schema_fields": [
+  "CODSEZ2011",
+  "CODCOMPLSE"
+ ]
+}

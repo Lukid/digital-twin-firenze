@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_scudo_verde_20261010",
+ "source_id": "src_fi_scudo_verde",
+ "retrieved_at": "2026-10-10T18:03:53Z",
+ "bytes": 7764,
+ "sha256": "2b553d015e65cc375813f35b2d4abc08d31c31825df36521c1897186ed002af3",
+ "local_path": "data/raw/fi_scudo_verde/20261010/scudo_verde.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=7826&type=99&format=url&file_format=shp&file_id=22904",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-02-11; ZTL ambientale attiva dal 2025-04-01"
+ },
+ "license_state": "clear"
+}

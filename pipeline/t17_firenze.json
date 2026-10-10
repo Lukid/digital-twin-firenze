@@ -122,6 +122,231 @@
    "licenza_dichiarata": "clear"
   },
   {
+   "source_id": "src_fi_sosta_disabili",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/c27abf04-33c0-44ba-ad74-ef8272af90d2",
+   "catalogo_live": {
+    "nome": "c27abf04-33c0-44ba-ad74-ef8272af90d2",
+    "titolo": "Stalli di sosta riservati ai disabili",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-10-05"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_aree_verdi",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/d0ffa579-e002-4dc3-94b4-d69207cae114",
+   "catalogo_live": {
+    "nome": "d0ffa579-e002-4dc3-94b4-d69207cae114",
+    "titolo": "Aree verdi",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-10-05"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_aree_giochi",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/ab741235-f377-40de-a416-e9e00d726833",
+   "catalogo_live": {
+    "nome": "ab741235-f377-40de-a416-e9e00d726833",
+    "titolo": "Aree giochi",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-10-05"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_aree_cani",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/4e52a4cb-4226-47a0-8307-1a10d151ff09",
+   "catalogo_live": {
+    "nome": "4e52a4cb-4226-47a0-8307-1a10d151ff09",
+    "titolo": "Aree cani",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-10-05"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_aree_sportive",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/04a78eba-5eb4-48e7-92b4-f16c7b3aa63a",
+   "catalogo_live": {
+    "nome": "04a78eba-5eb4-48e7-92b4-f16c7b3aa63a",
+    "titolo": "Aree sportive",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_farmacie",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/87aaabce-41a5-43d1-b9fe-1282fd882e69",
+   "catalogo_live": {
+    "nome": "87aaabce-41a5-43d1-b9fe-1282fd882e69",
+    "titolo": "Farmacie",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_bike_sharing",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/be9ee992-0126-4b8d-afd7-16da15bfda71",
+   "catalogo_live": {
+    "nome": "be9ee992-0126-4b8d-afd7-16da15bfda71",
+    "titolo": "Aree riservate alla sosta del bike sharing",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-09-19"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_car_sharing",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/66de7a99-a435-45d7-8ad0-6a1caf88c943",
+   "catalogo_live": {
+    "nome": "66de7a99-a435-45d7-8ad0-6a1caf88c943",
+    "titolo": "Posti auto riservati al car sharing",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_pericolosita_idraulica",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/3511ed47-4797-450b-a583-3163774f246b",
+   "catalogo_live": {
+    "nome": "3511ed47-4797-450b-a583-3163774f246b",
+    "titolo": "Pericolosità idraulica",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_allagate1966",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/7b27687e-1538-4bb8-a803-952f07560070",
+   "catalogo_live": {
+    "nome": "7b27687e-1538-4bb8-a803-952f07560070",
+    "titolo": "Aree allagate di Firenze (alluvione del 1966)",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_zone30",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/88b6ca0a-61f7-42eb-9965-a9cd38df7f65",
+   "catalogo_live": {
+    "nome": "88b6ca0a-61f7-42eb-9965-a9cd38df7f65",
+    "titolo": "Zone 30",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_scudo_verde",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/varchi-scudo-verde",
+   "catalogo_live": {
+    "nome": "varchi-scudo-verde",
+    "titolo": "Varchi Scudo Verde",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_pcca",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/0dbc7df5-7172-4c1c-99e1-1acb017b5ad3",
+   "catalogo_live": {
+    "nome": "0dbc7df5-7172-4c1c-99e1-1acb017b5ad3",
+    "titolo": "Piano comunale di classificazione acustica (PCCA)",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_sezioni2011",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07",
+   "catalogo_live": {
+    "nome": "8a7483e6-5f01-497e-99c5-2458d348eb07",
+    "titolo": "Sezioni censimento 2011",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_rt_censimento2011",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/xv-censpop-2011-datisez",
+   "catalogo_live": {
+    "nome": "xv-censpop-2011-datisez",
+    "titolo": "XV Censimento della Popolazione e delle abitazioni 2011: dati per sezioni di censimento",
+    "license_id": "cc-by",
+    "licenza_risorse": [
+     "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+    ],
+    "metadata_modified": "2023-09-05"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear_with_reserve"
+  },
+  {
    "source_id": "src_rt_uv_firenze_novoli",
    "dataset_catalogo": null,
    "catalogo_live": null,

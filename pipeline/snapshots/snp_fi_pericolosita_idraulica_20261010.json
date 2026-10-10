@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_pericolosita_idraulica_20261010",
+ "source_id": "src_fi_pericolosita_idraulica",
+ "retrieved_at": "2026-10-10T18:03:50Z",
+ "bytes": 942044,
+ "sha256": "bf2c46e910987b8e497b47d2767ca029784cd2c453c51da7c5490a74a4f315a0",
+ "local_path": "data/raw/fi_pericolosita_idraulica/20261010/pericolosita_idraulica.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=7470&type=99&format=url&file_format=shp&file_id=22071",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-02-11, data della mappa non dichiarata"
+ },
+ "license_state": "clear"
+}

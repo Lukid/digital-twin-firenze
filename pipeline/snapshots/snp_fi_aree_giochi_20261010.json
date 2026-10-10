@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_aree_giochi_20261010",
+ "source_id": "src_fi_aree_giochi",
+ "retrieved_at": "2026-10-10T18:03:45Z",
+ "bytes": 133038,
+ "sha256": "f561b377624301762745d9d189c53cfde746a1667620a59a41ba7b0396b181f1",
+ "local_path": "data/raw/fi_aree_giochi/20261010/aree_giochi.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6372&type=99&format=url&file_format=shp&file_id=21087",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-10-05: stato alla data di scarico"
+ },
+ "license_state": "clear"
+}

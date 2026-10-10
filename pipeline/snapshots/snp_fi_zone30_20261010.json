@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_zone30_20261010",
+ "source_id": "src_fi_zone30",
+ "retrieved_at": "2026-10-10T18:03:52Z",
+ "bytes": 2036633,
+ "sha256": "ac61bab929d38cd64c05b61189482fad415ae21c3057ac69bacc0e147568a6c5",
+ "local_path": "data/raw/fi_zone30/20261010/zone30.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=7483&type=99&format=url&file_format=shp&file_id=22111",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-02-11, campi data_inizi e data_fine per oggetto"
+ },
+ "license_state": "clear"
+}

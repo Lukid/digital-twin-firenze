@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_farmacie_20261010",
+ "source_id": "src_fi_farmacie",
+ "retrieved_at": "2026-10-10T18:03:47Z",
+ "bytes": 7149,
+ "sha256": "36240997341477baef5c5d43775502bb188be109c8447d88ec4809c2800b5d24",
+ "local_path": "data/raw/fi_farmacie/20261010/farmacie.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6413&type=99&format=url&file_format=shp&file_id=20036",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-02-11, data di rilievo non dichiarata"
+ },
+ "license_state": "clear"
+}

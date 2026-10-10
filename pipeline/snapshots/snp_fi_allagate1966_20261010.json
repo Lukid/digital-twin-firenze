@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_allagate1966_20261010",
+ "source_id": "src_fi_allagate1966",
+ "retrieved_at": "2026-10-10T18:03:51Z",
+ "bytes": 19850,
+ "sha256": "5dc396ea3c16746e0e0d2d8958b02a9116254f9f02435a98de903c6693ce7391",
+ "local_path": "data/raw/fi_allagate1966/20261010/allagate1966.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6482&type=99&format=url&file_format=shp&file_id=20198",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "evento del 4 novembre 1966; file dello zip del 2013-01-18"
+ },
+ "license_state": "clear"
+}

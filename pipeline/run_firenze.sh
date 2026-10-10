@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # F03: acquisizione, normalizzazione, record di fonte, T17, baseline e validazione per aoi_firenze_novoli (circa 10 min con i download).
-# Uso: pipeline/run_firenze.sh [fonte ...]   (fonti: alberi civici barriere aree_pedonali rifugi_aree rifugi_bibl aree_attesa aree_assistenza uv dtm dsm osm gtfs_tram gtfs_bus tram_fermate scuole cm_edscol catasto landsat_st sir_termo arpat)
+# Uso: pipeline/run_firenze.sh [fonte ...]   (fonti: alberi civici barriere aree_pedonali rifugi_aree rifugi_bibl aree_attesa aree_assistenza sosta_disabili aree_verdi aree_giochi aree_cani aree_sportive farmacie bike_sharing car_sharing pericolosita_idraulica allagate1966 zone30 scudo_verde pcca sezioni2011 censimento2011 uv dtm dsm osm gtfs_tram gtfs_bus tram_fermate scuole cm_edscol catasto landsat_st sir_termo arpat)
 # Variabili: DT_DAY=AAAAMMGG (giorno degli snapshot, default oggi UTC), OSM_URL (estratto OSM con la data nel nome).
 # Con file già in data/raw i download vengono saltati. La baseline già congelata non si rifa (fonti_firenze.py baseline --force).
 set -euo pipefail

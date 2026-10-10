@@ -16,7 +16,9 @@
   "identifier": "ODbL-1.0"
  },
  "content_period": {
-  "note": "stato di OpenStreetMap al 2026-10-08 (timestamp dell'estratto), senza data di rilievo per oggetto"
+  "start": "2026-10-08",
+  "end": "2026-10-08",
+  "note": "stato di OpenStreetMap al 2026-10-08 (data nel nome dell'estratto), senza data di rilievo per oggetto"
  },
  "crs": {
   "declared": "EPSG:4326",

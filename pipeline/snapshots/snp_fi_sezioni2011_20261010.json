@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_sezioni2011_20261010",
+ "source_id": "src_fi_sezioni2011",
+ "retrieved_at": "2026-10-10T18:03:55Z",
+ "bytes": 954081,
+ "sha256": "3c2466fcbe90548fe218a9b00e3d3f3657630374a306ab3827ce82fdbe1ddb38",
+ "local_path": "data/raw/fi_sezioni2011/20261010/sezioni2011.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6440&type=99&format=url&file_format=shp&file_id=20109",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "confini 2011, file del 2020-10-14"
+ },
+ "license_state": "clear"
+}

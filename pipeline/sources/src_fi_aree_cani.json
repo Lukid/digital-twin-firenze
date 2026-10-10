@@ -1,0 +1,42 @@
+{
+ "source_id": "src_fi_aree_cani",
+ "title": "Aree cani (Comune di Firenze)",
+ "publisher": "Comune di Firenze",
+ "dataset_url": "https://dati.toscana.it/dataset/4e52a4cb-4226-47a0-8307-1a10d151ff09",
+ "resource_url": "https://data.comune.fi.it/datastore/download.php?id=6329&type=99&format=url&file_format=shp&file_id=21085",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/4e52a4cb-4226-47a0-8307-1a10d151ff09"
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://dati.toscana.it/dataset/4e52a4cb-4226-47a0-8307-1a10d151ff09",
+  "evidence_note": "Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.",
+  "identifier": "CC-BY-4.0"
+ },
+ "content_period": {
+  "note": "scheda aggiornata il 2026-10-05: stato alla data di scarico"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791"
+ },
+ "units": {},
+ "checks": [
+  {
+   "name": "aree cani in area allargata",
+   "result": "pass",
+   "detail": "7 oggetti"
+  }
+ ],
+ "schema_fields": [
+  "ID",
+  "NOME_AREA",
+  "CODAREAAPP",
+  "AREA_APPAR",
+  "CATEGORIA_",
+  "TIPOSPECIF"
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "source_id": "src_fi_sosta_disabili",
+ "title": "Stalli di sosta riservati ai disabili (Comune di Firenze)",
+ "publisher": "Comune di Firenze",
+ "dataset_url": "https://dati.toscana.it/dataset/c27abf04-33c0-44ba-ad74-ef8272af90d2",
+ "resource_url": "https://data.comune.fi.it/datastore/download.php?id=7411&type=99&format=url&file_format=shp&file_id=21966",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/c27abf04-33c0-44ba-ad74-ef8272af90d2"
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://dati.toscana.it/dataset/c27abf04-33c0-44ba-ad74-ef8272af90d2",
+  "evidence_note": "Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.",
+  "identifier": "CC-BY-4.0"
+ },
+ "content_period": {
+  "note": "scheda aggiornata il 2026-10-05, frequenza AS_NEEDED: stato alla data di scarico"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791"
+ },
+ "units": {},
+ "checks": [
+  {
+   "name": "stalli di sosta riservati ai disabili in area allargata",
+   "result": "pass",
+   "detail": "359 oggetti"
+  },
+  {
+   "name": "limite",
+   "result": "warn",
+   "detail": "stalli come punti: non dice se lo stallo è libero né la distanza dall'ingresso accessibile"
+  }
+ ],
+ "schema_fields": [
+  "id",
+  "quartiere",
+  "strada",
+  "stallo"
+ ]
+}

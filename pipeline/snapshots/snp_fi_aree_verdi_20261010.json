@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_aree_verdi_20261010",
+ "source_id": "src_fi_aree_verdi",
+ "retrieved_at": "2026-10-10T18:03:44Z",
+ "bytes": 1899828,
+ "sha256": "e8036d81d5e09117acd65a805d42f4dbc738da496bdfc6dea05a8a5079c14f43",
+ "local_path": "data/raw/fi_aree_verdi/20261010/aree_verdi.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6855&type=99&format=url&file_format=shp&file_id=21081",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-10-05: stato alla data di scarico"
+ },
+ "license_state": "clear"
+}

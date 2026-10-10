@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_rt_censimento2011_20261010",
+ "source_id": "src_rt_censimento2011",
+ "retrieved_at": "2026-10-10T18:03:58Z",
+ "bytes": 10316410,
+ "sha256": "4893b902480f9bb8bd7d1b44efb8e1e9aad6f81ef71fbc57c25b4e266076c085",
+ "local_path": "data/raw/rt_censimento2011/20261010/censimento2011.csv",
+ "status": "ok",
+ "stored": false,
+ "url": "https://dati.toscana.it/dataset/46c34b90-92dd-4bd8-ab19-398da5dc933c/resource/1a338a93-65be-45a2-86a0-e13578ce953c/download/r09indicatori2011sezioni.csv",
+ "media_type": "text/csv",
+ "content_period": {
+  "note": "censimento 2011"
+ },
+ "license_state": "clear_with_reserve"
+}
