@@ -1,6 +1,6 @@
 {
- "manifest_id": "man_90ef3449d76b161a",
- "job_id": "job_90ef3449d76b161a",
+ "manifest_id": "man_54b327fca1882046",
+ "job_id": "job_54b327fca1882046",
  "tool": "compute_walk_access",
  "aoi_id": "aoi_firenze_novoli",
  "baseline_id": "bas_firenze_novoli_20261009",
@@ -12,6 +12,12 @@
    "license_state": "clear"
   },
   {
+   "snapshot_id": "snp_gtfs_gest_firenze_20261009",
+   "source_id": "src_gtfs_gest_firenze",
+   "sha256": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
+   "license_state": "clear_with_reserve"
+  },
+  {
    "snapshot_id": "snp_osm_firenze_20261009",
    "source_id": "src_osm_firenze",
    "sha256": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
@@ -20,10 +26,10 @@
  ],
  "params": {
   "destination_ids": [
-   "dst_university_w83537185"
+   "dst_tram_fm9055"
   ],
   "entrance_ids": [
-   "ent_osm_n11152998932"
+   "ent_gtfs_fm9055"
   ],
   "origins": {
    "kind": "address_points",
@@ -31,7 +37,7 @@
    "count": 3296
   },
   "profile": {
-   "speed_m_s": 1.2,
+   "speed_m_s": 1.4,
    "crossing_penalty_s": 0,
    "stairs": "allowed",
    "snap_limit_m": 40.0
@@ -61,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T08:30:30Z",
-  "finished_at": "2026-10-10T08:30:30Z",
-  "duration_s": 0.49
+  "started_at": "2026-10-10T11:56:38Z",
+  "finished_at": "2026-10-10T11:56:38Z",
+  "duration_s": 0.5
  },
  "metrics": [
   {
@@ -111,104 +117,104 @@
   {
    "metric_id": "served_share_5min",
    "label": "Quota di origini (tutte) raggiunte entro 5 minuti",
-   "value": 0.1217,
+   "value": 0.0619,
    "unit": "1",
    "classification": "estimated",
-   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m, soglia 5 min",
+   "scope": "dst_tram_fm9055, 1.4 m/s, snapping 40 m, soglia 5 min",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.0777,
-    "high": 0.1296,
+    "low": 0.0146,
+    "high": 0.0619,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "served_share_10min",
    "label": "Quota di origini (tutte) raggiunte entro 10 minuti",
-   "value": 0.2445,
+   "value": 0.3535,
    "unit": "1",
    "classification": "estimated",
-   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m, soglia 10 min",
+   "scope": "dst_tram_fm9055, 1.4 m/s, snapping 40 m, soglia 10 min",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.1517,
-    "high": 0.2888,
+    "low": 0.0822,
+    "high": 0.3535,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "served_share_15min",
    "label": "Quota di origini (tutte) raggiunte entro 15 minuti",
-   "value": 0.459,
+   "value": 0.7206,
    "unit": "1",
    "classification": "estimated",
-   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m, soglia 15 min",
+   "scope": "dst_tram_fm9055, 1.4 m/s, snapping 40 m, soglia 15 min",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.2445,
-    "high": 0.6311,
+    "low": 0.2376,
+    "high": 0.7203,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "travel_time_p50",
    "label": "Tempo mediano delle origini raggiungibili",
-   "value": 15.2,
+   "value": 11.57,
    "unit": "min",
    "classification": "estimated",
-   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m",
+   "scope": "dst_tram_fm9055, 1.4 m/s, snapping 40 m",
    "uncertainty": {
     "kind": "interval",
-    "low": 13.03,
-    "high": 22.8,
+    "low": 11.57,
+    "high": 20.25,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "travel_time_p90",
    "label": "Tempo 90° percentile delle origini raggiungibili",
-   "value": 20.16,
+   "value": 18.83,
    "unit": "min",
    "classification": "estimated",
-   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m",
+   "scope": "dst_tram_fm9055, 1.4 m/s, snapping 40 m",
    "uncertainty": {
     "kind": "interval",
-    "low": 17.28,
-    "high": 30.24,
+    "low": 18.83,
+    "high": 32.95,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "network_distance_p50",
    "label": "Distanza di cammino mediana (rete più raccordi)",
-   "value": 1094.7,
+   "value": 971.9,
    "unit": "m",
    "classification": "derived",
-   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m"
+   "scope": "dst_tram_fm9055, 1.4 m/s, snapping 40 m"
   },
   {
    "metric_id": "deviation_p50",
    "label": "Deviazione mediana rispetto alla linea d'aria",
-   "value": 1.32,
+   "value": 1.22,
    "unit": "1",
    "classification": "derived",
-   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m, origini oltre 100 m"
+   "scope": "dst_tram_fm9055, 1.4 m/s, snapping 40 m, origini oltre 100 m"
   },
   {
    "metric_id": "high_deviation_count",
    "label": "Origini con deviazione alta (rapporto 1,5 o più, oltre 100 m)",
-   "value": 297,
+   "value": 71,
    "unit": "count",
    "classification": "derived",
-   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m"
+   "scope": "dst_tram_fm9055, 1.4 m/s, snapping 40 m"
   },
   {
    "metric_id": "unknown_sidewalk_share",
    "label": "Quota dei metri di rete a marciapiede ignoto",
-   "value": 0.2985,
+   "value": 0.3873,
    "unit": "1",
    "classification": "derived",
-   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m"
+   "scope": "dst_tram_fm9055, 1.4 m/s, snapping 40 m"
   }
  ],
  "coverage": {
@@ -255,26 +261,26 @@
  "assets": [
   {
    "asset_id": "ast_origini_csv",
-   "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_90ef3449d76b161a_origini.csv",
+   "path": "data/norm/firenze_novoli/analysis/dst_tram_fm9055/job_54b327fca1882046_origini.csv",
    "media_type": "text/csv",
-   "bytes": 346774,
-   "sha256": "4bbb17c8bdeb5233640ca1a22a7da8f7f8865e2d0892c5a433936f1e2637ddd5",
+   "bytes": 332148,
+   "sha256": "9c4d15f1c6ec1584a5fca40ec56ab587b8514e656190e524695ae8a8b28c0ea2",
    "role": "result_table"
   },
   {
    "asset_id": "ast_archi_usati",
-   "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_90ef3449d76b161a_archi_usati.geojson",
+   "path": "data/norm/firenze_novoli/analysis/dst_tram_fm9055/job_54b327fca1882046_archi_usati.geojson",
    "media_type": "application/geo+json",
-   "bytes": 23262,
-   "sha256": "efd1d76a519e237cbe59ebe48dc364e76b22800cc888e588b882f419f1e9a3af",
+   "bytes": 22666,
+   "sha256": "4f919fd37b1ea516eb53021865c7ea9cdc29b0888e9e86f22b81812a11983fb7",
    "role": "result_geometry"
   },
   {
    "asset_id": "ast_report",
-   "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_90ef3449d76b161a_report.json",
+   "path": "data/norm/firenze_novoli/analysis/dst_tram_fm9055/job_54b327fca1882046_report.json",
    "media_type": "application/json",
-   "bytes": 6904,
-   "sha256": "ca29e415e8eb8bd1aca37e8157f12e6e7e1f51d2213075b19e0a8184f7adaf58",
+   "bytes": 2613,
+   "sha256": "e0dd8aef01b3d46f583d071095f12fa255c182f8f8b6a31b8929cba948c9bdcf",
    "role": "report"
   }
  ]

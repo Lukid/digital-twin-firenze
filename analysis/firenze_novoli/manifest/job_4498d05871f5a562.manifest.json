@@ -1,6 +1,6 @@
 {
- "manifest_id": "man_6c423b20f625f99b",
- "job_id": "job_6c423b20f625f99b",
+ "manifest_id": "man_4498d05871f5a562",
+ "job_id": "job_4498d05871f5a562",
  "tool": "compute_walk_access",
  "aoi_id": "aoi_firenze_novoli",
  "baseline_id": "bas_firenze_novoli_20261009",
@@ -23,7 +23,13 @@
    "dst_university_w83537185"
   ],
   "entrance_ids": [
-   "ent_osm_n11152998932"
+   "ent_civ_d1",
+   "ent_civ_d10",
+   "ent_civ_d14",
+   "ent_civ_d15",
+   "ent_civ_d4",
+   "ent_civ_d5",
+   "ent_civ_d6"
   ],
   "origins": {
    "kind": "address_points",
@@ -61,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T08:30:31Z",
-  "finished_at": "2026-10-10T08:30:31Z",
-  "duration_s": 0.46
+  "started_at": "2026-10-10T11:56:44Z",
+  "finished_at": "2026-10-10T11:56:44Z",
+  "duration_s": 0.45
  },
  "metrics": [
   {
@@ -111,77 +117,77 @@
   {
    "metric_id": "served_share_5min",
    "label": "Quota di origini (tutte) raggiunte entro 5 minuti",
-   "value": 0.1296,
+   "value": 0.1948,
    "unit": "1",
    "classification": "estimated",
    "scope": "dst_university_w83537185, 1.4 m/s, snapping 40 m, soglia 5 min",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.0777,
-    "high": 0.1296,
+    "low": 0.1147,
+    "high": 0.1948,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "served_share_10min",
    "label": "Quota di origini (tutte) raggiunte entro 10 minuti",
-   "value": 0.2888,
+   "value": 0.3401,
    "unit": "1",
    "classification": "estimated",
    "scope": "dst_university_w83537185, 1.4 m/s, snapping 40 m, soglia 10 min",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.1517,
-    "high": 0.2888,
+    "low": 0.2184,
+    "high": 0.3398,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "served_share_15min",
    "label": "Quota di origini (tutte) raggiunte entro 15 minuti",
-   "value": 0.6311,
+   "value": 0.7403,
    "unit": "1",
    "classification": "estimated",
    "scope": "dst_university_w83537185, 1.4 m/s, snapping 40 m, soglia 15 min",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.2445,
-    "high": 0.6311,
+    "low": 0.2822,
+    "high": 0.7403,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "travel_time_p50",
    "label": "Tempo mediano delle origini raggiungibili",
-   "value": 13.03,
+   "value": 12.17,
    "unit": "min",
    "classification": "estimated",
    "scope": "dst_university_w83537185, 1.4 m/s, snapping 40 m",
    "uncertainty": {
     "kind": "interval",
-    "low": 13.03,
-    "high": 22.8,
+    "low": 12.17,
+    "high": 21.3,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "travel_time_p90",
    "label": "Tempo 90° percentile delle origini raggiungibili",
-   "value": 17.28,
+   "value": 16.2,
    "unit": "min",
    "classification": "estimated",
    "scope": "dst_university_w83537185, 1.4 m/s, snapping 40 m",
    "uncertainty": {
     "kind": "interval",
-    "low": 17.28,
-    "high": 30.24,
+    "low": 16.2,
+    "high": 28.35,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
   {
    "metric_id": "network_distance_p50",
    "label": "Distanza di cammino mediana (rete più raccordi)",
-   "value": 1094.7,
+   "value": 1022.0,
    "unit": "m",
    "classification": "derived",
    "scope": "dst_university_w83537185, 1.4 m/s, snapping 40 m"
@@ -189,7 +195,7 @@
   {
    "metric_id": "deviation_p50",
    "label": "Deviazione mediana rispetto alla linea d'aria",
-   "value": 1.32,
+   "value": 1.34,
    "unit": "1",
    "classification": "derived",
    "scope": "dst_university_w83537185, 1.4 m/s, snapping 40 m, origini oltre 100 m"
@@ -197,7 +203,7 @@
   {
    "metric_id": "high_deviation_count",
    "label": "Origini con deviazione alta (rapporto 1,5 o più, oltre 100 m)",
-   "value": 297,
+   "value": 715,
    "unit": "count",
    "classification": "derived",
    "scope": "dst_university_w83537185, 1.4 m/s, snapping 40 m"
@@ -205,7 +211,7 @@
   {
    "metric_id": "unknown_sidewalk_share",
    "label": "Quota dei metri di rete a marciapiede ignoto",
-   "value": 0.2985,
+   "value": 0.3994,
    "unit": "1",
    "classification": "derived",
    "scope": "dst_university_w83537185, 1.4 m/s, snapping 40 m"
@@ -255,26 +261,26 @@
  "assets": [
   {
    "asset_id": "ast_origini_csv",
-   "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_6c423b20f625f99b_origini.csv",
+   "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_4498d05871f5a562_origini.csv",
    "media_type": "text/csv",
-   "bytes": 346034,
-   "sha256": "e3a4bee33d6ad9f924a84ec424c055eb33d4c7d577dc9267cb280832f7a37194",
+   "bytes": 317609,
+   "sha256": "09b15e1544c48698d77c6510dbe8e1322023a29ec4cbf04b895a268bee9109c3",
    "role": "result_table"
   },
   {
    "asset_id": "ast_archi_usati",
-   "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_6c423b20f625f99b_archi_usati.geojson",
+   "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_4498d05871f5a562_archi_usati.geojson",
    "media_type": "application/geo+json",
-   "bytes": 23262,
-   "sha256": "efd1d76a519e237cbe59ebe48dc364e76b22800cc888e588b882f419f1e9a3af",
+   "bytes": 23284,
+   "sha256": "91104d439c233b8898286320a1a46cae56774df5ee671887323791337dbe993e",
    "role": "result_geometry"
   },
   {
    "asset_id": "ast_report",
-   "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_6c423b20f625f99b_report.json",
+   "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_4498d05871f5a562_report.json",
    "media_type": "application/json",
-   "bytes": 6905,
-   "sha256": "f818a29b0033a52952a6d456cad0fa6bf9ede403ce844dd859ed997127eae3b3",
+   "bytes": 14851,
+   "sha256": "de61c718fb85dfdcd08cf918a324e3a7b206afa818bbfddd47908cc07c7e1c99",
    "role": "report"
   }
  ]

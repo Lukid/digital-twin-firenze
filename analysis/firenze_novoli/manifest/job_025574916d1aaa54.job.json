@@ -2,9 +2,9 @@
  "job_id": "job_025574916d1aaa54",
  "tool": "compute_walk_access",
  "status": "succeeded",
- "created_at": "2026-10-10T08:30:25Z",
- "started_at": "2026-10-10T08:30:25Z",
- "finished_at": "2026-10-10T08:30:26Z",
+ "created_at": "2026-10-10T11:56:36Z",
+ "started_at": "2026-10-10T11:56:36Z",
+ "finished_at": "2026-10-10T11:56:36Z",
  "inputs": {
   "baseline_id": "bas_firenze_novoli_20261009",
   "snapshot_ids": [
