@@ -36,15 +36,12 @@ Anteprima storica: `preview/` (superata da `scene/`).
 
 ## Decisioni aperte (dell'utente)
 
-Firenze:
-1. Perimetro di D11: livelli della scena e se adottare l'approccio di Padova (T15).
-2. Dati ARPAT: chiedere ad ARPAT il consenso per proxy e dati (T16).
-3. Contatto con Comune di Firenze o DISIT: concorrenza o collaborazione.
-4. Ombre (F06): includere i 66 ettari di chioma senza albero censito (giardini privati, parchi) ricavati dal LiDAR, o dichiarare ombra solo da edifici e alberi pubblici.
-5. Scelte dei subagent di F03-F05 da confermare: id del Polo dalla way OSM (`dst_university_w83537185`); Vamba come due destinazioni (primaria e infanzia) con lo stesso ingresso; 201 civici rossi (commerciali) inclusi tra le origini; id con rango spaziale dove la fonte non ha codice unico (edifici scolastici CM, fermate tram).
-6. Prima di aggiungere un remote: togliere da git i due campioni F01 con valori Life Escapos (`docs/audit-firenze/verde/campioni/chm_vs_escapos.csv`, `escapos_vs_censimento.csv`).
+Firenze (D14 del 10 ottobre 2026: chioma LiDAR inclusa nelle ombre, scelte F03-F05 confermate, scena con l'approccio di Padova):
+1. Dati ARPAT: chiedere ad ARPAT il consenso a usare il proxy dell'app "Ambiente in Toscana" (T16). Non serve al POC.
+2. Contatto con Comune di Firenze o DISIT: concorrenza o collaborazione. Non serve al POC.
+3. Prima di aggiungere un remote: togliere da git, anche dalla storia, i due campioni F01 con valori Life Escapos (`docs/audit-firenze/verde/campioni/chm_vs_escapos.csv`, `escapos_vs_censimento.csv`).
 
-Pisa (primo pilota):
+Pisa (primo pilota, in pausa per D14):
 7. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.
 8. Licenza dei layer SIT, richiesta del censimento alberi, segnalazione dei layer SIT scrivibili.
 9. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
