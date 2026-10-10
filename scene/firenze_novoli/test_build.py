@@ -159,6 +159,14 @@ def test_aria():
     assert f["stato_licenza"] == "clear_with_reserve" and "D21" in f["riserva"] and f.get("fuori_baseline")
 
 
+def test_protezione_civile():
+    pt = {p["id"]: p for p in carica("punti")["punti"] if p["livello"] in ("attesa", "assistenza")}
+    assert set(pt) == {"pcv_att_fi_18", "pcv_ass_fi_AA13", "pcv_ass_fi_AA14", "pcv_ass_fi_AA15"}
+    assert {k for k, p in pt.items() if p.get("fuori")} == {"pcv_att_fi_18", "pcv_ass_fi_AA14", "pcv_ass_fi_AA15"} and pt["pcv_att_fi_18"]["distanza_m"] == 235   # oltre il terreno: elenco, come ARPAT
+    assert "?" not in pt["pcv_ass_fi_AA13"]["attr"]["Accessi"]   # apostrofi e "può" ripristinati
+    assert {f["id"] for f in IDX["fonti"]} >= {"src_fi_aree_attesa", "src_fi_aree_assistenza"}
+
+
 if __name__ == "__main__":
     for n, f in list(globals().items()):
         if n.startswith("test_"):

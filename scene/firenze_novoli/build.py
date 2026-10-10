@@ -42,6 +42,8 @@ LIVELLI = {
     "tram": {"etichetta": "Fermate tram", "fonti": ["src_fi_tram_fermate", "src_gtfs_gest_firenze"]},
     "scuole": {"etichetta": "Scuole statali", "fonti": ["src_fi_scuole_statali"]},
     "rifugi": {"etichetta": "Rifugi climatici", "fonti": ["src_fi_rifugi_aree"]},
+    "attesa": {"etichetta": "Aree di attesa (protezione civile)", "fonti": ["src_fi_aree_attesa"]},
+    "assistenza": {"etichetta": "Aree di assistenza (protezione civile)", "fonti": ["src_fi_aree_assistenza"]},
     "barriere": {"etichetta": "Barriere architettoniche", "fonti": ["src_fi_barriere"]},
     "accessibilita": {"etichetta": "Accessibilità (minuti a piedi)", "fonti": ["src_fi_civici", "src_osm_firenze"]},
     "ombra": {"etichetta": "Ombra sui percorsi", "fonti": ["src_osm_firenze", "src_fi_dsm2023"]},
@@ -63,6 +65,7 @@ LIMITI = [
     "Ombre: sono quelle del motore grafico (sole calcolato per posizione e data), a scopo illustrativo. Non sono un calcolo analitico: gli alberi proiettano chiome piene.",
     "Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
     "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
+    "Protezione civile: aree di attesa e di assistenza del piano comunale, file del 2024 (sopralluoghi delle aree di assistenza del 2021). Sono poche per tutta la città: la scena mostra tutte quelle entro 700 m dal riquadro: in scena quelle sul terreno disegnato, in elenco con la distanza quelle più lontane. Le classi di pericolosità sono i codici della fonte, senza legenda nel pacchetto. Non è il percorso di evacuazione e non indica quale area spetta a quale via.",
     "Barriere architettoniche: rilievo del 2013, grado di accessibilità dell'edificio, non dell'ostacolo sul percorso.",
     "Livelli Accessibilità e Ombra sui percorsi: mostrano solo i dati prodotti dai moduli di analisi, se presenti. Non sono calcolati dalla scena.",
     "Particelle catastali: cartografia catastale dell'Agenzia delle Entrate, confini indicativi e non probatori. I fabbricati non ci sono nel servizio. La particella di un edificio è quella che ne contiene almeno metà della superficie: aggancio geometrico, non verificato sugli atti.",
@@ -82,6 +85,8 @@ USO = {
     "src_cm_edscol_firenze": "Accessi delle scuole",
     "src_gtfs_gest_firenze": "Punti delle fermate T2",
     "src_fi_rifugi_aree": "Rifugi climatici (aree)",
+    "src_fi_aree_attesa": "Aree di attesa della protezione civile",
+    "src_fi_aree_assistenza": "Aree di assistenza della protezione civile",
     "src_fi_barriere": "Barriere architettoniche",
     "src_fi_civici": "Civici dei livelli analitici",
     "src_fi_catasto": "Particelle e fogli catastali, riferimento catastale degli edifici",
@@ -330,6 +335,27 @@ def punti():
         out.append({"livello": "rifugi", "id": row.id, "nome": row.nome_area, "x": x, "z": z,
                     "contorno": [c_ for q in poly.exterior.coords for c_ in loc(*q)],
                     "attr": {"Ombreggiatura": f"oltre il {row.percentuale_ombreggi}%", "Ingressi": row.ingresso, "Descrizione": row.descrizione, "Dato del": "2026-06-18"}})
+    # protezione civile: poche aree per tutta la città, quindi tutte quelle dell'area allargata (riquadro + 700 m).
+    # Quelle oltre il terreno disegnato hanno fuori true e la distanza dal riquadro: la pagina le elenca, come le stazioni ARPAT
+    terra = box(E0 - MARGINE, N0 - MARGINE, E1 + MARGINE, N1 + MARGINE)
+    fuori = lambda g: {"fuori": True, "distanza_m": round(FP.distance(g))} if not terra.intersects(g) else {}
+    pc = lambda v: v.strip() if isinstance(v, str) and v.strip() not in ("", "None") else None   # vuoti e NaN della fonte
+    for _, row in gpd.read_file(n / "fi_aree_attesa.gpkg").iterrows():
+        c = row.geometry.centroid; x, z = loc(c.x, c.y)
+        out.append({"livello": "attesa", "id": row.id, "nome": "Area di attesa " + row.nome, "x": x, "z": z, **fuori(row.geometry),
+                    "attr": {"A cosa serve": "luogo sicuro dove radunarsi in caso di allerta o di evento calamitoso, per ricevere istruzioni dalla protezione civile",
+                             "Indirizzo": row.indirizzo, "Associazione di riferimento": pc(row.associazio),
+                             "Pericolosità indicata dalla fonte": ", ".join(v for v in (pc(row.pericolosi), pc(row.pericolos0)) if v) or None,
+                             "Dato del": "2024-06-25"}})
+    for _, row in gpd.read_file(n / "fi_aree_assistenza.gpkg").iterrows():
+        x, z = loc(row.geometry.x, row.geometry.y)
+        out.append({"livello": "assistenza", "id": row.id, "nome": f"Area di assistenza {row.cod_area} {row.denominazi}", "x": x, "z": z, **fuori(row.geometry),
+                    "attr": {"A cosa serve": "area sicura dove la protezione civile allestisce i primi alloggi per la popolazione colpita",
+                             "Indirizzo": row.indirizzo, "Struttura": pc(row.tipo_strut), "Dimensioni": pc(row.sup_mq), "Servizi igienici": pc(row.servizi_ig),
+                             "Allacci": ", ".join(k for k, v in (("energia elettrica", row.energia_el), ("gas", row.gas), ("acqua", row.acqua), ("fognature", row.fognature)) if str(v).lower() == "si") or None,
+                             "Accessi": re.sub(r"(\w)\?(\w)", r"\1'\2", pc(row.note)).replace("pu? ", "può ") if pc(row.note) else None,   # la fonte ha '?' al posto di apostrofo e accenti
+                             "Associazione di riferimento": pc(row.associazio), "Pericolosità indicata dalla fonte": pc(row.pericolosi),
+                             "Sopralluogo": pc(row.data_rilev), "Dato del": "2024-06-25"}})
     return out
 
 
