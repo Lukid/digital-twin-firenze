@@ -57,7 +57,8 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 1. Comune, DISIT o progetti di ricerca (DANTE, MIRIFICUS): concorrenza o collaborazione. Decisione dopo il POC.
 2. Dati ARPAT: solo dataset con licenza dichiarata (dati.toscana.it). Fuori dal POC.
-3. Ingresso rappresentativo del Polo: E1 biblioteca (oggi), civici del Comune lungo l'asse di Via delle Pandette, oppure solo i civici confermati universitari. Le ultime due rifanno F06 e a cascata scena e servizio. Dettagli in `network/firenze_novoli/verifica_ingressi_polo.md`.
+3. Ingresso rappresentativo del Polo: E1 biblioteca (oggi) oppure i sette civici degli edifici dell'Università (indirizzi dal report di accessibilità dell'Ateneo, tutti presenti nei civici del Comune). La seconda rifà F06 e a cascata scena e servizio.
+4. Fermata T2 del Polo: l'Ateneo indica San Donato - Università (`FM9055`, 340-540 m dagli edifici), che non è fra le destinazioni; R01 parte da Torre degli Agli (circa 1,2 km). Aggiungerla rifà F06, F07, F08, scena e servizio. Dettagli per i punti 3 e 4 in `network/firenze_novoli/verifica_ingressi_polo.md`.
 
 ## Prossimi passi possibili
 

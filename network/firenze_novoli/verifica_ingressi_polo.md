@@ -16,6 +16,20 @@ Data: 10 ottobre 2026. Controllo a tavolino, non sul posto.
 - Il fronte vero del Polo è l'asse pedonale di Via delle Pandette: circa 30 civici del Comune su circa 200 m, dal 2 al 37, sui due lati dell'asse. Le schede barriere del Comune confermano come universitari solo i civici 2 (biblioteca), 9, 21, 32 e 35. Degli altri non si conosce la destinazione d'uso.
 - L'ortofoto non mostra porte, cancelli, orari o percorsi per disabili sotto le gronde e i portici.
 
+## Fonti dell'Università (ricerca in rete, 10 ottobre 2026)
+
+- Il report di accessibilità dell'Ateneo ("REPORT accessibilità, Riepilogo per CAMPUS", unifisostenibile.unifi.it) dà l'indirizzo di ogni edificio del Polo:
+  - D1 (scuole, segreterie): Via delle Pandette 32.
+  - D4 (aule, Dipartimento di Scienze Giuridiche): Via delle Pandette 35.
+  - D5 (aule, DSPS): Via delle Pandette 21.
+  - D6 (aule, DISEI): Via delle Pandette 9.
+  - D10 (Biblioteca): Via delle Pandette 2.
+  - D14 (bar, sale lettura, aula studio): Via delle Pandette 3.
+  - D15 (aule tesi, laboratori): Piazza Ugo di Toscana 5.
+- Le pagine del DISEI confermano D1 = Pandette 32 e D6 = Pandette 9 e danno l'orario degli edifici: dal lunedì al venerdì, 7:30-20:00.
+- Tutti e sette gli indirizzi hanno un civico nel dataset del Comune (`fi_civici`): Pandette 2, 3, 9, 21, 32, 35 lungo l'asse e Piazza Ugo di Toscana 5 (`adr_fi_32095`). Le schede barriere del Comune confermano già 2, 9, 21, 32, 35.
+- Fermata del tram: l'Ateneo (booklet SECI 2026/27 e pagina "Where we are" della Scuola di Economia) indica la fermata T2 "San Donato - Università", a circa 500 m dal campus. Nel GTFS del gestore è `FM9055` (679142, 4851036 in EPSG:7791), a 340-540 m dai sette civici. Non è fra le destinazioni del progetto: D13 ha scelto le fermate `FM9056` Novoli - Regione Toscana e `FM9057` Torre degli Agli, e il percorso R01 parte da Torre degli Agli (circa 1,2 km). `FM9055` sta circa 100 m a sud del riquadro FP, dentro il margine di rete di 700 m. Nel dataset delle fermate del Comune (`fi_tram_fermate`) questa fermata manca.
+
 ## Peso sui risultati
 
 - Da E1 all'estremo nord-est dell'asse (civico Pandette 37) ci sono 191 m in linea d'aria: 2,5-3 minuti a 1,2 m/s. È lo stesso ordine del passo delle soglie (5 minuti).
@@ -26,6 +40,8 @@ Data: 10 ottobre 2026. Controllo a tavolino, non sul posto.
 Ingresso rappresentativo del Polo:
 1. Lasciare E1, la biblioteca (situazione attuale), dichiarando che è un solo punto a un estremo del Polo.
 2. Usare come ingressi i civici del Comune lungo l'asse di Via delle Pandette, con l'ingresso più vicino per ogni origine (F06 ha già il calcolo con più ingressi). È un cambio di modello: rifà F06 e, a cascata, scena, servizio e i job della verifica F11.
-3. Usare solo i civici confermati universitari dalle schede del Comune (2, 9, 21, 32, 35). Stesse conseguenze del punto 2.
+3. Usare come ingressi i sette civici degli edifici dell'Università (Pandette 2, 3, 9, 21, 32, 35 e Piazza Ugo di Toscana 5), con l'ingresso più vicino per ogni origine. Stesse conseguenze del punto 2. È l'opzione sostenuta da fonti ufficiali dell'Ateneo e del Comune.
+
+Decisione collegata: aggiungere la fermata T2 `FM9055` San Donato - Università fra le destinazioni e come partenza del percorso fermata-Polo. Rifà F06, F07 (R01), F08 (filare S1 su R01), scena e servizio.
 
 Senza un sopralluogo nessuna delle tre opzioni è verificata.
