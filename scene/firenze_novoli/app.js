@@ -179,10 +179,42 @@ async function main() {
     $('leg_ombra').innerHTML = `<span>istante del calcolo: ${I.istante} (non segue il cursore dell'ora)</span>`;
   }
 
+  // scenari: interventi ipotetici (livello spento all'avvio)
+  const COL_SCN = 0xe0218a;
+  let scnGruppo = null, scnCentro = null, scnPick = [];
+  function mostraScenario(i) {
+    if (scnGruppo) { scene.remove(scnGruppo); scnGruppo.traverse((o) => o.geometry?.dispose()); }
+    const S = dati.interventi.scenari[i], g = new THREE.Group(), m = new THREE.Matrix4(), q = new THREE.Quaternion();
+    scnPick = []; let sx = 0, sz = 0, n = 0;
+    if (S.alberi.length) {
+      const cr = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1, 1), new THREE.MeshStandardMaterial({ color: COL_SCN, roughness: 1, flatShading: true }), S.alberi.length);
+      const tr = new THREE.InstancedMesh(new THREE.CylinderGeometry(1, 1, 1, 8), new THREE.MeshStandardMaterial({ color: 0x7a1450, roughness: 1 }), S.alberi.length);
+      S.alberi.forEach((a, k) => {
+        const y = tY(a.x, a.z), hc = a.h - a.imp;
+        m.compose(new THREE.Vector3(a.x, y + a.imp + hc / 2, a.z), q, new THREE.Vector3(a.d / 2, hc / 2, a.d / 2)); cr.setMatrixAt(k, m);
+        m.compose(new THREE.Vector3(a.x, y + a.imp / 2, a.z), q, new THREE.Vector3(0.2, a.imp, 0.2)); tr.setMatrixAt(k, m);
+        sx += a.x; sz += a.z; n++;
+      });
+      cr.castShadow = tr.castShadow = cr.receiveShadow = true; cr.userData = { scn: S, alberi: true }; g.add(cr, tr); scnPick.push(cr);
+    }
+    for (const p of S.pensiline) {
+      const sh = new THREE.Shape(); for (let k = 0; k < p.p.length; k += 2) (k ? sh.lineTo : sh.moveTo).call(sh, p.p[k], -p.p[k + 1]);
+      const cx = p.p.filter((_, k) => k % 2 === 0).reduce((a, b) => a + b) / (p.p.length / 2), cz = p.p.filter((_, k) => k % 2).reduce((a, b) => a + b) / (p.p.length / 2);
+      const ge = new THREE.ExtrudeGeometry(sh, { depth: p.z_hi - p.z_lo, bevelEnabled: false }); ge.rotateX(-Math.PI / 2);
+      const me = new THREE.Mesh(ge, new THREE.MeshStandardMaterial({ color: COL_SCN, roughness: 0.6 })); me.position.y = tY(cx, cz) + p.z_lo;
+      me.castShadow = me.receiveShadow = true; me.userData = { scn: S, pens: p }; g.add(me); scnPick.push(me);
+      // quattro pali fino a terra, per leggere la pensilina come struttura
+      for (let k = 0; k < p.p.length; k += 2) { const pl = new THREE.Mesh(palo, me.material); const h = p.z_lo; pl.scale.set(1.4, h, 1.4); pl.position.set(p.p[k] * 0.92 + cx * 0.08, tY(cx, cz) + h / 2, p.p[k + 1] * 0.92 + cz * 0.08); pl.castShadow = true; g.add(pl); }
+      sx += cx; sz += cz; n++;
+    }
+    scnCentro = new THREE.Vector3(sx / n, 0, sz / n); scnCentro.y = tY(scnCentro.x, scnCentro.z);
+    g.visible = $('l_scenari').checked; scnGruppo = g; gruppi.scenari = g; scene.add(g); shadowDirty = dirty = true;
+  }
+
   // --- pannello livelli ---------------------------------------------------------
   const box = $('livelli');
   for (const [k, L] of Object.entries(idx.livelli)) {
-    const an = k === 'accessibilita' || k === 'ombra', presente = !an || idx.livelli_analitici[k].presente;
+    const an = ['accessibilita', 'ombra', 'scenari'].includes(k), presente = !an || idx.livelli_analitici[k].presente;
     const w = document.createElement('div');
     w.innerHTML = `<label><input type="checkbox" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && k !== 'barriere' ? 'checked' : ''}> ${L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</label>`;
     if (k === 'edifici') w.innerHTML += '<div class="leg"><span><i style="background:#bfc3c9"></i>altezza misurata</span><span><i style="background:#dccba8"></i>altezza derivata</span><span><i style="background:#666b73"></i>non presente nel 2023</span></div>';
@@ -190,6 +222,7 @@ async function main() {
     if (k === 'rete') w.innerHTML += '<div class="leg"><span><i style="background:#5b6470"></i>strada</span><span><i style="background:#b0763a"></i>sentiero</span><span><i style="background:#2f6fb5"></i>marciapiede</span><span><i style="background:#f2f2f2"></i>attraversamento</span></div>';
     if (k === 'accessibilita' && presente) w.innerHTML += `<div class="sub"><label for="s_acc">Verso:</label><select id="s_acc">${dati.accessibilita.destinazioni.map((d, i) => `<option value="${i}">${d.nome}</option>`).join('')}</select></div><div class="leg" id="leg_accessibilita"></div>`;
     if (k === 'ombra' && presente) w.innerHTML += `<div class="sub"><label for="s_om">Istante:</label><select id="s_om">${dati.ombra.istanti.map((d, i) => `<option value="${i}">${d.istante}</option>`).join('')}</select></div><div class="grad"></div><div class="leg"><span>sole</span><span style="margin-left:auto">ombra</span></div><div class="leg" id="leg_ombra"></div>`;
+    if (k === 'scenari' && presente) w.innerHTML += `<div class="sub"><label for="s_scn">Scenario:</label><select id="s_scn">${dati.interventi.scenari.map((d, i) => `<option value="${i}">${d.etichetta}</option>`).join('')}</select><div class="riga" style="margin-top:6px"><button type="button" id="vScn">Vai all'intervento</button></div></div><div class="leg"><span><i style="background:#e0218a"></i>albero o pensilina ipotetici</span></div>`;
     box.appendChild(w);
   }
   for (const k of Object.keys(idx.livelli)) {
@@ -198,6 +231,10 @@ async function main() {
     cb.addEventListener('change', () => { if (gruppi[k]) gruppi[k].visible = cb.checked; shadowDirty = dirty = true; });
   }
   if (idx.livelli_analitici.accessibilita.presente) { mostraAccessibilita(0); $('s_acc').addEventListener('change', (e) => mostraAccessibilita(+e.target.value)); }
+  if (idx.livelli_analitici.scenari.presente) {
+    mostraScenario(0); $('s_scn').addEventListener('change', (e) => mostraScenario(+e.target.value));
+    $('vScn').addEventListener('click', () => { $('l_scenari').checked = true; $('l_scenari').dispatchEvent(new Event('change')); vai(scnCentro.clone().add(new THREE.Vector3(25, 95, 55)), scnCentro); });
+  }
   if (idx.livelli_analitici.ombra.presente) { mostraOmbra(0); $('s_om').addEventListener('change', (e) => mostraOmbra(+e.target.value)); }
 
   // --- sole ---------------------------------------------------------------------
@@ -226,11 +263,12 @@ async function main() {
   const riga = (k, v) => (v == null || v === '' ? '' : `<dt>${k}</dt><dd>${/^https?:/.test(v) ? `<a href="${v}" target="_blank" rel="noopener">${v}</a>` : v}</dd>`);
   const iv = (a, b) => (a != null && b != null ? ` (da ${a} a ${b})` : '');
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  function scheda(titolo, righe, livello) {
+  function scheda(titolo, righe, livello, extra) {
     $('schedaTit').textContent = titolo;
-    $('schedaDati').innerHTML = righe.map(([k, v]) => riga(k, v == null ? v : esc(String(v).replace(/(\d)\.(\d)/g, '$1,$2'))))  // decimali con la virgola.join('');
+    $('schedaDati').innerHTML = righe.map(([k, v]) => riga(k, v == null ? v : esc(String(v).replace(/(\d)\.(\d)/g, '$1,$2')))).join(''); // decimali con la virgola
     const fonti = idx.livelli[livello].fonti.map((id) => idx.fonti.find((f) => f.id === id));
     $('schedaFonte').innerHTML = '<strong>Fonte</strong><br>' + fonti.map((f) => `${esc(f.titolo)}, ${esc(f.ente)}. Licenza ${esc(f.licenza)}${f.riserva ? ' (con riserva)' : ''}. Scaricato il ${f.scaricato}. <a href="${f.url}" target="_blank" rel="noopener">scheda del dato</a>`).join('<br>');
+    if (extra) $('schedaFonte').innerHTML = extra;
     $('scheda').hidden = false;
   }
   const chiudi = () => { $('scheda').hidden = true; evid.visible = false; dirty = true; };
@@ -248,7 +286,7 @@ async function main() {
     if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5) return; down = null;
     const r = canvas.getBoundingClientRect();
     ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), camera);
-    const lista = [edMesh, chiome, ...sel].filter((o) => o.parent && o.visible && (!o.parent.isGroup || o.parent.visible));
+    const lista = [edMesh, chiome, ...sel, ...scnPick].filter((o) => o.parent && o.visible && (!o.parent.isGroup || o.parent.visible));
     const hit = ray.intersectObjects(lista, false)[0];
     if (evEd) { scene.remove(evEd); evEd.geometry.dispose(); evEd = null; }
     if (!hit) { chiudi(); return; }
@@ -263,6 +301,12 @@ async function main() {
     } else if (o === chiome) {
       const a = dati.alberi.alberi[hit.instanceId]; anello(a.x, a.y, a.z, Math.max((a.d ?? 3) / 2, 1.5));
       scheda(a.specie || 'Albero', [['Altezza', `${a.h} m${iv(a.h_min, a.h_max)}, ${CL[a.h_cls]}`], ['Diametro della chioma', `${a.d} m${iv(a.d_min, a.d_max)}, ${CL[a.ch_cls]}`], ['Circonferenza del tronco', a.circ != null ? a.circ + ' cm' : null], ['Motivo della stima', a.motivo ? a.motivo.replaceAll('_', ' ') : null], ['Quota di base', (a.y + idx.area.quota_riferimento_m).toFixed(1) + ' m s.l.m.'], ['Codice', a.id]], 'alberi');
+    } else if (o.userData.scn) {
+      const S = o.userData.scn, it = o.userData.pens || S.alberi[hit.instanceId];
+      if (o.userData.pens) anello(hit.point.x, hit.point.y - 1, hit.point.z, 6); else anello(it.x, tY(it.x, it.z), it.z, Math.max(it.d / 2, 1.5));
+      const dim = o.userData.pens ? [['Quota intradosso', `${it.z_lo} m sul suolo`], ['Quota tetto', `${it.z_hi} m sul suolo`]] : [['Altezza', it.h + ' m'], ['Diametro della chioma', it.d + ' m'], ['Imposta della chioma', it.imp + ' m']];
+      scheda((o.userData.pens ? 'Pensilina ipotetica ' : 'Albero ipotetico ') + it.id.split(':').pop(), [['Scenario', S.etichetta], ...dim, ...S.numeri, ['Fattibilità', S.fattibilita]], 'scenari',
+        `<strong>Fonte dei numeri</strong><br>${esc(dati.interventi.fonte_numeri)}. Interventi: scenarios/firenze_novoli/interventi.geojson.`);
     } else {
       const p = o.userData.punto; anello(p.x, tY(p.x, p.z), p.z, 10);
       scheda(p.nome, Object.entries(p.attr || {}), o.userData.tipo);

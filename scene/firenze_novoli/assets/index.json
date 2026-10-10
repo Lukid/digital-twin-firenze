@@ -1,6 +1,6 @@
 {
  "versione": 1,
- "generato": "2026-10-10T09:12:17Z",
+ "generato": "2026-10-10T09:41:20Z",
  "aoi_id": "aoi_firenze_novoli",
  "area": {
   "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
@@ -70,6 +70,13 @@
    "byte_decompressi": 112313,
    "sha256": "b5340b80f4a121a324d96aa835de1bb2128b5a1be001ecb7c0088202ff054415",
    "n": 1171
+  },
+  "interventi": {
+   "file": "interventi.json.gz",
+   "byte": 957,
+   "byte_decompressi": 4859,
+   "sha256": "62e26f971ba0f0d91d45ad527bc337ec5fca5dd84c1b410fdce4191b9b7b6768",
+   "n": 29
   }
  },
  "livelli_analitici": {
@@ -77,6 +84,9 @@
    "presente": true
   },
   "ombra": {
+   "presente": true
+  },
+  "scenari": {
    "presente": true
   }
  },
@@ -156,6 +166,10 @@
     "src_osm_firenze",
     "src_fi_dsm2023"
    ]
+  },
+  "scenari": {
+   "etichetta": "Scenari (interventi ipotetici)",
+   "fonti": []
   }
  },
  "fonti": [
