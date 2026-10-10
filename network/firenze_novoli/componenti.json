@@ -37,7 +37,7 @@
   "nodi": 75,
   "archi": 104,
   "km": 6.531,
-  "km_in_z2": 4.847,
+  "km_in_z2": 4.748,
   "principale": false,
   "tipi": {
    "strada": 104
@@ -81,8 +81,8 @@
    "strada": 7
   },
   "highway": {
-   "unclassified": 3,
-   "service": 4
+   "service": 4,
+   "unclassified": 3
   },
   "gap_dalla_principale_m": 14.5,
   "motivi": [
@@ -114,7 +114,7 @@
   "nodi": 4,
   "archi": 3,
   "km": 0.325,
-  "km_in_z2": 0.236,
+  "km_in_z2": 0.133,
   "principale": false,
   "tipi": {
    "strada": 3
@@ -173,12 +173,12 @@
   "km_in_z2": 0.0,
   "principale": false,
   "tipi": {
-   "strada": 5,
-   "sentiero": 1
+   "sentiero": 1,
+   "strada": 5
   },
   "highway": {
-   "residential": 5,
-   "footway": 1
+   "footway": 1,
+   "residential": 5
   },
   "gap_dalla_principale_m": 10.3,
   "motivi": [

@@ -1,16 +1,16 @@
 {
  "graph_id": "grf_firenze_novoli_osm_20261009",
- "classificazione": "ingressi OSM, accessi CM e punti GTFS = measured; classe dell'ingresso e aggancio = derived; tutto da_verificare",
+ "classificazione": "civici del Comune, accessi CM e punti GTFS = measured; classe dell'ingresso e aggancio = derived; tutto da_verificare",
  "destinazioni": [
   {
    "destination_id": "dst_university_w83537185",
    "categoria": "university",
    "nome": "Polo delle Scienze Sociali (Università degli Studi di Firenze)",
    "indirizzo": "via delle Pandette",
-   "id_note": "Il Polo non ha un codice ufficiale: id da OSM way 83537185 (perimetro d'insieme). Edifici OSM: D1, D14, D15 (way) e D4, D5, D6 (relazioni).",
+   "id_note": "Il Polo non ha un codice ufficiale: id da OSM way 83537185 (perimetro d'insieme). Ingressi: un civico del Comune per edificio dell'Ateneo (D1, D4, D5, D6, D10, D14, D15); il più vicino per ogni origine.",
    "fonte": "OSM way 83537185",
    "stato_verifica": "da_verificare",
-   "condizioni_accesso": "non note (campus, orari, cancelli, ingresso per disabili)",
+   "condizioni_accesso": "edifici aperti dal lunedì al venerdì 7:30-20:00 (pagine del DISEI); porte, cancelli e ingresso per disabili non verificati",
    "barriere_comune": {
     "nota": "schede di edifici del rilievo 2013 (grado Accessibile / Parzialmente / Non accessibile): attributo dell'edificio, non dell'ostacolo sul percorso",
     "schede": [
@@ -98,76 +98,277 @@
    },
    "ingressi": [
     {
-     "entrance_id": "ent_osm_n11152998932",
-     "classe": "ingresso_osm",
-     "fonte_ingresso": "OSM entrance=main, indirizzo Via delle Pandette 2",
+     "entrance_id": "ent_civ_d1",
+     "classe": "civico_edificio_ateneo",
+     "fonte_ingresso": "civico del Comune adr_fi_75744 (Via Delle Pandette 32); edificio D1 (scuole e segreterie) dall'elenco edifici dell'Ateneo",
      "stato_verifica": "da_verificare",
-     "osm_node": 11152998932,
+     "edificio": "D1",
+     "civico_id": "adr_fi_75744",
      "dentro_perimetro": true,
-     "su_edificio": [
-      "bld_osm_w82646719"
-     ],
-     "tags": {
-      "addr:housenumber": "2",
-      "addr:street": "Via delle Pandette",
-      "entrance": "main"
-     },
      "xy": [
-      679432.84,
-      4851231.53
+      679554.07,
+      4851367.5
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_80835013_942522955_941165424",
+      "u": "nod_osm_942522955",
+      "v": "nod_osm_941165424",
+      "offset_m": 11.18,
+      "dist_m": 2.48,
+      "proj": [
+       679551.7806448317,
+       4851368.464778935
+      ],
+      "scartati": [],
+      "raccordo_m": 2.48,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_civ_d4",
+     "classe": "civico_edificio_ateneo",
+     "fonte_ingresso": "civico del Comune adr_fi_75511 (Via Delle Pandette 35); edificio D4 (aule, Dipartimento di Scienze Giuridiche) dall'elenco edifici dell'Ateneo",
+     "stato_verifica": "da_verificare",
+     "edificio": "D4",
+     "civico_id": "adr_fi_75511",
+     "dentro_perimetro": true,
+     "xy": [
+      679550.09,
+      4851383.12
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_771692163_7204051361_7204063886",
+      "u": "nod_osm_7204063886",
+      "v": "nod_osm_7204051361",
+      "offset_m": 63.28,
+      "dist_m": 11.95,
+      "proj": [
+       679555.4693604935,
+       4851393.793469968
+      ],
+      "scartati": [
+       {
+        "edge_id": "edg_osm_80680738_7204063886_942522955",
+        "dist_m": 7.27,
+        "motivo": "tratto_escluso"
+       },
+       {
+        "edge_id": "edg_osm_80680738_942522955_4793202032",
+        "dist_m": 7.44,
+        "motivo": "tratto_escluso"
+       },
+       {
+        "edge_id": "edg_osm_80835013_942522955_941165424",
+        "dist_m": 7.44,
+        "motivo": "tratto_escluso"
+       }
+      ],
+      "raccordo_m": 11.95,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_civ_d5",
+     "classe": "civico_edificio_ateneo",
+     "fonte_ingresso": "civico del Comune adr_fi_83897 (Via Delle Pandette 21); edificio D5 (aule, DSPS) dall'elenco edifici dell'Ateneo",
+     "stato_verifica": "da_verificare",
+     "edificio": "D5",
+     "civico_id": "adr_fi_83897",
+     "dentro_perimetro": true,
+     "xy": [
+      679508.61,
+      4851327.72
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_115947092_12883593940_1308601517",
+      "u": "nod_osm_1308601517",
+      "v": "nod_osm_12883593940",
+      "offset_m": 5.2,
+      "dist_m": 17.15,
+      "proj": [
+       679514.9184418469,
+       4851311.777587326
+      ],
+      "scartati": [
+       {
+        "edge_id": "edg_osm_80835013_941158345_1322260208",
+        "dist_m": 9.87,
+        "motivo": "tratto_escluso"
+       },
+       {
+        "edge_id": "edg_osm_80835013_1322260208_941158349",
+        "dist_m": 12.84,
+        "motivo": "tratto_escluso"
+       },
+       {
+        "edge_id": "edg_osm_115947081_1308601517_1322260208",
+        "dist_m": 12.84,
+        "motivo": "tratto_escluso"
+       },
+       {
+        "edge_id": "edg_osm_83240483_941158349_4793168907",
+        "dist_m": 16.42,
+        "motivo": "tratto_escluso"
+       },
+       {
+        "edge_id": "edg_osm_486755470_4793168907_11112046619",
+        "dist_m": 16.42,
+        "motivo": "tratto_escluso"
+       }
+      ],
+      "raccordo_m": 17.15,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_civ_d6",
+     "classe": "civico_edificio_ateneo",
+     "fonte_ingresso": "civico del Comune adr_fi_7660 (Via Delle Pandette 9); edificio D6 (aule, DISEI) dall'elenco edifici dell'Ateneo",
+     "stato_verifica": "da_verificare",
+     "edificio": "D6",
+     "civico_id": "adr_fi_7660",
+     "dentro_perimetro": true,
+     "xy": [
+      679472.52,
+      4851288.51
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_771692175_7204063632_4796240986",
+      "u": "nod_osm_7204063632",
+      "v": "nod_osm_4796240986",
+      "offset_m": 90.8,
+      "dist_m": 20.33,
+      "proj": [
+       679456.8380010121,
+       4851275.566841543
+      ],
+      "scartati": [
+       {
+        "edge_id": "edg_osm_80835013_941158349_941158354",
+        "dist_m": 10.67,
+        "motivo": "tratto_escluso"
+       },
+       {
+        "edge_id": "edg_osm_1203098497_11152998935_12883593940",
+        "dist_m": 19.09,
+        "motivo": "edificio"
+       }
+      ],
+      "raccordo_m": 20.33,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_civ_d10",
+     "classe": "civico_edificio_ateneo",
+     "fonte_ingresso": "civico del Comune adr_fi_108739 (Via Delle Pandette 2); edificio D10 (biblioteca) dall'elenco edifici dell'Ateneo",
+     "stato_verifica": "da_verificare",
+     "edificio": "D10",
+     "civico_id": "adr_fi_108739",
+     "dentro_perimetro": true,
+     "xy": [
+      679427.25,
+      4851221.35
      ],
      "aggancio": {
       "stato": "agganciato",
       "edge_id": "edg_osm_80835013_941158354_4796237987",
       "u": "nod_osm_941158354",
       "v": "nod_osm_4796237987",
-      "offset_m": 43.7,
-      "dist_m": 2.92,
+      "offset_m": 45.58,
+      "dist_m": 11.32,
       "proj": [
-       679430.8928440261,
-       4851233.704795132
+       679429.490176808,
+       4851232.448947254
       ],
       "scartati": [],
-      "raccordo_m": 2.92,
+      "raccordo_m": 11.32,
       "componente": "cmp_01"
      }
     },
     {
-     "entrance_id": "ent_osm_n11152998933",
-     "classe": "ingresso_osm",
-     "fonte_ingresso": "OSM entrance=main, indirizzo assente",
+     "entrance_id": "ent_civ_d14",
+     "classe": "civico_edificio_ateneo",
+     "fonte_ingresso": "civico del Comune adr_fi_86775 (Via Delle Pandette 3); edificio D14 (bar, sale lettura, aula studio) dall'elenco edifici dell'Ateneo",
      "stato_verifica": "da_verificare",
-     "osm_node": 11152998933,
+     "edificio": "D14",
+     "civico_id": "adr_fi_86775",
      "dentro_perimetro": true,
-     "su_edificio": [
-      "bld_osm_r1610040",
-      "bld_osm_r16010998"
-     ],
-     "tags": {
-      "entrance": "main"
-     },
      "xy": [
-      679534.56,
-      4851306.14
+      679435.87,
+      4851249.86
      ],
      "aggancio": {
       "stato": "agganciato",
-      "edge_id": "edg_osm_115947092_1308601631_12883593940",
-      "u": "nod_osm_1308601631",
-      "v": "nod_osm_12883593940",
-      "offset_m": 20.56,
-      "dist_m": 9.6,
+      "edge_id": "edg_osm_771692234_7204063688_10293555875",
+      "u": "nod_osm_7204063688",
+      "v": "nod_osm_10293555875",
+      "offset_m": 28.5,
+      "dist_m": 17.61,
       "proj": [
-       679527.889038787,
-       4851299.239347894
+       679445.9751542605,
+       4851264.276803352
       ],
-      "scartati": [],
-      "raccordo_m": 9.6,
+      "scartati": [
+       {
+        "edge_id": "edg_osm_80835013_941158354_4796237987",
+        "dist_m": 8.72,
+        "motivo": "tratto_escluso"
+       }
+      ],
+      "raccordo_m": 17.61,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_civ_d15",
+     "classe": "civico_edificio_ateneo",
+     "fonte_ingresso": "civico del Comune adr_fi_32095 (Piazza Ugo Di Toscana 5); edificio D15 (aule tesi, laboratori) dall'elenco edifici dell'Ateneo",
+     "stato_verifica": "da_verificare",
+     "edificio": "D15",
+     "civico_id": "adr_fi_32095",
+     "dentro_perimetro": true,
+     "xy": [
+      679392.69,
+      4851254.78
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_117160328_4796237987_1319747551",
+      "u": "nod_osm_4796237987",
+      "v": "nod_osm_1319747551",
+      "offset_m": 17.4,
+      "dist_m": 13.35,
+      "proj": [
+       679406.0061713689,
+       4851255.679554904
+      ],
+      "scartati": [
+       {
+        "edge_id": "edg_osm_116297466_4796237987_941162150",
+        "dist_m": 7.7,
+        "motivo": "tratto_escluso"
+       }
+      ],
+      "raccordo_m": 13.35,
       "componente": "cmp_01"
      }
     }
    ],
-   "ingresso_predefinito": "ent_osm_n11152998932"
+   "ingresso_predefinito": "ent_civ_d1",
+   "ingressi_predefiniti": [
+    "ent_civ_d1",
+    "ent_civ_d4",
+    "ent_civ_d5",
+    "ent_civ_d6",
+    "ent_civ_d10",
+    "ent_civ_d14",
+    "ent_civ_d15"
+   ]
   },
   {
    "destination_id": "dst_school_fiee86002g",
@@ -286,6 +487,45 @@
     }
    ],
    "ingresso_predefinito": "ent_cm_FIAA86002A_0"
+  },
+  {
+   "destination_id": "dst_tram_fm9055",
+   "categoria": "tram",
+   "nome": "San Donato - Universita",
+   "stop_code": "FM9055",
+   "linee": "T2",
+   "corse_giorno_rif": 422,
+   "fonte": "GTFS GEST (tram)",
+   "stato_verifica": "da_verificare",
+   "condizioni_accesso": "non note (marciapiede e banchina: nessun dato nel feed)",
+   "ingressi": [
+    {
+     "entrance_id": "ent_gtfs_fm9055",
+     "classe": "ingresso_fermata",
+     "fonte_ingresso": "punto GTFS (le stop_position OSM sono sul binario)",
+     "stato_verifica": "da_verificare",
+     "xy": [
+      679141.91,
+      4851036.28
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_690454415_3758832960_3320593298",
+      "u": "nod_osm_3320593298",
+      "v": "nod_osm_3758832960",
+      "offset_m": 1.83,
+      "dist_m": 4.61,
+      "proj": [
+       679144.188110316,
+       4851040.293218018
+      ],
+      "scartati": [],
+      "raccordo_m": 4.61,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_gtfs_fm9055"
   },
   {
    "destination_id": "dst_tram_fm9056",

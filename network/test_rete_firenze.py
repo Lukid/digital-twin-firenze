@@ -63,23 +63,25 @@ assert not any(k.startswith(("grado", "scheda", "barriere")) for _, _, d in G.ed
 print("4 ok: foot/access rispettati, ID stabili e univoci, marciapiede ignoto mai dichiarato, attraversamenti e scale presenti, nessuna scheda sugli archi")
 
 # 5. destinazioni: ogni destinazione agganciata a un ingresso con classe dichiarata e verifica da_verificare; barriere come attributo della destinazione
-CLASSI = {"ingresso_osm", "accesso_citta_metropolitana", "ingresso_fermata", "punto_sul_perimetro"}
+CLASSI = {"ingresso_osm", "civico_edificio_ateneo", "accesso_citta_metropolitana", "ingresso_fermata", "punto_sul_perimetro"}
 for d in dest:
     assert re.fullmatch(r"dst_[a-z]{2,12}_[a-z0-9_]{2,60}", d["destination_id"]) and d["ingressi"] and d["ingresso_predefinito"] in ent, d["destination_id"]
     for e in d["ingressi"]:
         assert re.fullmatch(r"ent_[a-z]{2,8}_[A-Za-z0-9_.-]{1,60}", e["entrance_id"]) and e["classe"] in CLASSI and e["stato_verifica"] == "da_verificare", e["entrance_id"]
         a = e["aggancio"]; assert a["stato"] == "agganciato" and a["dist_m"] <= REGOLE["snapping"]["ingressi"]["max_m"], (e["entrance_id"], a)
         assert G.has_edge(a["u"], a["v"], a["edge_id"]), e["entrance_id"]
-assert [e["classe"] for e in polo["ingressi"]] == ["ingresso_osm"] * len(polo["ingressi"]) and len(polo["ingressi"]) >= 2
+assert [e["edificio"] for e in polo["ingressi"]] == ["D1", "D4", "D5", "D6", "D10", "D14", "D15"] and {e["classe"] for e in polo["ingressi"]} == {"civico_edificio_ateneo"}   # D19
+assert polo["ingresso_predefinito"] == "ent_civ_d1" and polo["ingressi_predefiniti"] == [e["entrance_id"] for e in polo["ingressi"]]
+assert len({e["aggancio"]["componente"] for e in polo["ingressi"]}) == 1   # tutti nella stessa componente: lo stato dei civici rispetto al Polo resta univoco
 assert vamba["ingressi"][0]["classe"] == "accesso_citta_metropolitana" and vamba["codice_mim"] == "FIEE86002G" and D_["dst_school_fiaa86002a"]["codice_mim"] == "FIAA86002A"
-assert sum(1 for d in dest if d["categoria"] == "tram") == 2 and all(d["ingressi"][0]["classe"] == "ingresso_fermata" for d in dest if d["categoria"] == "tram")
+assert sorted(d["stop_code"] for d in dest if d["categoria"] == "tram") == ["FM9055", "FM9056", "FM9057"] and all(d["ingressi"][0]["classe"] == "ingresso_fermata" for d in dest if d["categoria"] == "tram")
 for d in (polo, vamba):
     s = d["barriere_comune"]["schede"]; assert s and all(x["grado_accessibilita"] in ("Accessibile", "Parzialmente Accessibile", "Non Accessibile") for x in s), d["destination_id"]
 bar = json.load(open(RES / "barriere_edifici.json")); assert bar["schede_nel_riquadro"] == len(bar["schede"]) == sum(bar["per_grado"].values())
 # ingresso senza fonte: punto sul perimetro, dichiarato come tale
 poly = Polygon([(x, y) for _, x, y in next(a for a in pickle.load(open(OUT / "osm_estratto.pkl", "rb"))["aree"] if a["id"] == 83537185)["nodes"]])
 pp = punto_perimetro(poly, G); assert poly.exterior.distance(pp) < 1e-6 and SN.snap(pp, 40, 6)["stato"] == "agganciato"
-print(f"5 ok: {len(dest)} destinazioni agganciate; Polo {len(polo['ingressi'])} ingressi OSM, Vamba accesso CM, 2 fermate T2; schede Polo {len(polo['barriere_comune']['schede'])}, Vamba {len(vamba['barriere_comune']['schede'])}; punto sul perimetro ok")
+print(f"5 ok: {len(dest)} destinazioni agganciate; Polo {len(polo['ingressi'])} ingressi (civici degli edifici dell'Ateneo), Vamba accesso CM, 3 fermate T2; schede Polo {len(polo['barriere_comune']['schede'])}, Vamba {len(vamba['barriere_comune']['schede'])}; punto sul perimetro ok")
 
 # 6. origini: non agganciati = insufficient_data, mai forzati; stati che sommano
 na = civ[civ.stato == "insufficient_data"]
