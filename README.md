@@ -1,10 +1,12 @@
-# Pisa Digital Twin
+# Gemello digitale di Firenze Novoli
 
-Prototipo, primo pilota su una zona di Pisa e nuovo pilota a Firenze (Novoli - Firenze Nova, decisione D12), per analizzare accessibilità pedonale e confrontare scenari di ombreggiamento, con città 3D riconoscibile e interrogazione dei dati tramite MCP.
+Prototipo di gemello digitale dell'area Novoli - Firenze Nova (riquadro di 2 km²), costruito solo da open data con licenza che ne permette il riuso. Mostra accessibilità pedonale, ombra sui percorsi, confronto di interventi (filari, pensiline) in una scena 3D statica, e risponde a domande tramite un server MCP con calcoli tracciati. **Stato e prossimi passi: [docs/STATO.md](docs/STATO.md).**
 
-Pilota Z2 (Stazione / Sant'Antonio / Corso Italia) in locale: dati, rete, accessibilità, ombre, scenari, scena e server MCP con test. Manca la verifica sul posto. **Stato e prossimi passi: [docs/STATO.md](docs/STATO.md).**
+Vedere la scena: `cd scene/firenze_novoli && python3 -m http.server 8765`, poi http://localhost:8765/
 
-Riferimento di presentazione indicato dall'utente: il [gemello di Padova](https://padova-digital-twin.ekore.tech/) (decisione D11 nel piano, analisi in [docs/RIFERIMENTO-PADOVA.md](docs/RIFERIMENTO-PADOVA.md)).
+Riferimento di presentazione: il [gemello di Padova](https://padova-digital-twin.ekore.tech/) (D11, analisi in [docs/RIFERIMENTO-PADOVA.md](docs/RIFERIMENTO-PADOVA.md)).
+
+Il primo pilota su Pisa Z2 è accantonato (D15): il suo stato finale è nel tag git `pilota-pisa-z2`. I file di Pisa ancora presenti sul ramo principale (`fieldwork/`, `nl/`, `preview/`, `scene/` fuori da `firenze_novoli/`, output e test `*_z2*` e `test_rete.py`, `test_geometrie.py`) non sono più mantenuti e non girano con i motori attuali.
 
 ## Documenti operativi
 
