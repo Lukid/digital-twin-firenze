@@ -1,6 +1,8 @@
-"""T09: ombra geometrica (caso B). Libreria deterministica, indipendente dal renderer e dall'interfaccia (CLI, API, MCP la chiamano uguale).
+"""Ombra geometrica (caso B). Libreria deterministica, indipendente dal renderer e dall'interfaccia (CLI, API, MCP la chiamano uguale).
+L'area (riquadro, baseline, file di geometria, snapshot, centro del sole) viene dal registro contracts/aree.json tramite pipeline/lib.py (variabile DT_AOI,
+default Firenze Novoli).
 
-    r = compute_shadow("bas_z2_20261001", receivers, when, method, walk_speed_m_s=1.2, out_dir=...)
+    r = compute_shadow(BASELINE_ID, receivers, when, method, walk_speed_m_s=1.2, out_dir=...)
     r["job"], r["manifest"], r["righe"] (una riga per ricevitore/ora/caso), r["sintesi"]
 
 Metodo (versione in VERSIONE):
@@ -12,6 +14,7 @@ Metodo (versione in VERSIONE):
  3. Chioma = ellissoide opaco fra altezza d'imposta e altezza totale (proiezione parallela esatta: un'ellisse); tronco trascurato
     (diametro 0,1-0,9 m, dichiarato). Opzione "cilindro" come limite superiore.
  4. Unione di tutte le ombre in un solo poligono (nessun doppio conteggio); frazione = lunghezza(L ∩ unione) / lunghezza(L).
+4. (vedi sotto) Vegetazione LiDAR senza albero censito: poligoni di chioma come prismi fra z_lo = frazione fissa di h95 e z_hi = h95 (dichiarati).
 Terreno: quasi piano, dichiarato. Ogni oggetto è riferito al proprio piede (quota base di fonte, altezze relative): il ricevitore si
 assume alla quota del piede degli oggetti vicini. Nessuna conversione in gradi o comfort."""
 import datetime as dt, hashlib, json, math, pathlib
@@ -22,10 +25,10 @@ from shapely.geometry import LineString, MultiPolygon, Polygon, Point, box, mapp
 from shapely import affinity
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-VERSIONE = "0.2.0"
+VERSIONE = "0.3.0"
 ROMA = ZoneInfo("Europe/Rome")
 UTC = dt.timezone.utc
-EL_MIN_SUPPORTATA = 5.0   # gradi: sotto, il contesto dei dati (margine 450 m dal bordo Z2) non copre ombre di edifici da 38 m
+EL_MIN_SUPPORTATA = 5.0   # gradi: sotto, il contesto dei dati (margine della rete dal riquadro, 700 m) non copre le ombre lunghe (a 5 gradi l'ombra è 11,4 volte l'altezza: 700 m coprono 61 m)
 STATO_OK, STATO_NOTTE, STATO_BASSO = "ok", "sole_sotto_orizzonte", "sole_basso_fuori_supporto"
 LIMITI = {"max_area_km2": 4, "max_rows": 50000, "max_seconds": 3600, "max_memory_mb": 4096}
 
@@ -91,7 +94,7 @@ def stato_sole(el, el_min=EL_MIN_SUPPORTATA):
 # ---------------------------------------------------------------- motore vettoriale
 class Scena:
     """Insieme di ostacoli: prismi (footprint, z_lo, z_hi) e chiome (ellissoidi o cilindri). Altezze in m sopra il piano del suolo.
-    ponytail: unione con union_all su tutti i pezzi; per l'intero buffer Z2 resta nell'ordine di secondi per istante, vedi finestra in compute_shadow."""
+    ponytail: unione con union_all su tutti i pezzi; per l'intero buffer dell'area resta nell'ordine di secondi per istante, vedi finestra in compute_shadow."""
     def __init__(self, geoms=(), z_lo=(), z_hi=(), ids=(), chiome=None):
         self.geoms = np.array(list(geoms), dtype=object); self.z_lo = np.asarray(z_lo, float); self.z_hi = np.asarray(z_hi, float)
         self.ids = list(ids)
@@ -200,19 +203,39 @@ def ombra_a_istante(S, utc, lat, lon, el_min=EL_MIN_SUPPORTATA, finestra=None):
     return st, az, el, ombra_scena(S, az, el, att, ci)
 
 
-# ---------------------------------------------------------------- dati e scene
-GPKG = ROOT / "data/norm/geometry/geometrie_z2.gpkg"
-SNAPSHOT_IDS = {"edifici": ["snp_rt_unita_volumetriche_20261001", "snp_osm_pisa_20261001", "snp_rt_dsm2021_20261001", "snp_rt_dtm10_20261001"],
-                "alberi": ["snp_rt_dbt10k_pisa_20261001"]}
-BASELINE_ID, AOI_ID = "bas_z2_20261001", "aoi_z2"
-# caso -> (colonna altezza edifici, caso chiome o None, forma chioma). Intervalli h_min/h_max di T05: ±0,5 m measured, ±1,36 m derived
-# (×1,5 con alberi entro 2 m): sono quelli usati nella sensibilità.
-CASI = {"base": ("h", None, None), "base_h_min": ("h_min", None, None), "base_h_max": ("h_max", None, None),
-        "alberi_min": ("h", "min", "ellissoide"), "alberi_tipico": ("h", "tipico", "ellissoide"), "alberi_max": ("h", "max", "ellissoide"),
-        "alberi_tipico_cilindro": ("h", "tipico", "cilindro")}
+# ---------------------------------------------------------------- area, dati e scene
+def _carica_lib():
+    """pipeline/lib.py caricato per percorso (nome unico, nessun conflitto con altri moduli 'lib'): area da DT_AOI, cartella dati."""
+    import importlib.util, sys
+    if "pipeline_lib" in sys.modules: return sys.modules["pipeline_lib"]
+    sp = importlib.util.spec_from_file_location("pipeline_lib", ROOT / "pipeline/lib.py"); m = importlib.util.module_from_spec(sp)
+    sys.modules["pipeline_lib"] = m; sp.loader.exec_module(m); return m
+
+
+_LIB = _carica_lib()
+AOI = _LIB.AOI; AOI_ID = AOI["aoi_id"]; SLUG = AOI_ID.removeprefix("aoi_"); NORM = _LIB.NORM
+BASELINE_ID = next(a for a in json.load(open(ROOT / "contracts/aree.json"))["aree"] if a["aoi_id"] == AOI_ID)["baseline_ids"][0]
+RIQUADRO_EN = tuple(AOI["z2_en"])          # riquadro dell'area (E0, N0, E1, N1) in EPSG:7791
+SOLE_LAT, SOLE_LON = round((AOI["z2_ll_SWNE"][0] + AOI["z2_ll_SWNE"][2]) / 2, 4), round((AOI["z2_ll_SWNE"][1] + AOI["z2_ll_SWNE"][3]) / 2, 4)   # centro del riquadro
+GPKG = NORM / "geometry" / f"geometrie_{SLUG}.gpkg"
+VEG_GPKG = NORM / "shadow" / "vegetazione_lidar_poligoni.gpkg"       # prodotto da shadow/veg_lidar.py
+OUT_GRANDI = NORM / "shadow"                                         # dati grandi (righe CSV, sintesi)
+SNAPSHOT_PER_AREA = {"aoi_firenze_novoli": {"edifici": ["snp_rt_uv_firenze_novoli_20261009", "snp_osm_firenze_20261009", "snp_fi_dsm2023_20261009", "snp_fi_dtm2023_20261009"],
+                                            "alberi": ["snp_fi_alberi_20261009"]}}
+SNAPSHOT_IDS = SNAPSHOT_PER_AREA[AOI_ID]
+# Chioma LiDAR senza albero censito (D14): prismi opachi fra z_lo = frazione * h95 e z_hi = h95 (h95 = 95° percentile del CHM nel cluster). La frazione è
+# l'altezza d'imposta su altezza degli alberi censiti di Novoli (p90, p50, p10 di imposta/h con imposta limitata a metà altezza: 0,41, 0,25, 0,14).
+# Caso min (poca ombra) = chioma alta da terra (0,4), tipico 0,25, max (molta ombra) 0,15. Prisma pieno su tutta l'impronta: limite superiore (vuoti nella chioma ignoti).
+VEG_FRAZIONE = {"min": 0.4, "tipico": 0.25, "max": 0.15}
+# caso -> (colonna altezza edifici, caso chiome o None, forma chioma, caso vegetazione LiDAR o None). Intervalli h_min/h_max di F05: ±0,5 m (altezza UV o
+# concordi con il LiDAR), ±metà p10-p90 dello scarto LiDAR-UV (1,88 m) dove differiscono molto.
+CASI = {"base": ("h", None, None, None), "base_h_min": ("h_min", None, None, None), "base_h_max": ("h_max", None, None, None),
+        "alberi_min": ("h", "min", "ellissoide", None), "alberi_tipico": ("h", "tipico", "ellissoide", None), "alberi_max": ("h", "max", "ellissoide", None),
+        "alberi_tipico_cilindro": ("h", "tipico", "cilindro", None),
+        "veg_lidar_min": ("h", "min", "ellissoide", "min"), "veg_lidar_tipico": ("h", "tipico", "ellissoide", "tipico"), "veg_lidar_max": ("h", "max", "ellissoide", "max")}
 CASI_PER_OSTACOLI = {"documented_buildings_only": ["base", "base_h_min", "base_h_max"],
                      "buildings_and_scenario": ["base", "base_h_min", "base_h_max"],
-                     "buildings_and_trees": ["base", "base_h_min", "base_h_max", "alberi_min", "alberi_tipico", "alberi_max"]}
+                     "buildings_and_trees": ["base", "base_h_min", "base_h_max", "alberi_min", "alberi_tipico", "alberi_max"]}   # i casi veg_lidar_* si chiedono con casi=[...]
 _cache = {}
 
 
@@ -221,7 +244,10 @@ def dati():
         import geopandas as gpd
         v = gpd.read_file(GPKG, layer="volumi"); a = gpd.read_file(GPKG, layer="alberi")
         _cache["n_volumi_totali"] = len(v); _cache["n_volumi_scartati"] = int(v[["h", "z_base"]].isna().any(axis=1).sum())
-        v = v.dropna(subset=["h", "z_base"]); v["geometry"] = shapely.make_valid(v.geometry.values)
+        v = v.dropna(subset=["h", "z_base"])
+        _cache["n_volumi_demoliti"] = int((~v.presente_2023).sum())
+        v = v[v.presente_2023].copy()              # demolizione probabile (LiDAR 2023 senza edificio): non proietta ombra
+        v["geometry"] = shapely.make_valid(v.geometry.values)
         _cache["n_alberi_totali"] = len(a)
         _cache["n_alberi_in_edificio"] = int(a.in_edificio.sum())
         a = a[~a.in_edificio].dropna(subset=["h", "h_min", "h_max", "chioma_d", "imposta"])
@@ -230,13 +256,28 @@ def dati():
     return _cache
 
 
-# Coperture OSM (building=roof): volumi sospesi, stessa regola della scena T08 (scene/build.py): base = quota tetto - spessore soletta.
-# Spessore tipico 0,4 m (0,2-0,8 m): con h_min la base scende di 0,8 m, con h_max di 0,2 m (come imp_min/imp_max di T08).
+def vegetazione_lidar():
+    """Poligoni di chioma LiDAR senza albero censito, esclusi i cluster 'liscia' (probabili tetti non mappati). Serve shadow/veg_lidar.py."""
+    D = dati()
+    if "veg" not in D:
+        import geopandas as gpd
+        if not VEG_GPKG.exists(): raise FileNotFoundError(f"{VEG_GPKG} manca: eseguire shadow/veg_lidar.py")
+        g = gpd.read_file(VEG_GPKG); D["n_veg_totali"] = len(g); D["n_veg_lisce"] = int(g.liscia.sum())
+        g = g[~g.liscia].dropna(subset=["h95"]); g = g[~g.geometry.is_empty]
+        D["veg"] = g.reset_index(drop=True)
+        h = hashlib.sha256()    # contenuto, non il file: il GPKG non è identico byte per byte a ogni ricostruzione
+        for i, w, z in zip(D["veg"].id, shapely.to_wkb(shapely.set_precision(D["veg"].geometry.values, 0.001)), D["veg"].h95): h.update(f"{i}|{z}|".encode() + w)
+        D["veg_sha256"] = h.hexdigest()
+    return D["veg"]
+
+
+# Coperture OSM (building=roof): volumi sospesi, stessa regola della scena (scene/build.py): base = quota tetto - spessore soletta.
+# Spessore tipico 0,4 m (0,2-0,8 m): con h_min la base scende di 0,8 m, con h_max di 0,2 m.
 SOLETTA = {"h": 0.4, "h_min": 0.8, "h_max": 0.2}
 
 
 def scena_edifici(col="h"):
-    """Tutti i volumi del buffer (non solo Z2: le ombre entrano in Z2 da fuori). Unità volumetriche e volumi derivati: pieni (z_lo = 0, il campo
+    """Tutti i volumi del buffer (non solo il riquadro: le ombre entrano da fuori). Unità volumetriche e volumi derivati: pieni (z_lo = 0, il campo
     'sospeso' dei portici è 'ignoto', limite superiore). Coperture OSM: sospese, z_lo = tetto - soletta."""
     v = dati()["v"]; top = np.clip(v[col].values.astype(float), 0.3, None)
     lo = np.where(v.tipo.values == "copertura_osm", np.clip(top - SOLETTA[col], 0.0, None), 0.0)
@@ -245,7 +286,7 @@ def scena_edifici(col="h"):
 
 def scena_alberi(caso, forma="ellissoide"):
     """Chiome per il caso min/tipico/max. min = chioma piccola e alta d'imposta; max = chioma grande e bassa d'imposta.
-    L'imposta è limitata a metà altezza (la fonte dà imposta massima >= altezza minima in 463 alberi)."""
+    L'imposta è limitata a metà altezza (la fonte dà imposta massima >= altezza minima in diversi alberi)."""
     a = dati()["a"]
     col = {"min": ("h_min", "chioma_d_min", "imposta_max"), "tipico": ("h", "chioma_d", "imposta"), "max": ("h_max", "chioma_d_max", "imposta_min")}[caso]
     H, D, imp = (a[c].values.astype(float) for c in col)
@@ -254,10 +295,17 @@ def scena_alberi(caso, forma="ellissoide"):
     return Scena(chiome={"x": a.geometry.x.values, "y": a.geometry.y.values, "a": D / 2, "z_lo": imp_eff, "z_hi": H, "forma": forma})
 
 
+def scena_vegetazione(caso):
+    """Prismi di chioma dai cluster LiDAR senza albero censito (non 'liscia'): z_hi = h95, z_lo = VEG_FRAZIONE[caso] * h95."""
+    g = vegetazione_lidar(); h = g.h95.values.astype(float)
+    return Scena(g.geometry.values, VEG_FRAZIONE[caso] * h, h, g.id.tolist())
+
+
 def scena_caso(caso, extra=None):
-    col, tc, forma = CASI[caso]
+    col, tc, forma, vc = CASI[caso]
     S = scena_edifici(col)
     if tc: S = S.aggiungi(scena_alberi(tc, forma))
+    if vc: S = S.aggiungi(scena_vegetazione(vc))
     return S.aggiungi(extra) if extra is not None else S
 
 
@@ -299,14 +347,14 @@ def _sample(L, step):
 
 
 def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scenario_volumes=None, walk_speed_m_s=1.2, *, scenario_trees=None,
-                   casi=None, fasce=None, el_min=EL_MIN_SUPPORTATA, asset_times=(), asset_casi=("base",), asset_bbox=None, out_dir=None, scenario_version=1):
+                   casi=None, fasce=None, el_min=EL_MIN_SUPPORTATA, asset_times=(), asset_casi=("base",), asset_bbox=None, out_dir=None, scenario_version=1, tratti_casi=()):
     """Ombra su ricevitori. Parametri come compute_shadow.input di mcp.schema.json (baseline_id, receivers, when, method, scenario_id, walk_speed_m_s).
     receivers: [{receiver_id, kind: path|surface, geometry (GeoJSON in EPSG:7791, [E, N])}]. when: {date, timezone, times: ['HH:MM']}.
     method: {name:'geometric_ray', space_step_m, time_step_min, obstacles}. obstacles: documented_buildings_only | buildings_and_scenario |
     buildings_and_trees (estensione: aggiunge le chiome degli alberi in 3 casi min/tipico/max, da inserire nell'enum del contratto).
     scenario_volumes: prismi di scenario [{id, geometry, z_lo, z_hi}]. scenario_trees: alberi di scenario [{id, x, y, a, z_lo, z_hi}] (chioma ellissoidale, a = raggio). casi: sottoinsieme di CASI (default da obstacles). fasce: [{id, from, to}] per
-    le metriche del manifest. asset_*: GeoJSON 4326 delle ombre unite per orari e casi, ritagliato su asset_bbox (E0, N0, E1, N1 in 7791).
-    Ritorna {job, manifest, righe, sintesi, assets}. Stesso input = stesso job_id e stessi numeri. Ora inesistente/ambigua: OraInesistente/OraAmbigua."""
+    le metriche del manifest. tratti_casi: casi per cui si restituisce in r['tratti'] il GeoJSON 4326 (Feature per ricevitore/ora/caso) dei tratti di percorso in ombra. asset_*: GeoJSON 4326 delle ombre unite per orari e casi, ritagliato su asset_bbox (E0, N0, E1, N1 in 7791).
+    Ritorna {job, manifest, righe, sintesi, assets, tratti}. I casi veg_lidar_* (vegetazione LiDAR senza albero censito, D14) si chiedono con casi=[...]. Stesso input = stesso job_id e stessi numeri. Ora inesistente/ambigua: OraInesistente/OraAmbigua."""
     t_start = dt.datetime.now(UTC)
     _validate(receivers, when, method, walk_speed_m_s)
     ob = method["obstacles"]
@@ -318,9 +366,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
     scene = {c: scena_caso(c, extra) for c in casi}
     geoms = {r["receiver_id"]: (shapely.geometry.shape(r["geometry"]) if isinstance(r["geometry"], dict) else r["geometry"]) for r in receivers}
     kind = {r["receiver_id"]: r["kind"] for r in receivers}
-    from pyproj import Transformer
-    allg = shapely.union_all(list(geoms.values())); cx, cy = allg.centroid.x, allg.centroid.y
-    lon, lat = Transformer.from_crs(7791, 4326, always_xy=True).transform(cx, cy); lon, lat = round(lon, 4), round(lat, 4)
+    allg = shapely.union_all(list(geoms.values())); lat, lon = SOLE_LAT, SOLE_LON      # sole dal centro del riquadro dell'area
     finestra = box(*allg.bounds).buffer(1.0)
     step_t = method["time_step_min"] * 60.0
     cache = {}
@@ -332,7 +378,11 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
         return cache[k]
 
     campioni = {rid: _sample(g, method["space_step_m"]) for rid, g in geoms.items() if kind[rid] == "path"}
-    righe = []
+    righe = []; tratti = []
+    tr_4326 = None
+    if tratti_casi:
+        from pyproj import Transformer as T0
+        tr_4326 = T0.from_crs(7791, 4326, always_xy=True).transform
     for hhmm in when["times"]:
         t_utc = locale_a_utc(when["date"], hhmm); t0 = t_utc.timestamp()
         for rid, g in geoms.items():
@@ -343,8 +393,14 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
                 if kind[rid] == "path":
                     r["length_m"] = round(g.length, 2)
                     if st == STATO_OK:
-                        sh = g.intersection(U).length if not U.is_empty else 0.0
+                        inter = g.intersection(U) if not U.is_empty else LineString()
+                        sh = inter.length
                         s, ds, x, y = campioni[rid]
+                        if caso in tratti_casi:
+                            ls = [x for x in shapely.get_parts(inter) if x.geom_type == "LineString"]; seg = shapely.line_merge(shapely.MultiLineString(ls)) if ls else LineString()
+                            tratti.append({"type": "Feature", "geometry": mapping(shapely.transform(seg, lambda c: np.round(np.column_stack(tr_4326(c[:, 0], c[:, 1])), 6))) if not seg.is_empty else None,
+                                           "properties": {"receiver_id": rid, "date": when["date"], "time_local": hhmm, "caso": caso, "azimuth_deg": round(az, 2), "elevation_deg": round(el, 2),
+                                                          "length_m": round(g.length, 2), "shaded_m": round(sh, 2), "shade_fraction": round(sh / g.length, 4)}})
                         r.update(shaded_m=round(sh, 2), shade_fraction=round(sh / g.length, 4),
                                  sampled_fraction=round(float(shapely.contains_xy(U, x, y).mean()) if not U.is_empty else 0.0, 4))
                         ep = np.round((t0 + s / walk_speed_m_s) / step_t) * step_t; ok = np.zeros(len(s), bool); wst = STATO_OK
@@ -378,7 +434,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
                 f = {"type": "Feature", "geometry": None, "properties": {
                     "time_local": hhmm, "date": when["date"], "utc": t_utc.strftime("%Y-%m-%dT%H:%M:%SZ"), "azimuth_deg": round(az, 2), "elevation_deg": round(el, 2),
                     "stato": st, "caso": caso, "classification": "derived" if CASI[caso][1] is None else "estimated",
-                    "obstacles": "edifici documentati" if CASI[caso][1] is None else f"edifici documentati + chiome ({CASI[caso][1]}, {CASI[caso][2]})"}}
+                    "obstacles": "edifici documentati" if CASI[caso][1] is None else f"edifici documentati + chiome ({CASI[caso][1]}, {CASI[caso][2]})" + (f" + vegetazione LiDAR ({CASI[caso][3]})" if CASI[caso][3] else "")}}
                 if U is not None and not U.is_empty:
                     c = shapely.simplify(shapely.clip_by_rect(U, *win.bounds), 0.25)
                     f["properties"]["area_m2"] = round(c.area, 1)
@@ -393,8 +449,12 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
         shapely.set_precision(geoms[r["receiver_id"]], 0.01))))} for r in receivers]
     params = {"receivers": rec_canon, "when": when, "method": method, "walk_speed_m_s": walk_speed_m_s, "casi": casi, "fasce": fasce,
               "el_min_deg": el_min, "sun_reference_lonlat": [lon, lat], "geometrie_sha256": D["gpkg_sha256"],
-              "chiome": {"forma": "ellissoide", "tronco": "trascurato", "parametri": "geometry/parametri_chiome.json"},
-              "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni", "method_version": VERSIONE}
+              "chiome": {"forma": "ellissoide", "tronco": "trascurato", "parametri": "colonne h, chioma_d, imposta (e min/max) del layer alberi di geometrie_" + SLUG + ".gpkg"},
+              "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni",
+              "demolizioni": "volumi con presente_2023 falso (demolizione probabile da LiDAR 2023) esclusi", "method_version": VERSIONE}
+    if any(CASI[c][3] for c in casi):
+        params["vegetazione_lidar"] = {"forma": "prisma opaco sull'impronta del cluster", "z_hi": "h95 del CHM nel cluster", "z_lo_frazione_di_h95": {c: VEG_FRAZIONE[CASI[c][3]] for c in casi if CASI[c][3]},
+                                       "esclusi": "cluster liscia (probabili tetti non mappati)", "poligoni_sha256": (vegetazione_lidar(), D["veg_sha256"])[1]}
     if scenario_volumes: params["scenario_volumes"] = [{"id": v["id"], "z_lo": v.get("z_lo", 0.0), "z_hi": v["z_hi"],
                                                          "geometry": mapping(shapely.set_precision(shapely.geometry.shape(v["geometry"]) if isinstance(v["geometry"], dict) else v["geometry"], 0.01))} for v in scenario_volumes]
     if scenario_trees: params["scenario_trees"] = [{"id": t["id"], "x": round(float(t["x"]), 2), "y": round(float(t["y"]), 2), "a": round(float(t["a"]), 3), "z_lo": round(float(t["z_lo"]), 3), "z_hi": round(float(t["z_hi"]), 3)} for t in scenario_trees]
@@ -408,7 +468,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
         man["assets"] = assets
     job = {"job_id": job_id, "tool": "compute_shadow", "status": "succeeded", "created_at": fmt(t_start), "started_at": fmt(t_start), "finished_at": fmt(t_end),
            "inputs": inputs, "params": params, "limits": LIMITI, "progress": {"fraction": 1.0, "message": "completato"}, "result_manifest_id": man["manifest_id"]}
-    return {"job": job, "manifest": man, "righe": righe, "sintesi": sintesi, "assets": assets}
+    return {"job": job, "manifest": man, "righe": righe, "sintesi": sintesi, "assets": assets, "tratti": {"type": "FeatureCollection", "features": tratti}}
 
 
 def _sintesi(righe, fasce, times):
@@ -458,31 +518,39 @@ def _manifest(job_id, inputs, params, ob, sintesi, righe, casi, t0, t1, fasce, w
                 if val("base", key) is not None:
                     lab = "Frazione ombreggiata, edifici documentati" if nome == "shade_fraction" else "Minuti al sole camminando, edifici documentati"
                     met.append(_metrica(f"{tag}_{nome}_base", lab, val("base", key), unit, "derived", sc + ", centerline",
-                                        {"kind": "interval", "low": min(b), "high": max(b), "basis": "sensibilità altezze: intervallo h_min/h_max di T05 (±0,5 m measured, ±1,36 m derived)"}))
+                                        {"kind": "interval", "low": min(b), "high": max(b), "basis": "sensibilità altezze: intervallo h_min/h_max di F05 (±0,5 m, fino a ±1,88 m dove LiDAR e UV differiscono molto)"}))
                 t = [val(c, key) for c in ("alberi_min", "alberi_tipico", "alberi_max") if val(c, key) is not None]
                 if val("alberi_tipico", key) is not None:
                     lab = "Frazione ombreggiata, edifici + chiome idealizzate" if nome == "shade_fraction" else "Minuti al sole camminando, edifici + chiome idealizzate"
                     met.append(_metrica(f"{tag}_{nome}_alberi", lab, val("alberi_tipico", key), unit, "estimated", sc + ", centerline, chioma tipica",
-                                        {"kind": "interval", "low": min(t), "high": max(t), "basis": "chiome min/tipico/max da parametri_chiome.json: classi stimate, non misurate"}))
+                                        {"kind": "interval", "low": min(t), "high": max(t), "basis": "chiome min/tipico/max del censimento alberi: altezza e diametro misurati dal LiDAR dove possibile, imposta sempre stimata"}))
+                v = [val(c, key) for c in ("veg_lidar_min", "veg_lidar_tipico", "veg_lidar_max") if val(c, key) is not None]
+                if val("veg_lidar_tipico", key) is not None:
+                    lab = "Frazione ombreggiata, edifici + alberi + vegetazione LiDAR" if nome == "shade_fraction" else "Minuti al sole camminando, edifici + alberi + vegetazione LiDAR"
+                    met.append(_metrica(f"{tag}_{nome}_veg", lab, val("veg_lidar_tipico", key), unit, "estimated", sc + ", centerline, chioma tipica e vegetazione LiDAR tipica",
+                                        {"kind": "interval", "low": min(v), "high": max(v), "basis": "alberi min/tipico/max con vegetazione LiDAR a imposta 0,4/0,25/0,15 di h95: ipotesi dichiarate"}))
     if not met: met.append(_metrica("shade_none", "Nessun istante con sole supportato", 0, "count", "derived", "tutti gli orari"))
     n_ok = sum(1 for r in righe if r["stato"] == STATO_OK); stati = {s: sum(1 for r in righe if r["stato"] == s) for s in sorted({r["stato"] for r in righe})}
     limits = [("terreno_piano", "Terreno quasi piano dichiarato: ogni volume riferito al proprio piede (quota base di fonte), ricevitore alla quota dei piedi vicini; dislivelli locali non modellati."),
               ("centerline", "Percorsi sull'asse della rete OSM, non sul lato del marciapiede: lato e portici non noti (marciapiede ignoto), l'effetto del lato non è nel risultato."),
               ("volumi_sospesi_ignoti", "Coperture OSM trattate come volumi sospesi (soletta 0,4 m, stima 0,2-0,8 m, come la scena); il campo sospeso dei portici delle unità volumetriche è ignoto: trattati come pieni (limite superiore dell'ombra al suolo)."),
-              ("alberi_solo_stimati", "Chiome idealizzate opache (ellissoide) con parametri stimati per classe; tronco trascurato; inventario incompleto (462 gruppi di vegetazione DSM senza albero puntuale): non è l'ombra reale degli alberi."),
+              ("alberi_chioma_idealizzata", "Chiome idealizzate opache (ellissoide); altezza e diametro misurati dal LiDAR dove possibile, altrimenti stimati per specie e classe; imposta sempre stimata; tronco trascurato; censimento solo pubblico: non è l'ombra reale degli alberi."),
               ("ombra_binaria", "Ombra geometrica binaria: nessuna trasmissività, nessuna conversione in temperatura, comfort o domanda pedonale."),
-              ("altezze_non_indipendenti", "Altezze delle unità volumetriche 2010 e DSM 2021 non indipendenti; datum verticale non confermato; edifici post-2010 solo da OSM più DSM."),
-              ("sole_geometrico", f"Sole NOAA senza rifrazione; sotto {params['el_min_deg']} gradi di elevazione il contesto dei dati non copre le ombre lunghe: istanti esclusi con stato esplicito."),
+              ("altezze_edifici", "Altezze da LiDAR 2023 con unità volumetriche 2011 (non indipendenti fra loro); datum verticale non confermato; edifici nuovi solo dove li ha OSM, nessun edificio ricavato dal solo LiDAR."),
+              ("sole_geometrico", f"Sole NOAA senza rifrazione, calcolato nel centro del riquadro ({SOLE_LAT}, {SOLE_LON}); sotto {params['el_min_deg']} gradi di elevazione il contesto dei dati non copre le ombre lunghe: istanti esclusi con stato esplicito."),
               ("non_validato", "Nessuna osservazione di campo: risultato non validato localmente."),
-              ("camminata_velocita", f"Minuti al sole a velocità costante {params['walk_speed_m_s']} m/s (ipotesi, nessun attraversamento o attesa); istante di ogni punto = partenza + distanza/velocità, agganciato al passo temporale.")]
+              ("camminata_velocita", f"Minuti al sole a velocità costante {params['walk_speed_m_s']} m/s (ipotesi, nessun attraversamento o attesa); istante di ogni punto = partenza + distanza/velocità, agganciato al passo temporale."),
+              ("demolizioni_escluse", f"Esclusi {D['n_volumi_demoliti']} volumi con demolizione probabile (LiDAR 2023 senza edificio, presente_2023 falso); {D['n_volumi_scartati']} volumi senza altezza o quota base scartati.")]
     if inputs["snapshot_ids"] and ob == "buildings_and_trees":
-        limits.append(("alberi_esclusi", f"Esclusi {D['n_alberi_in_edificio']} alberi con posizione dentro un edificio; {D['n_volumi_scartati']} volumi senza altezza o quota base scartati."))
+        limits.append(("alberi_esclusi", f"Esclusi {D['n_alberi_in_edificio']} alberi con posizione dentro un edificio."))
+    if "vegetazione_lidar" in params:
+        limits.append(("vegetazione_lidar", f"Chioma LiDAR senza albero censito: {len(D['veg'])} cluster (esclusi {D['n_veg_lisce']} 'liscia', probabili tetti non mappati) come prismi opachi pieni sull'impronta, fra z_lo = frazione di h95 e h95 (percentile alto: tende a sovrastimare l'ombra). Include siepi, arbusti alti 2,5 m e oltre, auto e catenarie non filtrate; vuoti nella chioma e chioma invernale non modellati."))
     return {"manifest_id": "man_" + job_id[4:], "job_id": job_id, "tool": "compute_shadow", "aoi_id": AOI_ID, "baseline_id": inputs["baseline_id"], "datasets": ds, "params": params,
             "method": {"name": "geometric_ray", "version": VERSIONE,
                        "description": "Sole con algoritmo astronomico NOAA in Europe/Rome; ombra di ogni volume come somma di Minkowski del footprint con il segmento fra quota di base e di tetto; chiome come ellissoidi opachi; unione di tutte le ombre e intersezione con il ricevitore."},
             "crs": "EPSG:7791", "vertical_datum_status": "not_confirmed", "timezone": "Europe/Rome",
             "timing": {"started_at": t0.strftime("%Y-%m-%dT%H:%M:%SZ"), "finished_at": t1.strftime("%Y-%m-%dT%H:%M:%SZ"), "duration_s": round((t1 - t0).total_seconds(), 2)},
-            "metrics": met, "coverage": {"note": f"Calcoli {n_ok} di {len(righe)} (ricevitore, ora, caso); stati del sole: {stati}. Volumi {len(D['v'])}, alberi {len(D['a'])}."},
+            "metrics": met, "coverage": {"note": f"Calcoli {n_ok} di {len(righe)} (ricevitore, ora, caso); stati del sole: {stati}. Volumi {len(D['v'])}, alberi {len(D['a'])}" + (f", cluster di vegetazione LiDAR {len(D['veg'])}." if "veg" in D else ".")},
             "limits": [{"code": a, "text": b} for a, b in limits], "validation_status": "not_validated_locally", "assets": []}
 
 
@@ -492,7 +560,7 @@ def _scrivi_assets(job_id, data, righe, assets_geo, out_dir):
     def reg(p, aid, media, role):
         b = pathlib.Path(p).read_bytes()
         out.append({"asset_id": aid, "path": str(pathlib.Path(p).resolve().relative_to(ROOT)), "media_type": media, "bytes": len(b), "sha256": hashlib.sha256(b).hexdigest(), "role": role})
-    bulk = ROOT / "data/norm/shadow"; bulk.mkdir(parents=True, exist_ok=True)
+    bulk = OUT_GRANDI; bulk.mkdir(parents=True, exist_ok=True)
     cols = sorted({k for r in righe for k in r}, key=lambda k: (k not in ("receiver_id", "kind", "caso", "time_local", "utc"), k))
     p = bulk / f"{job_id}_righe.csv"
     with open(p, "w", newline="") as f:
