@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""F04 passo 5 (Firenze): percorsi campione (consentiti e vietati) sul grafo non verificato, dai civici e dalle fermate T2 al Polo e a Vamba.
+"""F04 passo 5 (Firenze): percorsi campione (consentiti e vietati) sul grafo non verificato, dai civici e dalle fermate T2 al Polo (ingresso più vicino fra i 7 edifici) e a Vamba.
 Uso: python network/percorsi_firenze.py. Output: network/firenze_novoli/percorsi_campione.{json,geojson}.
 Script a parte rispetto a percorsi.py: i casi sono scritti nel codice, come a Pisa; qui cambiano ID, destinazioni e civici."""
 import json, os, sys
-import geopandas as gpd, shapely.ops
+import geopandas as gpd, shapely, shapely.ops
 from pyproj import Transformer
 from shapely.geometry import Point, mapping
 os.environ["DT_AOI"] = "aoi_firenze_novoli"      # prima di importare lib e rete_lib
@@ -19,28 +19,38 @@ def ll(g): return mapping(shapely.ops.transform(lambda x, y, z=None: to_ll.trans
 EDG = {k: d for _, _, k, d in G.edges(keys=True, data=True)}
 def n_way_attraversamento(archi): return len({EDG[a]["way_id"] for a in archi if a in EDG and EDG[a]["tipo_arco"] == "attraversamento"})   # un attraversamento OSM è spesso spezzato in più tratti
 def snap_of(e): a = dict(e["aggancio"]); a["proj"] = tuple(a["proj"]); return a
-POLO = dest["dst_university_w83537185"]; E_POLO, E_POLO2 = [e["entrance_id"] for e in POLO["ingressi"][:2]]
-E_VAMBA = dest["dst_school_fiee86002g"]["ingresso_predefinito"]; T_AGLI, T_REG = "ent_gtfs_fm9057", "ent_gtfs_fm9056"
-pb = Point(ent[E_POLO]["xy"])
+POLO = dest["dst_university_w83537185"]; E_POLO, E_POLI = POLO["ingresso_predefinito"], POLO["ingressi_predefiniti"]   # D1 e i 7 ingressi degli edifici (D19)
+E_VAMBA = dest["dst_school_fiee86002g"]["ingresso_predefinito"]; T_AGLI, T_REG, T_SD = "ent_gtfs_fm9057", "ent_gtfs_fm9056", "ent_gtfs_fm9055"
+pb = shapely.MultiPoint([ent[e]["xy"] for e in E_POLI])   # distanza dal Polo = dall'ingresso più vicino in linea d'aria
 ok = civ[(civ.stato == "reachable_candidate") & (civ.componente == "cmp_01") & (civ.TIPO == "N")].copy(); ok["d"] = ok.geometry.distance(pb)   # solo civici neri (abitazioni)
 CIV = {t: ok.iloc[(ok.d - t).abs().argsort()[:1]].index[0] for t in (150, 400, 700, 1000)}
 punti = {"ent": lambda eid: (Point(ent[eid]["xy"]), snap_of(ent[eid]), f"{eid} ({ent[eid]['classe']})"),
          "civ": lambda cid: (civ.loc[cid].geometry, SN.snap(civ.loc[cid].geometry, SO["max_m"], SO["candidati"], SO["tipi_arco_esclusi"]), f"{cid} ({civ.loc[cid].indirizzo})")}
-casi = [("R01", "ent", T_AGLI, "ent", E_POLO, "Fermata T2 Novoli - Torre degli Agli verso l'ingresso del Polo (con indirizzo)"),
-        ("R02", "ent", T_REG, "ent", E_POLO, "Fermata T2 Novoli - Regione Toscana verso l'ingresso del Polo"),
-        ("R03", "ent", T_REG, "ent", E_POLO2, "Fermata Regione Toscana verso l'altro ingresso del Polo (sensibilità alla scelta dell'ingresso)"),
-        ("R04", "civ", CIV[150], "ent", E_POLO, "Civico a circa 150 m in linea d'aria dal Polo"),
-        ("R05", "civ", CIV[400], "ent", E_POLO, "Civico a circa 400 m"),
-        ("R06", "civ", CIV[700], "ent", E_POLO, "Civico a circa 700 m"),
-        ("R07", "civ", CIV[1000], "ent", E_POLO, "Civico a circa 1000 m"),
+casi = [("R01", "ent", T_SD, "polo", None, "Fermata T2 San Donato - Università (indicata dall'Ateneo) verso l'ingresso del Polo più vicino per rete"),
+        ("R02", "ent", T_REG, "polo", None, "Fermata T2 Novoli - Regione Toscana verso l'ingresso del Polo più vicino per rete"),
+        ("R03", "ent", T_REG, "ent", E_POLO, "Fermata Regione Toscana verso l'edificio D1 (sensibilità alla scelta dell'ingresso)"),
+        ("R04", "civ", CIV[150], "polo", None, "Civico a circa 150 m in linea d'aria dal Polo, verso l'ingresso più vicino per rete"),
+        ("R05", "civ", CIV[400], "polo", None, "Civico a circa 400 m"),
+        ("R06", "civ", CIV[700], "polo", None, "Civico a circa 700 m"),
+        ("R07", "civ", CIV[1000], "polo", None, "Civico a circa 1000 m"),
         ("R08", "civ", CIV[400], "ent", E_VAMBA, "Civico di R05 verso l'accesso della scuola Vamba"),
         ("R09", "ent", T_AGLI, "ent", E_VAMBA, "Fermata Torre degli Agli verso Vamba"),
         ("R10", "civ", CIV[400], "ent", T_REG, "Civico di R05 verso la fermata Regione Toscana"),
-        ("V01", "civ", "adr_fi_31825", "ent", E_POLO, "VIETATO: via della Verna 3, collegata al resto della rete solo da tratti access=private"),
-        ("V02", "civ", "adr_fi_90008", "ent", E_POLO, "VIETATO (restrizione diversa): via del Ponte di Mezzo 27/18, collegata solo da un tunnel stradale senza marciapiede")]
+        ("V01", "civ", "adr_fi_31825", "polo", None, "VIETATO: via della Verna 3, collegata al resto della rete solo da tratti access=private"),
+        ("V02", "civ", "adr_fi_90008", "polo", None, "VIETATO (restrizione diversa): via del Ponte di Mezzo 27/18, collegata solo da un tunnel stradale senza marciapiede")]
 res, feats = [], []
+def piu_vicino(sa):
+    """Ingresso del Polo con il percorso più corto (grafo verificato, poi permissivo); a parità di stato vince il primo dell'elenco."""
+    def lung(e, H):
+        out = percorso(H, sa, snap_of(ent[e])); return riassunto(*out, sa["dist_m"] + ent[e]["aggancio"]["dist_m"])["lunghezza_totale_m"] if out else None
+    for H in (G, P):
+        l = {e: lung(e, H) for e in E_POLI if sa["stato"] == "agganciato"}; l = {e: v for e, v in l.items() if v is not None}
+        if l: return min(l, key=l.get)
+    return E_POLO
 for cid, ta, a, tb, b, desc in casi:
-    pa, sa, na = punti[ta](a); pbb, sb, nb = punti[tb](b)
+    pa, sa, na = punti[ta](a)
+    if tb == "polo": tb, b = "ent", piu_vicino(sa); desc += f" ({b})"
+    pbb, sb, nb = punti[tb](b)
     r = {"id": cid, "descrizione": desc, "origine": na, "destinazione": nb, "snap_origine": {k: sa.get(k) for k in ("edge_id", "dist_m", "stato")}, "snap_destinazione": {k: sb.get(k) for k in ("edge_id", "dist_m", "stato")},
          "diretta_m": round(pa.distance(pbb), 1), "stato_verifica": "da_verificare", "grafo": json.load(open(RES / "rete_manifest.json"))["graph_id"]}
     if sa["stato"] != "agganciato" or sb["stato"] != "agganciato": r["stato"] = "insufficient_data"

@@ -4,7 +4,7 @@
   "ingressi_max_m": 40,
   "candidati": 6,
   "destinazione_di_riferimento": "dst_university_w83537185",
-  "ingresso_di_riferimento": "ent_osm_n11152998932"
+  "ingresso_di_riferimento": "ent_civ_d1"
  },
  "origini_totali_riquadro": 3296,
  "per_tipo_civico": {
@@ -70,17 +70,52 @@
    "id": "dst_university_w83537185",
    "ingressi": [
     {
-     "id": "ent_osm_n11152998932",
-     "classe": "ingresso_osm",
+     "id": "ent_civ_d1",
+     "classe": "civico_edificio_ateneo",
      "stato": "agganciato",
-     "raccordo_m": 2.92,
+     "raccordo_m": 2.48,
      "componente": "cmp_01"
     },
     {
-     "id": "ent_osm_n11152998933",
-     "classe": "ingresso_osm",
+     "id": "ent_civ_d4",
+     "classe": "civico_edificio_ateneo",
      "stato": "agganciato",
-     "raccordo_m": 9.6,
+     "raccordo_m": 11.95,
+     "componente": "cmp_01"
+    },
+    {
+     "id": "ent_civ_d5",
+     "classe": "civico_edificio_ateneo",
+     "stato": "agganciato",
+     "raccordo_m": 17.15,
+     "componente": "cmp_01"
+    },
+    {
+     "id": "ent_civ_d6",
+     "classe": "civico_edificio_ateneo",
+     "stato": "agganciato",
+     "raccordo_m": 20.33,
+     "componente": "cmp_01"
+    },
+    {
+     "id": "ent_civ_d10",
+     "classe": "civico_edificio_ateneo",
+     "stato": "agganciato",
+     "raccordo_m": 11.32,
+     "componente": "cmp_01"
+    },
+    {
+     "id": "ent_civ_d14",
+     "classe": "civico_edificio_ateneo",
+     "stato": "agganciato",
+     "raccordo_m": 17.61,
+     "componente": "cmp_01"
+    },
+    {
+     "id": "ent_civ_d15",
+     "classe": "civico_edificio_ateneo",
+     "stato": "agganciato",
+     "raccordo_m": 13.35,
      "componente": "cmp_01"
     }
    ],
@@ -111,6 +146,19 @@
     }
    ],
    "schede_barriere": 2
+  },
+  {
+   "id": "dst_tram_fm9055",
+   "ingressi": [
+    {
+     "id": "ent_gtfs_fm9055",
+     "classe": "ingresso_fermata",
+     "stato": "agganciato",
+     "raccordo_m": 4.61,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
   },
   {
    "id": "dst_tram_fm9056",

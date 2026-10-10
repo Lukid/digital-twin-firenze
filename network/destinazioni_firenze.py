@@ -4,7 +4,7 @@ Uso: python network/destinazioni_firenze.py
 Output in network/firenze_novoli/: destinazioni.json, destinazioni_ingressi.geojson, snapping_report.json, barriere_edifici.json; origini_snap.gpkg in data/norm/firenze_novoli/network/.
 Perché uno script a parte: le destinazioni di Pisa (Battisti, GTFS bus) sono scritte nel codice di destinazioni.py; qui si riusano Snapper e le funzioni di rete_lib."""
 import collections, json, os, pickle, sys
-import geopandas as gpd, networkx as nx, numpy as np, shapely.ops
+import geopandas as gpd, networkx as nx, numpy as np, pandas as pd, shapely.ops
 from pyproj import Transformer
 from shapely.geometry import LineString, Point, Polygon, mapping
 os.environ["DT_AOI"] = "aoi_firenze_novoli"      # prima di importare lib e rete_lib
@@ -37,20 +37,26 @@ def schede(perimetro, tol=5):
             for r in bar.itertuples() if r.geometry.distance(perimetro) <= tol]
 NOTA_BAR = "schede di edifici del rilievo 2013 (grado Accessibile / Parzialmente / Non accessibile): attributo dell'edificio, non dell'ostacolo sul percorso"
 
-# ---------------------------------------------------------------- Polo delle Scienze Sociali: ingressi OSM entrance=* entro 25 m dal perimetro
-ent = pts[pts.kind == "entrance"]; ent = ent[ent.distance(POLO) <= 25]
+# ---------------------------------------------------------------- Polo delle Scienze Sociali: un ingresso per edificio dell'Ateneo (D19, 10 ottobre 2026)
+# Indirizzi dall'elenco edifici del report di accessibilità dell'Ateneo (unifisostenibile.unifi.it, "REPORT accessibilità, Riepilogo per CAMPUS");
+# il punto è il civico del Comune (fi_civici). Prima erano due ingressi OSM: biblioteca e una corte interna (network/firenze_novoli/verifica_ingressi_polo.md).
+EDIFICI_POLO = [("D1", "VIA DELLE PANDETTE", "32", "scuole e segreterie"), ("D4", "VIA DELLE PANDETTE", "35", "aule, Dipartimento di Scienze Giuridiche"),
+                ("D5", "VIA DELLE PANDETTE", "21", "aule, DSPS"), ("D6", "VIA DELLE PANDETTE", "9", "aule, DISEI"), ("D10", "VIA DELLE PANDETTE", "2", "biblioteca"),
+                ("D14", "VIA DELLE PANDETTE", "3", "bar, sale lettura, aula studio"), ("D15", "PIAZZA UGO DI TOSCANA", "5", "aule tesi, laboratori")]
+civ_fi = gpd.read_file(NORM / "fi_civici.gpkg").cx[Z[0]:Z[2], Z[1]:Z[3]]
 polo_ing = []
-for _, r in ent.iterrows():
-    t = json.loads(r.tags); on = bld[bld.distance(r.geometry) <= 1.0]
-    polo_ing.append(ingresso("ent_osm_n" + r.id.removeprefix("nod_osm_"), "ingresso_osm", f"OSM entrance={t.get('entrance')}, indirizzo {(t.get('addr:street', '') + ' ' + t.get('addr:housenumber', '')).strip() or 'assente'}",
-                             r.geometry, osm_node=int(r.id.removeprefix("nod_osm_")), dentro_perimetro=bool(POLO.covers(r.geometry)), su_edificio=list(on.id), tags=t))
-polo_ing.sort(key=lambda e: (not e["tags"].get("addr:street"), e["entrance_id"]))   # predefinito: l'ingresso con indirizzo (da confermare)
+for ed, via, num, uso in EDIFICI_POLO:
+    r = civ_fi[(civ_fi.STRADA.str.strip() == via) & (civ_fi.NUMEROCIVI.str.strip() == num)]
+    assert len(r) == 1, (via, num, len(r))
+    r = r.iloc[0]
+    polo_ing.append(ingresso(f"ent_civ_{ed.lower()}", "civico_edificio_ateneo", f"civico del Comune {r.id} ({via.title()} {num}); edificio {ed} ({uso}) dall'elenco edifici dell'Ateneo",
+                             r.geometry, edificio=ed, civico_id=r.id, dentro_perimetro=bool(POLO.covers(r.geometry))))
 def ingresso_o_perimetro(ings, perimetro, did):
     """Se non c'è alcun ingresso mappato: punto del perimetro più vicino alla rete (dichiarato come tale, mai un ingresso reale)."""
     return ings or [ingresso(f"ent_perim_{did}", "punto_sul_perimetro", "derivato: punto del perimetro OSM più vicino alla rete, NON è un ingresso mappato", punto_perimetro(perimetro, G))]
 dest = [{"destination_id": "dst_university_w83537185", "categoria": "university", "nome": "Polo delle Scienze Sociali (Università degli Studi di Firenze)", "indirizzo": "via delle Pandette",
-         "id_note": "Il Polo non ha un codice ufficiale: id da OSM way 83537185 (perimetro d'insieme). Edifici OSM: D1, D14, D15 (way) e D4, D5, D6 (relazioni).",
-         "fonte": "OSM way 83537185", "stato_verifica": "da_verificare", "condizioni_accesso": "non note (campus, orari, cancelli, ingresso per disabili)",
+         "id_note": "Il Polo non ha un codice ufficiale: id da OSM way 83537185 (perimetro d'insieme). Ingressi: un civico del Comune per edificio dell'Ateneo (D1, D4, D5, D6, D10, D14, D15); il più vicino per ogni origine.",
+         "fonte": "OSM way 83537185", "stato_verifica": "da_verificare", "condizioni_accesso": "edifici aperti dal lunedì al venerdì 7:30-20:00 (pagine del DISEI); porte, cancelli e ingresso per disabili non verificati",
          "barriere_comune": {"nota": NOTA_BAR, "schede": schede(POLO)}, "ingressi": ingresso_o_perimetro(polo_ing, POLO, "w83537185")}]
 
 # ---------------------------------------------------------------- Scuola Vamba: ingressi OSM (nessuno), poi accessi della Città metropolitana (uno per codice MIM)
@@ -65,15 +71,20 @@ for cod, tipo in (("FIEE86002G", "primaria"), ("FIAA86002A", "infanzia")):
                  "stato_verifica": "da_verificare", "condizioni_accesso": "non note (orari, ingresso alunni o pubblico). Un solo accesso nei dati, condiviso dai due codici",
                  "barriere_comune": {"nota": NOTA_BAR, "schede": schede(VAMBA)}, "ingressi": ingresso_o_perimetro(ings, VAMBA, cod.lower())})
 
-# ---------------------------------------------------------------- Fermate T2 nel riquadro (GTFS GEST). Le stop_position OSM stanno sul binario: l'ingresso è il punto GTFS agganciato alla rete pedonale
-st = gpd.read_file(NORM / "gtfs_gest_firenze.gpkg").cx[Z[0]:Z[2], Z[1]:Z[3]]
+# ---------------------------------------------------------------- Fermate T2 nel riquadro (GTFS GEST), più San Donato - Università (FM9055): è la fermata che l'Ateneo indica per il Polo
+# e sta circa 100 m a sud del riquadro, dentro il margine di rete (D20). Le stop_position OSM stanno sul binario: l'ingresso è il punto GTFS agganciato alla rete pedonale
+FERMATE_EXTRA = ["FM9055"]
+gt = gpd.read_file(NORM / "gtfs_gest_firenze.gpkg"); st = gt.cx[Z[0]:Z[2], Z[1]:Z[3]]
+st = pd.concat([gt[gt.stop_code.isin(FERMATE_EXTRA)], st]).drop_duplicates("id")
 for _, r in st.iterrows():
     dest.append({"destination_id": r.id, "categoria": "tram", "nome": r.stop_name, "stop_code": r.stop_code, "linee": r.lines, "corse_giorno_rif": int(r.trips_on_ref_date), "fonte": "GTFS GEST (tram)",
                  "stato_verifica": "da_verificare", "condizioni_accesso": "non note (marciapiede e banchina: nessun dato nel feed)",
                  "ingressi": [ingresso("ent_gtfs_" + r.stop_code.lower(), "ingresso_fermata", "punto GTFS (le stop_position OSM sono sul binario)", r.geometry)]})
 for d in dest: d["ingresso_predefinito"] = d["ingressi"][0]["entrance_id"]
+dest[0]["ingresso_predefinito"] = "ent_civ_d1"   # D1, scuole e segreterie: ingresso singolo per i percorsi campione e la compatibilità
+dest[0]["ingressi_predefiniti"] = [e["entrance_id"] for e in dest[0]["ingressi"]]   # accessibilità: vince l'ingresso più vicino per ogni origine
 man = json.load(open(RES / "rete_manifest.json"))
-json.dump({"graph_id": man["graph_id"], "classificazione": "ingressi OSM, accessi CM e punti GTFS = measured; classe dell'ingresso e aggancio = derived; tutto da_verificare", "destinazioni": dest},
+json.dump({"graph_id": man["graph_id"], "classificazione": "civici del Comune, accessi CM e punti GTFS = measured; classe dell'ingresso e aggancio = derived; tutto da_verificare", "destinazioni": dest},
           open(RES / "destinazioni.json", "w"), ensure_ascii=False, indent=1, default=str)
 feats = []
 for d in dest:
