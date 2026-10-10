@@ -38,7 +38,8 @@ _DEST_ALIAS = {
     "scienze sociali": ["dst_university_w83537185"], "polo scienze sociali": ["dst_university_w83537185"], "polo delle scienze sociali": ["dst_university_w83537185"],
     "scuola": ["dst_school_fiee86002g", "dst_school_fiaa86002a"], "vamba": ["dst_school_fiee86002g", "dst_school_fiaa86002a"], "scuola vamba": ["dst_school_fiee86002g", "dst_school_fiaa86002a"],
     "primaria vamba": ["dst_school_fiee86002g"], "scuola primaria": ["dst_school_fiee86002g"], "infanzia vamba": ["dst_school_fiaa86002a"], "scuola infanzia": ["dst_school_fiaa86002a"],
-    "tram": ["dst_tram_fm9056", "dst_tram_fm9057"], "t2": ["dst_tram_fm9056", "dst_tram_fm9057"], "fermata": ["dst_tram_fm9056", "dst_tram_fm9057"], "fermata tram": ["dst_tram_fm9056", "dst_tram_fm9057"],
+    "tram": ["dst_tram_fm9055", "dst_tram_fm9056", "dst_tram_fm9057"], "t2": ["dst_tram_fm9055", "dst_tram_fm9056", "dst_tram_fm9057"], "fermata": ["dst_tram_fm9055", "dst_tram_fm9056", "dst_tram_fm9057"], "fermata tram": ["dst_tram_fm9055", "dst_tram_fm9056", "dst_tram_fm9057"],
+    "san donato": ["dst_tram_fm9055"], "fermata san donato": ["dst_tram_fm9055"], "san donato universita": ["dst_tram_fm9055"], "fermata universita": ["dst_tram_fm9055"], "fermata del polo": ["dst_tram_fm9055"],
     "fermata regione": ["dst_tram_fm9056"], "regione toscana": ["dst_tram_fm9056"], "regione": ["dst_tram_fm9056"],
     "torre degli agli": ["dst_tram_fm9057"], "fermata torre degli agli": ["dst_tram_fm9057"], "agli": ["dst_tram_fm9057"]}
 CATEGORIA_CONTRATTO = {"tram": "stop"}   # il contratto ha school, university, stop, station, hospital: la fermata del tram è una fermata
@@ -228,7 +229,7 @@ def _limiti(A, kw):
 
 def _prevedi_job_id(A, kw):
     """job_id calcolato prima dell'esecuzione con gli stessi parametri che la libreria mette nel job."""
-    c = A.contesto(); d = c["dest"][kw["destination_id"]]; ids = kw["entrance_ids"] or [d["ingresso_predefinito"]]
+    c = A.contesto(); d = c["dest"][kw["destination_id"]]; ids = kw["entrance_ids"] or d.get("ingressi_predefiniti") or [d["ingresso_predefinito"]]   # come accessibilita.compute_walk_access
     params = {"destination_ids": [kw["destination_id"]], "entrance_ids": sorted(ids), "origins": {"kind": ENGINE_ORIGINS, "aoi_id": AOI_ID, "count": len(c["civ"])},
               "profile": {**kw["profile"], "snap_limit_m": float(kw["snap_limit_m"])}, "thresholds_min": sorted(float(t) for t in kw["thresholds_min"]),
               "deviazione_alta": dict(A.DEVIAZIONE_ALTA), "method_version": A.VERSIONE,
