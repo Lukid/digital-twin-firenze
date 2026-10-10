@@ -1,9 +1,9 @@
-"""T06: accessibilità pedonale (caso A). Libreria deterministica, senza dipendenze dall'interfaccia (CLI, API, MCP la chiamano uguale).
+"""T06/F06: accessibilità pedonale (caso A), per l'area scelta con DT_AOI. Libreria deterministica, senza dipendenze dall'interfaccia (CLI, API, MCP la chiamano uguale).
 
-    r = compute_walk_access("dst_school_piee82101p", profile=PROFILI["base_1_2"], snap_limit_m=40, out_dir=...)
+    r = compute_walk_access("dst_university_w83537185", profile=PROFILI["base_1_2"], snap_limit_m=40, out_dir=...)
     r["job"], r["manifest"], r["origini"] (una riga per origine), r["aggregati"], r["archi_usati"]
 
-Metodo: cammino minimo per tempo (lunghezza / velocità + penalità di attraversamento) sul grafo pedonale T04, con le origini
+Metodo: cammino minimo per tempo (lunghezza / velocità + penalità di attraversamento) sul grafo pedonale T04/F04, con le origini
 agganciate come nodi che spezzano gli archi (rete_lib.con_agganci) e un'unica Dijkstra dalla destinazione. Stati: vedi ADR-T02.
 Stesso input canonico = stesso job_id e stessi numeri."""
 import csv, datetime, hashlib, json, pathlib, statistics, sys
@@ -18,13 +18,18 @@ sys.path.insert(0, str(ROOT / "network"))
 import rete_lib as RL  # noqa: E402
 
 VERSIONE = "0.1.0"
-BASELINE_ID = "bas_z2_20261001"
-AOI_ID = "aoi_z2"
-GRAPH_ID = "grf_z2_osm_20261001"
-OUT_DATI = ROOT / "data/norm/analysis"
+# Area, grafo, file e snapshot vengono dall'area scelta con DT_AOI (network/rete_lib.py), dal registro contracts/aree.json e dalla baseline.
+AOI_ID = RL.AOI_ID
+AREA = next(a for a in json.load(open(ROOT / "contracts/aree.json"))["aree"] if a["aoi_id"] == AOI_ID)
+BASELINE_ID = AREA["baseline_ids"][-1]
+BASELINE = json.load(open(ROOT / "pipeline/baselines" / f"{BASELINE_ID}.json"))
+GRAPH_ID = json.load(open(RL.RES / "rete_manifest.json"))["graph_id"]
+SLUG = AOI_ID.removeprefix("aoi_")
+OUT_DATI = RL.OUT.parent / "analysis"          # dati grandi, non versionati
+OUT_VERS = ROOT / "analysis" / SLUG             # file piccoli versionati: manifest, riepilogo, asset per la mappa
 LIMITI = {"max_area_km2": 4, "max_rows": 50000, "max_seconds": 600, "max_memory_mb": 4096}
 
-# Profili: ipotesi di esperimento, non misure su Pisa e non attribuite a gruppi demografici (SPEC_ANALISI, caso A).
+# Profili: ipotesi di esperimento, non misure sul posto e non attribuite a gruppi demografici (SPEC_ANALISI, caso A).
 # Le tre velocità sono quelle della SPEC (0,8 / 1,2 / 1,4 m/s). Il quarto profilo è un'ipotesi nostra: passo lento, scale escluse,
 # 10 s di attesa per attraversamento. Mancano pendenze, larghezze, rampe e gradini di marciapiede: non certifica accessibilità universale.
 PROFILI = {
@@ -48,19 +53,19 @@ def _ll(g): return shapely.ops.transform(lambda x, y, z=None: _to_ll.transform(x
 def contesto():
     """Grafo, regole, snapper, destinazioni e origini di T04, caricati una volta."""
     G, D = RL.carica(); P = RL.permissivo(G, D["esclusi"])
-    bld = gpd.read_file(ROOT / "data/norm/osm_pisa.gpkg", layer="buildings")
-    dest = {d["destination_id"]: d for d in json.load(open(RL.NET / "destinazioni.json"))["destinazioni"]}
-    man = json.load(open(RL.NET / "rete_manifest.json"))
+    bld = gpd.read_file(RL.OSM_GPKG, layer="buildings")
+    dest = {d["destination_id"]: d for d in json.load(open(RL.RES / "destinazioni.json"))["destinazioni"]}
+    man = json.load(open(RL.RES / "rete_manifest.json"))
     civ = gpd.read_file(RL.OUT / "origini_snap.gpkg", layer="origini").set_index("id").sort_index()
     return {"G": G, "D": D, "P": P, "SN": RL.Snapper(G, D["esclusi"], D["bloccati"], bld), "dest": dest, "man": man, "civ": civ,
             "orig_len": {e["edge_id"]: e["length_m"] for _, _, e in G.edges(data=True)},
-            "graph_sha256": _sha(RL.OUT / "rete_z2.pkl"), "regole_sha256": _sha(RL.NET / "regole.json")}
+            "graph_sha256": _sha(RL.OUT / f"{RL.STEM}.pkl"), "regole_sha256": _sha(RL.NET / "regole.json")}
 
 
 @lru_cache(maxsize=8)
 def agganci_origini(family, snap_limit_m):
     """Agganci delle origini al limite dato: {id: (Point, snap)}. Origini fuori dal riquadro del grafo: stato outside_model."""
-    if family != "civici_sit_z2": raise ValueError(f"famiglia di origini non supportata: {family}")
+    if family != "address_points": raise ValueError(f"famiglia di origini non supportata: {family}")
     c = contesto(); R = RL.REGOLE["snapping"]["origini"]; x0, y0, x1, y1 = c["man"]["area_buffer_en"]; out = {}
     for oid, row in c["civ"].iterrows():
         p = row.geometry
@@ -133,7 +138,8 @@ def calcola(entrate, origini, prof):
         righe[nome] = r
     if da_permissivo:   # collegata solo attraverso una restrizione documentata? allora forbidden, non isolated
         Hp = con_agganci(P, {**sn, **{"o_" + n: ok[n][1] for n in da_permissivo}}); Hp.add_node("SRC")
-        for i in range(len(ent)): Hp.add_edge("SRC", f"snp_E{i}", key=f"virt_{i}", length_m=0.0, tipo_arco="virtuale", scala=False, edge_id=f"virt_{i}", marciapiede_stato="n/a", tunnel=None)
+        rac_d = [s["dist_m"] for p, s in ent.values()]   # raccordo di ogni ingresso, contato nella distanza come nel caso raggiungibile
+        for i in range(len(ent)): Hp.add_edge("SRC", f"snp_E{i}", key=f"virt_{i}", length_m=rac_d[i], tipo_arco="virtuale", scala=False, edge_id=f"virt_{i}", marciapiede_stato="n/a", tunnel=None)
         dp, pp = nx.single_source_dijkstra(Hp, "SRC", weight=lambda u, v, dd: min(e["length_m"] for e in dd.values()))
         for nome in da_permissivo:
             n = "snp_o_" + nome
@@ -141,7 +147,7 @@ def calcola(entrate, origini, prof):
             nodi = pp[n][1:]; archi = [min(Hp[a][b].values(), key=lambda e: e["length_m"]) for a, b in zip(nodi, nodi[1:])]
             rs = _riassunto(Hp, nodi, archi)
             righe[nome].update(stato="forbidden", motivo="nessun percorso sul grafo verificato; collegata solo da tratti con restrizione documentata",
-                               restrizioni=sorted(set(rs["restrizioni"])), permissivo_m=round(rs["rete_m"] + ok[nome][1]["dist_m"], 1))
+                               restrizioni=sorted(set(rs["restrizioni"])), permissivo_m=round(rs["rete_m"] + ok[nome][1]["dist_m"] + rac_d[int(pp[n][1][5:])], 1))
     return righe, uso
 
 
@@ -184,9 +190,14 @@ def _aggrega(righe, uso, prof, soglie, dev, n_top=30):
 def _hash_job(tool, inputs, params): return "job_" + hashlib.sha256(canon({"tool": tool, "inputs": inputs, "params": params}).encode()).hexdigest()[:16]
 
 
+# fonti della destinazione per categoria (sottostringhe del source_id nella baseline); osm e civici valgono sempre
+FONTI_DEST = {"school": ("scuole_statali", "cm_edscol"), "tram": ("gtfs_gest",), "stop": ("gtfs",)}
+
+
 def _snapshot_ids(destination_id):
-    ids = ["snp_osm_pisa_20261001", "snp_sit_civici_20261001"]
-    if destination_id.startswith("dst_stop_"): ids.append("snp_gtfs_at_toscana_20261001")
+    cat = contesto()["dest"][destination_id]["categoria"]
+    chiavi = ("civici",) + FONTI_DEST.get(cat, ())
+    ids = {RL.OSM_SNAP["snapshot_id"]} | {s["snapshot_id"] for s in BASELINE["snapshot"] if any(k in s["source_id"] for k in chiavi)}
     return sorted(ids)
 
 
@@ -218,7 +229,7 @@ def _scrivi_assets(job_id, righe, agg, soglie, out_dir):
     return assets
 
 
-def compute_walk_access(destination_id, origin_family="civici_sit_z2", profile=None, thresholds_min=(5, 10, 15), snap_limit_m=40,
+def compute_walk_access(destination_id, origin_family="address_points", profile=None, thresholds_min=(5, 10, 15), snap_limit_m=40,
                         entrance_ids=None, deviazione_alta=None, out_dir=None):
     """Accessibilità verso una destinazione. entrance_ids: ingressi da considerare (il più vicino per tempo vince); None = ingresso predefinito.
     Ritorna dict con job, manifest, origini (righe), aggregati, archi_usati. Con out_dir scrive gli asset e li registra nel manifest."""
@@ -234,7 +245,7 @@ def compute_walk_access(destination_id, origin_family="civici_sit_z2", profile=N
     if any(s["stato"] != "agganciato" for _, s in snaps.values()): raise ValueError("ingresso non agganciato alla rete")
     orig = agganci_origini(origin_family, float(snap_limit_m))
     inputs = {"baseline_id": BASELINE_ID, "snapshot_ids": _snapshot_ids(destination_id)}
-    params = {"destination_ids": [destination_id], "entrance_ids": ids, "origins": {"kind": origin_family, "count": len(orig)},
+    params = {"destination_ids": [destination_id], "entrance_ids": ids, "origins": {"kind": origin_family, "aoi_id": AOI_ID, "count": len(orig)},
               "profile": {**prof, "snap_limit_m": float(snap_limit_m)}, "thresholds_min": soglie, "deviazione_alta": dev, "method_version": VERSIONE,
               "graph": {"graph_id": c["man"]["graph_id"], "graph_sha256": c["graph_sha256"], "regole_sha256": c["regole_sha256"]}}
     job_id = _hash_job("compute_walk_access", inputs, params)
@@ -243,7 +254,7 @@ def compute_walk_access(destination_id, origin_family="civici_sit_z2", profile=N
     t1 = datetime.datetime.now(datetime.timezone.utc); fmt = lambda t: t.strftime("%Y-%m-%dT%H:%M:%SZ")
     sc = f"{destination_id}, {prof['speed_m_s']} m/s, snapping {snap_limit_m:g} m"
     unc_v = lambda lo, hi: {"kind": "interval", "low": lo, "high": hi, "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"}
-    met = [_metrica("origins_total", "Origini (civici SIT di Z2)", agg["origini_totali"], "count", "derived")]
+    met = [_metrica("origins_total", f"Origini (civici di {AREA['comune']})", agg["origini_totali"], "count", "derived")]
     met += [_metrica(f"origins_{s}", f"Origini in stato {s}", n, "count", "derived") for s, n in agg["conteggi"].items()]
     for T in soglie:
         q = agg["quote_soglie"][f"{T:g}"]; k = f"{T:g}".replace(".", "_")
@@ -259,11 +270,11 @@ def compute_walk_access(destination_id, origin_family="civici_sit_z2", profile=N
             _metrica("unknown_sidewalk_share", "Quota dei metri di rete a marciapiede ignoto", agg["quota_metri_marciapiede_ignoto"], "1", "derived", sc)]
     ds = []
     for sid in inputs["snapshot_ids"]:
-        s = json.load(open(ROOT / "pipeline/snapshots" / f"{sid}.json")); ds.append({"snapshot_id": sid, "source_id": s["source_id"], "sha256": s["sha256"], "license_state": s["license_state"]})
+        s = next(x for x in BASELINE["snapshot"] if x["snapshot_id"] == sid) if sid != RL.OSM_SNAP["snapshot_id"] else RL.OSM_SNAP; ds.append({"snapshot_id": sid, "source_id": s["source_id"], "sha256": s["sha256"], "license_state": s["license_state"]})
     limits = [("grafo_osm_non_verificato", "Rete da OSM congelato, non verificata sul posto; percorsi, ingressi e restrizioni da controllare al sopralluogo."),
               ("marciapiede_ignoto", "Dove il marciapiede non è taggato lo stato è ignoto: il tratto è percorribile ma non certificato."),
-              ("civici_non_residenti", "I civici SIT sono punti d'indirizzo, non residenti: le quote sono quote di civici, non di popolazione. Licenza SIT non provata: solo uso interno."),
-              ("velocita_ipotesi", "Velocità e penalità sono ipotesi di esperimento, non misure su Pisa e non attribuite a gruppi di persone."),
+              ("civici_non_residenti", f"I civici del Comune di {AREA['comune']} (CC BY 4.0) sono punti d'indirizzo, non residenti: le quote sono quote di civici, non di popolazione."),
+              ("velocita_ipotesi", "Velocità e penalità sono ipotesi di esperimento, non misure sul posto e non attribuite a gruppi di persone."),
               ("snapping_parametro", "Il limite di snapping e il raccordo non attraversano edifici; i civici non agganciati restano insufficient_data."),
               ("no_certificazione_accessibilita", "Mancano pendenze, larghezze, rampe e gradini di marciapiede: nessuna certificazione di accessibilità universale."),
               ("ingresso_da_verificare", "Ingresso e orari della destinazione non verificati; cambiare ingresso può cambiare lunghezze e attraversamenti.")]
