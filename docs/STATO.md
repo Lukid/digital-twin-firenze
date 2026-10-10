@@ -12,7 +12,7 @@ Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2
 |---|---|---|
 | F01 audit e riquadro | `docs/audit-firenze.md`, `docs/audit-firenze/` | approvato (D13) |
 | F02 contratti a più aree | `contracts/` (ADR-F02.md) | `contracts/.venv/bin/python contracts/validate.py` |
-| F03 acquisizione, 14 fonti | `pipeline/` (REPORT-F03.md) | `pipeline/.venv/bin/python pipeline/validate_records.py` |
+| F03 acquisizione, 15 fonti (+ aree pedonali del Comune) | `pipeline/` (REPORT-F03.md) | `pipeline/.venv/bin/python pipeline/validate_records.py` |
 | F04 rete e ingressi | `network/` (REPORT-F04.md) | `pipeline/.venv/bin/python network/test_rete_firenze.py` |
 | F05 edifici e verde | `geometry/` (REPORT-F05.md) | `pipeline/.venv/bin/python geometry/test_geometrie_firenze.py` |
 | F06 accessibilità | `analysis/` (REPORT-F06.md) | `bash analysis/run.sh` |
@@ -29,9 +29,11 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 - Accessibilità a 1,2 m/s, quote sui 3.296 civici entro 10 minuti: Polo delle Scienze Sociali 24% (mediana 15 min), scuola Vamba 39%, fermate T2 30% e 39%. La scelta dell'ingresso del Polo sposta i percorsi più delle quote.
 - Ombra sui percorsi fermata T2 → Polo, mezzogiorno: a luglio R01 è al sole per oltre il 90%; a settembre l'ombra sale al 21-27% su R01 e al 43-44% su R02. Alberi e vegetazione LiDAR pesano 2-6 punti su R01, quasi nulla su R02.
-- Scenari: filare su R01 -0,61 minuti di sole a mezzogiorno di luglio (da -0,37 a -0,79 con la chioma), nullo sul lato opposto: il lato del marciapiede è l'incertezza dominante. Pensilina alla fermata bus Forlanini del Polo: con soli edifici l'area di attesa passa da 0% a 40% d'ombra; con la vegetazione LiDAR è già all'85% (probabile sovrastima del LiDAR, da controllare).
+- Scenari: filare su R01 (versione 2, alberi dentro le aree pedonali del Comune) -0,55 minuti di sole a mezzogiorno di luglio, da -0,23 a -0,81 con la chioma; a settembre -0,57. Pensilina alla fermata bus Forlanini del Polo: con soli edifici l'area di attesa passa da 0% a 40% d'ombra; con la vegetazione LiDAR è già all'85% (probabile sovrastima del LiDAR, da controllare).
 
 ## Limiti principali
+
+- Ombra misurata sull'asse della rete, non sulla linea dove si cammina.
 
 - Rete solo OSM, lato del marciapiede ignoto, ingressi del Polo da verificare.
 - Civici come punti d'indirizzo, non persone.
@@ -45,6 +47,7 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D12: pilota a Firenze, Novoli - Firenze Nova.
 - D13: riquadro FP, destinazioni Polo, T2, Vamba; rete con margine di 700 m solo OSM.
 - D14: chioma LiDAR senza albero censito inclusa nelle ombre; scelte F03-F05 confermate; scena con l'approccio di Padova.
+- D16 (10 ottobre): filare S1 rifatto con la regola delle aree pedonali del Comune; la versione 1 cadeva fra carreggiata e binari T2 su Via di Novoli.
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
@@ -55,7 +58,7 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 ## Prossimi passi possibili
 
-1. Filare di S1: alcuni alberi cadono sul bordo della carreggiata (posti a 3 m dall'asse della rete). Da spostare sul marciapiede prima di mostrarlo a terzi.
+1. Pensilina di S2: cade per il 76% fuori dalle aree pedonali, sopra una pista ciclabile. Da riposizionare con la stessa logica del filare.
 2. Verifica in linguaggio naturale su Firenze (rifare `nl/`: domande, registro, confronto con le mappe).
 3. Controllo sull'ortofoto della vegetazione LiDAR vicino all'area di attesa del Polo e degli ingressi del Polo.
 4. Spostare in una cartella a parte, o togliere dal ramo principale, i file di Pisa (`fieldwork/`, `nl/`, `preview/`, `scene/` vecchia, output Pisa in `analysis/`, `shadow/`, `scenarios/`); poi puntare `contracts/validate.py` (riga 58) a `scenarios/firenze_novoli/baseline.json`.

@@ -65,10 +65,13 @@ x0, y0, x1, y1 = c["riquadro"]; w = S.valida(mk([albero(1, x1 + 50, y1 + 50)]))[
 assert any(x["code"] == "fuori_riquadro" for x in w), w
 ass = next((s for s in c["strade"] if s[1] == "assente"), None)
 if ass: w = S.valida(mk([albero(1, *ass[0].interpolate(0.5, normalized=True).coords[0])]))["warnings"]; assert any(x["code"] == "su_carreggiata_senza_marciapiede" for x in w), w
+w = S.valida(mk([albero(1, 678652.58, 4851322.23)]))["warnings"]                                                    # vecchio albero 3 di S1 v1, fra carreggiata e binari T2 su Via di Novoli
+assert any(x["code"] == "fuori_area_pedonale" for x in w), w
+assert not any(x["code"] == "fuori_area_pedonale" for x in S.valida(S.carica("scn_fi_s1_filare_r01"))["warnings"])   # S1 v2: tutti dentro le aree pedonali
 print("ok 2 validazione e segnalazioni")
 
 # 3. fattibilità sempre ignota (nel risultato di validazione e in ogni scenario dimostrativo)
-dim = [s for s in S.elenco() if s.startswith("scn_fi_s")]; assert len(dim) == 6, dim
+dim = [s for s in S.elenco() if s.startswith("scn_fi_s")]; assert len(dim) == 5, dim
 for sid in dim:
     f = S.valida(S.carica(sid), geometrie=False)["feasibility"]
     assert set(f.values()) == {"ignota"} and {"sottoservizi", "spazio_radicale", "permessi"} <= set(f), sid
@@ -146,15 +149,14 @@ for sid, e in riep["scenari"].items():
     assert all(v["stesso_job"] and v["metriche_identiche"] for v in acc["ricalcolo"].values()) and set(e["fattibilita"].values()) == {"ignota"}
 print("ok 9 accessibilità invariata")
 
-# 10. coerenza delle varianti di S1 (R01, punta di mezzogiorno): nessuna variante aumenta il sole; chioma max >= tipica >= min nel beneficio; lato opposto <= lato del sole
+# 10. coerenza delle varianti di S1 (R01, punta di mezzogiorno): nessuna variante aumenta il sole; chioma max >= tipica >= min nel beneficio
 s1 = riep["scenari"][C.S1]; rob = s1["robustezza"]; PT = "punta_12_30_13_30"
 for d in cond["dates"]:
     for ctx in ("solo_edifici", "con_vegetazione_lidar"):
         dm = lambda t: t["R01"][PT]["minuti_sole"]["delta"]
-        tip, vmin, vmax, lat = dm(s1["percorsi"][d][ctx]), dm(rob["scn_fi_s1v_chioma_min"]["percorsi"][d][ctx]), dm(rob["scn_fi_s1v_chioma_max"]["percorsi"][d][ctx]), dm(rob["scn_fi_s1v_lato_opposto"]["percorsi"][d][ctx])
-        assert max(tip, vmin, vmax, lat) <= C.TOL, (d, ctx)
+        tip, vmin, vmax = dm(s1["percorsi"][d][ctx]), dm(rob["scn_fi_s1v_chioma_min"]["percorsi"][d][ctx]), dm(rob["scn_fi_s1v_chioma_max"]["percorsi"][d][ctx])
+        assert max(tip, vmin, vmax) <= C.TOL, (d, ctx)
         assert vmax <= tip + C.TOL and tip <= vmin + C.TOL, (d, ctx, vmax, tip, vmin)
-        if d == "2026-07-15": assert tip <= lat + C.TOL, (d, ctx, tip, lat)   # il lato del sole alle 13:00 è quello scelto per il beneficio massimo a mezzogiorno di luglio
     # estremi del filare tipico: l'intervallo contiene il delta centrale e le varianti min e max stanno dentro [chioma max, chioma min]
     m = s1["percorsi"][d]["con_vegetazione_lidar"]["R01"][PT]["minuti_sole"]; assert m["intervallo"][0] <= m["delta"] <= m["intervallo"][1]
 assert all(set(v) >= {"percorsi", "casi_calcolati"} for v in rob.values())
@@ -184,7 +186,7 @@ print("ok 11 S2 area di attesa")
 
 # 12. interventi.geojson per la scena: EPSG:4326, Point per gli alberi, Polygon per le coperture, proprietà dichiarate
 g = json.loads((SC / "interventi.geojson").read_text()); pts = [f for f in g["features"] if f["geometry"]["type"] == "Point"]; pol = [f for f in g["features"] if f["geometry"]["type"] == "Polygon"]
-assert len(pts) == 28 and len(pol) == 1 and len(pts) + len(pol) == len(g["features"])
+assert len(pts) == 21 and len(pol) == 1 and len(pts) + len(pol) == len(g["features"])
 assert all(set(f["properties"]) == {"id", "scenario", "h", "chioma_d", "imposta"} for f in pts) and all(set(f["properties"]) == {"id", "scenario", "z_lo", "z_hi"} for f in pol)
 assert len({f["properties"]["id"] for f in g["features"]}) == len(g["features"])
 assert all(11.1 < f["geometry"]["coordinates"][0] < 11.3 and 43.7 < f["geometry"]["coordinates"][1] < 43.9 for f in pts)

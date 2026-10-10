@@ -1,5 +1,5 @@
 {
- "verificato_il": "20261009",
+ "verificato_il": "20261010",
  "fonti": [
   {
    "source_id": "src_fi_alberi",
@@ -11,7 +11,7 @@
     "licenza_risorse": [
      "https://creativecommons.org/licenses/by/4.0/"
     ],
-    "metadata_modified": "2026-10-09"
+    "metadata_modified": "2026-10-10"
    },
    "lacuna": null,
    "licenza_dichiarata": "clear"
@@ -37,6 +37,21 @@
    "catalogo_live": {
     "nome": "92033b63-0598-4449-9007-22127abe505a",
     "titolo": "Censimento delle barriere architettoniche e urbanistiche",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_aree_pedonali",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/25703515-6bea-4148-8651-8c494a27bbf5",
+   "catalogo_live": {
+    "nome": "25703515-6bea-4148-8651-8c494a27bbf5",
+    "titolo": "Viabilità - Area di Circolazione Pedonale con geometria PolygonZ",
     "license_id": "cc-by-4.0",
     "licenza_risorse": [
      "https://creativecommons.org/licenses/by/4.0/"

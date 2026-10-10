@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_aree_pedonali_20261010",
+ "source_id": "src_fi_aree_pedonali",
+ "retrieved_at": "2026-10-10T10:09:39Z",
+ "bytes": 8702378,
+ "sha256": "867ff3c0d7e01d15f87c871a645a031bc81bc0080f1959a32f18d0729f4da23d",
+ "local_path": "data/raw/fi_aree_pedonali/20261010/acPed_s.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6527&type=99&format=url&file_format=shp&file_id=20272",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-02-11"
+ },
+ "license_state": "clear"
+}

@@ -26,6 +26,7 @@ VERSIONE = "0.2.0"
 PREFISSO = "scn_fi_"
 PASSAGGIO_SEMILARGHEZZA_M = 1.0   # ipotesi: spazio libero da tenere attorno all'asse di un arco pedonale molto usato (pensiline)
 SEMILARGHEZZA_CARREGGIATA_M = 3.0   # ipotesi: la rete ha solo l'asse, la larghezza della carreggiata non è nei dati
+AREE_PEDONALI = ROOT / "data/norm" / SLUG / "fi_aree_pedonali.gpkg"   # aree di circolazione pedonale del Comune: dove si cammina (non carreggiata, binari, aiuole)
 DIM_ALBERO = ("height_m", "crown_diameter_m", "crown_base_m")
 DIM_PENSILINA = ("roof_height_m", "canopy_base_m")
 FATTIBILITA = {"sottoservizi": "ignota", "spazio_radicale": "ignota", "permessi": "ignota", "proprieta_suolo": "ignota", "manutenzione_e_specie": "ignota"}
@@ -142,7 +143,7 @@ def _rettangolo_pensilina(op):
 
 def valida(scn, geometrie=True):
     """Controlla uno scenario. Errori (rifiuto): schema, baseline, tipi e dimensioni. Segnalazioni (non bloccano): interventi dentro edifici,
-    su carreggiata di strada carrabile senza marciapiede, fuori dal riquadro dell'area, su un arco molto usato. Fattibilità sempre ignota.
+    fuori dalle aree di circolazione pedonale del Comune, su carreggiata di strada carrabile senza marciapiede, fuori dal riquadro dell'area, su un arco molto usato. Fattibilità sempre ignota.
     Ritorna {warnings: [{code, op_id, text, severity}], feasibility: {...}}."""
     e = errori_schema(scn)
     if e: raise ScenarioError("invalid_params", "; ".join(e[:5]))
@@ -176,7 +177,9 @@ def _contesto_geo():
     b = baseline(); usati = {a["edge_id"]: a for a in b["ricevitori"]["archi"]}
     pass_ = [(e["geom"], e["edge_id"]) for _, _, e in G.edges(data=True) if e["edge_id"] in usati]
     z2 = list(O.RIQUADRO_EN)
-    return {"bld": bld, "bld_tree": STRtree(bld), "strade": strade, "strade_tree": STRtree([s[0] for s in strade]), "usati": pass_, "usati_info": usati, "riquadro": z2}
+    import pyogrio
+    ped = shapely.union_all(pyogrio.read_dataframe(AREE_PEDONALI).geometry.values); shapely.prepare(ped)
+    return {"ped": ped, "bld": bld, "bld_tree": STRtree(bld), "strade": strade, "strade_tree": STRtree([s[0] for s in strade]), "usati": pass_, "usati_info": usati, "riquadro": z2}
 
 
 def _impronta(op):
@@ -191,6 +194,9 @@ def _segnalazioni(scn):
             ov = c["bld"][int(j)].intersection(g)
             if (t == "tree" and c["bld"][int(j)].contains(g)) or (t == "shelter" and ov.area > 0.5):
                 w.append({"code": "dentro_edificio", "op_id": op["op_id"], "severity": "warning", "text": "L'intervento cade dentro l'impronta di un edificio documentato."}); break
+        if (t == "tree" and not c["ped"].contains(g)) or (t == "shelter" and c["ped"].intersection(g).area < 0.5 * g.area):
+            w.append({"code": "fuori_area_pedonale", "op_id": op["op_id"], "severity": "warning",
+                      "text": "Fuori dalle aree di circolazione pedonale del Comune: può cadere su carreggiata, binari del tram, aiuola o area privata; da verificare."})
         gx = g.buffer(SEMILARGHEZZA_CARREGGIATA_M)
         ass, ign = [], []
         for j in c["strade_tree"].query(gx):
