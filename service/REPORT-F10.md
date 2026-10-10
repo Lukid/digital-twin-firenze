@@ -36,13 +36,14 @@ Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` 
 
 ## Destinazioni e alias
 
-- `dst_university_w83537185`, Polo delle Scienze Sociali: polo, università, ateneo, pandette, scienze sociali, polo scienze sociali.
+- `dst_university_w83537185`, Polo delle Scienze Sociali (7 ingressi, uno per edificio: senza `entrance_ids` vince il più vicino): polo, università, ateneo, pandette, scienze sociali, polo scienze sociali.
 - `dst_school_fiee86002g`, scuola primaria Vamba: primaria vamba, scuola primaria.
 - `dst_school_fiaa86002a`, scuola infanzia Vamba: infanzia vamba, scuola infanzia.
 - `vamba`, `scuola vamba` e `scuola` danno entrambe le scuole.
 - `dst_tram_fm9056`, fermata T2 Novoli - Regione Toscana: fermata regione, regione toscana, regione.
 - `dst_tram_fm9057`, fermata T2 Novoli - Torre Degli Agli: torre degli agli, fermata torre degli agli, agli.
-- `tram`, `t2`, `fermata` e `fermata tram` danno entrambe le fermate.
+- `dst_tram_fm9055`, fermata T2 San Donato - Università (indicata dall'Ateneo per il Polo, D20): san donato, fermata san donato, san donato università, fermata università, fermata del polo.
+- `tram`, `t2`, `fermata` e `fermata tram` danno le tre fermate.
 - Il confronto ignora maiuscole e accenti; cerca anche in nome, id, indirizzo e codice MIM.
 - `compute_walk_access` non sceglie mai per nome: con un nome o senza destinazione risponde `ambiguous_destination` con i candidati.
 - Le fermate del tram hanno categoria `stop`: il contratto non ha `tram`.
@@ -56,7 +57,7 @@ Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` 
 
 ## Esempi di chiamata
 
-Accessibilità al Polo a 1,2 m/s (stesso `job_id` di F06, `job_90ef3449d76b161a`):
+Accessibilità al Polo a 1,2 m/s, con i 7 ingressi degli edifici (stesso `job_id` di F06, `job_9b2e74744a8d2865`, dal 10 ottobre, D19):
 
 ```
 service/.venv/bin/python service/cli.py compute_walk_access '{"baseline_id":"bas_firenze_novoli_20261009","origins":{"kind":"address_points","aoi_id":"aoi_firenze_novoli"},"destination_ids":["dst_university_w83537185"],"profile":{"speed_m_s":1.2},"thresholds_min":[5,10,15]}'

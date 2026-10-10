@@ -11,7 +11,7 @@ sys.path.insert(0, str(HERE))
 import core, replay  # noqa: E402
 
 AOI, BAS = "aoi_firenze_novoli", "bas_firenze_novoli_20261009"
-POLO, VAMBA_P, VAMBA_I, T_REG, T_AGLI = "dst_university_w83537185", "dst_school_fiee86002g", "dst_school_fiaa86002a", "dst_tram_fm9056", "dst_tram_fm9057"
+POLO, VAMBA_P, VAMBA_I, T_SD, T_REG, T_AGLI = "dst_university_w83537185", "dst_school_fiee86002g", "dst_school_fiaa86002a", "dst_tram_fm9055", "dst_tram_fm9056", "dst_tram_fm9057"
 A = {"baseline_id": BAS, "origins": {"kind": "address_points", "aoi_id": AOI}, "destination_ids": [POLO], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}
 err_code = lambda r: r.get("error", {}).get("code")
 strip = lambda r: {k: v for k, v in r.items() if k != "cached"}
@@ -38,7 +38,7 @@ r4 = run("compute_walk_access", {**A, "profile": {"speed_m_s": 0.8, "crossing_pe
 assert r4["job_id"] != r1["job_id"] and r4["cached"] is False
 assert core.validate("compute_walk_access", "output", r1) == [] and core.validate("compute_walk_access", "output", r4) == []
 for k in ("job_id", "datasets", "params", "limits", "headline_metrics"): assert r1[k], k
-assert r1["job_id"] == "job_90ef3449d76b161a"   # lo stesso job_id del manifest di F06 in analysis/firenze_novoli/manifest
+assert r1["job_id"] == "job_9b2e74744a8d2865"   # lo stesso job_id del manifest di F06 in analysis/firenze_novoli/manifest
 assert (CACHE / f"{r1['job_id']}.manifest.json").exists() and (CACHE / f"{r1['job_id']}.job.json").exists()
 man = run("get_result_manifest", {"job_id": r1["job_id"]})
 assert man["manifest_id"] == r1["result_manifest_id"] and man["metrics"] == r1["headline_metrics"] and man["aoi_id"] == AOI
@@ -68,8 +68,8 @@ for ids in (["la scuola"], ["vamba"], ["tram"], ["fermata"], ["polo"], [], None)
     r = run("compute_walk_access", {**NOA, **({} if ids is None else {"destination_ids": ids})})
     assert err_code(r) == "ambiguous_destination" and r["error"]["candidates"], (ids, r)
 cand = lambda q: [c.split(" | ")[0] for c in run("compute_walk_access", {**NOA, "destination_ids": [q]})["error"]["candidates"]]
-assert sorted(cand("vamba")) == sorted([VAMBA_P, VAMBA_I]) and sorted(cand("tram")) == sorted([T_REG, T_AGLI]) and cand("polo") == [POLO]
-assert len(cand("sconosciuta")) == 5   # nome senza corrispondenze: tutte le destinazioni dell'area
+assert sorted(cand("vamba")) == sorted([VAMBA_P, VAMBA_I]) and sorted(cand("tram")) == sorted([T_SD, T_REG, T_AGLI]) and cand("polo") == [POLO]
+assert len(cand("sconosciuta")) == 6   # nome senza corrispondenze: tutte le destinazioni dell'area
 
 # 4. alias delle destinazioni (list_destinations, name_query) e categorie
 LD = lambda cat, q=None: [x["destination_id"] for x in run("list_destinations", {"aoi_id": AOI, "category": cat, **({"name_query": q} if q else {})})["destinations"]]
@@ -78,11 +78,12 @@ for q in ("vamba", "scuola vamba", "scuola"): assert sorted(LD("school", q)) == 
 assert LD("school", "primaria vamba") == [VAMBA_P] and LD("school", "infanzia vamba") == [VAMBA_I] and LD("school", "FIEE86002G") == [VAMBA_P]
 for q in ("fermata regione", "Regione Toscana", "regione"): assert LD("stop", q) == [T_REG], q
 for q in ("torre degli agli", "Torre degli Agli", "fermata torre degli agli"): assert LD("stop", q) == [T_AGLI], q
-assert sorted(LD("stop", "tram")) == sorted([T_REG, T_AGLI]) and sorted(LD("stop")) == sorted([T_REG, T_AGLI])
+for q in ("san donato", "San Donato - Università", "fermata università"): assert LD("stop", q) == [T_SD], q
+assert sorted(LD("stop", "tram")) == sorted([T_SD, T_REG, T_AGLI]) and sorted(LD("stop")) == sorted([T_SD, T_REG, T_AGLI])
 assert LD("university") == [POLO] and len(LD("school")) == 2 and LD("hospital") == [] and LD("school", "tram") == []
 for cat in ("school", "university", "stop", "station"): assert core.validate("list_destinations", "output", run("list_destinations", {"aoi_id": AOI, "category": cat})) == []
 polo = run("list_destinations", {"aoi_id": AOI, "category": "university"})["destinations"][0]
-assert len(polo["entrances"]) == 2 and polo["verification"] == "desk_candidate" and polo["access_conditions"]
+assert len(polo["entrances"]) == 7 and polo["verification"] == "desk_candidate" and polo["access_conditions"]
 assert err_code(core.run_tool("list_destinations", {"aoi_id": "aoi_z2", "category": "school"})) == "unknown_id"   # Pisa non è più un'area
 
 # 5. strumenti di lettura: solo fonti della baseline
@@ -135,7 +136,7 @@ assert err_code(run("compute_shadow", {**SH, "sql": "x"})) == "invalid_params"
 # 8. replay: job appena calcolato, job con vegetazione LiDAR e job storico di F06
 assert replay.replay(s1["job_id"])["match"] and replay.replay(sv["job_id"])["match"]
 rp = replay.replay(r4["job_id"]); assert rp["match"] and rp["metrics_compared"] > 10, rp
-rp = replay.replay("job_90ef3449d76b161a"); assert rp["match"], rp
+rp = replay.replay("job_9b2e74744a8d2865"); assert rp["match"], rp
 
 # 9. scenari e confronto (scenarios/ portato su Firenze in F08: id scn_fi_*, file in scenarios/firenze_novoli/; il confronto usa i job in cache di F08, altrimenti alcuni minuti)
 import copy
