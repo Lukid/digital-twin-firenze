@@ -67,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T11:56:43Z",
-  "finished_at": "2026-10-10T11:56:43Z",
-  "duration_s": 0.46
+  "started_at": "2026-10-10T13:12:25Z",
+  "finished_at": "2026-10-10T13:12:25Z",
+  "duration_s": 0.45
  },
  "metrics": [
   {
@@ -115,6 +115,20 @@
    "classification": "derived"
   },
   {
+   "metric_id": "served_count_5min",
+   "label": "Origini raggiunte entro 5 minuti",
+   "value": 571,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m, soglia 5 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 378,
+    "high": 642,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
    "metric_id": "served_share_5min",
    "label": "Quota di origini (tutte) raggiunte entro 5 minuti",
    "value": 0.1732,
@@ -129,6 +143,20 @@
    }
   },
   {
+   "metric_id": "served_count_10min",
+   "label": "Origini raggiunte entro 10 minuti",
+   "value": 930,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m, soglia 10 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 720,
+    "high": 1120,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
    "metric_id": "served_share_10min",
    "label": "Quota di origini (tutte) raggiunte entro 10 minuti",
    "value": 0.2822,
@@ -139,6 +167,20 @@
     "kind": "interval",
     "low": 0.2184,
     "high": 0.3398,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
+   "metric_id": "served_count_15min",
+   "label": "Origini raggiunte entro 15 minuti",
+   "value": 1774,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_university_w83537185, 1.2 m/s, snapping 40 m, soglia 15 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 930,
+    "high": 2440,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },

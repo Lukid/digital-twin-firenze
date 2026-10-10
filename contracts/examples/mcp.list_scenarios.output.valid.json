@@ -1,0 +1,11 @@
+{
+ "scenarios": [
+  {
+   "scenario_id": "scn_fi_s1_filare_r01",
+   "title": "S1 filare su R01 (titolo abbreviato)",
+   "version": 3,
+   "baseline_id": "bas_firenze_novoli_20261009",
+   "interventions": {"alberi": 7, "pensiline": 0, "area_proiezione_chiome_m2": 197.9, "area_pensiline_m2": 0.0}
+  }
+ ]
+}

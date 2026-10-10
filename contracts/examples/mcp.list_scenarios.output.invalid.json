@@ -1,0 +1,5 @@
+{
+ "scenarios": [
+  {"scenario_id": "s1", "title": "senza prefisso scn_ e senza versione"}
+ ]
+}

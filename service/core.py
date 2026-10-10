@@ -19,7 +19,7 @@ NET = ROOT / "network" / SLUG
 CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache" / SLUG)   # cache per area; deve stare sotto ROOT (i percorsi degli asset sono relativi a ROOT)
 ID_DEST = re.compile(r"^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$")
 ENGINE_ORIGINS = "address_points"
-TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios"]
+TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios"]
 # Fonti ammesse = solo quelle della baseline dell'area. Tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso).
 _BASE = {s["source_id"]: s["snapshot_id"] for s in BASELINE["snapshot"]}
 _T = {"edifici": ["src_rt_uv_firenze_novoli", "src_osm_firenze"], "quote": ["src_fi_dsm2023", "src_fi_dtm2023"], "rete_pedonale": ["src_osm_firenze", "src_fi_barriere"],
@@ -169,6 +169,16 @@ def list_destinations(a):
     return {"destinations": [_dest_out(d) for d in _candidati(a.get("name_query")) if CATEGORIA_CONTRATTO.get(d["categoria"], d["categoria"]) == a["category"]]}
 
 
+def list_scenarios(a):
+    """Scenari salvati dell'area (versionati e creati dal client), con titolo, versione e riepilogo degli interventi."""
+    if a.get("baseline_id", BASELINE_ID) != BASELINE_ID: return err("incompatible_baseline", f"Baseline disponibile: {BASELINE_ID}.", candidates=[BASELINE_ID])
+    S, _ = _sc(); out = []
+    for sid in sorted(S.elenco()):
+        scn = S.carica(sid)
+        out.append({"scenario_id": sid, "title": scn["title"], "version": scn["version"], "baseline_id": scn["baseline_id"], "interventions": S.riepilogo_interventi(scn)})
+    return {"scenarios": out}
+
+
 # ---------- job e cache ----------
 def _paths(job_id):
     return CACHE / f"{job_id}.job.json", CACHE / f"{job_id}.manifest.json"
@@ -202,21 +212,20 @@ def _risposta(job, man, cached):
 
 def _risolvi_walk(a):
     """Argomenti validati -> argomenti di analysis.compute_walk_access, o errore. Nessun valore implicito oltre ai default dichiarati."""
-    ids = a["destination_ids"]
-    if len(ids) > 1:
-        return err("limit_exceeded", "Il motore calcola una destinazione per job: ripetere la richiesta per ciascuna.", candidates=ids, smaller_request={**a, "destination_ids": ids[:1]})
-    d = next((x for x in destinazioni() if x["destination_id"] == ids[0]), None)
-    if not d: return err("unknown_id", f"Destinazione sconosciuta: {ids[0]}.", candidates=[x["destination_id"] for x in _candidati(ids[0].split("_", 2)[-1])][:10])
+    ids = sorted(set(a["destination_ids"]))   # più destinazioni = accessibilità verso almeno una (la più vicina)
+    noti = {x["destination_id"]: x for x in destinazioni()}
+    for i in ids:
+        if i not in noti: return err("unknown_id", f"Destinazione sconosciuta: {i}.", candidates=[x["destination_id"] for x in _candidati(i.split("_", 2)[-1])][:10])
     if a["baseline_id"] != BASELINE_ID: return err("incompatible_baseline", f"Baseline disponibile: {BASELINE_ID}.", candidates=[BASELINE_ID])
     o = a["origins"]
     if o["kind"] != ENGINE_ORIGINS or o.get("aoi_id") != AOI_ID:
         return err("outside_capability", f"Il motore calcola solo con origini '{ENGINE_ORIGINS}' dell'area {AOI_ID} (civici come punti d'indirizzo); punti e griglia non sono ancora supportati.",
                    smaller_request={**a, "origins": {"kind": ENGINE_ORIGINS, "aoi_id": AOI_ID}})
-    ents = {e["entrance_id"] for e in d["ingressi"]}
+    ents = {e["entrance_id"] for i in ids for e in noti[i]["ingressi"]}
     bad = [i for i in a.get("entrance_ids", []) if i not in ents]
-    if bad: return err("invalid_params", f"Ingressi non appartenenti a {ids[0]}: {bad}.", candidates=sorted(ents))
+    if bad: return err("invalid_params", f"Ingressi non appartenenti a {', '.join(ids)}: {bad}.", candidates=sorted(ents))
     p = a["profile"]
-    return {"destination_id": ids[0], "profile": {"speed_m_s": p["speed_m_s"], "crossing_penalty_s": p.get("crossing_penalty_s", 0), "stairs": p.get("stairs", "allowed")},
+    return {"destination_id": ids[0] if len(ids) == 1 else ids, "profile": {"speed_m_s": p["speed_m_s"], "crossing_penalty_s": p.get("crossing_penalty_s", 0), "stairs": p.get("stairs", "allowed")},
             "snap_limit_m": p.get("snap_limit_m", 40), "thresholds_min": sorted(a["thresholds_min"]), "entrance_ids": sorted(a["entrance_ids"]) if a.get("entrance_ids") else None}
 
 
@@ -228,13 +237,8 @@ def _limiti(A, kw):
 
 
 def _prevedi_job_id(A, kw):
-    """job_id calcolato prima dell'esecuzione con gli stessi parametri che la libreria mette nel job."""
-    c = A.contesto(); d = c["dest"][kw["destination_id"]]; ids = kw["entrance_ids"] or d.get("ingressi_predefiniti") or [d["ingresso_predefinito"]]   # come accessibilita.compute_walk_access
-    params = {"destination_ids": [kw["destination_id"]], "entrance_ids": sorted(ids), "origins": {"kind": ENGINE_ORIGINS, "aoi_id": AOI_ID, "count": len(c["civ"])},
-              "profile": {**kw["profile"], "snap_limit_m": float(kw["snap_limit_m"])}, "thresholds_min": sorted(float(t) for t in kw["thresholds_min"]),
-              "deviazione_alta": dict(A.DEVIAZIONE_ALTA), "method_version": A.VERSIONE,
-              "graph": {"graph_id": c["man"]["graph_id"], "graph_sha256": c["graph_sha256"], "regole_sha256": c["regole_sha256"]}}
-    return A._hash_job("compute_walk_access", {"baseline_id": A.BASELINE_ID, "snapshot_ids": A._snapshot_ids(kw["destination_id"])}, params)
+    """job_id calcolato prima dell'esecuzione, con la stessa funzione che la libreria usa per il job."""
+    return A.parametri_job(kw["destination_id"], ENGINE_ORIGINS, kw["profile"], kw["thresholds_min"], kw["snap_limit_m"], kw["entrance_ids"])[2]
 
 
 def _esegui(kw, store=True, out_dir=None):
@@ -242,7 +246,9 @@ def _esegui(kw, store=True, out_dir=None):
     import accessibilita as A
     e = _limiti(A, kw)
     if e: return e
-    jid = _prevedi_job_id(A, kw); jp, mp = _paths(jid)
+    try: jid = _prevedi_job_id(A, kw)
+    except ValueError as ex: return err("invalid_params", str(ex))
+    jp, mp = _paths(jid)
     if store and jp.exists() and mp.exists(): return _risposta(_load(jp), _load(mp), True)
     try:
         res = A.compute_walk_access(kw["destination_id"], profile=kw["profile"], thresholds_min=kw["thresholds_min"], snap_limit_m=kw["snap_limit_m"], entrance_ids=kw["entrance_ids"],

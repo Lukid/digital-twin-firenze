@@ -308,6 +308,65 @@
     }
    ]
   },
+  "list_scenarios.input": {
+   "type": "object",
+   "additionalProperties": false,
+   "description": "Scenari salvati dell'area: quelli versionati del progetto e quelli creati con create_local_scenario.",
+   "properties": {
+    "baseline_id": {
+     "$ref": "common.schema.json#/$defs/id_baseline"
+    }
+   }
+  },
+  "list_scenarios.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "scenarios"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "scenarios": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "required": [
+         "scenario_id",
+         "title",
+         "version",
+         "baseline_id",
+         "interventions"
+        ],
+        "additionalProperties": false,
+        "properties": {
+         "scenario_id": {
+          "$ref": "common.schema.json#/$defs/id_scenario"
+         },
+         "title": {
+          "type": "string"
+         },
+         "version": {
+          "type": "integer",
+          "minimum": 1
+         },
+         "baseline_id": {
+          "$ref": "common.schema.json#/$defs/id_baseline"
+         },
+         "interventions": {
+          "type": "object",
+          "description": "Conteggi e aree: alberi, pensiline, area di proiezione delle chiome e delle pensiline in m2."
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
+  },
   "compute_walk_access.input": {
    "type": "object",
    "required": [
@@ -405,7 +464,8 @@
      "maxItems": 20,
      "items": {
       "$ref": "common.schema.json#/$defs/id_destination"
-     }
+     },
+     "description": "Una destinazione, oppure più destinazioni: in quel caso il risultato è l'accessibilità verso almeno una (per ogni civico conta la più vicina)."
     },
     "profile": {
      "type": "object",

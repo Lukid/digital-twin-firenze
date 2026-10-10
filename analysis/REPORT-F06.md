@@ -18,6 +18,11 @@ Consegna del 10 ottobre 2026. Il motore `analysis/` non dipende più da Pisa e g
   - Sensibilità sullo snapping (20, 40, 60 m) per ogni destinazione.
   - Sensibilità sugli ingressi per le destinazioni con più di un ingresso (il Polo): predefinito, tutti e 2, ciascun ingresso da solo.
   - Svuota e riscrive `analysis/firenze_novoli/manifest/` a ogni esecuzione.
+- 10 ottobre, dopo F11, in `analysis/accessibilita.py`:
+  - `compute_walk_access` accetta una lista di destinazioni. Usa tutti i loro ingressi insieme e per ogni civico vince il più vicino: è l'accessibilità verso almeno una. Il manifest ha il limite `almeno_una_destinazione`.
+  - Nuove metriche `served_count_<soglia>min`: civici raggiunti per soglia, con l'intervallo di velocità 0,8-1,4 m/s.
+  - `parametri_job` calcola inputs, parametri e `job_id` senza eseguire il calcolo. La usano il motore e il servizio.
+  - Con una destinazione `job_id` e numeri restano uguali: i manifest di `analysis/firenze_novoli/manifest/` sono stati rigenerati con gli stessi nomi. L'hash del motore in `scenarios/firenze_novoli/baseline.json` è aggiornato.
 - `analysis/run.sh`: lancia run.py e il test.
 - `analysis/test_accessibilita.py`: riscritto per Firenze.
   - Conteggi: 3.296 origini, 3.112 raggiungibili, 168 insufficient_data, 16 forbidden o isolated.
