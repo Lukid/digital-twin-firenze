@@ -5,7 +5,7 @@ Data: 9 ottobre 2026. Redatto dall'agente F03 e salvato dall'integratore, che ha
 ## Riproduzione
 
 - Tutto: `DT_DAY=20261009 pipeline/run_firenze.sh` (circa 10 minuti con i download, circa 50 s con i file già in `data/raw`). Usa `pipeline/.venv`; nessun pacchetto aggiunto (serve `inflate64`, già installato con `py7zr`).
-- Singole fonti: `pipeline/run_firenze.sh osm uv` (nomi: alberi civici barriere rifugi_aree rifugi_bibl uv dtm dsm osm gtfs_tram gtfs_bus tram_fermate scuole cm_edscol escapos).
+- Singole fonti: `pipeline/run_firenze.sh osm uv` (nomi: alberi civici barriere rifugi_aree rifugi_bibl uv dtm dsm osm gtfs_tram gtfs_bus tram_fermate scuole cm_edscol).
 - Passi: `pipeline/.venv/bin/python pipeline/fonti_firenze.py acquire|sources|baseline`, `pipeline/norm_firenze.py [lavoro|report]`, poi `validate_records.py` e `contracts/validate.py`.
 - Area scelta con `DT_AOI` (default `aoi_z2`). `lib.py` legge riquadro e margine da `contracts/aree.json`; per `aoi_z2` il risultato è identico a prima (verificato anche dall'integratore: `buf_en` invariato).
 - Output: `data/raw/<fonte>/<AAAAMMGG>/` (originali intatti), `data/norm/firenze_novoli/` (GeoPackage e GeoTIFF), `pipeline/snapshots/`, `pipeline/sources/`, `pipeline/baselines/`, `pipeline/report_firenze.json`, `pipeline/t17_firenze.json`. `data/` non è versionata.
@@ -33,7 +33,7 @@ Riquadro FP (D13) più 700 m per lato, in EPSG:7791.
 10. Fermate tram del Comune: 10 / 2. `clear`.
 11. Scuole statali 2026/27 (MIM ripubblicate dal Comune): 37 / 7. Vamba presente come `dst_school_fiee86002g` e `dst_school_fiaa86002a`. IODL 2.0, `clear_with_reserve`, solo `internal_prototype`.
 12. Edifici scolastici della Città metropolitana: 229 poligoni / 32; accessi 36 / 6. Coprono tutti i gradi (la fonte include il DB del Comune di Firenze): chiude il dubbio di F01 sulle sole secondarie. `clear_with_reserve` (risorse senza licenza), `internal_prototype`.
-13. Life Escapos (alberi, CC BY-NC 4.0), solo verifica interna: 50 / **24 alberi cadono in FP**. `clear_with_reserve`, `internal_prototype`. Fuori dalla baseline. Nessun valore in file versionati: il GeoPackage `fi_escapos_alberi.gpkg` sta solo in `data/norm`. Scaricato solo il censimento alberi del dataset; le misure fisiologiche di persone non sono state scaricate.
+13. Life Escapos: tolto il 10 ottobre 2026 (D15), licenza CC BY-NC 4.0.
 
 Destinazioni verificate nei layer: Polo delle Scienze Sociali come 6 edifici OSM (D1, D14, D15 e le relazioni D4, D5, D6, assenti dalla geometria dell'audit); scuola Vamba; 2 fermate T2 in FP.
 
@@ -50,7 +50,6 @@ Verifica sul portale regionale il 9/10/2026 (licenza di scheda e di risorse in `
 - Fermate tram del Comune: `607b8031-252b-4442-950a-7b4452d9db8f` (cc-by-4.0).
 - Scuole statali: `anagrafica-scuole-statali-2026_27` (IODL 2.0).
 - Edifici scolastici della Città metropolitana: `edifici-scolastici-citta-metropolitana-di-firenze` (scheda cc-by, risorse senza licenza).
-- Life Escapos: `life_escapos_mobile_measurements` (CC BY-NC 4.0), sola risorsa del censimento alberi.
 - Lacuna, unità volumetriche: sul portale esistono per altri 40 comuni, non per Firenze; fonte il WFS regionale. Proposta di pubblicazione da fare alla Regione.
 - Lacuna, OSM: fonte aperta esterna, non è sul catalogo. Marciapiedi, attraversamenti e ingressi non hanno altra fonte nel catalogo.
 - Nessuna fonte è usata senza licenza verificata: ogni record ha `evidence_url` e stato `clear` o `clear_with_reserve`.
@@ -69,7 +68,7 @@ Verifica sul portale regionale il 9/10/2026 (licenza di scheda e di risorse in `
 
 - `validate_records.py`: tutto ok (15 snapshot e 15 record nuovi, più quelli di Pisa).
 - `contracts/validate.py`: 46 validi passano (la baseline di Firenze è il nuovo), 23 non validi respinti.
-- Baseline `bas_firenze_novoli_20261009`: 14 snapshot (tutti tranne Life Escapos); sha256 e stato di licenza coincidono con gli snapshot. L'id è in `baseline_ids` di `aoi_firenze_novoli`.
+- Baseline `bas_firenze_novoli_20261009`: 14 snapshot; sha256 e stato di licenza coincidono con gli snapshot. L'id è in `baseline_ids` di `aoi_firenze_novoli`.
 - Test di Pisa rieseguiti dopo le modifiche: `service/test_service.py`, `network/test_rete.py`, `nl/test_nl.py` ok. La normalizzazione di Pisa non è stata rieseguita: le sue chiamate usano i default invariati.
 
 ## Lacune
@@ -78,7 +77,7 @@ Verifica sul portale regionale il 9/10/2026 (licenza di scheda e di risorse in `
 - Datum verticale di DTM, DSM e unità volumetriche non dichiarato; CRS del LiDAR 2023 assunto.
 - Non acquisiti: "Luoghi freschi a Firenze" (terzo dataset dei rifugi, non richiesto), scuole paritarie (0 in FP), siti alberi del rilievo celerimetrico (solo quota, già misurata dall'audit), DB topografico (le unità volumetriche bastano, D13).
 - Unità volumetriche del 2011: gli edifici nuovi vanno controllati sul LiDAR in F05. Nessuna fonte per portici e volumi sospesi.
-- Per F04: grafo da OSM, marciapiedi e ingressi poveri (audit rete). Per F05: altezza edifici e chiome da nDSM e CHM (DSM di giugno), verifica interna sui 24 alberi Life Escapos in FP; h_m di Escapos non è indipendente dal LiDAR.
+- Per F04: grafo da OSM, marciapiedi e ingressi poveri (audit rete). Per F05: altezza edifici e chiome da nDSM e CHM (DSM di giugno).
 - Il GTFS dei bus scade il 29/10/2026; il tram non ha la T1.
 - La licenza IODL 2.0 delle scuole non è stata valutata giuridicamente rispetto a CC BY.
 - ID con rango spaziale (Città metropolitana, fermate tram del Comune): chiave di contenuto, ma da confermare rispetto alla regola "mai posizione in elenco".

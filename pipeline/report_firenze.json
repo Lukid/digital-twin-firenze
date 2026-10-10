@@ -49,10 +49,6 @@
    "in_area_allargata": 13987,
    "in_riquadro": 3296
   },
-  "fi_escapos_alberi.gpkg:alberi_escapos": {
-   "in_area_allargata": 50,
-   "in_riquadro": 24
-  },
   "fi_rifugi_aree.gpkg:rifugi_aree": {
    "in_area_allargata": 7,
    "in_riquadro": 1
@@ -175,13 +171,6 @@
    "bytes": 343460065,
    "sha256": "3c8fdac2c02ab5cbb8353760c40962ea95ae9c6162130f30d9ac805608a79d02",
    "license_state": "clear",
-   "expires_at": null
-  },
-  "snp_fi_escapos_alberi_20261009": {
-   "status": "ok",
-   "bytes": 32282,
-   "sha256": "8f5a3343f039944913c0f3447f70b373b30ed9c26b7e160d00e1b21a25f6d1aa",
-   "license_state": "clear_with_reserve",
    "expires_at": null
   },
   "snp_fi_rifugi_aree_20261009": {

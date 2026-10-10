@@ -2,8 +2,8 @@
 Script a parte rispetto a build_geometrie.py (Pisa): quello è uno script lineare con fonti e area scritte dentro (DSM 1 m, DTM 10 m
 via WMS, alberi OSM/DBT) e non si può importare senza rieseguirlo; qui le fonti sono altre (LiDAR 0,5 m, censimento). Si riusano
 parametri_chiome.json e la stessa forma degli output, in geometry/firenze_novoli/ per non collidere con Pisa.
-Input (data/norm/firenze_novoli/): rt_uv_firenze_novoli, osm_firenze, fi_alberi, fi_dsm2023_0.5m, fi_dtm2023_0.5m, fi_escapos_alberi.
-Output: data/norm/firenze_novoli/geometry/{geometrie_firenze_novoli.gpkg, escapos_verifica.csv} (non versionati),
+Input (data/norm/firenze_novoli/): rt_uv_firenze_novoli, osm_firenze, fi_alberi, fi_dsm2023_0.5m, fi_dtm2023_0.5m.
+Output: data/norm/firenze_novoli/geometry/geometrie_firenze_novoli.gpkg (non versionati),
 geometry/firenze_novoli/{edifici,alberi}_fp.geojson (4326, solo FP) e report_firenze_novoli.json."""
 import json, math, os, re, sys
 from pathlib import Path
@@ -281,32 +281,8 @@ vg = gpd.GeoDataFrame(vrows, geometry="geometry", crs=CRS)
 vg["liscia"] = vg.pendenza_med < 0.35   # tetti piani/falde: candidati edifici non mappati; chioma = rugosa
 vg["in_fp"] = vg.within(FP)
 
-# ---- verifica interna su Life Escapos (CC BY-NC 4.0): tabella per albero solo in data/, in git solo aggregati ----
-esc = gpd.read_file(N / "fi_escapos_alberi.gpkg")
-v = esc[["cens_id", "species", "dbh_cm", "h_m", "crn_w_m"]].merge(
-    al[["id_orig", "misurata", "motivo_stima", "h_chm", "h_chm_max", "h", "h_min", "h_max", "chioma_d", "classe", "in_fp"]],
-    left_on="cens_id", right_on="id_orig", how="left")
-assert v.id_orig.notna().all(), "Escapos non abbinato al censimento"
-v["h_stima_classe"] = [cl[c]["altezza_m"]["tipico"] for c in v.classe]   # stima solo da circonferenza, senza LiDAR
-v["h_stima_min"] = [cl[c]["altezza_m"]["min"] for c in v.classe]
-v["h_stima_max"] = [cl[c]["altezza_m"]["max"] for c in v.classe]
-v.to_csv(N / "geometry/escapos_verifica.csv", index=False)
 
 
-def conf_(a, b):
-    e = (a - b).dropna()
-    r = float(np.corrcoef(a[e.index], b[e.index])[0, 1]) if len(e) > 2 and a[e.index].std() > 0 else float("nan")
-    return dict(n=int(len(e)), mediana_scarto_m=round(float(e.median()), 2), mae_m=round(float(e.abs().mean()), 2), r=None if math.isnan(r) else round(r, 3))
-
-
-def verifica(s):
-    m = s[s.misurata]
-    cop = ((s.h_m >= s.h_stima_min) & (s.h_m <= s.h_stima_max)).mean()
-    return dict(n_alberi=int(len(s)), n_chioma_misurata=int(len(m)), n_chioma_stimata=int(len(s) - len(m)),
-                altezza_chm_p95_misurati=conf_(m.h_chm, m.h_m), altezza_chm_max_misurati=conf_(m.h_chm_max, m.h_m),
-                altezza_pipeline_tutti_misurata_o_stimata=conf_(s.h, s.h_m),
-                diametro_chioma_misurati_contro_crn_w_m=conf_(m.chioma_d, m.crn_w_m),
-                stima_da_sola_circonferenza_altezza=dict(**conf_(s.h_stima_classe, s.h_m), copertura_intervallo_min_max=round(float(cop), 3)))
 
 
 # ---- salvataggi ----
@@ -390,10 +366,6 @@ rep = {
         "vegetazione_senza_albero": {"cluster_ge_20m2_fp": int(len(gf)), "area_m2_fp": round(float(gf.area_m2.sum()), 0), "di_cui_lisci_candidati_edifici_fp": int(gf.liscia.sum()),
                                      "cluster_allargata": int(len(vg)), "area_m2_allargata": round(float(vg.area_m2.sum()), 0)},
     },
-    "verifica_escapos": {
-        "licenza": "CC BY-NC 4.0, solo verifica interna: in git solo aggregati; la tabella per albero è in data/norm/firenze_novoli/geometry/escapos_verifica.csv",
-        "indipendenza": "h_m e dbh_cm non sono indipendenti: dbh = circonferenza del censimento / pi e h_m ha precisione piena, provenienza non documentata, probabile derivazione dallo stesso LiDAR. L'accordo non prova l'indipendenza.",
-        "fp": verifica(v[v.in_fp]), "allargata_50": verifica(v)},
     "regole": {
         "altezza_edificio": f"nDSM 2023 (DSM-DTM) mediana sull'impronta UV erosa {EROSIONE_M} m, se area >= {MIN_AREA_CONF:.0f} m2 e >= {N_MIN_CELLE} celle; altrimenti uv_av 2011. Con vegetazione vicina e scarto grande, o demolizione probabile, resta uv_av",
         "flag": f"scarto nDSM-uv_av dopo bias >= {SOGLIA_DH} m: lidar_piu_alto/basso; nDSM < 1 m con uv_av >= 3 m: demolizione_probabile (presente_2023 falso); alberi entro 2 m: scarto_con_vegetazione",

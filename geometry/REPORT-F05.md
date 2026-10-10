@@ -6,8 +6,8 @@ Data: 9 ottobre 2026. Redatto dall'agente F05, salvato dall'integratore. `bash g
 
 - `bash geometry/build_firenze.sh` (esporta `DT_AOI=aoi_firenze_novoli`, poi costruisce e collauda). Richiede `data/norm/firenze_novoli/` di F03.
 - Script a parte, `geometry/build_firenze.py`, invece di parametrizzare `build_geometrie.py`. `build_geometrie.py` è lineare, ha area e file di Pisa nel corpo (DSM 1 m, DTM 10 m da WMS ricalibrato, alberi OSM/DBT) e non si importa senza rieseguirlo. Parametrizzarlo avrebbe toccato Pisa. Si riusano `lib.AOI` (sola lettura), `parametri_chiome.json` e la forma degli output.
-- Input: `rt_uv_firenze_novoli`, `osm_firenze`, `fi_alberi`, `fi_dsm2023_0.5m`, `fi_dtm2023_0.5m`, `fi_escapos_alberi`.
-- Output pesanti: `data/norm/firenze_novoli/geometry/geometrie_firenze_novoli.gpkg` (layer volumi, alberi, vegetazione_lidar, osm_stato) e `escapos_verifica.csv` (per albero, solo in `data/`).
+- Input: `rt_uv_firenze_novoli`, `osm_firenze`, `fi_alberi`, `fi_dsm2023_0.5m`, `fi_dtm2023_0.5m`.
+- Output pesanti: `data/norm/firenze_novoli/geometry/geometrie_firenze_novoli.gpkg` (layer volumi, alberi, vegetazione_lidar, osm_stato).
 - Output in git: `geometry/firenze_novoli/{edifici_fp,alberi_fp}.geojson` (4326, solo FP, 1,4 MB e 1,8 MB) e `report_firenze_novoli.json`.
 
 ## Area
@@ -73,22 +73,7 @@ Chiome misurate e stimate separate e contate:
 
 ## Verifica interna su Life Escapos (CC BY-NC 4.0)
 
-In git solo aggregati (n, mediana, MAE, r). Scarto = pipeline meno `h_m`.
-
-| Campione | Misura | n | Mediana | MAE | r |
-|---|---|---|---|---|---|
-| 24 in FP (tutti misurati) | h CHM p95 | 24 | -0,08 m | 0,13 m | 0,965 |
-| 24 in FP | h CHM massimo (sensibilità) | 24 | +0,08 m | 0,12 m | 0,976 |
-| 24 in FP | diametro chioma contro `crn_w_m` | 24 | -0,32 m | 0,60 m | 0,644 |
-| 50 allargata (48 misurati, 2 stimati) | h CHM p95 | 48 | -0,10 m | 0,20 m | 0,990 |
-| 50 allargata | h CHM massimo | 48 | +0,14 m | 0,23 m | 0,995 |
-| 50 allargata | h pipeline, misurata o stimata | 50 | -0,10 m | 0,40 m | 0,811 |
-| 50 allargata | diametro chioma contro `crn_w_m` | 48 | +0,04 m | 0,69 m | 0,892 |
-
-- Stima dalla sola circonferenza (classe del JSON, senza LiDAR, quindi non circolare): sui 50, altezza tipica contro `h_m` mediana -0,32 m, MAE 1,10 m, r 0,715, intervallo min-max copre l'88%. Sui 24 FP mediana -0,27, MAE 0,46, copertura 100%, r non definito perché sono tutti della stessa classe.
-- Limite di indipendenza: l'accordo con `h_m` non prova nulla di indipendente. `dbh_cm` coincide con la circonferenza del censimento divisa π, `h_m` ha precisione piena e provenienza non documentata, quindi probabile derivazione dallo stesso LiDAR. È un controllo di coerenza interna, non una validazione. Serve una misura di campo.
-- Campione piccolo e poco vario: 36 su 50 sono Celtis australis, 24 in FP.
-- Scelta a priori, non tarata sul campione: p95 invece del massimo (a Pisa il p95).
+Sezione tolta il 10 ottobre 2026 (D15): Life Escapos ha licenza CC BY-NC 4.0 e il progetto usa solo dati riusabili anche a fini commerciali. Nessun valore della fonte resta nei file versionati.
 
 ## Datum verticale
 

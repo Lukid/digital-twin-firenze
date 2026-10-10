@@ -78,16 +78,7 @@ for n, c in P["classi"].items():
     for k, v in c.items():
         ok(0 < v["min"] <= v["tipico"] <= v["max"], f"classe {n}.{k} non ordinata")
 
-# verifica Escapos: solo aggregati (CC BY-NC 4.0), campione dichiarato, limite di indipendenza scritto
-V = R["verifica_escapos"]
-ok(V["fp"]["n_alberi"] == 24 and V["allargata_50"]["n_alberi"] == 50, "campione Escapos: 24 in FP e 50 nell'area allargata")
-for k in ("fp", "allargata_50"):
-    s = V[k]["altezza_chm_p95_misurati"]
-    ok(s["n"] == V[k]["n_chioma_misurata"] and s["n"] > 10, f"{k}: n del confronto")
-    ok(abs(s["mediana_scarto_m"]) < 1.0 and s["mae_m"] < 1.5 and s["r"] > 0.8, f"{k}: scarto di altezza fuori da ogni plausibilità {s}")
-    ok(V[k]["n_chioma_misurata"] + V[k]["n_chioma_stimata"] == V[k]["n_alberi"], f"{k}: misurate + stimate")
-ok("indipendenza" in V and "non prova" in V["indipendenza"], "manca il limite di indipendenza di h_m")
+# nessun dato Life Escapos (CC BY-NC 4.0) nei file versionati: fonte tolta (D15)
 ESC = {"h_m", "crn_w_m", "dbh_cm", "lai", "can_h_m", "canopy_area_m2", "cens_id", "seg_id", "tre_escapos"}
-ok(not any(ESC & set(f["properties"]) for f in A + E) and "tre_escapos" not in json.dumps(R), "valori o id Escapos in file versionati")
-ok(all(not isinstance(x, list) for v in (V["fp"], V["allargata_50"]) for x in v.values()), "verifica Escapos: solo aggregati, nessun elenco per albero")
-print(f"OK: {len(E)} volumi ({n_lidar} con altezza LiDAR), {len(A)} alberi ({len(mis)} chiome misurate, {len(sti)} stimate), Escapos solo aggregati")
+ok(not any(ESC & set(f["properties"]) for f in A + E) and "scapos" not in json.dumps(R).lower(), "valori o id Escapos in file versionati")
+print(f"OK: {len(E)} volumi ({n_lidar} con altezza LiDAR), {len(A)} alberi ({len(mis)} chiome misurate, {len(sti)} stimate)")

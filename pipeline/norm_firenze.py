@@ -51,9 +51,6 @@ def cm():
     ac["geometry"] = shapely.set_precision(ac.geometry.values, 0.01); ac = ac[ac.geometry.intersects(shapely.box(*BUF))]
     assert ac["id"].is_unique; ac.set_crs(7791, allow_override=True).to_file(p, layer="accessi", driver="GPKG", engine="pyogrio", mode="a"); print(f"  {p.name}:accessi {len(ac)} oggetti")
 
-def escapos():
-    g = leggi("fi_escapos_alberi", "escapos_tree_census.json", 7791)      # solo data/, mai in git (CC BY-NC 4.0)
-    scrivi(g, "fi_escapos_alberi", "src_fi_escapos_alberi", "alberi_escapos", "seg_id", "tre_escapos_", out="fi_escapos_alberi.gpkg")
 
 JOBS = {
     "osm": lambda: norm_osm("osm_firenze", "src_osm_firenze"),
@@ -67,7 +64,7 @@ JOBS = {
     "rifugi_bibl": lambda: scrivi(leggi("fi_rifugi_biblioteche", "rifugi_biblioteche.json", 3003), "fi_rifugi_biblioteche", "src_fi_rifugi_biblioteche", "rifugi_biblioteche", "fid_src", "rib_fi_"),
     "tram_fermate": lambda: scrivi(leggi("fi_tram_fermate", "tram_fermate.zip", 3003), "fi_tram_fermate", "src_fi_tram_fermate", "tram_fermate", "nome_ferma", "stp_fi_", rango="nome_ferma"),
     "scuole": lambda: scrivi(leggi("fi_scuole_statali", "miur_scuole_statali_2026_27.json", 6706), "fi_scuole_statali", "src_fi_scuole_statali", "scuole", "codicescuo", "dst_school_", low=True),
-    "cm": cm, "escapos": escapos,
+    "cm": cm,
     "dtm": lambda: lidar("fi_dtm2023", "fi_dtm2023_0.5m.tif"), "dsm": lambda: lidar("fi_dsm2023", "fi_dsm2023_0.5m.tif"),
 }
 

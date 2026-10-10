@@ -196,21 +196,6 @@
    },
    "lacuna": null,
    "licenza_dichiarata": "clear_with_reserve"
-  },
-  {
-   "source_id": "src_fi_escapos_alberi",
-   "dataset_catalogo": "https://dati.toscana.it/dataset/life_escapos_mobile_measurements",
-   "catalogo_live": {
-    "nome": "life_escapos_mobile_measurements",
-    "titolo": "Life Escapos - Alberature pubbliche",
-    "license_id": "cc-by-nc-4.0",
-    "licenza_risorse": [
-     "https://creativecommons.org/licenses/by-nc/4.0/"
-    ],
-    "metadata_modified": "2026-02-13"
-   },
-   "lacuna": null,
-   "licenza_dichiarata": "clear_with_reserve"
   }
  ]
 }
