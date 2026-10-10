@@ -2,9 +2,9 @@
   "mcpServers": {
     "dt-firenze": {
       "type": "stdio",
-      "command": "/Users/lucabaroncini/progetti/digital-twin-pisa/service/.venv/bin/python",
+      "command": "/Users/lucabaroncini/progetti/digital-twin-firenze/service/.venv/bin/python",
       "args": [
-        "/Users/lucabaroncini/progetti/digital-twin-pisa/service/mcp_server.py"
+        "/Users/lucabaroncini/progetti/digital-twin-firenze/service/mcp_server.py"
       ],
       "env": {}
     }
