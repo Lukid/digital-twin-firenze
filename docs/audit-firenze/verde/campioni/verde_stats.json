@@ -1,6 +1,5 @@
 {
  "n_alberi_città": 82235,
- "n_escapos": 50,
  "n_siti_città": 32472,
  "colonne_alberi": [
   "id",
@@ -10,27 +9,6 @@
   "SPECIE",
   "NOME_COMUNE",
   "CIRCONF_CM"
- ],
- "colonne_escapos": [
-  "id",
-  "seg_id",
-  "cens_id",
-  "species",
-  "dbh_cm",
-  "h_m",
-  "crn_w_m",
-  "can_h_m",
-  "abg_mg",
-  "c_mg",
-  "lai",
-  "canopy_area_m2",
-  "co2_mg",
-  "o3_kg",
-  "pm10_kg",
-  "pm25_kg",
-  "no2_kg",
-  "so2_kg",
-  "co_kg"
  ],
  "colonne_siti": [
   "salberoid",
@@ -45,7 +23,6 @@
  },
  "FA": {
   "alberi": 1614,
-  "escapos": 50,
   "siti": 994,
   "alberi_specie_vuote": 0,
   "circonf_cm": {
@@ -76,7 +53,6 @@
  },
  "FB": {
   "alberi": 2469,
-  "escapos": 14,
   "siti": 1748,
   "alberi_specie_vuote": 0,
   "circonf_cm": {
@@ -107,7 +83,6 @@
  },
  "FA&FB": {
   "alberi": 615,
-  "escapos": 14,
   "siti": 498,
   "alberi_specie_vuote": 0,
   "circonf_cm": {
@@ -138,7 +113,6 @@
  },
  "FA|FB": {
   "alberi": 3468,
-  "escapos": 50,
   "siti": 2244,
   "alberi_specie_vuote": 0,
   "circonf_cm": {
@@ -201,110 +175,5 @@
    ],
    "quota_entro_3m": 0.516
   }
- },
- "escapos": {
-  "colonne": [
-   "id",
-   "seg_id",
-   "cens_id",
-   "species",
-   "dbh_cm",
-   "h_m",
-   "crn_w_m",
-   "can_h_m",
-   "abg_mg",
-   "c_mg",
-   "lai",
-   "canopy_area_m2",
-   "co2_mg",
-   "o3_kg",
-   "pm10_kg",
-   "pm25_kg",
-   "no2_kg",
-   "so2_kg",
-   "co_kg"
-  ],
-  "nota": "cens_id = ID del censimento",
-  "cens_id_in_ID": 50,
-  "cens_id_in_CODSITO": 29,
-  "nearest": {
-   "dist_m_p50_p90_max": [
-    0.72,
-    1.88,
-    3.14
-   ],
-   "nearest_ha_stesso_ID": 50,
-   "nearest_ha_stesso_CODSITO": 0,
-   "stessa_specie": 50
-  },
-  "join_ID": {
-   "n": 50,
-   "dist_p50_p90_max": [
-    0.72,
-    1.88,
-    3.14
-   ],
-   "specie_uguale": 50
-  },
-  "join_CODSITO_ALBERO": {
-   "n": 29,
-   "dist_p50_p90_max": [
-    6028.32,
-    8432.81,
-    8449.93
-   ],
-   "specie_uguale": 0
-  },
-  "dbh_vs_circonf_censimento": {
-   "n": 49,
-   "rapporto_med_dbh_escapos/dbh_cens": 1.0,
-   "scarto_mediano_cm": 0.0
-  },
-  "parametri": {
-   "dbh_cm": {
-    "min": 9.99,
-    "p50": 14.99,
-    "max": 84.96,
-    "nulli": 0
-   },
-   "h_m": {
-    "min": 3.5,
-    "p50": 6.68,
-    "max": 17.0,
-    "nulli": 0
-   },
-   "crn_w_m": {
-    "min": 2.22,
-    "p50": 6.31,
-    "max": 15.19,
-    "nulli": 0
-   },
-   "can_h_m": {
-    "min": 2.56,
-    "p50": 3.71,
-    "max": 8.23,
-    "nulli": 0
-   },
-   "canopy_area_m2": {
-    "min": 3.86,
-    "p50": 31.24,
-    "max": 181.26,
-    "nulli": 0
-   },
-   "lai": {
-    "min": 1.94,
-    "p50": 3.5,
-    "max": 4.5,
-    "nulli": 0
-   }
-  },
-  "top_specie": {
-   "Celtis australis": 36,
-   "Cupressus sempervirens": 7,
-   "Quercus ilex": 4,
-   "Populus nigra": 2,
-   "Picea abies": 1
-  },
-  "rapporto_h_chioma_base": 0.585
  }
 }

@@ -70,7 +70,6 @@ def osm():
 
 # ------------------------------------------------------------------------------ fonti
 # ckan: id o nome del dataset su dati.toscana.it; None = lacuna del catalogo, motivata in "lacuna" (T17)
-EPS = "Life Escapos (CC BY-NC 4.0): solo per la verifica interna delle altezze; nessuna ridistribuzione, nessun valore in file versionati."
 def S():
     tp = lambda k: lambda: [chk(f"{k[1]} in area allargata", (n(k[0], k[1]) or 0) > 0, f"{n(k[0], k[1])} oggetti")]
     return {
@@ -175,13 +174,6 @@ def S():
    checks=lambda: [chk("edifici in area allargata", (n("cm_edscol_firenze.gpkg", "edifici_scolastici") or 0) > 0, f"{n('cm_edscol_firenze.gpkg', 'edifici_scolastici')} poligoni"),
                    chk("accessi in area allargata", (n("cm_edscol_firenze.gpkg", "accessi") or 0) > 0, f"{n('cm_edscol_firenze.gpkg', 'accessi')} punti"),
                    chk("gradi coperti", True, "tutti i gradi, dai nidi alle superiori (chiude il dubbio di F01 sulle sole secondarie)")]),
- "escapos": dict(slug="fi_escapos_alberi", title="Life Escapos, alberature pubbliche (solo verifica interna)", publisher="Comune di Firenze (progetto Life Escapos)", ckan="life_escapos_mobile_measurements",
-   res=DG + "json/escapos_tree_census.json", origin="official_download",
-   lic=lic("clear_with_reserve", "CC-BY-NC-4.0", CKAN + "life_escapos_mobile_measurements", "Scheda e risorse del catalogo regionale: CC BY-NC 4.0 (package_show del 2026-10-09).",
-           "Licenza non commerciale: il progetto è svolto per un ente su incarico, quindi l'uso è un'area grigia. Solo verifica interna delle altezze da LiDAR, mai ridistribuito, mai in baseline, nessun valore in file versionati.", use="internal_prototype"),
-   period={"note": "dato dichiarato del 2026-02-12; solo alberi (non le misure fisiologiche di persone)"}, crs={"declared": "EPSG:7791", "vertical_datum": "not_declared", "note": "il GeoJSON dichiara EPSG:7791"},
-   units={"h_m": "m", "dbh_cm": "cm"}, fields=[], fetch=dl("fi_escapos_alberi", DG + "json/escapos_tree_census.json", "escapos_tree_census.json", "application/geo+json", "dato dichiarato del 2026-02-12"),
-   checks=lambda: [chk("provenienza di h_m", False, "non documentata: può derivare dallo stesso LiDAR, non è una validazione indipendente", warn=True), chk("uso", False, EPS, warn=True)]),
     }
 
 def acquire(keys):
@@ -217,19 +209,18 @@ def sources():
     print(len(s), "record di fonte;", sum(1 for t in t17 if t["lacuna"]), "lacune del catalogo")
 
 def baseline(force=False):
-    """Prima baseline di Firenze: ultimo snapshot valido di ogni fonte, tranne Life Escapos (solo verifica interna, mai input dei motori)."""
+    """Prima baseline di Firenze: ultimo snapshot valido di ogni fonte."""
     bid = f"bas_firenze_novoli_{DAY}"; p = ROOT / "pipeline/baselines" / f"{bid}.json"
     if p.exists() and not force:   # congelata: se uno snapshot è stato rifatto (es. il WFS si riscarica a ogni acquire) lo segnala
         diff = [x["snapshot_id"] for x in json.load(open(p))["snapshot"] if json.load(open(SNAP / f"{x['snapshot_id']}.json"))["sha256"] != x["sha256"]]
         return print(f"{p.name} esiste: baseline congelata, usare --force per rifarla" + (f". ATTENZIONE, snapshot diversi dalla baseline: {diff}" if diff else ""))
     snaps = []
     for k, d in S().items():
-        if k == "escapos": continue
         s = json.load(open(SNAP / f"snp_{d['slug']}_{DAY}.json")); assert s["status"] == "ok", s["snapshot_id"]
         snaps.append({"snapshot_id": s["snapshot_id"], "source_id": s["source_id"], "sha256": s["sha256"], "license_state": s["license_state"]})
     p.parent.mkdir(exist_ok=True)
     json.dump({"baseline_id": bid, "version": 1, "frozen_at": lib.now(), "aoi_id": AOI["aoi_id"],
-               "descrizione": "Prima baseline di Firenze Novoli - Firenze Nova (riquadro FP D13, rete con margine di 700 m): snapshot di F03. Life Escapos escluso: snapshot per verifica interna, non input dei motori.",
+               "descrizione": "Prima baseline di Firenze Novoli - Firenze Nova (riquadro FP D13, rete con margine di 700 m): snapshot di F03.",
                "snapshot": snaps}, open(p, "w"), indent=1, ensure_ascii=False)
     print(p.name, len(snaps), "snapshot")
 

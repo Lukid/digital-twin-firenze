@@ -36,10 +36,10 @@ Anteprima storica: `preview/` (superata da `scene/`).
 
 ## Decisioni aperte (dell'utente)
 
-Firenze (D14 del 10 ottobre 2026: chioma LiDAR inclusa nelle ombre, scelte F03-F05 confermate, scena con l'approccio di Padova):
-1. Dati ARPAT: chiedere ad ARPAT il consenso a usare il proxy dell'app "Ambiente in Toscana" (T16). Non serve al POC.
-2. Contatto con Comune di Firenze o DISIT: concorrenza o collaborazione. Non serve al POC.
-3. Prima di aggiungere un remote: togliere da git, anche dalla storia, i due campioni F01 con valori Life Escapos (`docs/audit-firenze/verde/campioni/chm_vs_escapos.csv`, `escapos_vs_censimento.csv`).
+Firenze (D14 e D15 del 10 ottobre 2026: chioma LiDAR nelle ombre, scelte F03-F05 confermate, scena con l'approccio di Padova, Pisa accantonata nel tag `pilota-pisa-z2`, Life Escapos tolto):
+1. Dati ARPAT: usare solo dati con licenza dichiarata (dataset ARPAT su dati.toscana.it, archivio orario se ha licenza). Non serve al POC.
+2. Comune o DISIT: ricerca fatta ([gemelli-firenze.md](research/gemelli-firenze.md)), nessuno copre Novoli in modo verificabile. Decisione dopo il POC.
+3. Prima di aggiungere un remote: ripulire la storia di git dai due CSV Life Escapos tolti il 10 ottobre (restano nel commit di F01).
 
 Pisa (primo pilota, in pausa per D14):
 7. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.

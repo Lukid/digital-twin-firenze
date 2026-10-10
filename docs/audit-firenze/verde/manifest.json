@@ -3,32 +3,24 @@
  "files": [
   {
    "path": "campioni/alberi_FA_primi200.geojson",
-   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, escapos.geojson, siti alberi) e dal DSM/DTM 2023",
+   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, siti alberi) e dal DSM/DTM 2023",
    "data_utc": "2026-10-05T10:14:30Z",
    "bytes": 58461,
    "sha256": "53c7bef669aa7d71d79509926ff34bcb24e7f60cad3d7a8d137f478d57fe8805"
   },
   {
    "path": "campioni/alberi_FB_primi200.geojson",
-   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, escapos.geojson, siti alberi) e dal DSM/DTM 2023",
+   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, siti alberi) e dal DSM/DTM 2023",
    "data_utc": "2026-10-05T10:14:30Z",
    "bytes": 58674,
    "sha256": "1facbf081ad4467fcac1bd331c12938340d442793161c6fbd1c8236fadbf3864"
   },
   {
    "path": "campioni/chm_stats.json",
-   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, escapos.geojson, siti alberi) e dal DSM/DTM 2023",
+   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, siti alberi) e dal DSM/DTM 2023",
    "data_utc": "2026-10-05T10:14:45Z",
    "bytes": 1175,
    "sha256": "9ddef74603ae34959aef7041b8ea1a1aa8c3e62a4ad2c7641c3aa4be49f28303"
-  },
-  {
-   "path": "campioni/chm_vs_escapos.csv",
-   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, escapos.geojson, siti alberi) e dal DSM/DTM 2023",
-   "data_utc": "2026-10-05T10:14:31Z",
-   "bytes": 4943,
-   "sha256": "e69f2573aeacd146142538c4e2f11d091bb58277a6f39e7774c32eb80d640aa5",
-   "licenza_nota": "contiene valori derivati da Life Escapos, licenza CC BY-NC 4.0: solo verifica interna, non ridistribuire"
   },
   {
    "path": "campioni/ckan_pkg_42cd1073-521f-4040-9491-e993d03663a4.json",
@@ -45,23 +37,8 @@
    "sha256": "8b3bcbc406358f1218ea1d0fe4360ee2cca9ae1a5f6f8f0db97eb01ffee17c73"
   },
   {
-   "path": "campioni/ckan_pkg_life_escapos_mobile_measurements.json",
-   "url": "https://dati.toscana.it/api/3/action/package_show?id=life_escapos_mobile_measurements",
-   "data_utc": "2026-10-05T10:14:29Z",
-   "bytes": 8743,
-   "sha256": "42cfce6206bbcb1a31ef1abc048f31a9423e5201b825bb42f3916d5f4e87e7f7"
-  },
-  {
-   "path": "campioni/escapos_vs_censimento.csv",
-   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, escapos.geojson, siti alberi) e dal DSM/DTM 2023",
-   "data_utc": "2026-10-05T10:14:30Z",
-   "bytes": 6233,
-   "sha256": "2a9de0cf6f7321a149b8ea25c736b6202cf2bfc32a86be87fa6a256ae71d9dfb",
-   "licenza_nota": "contiene valori di Life Escapos, licenza CC BY-NC 4.0: solo verifica interna, non ridistribuire"
-  },
-  {
    "path": "campioni/verde_stats.json",
-   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, escapos.geojson, siti alberi) e dal DSM/DTM 2023",
+   "url": "derivato locale (script/*.py) da data/raw/fi_audit_20261001 (alberi.geojson, siti alberi) e dal DSM/DTM 2023",
    "data_utc": "2026-10-05T10:14:30Z",
    "bytes": 5011,
    "sha256": "072b921d57b813c7c37227bedb2bec4ee4322c0a231ae8cfc48ba1269fb68bda"
