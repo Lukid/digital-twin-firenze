@@ -92,6 +92,14 @@ def test_three_in_vendor():
             assert (f.parent / rel).is_file(), f"{f.name} importa {rel}, mancante"
 
 
+def test_mappa_ed_etichette():
+    m, e = carica("mappa"), carica("etichette")
+    assert m["verde"] and m["strade"] and all(len(s["p"]) >= 4 for s in m["strade"])
+    t = [q["t"] for q in e["etichette"]]
+    assert {"Palazzo di Giustizia", "Polo delle Scienze Sociali", "Via di Novoli"} <= set(t) and len(t) == len(set(t))
+    assert "src_osm_firenze" in IDX["livelli"]["etichette"]["fonti"]
+
+
 if __name__ == "__main__":
     for n, f in list(globals().items()):
         if n.startswith("test_"):

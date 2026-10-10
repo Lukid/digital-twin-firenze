@@ -19,13 +19,14 @@ Motivi:
 - Terreno da DTM LiDAR 2023, passo 10 m.
 - Geometrie già nel piano locale in metri.
 - Fonti e limiti scritti nei dati e mostrati nella pagina: titolo, ente, licenza, data di scarico, URL.
+- Resa cartografica (aggiunta il 10 ottobre 2026): terreno chiaro con verde, acqua e strade da OSM dipinti in una texture, tetti in tono terracotta con variazione per edificio, foschia chiara e piano di fondo che fa sfumare il bordo del riquadro, nomi dei luoghi e delle vie principali.
 
 ## Cosa non si riprende
 
 - I 156 riquadri e i due livelli di dettaglio: per 2 km² basta un solo pacchetto.
 - Il formato `.js` con funzione di ricezione: i file sono `.json.gz`, letti con fetch e decompressi dal browser.
 - Edifici con tetti e monumenti modellati: i volumi sono estrusioni con altezza LiDAR.
-- Texture e ortofoto sul terreno.
+- Ortofoto sul terreno: le ortofoto regionali (2016 Consorzio TeA, 2019 e 2022 AGEA, servizio WMS `ows_ofc` della Regione Toscana) sono concesse alla Regione per fini istituzionali e non se ne consente il download (testo del servizio letto il 10 ottobre 2026). Su dati.toscana.it non c'è un'ortofoto aperta di Firenze. L'unica alternativa sarebbe chiamare il WMS dalla pagina, che va contro "la scena non chiede niente alla rete" e resta da decidere.
 - Ricerca per indirizzo, stazioni ambientali, webcam.
 
 ## Piano e coordinate
@@ -41,6 +42,8 @@ Cartella `assets/`. `index.json` elenca per ogni asset file, byte, byte decompre
 - `alberi.json.gz`: un record per albero (x, y, z, h, chioma, imposta, tronco, specie, circonferenza, classi, motivo della stima, intervalli min e max).
 - `rete.json.gz`: tratti della rete pedonale dentro il riquadro (id, nome, tipo, stato del marciapiede, lunghezza, coordinate).
 - `punti.json.gz`: destinazioni e ingressi, fermate tram, scuole, rifugi (con contorno), barriere.
+- `mappa.json.gz`: aree verdi e acqua (anelli di poligoni) dal layer `multipolygons` dell'estratto OSM (`data/raw/osm_firenze/…/*.osm.pbf`, letto con filtro sul riquadro più il margine) e strade dal layer `highway` di `osm_firenze.gpkg`, con larghezza indicativa per classe. La pagina li dipinge in una texture del terreno (4096 px, 2048 sul telefono).
+- `etichette.json.gz`: nomi dei luoghi scelti a mano fra le aree OSM con nome (`LUOGHI` in build.py) e delle vie principali (`VIE`), con posizione nel piano. La pagina li mostra come testo HTML e nasconde quelli che si sovrappongono.
 - `accessibilita.json.gz` e `ombra.json.gz`: presenti solo se esistono i dati di ingresso.
 
 ## Livelli analitici (input GeoJSON EPSG:4326)

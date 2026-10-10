@@ -33,7 +33,8 @@ FP = box(E0, N0, E1, N1)
 
 # livelli della scena: etichetta e fonti (id di pipeline/sources) mostrate nella scheda
 LIVELLI = {
-    "terreno": {"etichetta": "Terreno", "fonti": ["src_fi_dtm2023"]},
+    "terreno": {"etichetta": "Terreno", "fonti": ["src_fi_dtm2023", "src_osm_firenze"]},
+    "etichette": {"etichetta": "Nomi dei luoghi", "fonti": ["src_osm_firenze"]},
     "edifici": {"etichetta": "Edifici", "fonti": ["src_rt_uv_firenze_novoli", "src_fi_dsm2023", "src_fi_dtm2023", "src_osm_firenze"]},
     "alberi": {"etichetta": "Alberi", "fonti": ["src_fi_alberi", "src_fi_dsm2023", "src_fi_dtm2023"]},
     "rete": {"etichetta": "Rete pedonale", "fonti": ["src_osm_firenze"]},
@@ -52,7 +53,9 @@ LIMITI = [
     "Portici e volumi sospesi: nessuna fonte, restano \"ignoto\" e non sono disegnati. I volumi scendono di 1,5 m sotto la quota di base per seguire la pendenza del terreno a 10 m.",
     "Edifici non più presenti nel 2023 (probabili demolizioni) sono disegnati in grigio scuro e segnalati nella scheda.",
     "Alberi: il censimento comunale non riporta altezza né chioma. Altezza e chioma sono misurate dal LiDAR dove ci sono celle sufficienti, altrimenti stimate (classe indicata nella scheda). Il tronco è disegnato con almeno 25 cm di diametro per renderlo visibile.",
-    "Terreno: DTM LiDAR 2023 ricampionato a passo 10 m, senza ortofoto né texture.",
+    "Terreno: DTM LiDAR 2023 ricampionato a passo 10 m. Verde, acqua e strade sono disegnati da OpenStreetMap: larghezze delle strade indicative per classe, non misurate.",
+    "Nessuna ortofoto: le ortofoto regionali 2016, 2019 e 2022 sono concesse alla Regione Toscana per fini istituzionali e non se ne consente il download (verificato il 10 ottobre 2026). Non c'è un'ortofoto con licenza aperta per Firenze.",
+    "Colori degli edifici: tetti in tono terracotta a scopo di lettura, non il colore reale. Tono più scuro per altezza misurata, più chiaro per altezza derivata.",
     "Ombre: sono quelle del motore grafico (sole calcolato per posizione e data), a scopo illustrativo. Non sono un calcolo analitico: gli alberi proiettano chiome piene.",
     "Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
     "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
@@ -64,7 +67,7 @@ USO = {
     "src_fi_dtm2023": "Terreno e quota di base degli alberi",
     "src_fi_dsm2023": "Altezza degli edifici e delle chiome",
     "src_rt_uv_firenze_novoli": "Impronte e volumi degli edifici",
-    "src_osm_firenze": "Rete pedonale, impronte nuove, ingressi",
+    "src_osm_firenze": "Rete pedonale, impronte nuove, ingressi, mappa di base (verde, acqua, strade), nomi dei luoghi",
     "src_fi_alberi": "Alberi pubblici",
     "src_fi_tram_fermate": "Fermate tram",
     "src_fi_scuole_statali": "Scuole statali",
@@ -236,6 +239,87 @@ def punti():
                     "contorno": [c_ for q in poly.exterior.coords for c_ in loc(*q)],
                     "attr": {"Ombreggiatura": f"oltre il {row.percentuale_ombreggi}%", "Ingressi": row.ingresso, "Descrizione": row.descrizione, "Dato del": "2026-06-18"}})
     return out
+
+
+# --- mappa di base: verde, acqua e strade da OSM, dipinti sul terreno dalla pagina ---
+VERDE = {"leisure": {"park", "garden", "pitch", "playground", "dog_park", "recreation_ground"},
+         "landuse": {"grass", "recreation_ground", "allotments", "cemetery", "meadow", "village_green"}, "natural": {"scrub", "wood"}}
+LARGHEZZA = {"primary": 14, "primary_link": 9, "secondary": 12, "secondary_link": 8, "tertiary": 10, "unclassified": 8,
+             "residential": 7, "service": 4.5, "pedestrian": 6, "living_street": 6}   # m, carreggiata indicativa per il disegno
+CAMMINO = {"footway", "cycleway", "path", "steps", "track"}
+
+
+def _osm_aree():
+    snap = json.load(open(ROOT / "pipeline/snapshots/snp_osm_firenze_20261009.json"))
+    x0, y0, x1, y1 = E0 - MARGINE, N0 - MARGINE, E1 + MARGINE, N1 + MARGINE
+    lo0, la0 = to_ll.transform(x0, y0); lo1, la1 = to_ll.transform(x1, y1)
+    d = gpd.read_file(ROOT / snap["local_path"], layer="multipolygons", bbox=(lo0, la0, lo1, la1), engine="pyogrio")
+    return d.set_crs(4326, allow_override=True).to_crs(7791), box(x0, y0, x1, y1)
+
+
+def _anelli(geom):
+    out = []
+    for p in (geom.geoms if geom.geom_type in ("MultiPolygon", "GeometryCollection") else [geom]):
+        if p.geom_type != "Polygon" or p.area < 20:
+            continue
+        p = p.simplify(0.5)
+        out.append([[c for q in ring.coords for c in loc(*q)] for ring in [p.exterior, *p.interiors]])
+    return out
+
+
+def mappa(aree):
+    d, quadro = aree
+    d = d[d.geometry.notna()]
+    verde = d[np.logical_or.reduce([d[k].isin(v) for k, v in VERDE.items() if k in d])]
+    acqua = d[d["natural"] == "water"] if "natural" in d else d.iloc[:0]
+    clip = lambda g: _anelli(g.buffer(0).intersection(quadro))
+    h = gpd.read_file(NORM / "osm_firenze.gpkg", layer="highway").to_crs(7791)
+    h = h[h.intersects(quadro)]
+    strade = []
+    for _, row in h.iterrows():
+        tipo = row.highway
+        w = LARGHEZZA.get(tipo) or (2 if tipo in CAMMINO else None)
+        if not w:
+            continue
+        g = row.geometry.intersection(quadro)
+        for ln in (g.geoms if g.geom_type.startswith("Multi") else [g]):
+            if ln.geom_type == "LineString" and not ln.is_empty:
+                strade.append({"w": w, "c": int(tipo in CAMMINO), "p": [c for q in ln.coords for c in loc(*q)]})
+    poly = lambda df: [a for g in df.geometry for a in clip(g)]
+    return {"n": len(strade), "verde": poly(verde), "acqua": poly(acqua), "strade": strade}
+
+
+# nomi dei luoghi: scelti a mano fra le aree OSM con nome (priorità 1) e le vie principali (priorità 2)
+LUOGHI = {"Palazzo di Giustizia di Firenze": "Palazzo di Giustizia", "Polo delle Scienze Sociali": "Polo delle Scienze Sociali",
+          "Regione Toscana": "Regione Toscana", "Parco Piero Luigi Vigna": "Parco Piero Luigi Vigna",
+          "Mercato Ortofrutticolo di Novoli": "Mercato Ortofrutticolo", "Scuola marescialli e brigadieri dei carabinieri": "Scuola marescialli dei Carabinieri",
+          "PalaMattioli": "PalaMattioli", "Scuola Primaria \"Vamba\"": "Scuola primaria Vamba", "Cimitero di Rifredi": "Cimitero di Rifredi",
+          "Piazza delle Medaglie D'Oro": "Piazza delle Medaglie d'Oro"}
+VIE = ["Viale Alessandro Guidoni", "Via di Novoli", "Via Carlo Del Prete", "Viale della Toscana", "Via Enrico Forlanini",
+       "Via Eugenio Barsanti", "Via Accademia del Cimento", "Via Panciatichi", "Via della Torre degli Agli", "Via Sandro Pertini"]
+
+
+def etichette(aree):
+    d, _ = aree
+    out = []
+    for nome_osm, testo in LUOGHI.items():
+        g = d[d["name"] == nome_osm]
+        if g.empty:
+            continue
+        geom = g.geometry.union_all()
+        if not geom.intersects(FP):
+            continue
+        c = geom.intersection(FP).representative_point()
+        x, z = loc(c.x, c.y)
+        out.append({"t": testo, "x": x, "z": z, "k": 1})
+    h = gpd.read_file(NORM / "osm_firenze.gpkg", layer="highway").to_crs(7791)
+    h = h[h.intersects(FP.buffer(-60)) & h["name"].isin(VIE)]
+    for nome, g in h.groupby("name"):
+        ln = max((q for geom in g.geometry.intersection(FP.buffer(-60)) for q in (geom.geoms if geom.geom_type.startswith("Multi") else [geom])), key=lambda q: q.length)
+        c = ln.interpolate(0.5, normalized=True)
+        x, z = loc(c.x, c.y)
+        out.append({"t": nome, "x": x, "z": z, "k": 2})
+    return {"n": len(out), "etichette": out}
 
 
 # --- livelli analitici (opzionali) ---------------------------------------------
@@ -410,6 +494,9 @@ def main():
               "rete": scrivi(out, "rete.json.gz", rete())}
     pt = punti()
     assets["punti"] = scrivi(out, "punti.json.gz", {"n": len(pt), "punti": pt})
+    aree = _osm_aree()
+    assets["mappa"] = scrivi(out, "mappa.json.gz", mappa(aree))
+    assets["etichette"] = scrivi(out, "etichette.json.gz", etichette(aree))
     analitici = {}
     for k, fn, d in (("accessibilita", accessibilita, a.analysis), ("ombra", ombra, a.shadow), ("scenari", interventi, a.scenarios)):
         obj = fn(d)
