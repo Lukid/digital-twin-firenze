@@ -1,0 +1,76 @@
+{
+ "sun_state_counts": {
+  "ok": 3
+ },
+ "summary": [
+  {
+   "receiver_id": "pth_fi_R01",
+   "caso": "base",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.4572,
+   "shade_fraction_min": 0.4572,
+   "shade_fraction_max": 0.4572,
+   "el_min_deg": 24.3,
+   "el_max_deg": 24.3,
+   "shaded_m_mean": 196.0,
+   "length_m": 428.64,
+   "walk_sun_min_mean": 3.011,
+   "walk_sun_min_min": 3.011,
+   "walk_sun_min_max": 3.011,
+   "walk_total_min": 5.953,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 211.8,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_R01",
+   "caso": "base_h_max",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.4964,
+   "shade_fraction_min": 0.4964,
+   "shade_fraction_max": 0.4964,
+   "el_min_deg": 24.3,
+   "el_max_deg": 24.3,
+   "shaded_m_mean": 212.8,
+   "length_m": 428.64,
+   "walk_sun_min_mean": 2.886,
+   "walk_sun_min_min": 2.886,
+   "walk_sun_min_max": 2.886,
+   "walk_total_min": 5.953,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 220.8,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_R01",
+   "caso": "base_h_min",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.4007,
+   "shade_fraction_min": 0.4007,
+   "shade_fraction_max": 0.4007,
+   "el_min_deg": 24.3,
+   "el_max_deg": 24.3,
+   "shaded_m_mean": 171.8,
+   "length_m": 428.64,
+   "walk_sun_min_mean": 3.303,
+   "walk_sun_min_min": 3.303,
+   "walk_sun_min_max": 3.303,
+   "walk_total_min": 5.953,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 190.8,
+   "stati": [
+    "ok"
+   ]
+  }
+ ]
+}

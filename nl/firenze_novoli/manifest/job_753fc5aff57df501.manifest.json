@@ -1,6 +1,6 @@
 {
- "manifest_id": "man_3a59d92a2988881b",
- "job_id": "job_3a59d92a2988881b",
+ "manifest_id": "man_753fc5aff57df501",
+ "job_id": "job_753fc5aff57df501",
  "tool": "compute_shadow",
  "aoi_id": "aoi_firenze_novoli",
  "baseline_id": "bas_firenze_novoli_20261009",
@@ -44,288 +44,112 @@
     "geometry": {
      "coordinates": [
       [
-       678436.41,
-       4851426.02
+       679141.91,
+       4851036.28
       ],
       [
-       678437.16,
-       4851427.14
+       679144.19,
+       4851040.29
       ],
       [
-       678464.82,
-       4851408.72
+       679144.18,
+       4851040.3
       ],
       [
-       678493.11,
-       4851390.17
+       679145.78,
+       4851039.39
       ],
       [
-       678517.43,
-       4851376.6
+       679149.21,
+       4851047.82
       ],
       [
-       678523.87,
-       4851373.43
+       679150.34,
+       4851049.08
       ],
       [
-       678531.42,
-       4851370.82
+       679152.57,
+       4851051.79
       ],
       [
-       678546.0,
-       4851365.48
+       679165.21,
+       4851067.15
       ],
       [
-       678549.22,
-       4851364.29
+       679180.43,
+       4851085.64
       ],
       [
-       678553.63,
-       4851362.67
+       679186.27,
+       4851092.69
       ],
       [
-       678632.64,
-       4851332.97
+       679207.53,
+       4851114.78
       ],
       [
-       678643.03,
-       4851329.23
+       679211.67,
+       4851119.05
       ],
       [
-       678654.62,
-       4851324.65
+       679216.02,
+       4851123.99
       ],
       [
-       678664.54,
-       4851320.35
+       679221.94,
+       4851130.92
       ],
       [
-       678680.37,
-       4851312.78
+       679222.9,
+       4851131.98
       ],
       [
-       678689.42,
-       4851307.58
+       679235.62,
+       4851146.12
       ],
       [
-       678726.48,
-       4851285.47
+       679239.4,
+       4851150.28
       ],
       [
-       678792.11,
-       4851245.81
+       679241.85,
+       4851153.71
       ],
       [
-       678798.12,
-       4851242.09
+       679255.69,
+       4851174.38
       ],
       [
-       678802.39,
-       4851239.47
+       679261.68,
+       4851183.81
       ],
       [
-       678817.73,
-       4851230.04
+       679265.68,
+       4851189.97
       ],
       [
-       678832.82,
-       4851221.0
+       679270.19,
+       4851198.03
       ],
       [
-       678842.56,
-       4851215.23
+       679282.84,
+       4851230.9
       ],
       [
-       678847.09,
-       4851212.64
+       679284.63,
+       4851235.55
       ],
       [
-       678858.78,
-       4851205.98
+       679286.96,
+       4851241.54
       ],
       [
-       678860.23,
-       4851205.15
+       679290.24,
+       4851242.8
       ],
       [
-       678874.92,
-       4851196.57
-      ],
-      [
-       678879.5,
-       4851197.63
-      ],
-      [
-       678891.34,
-       4851200.37
-      ],
-      [
-       678892.2,
-       4851201.64
-      ],
-      [
-       678893.78,
-       4851203.95
-      ],
-      [
-       678897.22,
-       4851201.92
-      ],
-      [
-       678898.65,
-       4851201.07
-      ],
-      [
-       678898.21,
-       4851198.66
-      ],
-      [
-       678898.29,
-       4851195.75
-      ],
-      [
-       678898.71,
-       4851193.36
-      ],
-      [
-       678899.39,
-       4851190.45
-      ],
-      [
-       678944.08,
-       4851163.92
-      ],
-      [
-       678950.4,
-       4851160.03
-      ],
-      [
-       678950.97,
-       4851161.07
-      ],
-      [
-       678951.87,
-       4851163.22
-      ],
-      [
-       679002.1,
-       4851133.58
-      ],
-      [
-       679003.91,
-       4851132.52
-      ],
-      [
-       679033.37,
-       4851140.64
-      ],
-      [
-       679041.45,
-       4851139.12
-      ],
-      [
-       679053.58,
-       4851137.48
-      ],
-      [
-       679056.98,
-       4851137.39
-      ],
-      [
-       679060.73,
-       4851137.29
-      ],
-      [
-       679076.54,
-       4851136.31
-      ],
-      [
-       679090.56,
-       4851136.13
-      ],
-      [
-       679098.63,
-       4851136.62
-      ],
-      [
-       679105.84,
-       4851137.47
-      ],
-      [
-       679111.25,
-       4851138.93
-      ],
-      [
-       679116.46,
-       4851141.13
-      ],
-      [
-       679121.89,
-       4851144.24
-      ],
-      [
-       679126.02,
-       4851146.53
-      ],
-      [
-       679130.69,
-       4851149.46
-      ],
-      [
-       679134.18,
-       4851152.45
-      ],
-      [
-       679148.34,
-       4851143.68
-      ],
-      [
-       679152.99,
-       4851141.74
-      ],
-      [
-       679164.27,
-       4851157.81
-      ],
-      [
-       679179.96,
-       4851184.64
-      ],
-      [
-       679185.32,
-       4851195.47
-      ],
-      [
-       679197.29,
-       4851222.77
-      ],
-      [
-       679206.22,
-       4851248.53
-      ],
-      [
-       679210.36,
-       4851247.21
-      ],
-      [
-       679213.08,
-       4851255.45
-      ],
-      [
-       679223.39,
-       4851252.63
-      ],
-      [
-       679224.18,
-       4851255.89
-      ],
-      [
-       679278.5,
-       4851239.84
-      ],
-      [
-       679290.1,
-       4851244.74
+       679293.05,
+       4851242.48
       ],
       [
        679293.36,
@@ -348,16 +172,12 @@
        4851238.33
       ],
       [
-       679429.49,
-       4851232.45
+       679406.01,
+       4851255.68
       ],
       [
-       679430.89,
-       4851233.7
-      ],
-      [
-       679432.84,
-       4851231.53
+       679392.69,
+       4851254.78
       ]
      ],
      "type": "LineString"
@@ -425,92 +245,92 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T11:20:28Z",
-  "finished_at": "2026-10-10T11:20:38Z",
-  "duration_s": 9.85
+  "started_at": "2026-10-10T12:41:45Z",
+  "finished_at": "2026-10-10T12:41:48Z",
+  "duration_s": 2.27
  },
  "metrics": [
   {
    "metric_id": "pth_fi_r01_tutti_shade_fraction_base",
    "label": "Frazione ombreggiata, edifici documentati",
-   "value": 0.0424,
+   "value": 0.5081,
    "unit": "1",
    "classification": "derived",
    "scope": "pth_fi_R01, 2026-07-15, fascia tutti, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.0404,
-    "high": 0.0449,
+    "low": 0.4827,
+    "high": 0.5103,
     "basis": "sensibilità altezze: intervallo h_min/h_max di F05 (±0,5 m, fino a ±1,88 m dove LiDAR e UV differiscono molto)"
    }
   },
   {
    "metric_id": "pth_fi_r01_tutti_shade_fraction_alberi",
    "label": "Frazione ombreggiata, edifici + chiome idealizzate",
-   "value": 0.0646,
+   "value": 0.5081,
    "unit": "1",
    "classification": "estimated",
    "scope": "pth_fi_R01, 2026-07-15, fascia tutti, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.0451,
-    "high": 0.0982,
+    "low": 0.5081,
+    "high": 0.5081,
     "basis": "chiome min/tipico/max del censimento alberi: altezza e diametro misurati dal LiDAR dove possibile, imposta sempre stimata"
    }
   },
   {
    "metric_id": "pth_fi_r01_tutti_shade_fraction_veg",
    "label": "Frazione ombreggiata, edifici + alberi + vegetazione LiDAR",
-   "value": 0.0729,
+   "value": 0.5126,
    "unit": "1",
    "classification": "estimated",
    "scope": "pth_fi_R01, 2026-07-15, fascia tutti, centerline, chioma tipica e vegetazione LiDAR tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 0.0486,
-    "high": 0.1094,
+    "low": 0.5125,
+    "high": 0.5126,
     "basis": "alberi min/tipico/max con vegetazione LiDAR a imposta 0,4/0,25/0,15 di h95: ipotesi dichiarate"
    }
   },
   {
    "metric_id": "pth_fi_r01_tutti_walk_sun_min_base",
    "label": "Minuti al sole camminando, edifici documentati",
-   "value": 15.96,
+   "value": 3.025,
    "unit": "min",
    "classification": "derived",
    "scope": "pth_fi_R01, 2026-07-15, fascia tutti, centerline",
    "uncertainty": {
     "kind": "interval",
-    "low": 15.835,
-    "high": 16.001,
+    "low": 2.914,
+    "high": 3.081,
     "basis": "sensibilità altezze: intervallo h_min/h_max di F05 (±0,5 m, fino a ±1,88 m dove LiDAR e UV differiscono molto)"
    }
   },
   {
    "metric_id": "pth_fi_r01_tutti_walk_sun_min_alberi",
    "label": "Minuti al sole camminando, edifici + chiome idealizzate",
-   "value": 15.571,
+   "value": 3.025,
    "unit": "min",
    "classification": "estimated",
    "scope": "pth_fi_R01, 2026-07-15, fascia tutti, centerline, chioma tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 15.057,
-    "high": 15.918,
+    "low": 3.025,
+    "high": 3.025,
     "basis": "chiome min/tipico/max del censimento alberi: altezza e diametro misurati dal LiDAR dove possibile, imposta sempre stimata"
    }
   },
   {
    "metric_id": "pth_fi_r01_tutti_walk_sun_min_veg",
    "label": "Minuti al sole camminando, edifici + alberi + vegetazione LiDAR",
-   "value": 15.418,
+   "value": 3.011,
    "unit": "min",
    "classification": "estimated",
    "scope": "pth_fi_R01, 2026-07-15, fascia tutti, centerline, chioma tipica e vegetazione LiDAR tipica",
    "uncertainty": {
     "kind": "interval",
-    "low": 14.877,
-    "high": 15.862,
+    "low": 3.011,
+    "high": 3.011,
     "basis": "alberi min/tipico/max con vegetazione LiDAR a imposta 0,4/0,25/0,15 di h95: ipotesi dichiarate"
    }
   }

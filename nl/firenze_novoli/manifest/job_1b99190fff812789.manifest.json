@@ -1,6 +1,6 @@
 {
- "manifest_id": "man_9f699200363c4cf0",
- "job_id": "job_9f699200363c4cf0",
+ "manifest_id": "man_1b99190fff812789",
+ "job_id": "job_1b99190fff812789",
  "tool": "compare_scenarios",
  "aoi_id": "aoi_firenze_novoli",
  "baseline_id": "bas_firenze_novoli_20261009",
@@ -101,7 +101,7 @@
   "context": "con_vegetazione_lidar",
   "method_version": "0.2.0",
   "ombre_version": "0.3.0",
-  "baseline_record_sha256": "0887f5c6b5806be7d2fb1d3dee6eab580d2508961f8ad4a769aea57a8976cb91"
+  "baseline_record_sha256": "0429d03972b3530c8d6e0d95930a7431972176e2cf5b403187984677142bfe9c"
  },
  "method": {
   "name": "scenario_comparison",
@@ -112,9 +112,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T11:21:28Z",
-  "finished_at": "2026-10-10T11:21:31Z",
-  "duration_s": 2.99
+  "started_at": "2026-10-10T12:41:23Z",
+  "finished_at": "2026-10-10T12:41:26Z",
+  "duration_s": 3.07
  },
  "metrics": [
   {

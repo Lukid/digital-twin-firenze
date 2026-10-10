@@ -1,10 +1,10 @@
 {
- "job_id": "job_bf84e0b217b3b0b3",
+ "job_id": "job_02cd1ccb6536bad1",
  "tool": "compare_scenarios",
  "status": "succeeded",
- "created_at": "2026-10-10T11:21:57Z",
- "started_at": "2026-10-10T11:21:57Z",
- "finished_at": "2026-10-10T11:21:59Z",
+ "created_at": "2026-10-10T12:42:32Z",
+ "started_at": "2026-10-10T12:42:32Z",
+ "finished_at": "2026-10-10T12:42:35Z",
  "inputs": {
   "baseline_id": "bas_firenze_novoli_20261009",
   "snapshot_ids": [
@@ -30,14 +30,14 @@
    "scn_fi_s2_pensilina_attesa_polo"
   ],
   "scenario_sha256": [
-   "16172e8e065c80b004a14ded49f409f717f8ccc7ed064c9029f99c2aabbd3490",
+   "321c0f4fca1cff0b5187925640615fb9cfb5054f42848d29611ffde88e142785",
    "0106b04b2cb05639d2165df369d1a96d95faac2f9fecfe066af42a25c50232a4"
   ],
   "with_variants": true,
   "context": "con_vegetazione_lidar",
   "method_version": "0.2.0",
   "ombre_version": "0.3.0",
-  "baseline_record_sha256": "0887f5c6b5806be7d2fb1d3dee6eab580d2508961f8ad4a769aea57a8976cb91"
+  "baseline_record_sha256": "0429d03972b3530c8d6e0d95930a7431972176e2cf5b403187984677142bfe9c"
  },
  "limits": {
   "max_area_km2": 4,
@@ -49,5 +49,5 @@
   "fraction": 1.0,
   "message": "completato"
  },
- "result_manifest_id": "man_bf84e0b217b3b0b3"
+ "result_manifest_id": "man_02cd1ccb6536bad1"
 }

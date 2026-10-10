@@ -1,14 +1,13 @@
 {
- "job_id": "job_95ac09c7726dff17",
+ "job_id": "job_abb376dcab1e8361",
  "tool": "compute_shadow",
  "status": "succeeded",
- "created_at": "2026-10-10T11:20:43Z",
- "started_at": "2026-10-10T11:20:43Z",
- "finished_at": "2026-10-10T11:20:46Z",
+ "created_at": "2026-10-10T12:40:59Z",
+ "started_at": "2026-10-10T12:40:59Z",
+ "finished_at": "2026-10-10T12:41:00Z",
  "inputs": {
   "baseline_id": "bas_firenze_novoli_20261009",
   "snapshot_ids": [
-   "snp_fi_alberi_20261009",
    "snp_fi_dsm2023_20261009",
    "snp_fi_dtm2023_20261009",
    "snp_osm_firenze_20261009",
@@ -18,101 +17,45 @@
  "params": {
   "receivers": [
    {
-    "receiver_id": "pth_fi_R02",
+    "receiver_id": "pth_fi_R01",
     "kind": "path",
     "geometry": {
      "coordinates": [
       [
-       678889.94,
-       4851182.54
+       679141.91,
+       4851036.28
       ],
       [
-       678892.24,
-       4851186.48
+       679144.19,
+       4851040.29
       ],
       [
-       678896.98,
-       4851183.72
+       679144.18,
+       4851040.3
       ],
       [
-       678904.13,
-       4851179.54
+       679145.78,
+       4851039.39
       ],
       [
-       678963.42,
-       4851143.76
+       679149.21,
+       4851047.82
       ],
       [
-       678974.82,
-       4851137.13
+       679150.34,
+       4851049.08
       ],
       [
-       679083.45,
-       4851073.84
+       679152.57,
+       4851051.79
       ],
       [
-       679085.34,
-       4851073.67
+       679165.21,
+       4851067.15
       ],
       [
-       679086.49,
-       4851073.65
-      ],
-      [
-       679088.1,
-       4851073.76
-      ],
-      [
-       679090.37,
-       4851074.04
-      ],
-      [
-       679092.34,
-       4851074.44
-      ],
-      [
-       679093.95,
-       4851074.75
-      ],
-      [
-       679095.46,
-       4851075.18
-      ],
-      [
-       679098.94,
-       4851076.97
-      ],
-      [
-       679100.27,
-       4851077.76
-      ],
-      [
-       679103.19,
-       4851079.37
-      ],
-      [
-       679116.66,
-       4851071.19
-      ],
-      [
-       679120.68,
-       4851068.84
-      ],
-      [
-       679150.26,
-       4851053.48
-      ],
-      [
-       679162.99,
-       4851068.75
-      ],
-      [
-       679182.06,
-       4851091.63
-      ],
-      [
-       679184.1,
-       4851094.06
+       679180.43,
+       4851085.64
       ],
       [
        679186.27,
@@ -207,16 +150,12 @@
        4851238.33
       ],
       [
-       679429.49,
-       4851232.45
+       679406.01,
+       4851255.68
       ],
       [
-       679430.89,
-       4851233.7
-      ],
-      [
-       679432.84,
-       4851231.53
+       679392.69,
+       4851254.78
       ]
      ],
      "type": "LineString"
@@ -224,29 +163,23 @@
    }
   ],
   "when": {
-   "date": "2026-09-15",
+   "date": "2026-10-25",
    "timezone": "Europe/Rome",
    "times": [
-    "12:30"
+    "14:30"
    ]
   },
   "method": {
    "name": "geometric_ray",
    "space_step_m": 1,
    "time_step_min": 5,
-   "obstacles": "buildings_and_trees"
+   "obstacles": "documented_buildings_only"
   },
   "walk_speed_m_s": 1.2,
   "casi": [
    "base",
    "base_h_min",
-   "base_h_max",
-   "alberi_min",
-   "alberi_tipico",
-   "alberi_max",
-   "veg_lidar_min",
-   "veg_lidar_tipico",
-   "veg_lidar_max"
+   "base_h_max"
   ],
   "fasce": [],
   "el_min_deg": 5.0,
@@ -262,18 +195,7 @@
   },
   "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni",
   "demolizioni": "volumi con presente_2023 falso (demolizione probabile da LiDAR 2023) esclusi",
-  "method_version": "0.3.0",
-  "vegetazione_lidar": {
-   "forma": "prisma opaco sull'impronta del cluster",
-   "z_hi": "h95 del CHM nel cluster",
-   "z_lo_frazione_di_h95": {
-    "veg_lidar_min": 0.4,
-    "veg_lidar_tipico": 0.25,
-    "veg_lidar_max": 0.15
-   },
-   "esclusi": "cluster liscia (probabili tetti non mappati)",
-   "poligoni_sha256": "7539e722d1c5e420395402f3f31126fca7f97faa8cc08ad86bd6db664b3a6998"
-  }
+  "method_version": "0.3.0"
  },
  "limits": {
   "max_area_km2": 4,
@@ -285,5 +207,5 @@
   "fraction": 1.0,
   "message": "completato"
  },
- "result_manifest_id": "man_95ac09c7726dff17"
+ "result_manifest_id": "man_abb376dcab1e8361"
 }
