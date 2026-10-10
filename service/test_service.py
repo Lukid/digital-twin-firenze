@@ -137,16 +137,72 @@ assert replay.replay(s1["job_id"])["match"] and replay.replay(sv["job_id"])["mat
 rp = replay.replay(r4["job_id"]); assert rp["match"] and rp["metrics_compared"] > 10, rp
 rp = replay.replay("job_90ef3449d76b161a"); assert rp["match"], rp
 
-# 9. scenari e confronto: solo se scenarios/ è già portato su Firenze (nuovi id scn_fi_*, file in scenarios/firenze_novoli/)
+# 9. scenari e confronto (scenarios/ portato su Firenze in F08: id scn_fi_*, file in scenarios/firenze_novoli/; il confronto usa i job in cache di F08, altrimenti alcuni minuti)
+import copy
 SCN_DIR = HERE.parent / "scenarios" / "firenze_novoli"
-if SCN_DIR.is_dir() and any(SCN_DIR.glob("scn_fi_*.json")):
-    ids = sorted(p.stem for p in SCN_DIR.glob("scn_fi_*.json"))
-    cs = run("compare_scenarios", {"baseline_id": BAS, "scenario_ids": ids[:2]})
-    assert err_code(cs) is None or err_code(cs) in ("incompatible_baseline", "unknown_id", "invalid_params", "outside_capability"), cs
-    if err_code(cs) is None: assert core.validate("compare_scenarios", "output", cs) == [] and cs["deltas"], cs
-    print("scenari Firenze presenti:", ids[:2], "->", err_code(cs) or "confronto ok")
-else:
-    print("SALTATI: casi degli scenari (create_local_scenario, compare_scenarios con scenario_ids, compute_shadow con scenario_id): mancano i file scn_fi_*.json in scenarios/firenze_novoli/")
+FILARE, PENSILINA = "scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"
+assert (SCN_DIR / f"{FILARE}.json").exists() and (SCN_DIR / f"{PENSILINA}.json").exists(), "mancano i file degli scenari di F08 in scenarios/firenze_novoli/"
+from jsonschema import Draft202012Validator
+sch, reg = core._registry()
+valida_man = lambda m: [e.message for e in Draft202012Validator({"$ref": sch["manifest.schema.json"]["$id"]}, registry=reg).iter_errors(m)]
+op0 = json.loads((SCN_DIR / f"{FILARE}.json").read_text())["operations"][0]
+ALBERO = {"baseline_id": BAS, "scenario_title": "Un albero di prova del servizio", "operations": [op0]}
+sc1 = run("create_local_scenario", ALBERO)
+assert sc1["version"] == 1 and sc1["scenario_id"].startswith("scn_fi_") and sc1["cached"] is False and core.validate("create_local_scenario", "output", sc1) == [], sc1
+assert set(sc1["feasibility"].values()) == {"ignota"} and sc1["interventions"]["alberi"] == 1
+sc1b = run("create_local_scenario", dict(reversed(list(ALBERO.items()))))
+assert sc1b["scenario_id"] == sc1["scenario_id"] and sc1b["cached"] is True   # stesso input = stesso scenario
+assert err_code(run("create_local_scenario", {**ALBERO, "baseline_id": "bas_altra"})) == "incompatible_baseline"
+nullo = run("create_local_scenario", {"baseline_id": BAS, "scenario_title": "Scenario senza interventi", "operations": []})
+assert nullo["interventions"]["alberi"] == 0 and core.validate("create_local_scenario", "output", nullo) == []
+bad = copy.deepcopy(ALBERO); bad["operations"][0]["hypothesis_status"] = "feasibility_checked"
+assert err_code(run("create_local_scenario", bad)) == "invalid_params"   # la fattibilità non è mai verificata qui
+# ombra con scenario: 9 casi, edifici documentati sommati agli interventi
+ST = {**SH, "method": {**SH["method"], "obstacles": "buildings_and_scenario"}, "scenario_id": sc1["scenario_id"]}
+ps = run("compute_shadow", ST)
+assert ps["status"] == "succeeded" and ps["cached"] is False and ps["scenario_id"] == sc1["scenario_id"] and core.validate("compute_shadow", "output", ps) == [], ps
+assert len(ps["cases"]) == 9 and ps["cases"][-1] == "veg_lidar_max" and ps["job_id"] != sv["job_id"]
+ps2 = run("compute_shadow", ST); assert ps2["cached"] is True and ps2["job_id"] == ps["job_id"] and strip(ps2) == strip(ps)
+assert valida_man(run("get_result_manifest", {"job_id": ps["job_id"]})) == []
+assert err_code(run("compute_shadow", {**ST, "scenario_id": "scn_fi_inesistente"})) == "unknown_id"
+r = run("compute_shadow", {**ST, "scenario_id": "scn_fi_inesistente"}); assert all(c.startswith("scn_fi_") for c in r["error"]["candidates"])
+nz = run("compute_shadow", {**ST, "scenario_id": nullo["scenario_id"]})   # scenario nullo = motore senza scenario (stessi 9 casi)
+sv9 = run("compute_shadow", {**SH, "method": {**SH["method"], "obstacles": "buildings_trees_and_lidar_vegetation"}})
+assert {m["metric_id"]: m["value"] for m in nz["headline_metrics"]} == {m["metric_id"]: m["value"] for m in sv9["headline_metrics"]}
+assert replay.replay(ps["job_id"])["match"]
+# compare_scenarios, forma 1: delta fra manifest di compute_shadow (stessi 9 casi)
+cmp1 = run("compare_scenarios", {"manifest_ids": [nz["result_manifest_id"], ps["result_manifest_id"]], "metric_ids": ["shade_fraction"]})
+assert core.validate("compare_scenarios", "output", cmp1) == [] and cmp1["incompatibilities"] == [] and cmp1["deltas"] and cmp1["job_id"].startswith("job_"), cmp1
+assert all(d["delta_low"] <= d["delta"] <= d["delta_high"] for d in cmp1["deltas"]) and valida_man(run("get_result_manifest", {"job_id": cmp1["job_id"]})) == []
+assert run("compare_scenarios", {"manifest_ids": [nz["result_manifest_id"], ps["result_manifest_id"]], "metric_ids": ["shade_fraction"]})["cached"] is True
+cz = run("compare_scenarios", {"manifest_ids": [nz["result_manifest_id"], sv9["result_manifest_id"]], "metric_ids": ["shade_fraction"]})
+assert cz["deltas"] and all(abs(d["delta"]) <= 1e-6 and d["discriminates"] is False for d in cz["deltas"]), cz   # nullo contro motore senza scenario: delta zero
+other = run("compute_shadow", {**ST, "when": {**ST["when"], "date": "2026-07-15"}})
+r = run("compare_scenarios", {"manifest_ids": [nz["result_manifest_id"], other["result_manifest_id"]], "metric_ids": ["shade_fraction"]})
+assert err_code(r) == "incompatible_baseline" and "when" in r["error"]["message"], r   # condizioni non comuni: respinto
+assert err_code(run("compare_scenarios", {"manifest_ids": [nz["result_manifest_id"], "man_0000000000000000"], "metric_ids": ["shade_fraction"]})) == "unknown_id"
+# compare_scenarios, forma 2: scenari dimostrativi di F08, per data e contesto (base principale: vegetazione LiDAR)
+CS = {"baseline_id": BAS, "scenario_ids": [FILARE, PENSILINA]}
+mc = run("compare_scenarios", CS)
+assert core.validate("compare_scenarios", "output", mc) == [] and mc["cached"] is False and mc["incompatibilities"] == [] and "ranking" not in mc, mc.get("error")
+assert mc["deltas"] and set(mc["scenarios"]) == set(CS["scenario_ids"]) and mc["params"]["context"] == "con_vegetazione_lidar" and list(mc["common_conditions"]["contesti"]) == ["con_vegetazione_lidar"]
+assert all(m.endswith("_lidar") for m in (d["metric_id"] for d in mc["deltas"]))
+for sid in CS["scenario_ids"]:
+    e = mc["scenarios"][sid]; assert e["stato"] == "confrontato" and set(e["fattibilita"].values()) == {"ignota"} and e["accessibilita"]["nullo"] is True
+    assert set(e["percorsi"]) == {"2026-07-15", "2026-09-15"} and set(e["percorsi"]["2026-07-15"]) == {"con_vegetazione_lidar"}
+assert any(d["metric_id"].startswith("sc1_r01_0715_punta_sun_min") and d["delta"] < 0 and d["discriminates"] for d in mc["deltas"])   # il filare toglie sole su R01 a luglio
+assert any(d["metric_id"].startswith("sc2_attesa_") for d in mc["deltas"])
+txt = " ".join(l["text"] for l in mc["limits"]); assert "civici" in txt and "non sono persone" in txt
+mc2 = run("compare_scenarios", CS); assert mc2["cached"] is True and mc2["job_id"] == mc["job_id"]
+assert valida_man(run("get_result_manifest", {"job_id": mc["job_id"]})) == []
+me = run("compare_scenarios", {**CS, "context": "entrambi", "with_variants": False})   # tutti e tre i contesti
+assert core.validate("compare_scenarios", "output", me) == [] and me["job_id"] != mc["job_id"], me.get("error")
+assert {d["metric_id"].rsplit("_", 1)[1] for d in me["deltas"]} == {"edifici", "alb", "lidar"}
+assert err_code(run("compare_scenarios", {**CS, "context": "tutti"})) == "invalid_params"
+assert err_code(run("compare_scenarios", {**CS, "weights": {"punteggio_unico": 1}})) == "invalid_params"
+assert err_code(run("compare_scenarios", {**CS, "weights": {"area_attesa_ombra_mezzogiorno": 1}})) == "outside_capability"   # nessun ordinamento: indicatori separati
+assert err_code(run("compare_scenarios", {**CS, "scenario_ids": ["scn_fi_inesistente"]})) == "unknown_id"
+assert err_code(run("compare_scenarios", {**CS, "baseline_id": "bas_altra"})) == "incompatible_baseline"
 
 # 10. nessun riferimento a Pisa o a Z2 in nessuna risposta
 testo = json.dumps(RISPOSTE, ensure_ascii=False).lower()

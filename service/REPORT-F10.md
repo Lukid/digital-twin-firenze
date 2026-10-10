@@ -1,6 +1,6 @@
 # F10: servizio di analisi e MCP su Firenze Novoli
 
-Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` (circa 9 s, TUTTO OK). Non validato sul posto.
+Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` (circa 16 s con la cache degli scenari, TUTTO OK). Non validato sul posto.
 
 ## Cosa è cambiato
 
@@ -15,12 +15,24 @@ Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` 
 - Server MCP rinominato `dt-firenze`. Tool e nomi invariati.
 - Ombra: nuova opzione `obstacles = buildings_trees_and_lidar_vegetation` (edifici, alberi censiti e vegetazione LiDAR, D14), con 9 casi. Estensione additiva di `contracts/schemas/mcp.schema.json`.
 - Replay: porta `aoi_id` nelle origini e i casi dell'ombra dal manifest.
-- Scenari: `create_local_scenario` e `compare_scenarios` chiamano `scenarios/` in modo generico. Aree di attesa lette per chiave `area_attesa_*`. Alternative proposte negli errori: solo `scn_fi_*`.
+- Scenari: `create_local_scenario` e `compare_scenarios` usano `scenarios/` di F08 (id `scn_fi_*`, file in `scenarios/firenze_novoli/`). Le alternative negli errori sono solo `scn_fi_*`.
+- `compute_shadow` con `scenario_id` (`obstacles = buildings_and_scenario`) calcola sempre i 9 casi (edifici, alberi censiti, vegetazione LiDAR, ognuno con centrale e due estremi).
 
 ## Tool MCP (9, stessi nomi)
 
 - `list_approved_sources`, `inspect_dataset`, `list_destinations`, `compute_walk_access`, `compute_shadow`, `get_job_status`, `get_result_manifest`, `create_local_scenario`, `compare_scenarios`.
 - `additionalProperties: false` su tutti gli input. Errori con `isError=true` e codice (`invalid_params`, `unknown_id`, `ambiguous_destination`, `outside_capability`, `limit_exceeded`, `incompatible_baseline`).
+
+## Confronto di scenari
+
+- Con `manifest_ids` e `metric_ids`: delta fra manifest di `compute_shadow` con condizioni comuni.
+- Con `baseline_id` e `scenario_ids`: confronto con la baseline S0 per data (15 luglio e 15 settembre) e per contesto.
+  - `context`: `con_vegetazione_lidar` (default, base principale, D14), `solo_edifici`, `con_alberi_esistenti`, `entrambi` (tutti e tre).
+  - `deltas`: minuti al sole e frazione d'ombra su R01 e R02, per fascia, più l'area di attesa del Polo, con intervallo dai casi estremi del contesto. Il `metric_id` finisce con `_edifici`, `_alb` o `_lidar`.
+  - `scenarios`: segnalazioni, fattibilità ignota, archi più usati pesati per civici, accessibilità (delta zero per costruzione), fasce utili su R01, robustezza alle varianti di S1, sovrapposizioni con gli alberi esistenti.
+  - Nessun punteggio unico e nessun ordinamento: con `weights` risponde `outside_capability`.
+  - Usa i job in cache di F08 (`data/norm/firenze_novoli/scenarios/jobs`). Senza cache ogni job richiede alcuni minuti; il servizio non li lancia in parallelo (il pool di processi si rompe su macOS quando è chiamato dal servizio).
+- Esempio: `service/.venv/bin/python service/cli.py compare_scenarios '{"baseline_id":"bas_firenze_novoli_20261009","scenario_ids":["scn_fi_s1_filare_r01","scn_fi_s2_pensilina_attesa_polo"]}'`
 
 ## Destinazioni e alias
 
@@ -72,6 +84,7 @@ service/.venv/bin/python service/cli.py compute_shadow '{"baseline_id":"bas_fire
 - Replay di job nuovi e storici.
 - Nessuna stringa "Pisa", "Z2", "Pellico" o "Battisti" nelle risposte, nei manifest e negli schemi mostrati al client.
 - Server MCP avviato con un client stdio reale (`dt-firenze`, 9 tool).
+- Scenari provati con i file di F08: creazione, ombra con scenario (9 casi), confronto per manifest e per scenari, contesti, pesi non ammessi, errori.
 
 ## Limiti
 
@@ -81,4 +94,6 @@ service/.venv/bin/python service/cli.py compute_shadow '{"baseline_id":"bas_fire
 - Il `job_id` dell'accessibilità è previsto prima del calcolo replicando i parametri di `analysis/accessibilita.py`: se cambiano, va aggiornato `core._prevedi_job_id` (un assert lo segnala).
 - Ricevitori dell'ombra solo da percorso campione o geometria esplicita, sull'asse della rete.
 - Il `.pth` del venv usa un percorso assoluto.
+- Risultati degli scenari `not_validated_locally`: interventi ipotetici, fattibilità ignota.
+- Il confronto per scenari non produce `indicators` né `ranking` (F08 ha tolto `indicatori()`, `ordina()` e `sensibilita_pesi()`). Nel riepilogo solo R01 e R02; l'andamento per ora è in `scenarios/firenze_novoli/confronto.json`.
 - `nl/` (verifica in linguaggio naturale) resta di Pisa. Per Firenze servono nuove domande e registro (Polo, Vamba, T2, R01/R02, scenari `scn_fi_*`), confronto con le mappe di `analysis/firenze_novoli/` e `shadow/firenze_novoli/`, nome del server `dt-firenze`.

@@ -1078,9 +1078,10 @@
        "enum": [
         "solo_edifici",
         "con_alberi_esistenti",
-        "entrambi"
+        "entrambi",
+        "con_vegetazione_lidar"
        ],
-       "description": "Contesto delle ombre: solo_edifici (baseline: edifici documentati, default), con_alberi_esistenti (edifici + alberi esistenti T05 a chioma tipica, min e max come intervallo) o entrambi (delta in tutti e due i contesti, metriche del secondo con suffisso _alb). Ombra unione: il beneficio di un albero nuovo con alberi esistenti non supera quello a soli edifici."
+       "description": "Contesto delle ombre. Per Firenze: con_vegetazione_lidar (default, base di confronto principale: edifici, alberi censiti e vegetazione LiDAR), solo_edifici, con_alberi_esistenti (edifici e alberi censiti a chioma tipica, min e max come intervallo) o entrambi (tutti e tre i contesti). Nei metric_id il contesto è il suffisso _edifici, _alb o _lidar."
       }
      }
     }
