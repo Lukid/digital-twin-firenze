@@ -55,7 +55,16 @@ for bad in ({**A, "sql": "select 1"}, {**A, "profile": {"speed_m_s": 12}}, {**A,
     assert err_code(run("compute_walk_access", bad)) == "invalid_params", bad
 assert err_code(run("compute_walk_access", {**A, "entrance_ids": ["ent_gtfs_fm9056"]})) == "invalid_params"   # ingresso di un'altra destinazione
 assert err_code(run("compute_walk_access", {**A, "destination_ids": ["dst_school_inesistente"]})) == "unknown_id"
-assert err_code(run("compute_walk_access", {**A, "destination_ids": [POLO, T_REG]})) == "limit_exceeded"
+# più destinazioni = almeno una: ogni civico prende la più vicina, quindi la quota non scende sotto quella delle singole
+due = run("compute_walk_access", {**A, "destination_ids": [T_REG, POLO]}); assert due["status"] == "succeeded" and core.validate("compute_walk_access", "output", due) == [], due
+assert due["params"]["destination_ids"] == sorted([POLO, T_REG]) and any(l["code"] == "almeno_una_destinazione" for l in due["limits"])
+hm = lambda r, k: next(m["value"] for m in r["headline_metrics"] if m["metric_id"] == k)
+reg = run("compute_walk_access", {**A, "destination_ids": [T_REG]})
+for k in ("served_count_10min", "served_share_10min"): assert hm(due, k) >= max(hm(r1, k), hm(reg, k)), k
+assert hm(r1, "served_count_10min") == round(hm(r1, "served_share_10min") * hm(r1, "origins_total"))   # conteggio dei civici raggiunti, coerente con la quota
+assert err_code(run("compute_walk_access", {**A, "destination_ids": [POLO, T_REG], "entrance_ids": ["ent_gtfs_fm9055"]})) == "invalid_params"   # ingresso fuori dalle destinazioni chieste
+sc = run("list_scenarios", {}); assert core.validate("list_scenarios", "output", sc) == [] and {"scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"} <= {x["scenario_id"] for x in sc["scenarios"]}, sc
+assert err_code(run("list_scenarios", {"baseline_id": "bas_altra"})) == "incompatible_baseline"
 assert err_code(run("compute_walk_access", {**A, "origins": {"kind": "grid", "aoi_id": AOI, "spacing_m": 20}})) == "outside_capability"
 assert err_code(run("compute_walk_access", {**A, "origins": {"kind": "address_points", "aoi_id": "aoi_altra"}})) == "outside_capability"
 assert err_code(run("compute_walk_access", {**A, "baseline_id": "bas_altra"})) == "incompatible_baseline"
@@ -227,7 +236,7 @@ async def mcp_test():
             init = await s.initialize()
             assert init.serverInfo.name == "dt-firenze" and "Firenze" in init.instructions and "pisa" not in init.instructions.lower()
             tools = {t.name: t for t in (await s.list_tools()).tools}
-            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios"}
+            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios"}
             assert all(t.inputSchema.get("additionalProperties") is False for t in tools.values())   # niente campi liberi (SQL, codice)
             assert not any(w in json.dumps([t.model_dump() for t in tools.values()]).lower() for w in ("pisa", "z2", "pellico"))
             res = await s.call_tool("compute_walk_access", A)

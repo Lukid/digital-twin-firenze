@@ -67,8 +67,8 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T11:56:38Z",
-  "finished_at": "2026-10-10T11:56:39Z",
+  "started_at": "2026-10-10T13:12:20Z",
+  "finished_at": "2026-10-10T13:12:21Z",
   "duration_s": 0.46
  },
  "metrics": [
@@ -115,6 +115,20 @@
    "classification": "derived"
   },
   {
+   "metric_id": "served_count_5min",
+   "label": "Origini raggiunte entro 5 minuti",
+   "value": 43,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m, soglia 5 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 43,
+    "high": 186,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
    "metric_id": "served_share_5min",
    "label": "Quota di origini (tutte) raggiunte entro 5 minuti",
    "value": 0.013,
@@ -129,6 +143,20 @@
    }
   },
   {
+   "metric_id": "served_count_10min",
+   "label": "Origini raggiunte entro 10 minuti",
+   "value": 263,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m, soglia 10 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 263,
+    "high": 1115,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
    "metric_id": "served_share_10min",
    "label": "Quota di origini (tutte) raggiunte entro 10 minuti",
    "value": 0.0798,
@@ -139,6 +167,20 @@
     "kind": "interval",
     "low": 0.0798,
     "high": 0.3383,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
+   "metric_id": "served_count_15min",
+   "label": "Origini raggiunte entro 15 minuti",
+   "value": 759,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m, soglia 15 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 760,
+    "high": 2301,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },

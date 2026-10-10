@@ -50,7 +50,7 @@ S = {"baseline_id": "bas_firenze_novoli_20261009", "receivers": [{"route_id": "R
      "method": {"name": "geometric_ray", "space_step_m": 2, "time_step_min": 10, "obstacles": "buildings_and_trees"}}
 code = lambda r: r.get("error", {}).get("code")
 assert code(core.run_tool("compute_walk_access", {**A, "thresholds_min": [10, 10.0]})) == "invalid_params"
-assert code(core.run_tool("compute_walk_access", {**A, "destination_ids": ["dst_tram_fm9057", "dst_tram_fm9056"]})) == "limit_exceeded"
+assert core.run_tool("compute_walk_access", {**A, "destination_ids": ["dst_tram_fm9057", "dst_tram_fm9056"]})["status"] == "succeeded"   # dopo il giro: più destinazioni = almeno una
 assert code(core.run_tool("compute_shadow", S)) == "invalid_params"
 assert core.run_tool("list_destinations", {"aoi_id": "aoi_firenze_novoli", "category": "hospital"})["destinations"] == []
 assert code(core.run_tool("compare_scenarios", {"baseline_id": "bas_firenze_novoli_20261009", "scenario_ids": ["scn_fi_s1_filare_r01"], "weights": {"r01_minuti_sole_evitati_mezzogiorno": 0.7}})) == "outside_capability"

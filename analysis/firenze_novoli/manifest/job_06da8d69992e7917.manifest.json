@@ -67,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T11:56:42Z",
-  "finished_at": "2026-10-10T11:56:43Z",
-  "duration_s": 0.44
+  "started_at": "2026-10-10T13:12:24Z",
+  "finished_at": "2026-10-10T13:12:25Z",
+  "duration_s": 0.45
  },
  "metrics": [
   {
@@ -115,6 +115,20 @@
    "classification": "derived"
   },
   {
+   "metric_id": "served_count_5min",
+   "label": "Origini raggiunte entro 5 minuti",
+   "value": 193,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9057, 0.8 m/s, snapping 40 m, soglia 5 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 193,
+    "high": 660,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
    "metric_id": "served_share_5min",
    "label": "Quota di origini (tutte) raggiunte entro 5 minuti",
    "value": 0.0586,
@@ -129,6 +143,20 @@
    }
   },
   {
+   "metric_id": "served_count_10min",
+   "label": "Origini raggiunte entro 10 minuti",
+   "value": 955,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9057, 0.8 m/s, snapping 40 m, soglia 10 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 955,
+    "high": 1305,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
    "metric_id": "served_share_10min",
    "label": "Quota di origini (tutte) raggiunte entro 10 minuti",
    "value": 0.2897,
@@ -139,6 +167,20 @@
     "kind": "interval",
     "low": 0.2897,
     "high": 0.3959,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
+   "metric_id": "served_count_15min",
+   "label": "Origini raggiunte entro 15 minuti",
+   "value": 1294,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9057, 0.8 m/s, snapping 40 m, soglia 15 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 1294,
+    "high": 1795,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },

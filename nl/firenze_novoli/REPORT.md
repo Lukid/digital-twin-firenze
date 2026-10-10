@@ -44,9 +44,9 @@ Data: 10 ottobre 2026, secondo giro dopo D19 (7 ingressi del Polo) e D20 (fermat
 
 ## Difetti aperti
 
-1. Nessun tool elenca gli scenari: il client li trova solo dagli errori (già aperto su Pisa).
-2. Lo schema accetta fino a 20 destinazioni, il motore una sola. Manca l'accessibilità verso "almeno una" di più destinazioni (già aperto su Pisa).
-3. L'accessibilità dà quote e totale, non il conteggio dei civici raggiunti: il client moltiplica per 3.296 (già aperto su Pisa).
+1. Nessun tool elenca gli scenari: il client li trova solo dagli errori (già aperto su Pisa). Chiuso il 10 ottobre dopo il giro: tool `list_scenarios`.
+2. Lo schema accetta fino a 20 destinazioni, il motore una sola. Manca l'accessibilità verso "almeno una" di più destinazioni (già aperto su Pisa). Chiuso il 10 ottobre dopo il giro: più destinazioni in un job danno l'accessibilità verso almeno una.
+3. L'accessibilità dà quote e totale, non il conteggio dei civici raggiunti: il client moltiplica per 3.296 (già aperto su Pisa). Chiuso il 10 ottobre dopo il giro: metriche `served_count_*`.
 4. Lo schema di `compare_scenarios` ha ancora il campo `weights`, che il servizio respinge sempre: la descrizione ora lo dice, lo schema no.
 5. Il risultato di `compute_shadow` è pesante (geometria completa e 9 casi) e non dice se l'orario è in ora legale o solare. Manca un campo per scegliere fra le due 02:30 del cambio d'ora (già aperto su Pisa).
 6. Il replay è solo da riga di comando (`service/cli.py replay`), non via MCP: alla domanda 19 il client può solo confermare la cache (già aperto su Pisa).

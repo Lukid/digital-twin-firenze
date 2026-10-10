@@ -194,9 +194,9 @@ def _hash_job(tool, inputs, params): return "job_" + hashlib.sha256(canon({"tool
 FONTI_DEST = {"school": ("scuole_statali", "cm_edscol"), "tram": ("gtfs_gest",), "stop": ("gtfs",)}
 
 
-def _snapshot_ids(destination_id):
-    cat = contesto()["dest"][destination_id]["categoria"]
-    chiavi = ("civici",) + FONTI_DEST.get(cat, ())
+def _snapshot_ids(destination_ids):
+    ids = [destination_ids] if isinstance(destination_ids, str) else destination_ids
+    chiavi = ("civici",) + tuple(k for i in ids for k in FONTI_DEST.get(contesto()["dest"][i]["categoria"], ()))
     ids = {RL.OSM_SNAP["snapshot_id"]} | {s["snapshot_id"] for s in BASELINE["snapshot"] if any(k in s["source_id"] for k in chiavi)}
     return sorted(ids)
 
@@ -229,35 +229,53 @@ def _scrivi_assets(job_id, righe, agg, soglie, out_dir):
     return assets
 
 
-def compute_walk_access(destination_id, origin_family="address_points", profile=None, thresholds_min=(5, 10, 15), snap_limit_m=40,
-                        entrance_ids=None, deviazione_alta=None, out_dir=None):
-    """Accessibilità verso una destinazione. entrance_ids: ingressi da considerare (il più vicino per tempo vince); None = ingressi predefiniti (o l'ingresso predefinito).
-    Ritorna dict con job, manifest, origini (righe), aggregati, archi_usati. Con out_dir scrive gli asset e li registra nel manifest."""
-    t0 = datetime.datetime.now(datetime.timezone.utc); c = contesto(); prof = dict(profile or PROFILI["base_1_2"]); dev = dict(deviazione_alta or DEVIAZIONE_ALTA)
+def _ingressi(dest_ids, entrance_ids=None):
+    """Ingressi da usare: quelli indicati o i predefiniti di ogni destinazione (il Polo ne ha 7, D19). Con più destinazioni l'unione: il più vicino vince."""
+    c = contesto(); ents = {e["entrance_id"]: e for i in dest_ids for e in c["dest"][i]["ingressi"]}
+    ids = sorted(entrance_ids or [x for i in dest_ids for x in (c["dest"][i].get("ingressi_predefiniti") or [c["dest"][i]["ingresso_predefinito"]])])
+    if any(i not in ents for i in ids): raise ValueError(f"ingresso non appartenente a {', '.join(dest_ids)}")
+    return ids, ents
+
+
+def parametri_job(destination_id, origin_family="address_points", profile=None, thresholds_min=(5, 10, 15), snap_limit_m=40, entrance_ids=None, deviazione_alta=None):
+    """(inputs, params, job_id) di compute_walk_access senza calcolare: il servizio lo usa per la cache. destination_id: un id o una lista (accessibilità verso almeno una)."""
+    c = contesto(); prof = dict(profile or PROFILI["base_1_2"]); dev = dict(deviazione_alta or DEVIAZIONE_ALTA)
     if set(prof) != {"speed_m_s", "crossing_penalty_s", "stairs"} or prof["stairs"] not in ("allowed", "excluded") or not 0.3 <= prof["speed_m_s"] <= 2.5:
         raise ValueError("profilo non valido: servono speed_m_s (0,3-2,5), crossing_penalty_s, stairs (allowed|excluded)")
-    if destination_id not in c["dest"]: raise ValueError(f"destinazione sconosciuta: {destination_id}")
-    d = c["dest"][destination_id]; ents = {e["entrance_id"]: e for e in d["ingressi"]}
-    ids = sorted(entrance_ids or d.get("ingressi_predefiniti") or [d["ingresso_predefinito"]])   # il Polo ha 7 ingressi predefiniti (D19)
-    if any(i not in ents for i in ids): raise ValueError(f"ingresso non appartenente a {destination_id}")
-    soglie = sorted(float(t) for t in thresholds_min)
+    dest_ids = sorted({destination_id} if isinstance(destination_id, str) else set(destination_id))
+    for i in dest_ids:
+        if i not in c["dest"]: raise ValueError(f"destinazione sconosciuta: {i}")
+    ids, _ = _ingressi(dest_ids, entrance_ids)
+    inputs = {"baseline_id": BASELINE_ID, "snapshot_ids": _snapshot_ids(dest_ids)}
+    params = {"destination_ids": dest_ids, "entrance_ids": ids, "origins": {"kind": origin_family, "aoi_id": AOI_ID, "count": len(agganci_origini(origin_family, float(snap_limit_m)))},
+              "profile": {**prof, "snap_limit_m": float(snap_limit_m)}, "thresholds_min": sorted(float(t) for t in thresholds_min), "deviazione_alta": dev, "method_version": VERSIONE,
+              "graph": {"graph_id": c["man"]["graph_id"], "graph_sha256": c["graph_sha256"], "regole_sha256": c["regole_sha256"]}}
+    return inputs, params, _hash_job("compute_walk_access", inputs, params)
+
+
+def compute_walk_access(destination_id, origin_family="address_points", profile=None, thresholds_min=(5, 10, 15), snap_limit_m=40,
+                        entrance_ids=None, deviazione_alta=None, out_dir=None):
+    """Accessibilità verso una destinazione, o verso almeno una di più destinazioni (lista di id: tutti gli ingressi insieme, il più vicino per tempo vince).
+    entrance_ids: ingressi da considerare; None = ingressi predefiniti (o l'ingresso predefinito) di ogni destinazione.
+    Ritorna dict con job, manifest, origini (righe), aggregati, archi_usati. Con out_dir scrive gli asset e li registra nel manifest."""
+    t0 = datetime.datetime.now(datetime.timezone.utc)
+    inputs, params, job_id = parametri_job(destination_id, origin_family, profile, thresholds_min, snap_limit_m, entrance_ids, deviazione_alta)
+    prof = {k: v for k, v in params["profile"].items() if k != "snap_limit_m"}; dev = params["deviazione_alta"]; soglie = params["thresholds_min"]; dest_ids = params["destination_ids"]
+    ids, ents = _ingressi(dest_ids, entrance_ids)
     snaps = {i: (Point(ents[i]["xy"]), {**ents[i]["aggancio"], "proj": tuple(ents[i]["aggancio"]["proj"])}) for i in ids}
     if any(s["stato"] != "agganciato" for _, s in snaps.values()): raise ValueError("ingresso non agganciato alla rete")
     orig = agganci_origini(origin_family, float(snap_limit_m))
-    inputs = {"baseline_id": BASELINE_ID, "snapshot_ids": _snapshot_ids(destination_id)}
-    params = {"destination_ids": [destination_id], "entrance_ids": ids, "origins": {"kind": origin_family, "aoi_id": AOI_ID, "count": len(orig)},
-              "profile": {**prof, "snap_limit_m": float(snap_limit_m)}, "thresholds_min": soglie, "deviazione_alta": dev, "method_version": VERSIONE,
-              "graph": {"graph_id": c["man"]["graph_id"], "graph_sha256": c["graph_sha256"], "regole_sha256": c["regole_sha256"]}}
-    job_id = _hash_job("compute_walk_access", inputs, params)
     righe, uso = calcola(snaps, orig, prof)
     agg = _aggrega(righe, uso, prof, soglie, dev)
     t1 = datetime.datetime.now(datetime.timezone.utc); fmt = lambda t: t.strftime("%Y-%m-%dT%H:%M:%SZ")
-    sc = f"{destination_id}, {prof['speed_m_s']} m/s, snapping {snap_limit_m:g} m"
+    sc = f"{' + '.join(dest_ids)}, {prof['speed_m_s']} m/s, snapping {snap_limit_m:g} m" + (", almeno una destinazione (la più vicina)" if len(dest_ids) > 1 else "")
     unc_v = lambda lo, hi: {"kind": "interval", "low": lo, "high": hi, "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"}
     met = [_metrica("origins_total", f"Origini (civici di {AREA['comune']})", agg["origini_totali"], "count", "derived")]
     met += [_metrica(f"origins_{s}", f"Origini in stato {s}", n, "count", "derived") for s, n in agg["conteggi"].items()]
     for T in soglie:
         q = agg["quote_soglie"][f"{T:g}"]; k = f"{T:g}".replace(".", "_")
+        met.append(_metrica(f"served_count_{k}min", f"Origini raggiunte entro {T:g} minuti", q["servite"], "count", "estimated", sc + f", soglia {T:g} min",
+                            unc_v(*(round(x * agg["origini_totali"]) for x in q["intervallo_velocita"]))))
         met.append(_metrica(f"served_share_{k}min", f"Quota di origini (tutte) raggiunte entro {T:g} minuti", q["quota"], "1", "estimated", sc + f", soglia {T:g} min", unc_v(*q["intervallo_velocita"])))
     tm = agg["tempo_min"]
     for key, lab in (("p50", "mediano"), ("p90", "90° percentile")):
@@ -277,7 +295,7 @@ def compute_walk_access(destination_id, origin_family="address_points", profile=
               ("velocita_ipotesi", "Velocità e penalità sono ipotesi di esperimento, non misure sul posto e non attribuite a gruppi di persone."),
               ("snapping_parametro", "Il limite di snapping e il raccordo non attraversano edifici; i civici non agganciati restano insufficient_data."),
               ("no_certificazione_accessibilita", "Mancano pendenze, larghezze, rampe e gradini di marciapiede: nessuna certificazione di accessibilità universale."),
-              ("ingresso_da_verificare", "Ingresso e orari della destinazione non verificati; cambiare ingresso può cambiare lunghezze e attraversamenti.")]
+              ("ingresso_da_verificare", "Ingresso e orari della destinazione non verificati; cambiare ingresso può cambiare lunghezze e attraversamenti.")] + ([("almeno_una_destinazione", f"Più destinazioni ({len(dest_ids)}): per ogni origine conta la più vicina (ingresso più vicino per tempo fra tutti); la quota è di civici che ne raggiungono almeno una.")] if len(dest_ids) > 1 else [])
     man = {"manifest_id": "man_" + job_id[4:], "job_id": job_id, "tool": "compute_walk_access", "aoi_id": AOI_ID, "baseline_id": BASELINE_ID, "datasets": ds, "params": params,
            "method": {"name": "shortest_path_walk_time", "version": VERSIONE, "description": "Cammino minimo pesato per tempo (lunghezza su velocità più penalità di attraversamento) sul grafo pedonale OSM congelato, con raccordo registrato dall'origine alla rete."},
            "crs": "EPSG:7791", "vertical_datum_status": "not_confirmed", "timezone": "Europe/Rome",

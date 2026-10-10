@@ -17,10 +17,11 @@ Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` 
 - Replay: porta `aoi_id` nelle origini e i casi dell'ombra dal manifest.
 - Scenari: `create_local_scenario` e `compare_scenarios` usano `scenarios/` di F08 (id `scn_fi_*`, file in `scenarios/firenze_novoli/`). Le alternative negli errori sono solo `scn_fi_*`.
 - `compute_shadow` con `scenario_id` (`obstacles = buildings_and_scenario`) calcola sempre i 9 casi (edifici, alberi censiti, vegetazione LiDAR, ognuno con centrale e due estremi).
+- 10 ottobre, dopo F11: nuovo tool `list_scenarios`; `compute_walk_access` accetta più destinazioni (accessibilità verso almeno una: tutti gli ingressi insieme, per ogni civico vince il più vicino, limite `almeno_una_destinazione` nel manifest); nuove metriche `served_count_*` (civici raggiunti per soglia, con intervallo di velocità). Con una sola destinazione `job_id` e numeri non cambiano.
 
-## Tool MCP (9, stessi nomi)
+## Tool MCP (10)
 
-- `list_approved_sources`, `inspect_dataset`, `list_destinations`, `compute_walk_access`, `compute_shadow`, `get_job_status`, `get_result_manifest`, `create_local_scenario`, `compare_scenarios`.
+- `list_approved_sources`, `inspect_dataset`, `list_destinations`, `list_scenarios`, `compute_walk_access`, `compute_shadow`, `get_job_status`, `get_result_manifest`, `create_local_scenario`, `compare_scenarios`.
 - `additionalProperties: false` su tutti gli input. Errori con `isError=true` e codice (`invalid_params`, `unknown_id`, `ambiguous_destination`, `outside_capability`, `limit_exceeded`, `incompatible_baseline`).
 
 ## Confronto di scenari
@@ -84,15 +85,15 @@ service/.venv/bin/python service/cli.py compute_shadow '{"baseline_id":"bas_fire
 - Ombra con parametri ridotti: cache, vegetazione LiDAR, ora ambigua e inesistente, sole sotto l'orizzonte, limite di costo.
 - Replay di job nuovi e storici.
 - Nessuna stringa "Pisa", "Z2", "Pellico" o "Battisti" nelle risposte, nei manifest e negli schemi mostrati al client.
-- Server MCP avviato con un client stdio reale (`dt-firenze`, 9 tool).
+- Server MCP avviato con un client stdio reale (`dt-firenze`, 10 tool).
 - Scenari provati con i file di F08: creazione, ombra con scenario (9 casi), confronto per manifest e per scenari, contesti, pesi non ammessi, errori.
 
 ## Limiti
 
-- Una sola destinazione per job. Griglia e punti: `outside_capability`.
+- Più destinazioni in un job danno solo l'accessibilità verso almeno una, non un risultato per destinazione. Griglia e punti: `outside_capability`.
 - Senza `entrance_ids` si usa l'ingresso predefinito. Per il Polo i due ingressi OSM sono da verificare.
 - Limiti: area massima 4 km², 50.000 origini, 600 s per l'accessibilità; ombra fino a 1.500 combinazioni (ricevitori per orari per casi). Calcolo sincrono, senza coda.
-- Il `job_id` dell'accessibilità è previsto prima del calcolo replicando i parametri di `analysis/accessibilita.py`: se cambiano, va aggiornato `core._prevedi_job_id` (un assert lo segnala).
+- Il `job_id` dell'accessibilità è previsto prima del calcolo con `accessibilita.parametri_job`, la stessa funzione che usa il motore.
 - Ricevitori dell'ombra solo da percorso campione o geometria esplicita, sull'asse della rete.
 - Il `.pth` del venv usa un percorso assoluto.
 - Risultati degli scenari `not_validated_locally`: interventi ipotetici, fattibilità ignota.

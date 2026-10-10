@@ -67,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T11:56:37Z",
-  "finished_at": "2026-10-10T11:56:37Z",
-  "duration_s": 0.5
+  "started_at": "2026-10-10T13:12:19Z",
+  "finished_at": "2026-10-10T13:12:19Z",
+  "duration_s": 0.47
  },
  "metrics": [
   {
@@ -115,6 +115,20 @@
    "classification": "derived"
   },
   {
+   "metric_id": "served_count_5min",
+   "label": "Origini raggiunte entro 5 minuti",
+   "value": 130,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 1.2 m/s, snapping 40 m, soglia 5 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 48,
+    "high": 204,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
    "metric_id": "served_share_5min",
    "label": "Quota di origini (tutte) raggiunte entro 5 minuti",
    "value": 0.0394,
@@ -129,6 +143,20 @@
    }
   },
   {
+   "metric_id": "served_count_10min",
+   "label": "Origini raggiunte entro 10 minuti",
+   "value": 783,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 1.2 m/s, snapping 40 m, soglia 10 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 271,
+    "high": 1165,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
    "metric_id": "served_share_10min",
    "label": "Quota di origini (tutte) raggiunte entro 10 minuti",
    "value": 0.2376,
@@ -139,6 +167,20 @@
     "kind": "interval",
     "low": 0.0822,
     "high": 0.3535,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
+   "metric_id": "served_count_15min",
+   "label": "Origini raggiunte entro 15 minuti",
+   "value": 1847,
+   "unit": "count",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 1.2 m/s, snapping 40 m, soglia 15 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 783,
+    "high": 2374,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
