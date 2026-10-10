@@ -67,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T13:12:21Z",
-  "finished_at": "2026-10-10T13:12:22Z",
-  "duration_s": 0.45
+  "started_at": "2026-10-10T19:30:32Z",
+  "finished_at": "2026-10-10T19:30:32Z",
+  "duration_s": 0.63
  },
  "metrics": [
   {
@@ -321,8 +321,8 @@
    "asset_id": "ast_report",
    "path": "data/norm/firenze_novoli/analysis/dst_tram_fm9056/job_d3596983515c7794_report.json",
    "media_type": "application/json",
-   "bytes": 11796,
-   "sha256": "3625a4b93aa5de82d92f8c2bd68ef39ef34f9d4ff2bf43983ca5de07f17414f2",
+   "bytes": 11940,
+   "sha256": "40a35cb260e5e21f60e57425ba5e3834f8ea65555fbb1d46215b76f582486864",
    "role": "report"
   }
  ]

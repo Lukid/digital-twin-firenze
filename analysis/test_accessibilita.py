@@ -93,6 +93,10 @@ for T in ("5", "10", "15"): assert q("lento_0_8", T) <= q("base_1_2", T) <= q("r
 assert q("base_1_2", "5") <= q("base_1_2", "10") <= q("base_1_2", "15")
 assert all(o["scale"] == 0 for o in res["ridotta_0_8_senza_scale"]["origini"].values() if o["stato"] == "reachable")
 assert res["ridotta_0_8_senza_scale"]["aggregati"]["tempo_min"]["p50"] >= res["lento_0_8"]["aggregati"]["tempo_min"]["p50"]
+rid = res["ridotta_0_8_senza_scale"]; ag = rid["aggregati"]   # attese dal costo: parziali se si percorre solo una parte dell'attraversamento
+assert all(abs(o["tempo_s"] - o["totale_m"] / 0.8 - o["attesa_s"]) < 0.3 and o["attesa_s"] <= 10 * o["attraversamenti"] + 0.1 for o in rid["origini"].values() if o["stato"] == "reachable")
+assert all(q["intervallo_velocita"][0] == q["quota"] for q in ag["quote_soglie"].values())   # a 0,8 m/s l'estremo coincide con il valore centrale
+assert all(abs(ag["tempo_min_velocita"][0][k] - ag["tempo_min"][k]) <= 0.01 for k in ("p50", "p90"))
 print("7 ok: monotonia profili")
 
 # 8. più ingressi: il default del Polo sono i 7 edifici (D19) e il tempo al più vicino non supera quello del solo D1

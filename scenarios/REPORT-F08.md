@@ -1,6 +1,6 @@
 # REPORT F08: scenari su Firenze Novoli
 
-Data: 10 ottobre 2026. Comando: `bash scenarios/run.sh` (circa 15 minuti la prima volta, 1-2 minuti con la cache). Test 13 su 13. Risultati `not_validated_locally`. S1 e S2 rifatti il 10 ottobre (versione 2): vedi "Correzione del filare" e "Correzione della pensilina".
+Data: 10 ottobre 2026. Comando: `bash scenarios/run.sh` (circa 15 minuti la prima volta, 1-2 minuti con la cache). Test attuali: 16 su 16, rieseguiti nella revisione del codice. Risultati `not_validated_locally`. S1 è in versione 3 dopo D20, S2 in versione 2. Le sezioni sulle correzioni conservano la storia delle versioni precedenti; regole e risultati operativi sotto sono aggiornati.
 
 ## Cosa è cambiato
 
@@ -8,22 +8,21 @@ Data: 10 ottobre 2026. Comando: `bash scenarios/run.sh` (circa 15 minuti la prim
 - File piccoli versionati in `scenarios/firenze_novoli/`. Dati grandi in `data/norm/firenze_novoli/scenarios/`.
 - Nuovi id `scn_fi_*`, baseline `bas_firenze_novoli_20261009`.
 - Baseline degli scenari congelata: 14 snapshot con sha256, grafo e regole, geometrie, poligoni della vegetazione LiDAR (hash del contenuto), parametri delle chiome, origini `address_points`, motori (ombre 0.3.0, accessibilità 0.1.0), job di riferimento di F06, condizioni.
-- Ricevitori: R01 e R02, area di attesa di S2, primi 15 archi più usati verso il Polo e verso la fermata T2 Torre degli Agli.
+- Ricevitori: R01 e R02, aree di attesa di S2/S5/S6, primi 15 archi più usati verso il Polo e verso la fermata T2 San Donato - Università (D20).
 - Condizioni come F07: 15 luglio e 15 settembre 2026, ogni 30 minuti fra 8:00 e 19:00, fasce punta 12:30-13:30 e giornata 8-19, passo 1 m e 5 minuti, 1,2 m/s.
-- Un job per scenario e data calcola 9 casi in tre contesti, ognuno con un caso centrale e due estremi: solo edifici; con alberi censiti; con vegetazione LiDAR, che è la base di confronto principale (D14).
-- `confronto.confronta()` restituisce i dati per data e contesto: `percorsi[data][contesto][R][fascia][metrica]`, `area_attesa_polo`, `archi_usati[data]`, `per_ora[data]`, `robustezza`. Tolti `ordina()`, `indicatori()` e `sensibilita_pesi()`.
+- Un job per scenario principale (S0/S1/S2/S5/S6) e data calcola 9 casi in tre contesti, ognuno con un caso centrale e due estremi: solo edifici; con alberi censiti; con vegetazione LiDAR, che è la base di confronto principale (D14).
+- `confronto.confronta()` restituisce i dati per data e contesto: `percorsi[data][contesto][R][fascia][metrica]`, `area_attesa_polo` (S2), `aree_attesa` (S5/S6), `archi_usati[data]`, `per_ora[data]`, `robustezza`. Tolti `ordina()`, `indicatori()` e `sensibilita_pesi()`.
 
 ## Scenari e regole (dichiarate prima di guardare i risultati)
 
 - S0: nessun intervento. Delta atteso zero.
 - S1: filare di 7 alberi di classe "medio" tipica (11 m, chioma 6 m, imposta 2,5 m), interasse 8 m, sul tratto di 60 m di R01 più al sole dove gli alberi trovano posto.
-  - R01: fermata T2 Torre degli Agli → ingresso predefinito del Polo, 1.198 m.
+  - R01: fermata T2 San Donato - Università → Polo D15, 428,6 m (D20).
   - Lato: quello da cui arriva il sole alle 13:00 del 15 luglio.
   - Posto di ogni albero: il punto più vicino all'asse, fra 1,5 e 5 m, dentro le aree di circolazione pedonale del Comune ristrette di 0,5 m e fuori dagli edifici. Fonte nuova `src_fi_aree_pedonali` (CC BY 4.0).
   - Scelta del tratto: fra le finestre dove tutti e 7 gli alberi trovano posto, massima frazione media al sole il 15 luglio 12:30-13:30 (caso con vegetazione LiDAR tipica). A parità: media 8-18, poi il primo lungo il percorso. Escluse finestre con attraversamenti, ponti, sottopassi o scale.
-  - Tratto scelto: da 593 a 653 m dalla fermata, su un percorso pedonale, sole al 100%. Finestre valide 13 su 984, tutte a pari merito a mezzogiorno; 971 scartate perché manca posto per almeno un albero.
-  - Alberi da 6,7 a 9,3 m dall'asse della strada più vicina. L'albero 7 è 0,2 m fuori dal riquadro (segnalazione `fuori_riquadro`).
-  - R01 intera è al sole al 92% a mezzogiorno di luglio.
+  - Tratto scelto in versione 3: da 198 a 258 m dalla fermata. Il registro `tratto_s1.json` indica una sola finestra valida e 368 senza posto; sole medio nella finestra 78,0%. La revisione ha verificato il registro, senza rieseguire la ricerca del tratto.
+  - L'esposizione attuale di R01 e i benefici sono riportati nei risultati ricalcolati sotto.
   - Varianti: chioma minima (4 m, imposta 3,5 m, altezza 8 m), chioma massima (9 m, 2,0 m, 14 m).
 - S2: pensilina 6 x 2 m (intradosso 2,5 m, tetto 3,0 m) alla fermata bus "Guidoni Barsanti" (OSM `shelter=no`, verifica OSM del 25/04/2024), a 572 m da un ingresso del Polo.
   - Regola: fra le fermate bus del riquadro senza pensilina in OSM, la più vicina in linea d'aria a un ingresso del Polo dove, entro 8 m dal punto OSM, una fascia di 6 x 3,5 m (pensilina più 1,5 m di passaggio libero) parallela alla strada sta tutta dentro le aree pedonali del Comune, ad almeno 1,3 m dall'asse delle ciclabili e fuori dagli edifici. La pensilina occupa i 2 m dal lato della strada.
@@ -51,34 +50,43 @@ Data: 10 ottobre 2026. Comando: `bash scenarios/run.sh` (circa 15 minuti la prim
 
 ## Risultati principali
 
-Delta rispetto a S0, base con vegetazione LiDAR. Minuti al sole camminando, partenza nella fascia. Negativo = meno sole.
+Confronto aggiornato dopo D19/D20, rieseguito nella revisione del 10 ottobre con `confronto.confronta([S1, S2, S5, S6], parallelo=False)`. L'aggregazione e i delta sono ricalcolati dai job di ombra in cache e coincidono con `firenze_novoli/confronto.json`; non è stato rifatto il calcolo completo delle ombre senza cache.
 
-S1, R01, 15 luglio:
-- Punta: minuti al sole da 15,35 a 14,80 (-0,55). Ombra da 8,0% a 11,4% (+3,4 punti).
-- Giornata: -0,45 minuti, ombra +2,7 punti.
-- Il filare agisce da 9:30 in poi: -0,22 minuti alle 11:00, -0,56 alle 12:30, fino a -0,82 per una partenza alle 19:00.
+Base con vegetazione LiDAR, fascia punta 12:30-13:30. Minuti al sole durante il cammino; delta negativo = meno sole.
 
-S1, R01, 15 settembre:
-- Punta: -0,57 minuti, ombra da 26,6% a 30,2%.
-- Giornata: -0,32 minuti.
+S1, 2026-07-15:
 
-Varianti di S1 (minuti al sole, punta; giornata fra parentesi):
-- 15 luglio: chioma min -0,23 (-0,27), tipica -0,55 (-0,45), chioma max -0,81 (-0,65).
-- 15 settembre: chioma min -0,34 (-0,16), tipica -0,57 (-0,32), chioma max -0,76 (-0,46).
-- La dimensione della chioma è ora l'incertezza dominante.
+- R01: minuti al sole da 4,251 a 3,886, delta -0,365; ombra da 29,5% a 35,4%.
+- R02: minuti al sole da 8,577 a 8,207, delta -0,370; ombra da 15,3% a 18,8%.
+- R01, giornata 8-19: delta -0,079 minuti.
 
-S1 sugli altri ricevitori: R02, area di attesa e archi più usati non cambiano.
+S1, 2026-09-15:
 
-S2, area di attesa (frazione d'ombra):
-- 15 luglio: punta da 0% a 40,1%; giornata da 13,4% a 37,0% (+23,6 punti). Massimo +41,4 punti alle 13:00.
-- 15 settembre: punta da 0% a 20,6%; giornata +10,4 punti.
-- Vegetazione LiDAR e alberi censiti non toccano l'area di attesa a mezzogiorno: base LiDAR e solo edifici danno la stessa punta.
+- R01: minuti al sole da 1,753 a 1,346, delta -0,407; ombra da 71,8% a 78,3%.
+- R02: minuti al sole da 5,801 a 5,399, delta -0,402; ombra da 42,4% a 46,3%.
+- R01, giornata 8-19: delta -0,104 minuti.
 
-Accessibilità: delta zero per costruzione (alberi e pensiline non cambiano il grafo). Verificato con hash invariati e ricalcolo del Polo e della fermata Torre degli Agli: stessi job_id e metriche di F06.
+Varianti di S1, delta dei minuti al sole su R01 in punta:
+
+- 2026-07-15: chioma minima -0,106; chioma massima -0,634 minuti.
+- 2026-09-15: chioma minima -0,152; chioma massima -0,458 minuti.
+
+Le varianti sono scenari distinti e sono calcolate solo nei casi centrali `base` e `veg_lidar_tipico`. I loro intervalli di larghezza zero non sono una misura di certezza. Il beneficio di S1 riguarda anche R02, perché il tratto finale è condiviso.
+
+Pensiline, frazione d'ombra nell'area di attesa propria:
+
+- S2 Guidoni Barsanti, 2026-07-15: punta da 0,0% a 40,1%; giornata da 13,4% a 37,0%.
+- S2 Guidoni Barsanti, 2026-09-15: punta da 0,0% a 20,6%; giornata da 34,4% a 44,8%.
+- S5 Regione Toscana, 2026-07-15: punta da 0,0% a 40,0%; giornata da 17,4% a 39,5%.
+- S5 Regione Toscana, 2026-09-15: punta da 0,0% a 21,9%; giornata da 22,4% a 33,1%.
+- S6 Di Novoli Sn, 2026-07-15: punta da 100,0% a 100,0%; giornata da 78,4% a 84,8%.
+- S6 Di Novoli Sn, 2026-09-15: punta da 100,0% a 100,0%; giornata da 93,5% a 94,2%.
+
+Accessibilità: delta zero per costruzione, perché gli interventi non cambiano il grafo. Verificato con hash invariati e ricalcolo del Polo e di San Donato - Università, stessi job_id e metriche di F06. Questo non prova l'assenza di ostacoli al passaggio sul posto.
 
 Nessun punteggio unico: indicatori separati.
 
-## Test (`test_scenari.py`, 13 controlli)
+## Test (`test_scenari.py`, 16 controlli)
 
 - Baseline invariata e valida sullo schema.
 - Validazione e segnalazioni (edificio, fuori riquadro, carreggiata, fuori area pedonale: il vecchio albero 3 viene segnalato, il nuovo filare no). Fattibilità sempre ignota.
@@ -88,7 +96,7 @@ Nessun punteggio unico: indicatori separati.
 - Condizioni comuni fra scenari confrontati.
 - Coerenza delle varianti.
 - Scelta di S2 verificata nei dati; S2 dentro le aree pedonali (nessuna segnalazione).
-- `interventi.geojson`: 21 Point (alberi) e 1 Polygon (pensilina), EPSG:4326.
+- `interventi.geojson`: alberi del filare e delle varianti, pensiline S2/S5/S6, EPSG:4326.
 - Nessuna stringa Pisa, z2, Pellico o Battisti nei file prodotti.
 
 ## Scenari aggiunti il 10 ottobre (S3-S6)
@@ -100,14 +108,14 @@ Nessun punteggio unico: indicatori separati.
 - S6, pensilina alla fermata bus Di Novoli Sn (OSM nod_osm_3216618875, 644 m): area di attesa già all'ombra al 100% a mezzogiorno; giornata di luglio da 78,4% a 84,8%.
 - S5 e S6 scelte solo dai dati, senza controllo a vista su Street View. Del Prete Terzolle è esclusa dal controllo a vista (ha già la pensilina) e anche dalla regola dei dati.
 - Baseline degli scenari ricongelata: aggiunte solo le aree di attesa sfc_fi_attesa_s5 e sfc_fi_attesa_s6 (controllo nel codice); tutti i job ricalcolati; S0, S1 e S2 identici in tutti i valori.
-- Test 16 su 16. Nota: le sezioni sopra riportano ancora i numeri di S1 versione 2 (tratto 593-653 m, -0,55 minuti); i valori attuali (versione 3, tratto 198-258 m, -0,36 minuti) sono in docs/STATO.md.
+- Test 16 su 16. Le sezioni operative di questo report riportano S1 versione 3; i numeri delle versioni precedenti restano solo nelle note storiche sulle correzioni.
 - Il servizio: `compare_scenarios` espone `area_attesa_polo` ma non le aree di S5 e S6, che per ora si leggono solo in `confronto.json`.
 
 ## Limiti
 
 - Ombra misurata sull'asse della rete, non sulla linea dove si cammina.
 - Vegetazione LiDAR come prisma opaco pieno: riduce il beneficio dei nuovi interventi.
-- Tratto di S1 scelto fra 13 finestre a pari merito.
+- Il tratto attuale di S1 deriva da una sola finestra con posto per tutti gli alberi; la ricerca non è stata rifatta nella revisione.
 - Aree pedonali del Comune senza legenda dei codici e senza data di rilievo: usate solo come geometria. Fuori dalla baseline degli scenari (sha256 in `tratto_s1.json`).
 - S2: fermata scelta con controllo a vista su Street View, non riproducibile dal codice; la regola dei dati da sola sceglieva fermate già coperte o strette.
 - S2 a 572 m dal Polo: mostra l'effetto di una pensilina, non migliora l'accesso al Polo.
@@ -115,4 +123,5 @@ Nessun punteggio unico: indicatori separati.
 - Pesi dei tratti in civici, non persone. Nessun flusso pedonale misurato.
 - Ombra binaria, nessuna conversione in comfort. Nessuna crescita degli alberi.
 - Interventi ipotetici, fattibilità ignota. Nessuna validazione sul posto.
-- `contracts/validate.py` legge ancora la baseline degli scenari di Pisa: da puntare a `scenarios/firenze_novoli/baseline.json` quando si spostano i file di Pisa.
+- `contracts/validate.py` valida già `scenarios/firenze_novoli/baseline.json`, verificato con `make test`.
+- Il servizio omette le aree di attesa di S5/S6 (R5); cache concorrente e invalidazione richiedono correzioni (R2/R4). Vedi la [revisione del codice](../docs/REVISIONE-CODICE-20261010.md).

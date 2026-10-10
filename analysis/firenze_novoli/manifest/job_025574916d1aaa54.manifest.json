@@ -73,9 +73,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T13:12:18Z",
-  "finished_at": "2026-10-10T13:12:18Z",
-  "duration_s": 0.5
+  "started_at": "2026-10-10T19:30:27Z",
+  "finished_at": "2026-10-10T19:30:27Z",
+  "duration_s": 0.6
  },
  "metrics": [
   {
@@ -228,7 +228,7 @@
    "uncertainty": {
     "kind": "interval",
     "low": 19.4,
-    "high": 33.95,
+    "high": 33.96,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
   },
@@ -327,8 +327,8 @@
    "asset_id": "ast_report",
    "path": "data/norm/firenze_novoli/analysis/dst_school_fiee86002g/job_025574916d1aaa54_report.json",
    "media_type": "application/json",
-   "bytes": 19861,
-   "sha256": "d2babe63c82dd70e3fa5053e5a34ec1470bdaa199eea35d41b4a6a7f2a7dd766",
+   "bytes": 20003,
+   "sha256": "846a61e24127b3b88253ea9899af3a0326843661defb90d2ee9e83a27157cf65",
    "role": "report"
   }
  ]

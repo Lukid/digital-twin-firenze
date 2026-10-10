@@ -4,7 +4,7 @@ Ogni input è validato contro contracts/schemas/mcp.schema.json prima di qualunq
 funzioni deterministiche di analysis/ (compute_walk_access). job_id = hash dell'input canonico (ADR-T02): se il manifest
 esiste nella cache si restituisce quello, senza ricalcolare. Nessun SQL, nessun codice libero.
 Risposta: sempre un dict, risultato oppure {"error": {code, message, ...}}."""
-import hashlib, json, os, pathlib, re, sys, tempfile, unicodedata
+import hashlib, json, os, pathlib, re, shutil, sys, tempfile, unicodedata
 from functools import lru_cache
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -180,6 +180,30 @@ def list_scenarios(a):
 
 
 # ---------- job e cache ----------
+CODICE_MOTORI = ["analysis/accessibilita.py", "network/rete_lib.py", "shadow/ombre.py", "scenarios/scenari.py", "scenarios/confronto.py", "service/core.py"]
+
+
+@lru_cache(maxsize=1)
+def _codice_e_dati():
+    """Hash del codice dei motori (quello caricato all'avvio) e file di dati che i motori leggono."""
+    for d in ("analysis", "shadow"): sys.path.insert(0, str(ROOT / d))
+    import accessibilita as A, ombre as O
+    return ({f: hashlib.sha256((ROOT / f).read_bytes()).hexdigest() for f in CODICE_MOTORI},
+            [O.GPKG, O.VEG_GPKG, A.RL.OUT / f"{A.RL.STEM}.pkl", A.RL.OUT / "origini_snap.gpkg"])
+
+
+def _verifica_cache():
+    """Gli job_id dipendono dalla richiesta, non dal codice né dai dati (R4): se cambia uno dei due, i risultati in cache non valgono più e si cancellano.
+    Restano gli scenari creati dagli utenti."""
+    codice, dati = _codice_e_dati()
+    imp = hashlib.sha256(canon({"codice": codice, "dati": {str(p): [p.stat().st_size, p.stat().st_mtime_ns] if p.exists() else None for p in dati}}).encode()).hexdigest()[:16]
+    f = CACHE / "impronta.txt"
+    if f.exists() and f.read_text() == imp: return
+    for p in [*CACHE.glob("job_*"), CACHE / "alias"]:   # job, manifest, sintesi, confronti, asset; alias delle ombre
+        shutil.rmtree(p, ignore_errors=True) if p.is_dir() else p.unlink(missing_ok=True)
+    CACHE.mkdir(parents=True, exist_ok=True); f.write_text(imp)   # senza lock: una richiesta in corso durante la pulizia può riscrivere un job vecchio; serve un lock se il servizio diventa multiutente
+
+
 def _paths(job_id):
     return CACHE / f"{job_id}.job.json", CACHE / f"{job_id}.manifest.json"
 
@@ -201,7 +225,11 @@ def get_result_manifest(a):
 
 
 def _write(p, o):
-    p.parent.mkdir(parents=True, exist_ok=True); t = p.with_suffix(".tmp"); t.write_text(json.dumps(o, ensure_ascii=False, indent=1)); t.replace(p)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile("w", dir=p.parent, suffix=".tmp", delete=False) as f:   # nome univoco: due richieste uguali non si pestano
+        f.write(json.dumps(o, ensure_ascii=False, indent=1))
+    try: os.replace(f.name, p)
+    except OSError: os.unlink(f.name); raise
 
 
 def _risposta(job, man, cached):
@@ -419,6 +447,7 @@ def _compatta(e, ctxs):
     out = {k: e[k] for k in ("titolo", "stato", "job_id", "manifest_id", "interventi", "segnalazioni", "fattibilita", "incompatibilita") if k in e}
     if e.get("stato") != "confrontato": return out
     out.update(percorsi={d: {c: t[c] for c in ctxs} for d, t in e["percorsi"].items()}, area_attesa_polo={d: {c: t[c] for c in ctxs} for d, t in e["area_attesa_polo"].items()},
+               aree_attesa={rid: {d: {c: t[c] for c in ctxs} for d, t in v.items()} for rid, v in e.get("aree_attesa", {}).items()},   # pensiline S5 e S6
                archi_usati=e["archi_usati"], accessibilita={k: v for k, v in e["accessibilita"].items() if k != "ricalcolo"}, fasce_utili_R01=e["fasce_utili_R01"], robustezza=e.get("robustezza", {}))
     if "sovrapposizioni_alberi_esistenti" in e: out["sovrapposizioni_alberi_esistenti"] = e["sovrapposizioni_alberi_esistenti"]
     return out
@@ -515,6 +544,9 @@ def _compare_scenari(a):
                             if mm[k]: aggiungi(f"sc{n}_{r.lower()}_{dd}_{f.split('_')[0]}_{nome}_{CONTESTI_CMP[c]}", mm[k], unit, f"{sid}, {r}, {data}, fascia {f}, contesto {c}", f"Delta {nome} {r}")
                 for f, d in e["area_attesa_polo"][data][c].items():
                     if d: aggiungi(f"sc{n}_attesa_{dd}_{f.split('_')[0]}_shade_{CONTESTI_CMP[c]}", d, "1", f"{sid}, area di attesa Polo, {data}, fascia {f}, contesto {c}", "Delta ombra area di attesa")
+                for rid, per_data in e.get("aree_attesa", {}).items():   # sfc_fi_attesa_s5 -> sc3_attesa_s5_...
+                    for f, d in per_data[data][c].items():
+                        if d: aggiungi(f"sc{n}_{rid.removeprefix('sfc_fi_')}_{dd}_{f.split('_')[0]}_shade_{CONTESTI_CMP[c]}", d, "1", f"{sid}, area di attesa {rid}, {data}, fascia {f}, contesto {c}", f"Delta ombra area di attesa {rid}")
     if not met: return err("incompatible_baseline", "Confronto respinto: " + "; ".join(i["text"] for i in inc)[:300])
     cc = {"baseline_id": riep["baseline_id"], "reference": riep["riferimento"]["scenario_id"], **{k: riep["condizioni_comuni"][k] for k in ("date", "fasce", "method", "walk_speed_m_s", "motore_ombre", "origini_e_percorsi", "contesto_principale")},
           "ricevitori": len(riep["condizioni_comuni"]["ricevitori"]), "contesti": {c: riep["condizioni_comuni"]["contesti"][c] for c in ctxs}}
@@ -543,4 +575,5 @@ def run_tool(name, args=None):
                        candidates=[d["destination_id"] + " | " + d["nome"] for d in cand][:25])
     problemi = validate(name, "input", args)
     if problemi: return err("invalid_params", "; ".join(problemi[:5]))
+    if name in ("compute_walk_access", "compute_shadow", "compare_scenarios"): _verifica_cache()
     return globals()[name](args)

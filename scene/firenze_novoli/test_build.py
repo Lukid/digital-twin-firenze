@@ -180,6 +180,22 @@ def test_ricognizione_catalogo():
     assert nuove <= set(f) and all(f[k].get("fuori_baseline") for k in nuove) and f["src_rt_censimento2011"]["stato_licenza"] == "clear_with_reserve"
 
 
+
+def test_costruzione_fallita_lascia_la_scena():
+    import sys
+    def guasto(): raise RuntimeError("input mancante")
+    vero, argv = build.terreno, sys.argv
+    with tempfile.TemporaryDirectory() as d:
+        out = pathlib.Path(d) / "assets"; out.mkdir()
+        (out / "edifici.json.gz").write_bytes(b"vecchio"); (out / "index.json").write_text("{}")
+        build.terreno, sys.argv = guasto, ["build.py", "--out", str(out)]
+        try:
+            build.main(); assert False, "doveva fallire"
+        except RuntimeError: pass
+        finally: build.terreno, sys.argv = vero, argv
+        assert (out / "edifici.json.gz").read_bytes() == b"vecchio" and (out / "index.json").exists()
+        assert [f.name for f in pathlib.Path(d).iterdir()] == ["assets"]   # temporaneo rimosso
+
 if __name__ == "__main__":
     for n, f in list(globals().items()):
         if n.startswith("test_"):

@@ -27,6 +27,22 @@ assert core.AOI_ID == AOI and core.BASELINE_ID == BAS and core.CACHE == CACHE
 d = subprocess.run([sys.executable, "-c", "import core; print(core.CACHE)"], capture_output=True, text=True, cwd=HERE, env={k: v for k, v in os.environ.items() if k != "DT_CACHE_DIR"}).stdout.strip()
 assert d.endswith("service/cache/firenze_novoli"), d   # cache per area, separata da quella di Pisa
 
+# R2: scritture concorrenti dello stesso file di cache
+import threading
+bar = threading.Barrier(8); errori = []
+def scrivi(i):
+    bar.wait()
+    try: core._write(CACHE / "concorrenza.json", {"i": i})
+    except Exception as e: errori.append(e)
+th = [threading.Thread(target=scrivi, args=(i,)) for i in range(8)]; [t.start() for t in th]; [t.join() for t in th]
+assert not errori and not list(CACHE.glob("*.tmp")) and "i" in json.loads((CACHE / "concorrenza.json").read_text()), errori
+
+# R4: cambiano codice o dati dei motori -> cache dei risultati svuotata, scenari degli utenti intatti
+core._verifica_cache(); (CACHE / "job_vecchio.job.json").write_text("{}"); (CACHE / "scenari").mkdir(parents=True, exist_ok=True)
+core._verifica_cache(); assert (CACHE / "job_vecchio.job.json").exists()   # impronta invariata: cache valida
+(CACHE / "impronta.txt").write_text("di prima")
+core._verifica_cache(); assert not (CACHE / "job_vecchio.job.json").exists() and (CACHE / "scenari").exists()
+
 # 1. accessibilità: stesso input = stesso job_id e cache; ordine delle chiavi irrilevante; default espliciti = default impliciti
 r1 = run("compute_walk_access", A)
 assert r1["status"] == "succeeded" and r1["cached"] is False and r1["job_id"].startswith("job_"), r1
@@ -202,6 +218,9 @@ for sid in CS["scenario_ids"]:
     assert set(e["percorsi"]) == {"2026-07-15", "2026-09-15"} and set(e["percorsi"]["2026-07-15"]) == {"con_vegetazione_lidar"}
 assert any(d["metric_id"].startswith("sc1_r01_0715_punta_sun_min") and d["delta"] < 0 and d["discriminates"] for d in mc["deltas"])   # il filare toglie sole su R01 a luglio
 assert any(d["metric_id"].startswith("sc2_attesa_") for d in mc["deltas"])
+m5 = run("compare_scenarios", {"baseline_id": BAS, "scenario_ids": [FILARE, "scn_fi_s5_pensilina_regione_toscana"], "with_variants": False})   # R5: pensilina S5 sulla propria area
+assert core.validate("compare_scenarios", "output", m5) == [] and "sfc_fi_attesa_s5" in m5["scenarios"]["scn_fi_s5_pensilina_regione_toscana"]["aree_attesa"], m5.get("error")
+assert next(d for d in m5["deltas"] if d["metric_id"] == "sc2_attesa_s5_0715_punta_shade_lidar")["delta"] > 0.3
 txt = " ".join(l["text"] for l in mc["limits"]); assert "civici" in txt and "non sono persone" in txt
 mc2 = run("compare_scenarios", CS); assert mc2["cached"] is True and mc2["job_id"] == mc["job_id"]
 assert valida_man(run("get_result_manifest", {"job_id": mc["job_id"]})) == []

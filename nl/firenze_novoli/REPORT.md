@@ -58,3 +58,7 @@ Data: 10 ottobre 2026, secondo giro dopo D19 (7 ingressi del Polo) e D20 (fermat
 Non riosservati in questo giro, perché il client non ha fatto le chiamate che li mostravano: `obstacles` registrato come `buildings_and_trees` con la vegetazione LiDAR, prefisso `sc1_`/`sc2_` delle metriche legato alla posizione, varianti di S1 con intervalli di larghezza zero.
 
 Dei difetti di Pisa non si ripresenta lo scarto fra civici dell'area e civici usati: oggi i job dichiarano 3.296 civici, con il motivo degli esclusi (168 senza aggancio alla rete, 15 vietati, 1 isolato).
+
+## Verifica durante la revisione del codice
+
+Il 10 ottobre `make test` ha rieseguito `test_nl.py`: registro delle 28 domande e 11 replay passati. Non è un nuovo giro di domande a un agente; le valutazioni e il benchmark sopra restano riferiti al giro descritto. I difetti 1-3 sono coperti dai test del servizio ma non da un nuovo giro NL. Altri difetti riprodotti, tra cui la sensibilità con penalità e i risultati di S5/S6 omessi, sono nella [revisione del codice](../../docs/REVISIONE-CODICE-20261010.md).

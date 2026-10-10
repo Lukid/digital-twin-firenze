@@ -1,6 +1,6 @@
 # ADR-F09: scena 3D statica di Firenze Novoli
 
-Stato: proposta, 10 ottobre 2026. Sostituisce ADR-T08 (scena di Pisa, libreria cartografica).
+Stato: implementata; documentazione allineata nella revisione del 10 ottobre 2026. Sostituisce ADR-T08 (scena di Pisa, libreria cartografica).
 
 ## Decisione
 
@@ -10,7 +10,7 @@ Motivi:
 - Firenze Novoli ha rilievo reale (circa 38-55 m nel riquadro): il terreno 3D da DTM serve. Con la libreria cartografica serviva un servizio di terreno.
 - Le ombre del sole sono del motore: luce direzionale con mappa d'ombra. Il sole è calcolato in JS per il centro del riquadro.
 - Gli alberi sono istanze (2.917 chiome e tronchi): una sola chiamata di disegno per tipo.
-- Il pacchetto è piccolo: circa 1,0 MB compresso, con il livello di accessibilità incluso.
+- Gli asset correnti occupano circa 1,57 MB compressi, somma dei byte dichiarati e verificati nell'indice; libreria 3D esclusa.
 
 ## Cosa si riprende da Padova
 
@@ -35,7 +35,7 @@ Origine: centro del riquadro FP in EPSG:7791. Piano del motore: x = est, y = alt
 
 ## Formato degli asset
 
-Cartella `assets/`. `index.json` elenca per ogni asset file, byte, byte decompressi, sha256 e numero di elementi. Contiene anche area, livelli (con le fonti di ciascuno), fonti e limiti. La pagina verifica dimensione e sha256 prima di usare un asset.
+Cartella `assets/`. `index.json` elenca per ogni asset file, byte, byte decompressi, sha256 e numero di elementi. Contiene anche area, livelli (con le fonti di ciascuno), fonti e limiti. La pagina verifica la dimensione prima di usare un asset e verifica sha256 quando `crypto.subtle` è disponibile (contesto sicuro, per esempio localhost o HTTPS).
 
 - `terreno.json.gz`: griglia regolare (nx, ny, passo, x0, z0), quote in centimetri relative alla quota di riferimento, medie di cella dal DTM 0,5 m.
 - `edifici.json.gz`: `posizioni` (Float32 in base64, triangoli non indicizzati: tetto e muri) e un record per volume (id, numero di vertici, h, h_min, h_max, z_base, classe_h, tipo, fonte, area_m2, presente_2023, flag, h_uv, h_lidar). I volumi scendono 1,5 m sotto la quota di base.
@@ -49,7 +49,7 @@ Cartella `assets/`. `index.json` elenca per ogni asset file, byte, byte decompre
 - `temperature.json.gz`: temperatura delle superfici Landsat 8-9 su una griglia di 30 m (x0, z0 centro della prima cella, riga 0 a nord). Una griglia per data in decimi di °C (-32768 = non valido), più la media delle date valide, il numero di date sopra 40 °C e le date valide per cella. La pagina la dipinge su una copia del terreno, semitrasparente, e legge una cella al clic.
 - `meteo.json.gz`: massime e minime giornaliere della stazione SIR Firenze Università (CC BY-SA 4.0) e le date Landsat, per confrontare superficie e aria nello stesso giorno. Non ha una riga nel pannello: compare nel livello temperature.
 - `aria.json.gz`: 6 stazioni ARPAT con valori di stazione, nessuna interpolazione e nessuna mappa. Tutte fuori dal riquadro, con `fuori_riquadro` true e distanza in metri. Per ogni inquinante: media annua 2025, superamenti nel senso del D.Lgs. 155/2010, limite, percentuale di dati validi (sotto il 90% la media non vale ai fini di legge) e ultimo valore. Il 2026 è escluso perché esce solo dall'API dell'app ARPAT. La pagina le mostra come elenco nella scheda Analisi.
-- I quattro asset nuovi sono opzionali: build.py li scrive solo se esistono i file in data/norm.
+- Temperatura, meteo e aria sono opzionali: build.py li scrive solo se esistono i file normalizzati. Il catasto e i tematismi sono invece costruiti sempre e richiedono i relativi input locali.
 
 ## Pannello
 
@@ -70,13 +70,13 @@ Mostra gli interventi del modulo scenari (F08), per vedere con lo slider dell'or
 - Input: `scenarios/firenze_novoli/interventi.geojson` (EPSG:4326), opzione `--scenarios` di build.py. Point = albero nuovo (id, scenario, h, chioma_d, imposta); Polygon = pensilina (id, scenario, z_lo, z_hi).
 - Numeri chiave letti da `scenarios/firenze_novoli/confronto.json`: caso con vegetazione LiDAR, 15 luglio, 12:30-13:30; per S2 anche il caso con soli edifici. Se F08 viene rieseguito basta ricostruire gli asset.
 - Asset `interventi.json.gz`: un record per scenario (id, etichetta, alberi, pensiline, numeri, fattibilità). Senza il file l'asset non viene scritto e la casella è disabilitata.
-- Selettore: S1 filare tipico, chioma minima, chioma massima; S2 pensilina alla fermata bus Guidoni Barsanti.
+- Selettore: S1 filare tipico, chioma minima, chioma massima; S2 pensilina alla fermata bus Guidoni Barsanti; S5 Regione Toscana e S6 Di Novoli Sn. I numeri delle pensiline riguardano la rispettiva area di attesa.
 - Resa: alberi in magenta (colore assente dagli altri livelli), pensilina come volume con quattro pali. Tutto proietta ombra del motore. Il pulsante "Vai all'intervento" accende il livello e inquadra l'intervento.
 - Scheda al clic: scenario, dimensioni, numeri chiave e "Fattibilità: ignota". Gli interventi sono ipotesi di studio, non progetti.
 
 Limiti:
 - Le ombre mostrate sono quelle del motore grafico; i numeri della scheda vengono dal motore F07 e possono differire dall'impressione visiva.
-- Il filare (versione 2 di F08) sta dentro le aree di circolazione pedonale del Comune, da 1,5 a 5 m dall'asse. Anche la pensilina S2 (versione 2) sta dentro le aree pedonali, con 1,5 m di passaggio libero.
+- Il filare (versione 3 di F08, dopo D20) sta dentro le aree di circolazione pedonale del Comune, da 1,5 a 5 m dall'asse. Anche la pensilina S2 (versione 2) sta dentro le aree pedonali, con 1,5 m di passaggio libero.
 - La quota della pensilina usa il terreno a 10 m al centro del contorno.
 
 ## Comandi
@@ -96,3 +96,5 @@ Limiti:
 - La scheda si apre con mouse e tocco, non da tastiera. Da tastiera si usano pannello, ora, livelli e vista.
 - Sole con algoritmo semplificato (circa 0,1 gradi), fuso Europe/Rome.
 - Provato su Chromium emulato, non su un telefono vero. Scheda al clic su alberi e punti non provata.
+
+- Una costruzione interrotta può eliminare gli asset precedenti e lasciare il vecchio indice: problema aperto R6 della [revisione del codice](../../docs/REVISIONE-CODICE-20261010.md). La scena non è stata ricostruita durante questa revisione.

@@ -129,7 +129,8 @@ def calcola(entrate, origini, prof):
             ent_k = eid[nodi[0]]; rd = ent[ent_k][1]["dist_m"]; rs = _riassunto(H, nodi, archi)
             tot = rs["rete_m"] + s["dist_m"] + rd; dirett = p.distance(ent[ent_k][0])
             r.update(stato="reachable", entrance_id=ent_k, **rs, raccordo_destinazione_m=rd, totale_m=round(tot, 1), diretta_m=round(dirett, 1),
-                     deviazione=round(tot / max(dirett, 1.0), 2), tempo_s=round(dist[n] + s["dist_m"] / prof["speed_m_s"], 1))
+                     deviazione=round(tot / max(dirett, 1.0), 2), tempo_s=round(dist[n] + s["dist_m"] / prof["speed_m_s"], 1),
+                     attesa_s=round(sum(_costo(e, prof, c["orig_len"]) - e["length_m"] / prof["speed_m_s"] for e in archi), 1))   # penalità accumulata, come nel costo
             for e in {e.get("parte_di", e["edge_id"]) for e in archi}: uso[e] = uso.get(e, 0) + 1
         elif r["componente"] in comp_dest:
             r.update(stato="isolated", motivo="profilo: ogni percorso passa da tratti esclusi dal profilo (scale)")
@@ -161,7 +162,7 @@ def _aggrega(righe, uso, prof, soglie, dev, n_top=30):
     c = contesto(); ok = [r for r in righe.values() if r["stato"] == "reachable"]; n = len(righe)
     conteggi = {s: sum(1 for r in righe.values() if r["stato"] == s) for s in ("reachable", "isolated", "insufficient_data", "forbidden", "outside_model")}
     t_min = [r["tempo_s"] / 60 for r in ok]
-    def tempo_a(r, v): return (r["totale_m"] / v + prof["crossing_penalty_s"] * r["attraversamenti"]) / 60
+    def tempo_a(r, v): return (r["totale_m"] / v + r["attesa_s"]) / 60   # stesso percorso, attese invariate
     quote = {}
     for T in soglie:
         quote[f"{T:g}"] = {"servite": sum(1 for t in t_min if t <= T), "quota": round(sum(1 for t in t_min if t <= T) / n, 4),
@@ -177,7 +178,7 @@ def _aggrega(righe, uso, prof, soglie, dev, n_top=30):
     ordine = sorted(uso.items(), key=lambda kv: (-kv[1], kv[0]))
     top = [riga_arco(k, nn) for k, nn in ordine[:n_top]]
     ign = [riga_arco(k, nn) for k, nn in ordine if info[k][0]["marciapiede_stato"] == "ignoto"][:n_top]
-    return {"origini_totali": n, "conteggi": conteggi, "quote_soglie": quote, "tempo_min": {**_quantili(t_min), "max": round(max(t_min), 2) if t_min else None, "media": round(statistics.fmean(t_min), 2) if t_min else None},
+    return {"origini_totali": n, "conteggi": conteggi, "quote_soglie": quote, "tempo_min_velocita": [_quantili([tempo_a(r, v) for r in ok]) for v in SENS_VELOCITA], "tempo_min": {**_quantili(t_min), "max": round(max(t_min), 2) if t_min else None, "media": round(statistics.fmean(t_min), 2) if t_min else None},
             "istogramma_tempo_min": {f"{a}-{b}": sum(1 for t in t_min if a <= t < b) for a, b in [(0, 5), (5, 10), (10, 15), (15, 20), (20, 30), (30, 999)]},
             "rete_m": _quantili([r["totale_m"] for r in ok]), "deviazione": _quantili([r["deviazione"] for r in ok if r["diretta_m"] >= dev["min_diretta_m"]]),
             "deviazione_alta": {"regola": dev, "n": len(alte), "quota_raggiungibili": round(len(alte) / max(len(ok), 1), 4), "origin_ids": sorted(r["origin_id"] for r in alte)},
@@ -280,8 +281,8 @@ def compute_walk_access(destination_id, origin_family="address_points", profile=
     tm = agg["tempo_min"]
     for key, lab in (("p50", "mediano"), ("p90", "90° percentile")):
         if tm[key] is not None:
-            v = prof["speed_m_s"]; met.append(_metrica(f"travel_time_{key}", f"Tempo {lab} delle origini raggiungibili", tm[key], "min", "estimated", sc,
-                                                       unc_v(round(tm[key] * v / SENS_VELOCITA[1], 2), round(tm[key] * v / SENS_VELOCITA[0], 2))))
+            lento, rapido = agg["tempo_min_velocita"]; met.append(_metrica(f"travel_time_{key}", f"Tempo {lab} delle origini raggiungibili", tm[key], "min", "estimated", sc,
+                                                                    unc_v(rapido[key], lento[key])))
     met += [_metrica("network_distance_p50", "Distanza di cammino mediana (rete più raccordi)", agg["rete_m"]["p50"], "m", "derived", sc),
             _metrica("deviation_p50", "Deviazione mediana rispetto alla linea d'aria", agg["deviazione"]["p50"], "1", "derived", sc + ", origini oltre 100 m"),
             _metrica("high_deviation_count", "Origini con deviazione alta (rapporto 1,5 o più, oltre 100 m)", agg["deviazione_alta"]["n"], "count", "derived", sc),
