@@ -140,19 +140,17 @@ async function main() {
   scene.add(gruppi.rete);
 
   // punti: destinazioni, tram, scuole, rifugi, barriere
-  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x0b7285, 4, 12], scuole: [0x7048e8, 4, 12], rifugi: [0x2b8a3e, 4, 10], barriere: [0xc2255c, 2.5, 6] };
-  const sfera = new THREE.SphereGeometry(1, 12, 8), palo = new THREE.CylinderGeometry(0.25, 0.25, 1, 6), segni = [];
+  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x0b7285, 4, 12], scuole: [0x7048e8, 4, 12], rifugi: [0x2b8a3e, 4, 10], barriere: [0xc2255c, 1.6, 5] };
+  const sfera = new THREE.SphereGeometry(1, 12, 8), palo = new THREE.CylinderGeometry(0.25, 0.25, 1, 6);
   for (const k of Object.keys(PUNTO)) { gruppi[k] = new THREE.Group(); scene.add(gruppi[k]); }
   for (const p of dati.punti.punti) {
     const [col, r, h] = PUNTO[p.livello], g = gruppi[p.livello], q = new THREE.Group();
     const m = new THREE.Mesh(sfera, new THREE.MeshStandardMaterial({ color: col, roughness: 0.6 }));
     m.scale.setScalar(r); m.position.y = h; m.userData = { tipo: p.livello, punto: p }; q.add(m); sel.push(m);
     const s = new THREE.Mesh(palo, m.material); s.scale.y = h; s.position.y = h / 2; q.add(s);
-    q.position.set(p.x, tY(p.x, p.z), p.z); g.add(q); segni.push(q);
+    q.position.set(p.x, tY(p.x, p.z), p.z); g.add(q);
     if (p.contorno) g.add(nastri([{ p: p.contorno }], 0.4, () => 2, () => hex(col)));
   }
-  // segni a dimensione quasi costante sullo schermo: da lontano crescono, da vicino restano a grandezza reale
-  const scalaSegni = () => { for (const q of segni) q.scale.setScalar(Math.max(1, camera.position.distanceTo(q.position) / 500)); };
 
   // livelli analitici (vuoti se i dati non ci sono)
   const SCALA = [[5, '#fde725', 'fino a 5 min'], [10, '#35b779', '5-10 min'], [15, '#31688e', '10-15 min'], [1e9, '#440154', 'oltre 15 min']];
@@ -223,6 +221,7 @@ async function main() {
     const w = document.createElement('div');
     w.innerHTML = `<label><input type="checkbox" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && k !== 'barriere' ? 'checked' : ''}> ${L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</label>`;
     if (k === 'edifici') w.innerHTML += '<div class="leg"><span><i style="background:#bfc3c9"></i>altezza misurata</span><span><i style="background:#dccba8"></i>altezza derivata</span><span><i style="background:#666b73"></i>non presente nel 2023</span></div>';
+    if (k === 'destinazioni') w.innerHTML += '<div class="leg"><span>I punti di arrivo dei calcoli di accessibilità e ombra: i 7 ingressi del Polo delle Scienze Sociali, le scuole Vamba (primaria e infanzia), le fermate T2 San Donato - Università, Regione Toscana e Torre degli Agli.</span></div>';
     if (k === 'alberi') w.innerHTML += '<div class="leg"><span><i style="background:#3d7a37"></i>chioma misurata</span><span><i style="background:#86b564"></i>chioma stimata</span></div>';
     if (k === 'rete') w.innerHTML += '<div class="leg"><span><i style="background:#5b6470"></i>strada</span><span><i style="background:#b0763a"></i>sentiero</span><span><i style="background:#2f6fb5"></i>marciapiede</span><span><i style="background:#f2f2f2"></i>attraversamento</span></div>';
     if (k === 'accessibilita' && presente) w.innerHTML += `<div class="sub"><label for="s_acc">Verso:</label><select id="s_acc">${dati.accessibilita.destinazioni.map((d, i) => `<option value="${i}">${d.nome}</option>`).join('')}</select></div><div class="leg" id="leg_accessibilita"></div>`;
@@ -341,7 +340,7 @@ async function main() {
   vai(VISTA.pos, VISTA.tgt);
   (function ciclo() {
     controls.update();
-    if (dirty) { scalaSegni(); if (shadowDirty) { renderer.shadowMap.needsUpdate = true; shadowDirty = false; } renderer.render(scene, camera); dirty = false; }
+    if (dirty) { if (shadowDirty) { renderer.shadowMap.needsUpdate = true; shadowDirty = false; } renderer.render(scene, camera); dirty = false; }
     requestAnimationFrame(ciclo);
   })();
   const nE = dati.edifici.n.toLocaleString('it-IT'), nA = dati.alberi.n.toLocaleString('it-IT');
