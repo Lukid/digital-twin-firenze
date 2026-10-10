@@ -34,7 +34,7 @@ make validate    # contratti JSON Schema
 
 Senza `data/` passano solo `geometry/test_geometrie_firenze.py`, `scene/firenze_novoli/test_build.py` e `contracts/validate.py`: sono quelli che gira la CI. Gli altri richiedono `data/` locale.
 
-Vedere la scena: `cd scene/firenze_novoli && python3 -m http.server 8765`, poi http://localhost:8765/
+Come vedere la scena: [docs/STATO.md](docs/STATO.md), sezione "Fatto su Firenze".
 
 ## Struttura
 

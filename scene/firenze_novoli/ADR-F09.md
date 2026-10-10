@@ -4,7 +4,7 @@ Stato: proposta, 10 ottobre 2026. Sostituisce ADR-T08 (scena di Pisa, libreria c
 
 ## Decisione
 
-La scena del pilota è un sito statico con un motore 3D generico (three.js 0.180.0, MIT, copiato in `vendor/three@0.180.0/`: la scena non chiede niente alla rete), sul modello osservato a Padova. Nessun server a runtime. Gli asset sono precotti da una pipeline Python offline. Funziona con `python3 -m http.server` nella cartella.
+La scena del pilota è un sito statico con un motore 3D generico (three.js 0.180.0, MIT, copiato in `vendor/three/`: la scena non chiede niente alla rete), sul modello osservato a Padova. Nessun server a runtime. Gli asset sono precotti da una pipeline Python offline. Funziona con `python3 -m http.server` nella cartella.
 
 Motivi:
 - Firenze Novoli ha rilievo reale (circa 38-55 m nel riquadro): il terreno 3D da DTM serve. Con la libreria cartografica serviva un servizio di terreno.
@@ -75,7 +75,7 @@ Limiti:
 
 ## Limiti
 
-- three.js è copiato in `vendor/three@0.180.0/` (solo `three.module.js`, `three.core.js`, `OrbitControls.js` e la licenza): per cambiare versione si sostituisce la cartella e si aggiorna la importmap di `index.html`.
+- three.js è copiato in `vendor/three/` (solo `three.module.min.js`, `three.core.min.js`, `OrbitControls.js` e la licenza; versione in `vendor/three/README.md`): per cambiare versione si sostituiscono i tre file, la importmap di `index.html` non cambia. `test_build.py` controlla che i file della importmap esistano.
 - Altezze: LiDAR 2023 confrontato con le unità volumetriche 2011. Volumi senza tetti a falde. Portici e volumi sospesi ignoti, non disegnati.
 - Alberi: 867 su 2.917 hanno la chioma stimata. Tronco disegnato con almeno 25 cm di diametro.
 - Terreno a 10 m, senza ortofoto.

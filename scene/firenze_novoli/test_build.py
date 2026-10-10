@@ -65,6 +65,19 @@ def test_interventi_scenari():
     assert s1["numeri"][0][1].startswith("minuti al sole da 4,25 a 3,89") and s1["numeri"][1][1] == "da 29,5% a 35,4%"   # R01 da San Donato - Università (D20)
 
 
+def test_three_in_vendor():
+    # la importmap e gli import di app.js e di three devono puntare a file presenti: altrimenti la scena resta bianca
+    import re
+    H = A.parent
+    imp = json.loads(re.search(r'<script type="importmap">(.*?)</script>', (H / "index.html").read_text(), re.S).group(1))["imports"]
+    for spec in re.findall(r"from '([^']+)'", (H / "app.js").read_text()):
+        pref = max((k for k in imp if spec == k or (k.endswith("/") and spec.startswith(k))), key=len)
+        f = H / (imp[pref] + spec[len(pref):])
+        assert f.is_file(), f"{spec} -> {f} mancante"
+        for rel in re.findall(r'from ?"(\./[^"]+)"', f.read_text()):
+            assert (f.parent / rel).is_file(), f"{f.name} importa {rel}, mancante"
+
+
 if __name__ == "__main__":
     for n, f in list(globals().items()):
         if n.startswith("test_"):
