@@ -1,19 +1,19 @@
-"""T09: test del motore d'ombra e del sole. Uso: pipeline/.venv/bin/python shadow/test_ombre.py (asserzioni semplici, nessun framework)."""
+"""F07: test del motore d'ombra e del sole (area da DT_AOI, default Firenze Novoli). Uso: pipeline/.venv/bin/python shadow/test_ombre.py (asserzioni semplici, nessun framework)."""
 import json, math, pathlib, sys, datetime as dt
 import numpy as np, shapely
 from shapely.geometry import box, Polygon, MultiPolygon, LineString, Point
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import ombre as O
 
-ROOT = O.ROOT; LAT, LON = 43.7228, 10.4017
+ROOT = O.ROOT; LAT, LON = O.SOLE_LAT, O.SOLE_LON; E0, N0, E1, N1 = O.RIQUADRO_EN; CE, CN = (E0 + E1) / 2, (N0 + N1) / 2
 ok = lambda nome: print("  ok", nome)
 
 
 def test_sole_riferimenti():
     # Valori di riferimento calcolati offline con NREL SPA (implementazione numerica in pvlib 0.16.1, quota 4 m, altitudine non rilevante per la
-    # geometria), latitudine/longitudine di Pisa. Nessun valore scaricato. Tolleranza 0,05 gradi (NOAA scarta meno di 0,02 gradi).
-    ref = [("2026-06-21", "12:00", 134.424, 63.870), ("2026-06-21", "07:45", 76.508, 20.281), ("2026-09-15", "08:00", 95.872, 10.427),
-           ("2026-10-01", "16:30", 238.013, 24.746), ("2026-10-25", "12:00", 179.270, 34.088), ("2026-12-21", "12:00", 175.912, 22.732)]
+    # geometria), latitudine/longitudine del centro del riquadro (Firenze Novoli). Nessun valore scaricato. Tolleranza 0,05 gradi (NOAA scarta meno di 0,02 gradi).
+    ref = [("2026-07-15", "12:00", 136.497, 62.068), ("2026-07-15", "08:00", 80.353, 21.546), ("2026-09-15", "08:00", 96.469, 11.011),
+           ("2026-09-15", "19:00", 270.271, 3.801), ("2026-10-25", "12:00", 180.242, 34.015), ("2026-12-21", "12:00", 176.733, 22.695)]
     for d, h, az, el in ref:
         a, e = O.sole(O.locale_a_utc(d, h), LAT, LON)
         assert abs(a - az) < 0.05 and abs(e - el) < 0.05, (d, h, a, e, az, el)
@@ -121,7 +121,7 @@ def _canyon():
     return S, LineString([(-10, 26), (90, 26)]), LineString([(40, 22), (40, 30)])
 
 
-def _frazione_media(S, path, step, tipo="esatta", lat=43.715, lon=10.40, data="2026-09-15", t_da=8 * 60, t_a=18 * 60):
+def _frazione_media(S, path, step, tipo="esatta", lat=LAT, lon=LON, data="2026-09-15", t_da=8 * 60, t_a=18 * 60):
     fr = []
     for m in range(t_da, t_a + 1, step):
         t = O.locale_a_utc(data, f"{m // 60:02d}:{m % 60:02d}"); st, az, el, g = O.ombra_a_istante(S, t, lat, lon)
@@ -134,7 +134,7 @@ def test_convergenza():
     f1, f5, f15 = (_frazione_media(S, path, s) for s in (1, 5, 15))
     assert abs(f15 - f1) < 0.01 and abs(f5 - f1) <= abs(f15 - f1) + 1e-9, (f1, f5, f15)    # passo temporale 15/5/1 min: convergenza sotto 1 punto
     # passo spaziale: campionamento del percorso a 2/1/0,5 m contro l'intersezione esatta, a un istante fisso
-    t = O.locale_a_utc("2026-09-15", "10:00"); st, az, el, g = O.ombra_a_istante(S, t, 43.715, 10.40)
+    t = O.locale_a_utc("2026-09-15", "10:00"); st, az, el, g = O.ombra_a_istante(S, t, LAT, LON)
     ex = path.intersection(g).length / path.length; err = []
     for ds in (2.0, 1.0, 0.5):
         n = int(math.ceil(path.length / ds)); s = (np.arange(n) + 0.5) * path.length / n; p = shapely.line_interpolate_point(path, s)
@@ -163,20 +163,36 @@ def test_chioma():
 
 def test_casi_dati():
     # sui dati reali: aree ordinate h_min < h < h_max; base <= alberi min/tipico/max) e il cilindro supera l'ellissoide
-    w = box(612500, 4840250, 613000, 4840700); t = O.locale_a_utc("2026-09-15", "10:00"); area = {}
+    w = box(CE - 250, CN - 250, CE + 250, CN + 250); t = O.locale_a_utc("2026-09-15", "10:00"); area = {}
     for c in O.CASI:
-        st, az, el, g = O.ombra_a_istante(O.scena_caso(c), t, 43.715, 10.40, finestra=w); assert st == O.STATO_OK; area[c] = g.intersection(w)
+        st, az, el, g = O.ombra_a_istante(O.scena_caso(c), t, LAT, LON, finestra=w); assert st == O.STATO_OK; area[c] = g.intersection(w)
     ar = {c: g.area for c, g in area.items()}
     assert ar["base_h_min"] < ar["base"] < ar["base_h_max"]    # non annidati in senso stretto: le coperture sospese cambiano anche la base
     for c in ("alberi_min", "alberi_tipico", "alberi_max", "alberi_tipico_cilindro"): assert area["base"].difference(area[c]).area < 1e-3 and ar[c] >= ar["base"], c
     assert ar["alberi_min"] <= ar["alberi_tipico"] <= ar["alberi_max"] and ar["alberi_tipico_cilindro"] > ar["alberi_tipico"]
     assert O.scena_caso("alberi_tipico_cilindro").chiome["forma"] == "cilindro" and O.scena_caso("alberi_tipico").chiome["forma"] == "ellissoide"
-    ok("dati reali: casi annidati base <= alberi min <= tipico <= max, cilindro > ellissoide")
+    # vegetazione LiDAR: aggiunge ombra e non ne toglie, a parità di caso degli alberi; ordine min <= tipico <= max
+    for k in ("min", "tipico", "max"): assert area["alberi_" + k].difference(area["veg_lidar_" + k]).area < 1e-3 and ar["veg_lidar_" + k] >= ar["alberi_" + k], k
+    assert ar["veg_lidar_tipico"] > ar["alberi_tipico"] and ar["veg_lidar_min"] <= ar["veg_lidar_tipico"] <= ar["veg_lidar_max"]
+    ok("dati reali: casi annidati base <= alberi min <= tipico <= max, cilindro > ellissoide, vegetazione LiDAR >= alberi")
+
+
+def test_vegetazione_lidar():
+    g = O.vegetazione_lidar(); D = O.dati()
+    assert len(g) > 0 and not g.liscia.any() and (g.h95 >= 2.5).all() and D["n_veg_lisce"] > 0     # cluster liscia (probabili tetti) esclusi
+    S = O.scena_vegetazione("tipico")
+    assert len(S.geoms) == len(g) and np.allclose(S.z_hi, g.h95) and np.allclose(S.z_lo, 0.25 * g.h95) and (S.z_lo < S.z_hi).all()
+    assert (O.scena_vegetazione("min").z_lo > S.z_lo).all() and (O.scena_vegetazione("max").z_lo < S.z_lo).all()
+    # le poligonazioni non toccano gli edifici (maschera di F05): sovrapposizione trascurabile
+    v = D["v"]; ug = shapely.union_all(g.geometry.values)
+    assert shapely.union_all(v.geometry.values).intersection(ug).area < 0.01 * ug.area
+    assert D["n_volumi_demoliti"] > 0 and v.presente_2023.all()      # nessun edificio demolito (LiDAR 2023) nella scena
+    ok("vegetazione LiDAR: solo cluster non liscia, z_lo/z_hi dichiarati, fuori dagli edifici; demolizioni escluse")
 
 
 def test_copertura_osm_sospesa():
-    # una copertura OSM reale (stazione, bld_osm_w1461929644, 3187 m2) è sospesa: z_lo = tetto - 0,4 m; il suolo sotto con sole alto resta libero
-    v = O.dati()["v"]; r = v[v.id == "bld_osm_w1461929644"].iloc[0]; S = O.scena_edifici("h")
+    # la copertura OSM più grande (building=roof) è sospesa: z_lo = tetto - 0,4 m; il suolo sotto con sole alto resta libero
+    v = O.dati()["v"]; cp = v[(v.tipo == "copertura_osm") & (v.h >= 2.0)]; assert len(cp), "nessuna copertura OSM"; r = cp.loc[cp.geometry.area.idxmax()]; S = O.scena_edifici("h")
     i = S.ids.index(r.id); assert abs(S.z_hi[i] - r.h) < 1e-9 and abs(S.z_lo[i] - (r.h - 0.4)) < 1e-9
     assert abs(O.scena_edifici("h_min").z_lo[i] - (r.h_min - 0.8)) < 1e-9 and abs(O.scena_edifici("h_max").z_lo[i] - (r.h_max - 0.2)) < 1e-9
     assert (S.z_lo[[k for k, x in enumerate(v.id) if v.tipo.values[k] != "copertura_osm"]] == 0).all()    # portici/volumi pieni restano pieni
@@ -184,7 +200,7 @@ def test_copertura_osm_sospesa():
     sosp = O.ombra_prisma(r.geometry, r.h - 0.4, r.h, az, el); pieno = O.ombra_prisma(r.geometry, 0, r.h, az, el)
     assert pieno.contains(c) and pieno.area > sosp.area and sosp.difference(pieno).area < 1e-6
     assert sosp.area < r.geometry.area + 2 * r.geometry.length * 0.4 / math.tan(math.radians(el)) + r.geometry.length * r.h / math.tan(math.radians(el)) and sosp.area > 0
-    ok("copertura OSM reale sospesa (regola T08), portici pieni, ombra sospesa contenuta nella piena")
+    ok("copertura OSM reale sospesa (regola della scena), portici pieni, ombra sospesa contenuta nella piena")
 
 
 def test_contratti():
@@ -192,25 +208,81 @@ def test_contratti():
     from referencing import Registry, Resource
     sch = {p.name.split(".")[0]: json.loads(p.read_text()) for p in (ROOT / "contracts/schemas").glob("*.schema.json")}
     reg = Registry().with_resources([(s["$id"], Resource.from_contents(s)) for s in sch.values()])
-    rec = [{"receiver_id": "pth_t04_R01", "kind": "path", "geometry": {"type": "LineString", "coordinates": [[612600.0, 4840310.0], [612700.0, 4840330.0]]}}]
+    rec = [{"receiver_id": "pth_fi_prova", "kind": "path", "geometry": {"type": "LineString", "coordinates": [[round(CE, 2), round(CN, 2)], [round(CE + 100, 2), round(CN + 20, 2)]]}}]
     w = {"date": "2026-09-15", "timezone": "Europe/Rome", "times": ["08:00", "13:00"]}; m = {"name": "geometric_ray", "space_step_m": 1, "time_step_min": 5, "obstacles": "buildings_and_trees"}
-    r1 = O.compute_shadow("bas_z2_20261001", rec, w, m); r2 = O.compute_shadow("bas_z2_20261001", rec, w, m)
+    r1 = O.compute_shadow(O.BASELINE_ID, rec, w, m); r2 = O.compute_shadow(O.BASELINE_ID, rec, w, m)
     assert r1["job"]["job_id"] == r2["job"]["job_id"] and r1["righe"] == r2["righe"]                     # deterministico
     h = O.hashlib.sha256(O.canon({"tool": "compute_shadow", "inputs": r1["job"]["inputs"], "params": r1["job"]["params"]}).encode()).hexdigest()[:16]
     assert r1["job"]["job_id"] == "job_" + h and r1["manifest"]["manifest_id"] == "man_" + h
     for nome, doc in (("job", r1["job"]), ("manifest", r1["manifest"])):
         errs = list(Draft202012Validator({"$ref": sch[nome]["$id"]}, registry=reg).iter_errors(doc)); assert not errs, (nome, errs[0].message)
     assert Draft202012Validator({"$ref": sch["mcp"]["$id"] + "#/$defs/compute_shadow.input"}, registry=reg).is_valid(
-        {"baseline_id": "bas_z2_20261001", "receivers": rec, "when": w, "method": {**m, "obstacles": "documented_buildings_only"}})
+        {"baseline_id": O.BASELINE_ID, "receivers": rec, "when": w, "method": {**m, "obstacles": "documented_buildings_only"}})
     assert all(x["classification"] in ("derived", "estimated") and "unit" in x for x in r1["manifest"]["metrics"])
     # ora ambigua/inesistente respinta; sole sotto l'orizzonte: riga con stato esplicito e nessuna frazione
     for d, hh, esc in (("2026-10-25", "02:30", O.OraAmbigua), ("2026-03-29", "02:30", O.OraInesistente)):
-        try: O.compute_shadow("bas_z2_20261001", rec, {**w, "date": d, "times": [hh]}, {**m, "obstacles": "documented_buildings_only"}); assert False
+        try: O.compute_shadow(O.BASELINE_ID, rec, {**w, "date": d, "times": [hh]}, {**m, "obstacles": "documented_buildings_only"}); assert False
         except esc: pass
-    rn = O.compute_shadow("bas_z2_20261001", rec, {**w, "date": "2026-10-25", "times": ["03:00", "12:00"]}, {**m, "obstacles": "documented_buildings_only"})
+    rn = O.compute_shadow(O.BASELINE_ID, rec, {**w, "date": "2026-10-25", "times": ["03:00", "12:00"]}, {**m, "obstacles": "documented_buildings_only"})
     notte = [x for x in rn["righe"] if x["time_local"] == "03:00"]; assert notte and all(x["stato"] == O.STATO_NOTTE and "shade_fraction" not in x for x in notte)
     assert any(x["stato"] == O.STATO_OK and 0 <= x["shade_fraction"] <= 1 for x in rn["righe"] if x["time_local"] == "12:00")
     ok("compute_shadow: deterministico, job_id = hash, job/manifest validi sugli schemi")
+
+
+def _percorsi_firenze():
+    import run
+    return [{k: v for k, v in r.items() if not k.startswith("_")} for r in run.ricevitori()]
+
+
+def test_firenze_vegetazione_e_determinismo():
+    # percorso reale fermata T2 -> Polo: con la vegetazione LiDAR l'ombra aumenta o resta uguale, a parità di caso degli alberi; stesso input = stessi numeri
+    rec = _percorsi_firenze(); assert [r["receiver_id"] for r in rec] == ["pth_fi_R01", "pth_fi_R02"]
+    w = {"date": "2026-09-15", "timezone": "Europe/Rome", "times": ["09:00", "12:30", "16:00"]}; m = {"name": "geometric_ray", "space_step_m": 1, "time_step_min": 5, "obstacles": "buildings_and_trees"}
+    casi = ["base", "alberi_tipico", "veg_lidar_tipico", "alberi_min", "veg_lidar_min", "alberi_max", "veg_lidar_max"]
+    r1 = O.compute_shadow(O.BASELINE_ID, rec, w, m, casi=casi, tratti_casi=["base"]); r2 = O.compute_shadow(O.BASELINE_ID, rec, w, m, casi=casi, tratti_casi=["base"])
+    assert r1["job"]["job_id"] == r2["job"]["job_id"] and r1["righe"] == r2["righe"] and r1["tratti"] == r2["tratti"]
+    fr = {(x["receiver_id"], x["time_local"], x["caso"]): x["shade_fraction"] for x in r1["righe"] if x["stato"] == O.STATO_OK}
+    assert fr, "nessun istante calcolato"
+    for (rid, t, c), f in fr.items():
+        assert 0 <= f <= 1
+        if c.startswith("alberi_"): assert f >= fr[(rid, t, "base")] - 1e-9 and fr[(rid, t, "veg_lidar_" + c[7:])] >= f - 1e-9, (rid, t, c)
+    assert any(fr[(rid, t, "veg_lidar_tipico")] > fr[(rid, t, "alberi_tipico")] for (rid, t, c) in fr if c == "base"), "la vegetazione LiDAR non pesa mai?"
+    # tratti: un Feature per ricevitore/ora calcolati del caso base, metri in ombra uguali a quelli delle righe
+    tr = {(f["properties"]["receiver_id"], f["properties"]["time_local"]): f for f in r1["tratti"]["features"]}
+    assert len(tr) == sum(1 for k in fr if k[2] == "base") and all(f["properties"]["caso"] == "base" for f in tr.values())
+    for (rid, t), f in tr.items(): assert abs(f["properties"]["shade_fraction"] - fr[(rid, t, "base")]) < 1e-9
+    ok("percorsi Firenze: vegetazione LiDAR >= alberi >= edifici, determinismo, tratti")
+
+
+def test_nessun_riferimento_a_pisa():
+    rec = _percorsi_firenze()[:1]; w = {"date": "2026-09-15", "timezone": "Europe/Rome", "times": ["12:30"]}
+    m = {"name": "geometric_ray", "space_step_m": 2, "time_step_min": 10, "obstacles": "buildings_and_trees"}
+    r = O.compute_shadow(O.BASELINE_ID, rec, w, m, casi=["base", "veg_lidar_tipico"])
+    docs = [json.dumps(r["manifest"], ensure_ascii=False), json.dumps(r["job"], ensure_ascii=False)]
+    docs += [p.read_text() for p in (ROOT / "shadow" / O.SLUG / "manifest").glob("*.json")] if (ROOT / "shadow" / O.SLUG / "manifest").exists() else []
+    for d in docs:
+        low = d.lower(); assert "pisa" not in low and "z2" not in low and "aoi_z2" not in low, "riferimento a Pisa"
+    assert r["manifest"]["aoi_id"] == "aoi_firenze_novoli" and r["manifest"]["baseline_id"] == "bas_firenze_novoli_20261009"
+    ok("manifest e job senza riferimenti a Pisa, area e baseline di Firenze")
+
+
+def test_risultati_versionati():
+    f = ROOT / "shadow" / O.SLUG / "sintesi.json"
+    if not f.exists(): print("  (sintesi.json assente: eseguire shadow/run.py)"); return
+    S = json.load(open(f)); assert set(S["date"]) == {"2026-07-15", "2026-09-15"} and len(S["percorsi"]) == 2
+    for data, righe in S["date"].items():
+        for r in righe:
+            e, a, v = (r[k].get("frazione") for k in ("edifici", "edifici_e_alberi", "edifici_alberi_e_vegetazione_lidar"))
+            if e is None: continue
+            assert 0 <= e["min"] <= e["valore"] <= e["max"] <= 1
+            assert e["valore"] <= a["valore"] + 1e-9 <= v["valore"] + 2e-9, (data, r["receiver_id"], r["fascia"])       # più ostacoli, non meno ombra
+            assert a["min"] <= a["valore"] <= a["max"] and v["min"] <= v["valore"] <= v["max"]
+        assert {r["fascia"] for r in righe} == {"punta_12_30_13_30", "giornata_8_19"}
+    for data in S["date"]:
+        g = json.load(open(ROOT / "shadow" / O.SLUG / f"tratti_ombra_{data}.geojson")); assert g["type"] == "FeatureCollection" and g["features"]
+        for ft in g["features"]:
+            if ft["geometry"]: assert all(8 < c[0] < 14 and 40 < c[1] < 46 for ln in (ft["geometry"]["coordinates"] if ft["geometry"]["type"] == "MultiLineString" else [ft["geometry"]["coordinates"]]) for c in ln)   # lon/lat
+    ok("sintesi e GeoJSON versionati coerenti: intervalli ordinati, edifici <= alberi <= vegetazione, EPSG:4326")
 
 
 if __name__ == "__main__":
