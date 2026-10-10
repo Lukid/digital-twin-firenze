@@ -20,7 +20,7 @@ idna==3.20
 inflate64==1.0.4
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1
-mcp==1.30.0
+mcp==2.3.0
 mcp-types==2.2.0
 multivolumefile==0.2.3
 networkx==3.7
