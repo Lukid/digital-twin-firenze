@@ -41,11 +41,13 @@ Firenze:
 2. Dati ARPAT: chiedere ad ARPAT il consenso per proxy e dati (T16).
 3. Contatto con Comune di Firenze o DISIT: concorrenza o collaborazione.
 4. Ombre (F06): includere i 66 ettari di chioma senza albero censito (giardini privati, parchi) ricavati dal LiDAR, o dichiarare ombra solo da edifici e alberi pubblici.
+5. Scelte dei subagent di F03-F05 da confermare: id del Polo dalla way OSM (`dst_university_w83537185`); Vamba come due destinazioni (primaria e infanzia) con lo stesso ingresso; 201 civici rossi (commerciali) inclusi tra le origini; id con rango spaziale dove la fonte non ha codice unico (edifici scolastici CM, fermate tram).
+6. Prima di aggiungere un remote: togliere da git i due campioni F01 con valori Life Escapos (`docs/audit-firenze/verde/campioni/chm_vs_escapos.csv`, `escapos_vs_censimento.csv`).
 
 Pisa (primo pilota):
-5. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.
-6. Licenza dei layer SIT, richiesta del censimento alberi, segnalazione dei layer SIT scrivibili.
-7. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
+7. Sopralluogo T11: farlo o chiudere il pilota senza validazione sul posto.
+8. Licenza dei layer SIT, richiesta del censimento alberi, segnalazione dei layer SIT scrivibili.
+9. Cancellare `data/work/` (4,2 GB di estratti rigenerabili).
 
 ## Risultati principali su Pisa (non validati sul posto)
 
