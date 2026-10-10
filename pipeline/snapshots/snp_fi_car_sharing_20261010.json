@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_car_sharing_20261010",
+ "source_id": "src_fi_car_sharing",
+ "retrieved_at": "2026-10-10T18:03:49Z",
+ "bytes": 3141,
+ "sha256": "65789283a73d4a79281ff8571f69254a5c46db0227f9590351a263476854f702",
+ "local_path": "data/raw/fi_car_sharing/20261010/car_sharing.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6563&type=99&format=url&file_format=shp&file_id=20352",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-02-11, data di rilievo non dichiarata"
+ },
+ "license_state": "clear"
+}

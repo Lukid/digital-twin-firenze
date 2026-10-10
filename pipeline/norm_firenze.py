@@ -229,6 +229,15 @@ def arpat_aria(raggio=3000.0):
     json.dump(out, open(NORM / "arpat_aria_riassunti.json", "w"), indent=1, ensure_ascii=False)
     for q in ord_: print(f"  {q['codice']:14} {q['tipo'] or '-':9} {q['distanza_fp_m']:6} m  {' '.join(p['parametro'] for p in q['inquinanti'])}")
 
+def sezioni2011():
+    """Sezioni di censimento 2011 del Comune con i residenti 2011 (P1) del CSV regionale: SEZ2011 = 48017 x 10^7 + CODSEZ2011."""
+    import pandas as pd
+    g = leggi("fi_sezioni2011", "sezioni2011.zip", 3003); g["CODSEZ2011"] = g["CODSEZ2011"].astype("int64")
+    c = pd.read_csv(raw("rt_censimento2011", "censimento2011.csv")[0], sep=";", usecols=["PROCOM", "SEZ2011", "P1"], encoding="latin-1")
+    c = c[c.PROCOM == 48017].assign(CODSEZ2011=lambda d: d.SEZ2011 - 48017 * 10**7)
+    g = g.merge(c[["CODSEZ2011", "P1"]].rename(columns={"P1": "residenti_2011"}), on="CODSEZ2011", how="left")   # 118 sezioni senza riga: residenti nullo, non zero
+    scrivi(g, "fi_sezioni2011", "src_fi_sezioni2011", "sezioni", "CODSEZ2011", "sez_fi_", cls_extra={"residenti_2011": M})
+
 
 JOBS = {
     "osm": lambda: norm_osm("osm_firenze", "src_osm_firenze"),
@@ -243,6 +252,20 @@ JOBS = {
     "rifugi_bibl": lambda: scrivi(leggi("fi_rifugi_biblioteche", "rifugi_biblioteche.json", 3003), "fi_rifugi_biblioteche", "src_fi_rifugi_biblioteche", "rifugi_biblioteche", "fid_src", "rib_fi_"),
     "aree_attesa": lambda: scrivi(leggi("fi_aree_attesa", "aree_attesa.zip", 3003, "ISO-8859-1").astype({"gid": int}), "fi_aree_attesa", "src_fi_aree_attesa", "aree_attesa", "gid", "pcv_att_fi_"),   # 'codice' ha doppioni (AT04, AT14): chiave gid
     "aree_assistenza": lambda: scrivi(leggi("fi_aree_assistenza", "aree_assistenza.zip", 3003, "ISO-8859-1"), "fi_aree_assistenza", "src_fi_aree_assistenza", "aree_assistenza", "cod_area", "pcv_ass_fi_"),
+    "sosta_disabili": lambda: scrivi(leggi("fi_sosta_disabili", "sosta_disabili.zip", 3003), "fi_sosta_disabili", "src_fi_sosta_disabili", "sosta_disabili", "fid_src", "sdi_fi_"),
+    "aree_verdi": lambda: scrivi(leggi("fi_aree_verdi", "aree_verdi.zip", 3003), "fi_aree_verdi", "src_fi_aree_verdi", "aree_verdi", "CODICE_ARE", "grn_fi_"),
+    "aree_giochi": lambda: scrivi(leggi("fi_aree_giochi", "aree_giochi.zip", 3003), "fi_aree_giochi", "src_fi_aree_giochi", "aree_giochi", "CODAREAAPP", "gio_fi_"),
+    "aree_cani": lambda: scrivi(leggi("fi_aree_cani", "aree_cani.zip", 3003), "fi_aree_cani", "src_fi_aree_cani", "aree_cani", "id_orig", "can_fi_"),   # CODAREAAPP ha doppioni: chiave ID
+    "aree_sportive": lambda: scrivi(leggi("fi_aree_sportive", "aree_sportive.zip", 3003), "fi_aree_sportive", "src_fi_aree_sportive", "aree_sportive", "CODAREA", "spo_fi_"),
+    "farmacie": lambda: scrivi(leggi("fi_farmacie", "farmacie.zip", 3003), "fi_farmacie", "src_fi_farmacie", "farmacie", "id_orig", "far_fi_"),
+    "bike_sharing": lambda: scrivi(leggi("fi_bike_sharing", "bike_sharing.zip", 3003), "fi_bike_sharing", "src_fi_bike_sharing", "bike_sharing", "fid_src", "bks_fi_"),
+    "car_sharing": lambda: scrivi(leggi("fi_car_sharing", "car_sharing.zip", 3003), "fi_car_sharing", "src_fi_car_sharing", "car_sharing", "fid_src", "cks_fi_"),
+    "pericolosita_idraulica": lambda: scrivi(leggi("fi_pericolosita_idraulica", "pericolosita_idraulica.zip", 3003), "fi_pericolosita_idraulica", "src_fi_pericolosita_idraulica", "pericolosita_idraulica", "fid_src", "idr_fi_"),
+    "allagate1966": lambda: scrivi(leggi("fi_allagate1966", "allagate1966.zip", 3003), "fi_allagate1966", "src_fi_allagate1966", "allagate1966", "AREE_ALLAG", "all66_fi_", rango="AREE_ALLAG"),   # .prj Monte Mario/Roma = EPSG:3003; nessuna chiave
+    "zone30": lambda: scrivi(leggi("fi_zone30", "zone30.zip", 3003), "fi_zone30", "src_fi_zone30", "zone30", "fid_src", "z30_fi_"),
+    "scudo_verde": lambda: scrivi(leggi("fi_scudo_verde", "scudo_verde.zip", 3003), "fi_scudo_verde", "src_fi_scudo_verde", "scudo_verde", "fid_src", "ssv_fi_"),
+    "pcca": lambda: scrivi(leggi("fi_pcca", "pcca.zip", 6706), "fi_pcca", "src_fi_pcca", "pcca", "PKID", "acu_fi_"),
+    "sezioni2011": sezioni2011,
     "tram_fermate": lambda: scrivi(leggi("fi_tram_fermate", "tram_fermate.zip", 3003), "fi_tram_fermate", "src_fi_tram_fermate", "tram_fermate", "nome_ferma", "stp_fi_", rango="nome_ferma"),
     "scuole": lambda: scrivi(leggi("fi_scuole_statali", "miur_scuole_statali_2026_27.json", 6706), "fi_scuole_statali", "src_fi_scuole_statali", "scuole", "codicescuo", "dst_school_", low=True),
     "cm": cm, "catasto": catasto, "landsat_st": landsat_st, "sir_termo": sir_termo, "arpat": arpat_aria,

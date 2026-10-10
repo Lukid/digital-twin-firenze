@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_sosta_disabili_20261010",
+ "source_id": "src_fi_sosta_disabili",
+ "retrieved_at": "2026-10-10T18:03:43Z",
+ "bytes": 83173,
+ "sha256": "7564f814550a9dfbf6ecc15cca815abe2bcaaa0efae6ef0226891f245a02c0d1",
+ "local_path": "data/raw/fi_sosta_disabili/20261010/sosta_disabili.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=7411&type=99&format=url&file_format=shp&file_id=21966",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-10-05, frequenza AS_NEEDED: stato alla data di scarico"
+ },
+ "license_state": "clear"
+}

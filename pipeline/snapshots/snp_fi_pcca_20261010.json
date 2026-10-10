@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_pcca_20261010",
+ "source_id": "src_fi_pcca",
+ "retrieved_at": "2026-10-10T18:03:54Z",
+ "bytes": 460534,
+ "sha256": "b60d84efdf0a8298da1958ec8310358e0de99f99e12e2df907c4ef608850458a",
+ "local_path": "data/raw/fi_pcca/20261010/pcca.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6792&type=99&format=url&file_format=shp&file_id=20688",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-02-11, data di approvazione del piano non nel pacchetto"
+ },
+ "license_state": "clear"
+}

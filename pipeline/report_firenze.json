@@ -45,6 +45,10 @@
    "in_area_allargata": 8491,
    "in_riquadro": 2917
   },
+  "fi_allagate1966.gpkg:allagate1966": {
+   "in_area_allargata": 3,
+   "in_riquadro": 1
+  },
   "fi_aree_assistenza.gpkg:aree_assistenza": {
    "in_area_allargata": 3,
    "in_riquadro": 1
@@ -53,13 +57,37 @@
    "in_area_allargata": 1,
    "in_riquadro": 0
   },
+  "fi_aree_cani.gpkg:aree_cani": {
+   "in_area_allargata": 7,
+   "in_riquadro": 2
+  },
+  "fi_aree_giochi.gpkg:aree_giochi": {
+   "in_area_allargata": 35,
+   "in_riquadro": 9
+  },
   "fi_aree_pedonali.gpkg:aree_pedonali": {
    "in_area_allargata": 1790,
    "in_riquadro": 695
   },
+  "fi_aree_sportive.gpkg:aree_sportive": {
+   "in_area_allargata": 16,
+   "in_riquadro": 4
+  },
+  "fi_aree_verdi.gpkg:aree_verdi": {
+   "in_area_allargata": 242,
+   "in_riquadro": 80
+  },
   "fi_barriere.gpkg:barriere": {
    "in_area_allargata": 222,
    "in_riquadro": 63
+  },
+  "fi_bike_sharing.gpkg:bike_sharing": {
+   "in_area_allargata": 30,
+   "in_riquadro": 10
+  },
+  "fi_car_sharing.gpkg:car_sharing": {
+   "in_area_allargata": 9,
+   "in_riquadro": 6
   },
   "fi_catasto_fogli.gpkg:fogli": {
    "in_area_allargata": 21,
@@ -73,6 +101,18 @@
    "in_area_allargata": 13987,
    "in_riquadro": 3296
   },
+  "fi_farmacie.gpkg:farmacie": {
+   "in_area_allargata": 10,
+   "in_riquadro": 4
+  },
+  "fi_pcca.gpkg:pcca": {
+   "in_area_allargata": 29,
+   "in_riquadro": 9
+  },
+  "fi_pericolosita_idraulica.gpkg:pericolosita_idraulica": {
+   "in_area_allargata": 58,
+   "in_riquadro": 20
+  },
   "fi_rifugi_aree.gpkg:rifugi_aree": {
    "in_area_allargata": 7,
    "in_riquadro": 1
@@ -81,13 +121,29 @@
    "in_area_allargata": 1,
    "in_riquadro": 0
   },
+  "fi_scudo_verde.gpkg:scudo_verde": {
+   "in_area_allargata": 11,
+   "in_riquadro": 5
+  },
   "fi_scuole_statali.gpkg:scuole": {
    "in_area_allargata": 37,
    "in_riquadro": 7
   },
+  "fi_sezioni2011.gpkg:sezioni": {
+   "in_area_allargata": 278,
+   "in_riquadro": 105
+  },
+  "fi_sosta_disabili.gpkg:sosta_disabili": {
+   "in_area_allargata": 359,
+   "in_riquadro": 124
+  },
   "fi_tram_fermate.gpkg:tram_fermate": {
    "in_area_allargata": 10,
    "in_riquadro": 2
+  },
+  "fi_zone30.gpkg:zone30": {
+   "in_area_allargata": 416,
+   "in_riquadro": 161
   },
   "gtfs_at_firenze.gpkg:stops": {
    "in_area_allargata": 189,

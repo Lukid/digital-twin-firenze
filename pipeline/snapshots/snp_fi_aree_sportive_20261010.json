@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_aree_sportive_20261010",
+ "source_id": "src_fi_aree_sportive",
+ "retrieved_at": "2026-10-10T18:03:47Z",
+ "bytes": 49512,
+ "sha256": "ab95af1202f993c9b719b011b5a111061352f9444a2cdacdf08134f3ae36fd86",
+ "local_path": "data/raw/fi_aree_sportive/20261010/aree_sportive.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6375&type=99&format=url&file_format=shp&file_id=19941",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-02-11, data di rilievo non dichiarata"
+ },
+ "license_state": "clear"
+}

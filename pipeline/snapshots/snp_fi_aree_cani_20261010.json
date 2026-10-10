@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_aree_cani_20261010",
+ "source_id": "src_fi_aree_cani",
+ "retrieved_at": "2026-10-10T18:03:46Z",
+ "bytes": 16266,
+ "sha256": "310bef7e245fb03c1ff0c47d75ac7f8a23f148a4534f9f4d1f4a62c8123f4b9b",
+ "local_path": "data/raw/fi_aree_cani/20261010/aree_cani.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6329&type=99&format=url&file_format=shp&file_id=21085",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-10-05: stato alla data di scarico"
+ },
+ "license_state": "clear"
+}
