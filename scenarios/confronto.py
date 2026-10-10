@@ -7,7 +7,7 @@ Per ogni scenario e per ciascuna data (15 luglio e 15 settembre), sugli stessi r
  - tre contesti del motore, ciascuno con caso centrale e due estremi: solo edifici (h, h_min, h_max), con alberi censiti (tipico, min, max), con vegetazione LiDAR
    (tipico, min, max). Il contesto con vegetazione LiDAR è la base di confronto principale (D14). L'intervallo di ogni delta è il minimo e il massimo dei delta accoppiati
    (stesso ricevitore, stessa ora, stesso caso) sui tre casi;
- - area di attesa (superficie) della fermata bus Forlanini Polo Scienze Sociali;
+ - area di attesa (superficie) della fermata bus Guidoni Barsanti (S2 versione 2);
  - beneficio sui tratti più usati di F06 (verso il Polo e verso la fermata T2), pesato per il numero di CIVICI che li usano: sono indirizzi, non persone, e non ci sono
    flussi pedonali misurati;
  - effetto sull'accessibilità: nullo per costruzione (alberi e pensiline non cambiano il grafo), verificato con hash e ricalcolo;

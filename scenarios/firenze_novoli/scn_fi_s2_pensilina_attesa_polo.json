@@ -1,8 +1,8 @@
 {
  "scenario_id": "scn_fi_s2_pensilina_attesa_polo",
- "version": 1,
+ "version": 2,
  "baseline_id": "bas_firenze_novoli_20261009",
- "title": "S2 pensilina all'area di attesa Forlanini Polo Scienze Sociali, vicino all'ingresso del Polo (dimensione dichiarata)",
+ "title": "S2 pensilina alla fermata bus Guidoni Barsanti, la più vicina al Polo dove c'è posto (dimensione dichiarata)",
  "author": "agente F08 (scenario dimostrativo)",
  "created_at": "2026-10-10T12:00:00Z",
  "operations": [
@@ -15,24 +15,24 @@
     "coordinates": [
      [
       [
-       679572.78,
-       4851340.75
+       679086.6,
+       4851681.7
       ],
       [
-       679575.66,
-       4851346.01
+       679081.24,
+       4851684.42
       ],
       [
-       679577.42,
-       4851345.05
+       679082.15,
+       4851686.2
       ],
       [
-       679574.54,
-       4851339.79
+       679087.5,
+       4851683.48
       ],
       [
-       679572.78,
-       4851340.75
+       679086.6,
+       4851681.7
       ]
      ]
     ]
@@ -64,7 +64,7 @@
     }
    },
    "hypothesis_status": "feasibility_unknown",
-   "note": "Alla fermata bus Forlanini Polo Scienze Sociali (OSM nod_osm_11220277322, shelter=no), centrata sulla piattaforma OSM, lato lungo parallelo al tratto di rete più vicino. Fattibilità ignota: sottoservizi, proprietà del suolo, larghezza libera del marciapiede."
+   "note": "Alla fermata bus Guidoni Barsanti (OSM nod_osm_5760828088, shelter=no; solo palina su Street View 2026), entro 8 m dal punto OSM, dentro le aree pedonali del Comune con 1.5 m di passaggio libero, lato lungo parallelo alla strada edg_osm_229080889_5930753723_5936738187. Fattibilità ignota: sottoservizi, proprietà del suolo, larghezza libera del marciapiede."
   }
  ]
 }

@@ -294,7 +294,7 @@ ETICHETTE_SCN = {
     "scn_fi_s1_filare_r01": "S1 filare di 7 alberi, chioma tipica (su R01)",
     "scn_fi_s1v_chioma_min": "S1, variante chioma minima",
     "scn_fi_s1v_chioma_max": "S1, variante chioma massima",
-    "scn_fi_s2_pensilina_attesa_polo": "S2 pensilina all'area di attesa del Polo",
+    "scn_fi_s2_pensilina_attesa_polo": "S2 pensilina alla fermata bus Guidoni Barsanti",
 }
 FATTIBILITA = "ignota (sottoservizi, spazio radicale, permessi, proprietà del suolo, manutenzione). Intervento ipotetico, non un progetto."
 

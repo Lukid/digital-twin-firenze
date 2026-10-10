@@ -58,14 +58,13 @@ Mostra gli interventi del modulo scenari (F08), per vedere con lo slider dell'or
 - Input: `scenarios/firenze_novoli/interventi.geojson` (EPSG:4326), opzione `--scenarios` di build.py. Point = albero nuovo (id, scenario, h, chioma_d, imposta); Polygon = pensilina (id, scenario, z_lo, z_hi).
 - Numeri chiave letti da `scenarios/firenze_novoli/confronto.json`: caso con vegetazione LiDAR, 15 luglio, 12:30-13:30; per S2 anche il caso con soli edifici. Se F08 viene rieseguito basta ricostruire gli asset.
 - Asset `interventi.json.gz`: un record per scenario (id, etichetta, alberi, pensiline, numeri, fattibilità). Senza il file l'asset non viene scritto e la casella è disabilitata.
-- Selettore: S1 filare tipico, chioma minima, chioma massima; S2 pensilina all'area di attesa del Polo.
+- Selettore: S1 filare tipico, chioma minima, chioma massima; S2 pensilina alla fermata bus Guidoni Barsanti.
 - Resa: alberi in magenta (colore assente dagli altri livelli), pensilina come volume con quattro pali. Tutto proietta ombra del motore. Il pulsante "Vai all'intervento" accende il livello e inquadra l'intervento.
 - Scheda al clic: scenario, dimensioni, numeri chiave e "Fattibilità: ignota". Gli interventi sono ipotesi di studio, non progetti.
 
 Limiti:
 - Le ombre mostrate sono quelle del motore grafico; i numeri della scheda vengono dal motore F07 e possono differire dall'impressione visiva.
-- Il filare (versione 2 di F08) sta dentro le aree di circolazione pedonale del Comune, da 1,5 a 5 m dall'asse. La pensilina S2 cade in gran parte su una pista ciclabile: da rivedere.
-- Per S2 la vegetazione LiDAR copre già buona parte dell'area di attesa: il beneficio nel caso principale è probabilmente sottostimato.
+- Il filare (versione 2 di F08) sta dentro le aree di circolazione pedonale del Comune, da 1,5 a 5 m dall'asse. Anche la pensilina S2 (versione 2) sta dentro le aree pedonali, con 1,5 m di passaggio libero.
 - La quota della pensilina usa il terreno a 10 m al centro del contorno.
 
 ## Comandi

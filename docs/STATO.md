@@ -29,7 +29,7 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 - Accessibilità a 1,2 m/s, quote sui 3.296 civici entro 10 minuti: Polo delle Scienze Sociali 24% (mediana 15 min), scuola Vamba 39%, fermate T2 30% e 39%. La scelta dell'ingresso del Polo sposta i percorsi più delle quote.
 - Ombra sui percorsi fermata T2 → Polo, mezzogiorno: a luglio R01 è al sole per oltre il 90%; a settembre l'ombra sale al 21-27% su R01 e al 43-44% su R02. Alberi e vegetazione LiDAR pesano 2-6 punti su R01, quasi nulla su R02.
-- Scenari: filare su R01 (versione 2, alberi dentro le aree pedonali del Comune) -0,55 minuti di sole a mezzogiorno di luglio, da -0,23 a -0,81 con la chioma; a settembre -0,57. Pensilina alla fermata bus Forlanini del Polo: con soli edifici l'area di attesa passa da 0% a 40% d'ombra; con la vegetazione LiDAR è già all'85% (probabile sovrastima del LiDAR, da controllare).
+- Scenari: filare su R01 (versione 2, alberi dentro le aree pedonali del Comune) -0,55 minuti di sole a mezzogiorno di luglio, da -0,23 a -0,81 con la chioma; a settembre -0,57. Pensilina (versione 2) alla fermata bus Guidoni Barsanti: a mezzogiorno di luglio l'area di attesa passa da 0% a 40% d'ombra.
 
 ## Limiti principali
 
@@ -47,6 +47,7 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D12: pilota a Firenze, Novoli - Firenze Nova.
 - D13: riquadro FP, destinazioni Polo, T2, Vamba; rete con margine di 700 m solo OSM.
 - D14: chioma LiDAR senza albero censito inclusa nelle ombre; scelte F03-F05 confermate; scena con l'approccio di Padova.
+- D17 (10 ottobre): pensilina S2 spostata alla fermata Guidoni Barsanti (a Forlanini Polo non c'è spazio, verificato su Street View).
 - D16 (10 ottobre): filare S1 rifatto con la regola delle aree pedonali del Comune; la versione 1 cadeva fra carreggiata e binari T2 su Via di Novoli.
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
@@ -58,11 +59,10 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 ## Prossimi passi possibili
 
-1. Pensilina di S2: cade per il 76% fuori dalle aree pedonali, sopra una pista ciclabile. Da riposizionare con la stessa logica del filare.
-2. Verifica in linguaggio naturale su Firenze (rifare `nl/`: domande, registro, confronto con le mappe).
-3. Controllo sull'ortofoto della vegetazione LiDAR vicino all'area di attesa del Polo e degli ingressi del Polo.
-4. Spostare in una cartella a parte, o togliere dal ramo principale, i file di Pisa (`fieldwork/`, `nl/`, `preview/`, `scene/` vecchia, output Pisa in `analysis/`, `shadow/`, `scenarios/`); poi puntare `contracts/validate.py` (riga 58) a `scenarios/firenze_novoli/baseline.json`.
-5. Copiare three.js nella cartella della scena per l'uso senza rete.
+1. Verifica in linguaggio naturale su Firenze (rifare `nl/`: domande, registro, confronto con le mappe).
+2. Controllo sull'ortofoto degli ingressi del Polo.
+3. Spostare in una cartella a parte, o togliere dal ramo principale, i file di Pisa (`fieldwork/`, `nl/`, `preview/`, `scene/` vecchia, output Pisa in `analysis/`, `shadow/`, `scenarios/`); poi puntare `contracts/validate.py` (riga 58) a `scenarios/firenze_novoli/baseline.json`.
+4. Copiare three.js nella cartella della scena per l'uso senza rete.
 
 Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
 

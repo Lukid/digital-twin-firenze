@@ -28,7 +28,7 @@ Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` 
 - Con `manifest_ids` e `metric_ids`: delta fra manifest di `compute_shadow` con condizioni comuni.
 - Con `baseline_id` e `scenario_ids`: confronto con la baseline S0 per data (15 luglio e 15 settembre) e per contesto.
   - `context`: `con_vegetazione_lidar` (default, base principale, D14), `solo_edifici`, `con_alberi_esistenti`, `entrambi` (tutti e tre).
-  - `deltas`: minuti al sole e frazione d'ombra su R01 e R02, per fascia, più l'area di attesa del Polo, con intervallo dai casi estremi del contesto. Il `metric_id` finisce con `_edifici`, `_alb` o `_lidar`.
+  - `deltas`: minuti al sole e frazione d'ombra su R01 e R02, per fascia, più l'area di attesa di S2 (fermata Guidoni Barsanti dal 10 ottobre), con intervallo dai casi estremi del contesto. Il `metric_id` finisce con `_edifici`, `_alb` o `_lidar`.
   - `scenarios`: segnalazioni, fattibilità ignota, archi più usati pesati per civici, accessibilità (delta zero per costruzione), fasce utili su R01, robustezza alle varianti di S1, sovrapposizioni con gli alberi esistenti.
   - Nessun punteggio unico e nessun ordinamento: con `weights` risponde `outside_capability`.
   - Usa i job in cache di F08 (`data/norm/firenze_novoli/scenarios/jobs`). Senza cache ogni job richiede alcuni minuti; il servizio non li lancia in parallelo (il pool di processi si rompe su macOS quando è chiamato dal servizio).

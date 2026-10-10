@@ -102,7 +102,6 @@
  "geometrie": {
   "file": "data/norm/firenze_novoli/geometry/geometrie_firenze_novoli.gpkg",
   "sha256": "8ba7121c26e9d9e5872c55ed2bc66177861ccfd033129967d90f26d8d5538c90",
-  "sha256_nota": "file ricostruito da geometry/build_firenze.py il 2026-10-10 alle 11:45 (sha256 precedente 8c416bf38bcbb0fcb661ff6d5f9417e99ecc5c82139da740ecfef0b2af9d4c66); contenuto verificato uguale: S0 del 15 luglio ricalcolato con il nuovo file identico al precedente su tutte le 6.831 righe",
   "parametri_chiome": "geometry/parametri_chiome.json",
   "parametri_chiome_sha256": "c7f6915dd5bca1142db551d061ea348aac7c5d566d6873de653c3c511c08f05c",
   "volumi_usati": 8077,
@@ -399,30 +398,30 @@
   "area_attesa": {
    "receiver_id": "sfc_fi_attesa_polo",
    "kind": "surface",
-   "descrizione": "area di attesa della fermata bus Forlanini Polo Scienze Sociali (OSM nod_osm_11220277322, shelter=no): impronta della pensilina S2 allargata di 1 m per lato (8 m x 4 m), orientata come il tratto di rete edg_osm_1197703753_4793202029_4793202030",
+   "descrizione": "area di attesa della fermata bus Guidoni Barsanti (OSM nod_osm_5760828088, shelter=no; solo palina su Street View 2026): impronta della pensilina S2 allargata di 1 m per lato (8 m x 4 m), parallela alla strada edg_osm_229080889_5930753723_5936738187",
    "geometry": {
     "type": "Polygon",
     "coordinates": [
      [
       [
-       679571.43,
-       4851340.35
+       679087.03,
+       4851680.36
       ],
       [
-       679575.26,
-       4851347.37
+       679079.9,
+       4851683.98
       ],
       [
-       679578.77,
-       4851345.45
+       679081.71,
+       4851687.54
       ],
       [
-       679574.94,
-       4851338.43
+       679088.84,
+       4851683.92
       ],
       [
-       679571.43,
-       4851340.35
+       679087.03,
+       4851680.36
       ]
      ]
     ]
