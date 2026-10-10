@@ -4,13 +4,14 @@ Uso: pipeline/.venv/bin/python scenarios/costruisci.py
 
 Regole degli scenari (dichiarate prima di guardare i risultati dei confronti, non scelte per far 'vincere' qualcosa):
  S0  nessun intervento = baseline.
- S1  filare di alberi di dimensione tipica (classe 'medio', valori tipici di geometry/parametri_chiome.json) sul tratto di 60 m di R01 (fermata T2 Torre degli Agli ->
-     ingresso predefinito del Polo) più esposto al sole a mezzogiorno del 15 luglio 2026: massima frazione media al sole nelle fasce 12:30-13:30 (5 istanti da 15 min,
+ S1  filare di alberi di dimensione tipica (classe 'medio', valori tipici di geometry/parametri_chiome.json) sul tratto di 60 m di R01 (fermata T2 San Donato - Università ->
+     ingresso del Polo più vicino per rete; versione 3, D19-D20) più esposto al sole a mezzogiorno del 15 luglio 2026: massima frazione media al sole nelle fasce 12:30-13:30 (5 istanti da 15 min,
      caso con vegetazione LiDAR tipica = base di confronto principale, asse della rete, campioni a 1 m; a parità, massima esposizione media 8-18 ogni ora; poi la prima
      lungo il percorso), escluse le finestre che toccano attraversamenti, ponti, sottopassi o scale. Interasse 8 m, 7 alberi centrati nel tratto.
      Lato: il lato dal quale arriva il sole alle 13:00 del 15 luglio. Posizione (versione 2): ogni albero sul punto più vicino all'asse, fra 1,5 e 5 m, che cade
      dentro le aree di circolazione pedonale del Comune ristrette di 0,5 m e fuori dagli edifici; sono valide solo le finestre dove tutti e 7 gli alberi trovano posto.
      La versione 1 metteva gli alberi a 3 m fissi dall'asse: su Via di Novoli cadevano fra la carreggiata e i binari della T2 (correzione del 10 ottobre 2026).
+     La versione 3 applica la stessa regola al nuovo R01, che parte dalla fermata indicata dall'Ateneo (prima partiva da Torre degli Agli).
      Varianti di sensibilità: chioma minima, chioma massima. La variante 'lato opposto' della versione 1 è tolta: il lato ora viene dalle aree pedonali del Comune
      (sul tratto scelto, dall'altro lato non c'è area pedonale fra 1,5 e 5 m).
      Il 15 settembre è riportato come seconda data, con lo stesso filare.
@@ -21,7 +22,8 @@ Regole degli scenari (dichiarate prima di guardare i risultati dei confronti, no
      Verifica a vista su Street View (immagini 2026): Forlanini Polo Scienze Sociali (versione 1, 55 m dal Polo) non ha spazio, la pensilina cadeva sulla ciclabile;
      Del Prete Terzolle ha già una pensilina (OSM non aggiornato); Del Prete Caciolle ha un marciapiede di circa 2,5 m; Guidoni Barsanti ha solo la palina su un
      marciapiede largo. Le due fermate T2 di Novoli hanno già la pensilina (campo pensilina=1 del dataset del Comune sulle fermate tram).
-     Gli id storici (scn_fi_s2_pensilina_attesa_polo, sfc_fi_attesa_polo, area_attesa_polo) restano: la fermata non è più quella del Polo (572 m)."""
+     Gli id storici (scn_fi_s2_pensilina_attesa_polo, sfc_fi_attesa_polo, area_attesa_polo) restano: la fermata non è più quella del Polo (529 m dall'ingresso più vicino).
+     Con i 7 ingressi degli edifici (D19) la regola è stata rifatta su tutte le fermate senza pensilina in OSM: Guidoni Barsanti resta la più vicina con spazio."""
 import json, math, pathlib, sys
 from functools import lru_cache
 import numpy as np, pyogrio, shapely
@@ -36,7 +38,7 @@ DATA_SCELTA = DATE[0]
 FASCE = [{"id": "punta_12_30_13_30", "from": "12:30", "to": "13:30"}, {"id": "giornata_8_19", "from": "08:00", "to": "19:00"}]   # come shadow/run.py (F07)
 ORARI = [f"{m // 60:02d}:{m % 60:02d}" for m in range(8 * 60, 19 * 60 + 1, 30)]   # come shadow/run.py (F07)
 ROTTE = ["R01", "R02"]
-POLO, FERMATA_T2 = "dst_university_w83537185", "dst_tram_fm9057"
+POLO, FERMATA_T2 = "dst_university_w83537185", "dst_tram_fm9055"   # San Donato - Università, la fermata indicata dall'Ateneo (D20)
 PIATTAFORMA_ATTESA = (679084.04, 4851684.4)   # nod_osm_5760828088 (fermata bus Guidoni Barsanti, shelter=no, check_date:shelter 2024-04-25), osm_firenze.gpkg
 FERMATA_ATTESA = "Guidoni Barsanti (OSM nod_osm_5760828088, shelter=no; solo palina su Street View 2026)"
 PASSAGGIO_LIBERO_M, DISTANZA_CICLABILE_M, RAGGIO_FERMATA_M = 1.5, 1.3, 8.0   # ipotesi: passaggio pedonale minimo, metà di una ciclabile da 2,6 m, distanza massima dal punto OSM
@@ -44,7 +46,7 @@ N_ARCHI = 15
 FINESTRA_M, INTERASSE_M, N_ALBERI = 60.0, 8.0, 7
 OFFSET_MIN_M, OFFSET_MAX_M, PASSO_OFFSET_M = 1.5, 5.0, 0.25   # ipotesi: oltre 1,5 m la linea di cammino resta libera; oltre 5 m l'albero non è più lungo il percorso
 MARGINE_AREA_M = 0.5   # ipotesi: tronco ad almeno 0,5 m dal bordo dell'area pedonale (formella)
-VERSIONE_S1 = 2
+VERSIONE_S1 = 3
 PENSILINA = {"lunghezza_m": 6.0, "profondita_m": 2.0, "intradosso_m": 2.5, "tetto_m": 3.0}
 CLASSE = "medio"
 ID = {"s0": "scn_fi_s0_baseline", "s1": "scn_fi_s1_filare_r01", "min": "scn_fi_s1v_chioma_min", "max": "scn_fi_s1v_chioma_max",
@@ -130,7 +132,7 @@ def congela_baseline():
          "ricevitori": {"percorsi_file": f"network/{O.SLUG}/percorsi_campione.geojson", "percorsi_sha256": sha_file(ROOT / f"network/{O.SLUG}/percorsi_campione.geojson"), "route_ids": ROTTE,
                         "archi_usati": {d: {"file": f"analysis/{O.SLUG}/accessibilita_{d}.geojson", "sha256": sha_file(ROOT / f"analysis/{O.SLUG}/accessibilita_{d}.geojson")} for d in (POLO, FERMATA_T2)},
                         "archi": arc,
-                        "archi_nota": f"primi {N_ARCHI} archi per destinazione (Polo e fermata T2 Torre degli Agli) di archi_piu_usati (F06, profilo 1,2 m/s); n_origini = civici che li usano (non persone, nessun flusso misurato)",
+                        "archi_nota": f"primi {N_ARCHI} archi per destinazione (Polo e fermata T2 San Donato - Università) di archi_piu_usati (F06, profilo 1,2 m/s); n_origini = civici che li usano (non persone, nessun flusso misurato)",
                         "area_attesa": {"receiver_id": "sfc_fi_attesa_polo", "kind": "surface", "descrizione": f"area di attesa della fermata bus {FERMATA_ATTESA}: "
                                         f"impronta della pensilina S2 allargata di 1 m per lato (8 m x 4 m), parallela alla strada {edge_strada}", "geometry": mapping(shapely.set_precision(attesa, 0.01))}},
          "condizioni": {"date": DATA_SCELTA, "dates": DATE, "timezone": "Europe/Rome", "times": ORARI, "fasce": FASCE,

@@ -3,7 +3,7 @@
     r = confronta(["scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"])    # riepilogo, nessun punteggio unico
 
 Per ogni scenario e per ciascuna data (15 luglio e 15 settembre), sugli stessi ricevitori, orari, fasce, passi e metodo della baseline (S0 = scenario senza interventi):
- - delta di frazione d'ombra e di minuti al sole camminando su R01 (fermata T2 Torre degli Agli -> ingresso predefinito del Polo) e R02 (fermata Regione Toscana), per fascia e per ora;
+ - delta di frazione d'ombra e di minuti al sole camminando su R01 (fermata T2 San Donato - Università -> ingresso del Polo più vicino) e R02 (fermata Regione Toscana), per fascia e per ora;
  - tre contesti del motore, ciascuno con caso centrale e due estremi: solo edifici (h, h_min, h_max), con alberi censiti (tipico, min, max), con vegetazione LiDAR
    (tipico, min, max). Il contesto con vegetazione LiDAR è la base di confronto principale (D14). L'intervallo di ogni delta è il minimo e il massimo dei delta accoppiati
    (stesso ricevitore, stessa ora, stesso caso) sui tre casi;
@@ -25,7 +25,7 @@ VARIANTI = {S1: ["scn_fi_s1v_chioma_min", "scn_fi_s1v_chioma_max"]}
 CASI_VARIANTI = ["base", "veg_lidar_tipico"]   # le varianti si calcolano solo sul caso centrale di due contesti (costo: un caso con vegetazione LiDAR vale circa un minuto)
 TOL = 1e-6   # tolleranza numerica per "delta nullo"
 METRICHE = {"frazione_ombra": "shade_fraction_mean", "minuti_sole": "walk_sun_min_mean"}
-POLO, FERMATA_T2 = "dst_university_w83537185", "dst_tram_fm9057"
+POLO, FERMATA_T2 = "dst_university_w83537185", "dst_tram_fm9055"
 PRINCIPALE = S.CONTESTO_PRINCIPALE
 DICHIARAZIONI = ["I pesi dei tratti sono numeri di civici (punti d'indirizzo del Comune che passano dall'arco nel cammino minimo): non sono persone e non esistono flussi pedonali misurati.",
                  "Base di confronto principale: edifici documentati, alberi censiti e vegetazione LiDAR (D14). Gli altri due contesti (solo edifici, con alberi censiti) sono riportati come sensibilità.",

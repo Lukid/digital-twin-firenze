@@ -129,13 +129,13 @@
    "name": "shortest_path_walk_time",
    "version": "0.1.0",
    "file": "analysis/accessibilita.py",
-   "file_sha256": "67c68f900fca68ff7f972f8142c6778e38e7829601d58cab76b0e5f7087b4e31"
+   "file_sha256": "e6be426ef9795bd9e28463ede44baa4a90b35d6f57f97cf6651fcdd2884fba70"
   }
  },
  "origini": {
   "kind": "address_points",
   "file": "data/norm/firenze_novoli/network/origini_snap.gpkg",
-  "sha256": "60e2b6d263059e3618381416762f931654432d5e2f859b1b25238a5e11b3346d",
+  "sha256": "28f2739ceb2472a5633f0a9bcac8edbb030635931d2f17bc1c5b0913100fb5f0",
   "nota": "civici del Comune di Firenze (punti d'indirizzo, non residenti): le quote sono quote di civici"
  },
  "accessibilita_riferimento": {
@@ -151,23 +151,29 @@
    15
   ],
   "job": {
-   "dst_university_w83537185": {
-    "job_id": "job_90ef3449d76b161a",
+   "dst_tram_fm9055": {
+    "job_id": "job_22778e8ad5f27e8c",
     "entrance_ids": [
-     "ent_osm_n11152998932"
+     "ent_gtfs_fm9055"
     ]
    },
-   "dst_tram_fm9057": {
-    "job_id": "job_f5a4969062095f90",
+   "dst_university_w83537185": {
+    "job_id": "job_9b2e74744a8d2865",
     "entrance_ids": [
-     "ent_gtfs_fm9057"
+     "ent_civ_d1",
+     "ent_civ_d10",
+     "ent_civ_d14",
+     "ent_civ_d15",
+     "ent_civ_d4",
+     "ent_civ_d5",
+     "ent_civ_d6"
     ]
    }
   }
  },
  "ricevitori": {
   "percorsi_file": "network/firenze_novoli/percorsi_campione.geojson",
-  "percorsi_sha256": "30e239d31eb65ba1b22080be36160b62315c1695f3e6fb207b36bce6395732b7",
+  "percorsi_sha256": "c79a3fb72aa28d3a213c956b3d7d2c7cdf8c25fb5118ebc5e5b56417fdc32899",
   "route_ids": [
    "R01",
    "R02"
@@ -175,226 +181,226 @@
   "archi_usati": {
    "dst_university_w83537185": {
     "file": "analysis/firenze_novoli/accessibilita_dst_university_w83537185.geojson",
-    "sha256": "086a67509a4122dee82effff6ae8a7cef297a7b155f6b32e8ddd63b039152dc6"
+    "sha256": "17692fe42cfe12075ad7ea9da60349351ff0cfa2324c6edb97bf91a9f739ec8e"
    },
-   "dst_tram_fm9057": {
-    "file": "analysis/firenze_novoli/accessibilita_dst_tram_fm9057.geojson",
-    "sha256": "a16ae01281b171d6fdb084d71fda9d1f956b6adb8a0622a68663cd1658954cf8"
+   "dst_tram_fm9055": {
+    "file": "analysis/firenze_novoli/accessibilita_dst_tram_fm9055.geojson",
+    "sha256": "b739486e002bbcb1cb5f08396df24b25dc5742f7579151ffa7a129897422522b"
    }
   },
   "archi": [
    {
     "receiver_id": "edg_f06_01",
-    "edge_id": "edg_osm_80835013_941158354_4796237987",
+    "edge_id": "edg_osm_771692163_7204051361_7204063886",
     "n_origini": {
-     "dst_university_w83537185": 3112
+     "dst_university_w83537185": 2002
     }
    },
    {
     "receiver_id": "edg_f06_02",
-    "edge_id": "edg_osm_117160328_4796237987_1319747551",
+    "edge_id": "edg_osm_80680738_268785034_7204063886",
     "n_origini": {
-     "dst_university_w83537185": 1428
+     "dst_university_w83537185": 1443
     }
    },
    {
     "receiver_id": "edg_f06_03",
-    "edge_id": "edg_osm_117160327_1319747533_1319747518",
+    "edge_id": "edg_osm_117160328_4796237987_1319747551",
     "n_origini": {
-     "dst_university_w83537185": 1425
+     "dst_university_w83537185": 955
     }
    },
    {
     "receiver_id": "edg_f06_04",
-    "edge_id": "edg_osm_117160329_1319747518_1319747556",
+    "edge_id": "edg_osm_116297466_7204051322_4796237987",
     "n_origini": {
-     "dst_university_w83537185": 1425
+     "dst_university_w83537185": 890
     }
    },
    {
     "receiver_id": "edg_f06_05",
-    "edge_id": "edg_osm_117160330_1319747551_1319747533",
+    "edge_id": "edg_osm_1334849250_12339341372_12339341373",
     "n_origini": {
-     "dst_university_w83537185": 1425
+     "dst_university_w83537185": 860
     }
    },
    {
     "receiver_id": "edg_f06_06",
-    "edge_id": "edg_osm_117160332_1319747556_7204063688",
+    "edge_id": "edg_osm_1334849250_12339341373_12339341375",
     "n_origini": {
-     "dst_university_w83537185": 1425
+     "dst_university_w83537185": 860
     }
    },
    {
     "receiver_id": "edg_f06_07",
-    "edge_id": "edg_osm_771692234_7204063659_7204063688",
+    "edge_id": "edg_osm_202463503_12339341375_268785035",
     "n_origini": {
-     "dst_university_w83537185": 1352
+     "dst_university_w83537185": 860
     }
    },
    {
     "receiver_id": "edg_f06_08",
-    "edge_id": "edg_osm_771692234_7204063838_7204063659",
+    "edge_id": "edg_osm_202463503_268785035_268785034",
     "n_origini": {
-     "dst_university_w83537185": 1350
+     "dst_university_w83537185": 860
     }
    },
    {
     "receiver_id": "edg_f06_09",
-    "edge_id": "edg_osm_771692234_7204063682_7204063838",
+    "edge_id": "edg_osm_1197703780_11112046622_12339341372",
     "n_origini": {
-     "dst_university_w83537185": 1338
+     "dst_university_w83537185": 836
     }
    },
    {
     "receiver_id": "edg_f06_10",
-    "edge_id": "edg_osm_771692146_7204063804_7204063719",
+    "edge_id": "edg_osm_229080886_2377167187_2377167189",
     "n_origini": {
-     "dst_university_w83537185": 1331
+     "dst_university_w83537185": 836
     }
    },
    {
     "receiver_id": "edg_f06_11",
-    "edge_id": "edg_osm_771692173_5846923626_7204063682",
+    "edge_id": "edg_osm_229080888_11112046622_1845916930",
     "n_origini": {
-     "dst_university_w83537185": 1331
+     "dst_university_w83537185": 836
     }
    },
    {
     "receiver_id": "edg_f06_12",
-    "edge_id": "edg_osm_771692173_7204063804_5846923626",
+    "edge_id": "edg_osm_232588725_1845916930_2377167187",
     "n_origini": {
-     "dst_university_w83537185": 1331
+     "dst_university_w83537185": 836
     }
    },
    {
     "receiver_id": "edg_f06_13",
-    "edge_id": "edg_osm_771692159_5846923615_7204063719",
+    "edge_id": "edg_osm_771692158_7204063681_7204051322",
     "n_origini": {
-     "dst_university_w83537185": 1317
+     "dst_university_w83537185": 819
     }
    },
    {
     "receiver_id": "edg_f06_14",
-    "edge_id": "edg_osm_116297466_7204051322_4796237987",
+    "edge_id": "edg_osm_771692158_7204063597_7204063681",
     "n_origini": {
-     "dst_university_w83537185": 986
+     "dst_university_w83537185": 764
     }
    },
    {
     "receiver_id": "edg_f06_15",
-    "edge_id": "edg_osm_771692158_7204063681_7204051322",
+    "edge_id": "edg_osm_1208375765_7204063597_7204051356",
     "n_origini": {
-     "dst_university_w83537185": 907
+     "dst_university_w83537185": 757
     }
    },
    {
     "receiver_id": "edg_f06_16",
-    "edge_id": "edg_osm_353999367_5936606358_11052695849",
+    "edge_id": "edg_osm_690454415_3758832960_3320593298",
     "n_origini": {
-     "dst_tram_fm9057": 3112
+     "dst_tram_fm9055": 3112
     }
    },
    {
     "receiver_id": "edg_f06_17",
-    "edge_id": "edg_osm_353999367_3597846584_5936606358",
+    "edge_id": "edg_osm_116757516_1308601532_3758832960",
     "n_origini": {
-     "dst_tram_fm9057": 2391
+     "dst_tram_fm9055": 1508
     }
    },
    {
     "receiver_id": "edg_f06_18",
-    "edge_id": "edg_osm_24779658_3597846584_4681591700",
+    "edge_id": "edg_osm_116757516_13529627797_1308601532",
     "n_origini": {
-     "dst_tram_fm9057": 1348
+     "dst_tram_fm9055": 1508
     }
    },
    {
     "receiver_id": "edg_f06_19",
-    "edge_id": "edg_osm_24779658_12390085751_13483564293",
+    "edge_id": "edg_osm_116757516_13529627800_13529627797",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1488
     }
    },
    {
     "receiver_id": "edg_f06_20",
-    "edge_id": "edg_osm_24779658_13483564293_942739335",
+    "edge_id": "edg_osm_116757516_942245103_13529627800",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1488
     }
    },
    {
     "receiver_id": "edg_f06_21",
-    "edge_id": "edg_osm_24779658_2333138248_12390085751",
+    "edge_id": "edg_osm_116757516_942245173_942245103",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1488
     }
    },
    {
     "receiver_id": "edg_f06_22",
-    "edge_id": "edg_osm_24779658_4672300364_269251890",
+    "edge_id": "edg_osm_116757516_1310992351_13386442632",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1464
     }
    },
    {
     "receiver_id": "edg_f06_23",
-    "edge_id": "edg_osm_24779658_4672301116_942800334",
+    "edge_id": "edg_osm_116757516_13386442632_942245173",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1464
     }
    },
    {
     "receiver_id": "edg_f06_24",
-    "edge_id": "edg_osm_24779658_4681591700_2333138248",
+    "edge_id": "edg_osm_116757516_10812664525_1310992351",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1459
     }
    },
    {
     "receiver_id": "edg_f06_25",
-    "edge_id": "edg_osm_24779658_5119661028_4672300364",
+    "edge_id": "edg_osm_116757516_11163846302_10812664525",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1459
     }
    },
    {
     "receiver_id": "edg_f06_26",
-    "edge_id": "edg_osm_24779658_942739335_4672301116",
+    "edge_id": "edg_osm_116757516_7204063940_942245108",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1459
     }
    },
    {
     "receiver_id": "edg_f06_27",
-    "edge_id": "edg_osm_24779658_942800334_5119661028",
+    "edge_id": "edg_osm_116757516_942245108_11163846302",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1459
     }
    },
    {
     "receiver_id": "edg_f06_28",
-    "edge_id": "edg_osm_392275450_269251890_4672301391",
+    "edge_id": "edg_osm_116757516_11163846296_7204063940",
     "n_origini": {
-     "dst_tram_fm9057": 1287
+     "dst_tram_fm9055": 1413
     }
    },
    {
     "receiver_id": "edg_f06_29",
-    "edge_id": "edg_osm_392275450_1231545886_5936679338",
+    "edge_id": "edg_osm_116757516_1309775963_11163846296",
     "n_origini": {
-     "dst_tram_fm9057": 1218
+     "dst_tram_fm9055": 1413
     }
    },
    {
     "receiver_id": "edg_f06_30",
-    "edge_id": "edg_osm_392275450_4672301391_7171638890",
+    "edge_id": "edg_osm_80681901_1309775963_10812664547",
     "n_origini": {
-     "dst_tram_fm9057": 1218
+     "dst_tram_fm9055": 1413
     }
    }
   ],
-  "archi_nota": "primi 15 archi per destinazione (Polo e fermata T2 Torre degli Agli) di archi_piu_usati (F06, profilo 1,2 m/s); n_origini = civici che li usano (non persone, nessun flusso misurato)",
+  "archi_nota": "primi 15 archi per destinazione (Polo e fermata T2 San Donato - Università) di archi_piu_usati (F06, profilo 1,2 m/s); n_origini = civici che li usano (non persone, nessun flusso misurato)",
   "area_attesa": {
    "receiver_id": "sfc_fi_attesa_polo",
    "kind": "surface",
