@@ -48,7 +48,7 @@ python-multipart==0.0.32
 rasterio==1.5.2
 referencing==0.37.0
 requests==2.34.2
-rpds-py==2026.6.3
+rpds-py==2026.9.1
 scipy==1.18.1
 shapely==2.1.2
 six==1.17.0
