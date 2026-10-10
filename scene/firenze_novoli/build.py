@@ -7,7 +7,7 @@ Piano del motore (metri): x = est, y = alto, z = -nord; origine = centro del riq
 Ogni asset è JSON compresso gzip (.json.gz); i vettori numerici grandi sono Float32 in base64.
 L'indice assets/index.json riporta sha256 e dimensione di ogni asset, le fonti e i limiti.
 """
-import argparse, base64, glob, gzip, hashlib, json, math, pathlib, sys, datetime as dt
+import argparse, base64, glob, gzip, hashlib, json, math, pathlib, re, sys, datetime as dt
 import numpy as np, geopandas as gpd, rasterio, rasterio.windows, shapely
 from rasterio.enums import Resampling
 from shapely.geometry import box, Point, Polygon
@@ -126,8 +126,34 @@ def tris(poly):
     return [t for t in g.geoms] if hasattr(g, "geoms") else [g]
 
 
+PICCOLE = {"di", "del", "della", "dello", "dei", "degli", "delle", "da", "dal", "e", "in", "a", "al", "alla"}
+
+
+def via(nome):
+    """VIA DELL'ARCOVATA -> Via dell'Arcovata."""
+    def w(t, i):
+        parti = t.split("'")
+        return "'".join(q if (k < len(parti) - 1 and q in ("dell", "d", "l", "all", "nell", "sull")) else q if (i and q in PICCOLE) else q.capitalize()
+                        for k, q in enumerate(parti))
+    t = " ".join(w(t, i) for i, t in enumerate(nome.lower().split()))
+    return re.sub(r"([aeiou])'(?=\s|$)", lambda m: "àèìòù"["aeiou".index(m[1])], t)   # BRAZZA' -> Brazzà
+
+
+def _civici_e_nomi():
+    """Civici comunali (neri prima dei rossi) e nomi OSM degli edifici, per le schede."""
+    c = gpd.read_file(NORM / "fi_civici.gpkg")
+    # grafia delle vie da OSM (maiuscole dei cognomi, es. Via Carlo Del Prete), altrimenti la regola di via()
+    osm_vie = {str(n).upper(): n for n in gpd.read_file(NORM / "osm_firenze.gpkg", layer="highway", columns=["name"]).name.dropna()}
+    c["testo"] = [f"{osm_vie.get(a.upper()) or via(a)} {str(n).replace(' R', 'r')}" for a, n in zip(c.STRADA, c.NUMEROCIVI)]
+    c["rosso"] = c.NUMEROCIVI.astype(str).str.endswith("R")
+    o = gpd.read_file(NORM / "osm_firenze.gpkg", layer="buildings").to_crs(7791)
+    o = o[o["name"].notna()]
+    return c, shapely.STRtree(c.geometry.values), o, shapely.STRtree(o.geometry.values)
+
+
 def edifici(zref):
     g = json.load(open(ROOT / "geometry/firenze_novoli/edifici_fp.geojson"))
+    civ, tciv, osm, tosm = _civici_e_nomi()
     pos, meta = [], []
     for f in g["features"]:
         p = f["properties"]
@@ -151,11 +177,15 @@ def edifici(zref):
                     v += A + B + Bt + A + Bt + At
         if not v:
             continue
+        vicini = tciv.query(geom, predicate="dwithin", distance=15)   # civico più vicino entro 15 m, i neri prima dei rossi
+        ind = min(vicini, key=lambda i: (civ.rosso.iat[i], civ.geometry.iat[i].distance(geom))) if len(vicini) else None
+        dentro = tosm.query(geom.representative_point(), predicate="within")
         pos += v
         meta.append({"id": p["id"], "n": len(v) // 3, "h": r(p["h"]), "h_min": r(p["h_min"]), "h_max": r(p["h_max"]),
                      "z_base": r(p["z_base"]), "classe_h": p["classe_h"], "tipo": p["tipo"], "fonte": p["fonte"],
                      "area_m2": r(p["area_m2"], 1), "presente_2023": bool(p["presente_2023"]), "flag": p.get("flag") or "",
-                     "h_uv": r(p.get("h_uv")), "h_lidar": r(p.get("h_lidar"))})
+                     "h_uv": r(p.get("h_uv")), "h_lidar": r(p.get("h_lidar")),
+                     "ind": civ.testo.iat[ind] if ind is not None else None, "nome": osm["name"].iat[dentro[0]].replace("\n", " ") if len(dentro) else None})
     return {"n": len(meta), "edifici": meta, "posizioni": f32b64(pos)}
 
 
@@ -191,6 +221,13 @@ def in_fp(gdf):
     return gdf[gdf.intersects(FP)]
 
 
+CATEGORIA = {"university": "università", "tram": "fermata del tram", "school": "scuola"}
+INGRESSO = {"civico_edificio_ateneo": "civico di un edificio dell'ateneo", "ingresso_fermata": "accesso alla banchina della fermata",
+            "accesso_citta_metropolitana": "accesso indicato dalla Città metropolitana"}
+AGGANCIO = {"agganciato": "collegato"}
+VERIFICA = {"da_verificare": "da fare"}
+
+
 def punti():
     out = []
     # destinazioni e ingressi
@@ -203,8 +240,9 @@ def punti():
         d = dest.get(p["destinazione"], {})
         x, z = loc_ll(*f["geometry"]["coordinates"])
         out.append({"livello": "destinazioni", "id": p["id"], "nome": p["nome"], "x": x, "z": z,
-                    "attr": {"Destinazione": d.get("nome"), "Indirizzo": d.get("indirizzo"), "Categoria": d.get("categoria"), "Classe dell'ingresso": p["classe"],
-                             "Aggancio alla rete": p["stato"], "Raccordo (m)": p["raccordo_m"], "Verifica": p["verifica"],
+                    "attr": {"Destinazione": d.get("nome"), "Indirizzo": d.get("indirizzo"), "Categoria": CATEGORIA.get(d.get("categoria"), d.get("categoria")),
+                             "Tipo di ingresso": INGRESSO.get(p["classe"], p["classe"]), "Rete pedonale": AGGANCIO.get(p["stato"], p["stato"]),
+                             "Distanza dalla rete (m)": p["raccordo_m"], "Verifica sul posto": VERIFICA.get(p["verifica"], p["verifica"]),
                              "Condizioni di accesso": d.get("condizioni_accesso"), "Fonte dei dati": d.get("fonte")}})
     n = NORM
     tram = in_fp(gpd.read_file(n / "fi_tram_fermate.gpkg"))
