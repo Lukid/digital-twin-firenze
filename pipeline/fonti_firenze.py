@@ -12,6 +12,7 @@ from sources import chk, lic, n
 BUF = AOI["buf_en"]
 CKAN = "https://dati.toscana.it/dataset/"
 DG = "https://datigis.comune.fi.it/"
+PC = "https://data.comune.fi.it/datastore/download.php?"
 OSM_URL = os.environ.get("OSM_URL", "https://download.geofabrik.de/europe/italy/centro-261008.osm.pbf")
 LIDAR = {"fi_dtm2023": "https://datigis.comune.fi.it/grid/MDT_LIDAR_2023_ASCII.zip", "fi_dsm2023": "https://datigis.comune.fi.it/grid/MDS_LIDAR_2023_ASCII.zip"}
 BY = lambda ckan, note="": lic("clear", "CC-BY-4.0", CKAN + ckan, "Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09)." + note, use="redistribution")
@@ -202,6 +203,14 @@ def S():
    units={}, fields=[],
    fetch=dl("fi_rifugi_biblioteche", DG + "json/rifugi_climatici_biblioteche.json", "rifugi_biblioteche.json", "application/geo+json", "dato dichiarato del 2026-06-18"),
    checks=lambda: [chk("biblioteche in area allargata", n("fi_rifugi_biblioteche.gpkg", "rifugi_biblioteche") is not None, f"{n('fi_rifugi_biblioteche.gpkg', 'rifugi_biblioteche')} punti (zero è un esito ammesso)")]),
+ **{k: dict(slug=f"fi_{k}", title=f"Protezione civile, {t} della popolazione (Comune di Firenze)", publisher="Comune di Firenze", ckan=ck, res=PC + f"id={i}&type=99&format=url&file_format=shp&file_id={fi}",
+   origin="official_download", lic=BY(ck), period={"note": f"scheda aggiornata il 2026-02-11, frequenza AS_NEEDED; file dello zip del 2024-06-25{nota}"},
+   crs={"declared": "EPSG:3003", "vertical_datum": "not_declared", "note": "scheda: ROMA40/OVEST; CRS letto dal .prj dello shapefile e convertito in EPSG:7791"},
+   units={}, fields=fl, fetch=dl(f"fi_{k}", PC + f"id={i}&type=99&format=url&file_format=shp&file_id={fi}", f"{k}.zip", "application/zip", "scheda aggiornata il 2026-02-11, file del 2024-06-25"),
+   checks=lambda k=k, t=t: [chk(f"{t} in area allargata", n(f"fi_{k}.gpkg", k) is not None, f"{n(f'fi_{k}.gpkg', k)} oggetti (zero è un esito ammesso: sono poche per tutta la città)")])
+   for k, t, ck, i, fi, fl, nota in (
+     ("aree_attesa", "aree di attesa", "ea85b242-e939-4837-bd41-32a78b828918", 6745, 20641, ["gid", "nome", "indirizzo", "codice", "associazio", "pericolosi", "pericolos0"], ""),
+     ("aree_assistenza", "aree di assistenza", "f3b1e6bb-6dc3-4de9-90bb-cedc1734b61b", 6505, 20230, ["cod_area", "denominazi", "data_rilev", "indirizzo", "sup_mq", "posti_lett", "associazio"], "; sopralluoghi 2021 (campo data_rilev)"))},
  "uv": dict(slug="rt_uv_firenze_novoli", title="Unità volumetriche del DB topografico regionale (WFS), area di Firenze", publisher="Regione Toscana",
    ckan=None, lacuna="Le unità volumetriche di Firenze non sono su dati.toscana.it (il portale le ha per altri 40 comuni, non per Firenze): fonte il servizio WFS del Geoscopio. Da chiedere alla Regione: pubblicazione del layer per Firenze.",
    dataset_url="https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm", res="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato", origin="ogc_service",

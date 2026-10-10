@@ -60,6 +60,7 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D21 (10 ottobre): dati ARPAT usati (stazioni e archivio orario pubblico del sito, non l'API dell'app), anche nella scena online, con le due licenze delle note legali dichiarate. Supera la clausola ARPAT di D15 e la decisione aperta sui dati ARPAT.
 - D22 (10 ottobre): niente webcam. Nessuna webcam pubblica entro 1 km da Novoli e nessuna fonte con licenza di riuso.
 - D23 (10 ottobre): pannello della scena a schede (Livelli, Sole, Analisi, Interventi, Legenda) sul modello di Padova, tema sempre chiaro. Una variante con stile proprio (pietra serena e cotto) è stata provata e scartata da Luca. Nuove fonti fuori dalla baseline congelata: catasto, Landsat, SIR, ARPAT.
+- D24 (10 ottobre): protezione civile dal Comune di Firenze (aree di attesa e di assistenza, CC BY 4.0), non da Cittadino Informato di ANCI che li ripubblica senza licenza. Da Cittadino Informato solo i punti critici per allagamento, dopo che ANCI avrà chiarito la licenza. Le due fonti sono in pipeline, non ancora nella scena.
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
