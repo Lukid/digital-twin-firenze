@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_aree_assistenza_20261010",
+ "source_id": "src_fi_aree_assistenza",
+ "retrieved_at": "2026-10-10T17:00:27Z",
+ "bytes": 5848,
+ "sha256": "b7e5bb817cffc8b674ad71ae82175573ccbc450b192756bf6b2530254003905f",
+ "local_path": "data/raw/fi_aree_assistenza/20261010/aree_assistenza.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6505&type=99&format=url&file_format=shp&file_id=20230",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "scheda aggiornata il 2026-02-11, file del 2024-06-25"
+ },
+ "license_state": "clear"
+}

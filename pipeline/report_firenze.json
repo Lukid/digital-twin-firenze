@@ -29,6 +29,10 @@
  },
  "giorno": "20261009",
  "layer": {
+  "arpat_aria.gpkg:stazioni": {
+   "in_area_allargata": 6,
+   "in_riquadro": 0
+  },
   "cm_edscol_firenze.gpkg:edifici_scolastici": {
    "in_area_allargata": 229,
    "in_riquadro": 32
@@ -41,9 +45,29 @@
    "in_area_allargata": 8491,
    "in_riquadro": 2917
   },
+  "fi_aree_assistenza.gpkg:aree_assistenza": {
+   "in_area_allargata": 3,
+   "in_riquadro": 1
+  },
+  "fi_aree_attesa.gpkg:aree_attesa": {
+   "in_area_allargata": 1,
+   "in_riquadro": 0
+  },
+  "fi_aree_pedonali.gpkg:aree_pedonali": {
+   "in_area_allargata": 1790,
+   "in_riquadro": 695
+  },
   "fi_barriere.gpkg:barriere": {
    "in_area_allargata": 222,
    "in_riquadro": 63
+  },
+  "fi_catasto_fogli.gpkg:fogli": {
+   "in_area_allargata": 21,
+   "in_riquadro": 21
+  },
+  "fi_catasto_particelle.gpkg:particelle": {
+   "in_area_allargata": 1631,
+   "in_riquadro": 1631
   },
   "fi_civici.gpkg:civici": {
    "in_area_allargata": 13987,

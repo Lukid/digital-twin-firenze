@@ -92,6 +92,36 @@
    "licenza_dichiarata": "clear"
   },
   {
+   "source_id": "src_fi_aree_attesa",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/ea85b242-e939-4837-bd41-32a78b828918",
+   "catalogo_live": {
+    "nome": "ea85b242-e939-4837-bd41-32a78b828918",
+    "titolo": "Aree di attesa della popolazione",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_aree_assistenza",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/f3b1e6bb-6dc3-4de9-90bb-cedc1734b61b",
+   "catalogo_live": {
+    "nome": "f3b1e6bb-6dc3-4de9-90bb-cedc1734b61b",
+    "titolo": "Aree di assistenza della popolazione",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
+  },
+  {
    "source_id": "src_rt_uv_firenze_novoli",
    "dataset_catalogo": null,
    "catalogo_live": null,

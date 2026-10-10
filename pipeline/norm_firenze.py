@@ -241,6 +241,8 @@ JOBS = {
     "aree_pedonali": lambda: scrivi(leggi("fi_aree_pedonali", "acPed_s.zip", 32632).pipe(lambda g: g.set_geometry(shapely.force_2d(g.geometry.values), crs=7791)), "fi_aree_pedonali", "src_fi_aree_pedonali", "aree_pedonali", "acPedId", "ped_fi_"),   # PolygonZ ridotti a 2D
     "rifugi_aree": lambda: scrivi(leggi("fi_rifugi_aree", "rifugi_aree_fresche.json", 6706), "fi_rifugi_aree", "src_fi_rifugi_aree", "rifugi_aree", "cod_area", "rif_fi_"),
     "rifugi_bibl": lambda: scrivi(leggi("fi_rifugi_biblioteche", "rifugi_biblioteche.json", 3003), "fi_rifugi_biblioteche", "src_fi_rifugi_biblioteche", "rifugi_biblioteche", "fid_src", "rib_fi_"),
+    "aree_attesa": lambda: scrivi(leggi("fi_aree_attesa", "aree_attesa.zip", 3003, "ISO-8859-1").astype({"gid": int}), "fi_aree_attesa", "src_fi_aree_attesa", "aree_attesa", "gid", "pcv_att_fi_"),   # 'codice' ha doppioni (AT04, AT14): chiave gid
+    "aree_assistenza": lambda: scrivi(leggi("fi_aree_assistenza", "aree_assistenza.zip", 3003, "ISO-8859-1"), "fi_aree_assistenza", "src_fi_aree_assistenza", "aree_assistenza", "cod_area", "pcv_ass_fi_"),
     "tram_fermate": lambda: scrivi(leggi("fi_tram_fermate", "tram_fermate.zip", 3003), "fi_tram_fermate", "src_fi_tram_fermate", "tram_fermate", "nome_ferma", "stp_fi_", rango="nome_ferma"),
     "scuole": lambda: scrivi(leggi("fi_scuole_statali", "miur_scuole_statali_2026_27.json", 6706), "fi_scuole_statali", "src_fi_scuole_statali", "scuole", "codicescuo", "dst_school_", low=True),
     "cm": cm, "catasto": catasto, "landsat_st": landsat_st, "sir_termo": sir_termo, "arpat": arpat_aria,
