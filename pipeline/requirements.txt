@@ -21,7 +21,7 @@ psutil==7.2.2
 pvlib==0.16.1
 py7zr==1.1.3
 pybcj==1.0.8
-pycryptodomex==3.23.0
+pycryptodomex==3.24.0
 pyogrio==0.13.0
 pyparsing==3.3.3
 pyppmd==1.3.1
