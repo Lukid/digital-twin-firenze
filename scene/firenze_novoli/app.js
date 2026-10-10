@@ -173,19 +173,20 @@ async function main() {
   gruppi.rete = nastri(dati.rete.archi, 0.2, (t) => (RC[t.tipo] || [0, 2.6])[1], (t) => hex((RC[t.tipo] || [0x8e44ad])[0]));
   scene.add(gruppi.rete);
 
-  // punti: destinazioni, tram, scuole, rifugi, barriere
-  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x00a8e8, 6, 26], scuole: [0x7048e8, 6, 26], rifugi: [0x2f9e44, 6, 22], barriere: [0xc2255c, 1.6, 5] };
-  // icone: cerchio col colore del livello e una lettera (T tram, S scuola, R rifugio climatico)
+  // punti: destinazioni, tram, scuole, rifugi, aree di protezione civile, barriere
+  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x00a8e8, 6, 26], scuole: [0x7048e8, 6, 26], rifugi: [0x2f9e44, 6, 22], attesa: [0x1864ab, 6, 26], assistenza: [0xe67700, 6, 26], barriere: [0xc2255c, 1.6, 5] };
+  // icone: cerchio col colore del livello e una sigla (T tram, S scuola, R rifugio climatico, AT e AA aree di attesa e di assistenza come nei codici del Comune)
   const ICONE = {};
-  for (const [k, l] of [['tram', 'T'], ['scuole', 'S'], ['rifugi', 'R']]) {
+  for (const [k, l] of [['tram', 'T'], ['scuole', 'S'], ['rifugi', 'R'], ['attesa', 'AT'], ['assistenza', 'AA']]) {
     const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d');
     x.beginPath(); x.arc(32, 32, 29, 0, 7); x.fillStyle = '#' + PUNTO[k][0].toString(16).padStart(6, '0'); x.fill(); x.lineWidth = 4; x.strokeStyle = '#fff'; x.stroke();
-    x.fillStyle = '#fff'; x.font = 'bold 40px system-ui, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(l, 32, 35);
+    x.fillStyle = '#fff'; x.font = `bold ${l.length > 1 ? 28 : 40}px system-ui, sans-serif`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(l, 32, 35);
     const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; ICONE[k] = { url: c.toDataURL(), t };
   }
   const sfera = new THREE.SphereGeometry(1, 12, 8), palo = new THREE.CylinderGeometry(0.25, 0.25, 1, 6);
   for (const k of Object.keys(PUNTO)) { gruppi[k] = new THREE.Group(); scene.add(gruppi[k]); }
   for (const p of dati.punti.punti) {
+    if (p.fuori) continue;   // oltre il terreno disegnato: elenco sotto il livello, come le stazioni ARPAT
     const [col, r, h] = PUNTO[p.livello], g = gruppi[p.livello], q = new THREE.Group();
     const ic = ICONE[p.livello], m = ic ? new THREE.Sprite(new THREE.SpriteMaterial({ map: ic.t })) : new THREE.Mesh(sfera, new THREE.MeshStandardMaterial({ color: col, roughness: 0.6 }));
     m.scale.setScalar(ic ? 3 * r : r); m.position.y = h; m.userData = { tipo: p.livello, punto: p }; q.add(m); sel.push(m);
@@ -355,6 +356,9 @@ async function main() {
     if (k === 'accessibilita' && presente) w.innerHTML += `<div class="sub"><label for="s_acc">Verso</label><select id="s_acc">${opzioni(dati.accessibilita.destinazioni, 'nome')}</select><div class="leg" id="leg_accessibilita"></div></div>`;
     if (k === 'ombra' && presente) w.innerHTML += `<div class="sub"><label for="s_om">Istante del calcolo</label><select id="s_om">${dati.ombra.istanti.map((d, i) => `<option value="${i}">${new Date(d.istante + ':00Z').toLocaleString('it-IT', { timeZone: 'UTC', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}</option>`).join('')}</select><div class="riga"><button type="button" id="vOm">Vai ai percorsi</button></div><div class="leg"><span>Due percorsi campione verso il Polo universitario.</span><span><i style="background:#f2c230"></i>al sole</span><span><i style="background:#1b2a6b"></i>in ombra</span></div><div class="leg" id="leg_ombra"></div></div>`;
     if (k === 'temperature' && TM) w.innerHTML += `<div class="sub"><label for="s_t">Cosa mostrare</label><select id="s_t"><option value="media">Media delle giornate estive</option><option value="sopra_40">Giornate sopra 40 °C</option>${TM.date.map((d, i) => `<option value="${i}">${new Date(d.data).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}</option>`).join('')}</select><div class="leg" id="leg_temperature"></div></div>`;
+    const lontani = dati.punti.punti.filter((p) => p.livello === k && p.fuori).sort((a, b) => a.distanza_m - b.distanza_m);
+    if (lontani.length) w.innerHTML += `<div class="sub"><p class="intro">Fuori dal riquadro, quindi elenco e non punti in scena:</p>${lontani.map((p) => `<details class="staz"><summary><strong>${tx(p.nome)}</strong><small>a ${p.distanza_m} m dal riquadro</small></summary>`
+      + `<ul>${Object.entries(p.attr).filter(([, v]) => v != null).map(([a, v]) => `<li><strong>${tx(a)}</strong>: ${tx(v)}</li>`).join('')}</ul></details>`).join('')}</div>`;
     $(SEZIONE[k] || 'g_luoghi').appendChild(w);
   }
 
@@ -374,7 +378,7 @@ async function main() {
     ['Alberi', sw('#55894a', 'chioma misurata dal rilievo laser') + sw('#9cbf74', 'chioma stimata')],
     ['Mappa di base (OpenStreetMap)', sw(MAPPA.verde, 'verde') + sw(MAPPA.acqua, 'acqua') + sw(MAPPA.strada, 'strade')],
     ['Rete pedonale', sw('#5b6470', 'strada') + sw('#b0763a', 'sentiero') + sw('#2f6fb5', 'marciapiede') + sw('#f2f2f2', 'attraversamento')],
-    ['Segnaposto', pin('destinazioni', 'destinazione dei calcoli') + pin('tram', 'fermata del tram') + pin('scuole', 'scuola statale') + pin('rifugi', 'rifugio climatico') + pin('barriere', 'barriera architettonica')
+    ['Segnaposto', pin('destinazioni', 'destinazione dei calcoli') + pin('tram', 'fermata del tram') + pin('scuole', 'scuola statale') + pin('rifugi', 'rifugio climatico') + pin('attesa', 'area di attesa') + pin('assistenza', 'area di assistenza') + pin('barriere', 'barriera architettonica')
       + '<span>Destinazioni: i 7 ingressi del Polo delle Scienze Sociali, le scuole Vamba (primaria e infanzia), le fermate T2 San Donato - Università, Regione Toscana e Torre degli Agli.</span>'],
     ['Accessibilità', SCALA.map((s) => sw(s[1], s[2])).join('') + '<span><i style="background:#fff;border:3px double #777;border-radius:50%"></i>non raggiungibile, vietato o dati insufficienti</span>'],
     ['Ombra sui percorsi', sw('#f2c230', 'al sole') + sw('#1b2a6b', 'in ombra')],

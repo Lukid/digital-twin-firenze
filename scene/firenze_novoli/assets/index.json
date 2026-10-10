@@ -1,6 +1,6 @@
 {
  "versione": 1,
- "generato": "2026-10-10T16:34:27Z",
+ "generato": "2026-10-10T17:21:02Z",
  "aoi_id": "aoi_firenze_novoli",
  "area": {
   "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
@@ -52,10 +52,10 @@
   },
   "punti": {
    "file": "punti.json.gz",
-   "byte": 4292,
-   "byte_decompressi": 28643,
-   "sha256": "e1f8cdfaa6d92f4aeb5345f002d4fe16f086f31d610c947071f2cf7dd259fb5c",
-   "n": 86
+   "byte": 5081,
+   "byte_decompressi": 31414,
+   "sha256": "25d4b249d7fdb43a98085678bb6fa4e4d7a1db527580491efe3c250fb6efaea7",
+   "n": 90
   },
   "mappa": {
    "file": "mappa.json.gz",
@@ -195,6 +195,18 @@
    "etichetta": "Rifugi climatici",
    "fonti": [
     "src_fi_rifugi_aree"
+   ]
+  },
+  "attesa": {
+   "etichetta": "Aree di attesa (protezione civile)",
+   "fonti": [
+    "src_fi_aree_attesa"
+   ]
+  },
+  "assistenza": {
+   "etichetta": "Aree di assistenza (protezione civile)",
+   "fonti": [
+    "src_fi_aree_assistenza"
    ]
   },
   "barriere": {
@@ -378,6 +390,34 @@
    "uso": "Rifugi climatici (aree)"
   },
   {
+   "id": "src_fi_aree_attesa",
+   "titolo": "Protezione civile, aree di attesa della popolazione (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/ea85b242-e939-4837-bd41-32a78b828918",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "periodo": "scheda aggiornata il 2026-02-11, frequenza AS_NEEDED; file dello zip del 2024-06-25",
+   "sha256_snapshot": "5aa2134ee3af73dff923885fd944bec647d01b36b6ed99cf6777eadb4c5f337e",
+   "uso": "Aree di attesa della protezione civile",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_aree_assistenza",
+   "titolo": "Protezione civile, aree di assistenza della popolazione (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/f3b1e6bb-6dc3-4de9-90bb-cedc1734b61b",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "periodo": "scheda aggiornata il 2026-02-11, frequenza AS_NEEDED; file dello zip del 2024-06-25; sopralluoghi 2021 (campo data_rilev)",
+   "sha256_snapshot": "b7e5bb817cffc8b674ad71ae82175573ccbc450b192756bf6b2530254003905f",
+   "uso": "Aree di assistenza della protezione civile",
+   "fuori_baseline": true
+  },
+  {
    "id": "src_fi_barriere",
    "titolo": "Censimento delle barriere architettoniche e urbanistiche, Comune di Firenze",
    "ente": "Comune di Firenze",
@@ -471,6 +511,7 @@
   "Ombre: sono quelle del motore grafico (sole calcolato per posizione e data), a scopo illustrativo. Non sono un calcolo analitico: gli alberi proiettano chiome piene.",
   "Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
   "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
+  "Protezione civile: aree di attesa e di assistenza del piano comunale, file del 2024 (sopralluoghi delle aree di assistenza del 2021). Sono poche per tutta la città: la scena mostra tutte quelle entro 700 m dal riquadro: in scena quelle sul terreno disegnato, in elenco con la distanza quelle più lontane. Le classi di pericolosità sono i codici della fonte, senza legenda nel pacchetto. Non è il percorso di evacuazione e non indica quale area spetta a quale via.",
   "Barriere architettoniche: rilievo del 2013, grado di accessibilità dell'edificio, non dell'ostacolo sul percorso.",
   "Livelli Accessibilità e Ombra sui percorsi: mostrano solo i dati prodotti dai moduli di analisi, se presenti. Non sono calcolati dalla scena.",
   "Particelle catastali: cartografia catastale dell'Agenzia delle Entrate, confini indicativi e non probatori. I fabbricati non ci sono nel servizio. La particella di un edificio è quella che ne contiene almeno metà della superficie: aggancio geometrico, non verificato sugli atti.",
