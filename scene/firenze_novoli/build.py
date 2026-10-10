@@ -299,7 +299,7 @@ def fonti():
         lic = src["license"]
         cp = src.get("content_period", {})
         out.append({"id": sid, "titolo": src["title"], "ente": src["publisher"], "url": src["dataset_url"],
-                    "licenza": lic.get("identifier") or "licenza regionale non scritta sul layer", "stato_licenza": lic["state"],
+                    "licenza": lic.get("identifier") or "non scritta sul layer (licenza regionale)", "stato_licenza": lic["state"],
                     "riserva": lic.get("reserve_note"), "scaricato": sn["retrieved_at"][:10],
                     "periodo": cp.get("note") or cp.get("end"), "sha256_snapshot": snaps[sid]["sha256"], "uso": uso})
     return out
