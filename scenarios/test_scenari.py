@@ -173,8 +173,9 @@ print("ok 10 coerenza varianti")
 import geopandas as gpd
 t2 = gpd.read_file(ROOT / "data/norm" / O.SLUG / "fi_tram_fermate.gpkg"); nov = t2[t2.id.str.startswith(("stp_fi_NOVOLI-TORRE", "stp_fi_NOVOLI-REGIONE"))]
 assert len(nov) == 2 and set(nov.pensilina.astype(int)) == {1}
-pt = gpd.read_file(ROOT / "data/norm" / O.SLUG / "osm_firenze.gpkg", layer="points"); pr = pt[pt.id == "nod_osm_11220277322"].iloc[0]
-assert json.loads(pr.tags)["shelter"] == "no" and "Polo" in json.loads(pr.tags)["name"]
+pt = gpd.read_file(ROOT / "data/norm" / O.SLUG / "osm_firenze.gpkg", layer="points"); pr = pt[pt.id == "nod_osm_5760828088"].iloc[0]
+assert json.loads(pr.tags)["shelter"] == "no" and json.loads(pr.tags)["name"] == "Guidoni Barsanti"
+assert not S.valida(S.carica(C.S2))["warnings"] or all(w["code"] != "fuori_area_pedonale" for w in S.valida(S.carica(C.S2))["warnings"])   # S2 v2 dentro le aree pedonali
 s2 = riep["scenari"][C.S2]
 for d in cond["dates"]:
     m = s2["percorsi"][d]["con_vegetazione_lidar"]["R01"]

@@ -14,9 +14,14 @@ Regole degli scenari (dichiarate prima di guardare i risultati dei confronti, no
      Varianti di sensibilità: chioma minima, chioma massima. La variante 'lato opposto' della versione 1 è tolta: il lato ora viene dalle aree pedonali del Comune
      (sul tratto scelto, dall'altro lato non c'è area pedonale fra 1,5 e 5 m).
      Il 15 settembre è riportato come seconda data, con lo stesso filare.
- S2  una pensilina 6 m x 2 m (intradosso 2,5 m, tetto 3,0 m) nell'area di attesa della fermata bus "Forlanini Polo Scienze Sociali" (OSM nod_osm_11220277322, shelter=no),
-     centrata sul punto della piattaforma OSM, lato lungo parallelo al marciapiede disegnato più vicino. Scelta: le due fermate T2 di Novoli hanno già la pensilina
-     (campo pensilina=1 del dataset del Comune sulle fermate tram), quindi si copre un'area di attesa senza copertura vicino all'ingresso del Polo."""
+ S2  una pensilina 6 m x 2 m (intradosso 2,5 m, tetto 3,0 m) alla fermata bus "Guidoni Barsanti" (OSM nod_osm_5760828088, shelter=no). Versione 2 (10 ottobre 2026).
+     Regola: fra le fermate bus del riquadro senza pensilina in OSM, la più vicina in linea d'aria a un ingresso del Polo dove, entro 8 m dal punto OSM, una fascia
+     di 6 m x 3,5 m (pensilina più 1,5 m di passaggio libero) parallela alla strada più vicina sta tutta dentro le aree di circolazione pedonale del Comune,
+     ad almeno 1,3 m dall'asse delle piste ciclabili e fuori dagli edifici; la pensilina occupa i 2 m della fascia dal lato della strada.
+     Verifica a vista su Street View (immagini 2026): Forlanini Polo Scienze Sociali (versione 1, 55 m dal Polo) non ha spazio, la pensilina cadeva sulla ciclabile;
+     Del Prete Terzolle ha già una pensilina (OSM non aggiornato); Del Prete Caciolle ha un marciapiede di circa 2,5 m; Guidoni Barsanti ha solo la palina su un
+     marciapiede largo. Le due fermate T2 di Novoli hanno già la pensilina (campo pensilina=1 del dataset del Comune sulle fermate tram).
+     Gli id storici (scn_fi_s2_pensilina_attesa_polo, sfc_fi_attesa_polo, area_attesa_polo) restano: la fermata non è più quella del Polo (572 m)."""
 import json, math, pathlib, sys
 from functools import lru_cache
 import numpy as np, pyogrio, shapely
@@ -32,7 +37,9 @@ FASCE = [{"id": "punta_12_30_13_30", "from": "12:30", "to": "13:30"}, {"id": "gi
 ORARI = [f"{m // 60:02d}:{m % 60:02d}" for m in range(8 * 60, 19 * 60 + 1, 30)]   # come shadow/run.py (F07)
 ROTTE = ["R01", "R02"]
 POLO, FERMATA_T2 = "dst_university_w83537185", "dst_tram_fm9057"
-PIATTAFORMA_ATTESA = (679575.1, 4851342.9)   # nod_osm_11220277322 (fermata bus Forlanini Polo Scienze Sociali, shelter=no, check_date 2026-02-15), osm_firenze.gpkg
+PIATTAFORMA_ATTESA = (679084.04, 4851684.4)   # nod_osm_5760828088 (fermata bus Guidoni Barsanti, shelter=no, check_date:shelter 2024-04-25), osm_firenze.gpkg
+FERMATA_ATTESA = "Guidoni Barsanti (OSM nod_osm_5760828088, shelter=no; solo palina su Street View 2026)"
+PASSAGGIO_LIBERO_M, DISTANZA_CICLABILE_M, RAGGIO_FERMATA_M = 1.5, 1.3, 8.0   # ipotesi: passaggio pedonale minimo, metà di una ciclabile da 2,6 m, distanza massima dal punto OSM
 N_ARCHI = 15
 FINESTRA_M, INTERASSE_M, N_ALBERI = 60.0, 8.0, 7
 OFFSET_MIN_M, OFFSET_MAX_M, PASSO_OFFSET_M = 1.5, 5.0, 0.25   # ipotesi: oltre 1,5 m la linea di cammino resta libera; oltre 5 m l'albero non è più lungo il percorso
@@ -50,13 +57,24 @@ def rettangolo(centro, u, lungo, largo):
     return Polygon([c + sgn_a * lungo / 2 * u + sgn_b * largo / 2 * n for sgn_a, sgn_b in ((-1, -1), (1, -1), (1, 1), (-1, 1))])
 
 
-def direzione_marciapiede():
-    """Versore del segmento di rete più vicino alla piattaforma dell'area di attesa (archi di tipo marciapiede disegnato o sentiero, non la carreggiata)."""
-    G = S._grafo(); p = Point(PIATTAFORMA_ATTESA)
-    cand = [e for _, _, e in G.edges(data=True) if e["tipo_arco"] in ("marciapiede_disegnato", "sentiero")]
-    e = min(cand, key=lambda e: e["geom"].distance(p))
-    g = e["geom"]; s = g.project(p); a, b = g.interpolate(max(s - 2, 0)), g.interpolate(min(s + 2, g.length))
-    v = np.array([b.x - a.x, b.y - a.y]); return v / np.linalg.norm(v), e["edge_id"]
+@lru_cache(maxsize=1)
+def posto_pensilina():
+    """Impronta della pensilina S2 (regola nel docstring del modulo). Ritorna (poligono, versore del lato lungo, edge_id della strada di riferimento)."""
+    G = S._grafo(); p = np.array(PIATTAFORMA_ATTESA); pt = Point(p); E = [e for _, _, e in G.edges(data=True)]
+    st = min((e for e in E if e["tipo_arco"] == "strada"), key=lambda e: e["geom"].distance(pt)); g = st["geom"]; k = g.project(pt)
+    a, b = g.interpolate(max(k - 3, 0)), g.interpolate(min(k + 3, g.length)); u = np.array([b.x - a.x, b.y - a.y]); u /= np.linalg.norm(u); n = np.array([-u[1], u[0]])
+    ped = shapely.union_all(pyogrio.read_dataframe(S.AREE_PEDONALI).geometry.values); v = O.dati()["v"]; bld = shapely.union_all(v[v.tipo != "copertura_osm"].geometry.values)   # come S._contesto_geo, senza la baseline
+    cyc = shapely.union_all([e["geom"] for e in E if e.get("highway") == "cycleway"]); L, D = PENSILINA["lunghezza_m"], PENSILINA["profondita_m"]
+    best = None
+    for aa in np.arange(-RAGGIO_FERMATA_M, RAGGIO_FERMATA_M + 1e-9, 0.25):
+        for bb in np.arange(-RAGGIO_FERMATA_M, RAGGIO_FERMATA_M + 1e-9, 0.25):
+            if math.hypot(aa, bb) > RAGGIO_FERMATA_M: continue
+            c = p + aa * u + bb * n; fascia = rettangolo(c, u, L, D + PASSAGGIO_LIBERO_M)
+            if ped.contains(fascia) and fascia.distance(cyc) >= DISTANZA_CICLABILE_M and not fascia.intersects(bld) and (best is None or math.hypot(aa, bb) < best[0]):
+                best = (math.hypot(aa, bb), c)
+    assert best, "nessun posto per la pensilina alla fermata scelta"
+    c = best[1]; verso = 1 if g.distance(Point(c + n)) < g.distance(Point(c - n)) else -1   # verso la strada
+    return rettangolo(c + verso * n * PASSAGGIO_LIBERO_M / 2, u, L, D), u, st["edge_id"]
 
 
 def archi_usati():
@@ -86,8 +104,8 @@ def congela_baseline():
     grafo = RL.OUT / f"{RL.STEM}.pkl"; rel = S.rel
     arc = archi_usati()
     assert 2 + 1 + len(arc) <= 50, "troppi ricevitori per compute_shadow (massimo 50)"
-    u, edge_marc = direzione_marciapiede()
-    attesa = rettangolo(PIATTAFORMA_ATTESA, u, PENSILINA["lunghezza_m"], PENSILINA["profondita_m"]).buffer(1.0, join_style=2)
+    pens, u, edge_strada = posto_pensilina()
+    attesa = pens.buffer(1.0, join_style=2)
     prof = {"speed_m_s": 1.2, "crossing_penalty_s": 0, "stairs": "allowed"}; ref = {}
     for q in sorted((A.OUT_VERS / "manifest").glob("job_*.job.json")):
         j = json.loads(q.read_text()); pr = j["params"]
@@ -113,8 +131,8 @@ def congela_baseline():
                         "archi_usati": {d: {"file": f"analysis/{O.SLUG}/accessibilita_{d}.geojson", "sha256": sha_file(ROOT / f"analysis/{O.SLUG}/accessibilita_{d}.geojson")} for d in (POLO, FERMATA_T2)},
                         "archi": arc,
                         "archi_nota": f"primi {N_ARCHI} archi per destinazione (Polo e fermata T2 Torre degli Agli) di archi_piu_usati (F06, profilo 1,2 m/s); n_origini = civici che li usano (non persone, nessun flusso misurato)",
-                        "area_attesa": {"receiver_id": "sfc_fi_attesa_polo", "kind": "surface", "descrizione": "area di attesa della fermata bus Forlanini Polo Scienze Sociali (OSM nod_osm_11220277322, shelter=no): "
-                                        f"impronta della pensilina S2 allargata di 1 m per lato (8 m x 4 m), orientata come il tratto di rete {edge_marc}", "geometry": mapping(shapely.set_precision(attesa, 0.01))}},
+                        "area_attesa": {"receiver_id": "sfc_fi_attesa_polo", "kind": "surface", "descrizione": f"area di attesa della fermata bus {FERMATA_ATTESA}: "
+                                        f"impronta della pensilina S2 allargata di 1 m per lato (8 m x 4 m), parallela alla strada {edge_strada}", "geometry": mapping(shapely.set_precision(attesa, 0.01))}},
          "condizioni": {"date": DATA_SCELTA, "dates": DATE, "timezone": "Europe/Rome", "times": ORARI, "fasce": FASCE,
                         "method": {"name": "geometric_ray", "space_step_m": 1.0, "time_step_min": 5.0}, "walk_speed_m_s": 1.2, "el_min_deg": 5.0,
                         "nota": "stesse date, fasce, orari, passi e velocità di shadow/run.py (F07); il 15 luglio è la data di scelta del tratto di S1"},
@@ -244,15 +262,14 @@ def main():
             ops2.append(op_albero(i, x[0], dimensioni_classe(caso), caso))
         titolo = f"{nome} su R01: {regola}; lato del sole alle 13:00"
         scn.append(nuovo(sid, titolo, ops2, VERSIONE_S1))
-    u, edge = direzione_marciapiede()
-    pens = rettangolo(PIATTAFORMA_ATTESA, u, PENSILINA["lunghezza_m"], PENSILINA["profondita_m"])
+    pens, u, edge = posto_pensilina()
     src = "ipotesi di dimensione tipica di una pensilina da fermata (6 m x 2 m, intradosso 2,5 m, tetto 3,0 m): non da progetto"
     dims = {"roof_height_m": PENSILINA["tetto_m"], "canopy_base_m": PENSILINA["intradosso_m"], "length_m": PENSILINA["lunghezza_m"], "depth_m": PENSILINA["profondita_m"]}
     op = {"op_id": "op_pensilina_01", "op": "add", "target_type": "shelter", "geometry": json.loads(json.dumps(mapping(shapely.set_precision(pens, 0.01)))),
           "dimensions": {k: {"value": v, "unit": "m", "classification": "scenario", "dimension_source": src} for k, v in dims.items()},
-          "hypothesis_status": "feasibility_unknown", "note": "Alla fermata bus Forlanini Polo Scienze Sociali (OSM nod_osm_11220277322, shelter=no), centrata sulla piattaforma OSM, lato lungo parallelo al tratto di rete più vicino. "
+          "hypothesis_status": "feasibility_unknown", "note": f"Alla fermata bus {FERMATA_ATTESA}, entro {RAGGIO_FERMATA_M:g} m dal punto OSM, dentro le aree pedonali del Comune con {PASSAGGIO_LIBERO_M:g} m di passaggio libero, lato lungo parallelo alla strada {edge}. "
                                                               "Fattibilità ignota: sottoservizi, proprietà del suolo, larghezza libera del marciapiede."}
-    scn.append(nuovo(ID["s2"], "S2 pensilina all'area di attesa Forlanini Polo Scienze Sociali, vicino all'ingresso del Polo (dimensione dichiarata)", [op]))
+    scn.append(nuovo(ID["s2"], "S2 pensilina alla fermata bus Guidoni Barsanti, la più vicina al Polo dove c'è posto (dimensione dichiarata)", [op], 2))
     for s in scn: print(("scritto " if scrivi(s) else "invariato ") + s["scenario_id"], f"({len(s['operations'])} interventi)")
     print(f"tratto R01 {t['s0']}-{t['s1']} m: sole medio {t['sole_medio']:.3f} (R01 intera {t['sole_medio_R01']:.3f}); finestre valide {t['finestre_valide']}; alberi senza posto: {scartati or 'nessuno'}")
     (SC / "tratto_s1.json").write_text(json.dumps({"regola": regola, "data_scelta": DATA_SCELTA, "s0_m": t["s0"], "s1_m": t["s1"], "sole_medio_finestra": round(t["sole_medio"], 4), "sole_medio_R01": round(t["sole_medio_R01"], 4),
