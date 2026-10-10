@@ -1,6 +1,6 @@
 {
  "versione": 1,
- "generato": "2026-10-10T13:41:32Z",
+ "generato": "2026-10-10T13:53:41Z",
  "aoi_id": "aoi_firenze_novoli",
  "area": {
   "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
@@ -121,7 +121,7 @@
    ]
   },
   "destinazioni": {
-   "etichetta": "Destinazioni e ingressi",
+   "etichetta": "Destinazioni dei calcoli",
    "fonti": [
     "src_osm_firenze",
     "src_cm_edscol_firenze",
@@ -338,7 +338,7 @@
   "Alberi: il censimento comunale non riporta altezza né chioma. Altezza e chioma sono misurate dal LiDAR dove ci sono celle sufficienti, altrimenti stimate (classe indicata nella scheda). Il tronco è disegnato con almeno 25 cm di diametro per renderlo visibile.",
   "Terreno: DTM LiDAR 2023 ricampionato a passo 10 m, senza ortofoto né texture.",
   "Ombre: sono quelle del motore grafico (sole calcolato per posizione e data), a scopo illustrativo. Non sono un calcolo analitico: gli alberi proiettano chiome piene.",
-  "Destinazioni e ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
+  "Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
   "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
   "Barriere architettoniche: rilievo del 2013, grado di accessibilità dell'edificio, non dell'ostacolo sul percorso.",
   "Livelli Accessibilità e Ombra sui percorsi: mostrano solo i dati prodotti dai moduli di analisi, se presenti. Non sono calcolati dalla scena."

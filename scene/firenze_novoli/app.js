@@ -140,14 +140,19 @@ async function main() {
   scene.add(gruppi.rete);
 
   // punti: destinazioni, tram, scuole, rifugi, barriere
-  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x0b7285, 4, 12], scuole: [0x7048e8, 4, 12], rifugi: [0x2b8a3e, 4, 10], barriere: [0xc2255c, 1.6, 5] };
+  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x00a8e8, 6, 26], scuole: [0x7048e8, 4, 12], rifugi: [0x2b8a3e, 4, 10], barriere: [0xc2255c, 1.6, 5] };
+  // icona della fermata: cerchio azzurro con la T della tramvia
+  const ICONA_TRAM = (() => { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d');
+    x.beginPath(); x.arc(32, 32, 29, 0, 7); x.fillStyle = '#00a8e8'; x.fill(); x.lineWidth = 4; x.strokeStyle = '#fff'; x.stroke();
+    x.fillStyle = '#fff'; x.font = 'bold 40px system-ui, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('T', 32, 35); return c; })();
+  const T_TRAM = new THREE.CanvasTexture(ICONA_TRAM); T_TRAM.colorSpace = THREE.SRGBColorSpace;
   const sfera = new THREE.SphereGeometry(1, 12, 8), palo = new THREE.CylinderGeometry(0.25, 0.25, 1, 6);
   for (const k of Object.keys(PUNTO)) { gruppi[k] = new THREE.Group(); scene.add(gruppi[k]); }
   for (const p of dati.punti.punti) {
     const [col, r, h] = PUNTO[p.livello], g = gruppi[p.livello], q = new THREE.Group();
-    const m = new THREE.Mesh(sfera, new THREE.MeshStandardMaterial({ color: col, roughness: 0.6 }));
-    m.scale.setScalar(r); m.position.y = h; m.userData = { tipo: p.livello, punto: p }; q.add(m); sel.push(m);
-    const s = new THREE.Mesh(palo, m.material); s.scale.y = h; s.position.y = h / 2; q.add(s);
+    const m = p.livello === 'tram' ? new THREE.Sprite(new THREE.SpriteMaterial({ map: T_TRAM })) : new THREE.Mesh(sfera, new THREE.MeshStandardMaterial({ color: col, roughness: 0.6 }));
+    m.scale.setScalar(p.livello === 'tram' ? 3 * r : r); m.position.y = h; m.userData = { tipo: p.livello, punto: p }; q.add(m); sel.push(m);
+    const s = new THREE.Mesh(palo, m.isSprite ? new THREE.MeshStandardMaterial({ color: col }) : m.material); s.scale.y = h; s.position.y = h / 2; q.add(s);
     q.position.set(p.x, tY(p.x, p.z), p.z); g.add(q);
     if (p.contorno) g.add(nastri([{ p: p.contorno }], 0.4, () => 2, () => hex(col)));
   }
@@ -220,6 +225,7 @@ async function main() {
     const an = ['accessibilita', 'ombra', 'scenari'].includes(k), presente = !an || idx.livelli_analitici[k].presente;
     const w = document.createElement('div');
     w.innerHTML = `<label><input type="checkbox" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && k !== 'barriere' ? 'checked' : ''}> ${L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</label>`;
+    if (PUNTO[k]) w.innerHTML += `<div class="leg"><span>${k === 'tram' ? `<img src="${ICONA_TRAM.toDataURL()}" alt="" width="16" height="16" style="vertical-align:-3px;margin-right:4px">` : `<i style="background:#${PUNTO[k][0].toString(16).padStart(6, '0')};border-radius:50%"></i>`}segnaposto</span></div>`;
     if (k === 'edifici') w.innerHTML += '<div class="leg"><span><i style="background:#bfc3c9"></i>altezza misurata</span><span><i style="background:#dccba8"></i>altezza derivata</span><span><i style="background:#666b73"></i>non presente nel 2023</span></div>';
     if (k === 'destinazioni') w.innerHTML += '<div class="leg"><span>I punti di arrivo dei calcoli di accessibilità e ombra: i 7 ingressi del Polo delle Scienze Sociali, le scuole Vamba (primaria e infanzia), le fermate T2 San Donato - Università, Regione Toscana e Torre degli Agli.</span></div>';
     if (k === 'alberi') w.innerHTML += '<div class="leg"><span><i style="background:#3d7a37"></i>chioma misurata</span><span><i style="background:#86b564"></i>chioma stimata</span></div>';
