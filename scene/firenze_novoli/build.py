@@ -44,6 +44,7 @@ LIVELLI = {
     "barriere": {"etichetta": "Barriere architettoniche", "fonti": ["src_fi_barriere"]},
     "accessibilita": {"etichetta": "Accessibilità (minuti a piedi)", "fonti": ["src_fi_civici", "src_osm_firenze"]},
     "ombra": {"etichetta": "Ombra sui percorsi", "fonti": ["src_osm_firenze", "src_fi_dsm2023"]},
+    "scenari": {"etichetta": "Scenari (interventi ipotetici)", "fonti": []},
 }
 
 LIMITI = [
@@ -288,6 +289,66 @@ def ombra(dirpath):
     return {"n": sum(len(v) for v in ist.values()), "istanti": [{"istante": k, "tratti": v} for k, v in sorted(ist.items())]}
 
 
+# --- scenari: interventi ipotetici (opzionale) ---------------------------------
+ETICHETTE_SCN = {
+    "scn_fi_s1_filare_r01": "S1 filare di 7 alberi, chioma tipica (su R01)",
+    "scn_fi_s1v_chioma_min": "S1, variante chioma minima",
+    "scn_fi_s1v_chioma_max": "S1, variante chioma massima",
+    "scn_fi_s1v_lato_opposto": "S1, variante sul lato opposto",
+    "scn_fi_s2_pensilina_attesa_polo": "S2 pensilina all'area di attesa del Polo",
+}
+FATTIBILITA = "ignota (sottoservizi, spazio radicale, permessi, proprietà del suolo, manutenzione). Intervento ipotetico, non un progetto."
+
+
+def _pc(v):
+    return f"{v * 100:.1f}".replace(".", ",") + "%"
+
+
+def _mm(v):
+    return f"{v:.2f}".replace(".", ",")
+
+
+def numeri_scenari(conf):
+    """Numeri chiave letti da confronto.json (F08): caso con vegetazione LiDAR, 15 luglio, punta 12:30-13:30."""
+    out = {}
+    S = conf["scenari"]
+    s1 = S["scn_fi_s1_filare_r01"]
+    fonti = {"scn_fi_s1_filare_r01": s1, **{k: v for k, v in s1["robustezza"].items()}}
+    for sid, sc in fonti.items():
+        r = sc["percorsi"]["2026-07-15"]["con_vegetazione_lidar"]["R01"]["punta_12_30_13_30"]
+        m, f = r["minuti_sole"], r["frazione_ombra"]
+        out[sid] = [["Percorso R01, 15 luglio, 12:30-13:30", f"minuti al sole da {_mm(m['baseline'])} a {_mm(m['scenario'])} ({_mm(m['delta'])})"],
+                    ["Ombra su R01", f"da {_pc(f['baseline'])} a {_pc(f['scenario'])}"]]
+    a = S["scn_fi_s2_pensilina_attesa_polo"]["area_attesa_polo"]["2026-07-15"]
+    for ctx, et in (("con_vegetazione_lidar", "Area di attesa, con vegetazione LiDAR"), ("solo_edifici", "Area di attesa, solo edifici")):
+        p = a[ctx]["punta_12_30_13_30"]
+        out.setdefault("scn_fi_s2_pensilina_attesa_polo", []).append([et + ", 15 luglio, 12:30-13:30", f"ombra da {_pc(p['baseline'])} a {_pc(p['scenario'])}"])
+    return out
+
+
+def interventi(sdir):
+    """Input: <sdir>/interventi.geojson, EPSG:4326: Point = albero nuovo (id, scenario, h, chioma_d, imposta),
+    Polygon = pensilina (id, scenario, z_lo, z_hi, quote sopra il suolo). I numeri chiave vengono da <sdir>/confronto.json."""
+    sdir = pathlib.Path(sdir)
+    if not (sdir / "interventi.geojson").exists():
+        return None
+    num = numeri_scenari(json.load(open(sdir / "confronto.json"))) if (sdir / "confronto.json").exists() else {}
+    scn = {}
+    for f in _feats(sdir / "interventi.geojson"):
+        p, g = f["properties"], f["geometry"]
+        e = scn.setdefault(p["scenario"], {"id": p["scenario"], "etichetta": ETICHETTE_SCN.get(p["scenario"], p["scenario"]), "alberi": [], "pensiline": [],
+                                           "numeri": num.get(p["scenario"], []), "fattibilita": FATTIBILITA})
+        if g["type"] == "Point":
+            x, z = loc_ll(*g["coordinates"][:2])
+            e["alberi"].append({"id": p["id"], "x": x, "z": z, "h": r(p["h"], 1), "d": r(p["chioma_d"], 1), "imp": r(p["imposta"], 1)})
+        elif g["type"] == "Polygon":
+            e["pensiline"].append({"id": p["id"], "z_lo": r(p["z_lo"], 2), "z_hi": r(p["z_hi"], 2), "p": [c for q in g["coordinates"][0][:-1] for c in loc_ll(*q[:2])]})
+    ordine = list(ETICHETTE_SCN)
+    lista = sorted(scn.values(), key=lambda s: ordine.index(s["id"]) if s["id"] in ordine else 99)
+    return {"n": sum(len(s["alberi"]) + len(s["pensiline"]) for s in lista), "scenari": lista,
+            "fonte_numeri": "scenarios/firenze_novoli/confronto.json (F08), caso con vegetazione LiDAR, stesse condizioni per scenario e base"}
+
+
 # --- fonti ---------------------------------------------------------------------
 def fonti():
     base = json.load(open(ROOT / "pipeline/baselines/bas_firenze_novoli_20261009.json"))
@@ -318,6 +379,7 @@ def main():
     ap.add_argument("--out", default=str(HERE / "assets"))
     ap.add_argument("--analysis", default=str(ROOT / "analysis/firenze_novoli"))
     ap.add_argument("--shadow", default=str(ROOT / "shadow/firenze_novoli"))
+    ap.add_argument("--scenarios", default=str(ROOT / "scenarios/firenze_novoli"))
     a = ap.parse_args()
     out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
     for old in out.glob("*.json.gz"):
@@ -330,11 +392,12 @@ def main():
     pt = punti()
     assets["punti"] = scrivi(out, "punti.json.gz", {"n": len(pt), "punti": pt})
     analitici = {}
-    for k, fn, d in (("accessibilita", accessibilita, a.analysis), ("ombra", ombra, a.shadow)):
+    for k, fn, d in (("accessibilita", accessibilita, a.analysis), ("ombra", ombra, a.shadow), ("scenari", interventi, a.scenarios)):
         obj = fn(d)
         analitici[k] = {"presente": obj is not None}
         if obj:
-            assets[k] = scrivi(out, f"{k}.json.gz", obj)
+            nome = "interventi" if k == "scenari" else k
+            assets[nome] = scrivi(out, f"{nome}.json.gz", obj)
     idx = {"versione": 1, "generato": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "aoi_id": AOI["aoi_id"],
            "area": {"nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)", "crs_origine": "EPSG:7791", "origine_e_n": [round(CE, 2), round(CN, 2)],
                     "lon_lat_centro": [round(LON0, 6), round(LAT0, 6)], "semiassi_m": [round((E1 - E0) / 2, 1), round((N1 - N0) / 2, 1)],

@@ -51,6 +51,24 @@ Accessibilità: file `accessibilita*.geojson`, uno per destinazione, feature Poi
 
 Ombra sui percorsi: file `ombra_percorsi*.geojson`, feature LineString o MultiLineString. Proprietà: id, frazione_ombra (0 sole, 1 ombra), istante (per esempio 2026-07-15T13:00), lunghezza_m. La pagina offre un selettore dell'istante; il livello mostra il calcolo di quell'istante, non segue il cursore dell'ora. Accetta anche l'uscita del motore F07 (`tratti_ombra_*.geojson`): si disegnano solo i tratti in ombra del caso `veg_lidar_tipico`, i vuoti lungo il percorso sono al sole.
 
+## Livello Scenari (interventi ipotetici)
+
+Mostra gli interventi del modulo scenari (F08), per vedere con lo slider dell'ora come cambiano le ombre. Spento all'avvio. Non calcola nulla: disegna gli interventi e riporta i numeri già calcolati.
+
+- Input: `scenarios/firenze_novoli/interventi.geojson` (EPSG:4326), opzione `--scenarios` di build.py. Point = albero nuovo (id, scenario, h, chioma_d, imposta); Polygon = pensilina (id, scenario, z_lo, z_hi).
+- Numeri chiave letti da `scenarios/firenze_novoli/confronto.json`: caso con vegetazione LiDAR, 15 luglio, 12:30-13:30; per S2 anche il caso con soli edifici. Se F08 viene rieseguito basta ricostruire gli asset.
+- Asset `interventi.json.gz`: un record per scenario (id, etichetta, alberi, pensiline, numeri, fattibilità). Senza il file l'asset non viene scritto e la casella è disabilitata.
+- Selettore: S1 filare tipico, chioma minima, chioma massima, lato opposto; S2 pensilina all'area di attesa del Polo.
+- Resa: alberi in magenta (colore assente dagli altri livelli), pensilina come volume con quattro pali. Tutto proietta ombra del motore. Il pulsante "Vai all'intervento" accende il livello e inquadra l'intervento.
+- Scheda al clic: scenario, dimensioni, numeri chiave e "Fattibilità: ignota". Gli interventi sono ipotesi di studio, non progetti.
+
+Limiti:
+- Le ombre mostrate sono quelle del motore grafico; i numeri della scheda vengono dal motore F07 e possono differire dall'impressione visiva.
+- Il lato del marciapiede di S1 non è noto: è l'incertezza dominante.
+- Il filare è posto a 3 m dall'asse della rete: alcuni alberi cadono sul bordo della carreggiata (segnalazione di F08). Posizione da rivedere se lo scenario va mostrato a terzi.
+- Per S2 la vegetazione LiDAR copre già buona parte dell'area di attesa: il beneficio nel caso principale è probabilmente sottostimato.
+- La quota della pensilina usa il terreno a 10 m al centro del contorno.
+
 ## Comandi
 
 - Costruire: `pipeline/.venv/bin/python scene/firenze_novoli/build.py`
