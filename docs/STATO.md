@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti chiesti (accessibilità, ombre, scenari, scena alla Padova), con servizio MCP e verifica in linguaggio naturale (F11). Punto di ripartenza per la prossima sessione.
+Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti chiesti (accessibilità, ombre, scenari, scena alla Padova), con servizio MCP. Il 10 ottobre Polo e fermata T2 sono stati rifatti (D19, D20) e ricalcolati da F04 a F10; la verifica F11 va rifatta. Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -20,7 +20,7 @@ Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2
 | F08 scenari | `scenarios/` (REPORT-F08.md) | `bash scenarios/run.sh` (15 min senza cache) |
 | F09 scena 3D, con livelli accessibilità, ombra e scenari | `scene/firenze_novoli/` (ADR-F09.md) | `pipeline/.venv/bin/python scene/firenze_novoli/test_build.py` e verifica nel browser |
 | F10 servizio e MCP `dt-firenze` | `service/` (REPORT-F10.md) | `service/.venv/bin/python service/test_service.py` |
-| F11 verifica in linguaggio naturale | `nl/firenze_novoli/` (REPORT.md) | `service/.venv/bin/python nl/firenze_novoli/test_nl.py` (30 s) |
+| F11 verifica in linguaggio naturale | `nl/firenze_novoli/` (REPORT.md) | `service/.venv/bin/python nl/firenze_novoli/test_nl.py` (30 s). **Oggi fallisce**: registro e job sono del modello prima di D19-D20, va rifatto il giro (prossimo passo 1) |
 
 Vedere la scena: `cd scene/firenze_novoli && python3 -m http.server 8765`, poi http://localhost:8765/
 
@@ -28,15 +28,16 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 ## Risultati principali (non validati sul posto)
 
-- Accessibilità a 1,2 m/s, quote sui 3.296 civici entro 10 minuti: Polo delle Scienze Sociali 24% (mediana 15 min), scuola Vamba 39%, fermate T2 30% e 39%. La scelta dell'ingresso del Polo sposta i percorsi più delle quote.
-- Ombra sui percorsi fermata T2 → Polo, mezzogiorno: a luglio R01 è al sole per oltre il 90%; a settembre l'ombra sale al 21-27% su R01 e al 43-44% su R02. Alberi e vegetazione LiDAR pesano 2-6 punti su R01, quasi nulla su R02.
-- Scenari: filare su R01 (versione 2, alberi dentro le aree pedonali del Comune) -0,55 minuti di sole a mezzogiorno di luglio, da -0,23 a -0,81 con la chioma; a settembre -0,57. Pensilina (versione 2) alla fermata bus Guidoni Barsanti: a mezzogiorno di luglio l'area di attesa passa da 0% a 40% d'ombra.
+- Accessibilità a 1,2 m/s, quote sui 3.296 civici entro 10 minuti: Polo delle Scienze Sociali 28% (54% entro 15, mediana 14 min; 7 ingressi, il più vicino vince), scuola Vamba 39%, fermate T2 San Donato - Università 24%, Regione Toscana 30%, Torre degli Agli 39%. Con un solo ingresso del Polo la quota a 10 minuti scende al 24-28%.
+- Ombra sui percorsi fermata T2 → Polo, 12:30-13:30: R01 (San Donato - Università → D15, 429 m) in ombra al 30% a luglio e al 72% a settembre; R02 (Regione Toscana → D15) al 15% e al 42%. Alberi e vegetazione LiDAR pesano meno di 2 punti.
+- Scenari: filare su R01 (versione 3, stessa regola sul nuovo R01, tratto 198-258 m) -0,36 minuti di sole a mezzogiorno di luglio, da -0,11 a -0,63 con la chioma; a settembre -0,41. Pensilina alla fermata bus Guidoni Barsanti: a mezzogiorno di luglio l'area di attesa passa da 0% a 40% d'ombra.
 
 ## Limiti principali
 
 - Ombra misurata sull'asse della rete, non sulla linea dove si cammina.
 
-- Rete solo OSM, lato del marciapiede ignoto. Ingressi del Polo controllati sull'ortofoto 2024/2025, non sul posto: E1 (predefinito) è l'ingresso della biblioteca, E2 è dubbio (`network/firenze_novoli/verifica_ingressi_polo.md`).
+- Rete solo OSM, lato del marciapiede ignoto. Ingressi del Polo: un civico del Comune per edificio dell'Ateneo (indirizzi dal report di accessibilità dell'Ateneo), non verificati sul posto; il civico non è per forza la porta (`network/firenze_novoli/verifica_ingressi_polo.md`).
+- La fermata San Donato - Università sta circa 100 m fuori dal riquadro FP: in scena c'è il terreno, non gli edifici attorno.
 - Civici come punti d'indirizzo, non persone.
 - Vegetazione LiDAR come prisma opaco pieno: limite superiore dell'ombra.
 - Altezze LiDAR 2023 con unità volumetriche 2011, portici ignoti, datum verticale non confermato.
@@ -51,20 +52,21 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D17 (10 ottobre): pensilina S2 spostata alla fermata Guidoni Barsanti (a Forlanini Polo non c'è spazio, verificato su Street View).
 - D16 (10 ottobre): filare S1 rifatto con la regola delle aree pedonali del Comune; la versione 1 cadeva fra carreggiata e binari T2 su Via di Novoli.
 - D18 (10 ottobre): i due CSV Life Escapos tolti da tutta la storia di git (anche dal tag `pilota-pisa-z2`); copia della storia precedente in `../digital-twin-firenze-prima-pulizia.bundle`.
+- D19 (10 ottobre): ingressi del Polo = 7 civici del Comune, uno per edificio dell'Ateneo (D1, D4, D5, D6, D10, D14, D15); per ogni origine vince il più vicino. Prima: due ingressi OSM (biblioteca e una corte interna).
+- D20 (10 ottobre): fermata T2 San Donato - Università (`FM9055`, indicata dall'Ateneo) fra le destinazioni; R01 parte da lì (prima da Torre degli Agli). S1 rifatto in versione 3; S2 resta a Guidoni Barsanti (regola rifatta sui nuovi ingressi).
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
 
 1. Comune, DISIT o progetti di ricerca (DANTE, MIRIFICUS): concorrenza o collaborazione. Decisione dopo il POC.
 2. Dati ARPAT: solo dataset con licenza dichiarata (dati.toscana.it). Fuori dal POC.
-3. Ingresso rappresentativo del Polo: E1 biblioteca (oggi) oppure i sette civici degli edifici dell'Università (indirizzi dal report di accessibilità dell'Ateneo, tutti presenti nei civici del Comune). La seconda rifà F06 e a cascata scena e servizio.
-4. Fermata T2 del Polo: l'Ateneo indica San Donato - Università (`FM9055`, 340-540 m dagli edifici), che non è fra le destinazioni; R01 parte da Torre degli Agli (circa 1,2 km). Aggiungerla rifà F06, F07, F08, scena e servizio. Dettagli per i punti 3 e 4 in `network/firenze_novoli/verifica_ingressi_polo.md`.
 
 ## Prossimi passi possibili
 
-1. Spostare in una cartella a parte, o togliere dal ramo principale, i file di Pisa (`fieldwork/`, `nl/` tranne `nl/firenze_novoli/`, `preview/`, `scene/` vecchia, output Pisa in `analysis/`, `shadow/`, `scenarios/`); poi puntare `contracts/validate.py` (riga 58) a `scenarios/firenze_novoli/baseline.json`.
-2. Copiare three.js nella cartella della scena per l'uso senza rete.
-3. Difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`): tool che elenca gli scenari, conteggio dei civici raggiunti, accessibilità verso almeno una di più destinazioni.
+1. Rifare il giro F11 col client MCP (stesse 21 domande e 7 seguiti, `nl/firenze_novoli/giro1.json` e `giro2.json`): correggere la domanda 8 ("le due fermate" → "le fermate della T2") e la 9 (R01 non parte più da Torre degli Agli). Poi togliere i vecchi manifest da `nl/firenze_novoli/manifest/`, versionare i nuovi, rifare le coppie dei punti 3a e 3b di `test_nl.py` e riscrivere i numeri del REPORT.
+2. Spostare in una cartella a parte, o togliere dal ramo principale, i file di Pisa (`fieldwork/`, `nl/` tranne `nl/firenze_novoli/`, `preview/`, `scene/` vecchia, output Pisa in `analysis/`, `shadow/`, `scenarios/`); poi puntare `contracts/validate.py` (riga 58) a `scenarios/firenze_novoli/baseline.json`.
+3. Copiare three.js nella cartella della scena per l'uso senza rete.
+4. Difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`): tool che elenca gli scenari, conteggio dei civici raggiunti, accessibilità verso almeno una di più destinazioni.
 
 Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
 

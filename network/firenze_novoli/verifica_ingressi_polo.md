@@ -7,7 +7,7 @@ Data: 10 ottobre 2026. Controllo a tavolino, non sul posto.
 - Ortofoto 2024/2025 della Regione Toscana, 20 cm, layer `rt_ofc.5k24.32bit` del WMS `owsofc_rt`. La Regione ne è proprietaria; il servizio dichiara `AccessConstraints: none`, ma sul layer non c'è una licenza scritta. Per questo l'ortofoto è usata solo in consultazione: non è scaricata, non è versionata e non entra nella baseline. Le ortofoto 2016, 2019 e 2022 (AGEA) vietano il download e non sono state usate.
 - Dicitura del servizio: "Fonte: Regione Toscana - Base informativa territoriale regionale, art. 55 della L.R. 65/2014".
 - Tavole: `pipeline/.venv/bin/python network/firenze_novoli/tavole_ingressi_polo.py`. Produce quattro SVG in `data/norm/firenze_novoli/network/tavole_polo/` (fuori da git): insieme, asse di Via delle Pandette, E1, E2. L'ortofoto si carica dal WMS quando si apre l'SVG nel browser. Sopra ci sono edifici e rete OSM, i punti OSM con entrance o barrier, i due ingressi e i civici del Comune di Via delle Pandette, Via Miele e Largo Frezza.
-- `destinazioni.json` non è stato modificato: fa parte della baseline congelata `bas_firenze_novoli_20261009`.
+- Le tavole leggono gli ingressi da `destinazioni.json`: dopo D19 mostrano i 7 civici degli edifici, non più E1 ed E2.
 
 ## Esito
 
@@ -35,13 +35,8 @@ Data: 10 ottobre 2026. Controllo a tavolino, non sul posto.
 - Da E1 all'estremo nord-est dell'asse (civico Pandette 37) ci sono 191 m in linea d'aria: 2,5-3 minuti a 1,2 m/s. È lo stesso ordine del passo delle soglie (5 minuti).
 - F06 lo mostra già: con il solo E1 le quote a 5/10/15 minuti sono 12,2% / 24,4% / 45,9%, con il solo E2 12,6% / 26,3% / 41,7%. I 10 archi più usati coincidono in 1 caso su 10.
 
-## Decisione aperta (dell'utente)
+## Decisione presa (10 ottobre 2026)
 
-Ingresso rappresentativo del Polo:
-1. Lasciare E1, la biblioteca (situazione attuale), dichiarando che è un solo punto a un estremo del Polo.
-2. Usare come ingressi i civici del Comune lungo l'asse di Via delle Pandette, con l'ingresso più vicino per ogni origine (F06 ha già il calcolo con più ingressi). È un cambio di modello: rifà F06 e, a cascata, scena, servizio e i job della verifica F11.
-3. Usare come ingressi i sette civici degli edifici dell'Università (Pandette 2, 3, 9, 21, 32, 35 e Piazza Ugo di Toscana 5), con l'ingresso più vicino per ogni origine. Stesse conseguenze del punto 2. È l'opzione sostenuta da fonti ufficiali dell'Ateneo e del Comune.
-
-Decisione collegata: aggiungere la fermata T2 `FM9055` San Donato - Università fra le destinazioni e come partenza del percorso fermata-Polo. Rifà F06, F07 (R01), F08 (filare S1 su R01), scena e servizio.
-
-Senza un sopralluogo nessuna delle tre opzioni è verificata.
+- D19: ingressi del Polo = i sette civici degli edifici dell'Ateneo (opzione 3), con l'ingresso più vicino per ogni origine. Predefinito singolo per i percorsi campione: D1 (Pandette 32).
+- D20: fermata T2 `FM9055` San Donato - Università fra le destinazioni; R01 parte da lì.
+- Ricalcolati F04, F06, F07, F08, F09, F10. Nessuno dei sette civici è verificato sul posto come porta d'ingresso.
