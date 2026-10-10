@@ -1,6 +1,6 @@
 # REPORT F08: scenari su Firenze Novoli
 
-Data: 10 ottobre 2026. Comando: `bash scenarios/run.sh` (circa 15 minuti la prima volta, 1-2 minuti con la cache). Test 13 su 13. Risultati `not_validated_locally`.
+Data: 10 ottobre 2026. Comando: `bash scenarios/run.sh` (circa 15 minuti la prima volta, 1-2 minuti con la cache). Test 13 su 13. Risultati `not_validated_locally`. S1 rifatto il 10 ottobre (versione 2): vedi "Correzione del filare".
 
 ## Cosa è cambiato
 
@@ -16,38 +16,47 @@ Data: 10 ottobre 2026. Comando: `bash scenarios/run.sh` (circa 15 minuti la prim
 ## Scenari e regole (dichiarate prima di guardare i risultati)
 
 - S0: nessun intervento. Delta atteso zero.
-- S1: filare di 7 alberi di classe "medio" tipica (11 m, chioma 6 m, imposta 2,5 m), interasse 8 m, a 3 m dall'asse, sul tratto di 60 m di R01 più al sole.
+- S1: filare di 7 alberi di classe "medio" tipica (11 m, chioma 6 m, imposta 2,5 m), interasse 8 m, sul tratto di 60 m di R01 più al sole dove gli alberi trovano posto.
   - R01: fermata T2 Torre degli Agli → ingresso predefinito del Polo, 1.198 m.
-  - Scelta del tratto: massima frazione media al sole il 15 luglio 12:30-13:30 (caso con vegetazione LiDAR tipica). A parità: media 8-18, poi il primo lungo il percorso. Escluse finestre con attraversamenti, ponti, sottopassi o scale.
-  - Tratto scelto: da 220 a 280 m dalla fermata, sole al 100%. Le finestre a pari merito sono 598 su 984: la posizione esatta è arbitraria dentro quel gruppo.
+  - Lato: quello da cui arriva il sole alle 13:00 del 15 luglio.
+  - Posto di ogni albero: il punto più vicino all'asse, fra 1,5 e 5 m, dentro le aree di circolazione pedonale del Comune ristrette di 0,5 m e fuori dagli edifici. Fonte nuova `src_fi_aree_pedonali` (CC BY 4.0).
+  - Scelta del tratto: fra le finestre dove tutti e 7 gli alberi trovano posto, massima frazione media al sole il 15 luglio 12:30-13:30 (caso con vegetazione LiDAR tipica). A parità: media 8-18, poi il primo lungo il percorso. Escluse finestre con attraversamenti, ponti, sottopassi o scale.
+  - Tratto scelto: da 593 a 653 m dalla fermata, su un percorso pedonale, sole al 100%. Finestre valide 13 su 984, tutte a pari merito a mezzogiorno; 971 scartate perché manca posto per almeno un albero.
+  - Alberi da 6,7 a 9,3 m dall'asse della strada più vicina. L'albero 7 è 0,2 m fuori dal riquadro (segnalazione `fuori_riquadro`).
   - R01 intera è al sole al 92% a mezzogiorno di luglio.
-  - Lato: ipotesi, quello da cui arriva il sole alle 13:00 del 15 luglio.
-  - Varianti: chioma minima (4 m, imposta 3,5 m, altezza 8 m), chioma massima (9 m, 2,0 m, 14 m), lato opposto.
+  - Varianti: chioma minima (4 m, imposta 3,5 m, altezza 8 m), chioma massima (9 m, 2,0 m, 14 m).
 - S2: pensilina 6 x 2 m (intradosso 2,5 m, tetto 3,0 m) alla fermata bus "Forlanini Polo Scienze Sociali".
   - Non alle fermate T2: hanno già la pensilina (campo `pensilina` = 1 nel dataset del Comune sulle fermate tram; in OSM non risulta).
   - Questa fermata: OSM la dà con `shelter=no` (verifica OSM del 15/02/2026), a 55 m dal secondo ingresso del Polo. Area di attesa 8 x 4 m.
   - Scartata la fermata "Nuovo Palazzo di Giustizia" vicino a Vamba (84 m, senza pensilina): il Polo è la destinazione principale.
 - Dimensioni dichiarate, fattibilità ignota per tutti (sottoservizi, spazio radicale, proprietà del suolo, permessi, specie).
-- Segnalazione: l'albero 1 di S1 sta a meno di 3 m dall'asse di una strada carrabile senza marciapiede.
+
+## Correzione del filare (10 ottobre)
+
+- La versione 1 metteva gli alberi a 3 m fissi dall'asse, da 220 a 280 m di R01, su Via di Novoli.
+- Lì Via di Novoli ha due carreggiate a senso unico con i binari della T2 in mezzo (a 5 e 9 m dall'asse). Il lato del sole è quello dei binari: gli alberi cadevano fra la corsia e il binario, l'albero 1 su una strada laterale, l'albero 3 su un attraversamento. Verifica su OSM (API del 10/10/2026, vie 353999361, 508460468, 700263559) e sulle aree pedonali del Comune.
+- Il validatore non lo vedeva perché la rete non contiene i binari. Ora segnala `fuori_area_pedonale` per ogni albero fuori dalle aree di circolazione pedonale del Comune (e per le pensiline con meno di metà impronta dentro).
+- Tolta la variante "lato opposto": il lato ora viene dai dati. Sul tratto nuovo dall'altro lato non c'è area pedonale.
+- Il -0,61 minuti della versione 1 non vale più.
+- Il file delle geometrie era stato ricostruito alle 11:45 (stesso contenuto, hash diverso): S0 ricalcolato identico su tutte le 6.831 righe, hash aggiornato in `baseline.json` con nota.
 
 ## Risultati principali
 
 Delta rispetto a S0, base con vegetazione LiDAR. Minuti al sole camminando, partenza nella fascia. Negativo = meno sole.
 
 S1, R01, 15 luglio:
-- Punta: minuti al sole da 15,35 a 14,74 (-0,61). Ombra da 8,0% a 11,6% (+3,6 punti).
-- Giornata: -0,48 minuti, ombra +2,8 punti.
-- Il filare agisce da 11:00 in poi: -0,35 minuti alle 11:00, -0,63 alle 12:30, fino a -0,81 per una partenza alle 19:00.
+- Punta: minuti al sole da 15,35 a 14,80 (-0,55). Ombra da 8,0% a 11,4% (+3,4 punti).
+- Giornata: -0,45 minuti, ombra +2,7 punti.
+- Il filare agisce da 9:30 in poi: -0,22 minuti alle 11:00, -0,56 alle 12:30, fino a -0,82 per una partenza alle 19:00.
 
 S1, R01, 15 settembre:
-- Punta: -0,33 minuti, ombra da 26,6% a 28,7%.
-- Giornata: -0,28 minuti.
-- Massimo -0,83 minuti alle 10:00, quasi nullo alle 16:30.
+- Punta: -0,57 minuti, ombra da 26,6% a 30,2%.
+- Giornata: -0,32 minuti.
 
 Varianti di S1 (minuti al sole, punta; giornata fra parentesi):
-- 15 luglio: chioma min -0,37 (-0,30), tipica -0,61 (-0,48), chioma max -0,79 (-0,64), lato opposto 0,00 (-0,18).
-- 15 settembre: chioma min -0,22 (-0,16), tipica -0,33 (-0,28), chioma max -0,46 (-0,38), lato opposto 0,00 (-0,11).
-- A mezzogiorno il lato opposto non dà beneficio: il lato è l'incertezza dominante.
+- 15 luglio: chioma min -0,23 (-0,27), tipica -0,55 (-0,45), chioma max -0,81 (-0,65).
+- 15 settembre: chioma min -0,34 (-0,16), tipica -0,57 (-0,32), chioma max -0,76 (-0,46).
+- La dimensione della chioma è ora l'incertezza dominante.
 
 S1 sugli altri ricevitori: R02, area di attesa e archi più usati non cambiano.
 
@@ -65,21 +74,23 @@ Nessun punteggio unico: indicatori separati.
 ## Test (`test_scenari.py`, 13 controlli)
 
 - Baseline invariata e valida sullo schema.
-- Validazione e segnalazioni (edificio, fuori riquadro, carreggiata). Fattibilità sempre ignota.
+- Validazione e segnalazioni (edificio, fuori riquadro, carreggiata, fuori area pedonale: il vecchio albero 3 viene segnalato, il nuovo filare no). Fattibilità sempre ignota.
 - Determinismo di `scenario_id` e `job_id`.
 - S0 uguale al motore senza scenario; S0 contro S0 con delta zero ovunque.
 - Un albero aggiunto non riduce mai l'ombra.
 - Condizioni comuni fra scenari confrontati.
 - Coerenza delle varianti.
 - Scelta di S2 verificata nei dati.
-- `interventi.geojson`: 28 Point (alberi) e 1 Polygon (pensilina), EPSG:4326.
+- `interventi.geojson`: 21 Point (alberi) e 1 Polygon (pensilina), EPSG:4326.
 - Nessuna stringa Pisa, z2, Pellico o Battisti nei file prodotti.
 
 ## Limiti
 
-- Percorsi sull'asse della rete: lato del marciapiede ignoto.
+- Ombra misurata sull'asse della rete, non sulla linea dove si cammina.
 - Vegetazione LiDAR come prisma opaco pieno: riduce il beneficio dei nuovi interventi.
-- Tratto di S1 scelto fra 598 finestre a pari merito.
+- Tratto di S1 scelto fra 13 finestre a pari merito.
+- Aree pedonali del Comune senza legenda dei codici e senza data di rilievo: usate solo come geometria. Fuori dalla baseline degli scenari (sha256 in `tratto_s1.json`).
+- S2: la pensilina cade per il 76% fuori dalle aree pedonali, sopra una pista ciclabile (segnalazione `fuori_area_pedonale`). Da rivedere come il filare.
 - Varianti calcolate su due soli casi.
 - Pesi dei tratti in civici, non persone. Nessun flusso pedonale misurato.
 - Ombra binaria, nessuna conversione in comfort. Nessuna crescita degli alberi.

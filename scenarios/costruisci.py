@@ -7,14 +7,19 @@ Regole degli scenari (dichiarate prima di guardare i risultati dei confronti, no
  S1  filare di alberi di dimensione tipica (classe 'medio', valori tipici di geometry/parametri_chiome.json) sul tratto di 60 m di R01 (fermata T2 Torre degli Agli ->
      ingresso predefinito del Polo) più esposto al sole a mezzogiorno del 15 luglio 2026: massima frazione media al sole nelle fasce 12:30-13:30 (5 istanti da 15 min,
      caso con vegetazione LiDAR tipica = base di confronto principale, asse della rete, campioni a 1 m; a parità, massima esposizione media 8-18 ogni ora; poi la prima
-     lungo il percorso), escluse le finestre che toccano attraversamenti, ponti, sottopassi o scale. Interasse 8 m, 7 alberi centrati nel tratto, a 3 m dall'asse.
-     Lato: IPOTESI, il lato dal quale arriva il sole alle 13:00 del 15 luglio. Alberi dentro edifici scartati e dichiarati.
-     Varianti di sensibilità: chioma minima, chioma massima, lato opposto. Il 15 settembre è riportato come seconda data, con lo stesso filare.
+     lungo il percorso), escluse le finestre che toccano attraversamenti, ponti, sottopassi o scale. Interasse 8 m, 7 alberi centrati nel tratto.
+     Lato: il lato dal quale arriva il sole alle 13:00 del 15 luglio. Posizione (versione 2): ogni albero sul punto più vicino all'asse, fra 1,5 e 5 m, che cade
+     dentro le aree di circolazione pedonale del Comune ristrette di 0,5 m e fuori dagli edifici; sono valide solo le finestre dove tutti e 7 gli alberi trovano posto.
+     La versione 1 metteva gli alberi a 3 m fissi dall'asse: su Via di Novoli cadevano fra la carreggiata e i binari della T2 (correzione del 10 ottobre 2026).
+     Varianti di sensibilità: chioma minima, chioma massima. La variante 'lato opposto' della versione 1 è tolta: il lato ora viene dalle aree pedonali del Comune
+     (sul tratto scelto, dall'altro lato non c'è area pedonale fra 1,5 e 5 m).
+     Il 15 settembre è riportato come seconda data, con lo stesso filare.
  S2  una pensilina 6 m x 2 m (intradosso 2,5 m, tetto 3,0 m) nell'area di attesa della fermata bus "Forlanini Polo Scienze Sociali" (OSM nod_osm_11220277322, shelter=no),
      centrata sul punto della piattaforma OSM, lato lungo parallelo al marciapiede disegnato più vicino. Scelta: le due fermate T2 di Novoli hanno già la pensilina
      (campo pensilina=1 del dataset del Comune sulle fermate tram), quindi si copre un'area di attesa senza copertura vicino all'ingresso del Polo."""
 import json, math, pathlib, sys
-import numpy as np, shapely
+from functools import lru_cache
+import numpy as np, pyogrio, shapely
 from shapely.geometry import LineString, Point, Polygon, box, mapping, shape
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import scenari as S
@@ -29,10 +34,13 @@ ROTTE = ["R01", "R02"]
 POLO, FERMATA_T2 = "dst_university_w83537185", "dst_tram_fm9057"
 PIATTAFORMA_ATTESA = (679575.1, 4851342.9)   # nod_osm_11220277322 (fermata bus Forlanini Polo Scienze Sociali, shelter=no, check_date 2026-02-15), osm_firenze.gpkg
 N_ARCHI = 15
-FINESTRA_M, INTERASSE_M, OFFSET_M, N_ALBERI = 60.0, 8.0, 3.0, 7
+FINESTRA_M, INTERASSE_M, N_ALBERI = 60.0, 8.0, 7
+OFFSET_MIN_M, OFFSET_MAX_M, PASSO_OFFSET_M = 1.5, 5.0, 0.25   # ipotesi: oltre 1,5 m la linea di cammino resta libera; oltre 5 m l'albero non è più lungo il percorso
+MARGINE_AREA_M = 0.5   # ipotesi: tronco ad almeno 0,5 m dal bordo dell'area pedonale (formella)
+VERSIONE_S1 = 2
 PENSILINA = {"lunghezza_m": 6.0, "profondita_m": 2.0, "intradosso_m": 2.5, "tetto_m": 3.0}
 CLASSE = "medio"
-ID = {"s0": "scn_fi_s0_baseline", "s1": "scn_fi_s1_filare_r01", "min": "scn_fi_s1v_chioma_min", "max": "scn_fi_s1v_chioma_max", "lato": "scn_fi_s1v_lato_opposto",
+ID = {"s0": "scn_fi_s0_baseline", "s1": "scn_fi_s1_filare_r01", "min": "scn_fi_s1v_chioma_min", "max": "scn_fi_s1v_chioma_max",
       "s2": "scn_fi_s2_pensilina_attesa_polo"}
 
 
@@ -132,7 +140,8 @@ def dimensioni_classe(caso):
 
 
 def trova_tratto(b):
-    """Tratto di FINESTRA_M di R01 con massima frazione media al sole nelle fasce di mezzogiorno. Ritorna dict con s0, s1, sole_medio, passi."""
+    """Tratto di FINESTRA_M di R01 con massima frazione media al sole nelle fasce di mezzogiorno, fra quelli dove tutti gli N_ALBERI trovano posto (posto_albero).
+    Ritorna dict con s0, s1, sole_medio, passi."""
     cond = b["condizioni"]; rec = S.ricevitori(); R = {r["receiver_id"]: shape(r["geometry"]) for r in rec}; L = R["pth_fi_R01"]
     lat, lon = O.SOLE_LAT, O.SOLE_LON
     n = int(L.length); s = np.arange(n) + 0.5; pt = shapely.line_interpolate_point(L, s); x, y = shapely.get_x(pt), shapely.get_y(pt)
@@ -154,22 +163,42 @@ def trova_tratto(b):
     male = np.array([bad.contains(Point(a, c)) for a, c in zip(x, y)]) if not bad.is_empty else np.zeros(n, bool)
     W = int(FINESTRA_M); cs = np.concatenate([[0], np.cumsum(sole)]); cb = np.concatenate([[0], np.cumsum(male)])
     cg = np.concatenate([[0], np.cumsum(giorno)])
-    punteggi = [((round((cs[i + W] - cs[i]) / W, 9), round((cg[i + W] - cg[i]) / W, 9)) if cb[i + W] - cb[i] == 0 else (-1, -1)) for i in range(n - W + 1)]
+    sun, _ = sole_13(lat, lon); posto = {sk: posto_albero(L, sk, sun) is not None for sk in range(n + 1)}   # stazioni a metri interi: mid = i + W/2, interasse intero
+    stazioni = lambda i: [i + W // 2 + k * int(INTERASSE_M) for k in range(-(N_ALBERI // 2), N_ALBERI // 2 + 1)]
+    pieno = [all(posto.get(sk, False) for sk in stazioni(i)) for i in range(n - W + 1)]
+    punteggi = [((round((cs[i + W] - cs[i]) / W, 9), round((cg[i + W] - cg[i]) / W, 9)) if cb[i + W] - cb[i] == 0 and pieno[i] else (-1, -1)) for i in range(n - W + 1)]
     i0 = max(range(len(punteggi)), key=lambda i: (punteggi[i], -i))   # massimo a mezzogiorno, poi sull'intera giornata, poi la prima lungo il percorso
     return {"s0": i0, "s1": i0 + W, "sole_medio": float(punteggi[i0][0]), "sole_giorno": float(punteggi[i0][1]), "sole_medio_R01": float(sole.mean()), "finestre_valide": int(sum(1 for p in punteggi if p[0] >= 0)),
-            "finestre_pari_a_mezzogiorno": int(sum(1 for p in punteggi if p[0] == punteggi[i0][0])), "L": L, "lat": lat, "lon": lon, "sole_t": sole}
+            "finestre_pari_a_mezzogiorno": int(sum(1 for p in punteggi if p[0] == punteggi[i0][0])), "finestre_senza_posto": int(sum(1 for i, p in enumerate(pieno) if not p and cb[i + W] - cb[i] == 0)), "L": L, "lat": lat, "lon": lon, "sole_t": sole}
 
 
-def posizioni_filare(b, t, lato=None):
-    """Posizioni degli alberi di S1. lato: +1/-1 rispetto alla normale sinistra del verso di marcia; None = lato del sole delle 13:00 della data di scelta."""
-    L = t["L"]; mid = (t["s0"] + t["s1"]) / 2; az, el = O.sole(O.locale_a_utc(DATA_SCELTA, "13:00"), t["lat"], t["lon"])
-    sun = np.array([math.sin(math.radians(az)), math.cos(math.radians(az))]); out = []
-    for k in range(-(N_ALBERI // 2), N_ALBERI // 2 + 1):
-        sk = mid + k * INTERASSE_M; a, c = L.interpolate(sk - 1.5), L.interpolate(sk + 1.5); v = np.array([c.x - a.x, c.y - a.y]); v /= np.linalg.norm(v)
-        nrm = np.array([-v[1], v[0]]); p = L.interpolate(sk)
-        sg = lato if lato is not None else (1 if nrm @ sun >= 0 else -1)
-        out.append((np.array([p.x, p.y]) + sg * OFFSET_M * nrm, sg))
-    return out, (az, el)
+@lru_cache(maxsize=1)
+def _suolo():
+    """Aree di circolazione pedonale del Comune ristrette di MARGINE_AREA_M (dove un tronco può stare) ed edifici della baseline, preparati."""
+    ped = shapely.union_all(pyogrio.read_dataframe(S.AREE_PEDONALI).geometry.values).buffer(-MARGINE_AREA_M); bld = shapely.union_all(S._contesto_geo()["bld"])
+    shapely.prepare(ped); shapely.prepare(bld); return ped, bld
+
+
+def posto_albero(L, sk, sun, opposto=False):
+    """Posto di un albero alla progressiva sk di L: punto più vicino all'asse fra OFFSET_MIN_M e OFFSET_MAX_M sul lato del sole (o sull'opposto) dentro l'area pedonale ristretta
+    e fuori dagli edifici. Ritorna (xy, lato, offset) o None se non c'è posto."""
+    ped, bld = _suolo()
+    a, c = L.interpolate(sk - 1.5), L.interpolate(sk + 1.5); v = np.array([c.x - a.x, c.y - a.y]); v /= np.linalg.norm(v)
+    nrm = np.array([-v[1], v[0]]); p = np.array(L.interpolate(sk).coords[0]); sg = (1 if nrm @ sun >= 0 else -1) * (-1 if opposto else 1)
+    for d in np.arange(OFFSET_MIN_M, OFFSET_MAX_M + 1e-9, PASSO_OFFSET_M):
+        xy = p + sg * d * nrm
+        if shapely.contains_xy(ped, *xy) and not shapely.contains_xy(bld, *xy): return xy, sg, float(d)
+    return None
+
+
+def sole_13(lat, lon):
+    az, el = O.sole(O.locale_a_utc(DATA_SCELTA, "13:00"), lat, lon); return np.array([math.sin(math.radians(az)), math.cos(math.radians(az))]), (az, el)
+
+
+def posizioni_filare(b, t, opposto=False):
+    """Posizioni degli alberi di S1: N_ALBERI stazioni a INTERASSE_M centrate nel tratto, ognuna con posto_albero (None dove non c'è posto)."""
+    L = t["L"]; mid = (t["s0"] + t["s1"]) / 2; sun, sole = sole_13(t["lat"], t["lon"])
+    return [posto_albero(L, mid + k * INTERASSE_M, sun, opposto) for k in range(-(N_ALBERI // 2), N_ALBERI // 2 + 1)], sole
 
 
 def scrivi(scn):
@@ -199,23 +228,22 @@ def interventi_geojson(scenari):
 
 def main():
     b = congela_baseline(); t = trova_tratto(b); L = t["L"]
-    def nuovo(sid, titolo, ops):
-        s = {"scenario_id": sid, "version": 1, "baseline_id": b["baseline_id"], "title": titolo, "author": "agente F08 (scenario dimostrativo)", "created_at": CREATED, "operations": ops}
+    def nuovo(sid, titolo, ops, versione=1):
+        s = {"scenario_id": sid, "version": versione, "baseline_id": b["baseline_id"], "title": titolo, "author": "agente F08 (scenario dimostrativo)", "created_at": CREATED, "operations": ops}
         S.valida(s, geometrie=False); return s
     scn = [nuovo(ID["s0"], "S0 baseline: nessun intervento (delta atteso zero)", [])]
     regola = (f"regola dichiarata: tratto di {FINESTRA_M:g} m di R01 (da {t['s0']} a {t['s1']} m dall'origine) con massima frazione media al sole, 15 luglio 12:30-13:30 (a parità: media 8-18, poi la prima lungo il percorso), "
-              f"caso con vegetazione LiDAR, asse della rete; {N_ALBERI} alberi, interasse {INTERASSE_M:g} m, a {OFFSET_M:g} m dall'asse")
+              f"caso con vegetazione LiDAR, asse della rete, solo tratti dove tutti gli alberi trovano posto; {N_ALBERI} alberi, interasse {INTERASSE_M:g} m, ognuno sul punto più vicino all'asse "
+              f"fra {OFFSET_MIN_M:g} e {OFFSET_MAX_M:g} m dentro le aree di circolazione pedonale del Comune ristrette di {MARGINE_AREA_M:g} m e fuori dagli edifici")
     scartati = {}
-    for sid, nome, caso, lato_inv in ((ID["s1"], "S1 filare di alberi tipici", "tipico", False), (ID["min"], "S1v variante sensibilità: chioma minima", "min", False),
-                                      (ID["max"], "S1v variante sensibilità: chioma massima", "max", False), (ID["lato"], "S1v variante sensibilità: lato opposto", "tipico", True)):
-        pos, sole13 = posizioni_filare(b, t); ops2 = []; v = S._contesto_geo()
-        for i, (xy, sg) in enumerate(pos, 1):
-            if lato_inv:   # lato opposto: riflessione dell'offset rispetto all'asse
-                pr = L.interpolate(L.project(Point(xy))); xy = 2 * np.array([pr.x, pr.y]) - xy
-            if any(g.contains(Point(xy)) for g in v["bld"]): scartati.setdefault(sid, []).append(i); continue
-            ops2.append(op_albero(i, xy, dimensioni_classe(caso), caso))
-        titolo = f"{nome} su R01: {regola}; lato {'opposto a quello del sole alle 13:00' if lato_inv else 'del sole alle 13:00'} (ipotesi, il lato del marciapiede non è noto)"
-        scn.append(nuovo(sid, titolo, ops2))
+    for sid, nome, caso in ((ID["s1"], "S1 filare di alberi tipici", "tipico"), (ID["min"], "S1v variante sensibilità: chioma minima", "min"),
+                            (ID["max"], "S1v variante sensibilità: chioma massima", "max")):
+        pos, sole13 = posizioni_filare(b, t); ops2 = []
+        for i, x in enumerate(pos, 1):
+            if x is None: scartati.setdefault(sid, []).append(i); continue   # non succede: trova_tratto tiene solo finestre dove tutti trovano posto
+            ops2.append(op_albero(i, x[0], dimensioni_classe(caso), caso))
+        titolo = f"{nome} su R01: {regola}; lato del sole alle 13:00"
+        scn.append(nuovo(sid, titolo, ops2, VERSIONE_S1))
     u, edge = direzione_marciapiede()
     pens = rettangolo(PIATTAFORMA_ATTESA, u, PENSILINA["lunghezza_m"], PENSILINA["profondita_m"])
     src = "ipotesi di dimensione tipica di una pensilina da fermata (6 m x 2 m, intradosso 2,5 m, tetto 3,0 m): non da progetto"
@@ -226,10 +254,11 @@ def main():
                                                               "Fattibilità ignota: sottoservizi, proprietà del suolo, larghezza libera del marciapiede."}
     scn.append(nuovo(ID["s2"], "S2 pensilina all'area di attesa Forlanini Polo Scienze Sociali, vicino all'ingresso del Polo (dimensione dichiarata)", [op]))
     for s in scn: print(("scritto " if scrivi(s) else "invariato ") + s["scenario_id"], f"({len(s['operations'])} interventi)")
-    print(f"tratto R01 {t['s0']}-{t['s1']} m: sole medio {t['sole_medio']:.3f} (R01 intera {t['sole_medio_R01']:.3f}); finestre valide {t['finestre_valide']}; alberi scartati in edificio: {scartati or 'nessuno'}")
+    print(f"tratto R01 {t['s0']}-{t['s1']} m: sole medio {t['sole_medio']:.3f} (R01 intera {t['sole_medio_R01']:.3f}); finestre valide {t['finestre_valide']}; alberi senza posto: {scartati or 'nessuno'}")
     (SC / "tratto_s1.json").write_text(json.dumps({"regola": regola, "data_scelta": DATA_SCELTA, "s0_m": t["s0"], "s1_m": t["s1"], "sole_medio_finestra": round(t["sole_medio"], 4), "sole_medio_R01": round(t["sole_medio_R01"], 4),
                                                    "sole_medio_finestra_8_18": round(t["sole_giorno"], 4), "finestre_valide": t["finestre_valide"], "finestre_pari_a_mezzogiorno": t["finestre_pari_a_mezzogiorno"],
-                                                   "scartati_in_edificio": scartati}, ensure_ascii=False, indent=1))
+                                                   "finestre_senza_posto": t["finestre_senza_posto"], "versione": VERSIONE_S1, "aree_pedonali": {"file": S.rel(S.AREE_PEDONALI), "sha256": sha_file(S.AREE_PEDONALI)},
+                                                   "alberi_senza_posto": scartati}, ensure_ascii=False, indent=1))
     (SC / "interventi.geojson").write_text(json.dumps(interventi_geojson([s for s in scn if s["operations"]]), ensure_ascii=False, separators=(",", ":")))
 
 

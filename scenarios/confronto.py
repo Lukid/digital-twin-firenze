@@ -21,7 +21,7 @@ from scenari import O, ROOT, SC
 VERSIONE = "0.2.0"
 S0 = "scn_fi_s0_baseline"
 S1, S2 = "scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"
-VARIANTI = {S1: ["scn_fi_s1v_chioma_min", "scn_fi_s1v_chioma_max", "scn_fi_s1v_lato_opposto"]}
+VARIANTI = {S1: ["scn_fi_s1v_chioma_min", "scn_fi_s1v_chioma_max"]}
 CASI_VARIANTI = ["base", "veg_lidar_tipico"]   # le varianti si calcolano solo sul caso centrale di due contesti (costo: un caso con vegetazione LiDAR vale circa un minuto)
 TOL = 1e-6   # tolleranza numerica per "delta nullo"
 METRICHE = {"frazione_ombra": "shade_fraction_mean", "minuti_sole": "walk_sun_min_mean"}
@@ -32,7 +32,7 @@ DICHIARAZIONI = ["I pesi dei tratti sono numeri di civici (punti d'indirizzo del
                  "Ombra geometrica binaria: nessuna conversione in gradi, comfort, salute o domanda pedonale; nessun anno di crescita.",
                  "Un albero nuovo è un'ombra aggiunta: dove la chioma esistente ombreggia già il punto il beneficio può solo calare rispetto ai soli edifici.",
                  "Vegetazione LiDAR come prisma opaco pieno (limite superiore dell'ombra esistente): tende a ridurre il beneficio di un nuovo albero.",
-                 "Percorsi sull'asse della rete: il lato del marciapiede è ignoto e non è stato misurato; la variante 'lato opposto' di S1 è l'unica sensibilità sul lato.",
+                 "Percorsi sull'asse della rete: l'ombra è misurata sull'asse, non sulla linea dove si cammina. Gli alberi di S1 stanno dentro le aree di circolazione pedonale del Comune (da 1,5 a 5 m dall'asse).",
                  "Dimensioni degli interventi dichiarate come ipotesi di classe scenario; fattibilità (sottoservizi, spazio radicale, proprietà del suolo, permessi, specie) ignota per tutti.",
                  "Nessuna validazione locale: risultati not_validated_locally."]
 

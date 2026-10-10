@@ -60,6 +60,7 @@ JOBS = {
     "alberi": lambda: scrivi(leggi("fi_alberi", "alberi_pubblici.json", 6706), "fi_alberi", "src_fi_alberi", "alberi", "id_orig", "tre_fi_"),
     "civici": lambda: scrivi(leggi("fi_civici", "civici.zip", 3003, "ISO-8859-1"), "fi_civici", "src_fi_civici", "civici", "id_orig", "adr_fi_"),
     "barriere": lambda: scrivi(leggi("fi_barriere", "mappa_accessibilita.zip", 3003, "cp850"), "fi_barriere", "src_fi_barriere", "barriere", "pk_id", "bar_fi_"),   # dbf in cp850 (audit rete)
+    "aree_pedonali": lambda: scrivi(leggi("fi_aree_pedonali", "acPed_s.zip", 32632).pipe(lambda g: g.set_geometry(shapely.force_2d(g.geometry.values), crs=7791)), "fi_aree_pedonali", "src_fi_aree_pedonali", "aree_pedonali", "acPedId", "ped_fi_"),   # PolygonZ ridotti a 2D
     "rifugi_aree": lambda: scrivi(leggi("fi_rifugi_aree", "rifugi_aree_fresche.json", 6706), "fi_rifugi_aree", "src_fi_rifugi_aree", "rifugi_aree", "cod_area", "rif_fi_"),
     "rifugi_bibl": lambda: scrivi(leggi("fi_rifugi_biblioteche", "rifugi_biblioteche.json", 3003), "fi_rifugi_biblioteche", "src_fi_rifugi_biblioteche", "rifugi_biblioteche", "fid_src", "rib_fi_"),
     "tram_fermate": lambda: scrivi(leggi("fi_tram_fermate", "tram_fermate.zip", 3003), "fi_tram_fermate", "src_fi_tram_fermate", "tram_fermate", "nome_ferma", "stp_fi_", rango="nome_ferma"),

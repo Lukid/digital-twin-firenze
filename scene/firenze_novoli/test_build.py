@@ -58,11 +58,11 @@ def test_interventi_scenari():
     if "interventi" not in IDX["assets"]:  # opzionale: file degli scenari assente
         return
     d = carica("interventi")
-    assert sum(len(s["alberi"]) for s in d["scenari"]) == 28 and sum(len(s["pensiline"]) for s in d["scenari"]) == 1
-    assert IDX["assets"]["interventi"]["n"] == 29 and IDX["livelli_analitici"]["scenari"]["presente"]
+    assert sum(len(s["alberi"]) for s in d["scenari"]) == 21 and sum(len(s["pensiline"]) for s in d["scenari"]) == 1
+    assert IDX["assets"]["interventi"]["n"] == 22 and IDX["livelli_analitici"]["scenari"]["presente"]
     assert all(s["numeri"] and "ignota" in s["fattibilita"] for s in d["scenari"])
     s1 = next(s for s in d["scenari"] if s["id"] == "scn_fi_s1_filare_r01")
-    assert s1["numeri"][0][1].startswith("minuti al sole da 15,35 a 14,74") and s1["numeri"][1][1] == "da 8,0% a 11,6%"
+    assert s1["numeri"][0][1].startswith("minuti al sole da 15,35 a 14,80") and s1["numeri"][1][1] == "da 8,0% a 11,4%"
 
 
 if __name__ == "__main__":

@@ -101,7 +101,8 @@
  },
  "geometrie": {
   "file": "data/norm/firenze_novoli/geometry/geometrie_firenze_novoli.gpkg",
-  "sha256": "8c416bf38bcbb0fcb661ff6d5f9417e99ecc5c82139da740ecfef0b2af9d4c66",
+  "sha256": "8ba7121c26e9d9e5872c55ed2bc66177861ccfd033129967d90f26d8d5538c90",
+  "sha256_nota": "file ricostruito da geometry/build_firenze.py il 2026-10-10 alle 11:45 (sha256 precedente 8c416bf38bcbb0fcb661ff6d5f9417e99ecc5c82139da740ecfef0b2af9d4c66); contenuto verificato uguale: S0 del 15 luglio ricalcolato con il nuovo file identico al precedente su tutte le 6.831 righe",
   "parametri_chiome": "geometry/parametri_chiome.json",
   "parametri_chiome_sha256": "c7f6915dd5bca1142db551d061ea348aac7c5d566d6873de653c3c511c08f05c",
   "volumi_usati": 8077,
