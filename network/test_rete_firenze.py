@@ -112,9 +112,9 @@ assert man["nodi"] == G.number_of_nodes() and man["archi"] == G.number_of_edges(
 assert man["regole_sha256"] == __import__("hashlib").sha256((NET / "regole.json").read_bytes()).hexdigest()
 print(f"8 ok: {man['graph_id']} coerente con snapshot e baseline")
 
-# 9. Pisa non cambia: senza DT_AOI rete_lib punta ai file e ai nomi storici
+# 9. Senza DT_AOI rete_lib punta a Firenze (D15); Pisa resta raggiungibile con DT_AOI=aoi_z2
 r = subprocess.run([sys.executable, "-c", "import os; os.environ.pop('DT_AOI', None); import rete_lib as R; print(R.STEM, R.OUT.relative_to(R.ROOT), R.RES.relative_to(R.ROOT), R.OSM_SNAP['snapshot_id'])"],
                    cwd=os.path.dirname(__file__) or ".", capture_output=True, text=True, check=True)
-assert r.stdout.split() == ["rete_z2", "data/norm/network", "network", "snp_osm_pisa_20261001"], r.stdout
-print("9 ok: default di Pisa invariati")
+assert r.stdout.split() == ["rete_firenze_novoli", "data/norm/firenze_novoli/network", "network/firenze_novoli", "snp_osm_firenze_20261009"], r.stdout
+print("9 ok: area predefinita Firenze")
 print("TUTTI I TEST OK")
