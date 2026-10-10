@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_catasto_20261010",
+ "source_id": "src_fi_catasto",
+ "retrieved_at": "2026-10-10T16:11:46Z",
+ "bytes": 2594395,
+ "sha256": "dfa2b6b7fc288a521f76ec57fb5be2ac5f554d690301afec504b8b87b76b44ec",
+ "local_path": "data/raw/fi_catasto/20261010/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://wfs.cartografia.agenziaentrate.gov.it/inspire/wfs/owfs01.php?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=CP:CadastralParcel&COUNT=15000&BBOX=43.79178,11.21694,43.80422,11.23506,urn:ogc:def:crs:EPSG::6706",
+ "media_type": "application/gml+xml",
+ "content_period": {
+  "note": "cartografia catastale aggiornata dall'Agenzia per foglio (BEGINLIFESPANVERSION dei fogli); stato alla data di scarico"
+ },
+ "license_state": "clear"
+}

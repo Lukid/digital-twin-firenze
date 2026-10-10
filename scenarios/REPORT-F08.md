@@ -91,6 +91,18 @@ Nessun punteggio unico: indicatori separati.
 - `interventi.geojson`: 21 Point (alberi) e 1 Polygon (pensilina), EPSG:4326.
 - Nessuna stringa Pisa, z2, Pellico o Battisti nei file prodotti.
 
+## Scenari aggiunti il 10 ottobre (S3-S6)
+
+- Regole dichiarate prima dei risultati: filari con la regola di S1, pensiline con la regola di S2 (`fermate_pensilina()` in costruisci.py).
+- S3, filare su R02: non creato. Una sola finestra valida (481-541 m) su 570, sul tratto finale in comune con R01: gli alberi coincidono con S1 entro 0,3 m. S1 cambia già R02: -0,37 minuti al sole a mezzogiorno di luglio.
+- S4, filare verso la scuola Vamba (R09, poi R08) o sulla linea dei 15 archi più usati verso la fermata T2: non creato, nessuna finestra con posto per 7 alberi. R04 e R06 (da un civico verso il Polo) hanno finestre valide, a 30 e 180 m da S1: non usati perché non sono percorsi molto usati.
+- S5, pensilina alla fermata bus Regione Toscana (OSM nod_osm_6027223967, 572 m dal Polo, 74 m dalla fermata T2 omonima): area di attesa a mezzogiorno del 15 luglio da 0% a 40,0% d'ombra, giornata da 17,4% a 39,5%; 15 settembre da 0% a 21,9%.
+- S6, pensilina alla fermata bus Di Novoli Sn (OSM nod_osm_3216618875, 644 m): area di attesa già all'ombra al 100% a mezzogiorno; giornata di luglio da 78,4% a 84,8%.
+- S5 e S6 scelte solo dai dati, senza controllo a vista su Street View. Del Prete Terzolle è esclusa dal controllo a vista (ha già la pensilina) e anche dalla regola dei dati.
+- Baseline degli scenari ricongelata: aggiunte solo le aree di attesa sfc_fi_attesa_s5 e sfc_fi_attesa_s6 (controllo nel codice); tutti i job ricalcolati; S0, S1 e S2 identici in tutti i valori.
+- Test 16 su 16. Nota: le sezioni sopra riportano ancora i numeri di S1 versione 2 (tratto 593-653 m, -0,55 minuti); i valori attuali (versione 3, tratto 198-258 m, -0,36 minuti) sono in docs/STATO.md.
+- Il servizio: `compare_scenarios` espone `area_attesa_polo` ma non le aree di S5 e S6, che per ora si leggono solo in `confronto.json`.
+
 ## Limiti
 
 - Ombra misurata sull'asse della rete, non sulla linea dove si cammina.

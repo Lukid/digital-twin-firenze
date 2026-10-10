@@ -1,0 +1,53 @@
+{
+ "source_id": "src_sir_termo_firenze",
+ "title": "Temperatura dell'aria giornaliera (massima e minima), stazione SIR Firenze Università TOS01001096",
+ "publisher": "Regione Toscana, Settore Idrologico e Geologico Regionale (SIR)",
+ "dataset_url": "https://dati.toscana.it/dataset/termometri",
+ "resource_url": "https://www.sir.toscana.it/archivio/dati.php",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/termometri"
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://www.sir.toscana.it/licenze",
+  "evidence_note": "Pagina Licenze del SIR: \"I dati pubblicati dal Settore Idrologico e Geologico Regionale (SIR) - Regione Toscana sono distribuiti con licenza Creative Commons Attribuzione-CondividiAlloStessoModo 4.0 Internazionale (CC BY-SA 4.0)\". Attribuzione: \"Settore Idrologico e Geologico Regionale (SIR) - Regione Toscana. Dati distribuiti con licenza Creative Commons CC BY-SA 4.0.\"",
+  "identifier": "CC-BY-SA-4.0",
+  "reserve_note": "Condividi allo stesso modo: i derivati di questo livello (meteo.json.gz) vanno distribuiti in CC BY-SA 4.0. La scheda del catalogo (anagrafica stazioni) dice cc-by-sa, le sue risorse A1_PublicDomain: vale la pagina del SIR. Dati dichiarati pre-validati."
+ },
+ "content_period": {
+  "start": "2023-01-01",
+  "note": "massime e minime giornaliere 2023-2026 della stazione, dati pre-validati; ora solare"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "declared",
+  "note": "posizione della stazione dall'anagrafica WFS del SIR (Gauss-Boaga, quota 84 m s.l.m.), convertita in EPSG:7791"
+ },
+ "units": {
+  "tmax": "°C",
+  "tmin": "°C"
+ },
+ "checks": [
+  {
+   "name": "serie normalizzata",
+   "result": "pass",
+   "detail": "vedi data/norm/firenze_novoli/sir_termo_firenze.json"
+  },
+  {
+   "name": "distanza dal riquadro",
+   "result": "pass",
+   "detail": "1,3 km a est del riquadro FP, in città: rappresentativa della zona, non del singolo isolato"
+  },
+  {
+   "name": "validazione",
+   "result": "warn",
+   "detail": "il SIR dichiara i dati pre-validati: possono cambiare"
+  }
+ ],
+ "schema_fields": [
+  "Tmax",
+  "Tmin"
+ ]
+}

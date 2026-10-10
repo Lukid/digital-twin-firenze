@@ -1,0 +1,18 @@
+{
+ "snapshot_id": "snp_fi_landsat_st_20261010",
+ "source_id": "src_fi_landsat_st",
+ "retrieved_at": "2026-10-10T16:22:29Z",
+ "bytes": 1147426,
+ "sha256": "1401627a99aa19e672593aff9c31acba6cfbe4436fbc7024c559432db3d03047",
+ "local_path": "data/raw/fi_landsat_st/20261010/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://planetarycomputer.microsoft.com/api/stac/v1/search (collections=landsat-c2-l2, platform landsat-8/9, giugno-settembre 2023-2026, bbox riquadro + margine)",
+ "media_type": "image/tiff; application=geotiff",
+ "content_period": {
+  "start": "2023-06-01",
+  "end": "2026-09-30",
+  "note": "120 scene di giugno-settembre (path 192, righe 029 e 030), ritagli attorno al riquadro"
+ },
+ "license_state": "clear"
+}

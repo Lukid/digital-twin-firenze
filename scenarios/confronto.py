@@ -7,7 +7,7 @@ Per ogni scenario e per ciascuna data (15 luglio e 15 settembre), sugli stessi r
  - tre contesti del motore, ciascuno con caso centrale e due estremi: solo edifici (h, h_min, h_max), con alberi censiti (tipico, min, max), con vegetazione LiDAR
    (tipico, min, max). Il contesto con vegetazione LiDAR è la base di confronto principale (D14). L'intervallo di ogni delta è il minimo e il massimo dei delta accoppiati
    (stesso ricevitore, stessa ora, stesso caso) sui tre casi;
- - area di attesa (superficie) della fermata bus Guidoni Barsanti (S2 versione 2);
+ - area di attesa (superficie) della fermata bus Guidoni Barsanti (S2 versione 2) e, in `aree_attesa`, quelle delle pensiline S5 e S6;
  - beneficio sui tratti più usati di F06 (verso il Polo e verso la fermata T2), pesato per il numero di CIVICI che li usano: sono indirizzi, non persone, e non ci sono
    flussi pedonali misurati;
  - effetto sull'accessibilità: nullo per costruzione (alberi e pensiline non cambiano il grafo), verificato con hash e ricalcolo;
@@ -21,6 +21,7 @@ from scenari import O, ROOT, SC
 VERSIONE = "0.2.0"
 S0 = "scn_fi_s0_baseline"
 S1, S2 = "scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"
+S5, S6 = "scn_fi_s5_pensilina_regione_toscana", "scn_fi_s6_pensilina_di_novoli"
 VARIANTI = {S1: ["scn_fi_s1v_chioma_min", "scn_fi_s1v_chioma_max"]}
 CASI_VARIANTI = ["base", "veg_lidar_tipico"]   # le varianti si calcolano solo sul caso centrale di due contesti (costo: un caso con vegetazione LiDAR vale circa un minuto)
 TOL = 1e-6   # tolleranza numerica per "delta nullo"
@@ -104,15 +105,15 @@ def beneficio_archi(ixb, ixs, cond, b, casi):
     return out
 
 
-def area_attesa(ixb, ixs, cond, b, casi):
-    rid = b["ricevitori"]["area_attesa"]["receiver_id"]
+def area_attesa(ixb, ixs, cond, b, casi, rid=None):
+    rid = rid or b["ricevitori"]["area_attesa"]["receiver_id"]
     return {f: _delta(ixb, ixs, rid, f, "shade_fraction_mean", casi) for f in _fasce(cond)}
 
 
 def per_ora(rb, rs, b, casi):
     """Delta per ricevitore e ora nel contesto dato: {ricevitore: {HH:MM: {frazione_ombra: [centrale, estremo, estremo], minuti_sole: [...]}}} (ore con sole sotto 5 gradi assenti)."""
     ib = {(r["receiver_id"], r["time_local"], r["caso"]): r for r in rb["righe"]}; is_ = {(r["receiver_id"], r["time_local"], r["caso"]): r for r in rs["righe"]}
-    rids = [f"pth_fi_{r}" for r in b["ricevitori"]["route_ids"]] + [b["ricevitori"]["area_attesa"]["receiver_id"]]; out = {}
+    rids = [f"pth_fi_{r}" for r in b["ricevitori"]["route_ids"]] + [a["receiver_id"] for a in [b["ricevitori"]["area_attesa"]] + b["ricevitori"].get("aree_attesa_altre", [])]; out = {}
     for rid in rids:
         for t in sorted({k[1] for k in is_ if k[0] == rid}):
             e = {}
@@ -153,7 +154,7 @@ def fasce_utili(tab):
 
 
 # ---------------------------------------------------------------- calcolo (con cache)
-def _casi(sid): return None if sid == S0 or sid in (S1, S2) else CASI_VARIANTI
+def _casi(sid): return None if sid in (S0, S1, S2, S5, S6) else CASI_VARIANTI
 
 
 def esegui(sid, data, rec=None):
@@ -201,10 +202,12 @@ def confronta(scenario_ids, con_varianti=True, log=None, parallelo=True):
         if inc: e["stato"] = "respinto"; e["incompatibilita"] = inc; out["scenari"][sid] = e; continue
         e["stato"] = "confrontato"; e["incompatibilita"] = []
         e["percorsi"], e["area_attesa_polo"], e["archi_usati"], e["per_ora"], e["fasce_utili_R01"] = {}, {}, {}, {}, {}
+        altre = [a["receiver_id"] for a in b["ricevitori"].get("aree_attesa_altre", [])]; e["aree_attesa"] = {rid: {} for rid in altre}
         for d in cond["dates"]:
             ib, is_ = indice(base[d]), indice(res[d])
             e["percorsi"][d] = {c: tabella_percorsi(ib, is_, cond, CC[c]) for c in S.CONTESTI}
             e["area_attesa_polo"][d] = {c: area_attesa(ib, is_, cond, b, CC[c]) for c in S.CONTESTI}
+            for rid in altre: e["aree_attesa"][rid][d] = {c: area_attesa(ib, is_, cond, b, CC[c], rid) for c in S.CONTESTI}
             e["archi_usati"][d] = beneficio_archi(ib, is_, cond, b, CC[PRINCIPALE])
             e["per_ora"][d] = per_ora(base[d], res[d], b, CC[PRINCIPALE])
             e["fasce_utili_R01"][d] = fasce_utili(e["percorsi"][d][PRINCIPALE])
@@ -230,7 +233,7 @@ def scrivi_out(riep):
 
 
 def main():
-    r = confronta([S1, S2], log=lambda *a: print(*a, flush=True)); scrivi_out(r)
+    r = confronta([S1, S2, S5, S6], log=lambda *a: print(*a, flush=True)); scrivi_out(r)
     for sid, e in r["scenari"].items():
         for d in r["condizioni_comuni"]["date"]:
             m = e["percorsi"][d][PRINCIPALE]["R01"]["punta_12_30_13_30"]["minuti_sole"]

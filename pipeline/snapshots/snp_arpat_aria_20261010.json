@@ -1,0 +1,18 @@
+{
+ "snapshot_id": "snp_arpat_aria_20261010",
+ "source_id": "src_arpat_aria",
+ "retrieved_at": "2026-10-10T16:25:34Z",
+ "bytes": 5086328,
+ "sha256": "70bdeb1ced6d2a04ac39b8fa1030c2ac3b423b0e96a257a4d1c61cfe9074e458",
+ "local_path": "data/raw/arpat_aria/20261010/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://www.arpat.toscana.it/app/uploads/2026/05/FI_DATI_QA_2025_CSV.zip",
+ "media_type": "application/zip",
+ "content_period": {
+  "start": "2025-01-01",
+  "end": "2025-12-31",
+  "note": "archivio 2025 dichiarato validato (intero ciclo di validazione); ore solari; anagrafica delle stazioni alla data di scarico"
+ },
+ "license_state": "clear_with_reserve"
+}

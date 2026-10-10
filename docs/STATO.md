@@ -32,6 +32,9 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - Ombra sui percorsi fermata T2 → Polo, 12:30-13:30: R01 (San Donato - Università → D15, 429 m) in ombra al 30% a luglio e al 72% a settembre; R02 (Regione Toscana → D15) al 15% e al 42%. Alberi e vegetazione LiDAR pesano meno di 2 punti.
 - Scenari: filare su R01 (versione 3, stessa regola sul nuovo R01, tratto 198-258 m) -0,36 minuti di sole a mezzogiorno di luglio, da -0,11 a -0,63 con la chioma; a settembre -0,41. Pensilina alla fermata bus Guidoni Barsanti: a mezzogiorno di luglio l'area di attesa passa da 0% a 40% d'ombra.
 
+- Scenari aggiunti (10 ottobre): pensiline S5 (fermata bus Regione Toscana, area di attesa da 0% a 40% d'ombra a mezzogiorno di luglio) e S6 (Di Novoli Sn, già all'ombra a mezzogiorno). Filari nuovi su R02 e verso Vamba non possibili con la regola di S1 (su R02 ricade su S1).
+- Nuovi livelli nella scena (10 ottobre): particelle catastali con ricerca per foglio e particella; temperatura delle superfici Landsat (41 giornate estive 2023-2026) con l'aria della stazione SIR Firenze Università; qualità dell'aria 2025 dalle 6 stazioni ARPAT di Firenze (la più vicina, FI-MOSSE, a 745 m dal riquadro).
+
 ## Limiti principali
 
 - Ombra misurata sull'asse della rete, non sulla linea dove si cammina.
@@ -54,12 +57,14 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D18 (10 ottobre): i due CSV Life Escapos tolti da tutta la storia di git (anche dal tag `pilota-pisa-z2`); copia della storia precedente in `../digital-twin-firenze-prima-pulizia.bundle`.
 - D19 (10 ottobre): ingressi del Polo = 7 civici del Comune, uno per edificio dell'Ateneo (D1, D4, D5, D6, D10, D14, D15); per ogni origine vince il più vicino. Prima: due ingressi OSM (biblioteca e una corte interna).
 - D20 (10 ottobre): fermata T2 San Donato - Università (`FM9055`, indicata dall'Ateneo) fra le destinazioni; R01 parte da lì (prima da Torre degli Agli). S1 rifatto in versione 3; S2 resta a Guidoni Barsanti (regola rifatta sui nuovi ingressi).
+- D21 (10 ottobre): dati ARPAT usati (stazioni e archivio orario pubblico del sito, non l'API dell'app), anche nella scena online, con le due licenze delle note legali dichiarate. Supera la clausola ARPAT di D15 e la decisione aperta sui dati ARPAT.
+- D22 (10 ottobre): niente webcam. Nessuna webcam pubblica entro 1 km da Novoli e nessuna fonte con licenza di riuso.
+- D23 (10 ottobre): pannello della scena a schede (Livelli, Sole, Analisi, Interventi, Legenda) sul modello di Padova, con stile proprio (pietra serena e cotto) e tema sempre chiaro. Nuove fonti fuori dalla baseline congelata: catasto, Landsat, SIR, ARPAT.
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
 
 1. Comune, DISIT o progetti di ricerca (DANTE, MIRIFICUS): concorrenza o collaborazione. Decisione dopo il POC.
-2. Dati ARPAT: solo dataset con licenza dichiarata (dati.toscana.it). Fuori dal POC.
 
 ## Prossimi passi possibili
 

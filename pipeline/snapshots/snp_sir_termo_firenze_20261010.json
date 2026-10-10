@@ -1,0 +1,17 @@
+{
+ "snapshot_id": "snp_sir_termo_firenze_20261010",
+ "source_id": "src_sir_termo_firenze",
+ "retrieved_at": "2026-10-10T16:22:49Z",
+ "bytes": 215960,
+ "sha256": "39ebcc88c788be5d392d563d0bd03d0ae171539b171d4b582a7ee77c2a466087",
+ "local_path": "data/raw/sir_termo_firenze/20261010/",
+ "status": "ok",
+ "stored": false,
+ "url": "https://www.sir.toscana.it/archivio/dati.php?A=2023&IDS=TOS01001096&IDST=termo",
+ "media_type": "text/html",
+ "content_period": {
+  "start": "2023-01-01",
+  "note": "massime e minime giornaliere 2023-2026; dati dichiarati PRE-VALIDATO dal SIR (possono cambiare con la validazione)"
+ },
+ "license_state": "clear_with_reserve"
+}

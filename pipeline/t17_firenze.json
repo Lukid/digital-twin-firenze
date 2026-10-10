@@ -211,6 +211,42 @@
    },
    "lacuna": null,
    "licenza_dichiarata": "clear_with_reserve"
+  },
+  {
+   "source_id": "src_fi_catasto",
+   "dataset_catalogo": null,
+   "catalogo_live": null,
+   "lacuna": "La cartografia catastale non è su dati.toscana.it: è un servizio nazionale dell'Agenzia delle Entrate (WFS INSPIRE).",
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_fi_landsat_st",
+   "dataset_catalogo": null,
+   "catalogo_live": null,
+   "lacuna": "Landsat non è su dati.toscana.it: prodotto dell'USGS, letto dalla copia pubblica del catalogo STAC di Microsoft Planetary Computer (accesso anonimo).",
+   "licenza_dichiarata": "clear"
+  },
+  {
+   "source_id": "src_sir_termo_firenze",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/termometri",
+   "catalogo_live": {
+    "nome": "termometri",
+    "titolo": "Regione Toscana - Termometri",
+    "license_id": "cc-by-sa",
+    "licenza_risorse": [
+     "https://w3id.org/italia/controlled-vocabulary/licences/A1_PublicDomain"
+    ],
+    "metadata_modified": "2025-11-12"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear_with_reserve"
+  },
+  {
+   "source_id": "src_arpat_aria",
+   "dataset_catalogo": null,
+   "catalogo_live": null,
+   "lacuna": "I dati orari e l'anagrafica delle stazioni non sono su dati.toscana.it: sul catalogo ARPAT ha solo indicatori annuali fino al 2022-2024 e la risorsa \"Struttura della rete di monitoraggio della qualità dell'aria in Toscana\" (cc-by) punta a un JSON che oggi rimanda alla home del sito. Da segnalare: link morto e archivio orario da pubblicare sul catalogo.",
+   "licenza_dichiarata": "clear_with_reserve"
   }
  ]
 }

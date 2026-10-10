@@ -27,7 +27,7 @@ Motivi:
 - Il formato `.js` con funzione di ricezione: i file sono `.json.gz`, letti con fetch e decompressi dal browser.
 - Edifici con tetti e monumenti modellati: i volumi sono estrusioni con altezza LiDAR.
 - Ortofoto sul terreno: le ortofoto regionali (2016 Consorzio TeA, 2019 e 2022 AGEA, servizio WMS `ows_ofc` della Regione Toscana) sono concesse alla Regione per fini istituzionali e non se ne consente il download (testo del servizio letto il 10 ottobre 2026). Su dati.toscana.it non c'è un'ortofoto aperta di Firenze. L'unica alternativa sarebbe chiamare il WMS dalla pagina, che va contro "la scena non chiede niente alla rete" e resta da decidere.
-- Ricerca per indirizzo, stazioni ambientali, webcam.
+- Ricerca per indirizzo e webcam: nessuna webcam pubblica con licenza di riuso vicino a Novoli (D22). Catasto, temperatura delle superfici e stazioni dell'aria sono stati aggiunti il 10 ottobre (vedi sotto).
 
 ## Piano e coordinate
 
@@ -45,6 +45,15 @@ Cartella `assets/`. `index.json` elenca per ogni asset file, byte, byte decompre
 - `mappa.json.gz`: aree verdi e acqua (anelli di poligoni) dal layer `multipolygons` dell'estratto OSM (`data/raw/osm_firenze/…/*.osm.pbf`, letto con filtro sul riquadro più il margine) e strade dal layer `highway` di `osm_firenze.gpkg`, con larghezza indicativa per classe. La pagina li dipinge in una texture del terreno (4096 px, 2048 sul telefono).
 - `etichette.json.gz`: nomi dei luoghi scelti a mano fra le aree OSM con nome (`LUOGHI` in build.py) e delle vie principali (`VIE`), con posizione nel piano. La pagina li mostra come testo HTML e nasconde quelli che si sovrappongono.
 - `accessibilita.json.gz` e `ombra.json.gz`: presenti solo se esistono i dati di ingresso.
+- `catasto.json.gz` (livello "Particelle catastali", fonte `src_fi_catasto`): `particelle[]` con `rif` ("foglio 42B particella 123"), `f` (foglio con allegato), `p` (particella o STRADA00n/ACQUA00n), `t` (particella, strada, acqua), `a` (poligoni, ognuno [esterno, buchi...], anelli piatti [x, z, ...] nel piano del motore a 2 decimali); `fogli[]` con `f`, punto dell'etichetta `x`, `z` dentro FP, `agg` (data di aggiornamento del foglio) e `a`. Ogni edificio in `edifici.json.gz` ha `cat`: i riferimenti delle particelle che contengono almeno il 50% della sua superficie (al massimo una, `[]` se nessuna). È un aggancio geometrico, non verificato sugli atti.
+- `temperature.json.gz`: temperatura delle superfici Landsat 8-9 su una griglia di 30 m (x0, z0 centro della prima cella, riga 0 a nord). Una griglia per data in decimi di °C (-32768 = non valido), più la media delle date valide, il numero di date sopra 40 °C e le date valide per cella. La pagina la dipinge su una copia del terreno, semitrasparente, e legge una cella al clic.
+- `meteo.json.gz`: massime e minime giornaliere della stazione SIR Firenze Università (CC BY-SA 4.0) e le date Landsat, per confrontare superficie e aria nello stesso giorno. Non ha una riga nel pannello: compare nel livello temperature.
+- `aria.json.gz`: 6 stazioni ARPAT con valori di stazione, nessuna interpolazione e nessuna mappa. Tutte fuori dal riquadro, con `fuori_riquadro` true e distanza in metri. Per ogni inquinante: media annua 2025, superamenti nel senso del D.Lgs. 155/2010, limite, percentuale di dati validi (sotto il 90% la media non vale ai fini di legge) e ultimo valore. Il 2026 è escluso perché esce solo dall'API dell'app ARPAT. La pagina le mostra come elenco nella scheda Analisi.
+- I quattro asset nuovi sono opzionali: build.py li scrive solo se esistono i file in data/norm.
+
+## Pannello
+
+Schede Livelli (sezioni La città in 3D, Mobilità, Luoghi e servizi, Catasto con ricerca), Sole, Analisi (accessibilità, ombra, temperatura, qualità dell'aria), Interventi (un riquadro per scenario con i numeri; la scelta porta la vista sull'intervento; pulsante per il sole del calcolo), Legenda (tutti i colori, fonti e limiti). Struttura presa da Padova, stile proprio: pietra serena e cotto, titolo con carattere graziato, schede a pulsanti, tema sempre chiaro (D23).
 
 ## Livelli analitici (input GeoJSON EPSG:4326)
 

@@ -71,7 +71,7 @@ assert not any(x["code"] == "fuori_area_pedonale" for x in S.valida(S.carica("sc
 print("ok 2 validazione e segnalazioni")
 
 # 3. fattibilità sempre ignota (nel risultato di validazione e in ogni scenario dimostrativo)
-dim = [s for s in S.elenco() if s.startswith("scn_fi_s")]; assert len(dim) == 5, dim
+dim = [s for s in S.elenco() if s.startswith("scn_fi_s")]; assert len(dim) == 7, dim
 for sid in dim:
     f = S.valida(S.carica(sid), geometrie=False)["feasibility"]
     assert set(f.values()) == {"ignota"} and {"sottoservizi", "spazio_radicale", "permessi"} <= set(f), sid
@@ -125,7 +125,7 @@ print("ok 7 condizioni comuni")
 
 # 8. S0 contro S0 = delta zero su tutto (percorsi, area di attesa, tratti, tre contesti, entrambe le date); baseline invariata
 riep = json.loads((SC / "confronto.json").read_text())
-assert riep["baseline_invariata"] is True and set(riep["scenari"]) == {C.S1, C.S2} and riep["condizioni_comuni"]["contesto_principale"] == "con_vegetazione_lidar"
+assert riep["baseline_invariata"] is True and set(riep["scenari"]) == {C.S1, C.S2, C.S5, C.S6} and riep["condizioni_comuni"]["contesto_principale"] == "con_vegetazione_lidar"
 rec_all = S.ricevitori()
 for d in cond["dates"]:
     _, r0 = C.esegui(C.S0, d, rec_all); ix = C.indice(r0)
@@ -187,13 +187,13 @@ print("ok 11 S2 area di attesa")
 
 # 12. interventi.geojson per la scena: EPSG:4326, Point per gli alberi, Polygon per le coperture, proprietà dichiarate
 g = json.loads((SC / "interventi.geojson").read_text()); pts = [f for f in g["features"] if f["geometry"]["type"] == "Point"]; pol = [f for f in g["features"] if f["geometry"]["type"] == "Polygon"]
-assert len(pts) == 21 and len(pol) == 1 and len(pts) + len(pol) == len(g["features"])
+assert len(pts) == 21 and len(pol) == 3 and len(pts) + len(pol) == len(g["features"])
 assert all(set(f["properties"]) == {"id", "scenario", "h", "chioma_d", "imposta"} for f in pts) and all(set(f["properties"]) == {"id", "scenario", "z_lo", "z_hi"} for f in pol)
 assert len({f["properties"]["id"] for f in g["features"]}) == len(g["features"])
 assert all(11.1 < f["geometry"]["coordinates"][0] < 11.3 and 43.7 < f["geometry"]["coordinates"][1] < 43.9 for f in pts)
 assert all(11.1 < x < 11.3 and 43.7 < y < 43.9 for f in pol for x, y in f["geometry"]["coordinates"][0])
 assert {f["properties"]["scenario"] for f in g["features"]} == {s for s in dim if S.carica(s)["operations"]}
-assert pol[0]["properties"]["scenario"] == C.S2 and (pol[0]["properties"]["z_lo"], pol[0]["properties"]["z_hi"]) == (2.5, 3.0)
+assert {f["properties"]["scenario"] for f in pol} == {C.S2, C.S5, C.S6} and all((f["properties"]["z_lo"], f["properties"]["z_hi"]) == (2.5, 3.0) for f in pol)
 print("ok 12 interventi.geojson")
 
 # 13. nessuna stringa del pilota precedente nei file prodotti (versionati e cache dei job)
@@ -204,4 +204,41 @@ for p in files:
     m = vietate.search(p.read_text()); assert not m, (p.name, m.group(0))
 assert S.stato_baseline() == st0
 print("ok 13 nessuna stringa del pilota precedente")
+
+# 14. S0, S1, S2 invariati dopo l'aggiunta di S5 e S6 (file immutabili e numeri principali del confronto, base LiDAR, punta 12:30-13:30)
+import hashlib
+SHA = {"scn_fi_s0_baseline": "e1212793471cca1f392f5ad86931c80d72e1f7d1838b65dcf7a34f990b146e29", "scn_fi_s1_filare_r01": "393da9a7953399553d340e198ac5fd8b9c407a929979cd26011569a09b836320",
+       "scn_fi_s1v_chioma_max": "cfbc763db404cabc899b09dd1863d73bd551137ec84f002bc8447cc7a6411b72", "scn_fi_s1v_chioma_min": "613cc0a26e0e12b39ae38ecb842bb349443ce6d2eb9fd6cc251c47ecedcf0589",
+       "scn_fi_s2_pensilina_attesa_polo": "f20b11cf92e2fd98df0b5f1329fb1f5aba60567a8e886e3bca7c058567044c96"}
+assert all(hashlib.sha256((SC / f"{k}.json").read_bytes()).hexdigest() == v for k, v in SHA.items())
+for d, (b0, s0_, a1) in {"2026-07-15": (4.251, 3.886, 0.4011), "2026-09-15": (1.753, 1.346, 0.2062)}.items():
+    m = riep["scenari"][C.S1]["percorsi"][d]["con_vegetazione_lidar"]["R01"][PT]["minuti_sole"]; a = riep["scenari"][C.S2]["area_attesa_polo"][d]["con_vegetazione_lidar"][PT]
+    assert (m["baseline"], m["scenario"]) == (b0, s0_) and (a["baseline"], a["scenario"]) == (0.0, a1), (d, m, a)
+print("ok 14 S0, S1, S2 invariati")
+
+# 15. S5 e S6: seconda e terza fermata della regola di S2, fascia 6 x 3,5 m libera nelle aree pedonali, area di attesa propria fra i ricevitori, ombra mai in calo
+import costruisci as K, shapely
+f = K.fermate_pensilina(); assert f[0][3] == K.PIATTAFORMA_ATTESA and [x[1] for x in f[1:3]] == ["nod_osm_6027223967", "nod_osm_3216618875"], f[:3]
+ped, bld = S._contesto_geo()["ped"], shapely.union_all(S._contesto_geo()["bld"]); altre = {a["scenario"]: a for a in b["ricevitori"]["aree_attesa_altre"]}
+for sid, (d_, oid, nome, xy) in zip((C.S5, C.S6), f[1:3]):
+    scn = S.carica(sid); pens = shape(scn["operations"][0]["geometry"]); assert oid in scn["operations"][0]["note"] and not S.valida(scn)["warnings"], sid
+    assert abs(pens.area - 12) < 0.05 and ped.contains(pens) and not pens.intersects(bld)
+    _, u, _ = K.posto_pensilina(xy); n = shapely.geometry.Point(-u[1], u[0]); c = pens.centroid
+    fasce = [K.rettangolo((c.x + sg * 0.75 * n.x, c.y + sg * 0.75 * n.y), u, 6.0, 3.5) for sg in (1, -1)]   # pensilina più 1,5 m di passaggio da uno dei due lati
+    assert any(ped.contains(fa) and not fa.intersects(bld) for fa in fasce), sid
+    att = shape(altre[sid]["geometry"]); assert att.contains(pens) and abs(att.area - 32) < 0.1 and altre[sid]["receiver_id"] in {r["receiver_id"] for r in rec_all}
+    e = riep["scenari"][sid]; assert e["stato"] == "confrontato"
+    for d in cond["dates"]:
+        for rid, v in e["aree_attesa"].items(): assert all(x["delta"] >= -C.TOL for x in v[d]["con_vegetazione_lidar"].values() if x)
+        assert all(abs(x["delta"]) <= C.TOL for x in e["area_attesa_polo"][d]["con_vegetazione_lidar"].values() if x)   # lontane da Guidoni Barsanti
+    assert max(x["delta"] for d in cond["dates"] for x in e["aree_attesa"][altre[sid]["receiver_id"]][d]["con_vegetazione_lidar"].values() if x) > 0
+print("ok 15 S5 e S6 pensiline con passaggio libero")
+
+# 16. S3 e S4 non creati: su R02 la regola di S1 ritrova gli alberi di S1; verso la scuola Vamba (R09, R08) nessuna finestra ha posto per 7 alberi
+t2 = K.trova_tratto(b, "R02"); assert t2["finestre_valide"] == 1
+s1x = [shape(o["geometry"]) for o in S.carica(C.S1)["operations"]]
+assert all(p[0] is not None and min(q.distance(shapely.geometry.Point(p[0])) for q in s1x) < 0.5 for p in K.posizioni_filare(b, t2)[0])
+assert K.trova_tratto(b, "R09")["finestre_valide"] == 0 and K.trova_tratto(b, "R08")["finestre_valide"] == 0
+assert S.stato_baseline() == st0
+print("ok 16 S3 e S4 non creati (nessun posto nuovo)")
 print("TUTTO OK")

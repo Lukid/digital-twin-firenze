@@ -1,0 +1,54 @@
+{
+ "source_id": "src_fi_landsat_st",
+ "title": "Landsat 8-9 Collection 2 Level-2, temperatura delle superfici (ST_B10) e QA_PIXEL, estati 2023-2026, riquadro FP",
+ "publisher": "U.S. Geological Survey (copia di Microsoft Planetary Computer)",
+ "dataset_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
+ "resource_url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: lacuna del catalogo. Landsat non è su dati.toscana.it: prodotto dell'USGS, letto dalla copia pubblica del catalogo STAC di Microsoft Planetary Computer (accesso anonimo)."
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
+  "evidence_note": "Pagina USGS: \"There are no restrictions on the use of Landsat products.\" Politica dati USGS: \"All public domain imagery may be used, shared, transferred, or redistributed without restriction.\" Citazione chiesta: DOI 10.5066/P9OGBGM6 (Landsat 8-9 OLI/TIRS C2 L2); credito suggerito \"Landsat Collection 2 Level-2 image courtesy of the U.S. Geological Survey\".",
+  "identifier": "public-domain",
+  "reserve_note": "Il canale di accesso (Planetary Computer) dichiara license \"proprietary\" con collegamento alla politica USGS (Public Domain); il token SAS anonimo è personale e non cedibile (Supplemental Terms): non va scritto nei file."
+ },
+ "content_period": {
+  "start": "2023-06-01",
+  "end": "2026-09-30",
+  "note": "passaggi estivi (giugno-settembre) 2023-2026 alle 09:58-09:59 UTC circa; tenute solo le date con almeno l'80% di celle valide sul riquadro FP"
+ },
+ "crs": {
+  "declared": "EPSG:32632",
+  "vertical_datum": "not_declared",
+  "note": "COG in WGS84 UTM 32N a 30 m; ritagli ricampionati per vicinanza sul reticolo EPSG:7791 a 30 m della scena (scarto fra i due sistemi sotto il metro)"
+ },
+ "units": {
+  "st_b10": "K = DN x 0,00341802 + 149,0 (nodata 0); convertito in °C",
+  "qa_pixel": "bit"
+ },
+ "checks": [
+  {
+   "name": "date valide sul riquadro",
+   "result": "pass",
+   "detail": "vedi data/norm/firenze_novoli/fi_landsat_st.json"
+  },
+  {
+   "name": "risoluzione",
+   "result": "warn",
+   "detail": "banda termica misurata a 100 m e distribuita a 30 m: il dettaglio fra 30 e 100 m non è misurato"
+  },
+  {
+   "name": "saturazione termica",
+   "result": "warn",
+   "detail": "QA_RADSAT non ha un bit per la banda 10 su Landsat 8-9: la saturazione non si controlla"
+  }
+ ],
+ "schema_fields": [
+  "ST_B10",
+  "QA_PIXEL"
+ ]
+}
