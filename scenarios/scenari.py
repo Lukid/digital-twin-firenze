@@ -107,19 +107,27 @@ def _grafo():
     G, _ = RL.carica(); return G
 
 
-def ricevitori():
-    """Percorsi campione (asse della rete, come F07), area di attesa (superficie) e archi più usati di F06, tutti in EPSG:7791.
-    Gli stessi per baseline e scenari: sono la condizione comune del confronto."""
+def linea_percorso(rid):
+    """Percorso campione `rid` (asse della rete, network/<area>/percorsi_campione.geojson) in EPSG:7791, precisione 1 cm. None se non raggiungibile."""
     import shapely.ops
     from pyproj import Transformer
-    b = baseline(); to = Transformer.from_crs(4326, 7791, always_xy=True); rec = []
-    for f in json.loads((ROOT / b["ricevitori"]["percorsi_file"]).read_text())["features"]:
-        i = f["properties"]["id"]
-        if i in b["ricevitori"]["route_ids"] and f["properties"].get("stato") == "reachable":
-            g = shapely.ops.transform(lambda x, y, z=None: to.transform(x, y), shape(f["geometry"]))
-            rec.append({"receiver_id": f"pth_fi_{i}", "kind": "path", "geometry": mapping(shapely.set_precision(g, 0.01))})
-    a = b["ricevitori"]["area_attesa"]
-    rec.append({"receiver_id": a["receiver_id"], "kind": "surface", "geometry": a["geometry"]})
+    to = Transformer.from_crs(4326, 7791, always_xy=True)
+    for f in json.loads((ROOT / f"network/{SLUG}/percorsi_campione.geojson").read_text())["features"]:
+        if f["properties"]["id"] == rid and f["properties"].get("stato") == "reachable":
+            return shapely.set_precision(shapely.ops.transform(lambda x, y, z=None: to.transform(x, y), shape(f["geometry"])), 0.01)
+    return None
+
+
+def ricevitori():
+    """Percorsi campione (asse della rete, come F07), aree di attesa (superfici) e archi più usati di F06, tutti in EPSG:7791.
+    Gli stessi per baseline e scenari: sono la condizione comune del confronto."""
+    b = baseline(); rec = []
+    assert b["ricevitori"]["percorsi_file"] == f"network/{SLUG}/percorsi_campione.geojson"
+    for i in b["ricevitori"]["route_ids"]:
+        g = linea_percorso(i)
+        if g is not None: rec.append({"receiver_id": f"pth_fi_{i}", "kind": "path", "geometry": mapping(g)})
+    for a in [b["ricevitori"]["area_attesa"]] + b["ricevitori"].get("aree_attesa_altre", []):
+        rec.append({"receiver_id": a["receiver_id"], "kind": "surface", "geometry": a["geometry"]})
     G = _grafo(); geom = {e["edge_id"]: e["geom"] for _, _, e in G.edges(data=True)}
     for r in b["ricevitori"]["archi"]:
         rec.append({"receiver_id": r["receiver_id"], "kind": "path", "geometry": mapping(shapely.set_precision(geom[r["edge_id"]], 0.01))})

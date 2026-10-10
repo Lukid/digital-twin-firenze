@@ -1,0 +1,56 @@
+{
+ "source_id": "src_fi_catasto",
+ "title": "Cartografia catastale WFS (particelle e fogli), Agenzia delle Entrate, riquadro FP",
+ "publisher": "Agenzia delle Entrate",
+ "dataset_url": "https://www.agenziaentrate.gov.it/portale/cartografia-catastale-wfs",
+ "resource_url": "https://wfs.cartografia.agenziaentrate.gov.it/inspire/wfs/owfs01.php",
+ "provenance": {
+  "origin": "ogc_service",
+  "note": "T17: lacuna del catalogo. La cartografia catastale non è su dati.toscana.it: è un servizio nazionale dell'Agenzia delle Entrate (WFS INSPIRE)."
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://www.agenziaentrate.gov.it/portale/cartografia-catastale-wfs",
+  "evidence_note": "Pagina del servizio: dati sotto CC BY 4.0 con citazione obbligatoria della titolarità: \"Agenzia delle Entrate, cartografia catastale WFS, CC BY 4.0\".",
+  "identifier": "CC-BY-4.0"
+ },
+ "content_period": {
+  "note": "aggiornamento dichiarato per foglio (BEGINLIFESPANVERSION dei fogli, il più recente 2026-10-06 nel riquadro); stato alla data di scarico"
+ },
+ "crs": {
+  "declared": "EPSG:6706",
+  "vertical_datum": "not_declared",
+  "note": "GML in RDN2008 geografico con assi lat,lon (unica proiezione offerta); convertito in EPSG:7791. Scarico limitato al riquadro FP (particelle che lo intersecano)"
+ },
+ "units": {},
+ "checks": [
+  {
+   "name": "particelle in area allargata",
+   "result": "pass",
+   "detail": "1631 oggetti"
+  },
+  {
+   "name": "fogli in area allargata",
+   "result": "pass",
+   "detail": "21 oggetti"
+  },
+  {
+   "name": "fabbricati",
+   "result": "warn",
+   "detail": "il servizio non pubblica i fabbricati: solo particelle (con strade e acque) e fogli"
+  },
+  {
+   "name": "valore dei confini",
+   "result": "warn",
+   "detail": "cartografia catastale: confini indicativi, non probatori"
+  }
+ ],
+ "schema_fields": [
+  "NATIONALCADASTRALREFERENCE",
+  "LABEL",
+  "NATIONALCADASTRALZONINGREFERENCE",
+  "BEGINLIFESPANVERSION",
+  "ORIGINALMAPSCALEDENOMINATOR"
+ ]
+}

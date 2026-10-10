@@ -23,7 +23,13 @@ Regole degli scenari (dichiarate prima di guardare i risultati dei confronti, no
      Del Prete Terzolle ha già una pensilina (OSM non aggiornato); Del Prete Caciolle ha un marciapiede di circa 2,5 m; Guidoni Barsanti ha solo la palina su un
      marciapiede largo. Le due fermate T2 di Novoli hanno già la pensilina (campo pensilina=1 del dataset del Comune sulle fermate tram).
      Gli id storici (scn_fi_s2_pensilina_attesa_polo, sfc_fi_attesa_polo, area_attesa_polo) restano: la fermata non è più quella del Polo (529 m dall'ingresso più vicino).
-     Con i 7 ingressi degli edifici (D19) la regola è stata rifatta su tutte le fermate senza pensilina in OSM: Guidoni Barsanti resta la più vicina con spazio."""
+     Con i 7 ingressi degli edifici (D19) la regola è stata rifatta su tutte le fermate senza pensilina in OSM: Guidoni Barsanti resta la più vicina con spazio.
+ S3  (non creato) filare di 7 alberi su R02 con la regola di S1: R02 ha una sola finestra valida (481-541 m), sul tratto finale in comune con R01; gli alberi coincidono con quelli di S1 entro 0,3 m.
+ S4  (non creato) filare con la regola di S1 sul percorso verso la scuola Vamba (R09 dalla fermata T2 Torre degli Agli, poi R08) o sulla linea dei 15 archi più usati verso la fermata T2:
+     nessuna finestra dove tutti e 7 gli alberi trovano posto.
+ S5, S6  pensilina 6 m x 2 m alla seconda e alla terza fermata della regola di S2 (fermate_pensilina, 10 ottobre 2026): Regione Toscana (OSM nod_osm_6027223967) e Di Novoli Sn
+     (OSM nod_osm_3216618875). Scelte solo dai dati, senza controllo a vista su Street View. Ognuna ha la sua area di attesa (sfc_fi_attesa_s5, sfc_fi_attesa_s6) fra i ricevitori:
+     baseline degli scenari ricongelata aggiungendo solo queste due aree."""
 import json, math, pathlib, sys
 from functools import lru_cache
 import numpy as np, pyogrio, shapely
@@ -50,7 +56,26 @@ VERSIONE_S1 = 3
 PENSILINA = {"lunghezza_m": 6.0, "profondita_m": 2.0, "intradosso_m": 2.5, "tetto_m": 3.0}
 CLASSE = "medio"
 ID = {"s0": "scn_fi_s0_baseline", "s1": "scn_fi_s1_filare_r01", "min": "scn_fi_s1v_chioma_min", "max": "scn_fi_s1v_chioma_max",
-      "s2": "scn_fi_s2_pensilina_attesa_polo"}
+      "s2": "scn_fi_s2_pensilina_attesa_polo", "s5": "scn_fi_s5_pensilina_regione_toscana", "s6": "scn_fi_s6_pensilina_di_novoli"}
+SCARTATE_A_VISTA = {"nod_osm_3273664407": "Del Prete Terzolle: ha già una pensilina su Street View 2026 (OSM non aggiornato)"}   # Forlanini Polo e Del Prete Caciolle non hanno posto già per la regola
+ALTRE_PENSILINE = [("s5", "sfc_fi_attesa_s5", "seconda"), ("s6", "sfc_fi_attesa_s6", "terza")]   # S5 e S6: la seconda e la terza fermata della regola di S2 (S2 è la prima)
+
+
+@lru_cache(maxsize=1)
+def fermate_pensilina():
+    """Regola di S2 su tutte le fermate: fermate bus OSM del riquadro con shelter=no, ordinate per distanza in linea d'aria dall'ingresso del Polo più vicino;
+    restano quelle dove la fascia 6 x 3,5 m trova posto (posto_pensilina), tolte le SCARTATE_A_VISTA. Ritorna [(distanza_m, id OSM, nome, (x, y))]."""
+    import geopandas as gpd
+    from pyproj import Transformer
+    to = Transformer.from_crs(4326, 7791, always_xy=True)
+    ing = np.array([to.transform(*f["geometry"]["coordinates"]) for f in json.loads((ROOT / f"network/{O.SLUG}/destinazioni_ingressi.geojson").read_text())["features"]
+                    if f["properties"].get("destinazione") == POLO])
+    pt = gpd.read_file(ROOT / "data/norm" / O.SLUG / "osm_firenze.gpkg", layer="points"); x0, y0, x1, y1 = O.RIQUADRO_EN; out = []
+    for _, r in pt.iterrows():
+        t = json.loads(r.tags); x, y = round(r.geometry.x, 2), round(r.geometry.y, 2)
+        if t.get("highway") != "bus_stop" or t.get("shelter") != "no" or r.id in SCARTATE_A_VISTA or not (x0 <= x <= x1 and y0 <= y <= y1): continue
+        out.append((round(float(np.hypot(ing[:, 0] - x, ing[:, 1] - y).min()), 1), r.id, t.get("name"), (x, y)))
+    return [c for c in sorted(out) if posto_pensilina(c[3], False)]
 
 
 def rettangolo(centro, u, lungo, largo):
@@ -59,10 +84,11 @@ def rettangolo(centro, u, lungo, largo):
     return Polygon([c + sgn_a * lungo / 2 * u + sgn_b * largo / 2 * n for sgn_a, sgn_b in ((-1, -1), (1, -1), (1, 1), (-1, 1))])
 
 
-@lru_cache(maxsize=1)
-def posto_pensilina():
-    """Impronta della pensilina S2 (regola nel docstring del modulo). Ritorna (poligono, versore del lato lungo, edge_id della strada di riferimento)."""
-    G = S._grafo(); p = np.array(PIATTAFORMA_ATTESA); pt = Point(p); E = [e for _, _, e in G.edges(data=True)]
+@lru_cache(maxsize=None)
+def posto_pensilina(piattaforma=PIATTAFORMA_ATTESA, obbligatorio=True):
+    """Impronta della pensilina alla fermata `piattaforma` (regola di S2 nel docstring del modulo). Ritorna (poligono, versore del lato lungo, edge_id della strada di riferimento);
+    None se la fascia non trova posto e obbligatorio=False."""
+    G = S._grafo(); p = np.array(piattaforma); pt = Point(p); E = [e for _, _, e in G.edges(data=True)]
     st = min((e for e in E if e["tipo_arco"] == "strada"), key=lambda e: e["geom"].distance(pt)); g = st["geom"]; k = g.project(pt)
     a, b = g.interpolate(max(k - 3, 0)), g.interpolate(min(k + 3, g.length)); u = np.array([b.x - a.x, b.y - a.y]); u /= np.linalg.norm(u); n = np.array([-u[1], u[0]])
     ped = shapely.union_all(pyogrio.read_dataframe(S.AREE_PEDONALI).geometry.values); v = O.dati()["v"]; bld = shapely.union_all(v[v.tipo != "copertura_osm"].geometry.values)   # come S._contesto_geo, senza la baseline
@@ -74,6 +100,7 @@ def posto_pensilina():
             c = p + aa * u + bb * n; fascia = rettangolo(c, u, L, D + PASSAGGIO_LIBERO_M)
             if ped.contains(fascia) and fascia.distance(cyc) >= DISTANZA_CICLABILE_M and not fascia.intersects(bld) and (best is None or math.hypot(aa, bb) < best[0]):
                 best = (math.hypot(aa, bb), c)
+    if not best and not obbligatorio: return None
     assert best, "nessun posto per la pensilina alla fermata scelta"
     c = best[1]; verso = 1 if g.distance(Point(c + n)) < g.distance(Point(c - n)) else -1   # verso la strada
     return rettangolo(c + verso * n * PASSAGGIO_LIBERO_M / 2, u, L, D), u, st["edge_id"]
@@ -94,7 +121,6 @@ def archi_usati():
 def congela_baseline():
     import accessibilita as A
     p = SC / "baseline.json"
-    if p.exists(): return json.loads(p.read_text())
     SC.mkdir(parents=True, exist_ok=True)
     bas = json.loads((ROOT / "pipeline/baselines" / f"{S.BASELINE_ID}.json").read_text())
     snapshot = []
@@ -105,7 +131,7 @@ def congela_baseline():
     import rete_lib as RL
     grafo = RL.OUT / f"{RL.STEM}.pkl"; rel = S.rel
     arc = archi_usati()
-    assert 2 + 1 + len(arc) <= 50, "troppi ricevitori per compute_shadow (massimo 50)"
+    assert 2 + 1 + len(ALTRE_PENSILINE) + len(arc) <= 50, "troppi ricevitori per compute_shadow (massimo 50)"
     pens, u, edge_strada = posto_pensilina()
     attesa = pens.buffer(1.0, join_style=2)
     prof = {"speed_m_s": 1.2, "crossing_penalty_s": 0, "stairs": "allowed"}; ref = {}
@@ -134,7 +160,9 @@ def congela_baseline():
                         "archi": arc,
                         "archi_nota": f"primi {N_ARCHI} archi per destinazione (Polo e fermata T2 San Donato - Università) di archi_piu_usati (F06, profilo 1,2 m/s); n_origini = civici che li usano (non persone, nessun flusso misurato)",
                         "area_attesa": {"receiver_id": "sfc_fi_attesa_polo", "kind": "surface", "descrizione": f"area di attesa della fermata bus {FERMATA_ATTESA}: "
-                                        f"impronta della pensilina S2 allargata di 1 m per lato (8 m x 4 m), parallela alla strada {edge_strada}", "geometry": mapping(shapely.set_precision(attesa, 0.01))}},
+                                        f"impronta della pensilina S2 allargata di 1 m per lato (8 m x 4 m), parallela alla strada {edge_strada}", "geometry": mapping(shapely.set_precision(attesa, 0.01))},
+                        "aree_attesa_altre": aree_attesa_altre(),
+                        "aree_attesa_altre_nota": "aggiunte il 10 ottobre 2026 per le pensiline S5 e S6: baseline ricongelata, tutto il resto identico al record precedente (controllato da costruisci.py)"},
          "condizioni": {"date": DATA_SCELTA, "dates": DATE, "timezone": "Europe/Rome", "times": ORARI, "fasce": FASCE,
                         "method": {"name": "geometric_ray", "space_step_m": 1.0, "time_step_min": 5.0}, "walk_speed_m_s": 1.2, "el_min_deg": 5.0,
                         "nota": "stesse date, fasce, orari, passi e velocità di shadow/run.py (F07); il 15 luglio è la data di scelta del tratto di S1"},
@@ -142,7 +170,25 @@ def congela_baseline():
                     "Ombra binaria da edifici documentati, alberi censiti e vegetazione LiDAR; nessuna conversione in gradi, comfort o domanda pedonale.",
                     "Civici del Comune non sono residenti; nessun flusso pedonale misurato; velocità 1,2 m/s ipotesi.",
                     "Nessuna validazione locale."]}
+    b = json.loads(json.dumps(b, ensure_ascii=False))   # tuple -> liste, come nel file
+    if p.exists():
+        old = json.loads(p.read_text())
+        if old == b: return old
+        nuove = ("aree_attesa_altre", "aree_attesa_altre_nota")   # ricongelamento ammesso solo per aggiungere le aree di attesa di S5 e S6
+        senza = lambda x: {**x, "ricevitori": {k: v for k, v in x["ricevitori"].items() if k not in nuove}}
+        assert senza(old) == senza(b), "baseline.json: il record esistente differisce oltre alle aree di attesa nuove (baseline immutabile)"
+        print("baseline ricongelata: aggiunte le aree di attesa", [a["receiver_id"] for a in b["ricevitori"]["aree_attesa_altre"]], "(resto identico)")
     p.write_text(json.dumps(b, ensure_ascii=False, indent=1)); return b
+
+
+def aree_attesa_altre():
+    """Ricevitori delle pensiline S5 e S6: impronta allargata di 1 m per lato, come l'area di attesa di S2."""
+    f = fermate_pensilina(); assert f[0][3] == PIATTAFORMA_ATTESA, f"la regola di S2 non sceglie più Guidoni Barsanti: {f[0]}"; out = []
+    for i, (k, rid, n) in enumerate(ALTRE_PENSILINE, 1):
+        d, oid, nome, xy = f[i]; pens, u, edge = posto_pensilina(xy)
+        out.append({"receiver_id": rid, "kind": "surface", "scenario": ID[k], "descrizione": f"area di attesa della fermata bus {nome} (OSM {oid}, shelter=no), {n} della regola di S2 a {d:g} m da un ingresso del Polo: "
+                    f"impronta della pensilina {k.upper()} allargata di 1 m per lato (8 m x 4 m), parallela alla strada {edge}", "geometry": mapping(shapely.set_precision(pens.buffer(1.0, join_style=2), 0.01))})
+    return out
 
 
 def op_albero(i, xy, dim, classe):
@@ -159,10 +205,10 @@ def dimensioni_classe(caso):
     return {"height_m": H, "crown_diameter_m": D, "crown_base_m": min(I, 0.5 * H)}   # imposta <= metà altezza, come F07
 
 
-def trova_tratto(b):
-    """Tratto di FINESTRA_M di R01 con massima frazione media al sole nelle fasce di mezzogiorno, fra quelli dove tutti gli N_ALBERI trovano posto (posto_albero).
-    Ritorna dict con s0, s1, sole_medio, passi."""
-    cond = b["condizioni"]; rec = S.ricevitori(); R = {r["receiver_id"]: shape(r["geometry"]) for r in rec}; L = R["pth_fi_R01"]
+def trova_tratto(b, rotta="R01", linea=None, archi=None):
+    """Tratto di FINESTRA_M del percorso campione `rotta` (R01 per S1) con massima frazione media al sole nelle fasce di mezzogiorno, fra quelli dove tutti gli N_ALBERI trovano posto (posto_albero).
+    Con `linea` e `archi` (edge_id) usa quella linea al posto del percorso campione. Ritorna dict con s0, s1, sole_medio, passi."""
+    cond = b["condizioni"]; L = S.linea_percorso(rotta) if linea is None else linea
     lat, lon = O.SOLE_LAT, O.SOLE_LON
     n = int(L.length); s = np.arange(n) + 0.5; pt = shapely.line_interpolate_point(L, s); x, y = shapely.get_x(pt), shapely.get_y(pt)
     scena = O.scena_caso("veg_lidar_tipico"); fin = box(*L.bounds).buffer(1.0); orari = ["12:30", "12:45", "13:00", "13:15", "13:30"]; om = np.zeros(n)
@@ -175,9 +221,9 @@ def trova_tratto(b):
         st, az, el, U = O.ombra_a_istante(scena, O.locale_a_utc(DATA_SCELTA, t_), lat, lon, cond["el_min_deg"], fin)
         giorno += shapely.contains_xy(U, x, y) if U is not None and not U.is_empty else 0
     giorno = 1 - giorno / len(ore)
-    # archi di R01 da escludere: attraversamenti, ponti, sottopassi, scale
+    # archi del percorso da escludere: attraversamenti, ponti, sottopassi, scale
     G = S._grafo(); geo = {e["edge_id"]: e for _, _, e in G.edges(data=True)}
-    pc = [r for r in json.loads((ROOT / f"network/{O.SLUG}/percorsi_campione.json").read_text()) if r["id"] == "R01"][0]
+    pc = {"archi": archi} if linea is not None else [r for r in json.loads((ROOT / f"network/{O.SLUG}/percorsi_campione.json").read_text()) if r["id"] == rotta][0]
     esc = [geo[e]["geom"] for e in pc["archi"] if e in geo and (geo[e]["tipo_arco"] in ("attraversamento", "ponte", "sottopasso", "scala") or geo[e].get("scala"))]
     bad = shapely.union_all(esc).buffer(1.0) if esc else Polygon()
     male = np.array([bad.contains(Point(a, c)) for a, c in zip(x, y)]) if not bad.is_empty else np.zeros(n, bool)
@@ -264,14 +310,20 @@ def main():
             ops2.append(op_albero(i, x[0], dimensioni_classe(caso), caso))
         titolo = f"{nome} su R01: {regola}; lato del sole alle 13:00"
         scn.append(nuovo(sid, titolo, ops2, VERSIONE_S1))
-    pens, u, edge = posto_pensilina()
-    src = "ipotesi di dimensione tipica di una pensilina da fermata (6 m x 2 m, intradosso 2,5 m, tetto 3,0 m): non da progetto"
-    dims = {"roof_height_m": PENSILINA["tetto_m"], "canopy_base_m": PENSILINA["intradosso_m"], "length_m": PENSILINA["lunghezza_m"], "depth_m": PENSILINA["profondita_m"]}
-    op = {"op_id": "op_pensilina_01", "op": "add", "target_type": "shelter", "geometry": json.loads(json.dumps(mapping(shapely.set_precision(pens, 0.01)))),
-          "dimensions": {k: {"value": v, "unit": "m", "classification": "scenario", "dimension_source": src} for k, v in dims.items()},
-          "hypothesis_status": "feasibility_unknown", "note": f"Alla fermata bus {FERMATA_ATTESA}, entro {RAGGIO_FERMATA_M:g} m dal punto OSM, dentro le aree pedonali del Comune con {PASSAGGIO_LIBERO_M:g} m di passaggio libero, lato lungo parallelo alla strada {edge}. "
-                                                              "Fattibilità ignota: sottoservizi, proprietà del suolo, larghezza libera del marciapiede."}
-    scn.append(nuovo(ID["s2"], "S2 pensilina alla fermata bus Guidoni Barsanti, la più vicina al Polo dove c'è posto (dimensione dichiarata)", [op], 2))
+    def op_pensilina(xy, fermata):
+        pens, u, edge = posto_pensilina(xy)
+        src = "ipotesi di dimensione tipica di una pensilina da fermata (6 m x 2 m, intradosso 2,5 m, tetto 3,0 m): non da progetto"
+        dims = {"roof_height_m": PENSILINA["tetto_m"], "canopy_base_m": PENSILINA["intradosso_m"], "length_m": PENSILINA["lunghezza_m"], "depth_m": PENSILINA["profondita_m"]}
+        return {"op_id": "op_pensilina_01", "op": "add", "target_type": "shelter", "geometry": json.loads(json.dumps(mapping(shapely.set_precision(pens, 0.01)))),
+                "dimensions": {k: {"value": v, "unit": "m", "classification": "scenario", "dimension_source": src} for k, v in dims.items()},
+                "hypothesis_status": "feasibility_unknown", "note": f"Alla fermata bus {fermata}, entro {RAGGIO_FERMATA_M:g} m dal punto OSM, dentro le aree pedonali del Comune con {PASSAGGIO_LIBERO_M:g} m di passaggio libero, lato lungo parallelo alla strada {edge}. "
+                                                                    "Fattibilità ignota: sottoservizi, proprietà del suolo, larghezza libera del marciapiede."}
+    scn.append(nuovo(ID["s2"], "S2 pensilina alla fermata bus Guidoni Barsanti, la più vicina al Polo dove c'è posto (dimensione dichiarata)", [op_pensilina(PIATTAFORMA_ATTESA, FERMATA_ATTESA)], 2))
+    f = fermate_pensilina()
+    for i, (k, rid, n) in enumerate(ALTRE_PENSILINE, 1):
+        d, oid, nome, xy = f[i]
+        scn.append(nuovo(ID[k], f"{k.upper()} pensilina alla fermata bus {nome}, la {n} più vicina al Polo dove c'è posto con la regola di S2 (dimensione dichiarata; area di attesa {rid})",
+                         [op_pensilina(xy, f"{nome} (OSM {oid}, shelter=no; scelta solo dai dati, senza controllo a vista)")]))
     for s in scn: print(("scritto " if scrivi(s) else "invariato ") + s["scenario_id"], f"({len(s['operations'])} interventi)")
     print(f"tratto R01 {t['s0']}-{t['s1']} m: sole medio {t['sole_medio']:.3f} (R01 intera {t['sole_medio_R01']:.3f}); finestre valide {t['finestre_valide']}; alberi senza posto: {scartati or 'nessuno'}")
     (SC / "tratto_s1.json").write_text(json.dumps({"regola": regola, "data_scelta": DATA_SCELTA, "s0_m": t["s0"], "s1_m": t["s1"], "sole_medio_finestra": round(t["sole_medio"], 4), "sole_medio_R01": round(t["sole_medio_R01"], 4),

@@ -205,6 +205,7 @@ async function main() {
     etiq.el.hidden = !etiq.visible; if (!etiq.visible) return;
     const W = innerWidth, H = innerHeight, presi = [];
     for (const v of etiq.voci) {
+      if (v.cat && !gruppi.catasto?.visible) { v.d.style.visibility = 'hidden'; continue; }
       pr.copy(v.p).project(camera);
       const lontano = camera.position.distanceTo(v.p) > (v.k === 1 ? 3200 : 1400);
       const x = (pr.x + 1) / 2 * W, y = (1 - pr.y) / 2 * H, w = v.d.offsetWidth, h = v.d.offsetHeight;
@@ -213,6 +214,58 @@ async function main() {
       v.d.style.visibility = ok ? 'visible' : 'hidden';
       if (ok) { presi.push(r); v.d.style.transform = `translate(${(x - w / 2).toFixed(1)}px,${(y - h / 2).toFixed(1)}px)`; }
     }
+  }
+
+  // catasto: confini di particelle e fogli dipinti sul terreno, numero del foglio come etichetta
+  const COL_CAT = 0x8a5a2b, COL_FOGLIO = 0x5c3a1a, catSel = new THREE.Group();
+  const anelli = (a) => a.flatMap((poly) => poly.map((r) => ({ p: [...r, r[0], r[1]] })));   // anelli chiusi come tratti
+  if (dati.catasto) {
+    const C = dati.catasto, g = new THREE.Group();
+    g.add(nastri(C.particelle.flatMap((q) => anelli(q.a)), 0.25, () => 0.5, () => hex(COL_CAT)));
+    g.add(nastri(C.fogli.flatMap((q) => anelli(q.a)), 0.3, () => 1.6, () => hex(COL_FOGLIO)));
+    g.add(catSel); gruppi.catasto = g; scene.add(g);
+    for (const f of C.fogli) {
+      const d = document.createElement('span'); d.className = 'foglio'; d.textContent = 'Foglio ' + f.f; etiq.el.appendChild(d);
+      etiq.voci.push({ d, k: 2, cat: true, p: new THREE.Vector3(f.x, tY(f.x, f.z) + 2, f.z) });
+    }
+  }
+
+  // temperatura delle superfici (Landsat): griglia a 30 m dipinta su una copia del terreno, semitrasparente
+  const RAMPA = [[20, '#2c7bb6'], [30, '#abd9e9'], [35, '#ffffbf'], [40, '#fdae61'], [50, '#d7191c']];
+  const coloreT = (t) => { let k = 1; while (k < RAMPA.length - 1 && t > RAMPA[k][0]) k++; const [t0, a] = RAMPA[k - 1], [t1, b] = RAMPA[k]; return new THREE.Color(a).lerp(new THREE.Color(b), Math.min(Math.max((t - t0) / (t1 - t0), 0), 1)); };
+  let tMesh = null, tVista = 'media';
+  const TM = dati.temperature;
+  function mostraTemperatura(vista) {
+    tVista = vista;
+    const c = document.createElement('canvas'); c.width = TM.nx; c.height = TM.ny;
+    const x = c.getContext('2d'), im = x.createImageData(TM.nx, TM.ny);
+    const v = vista === 'media' ? TM.media : vista === 'sopra_40' ? TM.sopra_40 : TM.date[+vista].t, maxN = Math.max(1, ...TM.sopra_40);
+    v.forEach((q, i) => {
+      if (vista !== 'sopra_40' && q === TM.nodata) return;   // trasparente: dato non valido
+      if (vista === 'sopra_40' && !TM.validi_per_cella[i]) return;
+      const col = vista === 'sopra_40' ? new THREE.Color('#fff7ec').lerp(new THREE.Color('#7f0000'), q / maxN) : coloreT(q / 10);
+      im.data.set([col.r * 255, col.g * 255, col.b * 255, 255], i * 4);
+    });
+    x.putImageData(im, 0, 0);
+    const t = new THREE.CanvasTexture(c); t.magFilter = THREE.NearestFilter; t.colorSpace = THREE.SRGBColorSpace;
+    if (!tMesh) {
+      const g = gruppi.terreno.geometry.clone(), P = g.attributes.position.array, uv = g.attributes.uv.array;
+      const gx = TM.x0 - TM.passo / 2, gz = TM.z0 - TM.passo / 2, W = TM.nx * TM.passo, H = TM.ny * TM.passo;
+      for (let k = 0; k < P.length / 3; k++) { uv[k * 2] = (P[k * 3] - gx) / W; uv[k * 2 + 1] = 1 - (P[k * 3 + 2] - gz) / H; }
+      tMesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.78, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -4, polygonOffsetUnits: -4 }));
+      tMesh.position.y = 0.4; tMesh.renderOrder = 5; tMesh.visible = false; gruppi.temperature = tMesh; scene.add(tMesh);
+    }
+    tMesh.material.map?.dispose(); tMesh.material.map = t; tMesh.material.needsUpdate = true;
+    // aria alla stazione SIR nello stesso giorno, per confronto
+    const M = dati.meteo, d = TM.date[+vista];
+    const aria = M && d ? M.giorni.find((g) => g[0] === d.data) : null;
+    $('leg_temperature').innerHTML = (vista === 'sopra_40'
+      ? `<span>Quante delle ${TM.n} giornate estive sono sopra 40 °C in quella cella (da 0 a ${maxN}).</span><span><i style="background:linear-gradient(90deg,#fff7ec,#7f0000);width:120px"></i></span>`
+      : `<span><i style="background:linear-gradient(90deg,${RAMPA.map((r) => r[1]).join(',')});width:120px"></i>da 20 a 50 °C</span>`)
+      + (d ? `<span>${d.satellite}, ore ${d.ora_utc} UTC, ${d.validi_pct}% di celle valide.</span>` : vista === 'media' ? `<span>Media delle ${TM.n} giornate estive serene dal ${TM.date[0].data} al ${TM.date[TM.n - 1].data}.</span>` : '')
+      + (aria ? `<span>Aria quel giorno, stazione ${tx(M.stazione.nome)} (a ${(M.stazione.distanza_fp_m / 1000).toFixed(1).replace('.', ',')} km): massima ${(aria[1] / 10).toFixed(1).replace('.', ',')} °C, minima ${(aria[2] / 10).toFixed(1).replace('.', ',')} °C.</span>` : '')
+      + '<span>Tocca il terreno per leggere una cella. Le celle trasparenti non sono valide (nubi o acqua).</span>';
+    shadowDirty = dirty = true;
   }
 
   // livelli analitici (vuoti se i dati non ci sono)
@@ -283,22 +336,25 @@ async function main() {
     edifici: 'M4 21V8l6-4v17M10 21V10l10 3v8M3 21h18', alberi: 'M12 22v-6M7 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0', terreno: 'M3 19l6-9 4 6 3-4 5 7z',
     etichette: 'M4 7h16M4 12h11M4 17h7', rete: 'M6 21c0-5 4-5 6-9s1-6 6-9', destinazioni: 'M12 3v4M12 17v4M3 12h4M17 12h4M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6',
     barriere: 'M4 8h16v5H4zM7 13v7M17 13v7M8 8l4 5M14 8l4 5', accessibilita: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M12 7v5l3 2',
-    ombra: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2', scenari: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3', altro: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',
+    ombra: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2', scenari: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3', catasto: 'M3 4h18v16H3zM3 11h9v9M12 4v7h9', temperature: 'M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0M12 9v8', altro: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',
   };
-  const TINTA = { edifici: '#c0643c', alberi: '#55894a', terreno: '#8a7a55', etichette: '#5d7f68', rete: '#2f6fb5', accessibilita: '#31688e', ombra: '#a87a00', scenari: '#e0218a' };
-  const SEZIONE = { edifici: 'g_citta', alberi: 'g_citta', terreno: 'g_citta', etichette: 'g_citta', rete: 'g_mobilita', tram: 'g_mobilita', accessibilita: 'g_analisi', ombra: 'g_analisi', scenari: 'g_interventi' };
+  const TINTA = { edifici: '#c0643c', alberi: '#55894a', terreno: '#8a7a55', etichette: '#5d7f68', rete: '#2f6fb5', accessibilita: '#31688e', ombra: '#a87a00', scenari: '#e0218a', catasto: '#8a5a2b', temperature: '#d7191c' };
+  const SEZIONE = { edifici: 'g_citta', alberi: 'g_citta', terreno: 'g_citta', etichette: 'g_citta', rete: 'g_mobilita', tram: 'g_mobilita', accessibilita: 'g_analisi', ombra: 'g_analisi', scenari: 'g_interventi', catasto: 'g_catasto', temperature: 'g_analisi' };
   const svg = (d) => `<svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`;
   const css = (n) => '#' + n.toString(16).padStart(6, '0');
   const opzioni = (lista, et) => lista.map((d, i) => `<option value="${i}">${tx(d[et])}</option>`).join('');
+  const SENZA_RIGA = ['meteo', 'aria'];   // dati senza oggetti in scena: stanno dentro altri livelli o nella scheda Analisi
   for (const [k, L] of Object.entries(idx.livelli)) {
-    const an = ['accessibilita', 'ombra', 'scenari'].includes(k), presente = !an || idx.livelli_analitici[k].presente;
+    if (SENZA_RIGA.includes(k)) continue;
+    const an = ['accessibilita', 'ombra', 'scenari'].includes(k), presente = an ? idx.livelli_analitici[k].presente : k !== 'temperature' || !!TM;
     const tinta = TINTA[k] || (PUNTO[k] ? css(PUNTO[k][0]) : '#5d7f68');
     const ico = ICONE[k] ? `<img src="${ICONE[k].url}" alt="" width="24" height="24">` : svg(ICO[k] || ICO.altro);
     const w = document.createElement('div');
-    w.innerHTML = `<label class="liv"><span class="ico" style="color:${tinta};background:${tinta}1c">${ico}</span><span class="nome">${k === 'scenari' ? 'Mostra l\'intervento (dopo)' : L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</span>`
-      + `<span class="switch"><input type="checkbox" role="switch" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && k !== 'barriere' && k !== 'rete' ? 'checked' : ''}><i></i></span></label>`;
+    w.innerHTML = `<label class="liv" style="--t:${tinta}"><span class="ico">${ico}</span><span class="nome">${k === 'scenari' ? 'Mostra l\'intervento (dopo)' : L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</span>`
+      + `<span class="switch"><input type="checkbox" role="switch" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && !['barriere', 'rete', 'catasto', 'temperature', 'aria'].includes(k) ? 'checked' : ''}><i></i></span></label>`;
     if (k === 'accessibilita' && presente) w.innerHTML += `<div class="sub"><label for="s_acc">Verso</label><select id="s_acc">${opzioni(dati.accessibilita.destinazioni, 'nome')}</select><div class="leg" id="leg_accessibilita"></div></div>`;
     if (k === 'ombra' && presente) w.innerHTML += `<div class="sub"><label for="s_om">Istante del calcolo</label><select id="s_om">${dati.ombra.istanti.map((d, i) => `<option value="${i}">${new Date(d.istante + ':00Z').toLocaleString('it-IT', { timeZone: 'UTC', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}</option>`).join('')}</select><div class="riga"><button type="button" id="vOm">Vai ai percorsi</button></div><div class="leg"><span>Due percorsi campione verso il Polo universitario.</span><span><i style="background:#f2c230"></i>al sole</span><span><i style="background:#1b2a6b"></i>in ombra</span></div><div class="leg" id="leg_ombra"></div></div>`;
+    if (k === 'temperature' && TM) w.innerHTML += `<div class="sub"><label for="s_t">Cosa mostrare</label><select id="s_t"><option value="media">Media delle giornate estive</option><option value="sopra_40">Giornate sopra 40 °C</option>${TM.date.map((d, i) => `<option value="${i}">${new Date(d.data).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}</option>`).join('')}</select><div class="leg" id="leg_temperature"></div></div>`;
     $(SEZIONE[k] || 'g_luoghi').appendChild(w);
   }
 
@@ -323,6 +379,8 @@ async function main() {
     ['Accessibilità', SCALA.map((s) => sw(s[1], s[2])).join('') + '<span><i style="background:#fff;border:3px double #777;border-radius:50%"></i>non raggiungibile, vietato o dati insufficienti</span>'],
     ['Ombra sui percorsi', sw('#f2c230', 'al sole') + sw('#1b2a6b', 'in ombra')],
     ['Interventi', sw(css(COL_SCN), 'albero o pensilina ipotetici')],
+    ['Temperatura delle superfici', `<span><i style="background:linear-gradient(90deg,${RAMPA.map((r) => r[1]).join(',')});width:120px"></i>da 20 a 50 °C</span>`],
+    ['Catasto', sw(css(COL_CAT), 'confine di particella') + sw(css(COL_FOGLIO), 'confine di foglio') + sw('#ff7a1a', 'particella cercata')],
   ].map(([t, v]) => `<p class="sez">${t}</p><div class="leg">${v}</div>`).join('');
 
   // schede del pannello: frecce sinistra e destra per passare da una all'altra
@@ -334,10 +392,36 @@ async function main() {
   });
 
   for (const k of Object.keys(idx.livelli)) {
-    const cb = $('l_' + k);
+    const cb = $('l_' + k); if (!cb) continue;
     if (gruppi[k]) gruppi[k].visible = cb.checked;
     cb.addEventListener('change', () => { if (gruppi[k]) gruppi[k].visible = cb.checked; shadowDirty = dirty = true; });
   }
+  // qualità dell'aria: stazioni ARPAT fuori dal riquadro, quindi elenco e non punti in scena
+  if (dati.aria) {
+    const A = dati.aria, n1 = (v) => v == null ? 'n.d.' : String(Math.round(v * 10) / 10).replace('.', ',');
+    const riga = (q) => `<li><strong>${tx(q.parametro)}</strong>: media ${n1(q.media_annua)} ${tx(q.unita)}${q.limite_annuo ? ` (limite ${q.limite_annuo})` : ''}`
+      + `${q.soglia ? `; ${q.superamenti} ${tx(q.conta)} sopra ${q.soglia} (ammessi ${q.ammessi ?? 0})` : ''}${q.copertura_ok ? '' : '; dati validi sotto il 90%, media non valida per la legge'}</li>`;
+    $('aria').innerHTML = `<p class="intro">Valori di stazione del ${A.anno}, dati validati ARPAT. Nessuna stazione sta nel riquadro: sono le più vicine, non una mappa.</p>`
+      + [...A.stazioni].sort((a, b) => a.distanza_m - b.distanza_m).map((st, i) => `<details class="staz"${i ? '' : ' open'}><summary><strong>${tx(st.codice)}</strong><small>${tx(st.tipo)}, a ${n1(st.distanza_m / 1000)} km dal riquadro</small></summary>`
+        + `${st.avviso ? `<p class="avviso">${tx(st.avviso)}</p>` : ''}<ul>${st.inquinanti.map(riga).join('')}</ul></details>`).join('')
+      + `<p class="intro">Limiti: D.Lgs. 155/2010. Fonte: ARPAT, archivio dei dati orari. Licenza dei dati orari non indicata; le note legali ARPAT dichiarano CC BY-NC-SA 3.0 IT per i contenuti del sito e CC BY 4.0 per le banche dati.</p>`;
+  } else $('aria').closest('.blocco-aria').hidden = true;
+  if (TM) { mostraTemperatura('media'); $('s_t').addEventListener('change', (e) => { mostraTemperatura(e.target.value); $('l_temperature').checked = true; $('l_temperature').dispatchEvent(new Event('change')); }); }
+  if (dati.catasto) {
+    $('catCerca').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const f = $('catF').value.trim().toUpperCase(), n = $('catP').value.trim().toUpperCase();
+      const q = dati.catasto.particelle.find((x) => x.p.toUpperCase() === n && (x.f.toUpperCase() === f || x.f.replace(/[A-Z]+$/, '') === f));
+      catSel.traverse((o) => o.geometry?.dispose()); catSel.clear();
+      if (!q) { $('catEsito').textContent = `Nessuna particella ${n} nel foglio ${f} dentro il riquadro.`; dirty = true; return; }
+      catSel.add(nastri(anelli(q.a), 0.5, () => 2, () => hex(0xff7a1a)));
+      const bb = new THREE.Box3(); for (const r of q.a[0]) for (let k = 0; k < r.length; k += 2) bb.expandByPoint(new THREE.Vector3(r[k], 0, r[k + 1]));
+      const c = bb.getCenter(new THREE.Vector3()), L = Math.max(bb.max.x - bb.min.x, bb.max.z - bb.min.z, 60); c.y = tY(c.x, c.z);
+      $('l_catasto').checked = true; $('l_catasto').dispatchEvent(new Event('change'));
+      vai(c.clone().add(new THREE.Vector3(0.2 * L, 2.2 * L, 0.8 * L)), c);
+      $('catEsito').textContent = `Trovata: ${q.rif}${q.t !== 'particella' ? ' (' + q.t + ')' : ''}.`;
+    });
+  } else $('catCerca').hidden = true;
   if (idx.livelli_analitici.accessibilita.presente) { mostraAccessibilita(0); $('s_acc').addEventListener('change', (e) => mostraAccessibilita(+e.target.value)); }
   if (idx.livelli_analitici.scenari.presente) {
     const accendi = () => { $('l_scenari').checked = true; $('l_scenari').dispatchEvent(new Event('change')); };
@@ -412,7 +496,7 @@ async function main() {
     if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5) return; down = null;
     const r = canvas.getBoundingClientRect();
     ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), camera);
-    const lista = [edMesh, chiome, ...sel, ...scnPick].filter((o) => o.parent && o.visible && (!o.parent.isGroup || o.parent.visible));
+    const lista = [edMesh, chiome, ...sel, ...scnPick, tMesh].filter(Boolean).filter((o) => o.parent && o.visible && (!o.parent.isGroup || o.parent.visible));
     const hit = ray.intersectObjects(lista, false)[0];
     if (evEd) { scene.remove(evEd); evEd.geometry.dispose(); evEd = null; }
     if (!hit) { chiudi(); return; }
@@ -430,8 +514,18 @@ async function main() {
         ['Rilievo laser 2023', b.h_lidar != null ? m1(b.h_lidar) + ' m' : null], ['Volumi regionali 2011', b.h_uv != null ? m1(b.h_uv) + ' m' : null],
         ['Cambiamenti dal 2011', CAMBIO[b.flag] ?? b.flag], ['Tipo', TIPO[b.tipo] || b.tipo],
         ['Superficie', Math.round(b.area_m2).toLocaleString('it-IT') + ' m²'], ['Quota del terreno', m1(b.z_base) + ' m sul livello del mare'],
+        ['Catasto', b.cat?.length ? b.cat.join(', ') + ' (aggancio geometrico, non verificato)' : (b.cat ? 'nessuna particella contiene l\'edificio' : null)],
         ['Portici o volumi sospesi', 'non noti (nessuna fonte)']], 'edifici', null,
         [['Codice', b.id], ['Classe dell\'altezza', b.classe_h], ['Origine', b.fonte], ['Segnalazione', b.flag], ['Tipo', b.tipo], ['Presente nel 2023', String(b.presente_2023)]]);
+    } else if (o === tMesh) {
+      const i = Math.min(TM.ny - 1, Math.floor((1 - hit.uv.y) * TM.ny)) * TM.nx + Math.min(TM.nx - 1, Math.floor(hit.uv.x * TM.nx));
+      const d = TM.date[+tVista], q = tVista === 'sopra_40' ? TM.sopra_40[i] : (d ? d.t : TM.media)[i];
+      anello(hit.point.x, hit.point.y, hit.point.z, TM.passo / 2);
+      scheda('Temperatura della superficie', [
+        [tVista === 'sopra_40' ? 'Giornate sopra 40 °C' : 'Temperatura', tVista === 'sopra_40' ? `${q} su ${TM.validi_per_cella[i]} valide` : q === TM.nodata ? 'non valida in questa cella (nubi o acqua)' : (q / 10).toFixed(1) + ' °C'],
+        ['Giornata', d ? `${d.data}, ore ${d.ora_utc} UTC, ${d.satellite}` : `media di ${TM.validi_per_cella[i]} giornate estive serene`],
+        ['Cella', `${TM.passo} x ${TM.passo} m (misura termica a 100 m)`],
+        ['Cosa misura', 'la temperatura della superficie (tetti, asfalto, prato), non dell\'aria']], 'temperature');
     } else if (o === chiome) {
       const a = dati.alberi.alberi[hit.instanceId]; anello(a.x, a.y, a.z, Math.max((a.d ?? 3) / 2, 1.5));
       scheda(a.specie ? a.specie.charAt(0).toUpperCase() + a.specie.slice(1).toLowerCase() : 'Albero', [['Altezza', `${a.h} m${iv(a.h_min, a.h_max)}, ${CLA[a.h_cls]}`], ['Diametro della chioma', `${a.d} m${iv(a.d_min, a.d_max)}, ${CLA[a.ch_cls]}`], ['Circonferenza del tronco', a.circ != null ? a.circ + ' cm' : null], ['Perché è stimata', a.motivo ? MOTIVO[a.motivo] || a.motivo : null], ['Quota del terreno', (a.y + idx.area.quota_riferimento_m).toFixed(1) + ' m sul livello del mare']], 'alberi', null,
@@ -490,6 +584,7 @@ async function main() {
     requestAnimationFrame(ciclo);
   })();
   const nE = dati.edifici.n.toLocaleString('it-IT'), nA = dati.alberi.n.toLocaleString('it-IT');
+  $('cifre').textContent = `2 km² · ${nE} edifici · ${nA} alberi`;
   stato(`Pronto: ${nE} edifici, ${nA} alberi, ${dati.rete.n.toLocaleString('it-IT')} tratti di rete. Dati: ${(Object.values(idx.assets).reduce((s, a) => s + a.byte, 0) / 1e6).toFixed(1)} MB compressi.`);
   window.scena = { THREE, scene, camera, sunPos, romeToUtc, pronta: true };
 }

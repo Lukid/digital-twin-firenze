@@ -46,6 +46,10 @@ LIVELLI = {
     "accessibilita": {"etichetta": "Accessibilità (minuti a piedi)", "fonti": ["src_fi_civici", "src_osm_firenze"]},
     "ombra": {"etichetta": "Ombra sui percorsi", "fonti": ["src_osm_firenze", "src_fi_dsm2023"]},
     "scenari": {"etichetta": "Scenari (interventi ipotetici)", "fonti": []},
+    "catasto": {"etichetta": "Particelle catastali", "fonti": ["src_fi_catasto"]},
+    "temperature": {"etichetta": "Temperatura delle superfici", "fonti": ["src_fi_landsat_st"]},
+    "meteo": {"etichetta": "Temperatura dell'aria (stazione SIR)", "fonti": ["src_sir_termo_firenze"]},
+    "aria": {"etichetta": "Qualità dell'aria (stazioni ARPAT)", "fonti": ["src_arpat_aria"]},
 }
 
 LIMITI = [
@@ -61,6 +65,10 @@ LIMITI = [
     "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
     "Barriere architettoniche: rilievo del 2013, grado di accessibilità dell'edificio, non dell'ostacolo sul percorso.",
     "Livelli Accessibilità e Ombra sui percorsi: mostrano solo i dati prodotti dai moduli di analisi, se presenti. Non sono calcolati dalla scena.",
+    "Particelle catastali: cartografia catastale dell'Agenzia delle Entrate, confini indicativi e non probatori. I fabbricati non ci sono nel servizio. La particella di un edificio è quella che ne contiene almeno metà della superficie: aggancio geometrico, non verificato sugli atti.",
+    "Temperatura delle superfici (Landsat 8 e 9): è la temperatura dei tetti, delle strade e del verde, non dell'aria. Misura termica a 100 m ricampionata a 30 m: il dettaglio sotto i 100 m non è misurato. Solo giorni sereni sul riquadro (almeno l'80% di celle valide), passaggio del satellite verso le 10:00 UTC (12:00 ora legale), non l'ora più calda.",
+    "Temperatura dell'aria: massima e minima giornaliera della stazione SIR Firenze Università, 1,3 km a est del riquadro, dati pre-validati. È un valore per tutta la zona, non per la singola strada, e non è misurata all'ora del passaggio del satellite.",
+    "Qualità dell'aria: valori delle stazioni ARPAT, non una mappa e nessuna interpolazione. Nessuna stazione sta nel riquadro: la più vicina, FI-MOSSE (traffico), è a circa 750 m. Dati orari del 2025, validati da ARPAT (archivio pubblico, ora solare); il 2026 non è pubblicato come download. Superamenti contati sul solo 2025: per l'ozono la norma usa la media su 3 anni. Sotto il 90% di dati validi la media annua non vale ai fini di legge (FI-GRAMSCI è disattivata da marzo 2025 per i lavori della tramvia). ARPAT non specifica la licenza dei dati orari (note legali: CC BY-NC-SA 3.0 IT per i contenuti del sito, CC BY 4.0 per le banche dati): uso deciso il 10 ottobre 2026.",
 ]
 
 USO = {
@@ -76,6 +84,10 @@ USO = {
     "src_fi_rifugi_aree": "Rifugi climatici (aree)",
     "src_fi_barriere": "Barriere architettoniche",
     "src_fi_civici": "Civici dei livelli analitici",
+    "src_fi_catasto": "Particelle e fogli catastali, riferimento catastale degli edifici",
+    "src_fi_landsat_st": "Temperatura delle superfici per data (Landsat 8 e 9, estati 2023-2026)",
+    "src_sir_termo_firenze": "Temperatura dell'aria, massime e minime giornaliere (CC BY-SA 4.0)",
+    "src_arpat_aria": "Stazioni e valori della qualità dell'aria 2025 (medie annue, superamenti, ultimo valore)",
 }
 
 
@@ -154,6 +166,7 @@ def _civici_e_nomi():
 def edifici(zref):
     g = json.load(open(ROOT / "geometry/firenze_novoli/edifici_fp.geojson"))
     civ, tciv, osm, tosm = _civici_e_nomi()
+    cat_di = _aggancio_catasto()
     pos, meta = [], []
     for f in g["features"]:
         p = f["properties"]
@@ -185,8 +198,49 @@ def edifici(zref):
                      "z_base": r(p["z_base"]), "classe_h": p["classe_h"], "tipo": p["tipo"], "fonte": p["fonte"],
                      "area_m2": r(p["area_m2"], 1), "presente_2023": bool(p["presente_2023"]), "flag": p.get("flag") or "",
                      "h_uv": r(p.get("h_uv")), "h_lidar": r(p.get("h_lidar")),
-                     "ind": civ.testo.iat[ind] if ind is not None else None, "nome": osm["name"].iat[dentro[0]].replace("\n", " ") if len(dentro) else None})
+                     "ind": civ.testo.iat[ind] if ind is not None else None, "nome": osm["name"].iat[dentro[0]].replace("\n", " ") if len(dentro) else None,
+                     "cat": cat_di(geom)})
     return {"n": len(meta), "edifici": meta, "posizioni": f32b64(pos)}
+
+
+# --- catasto -------------------------------------------------------------------
+def _particelle():
+    p = gpd.read_file(NORM / "fi_catasto_particelle.gpkg")
+    p["geometry"] = shapely.make_valid(p.geometry.values)
+    p["rif"] = "foglio " + p.foglio_etichetta + " particella " + p.particella
+    return p
+
+
+def _aggancio_catasto():
+    """Funzione edificio (EPSG:7791) -> riferimenti delle particelle che ne contengono almeno il 50% della superficie (di solito una)."""
+    p = _particelle()
+    t = shapely.STRtree(p.geometry.values)
+
+    def cat_di(geom):
+        g = shapely.make_valid(geom)
+        if g.area <= 0:
+            return []
+        return [p.rif.iat[i] for i in t.query(g, predicate="intersects") if p.geometry.iat[i].intersection(g).area / g.area >= 0.5]
+    return cat_di
+
+
+def _contorni(geom):
+    """Poligoni come [anello esterno, buchi...], ogni anello [x, z, x, z, ...]; nessuna semplificazione."""
+    return [[[c for q in ring.coords for c in loc(*q)] for ring in [poly.exterior, *poly.interiors]]
+            for poly in (geom.geoms if hasattr(geom, "geoms") else [geom]) if poly.geom_type == "Polygon"]
+
+
+def catasto():
+    p = _particelle()
+    f = gpd.read_file(NORM / "fi_catasto_fogli.gpkg")
+    part = [{"rif": row.rif, "f": row.foglio_etichetta, "p": row.particella, "t": row.tipo, "a": _contorni(row.geometry)} for row in p.itertuples()]
+    fogli = []
+    for row in f.itertuples():
+        c = row.geometry.intersection(FP).representative_point() if row.geometry.intersects(FP) else row.geometry.representative_point()
+        x, z = loc(c.x, c.y)
+        fogli.append({"f": row.foglio_etichetta, "x": x, "z": z, "agg": dt.datetime.strptime(row.BEGINLIFESPANVERSION, "%d/%m/%Y").strftime("%Y-%m-%d"),
+                      "a": _contorni(row.geometry)})
+    return {"n": len(part), "particelle": part, "fogli": fogli}
 
 
 # --- alberi --------------------------------------------------------------------
@@ -437,6 +491,8 @@ ETICHETTE_SCN = {
     "scn_fi_s1v_chioma_min": "S1, variante chioma minima",
     "scn_fi_s1v_chioma_max": "S1, variante chioma massima",
     "scn_fi_s2_pensilina_attesa_polo": "S2 pensilina alla fermata bus Guidoni Barsanti",
+    "scn_fi_s5_pensilina_regione_toscana": "S5 pensilina alla fermata bus Regione Toscana",
+    "scn_fi_s6_pensilina_di_novoli": "S6 pensilina alla fermata bus Di Novoli Sn",
 }
 FATTIBILITA = "ignota (sottoservizi, spazio radicale, permessi, proprietà del suolo, manutenzione). Intervento ipotetico, non un progetto."
 
@@ -450,20 +506,29 @@ def _mm(v):
 
 
 def numeri_scenari(conf):
-    """Numeri chiave letti da confronto.json (F08): caso con vegetazione LiDAR, 15 luglio, punta 12:30-13:30."""
+    """Numeri chiave letti da confronto.json (F08): caso con vegetazione LiDAR, 15 luglio, punta 12:30-13:30.
+    Filare (titolo "... su Rxx"): minuti al sole e ombra sul suo percorso, anche per le varianti. Pensilina: la sua area di attesa
+    (titolo "... area di attesa sfc_fi_..." in aree_attesa; altrimenti area_attesa_polo, cioè S2)."""
     out = {}
-    S = conf["scenari"]
-    s1 = S["scn_fi_s1_filare_r01"]
-    fonti = {"scn_fi_s1_filare_r01": s1, **{k: v for k, v in s1["robustezza"].items()}}
-    for sid, sc in fonti.items():
-        r = sc["percorsi"]["2026-07-15"]["con_vegetazione_lidar"]["R01"]["punta_12_30_13_30"]
-        m, f = r["minuti_sole"], r["frazione_ombra"]
-        out[sid] = [["Percorso R01, 15 luglio, 12:30-13:30", f"minuti al sole da {_mm(m['baseline'])} a {_mm(m['scenario'])} ({_mm(m['delta'])})"],
-                    ["Ombra su R01", f"da {_pc(f['baseline'])} a {_pc(f['scenario'])}"]]
-    a = S["scn_fi_s2_pensilina_attesa_polo"]["area_attesa_polo"]["2026-07-15"]
-    for ctx, et in (("con_vegetazione_lidar", "Area di attesa, con vegetazione LiDAR"), ("solo_edifici", "Area di attesa, solo edifici")):
-        p = a[ctx]["punta_12_30_13_30"]
-        out.setdefault("scn_fi_s2_pensilina_attesa_polo", []).append([et + ", 15 luglio, 12:30-13:30", f"ombra da {_pc(p['baseline'])} a {_pc(p['scenario'])}"])
+    for sid, sc in conf["scenari"].items():
+        if sc.get("stato") != "confrontato":
+            continue
+        rotta = re.search(r"\bsu (R\d\d)\b", sc["titolo"])
+        if sc["interventi"]["alberi"] and rotta:
+            R = rotta.group(1)
+            for vid, v in {sid: sc, **sc.get("robustezza", {})}.items():
+                if not isinstance(v, dict):
+                    continue
+                r = v["percorsi"]["2026-07-15"]["con_vegetazione_lidar"][R]["punta_12_30_13_30"]
+                m, f = r["minuti_sole"], r["frazione_ombra"]
+                out[vid] = [[f"Percorso {R}, 15 luglio, 12:30-13:30", f"minuti al sole da {_mm(m['baseline'])} a {_mm(m['scenario'])} ({_mm(m['delta'])})"],
+                            [f"Ombra su {R}", f"da {_pc(f['baseline'])} a {_pc(f['scenario'])}"]]
+        elif sc["interventi"]["pensiline"]:
+            rid = re.search(r"\b(sfc_fi_\w+)", sc["titolo"])
+            a = (sc["aree_attesa"][rid.group(1)] if rid else sc["area_attesa_polo"])["2026-07-15"]
+            for ctx, et in (("con_vegetazione_lidar", "Area di attesa, con vegetazione LiDAR"), ("solo_edifici", "Area di attesa, solo edifici")):
+                p = a[ctx]["punta_12_30_13_30"]
+                out.setdefault(sid, []).append([et + ", 15 luglio, 12:30-13:30", f"ombra da {_pc(p['baseline'])} a {_pc(p['scenario'])}"])
     return out
 
 
@@ -490,12 +555,84 @@ def interventi(sdir):
             "fonte_numeri": "scenarios/firenze_novoli/confronto.json (F08), caso con vegetazione LiDAR, stesse condizioni per scenario e base"}
 
 
+# --- temperature -----------------------------------------------------------------
+NODATA_T = -32768   # cella non valida (nube, ombra di nube, neve, acqua, fuori scena) nelle griglie in decimi di °C
+
+
+def temperature():
+    """Temperatura delle superfici Landsat (data/norm: fi_landsat_st_30m.tif e fi_landsat_st.json), griglia a 30 m nel piano del motore
+    come il terreno (riga 0 = nord, x0/z0 centro della prima cella). Valori in decimi di °C, NODATA_T per le celle non valide."""
+    if not (NORM / "fi_landsat_st.json").exists():
+        return None
+    m = json.load(open(NORM / "fi_landsat_st.json"))
+    with rasterio.open(NORM / m["file"]) as ds:
+        a = ds.read()
+    p = m["passo_m"]
+    dc = lambda g: np.where(np.isfinite(g), np.round(g * 10), NODATA_T).astype(int).ravel().tolist()
+    validi = np.isfinite(a)
+    nv = validi.sum(0)
+    media = np.where(nv > 0, np.nansum(a, 0) / np.maximum(nv, 1), np.nan)   # media delle sole date valide nella cella
+    return {"n": len(m["date_tenute"]), "nx": m["nx"], "ny": m["ny"], "passo": p,
+            "x0": round(m["x0_ovest"] + p / 2 - CE, 2), "z0": round(-(m["y1_nord"] - p / 2 - CN), 2),
+            "unita": "decimi di °C", "nodata": NODATA_T, "soglia_validi_pct": m["soglia_validi_pct"],
+            "date": [{"data": v["data"], "ora_utc": v["ora_utc"], "satellite": v["satellite"], "validi_pct": v["validi_fp_pct"], "scena": v["scena"], "t": dc(a[i])}
+                     for i, v in enumerate(m["date_tenute"])],
+            "media": dc(media), "sopra_40": (np.nan_to_num(a, nan=-999) > 40).sum(0).ravel().astype(int).tolist(),
+            "validi_per_cella": nv.ravel().astype(int).tolist()}
+
+
+def meteo():
+    """Temperatura dell'aria giornaliera della stazione SIR (data/norm: sir_termo_firenze.json): [data, Tmax, Tmin] in decimi di °C, null se mancante."""
+    if not (NORM / "sir_termo_firenze.json").exists():
+        return None
+    m = json.load(open(NORM / "sir_termo_firenze.json"))
+    st = m["stazione"]
+    x, z = loc(st["e"], st["n"])
+    dc = lambda v: None if v is None else int(round(v * 10))
+    ls = json.load(open(NORM / "fi_landsat_st.json"))["date_tenute"] if (NORM / "fi_landsat_st.json").exists() else []
+    return {"n": len(m["giorni"]), "stazione": {"id": st["id"], "nome": st["nome"], "x": x, "z": z, "quota_m": st["quota_m"], "distanza_fp_m": st["distanza_fp_m"]},
+            "unita": "decimi di °C", "validazione": m["validazione"], "licenza": "CC BY-SA 4.0, Settore Idrologico e Geologico Regionale (SIR) - Regione Toscana",
+            "giorni": [[g["data"], dc(g["tmax"]), dc(g["tmin"])] for g in m["giorni"]], "date_landsat": [v["data"] for v in ls]}
+
+
+# --- qualità dell'aria -----------------------------------------------------------
+def _limite_aria(p):
+    """Testo del limite di legge di un inquinante, dai campi del riassunto (norm_firenze.LIMITI_ARIA)."""
+    t = []
+    if "soglia" in p:
+        t.append(f'{p["soglia"]} {p["unita"]} come {p["soglia_su"]}, ' + (f'al massimo {p["ammessi"]} {p["conta"]} l\'anno' if p["ammessi"] else "nessun superamento ammesso"))
+    if "limite_annuo" in p:
+        t.append(f'media annua {p["limite_annuo"]} {p["unita"]}')
+    return "; ".join(t) + " (D.Lgs. 155/2010)" + (f'. {p["nota"]}' if p.get("nota") else "")
+
+
+def aria():
+    """Stazioni ARPAT e riassunti annuali (data/norm: arpat_aria_riassunti.json, da norm_firenze.py arpat). Valori di stazione, nessuna interpolazione;
+    le stazioni fuori dal riquadro hanno fuori_riquadro true e la distanza dal riquadro in metri."""
+    if not (NORM / "arpat_aria_riassunti.json").exists():
+        return None
+    m = json.load(open(NORM / "arpat_aria_riassunti.json"))
+    st = []
+    for q in m["stazioni"]:
+        x, z = loc(q["e"], q["n"])
+        st.append({"id": "aqs_" + q["codice"].lower(), "codice": q["codice"], "nome": f'{q["codice"]} ({q["comune"]})', "x": x, "z": z,
+                   "fuori_riquadro": not FP.contains(Point(q["e"], q["n"])), "distanza_m": q["distanza_fp_m"],
+                   "tipo": q["tipo"] or "non dichiarato", "zona": q["zona"], "rete": ", ".join(q["reti"]), "avviso": q["avviso"], "misurati": q["misurati"],
+                   "inquinanti": [{**p, "limite": _limite_aria(p)} for p in q["inquinanti"]]})
+    return {"n": len(st), "anno": m["anno"], "periodo": f'{m["anno"]}-01-01 / {m["anno"]}-12-31', "validazione": m["validazione"], "ora": m["ora"],
+            "norma": m["norma"], "limiti_url": m["limiti_url"], "selezione": m["selezione"], "stazioni": st}
+
+
 # --- fonti ---------------------------------------------------------------------
 def fonti():
     base = json.load(open(ROOT / "pipeline/baselines/bas_firenze_novoli_20261009.json"))
     snaps = {x["source_id"]: x for x in base["snapshot"]}
     out = []
     for sid, uso in USO.items():
+        if sid not in snaps:   # fonte aggiunta dopo la baseline congelata (catasto): ultimo snapshot valido, segnalato
+            ok = [json.load(open(q)) for q in sorted((ROOT / "pipeline/snapshots").glob(f"snp_{sid.removeprefix('src_')}_*.json"))]
+            ok = [s_ for s_ in ok if s_["status"] == "ok"]
+            snaps[sid] = {**ok[-1], "fuori_baseline": True}
         src = json.load(open(ROOT / f"pipeline/sources/{sid}.json"))
         sn = json.load(open(ROOT / f"pipeline/snapshots/{snaps[sid]['snapshot_id']}.json"))
         lic = src["license"]
@@ -503,7 +640,8 @@ def fonti():
         out.append({"id": sid, "titolo": src["title"], "ente": src["publisher"], "url": src["dataset_url"],
                     "licenza": lic.get("identifier") or "non scritta sul layer (licenza regionale)", "stato_licenza": lic["state"],
                     "riserva": lic.get("reserve_note"), "scaricato": sn["retrieved_at"][:10],
-                    "periodo": cp.get("note") or cp.get("end"), "sha256_snapshot": snaps[sid]["sha256"], "uso": uso})
+                    "periodo": cp.get("note") or cp.get("end"), "sha256_snapshot": snaps[sid]["sha256"], "uso": uso,
+                    **({"fuori_baseline": True} if snaps[sid].get("fuori_baseline") else {})})
     return out
 
 
@@ -535,6 +673,10 @@ def main():
     aree = _osm_aree()
     assets["mappa"] = scrivi(out, "mappa.json.gz", mappa(aree))
     assets["etichette"] = scrivi(out, "etichette.json.gz", etichette(aree))
+    assets["catasto"] = scrivi(out, "catasto.json.gz", catasto())
+    for nome, fn in (("temperature", temperature), ("meteo", meteo), ("aria", aria)):   # opzionali: servono i file normalizzati in data/norm
+        if (obj := fn()) is not None:
+            assets[nome] = scrivi(out, f"{nome}.json.gz", obj)
     analitici = {}
     for k, fn, d in (("accessibilita", accessibilita, a.analysis), ("ombra", ombra, a.shadow), ("scenari", interventi, a.scenarios)):
         obj = fn(d)

@@ -8,62 +8,78 @@
 <title>Gemello di Firenze Novoli</title>
 <meta name="description" content="Scena 3D statica di Firenze Novoli - Firenze Nova costruita solo con open data: edifici, alberi, rete pedonale, ombre del sole.">
 <style>
-:root{color-scheme:light;--bg:#eef2f5;--pannello:#ffffff;--testo:#1b2430;--tenue:#4a5563;--bordo:#c4ccd6;--acc:#0b5cad;--accsc:#ffffff;--focus:#c2410c}
+:root{color-scheme:light;--bg:#f3efe7;--pannello:#fbf9f5;--testo:#22272b;--tenue:#56606a;--bordo:#ddd5c8;--acc:#3f5b6b;--cotto:#a94d27;--accsc:#ffffff;--focus:#c2410c}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--testo);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 #tela{position:fixed;inset:0;width:100%;height:100%;display:block;outline:none;touch-action:none}
 #tela:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
 a{color:var(--acc)}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.box{background:var(--pannello);color:var(--testo);border:1px solid var(--bordo);border-radius:10px;box-shadow:0 2px 12px #0003}
-#pannello{position:fixed;top:12px;left:12px;width:320px;max-height:calc(100% - 24px);display:flex;flex-direction:column;padding:0;overflow:hidden}
-#pannello header{display:flex;align-items:flex-start;gap:8px;padding:12px 10px 10px 16px;flex:none}
-#pannello header>div{flex:1;display:flex;flex-direction:column;gap:1px}
+.box{background:var(--pannello);color:var(--testo);border:1px solid var(--bordo);border-radius:14px;box-shadow:0 6px 24px #3a2a1a24}
+#pannello{position:fixed;top:12px;left:12px;width:320px;max-height:calc(100% - 24px);display:flex;flex-direction:column;padding:0;overflow:hidden;border-top:4px solid var(--cotto)}
+#pannello header{display:flex;align-items:flex-start;gap:8px;padding:12px 8px 10px 16px;flex:none}
+#pannello header>div{flex:1;display:flex;flex-direction:column;gap:2px}
 #pApri{width:36px;height:36px;padding:0;border:0;background:none;font-size:20px;color:var(--tenue);flex:none}
 #pCorpo{display:flex;flex-direction:column;min-height:0}
 #pCorpo[hidden]{display:none}
-.eyebrow{font-size:10px;letter-spacing:.14em;font-weight:700;color:var(--tenue)}
-.tit{font-size:18px;font-weight:700}
-.tabs{flex:none;display:flex;gap:14px;padding:0 16px;border-bottom:1px solid var(--bordo)}
-.tabs button{border:0;background:none;border-radius:0;padding:4px 0 9px;font-size:13px;font-weight:600;color:var(--tenue);position:relative}
-.tabs button[aria-selected=true]{color:var(--acc)}
-.tabs button[aria-selected=true]::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--acc)}
+.eyebrow{font-size:11px;font-weight:600;color:var(--cotto)}
+.tit{font:600 22px/1.15 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+.cifre{font-size:12px;color:var(--tenue);font-variant-numeric:tabular-nums}
+.tabs{flex:none;display:flex;gap:0;margin:0 12px 4px;padding:3px;background:#ebe4d8;border-radius:10px}
+.tabs button{flex:1 1 auto;border:0;background:none;border-radius:8px;padding:6px 4px;font-size:12px;font-weight:600;color:var(--tenue)}
+.tabs button[aria-selected=true]{background:#fff;color:var(--testo);box-shadow:0 1px 3px #3a2a1a2e}
 .corpo{padding:2px 12px 12px;overflow:auto;min-height:0}
 .corpo[hidden]{display:none}
-.sez,details.gruppo>summary{font-size:10.5px;letter-spacing:.12em;font-weight:700;color:var(--tenue);margin:16px 6px 6px;text-transform:uppercase}
-details.gruppo{border-top:1px solid var(--bordo);margin-top:10px}
-details.gruppo>summary{cursor:pointer;list-style:none;margin-top:12px}
+.sez,details.gruppo>summary{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--cotto);margin:14px 4px 4px}
+.sez::after{content:'';flex:1;height:1px;background:var(--bordo)}
+details.gruppo{margin-top:6px}
+details.gruppo>summary{cursor:pointer;list-style:none}
 details.gruppo>summary::-webkit-details-marker{display:none}
-details.gruppo>summary::after{content:'+';float:right;font-size:15px;line-height:12px}
-details.gruppo[open]>summary::after{content:'−'}
-.intro{margin:10px 6px 4px;font-size:13px;color:var(--tenue)}
+details.gruppo>summary::before{content:'';order:2;flex:1;height:1px;background:var(--bordo)}
+details.gruppo>summary::after{content:'mostra';order:3;font-size:11px;font-weight:600;color:var(--acc)}
+details.gruppo[open]>summary::after{content:'nascondi'}
+.intro{margin:10px 4px 4px;font-size:13px;color:var(--tenue)}
 label{display:block;margin:3px 0}
-.liv{display:flex;align-items:center;gap:10px;min-height:42px;padding:5px 8px;margin:2px 0;border-radius:10px;cursor:pointer}
-.liv:has(input:checked){background:color-mix(in srgb,var(--acc) 9%,transparent)}
+.liv{display:flex;align-items:center;gap:10px;min-height:38px;padding:4px 8px 4px 6px;margin:1px 0;border-radius:8px;border-left:3px solid transparent;cursor:pointer}
+.liv:hover{background:#fff}
+.liv:has(input:checked){border-left-color:var(--t);background:#fff}
 .liv:has(input:disabled){opacity:.6;cursor:default}
-.ico{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:none}
+.ico{width:24px;height:24px;display:grid;place-items:center;flex:none;color:var(--t)}
+.ico img{width:20px;height:20px}
 .nome{flex:1;font-size:14px;line-height:1.3}
 .nome em{font-size:12px;color:var(--tenue)}
-.switch{position:relative;width:32px;height:18px;flex:none}
+.switch{position:relative;width:34px;height:20px;flex:none}
 .switch input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:inherit}
-.switch i{position:absolute;inset:0;border-radius:20px;background:var(--bordo);pointer-events:none;transition:background .2s}
-.switch i::after{content:'';position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0003;transition:transform .2s}
+.switch i{position:absolute;inset:0;border-radius:6px;background:#d8d0c3;pointer-events:none;transition:background .2s}
+.switch i::after{content:'';position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:4px;background:#fff;box-shadow:0 1px 2px #0003;transition:transform .2s}
 .switch input:checked+i{background:var(--acc)}
 .switch input:checked+i::after{transform:translateX(14px)}
 .switch input:focus-visible+i{outline:3px solid var(--focus);outline-offset:2px}
-input[type=range]{width:100%}
-input[type=date],select,button{font:inherit;color:var(--testo);background:var(--pannello);border:1px solid var(--tenue);border-radius:6px;padding:5px 8px;max-width:100%}
+input[type=range]{width:100%;accent-color:var(--cotto)}
+input[type=date],select,button{font:inherit;font-size:14px;color:var(--testo);background:#fff;border:1px solid var(--bordo);border-radius:8px;padding:6px 10px;max-width:100%}
 button{cursor:pointer}
+button:hover{border-color:var(--acc)}
 .riga{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.sub{margin:2px 8px 10px 48px;font-size:13px;color:var(--tenue)}
+.sub{margin:2px 8px 10px 43px;font-size:13px;color:var(--tenue)}
 .sub select{margin-top:2px;width:100%}
 .sub .riga{margin-top:6px}
-.leg{display:flex;flex-direction:column;gap:5px;font-size:13px;margin:4px 6px;color:var(--tenue)}
+.leg{display:flex;flex-direction:column;gap:5px;font-size:13px;margin:4px;color:var(--tenue)}
 .sub .leg{margin:8px 0 0}
 .leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:8px;vertical-align:-2px;border:1px solid #0004}
 .leg img{width:16px;height:16px;margin-right:6px;vertical-align:-3px}
 .sole-box{padding:0 6px}
-.scn{display:flex;gap:10px;align-items:flex-start;margin:6px 0;padding:10px;border:1px solid var(--bordo);border-radius:10px;cursor:pointer}
+.staz{margin:6px 0;padding:8px 10px;border:1px solid var(--bordo);border-radius:10px;background:#fff;font-size:13px}
+.staz summary{cursor:pointer;display:flex;flex-direction:column}
+.staz summary small{color:var(--tenue);font-size:12px}
+.staz ul{margin:6px 0 2px;padding-left:16px;color:var(--tenue)}
+.staz li{margin-bottom:3px}
+.staz .avviso{margin:6px 0 0;color:var(--cotto);font-size:12px}
+.cat{display:flex;gap:6px;align-items:flex-end;flex-wrap:wrap;margin:4px 4px 0 9px;font-size:12px;color:var(--tenue)}
+.cat label{margin:0;display:flex;flex-direction:column;gap:2px}
+.cat input{font:inherit;font-size:14px;width:84px;padding:6px 8px;border:1px solid var(--bordo);border-radius:8px;background:#fff;color:var(--testo)}
+.cat p{flex-basis:100%;margin:2px 0 0}
+#etichette .foglio{color:#5c3a1a;font-size:12px;font-weight:700;background:#fffdf8d9;padding:1px 6px;border-radius:4px}
+.scn{display:flex;gap:10px;align-items:flex-start;margin:6px 0;padding:10px;border:1px solid var(--bordo);border-radius:10px;background:#fff;cursor:pointer}
 .scn:has(input:checked){border-color:#e0218a;background:color-mix(in srgb,#e0218a 7%,transparent)}
 .scn input{margin-top:3px;accent-color:#e0218a}
 .scn strong{display:block;font-size:14px}
@@ -109,7 +125,7 @@ details.fl li{margin-bottom:6px;font-size:13px}
 <div id="etichette" aria-hidden="true"></div>
 
 <section id="pannello" class="box" aria-label="Pannello della scena">
- <header><div><span class="eyebrow">GEMELLO DIGITALE · OPEN DATA</span><span class="tit">Firenze Novoli</span></div><button type="button" id="pApri" aria-expanded="true" aria-controls="pCorpo" aria-label="Chiudi il pannello">−</button></header>
+ <header><div><span class="eyebrow">Gemello digitale per chi cammina · open data</span><span class="tit">Novoli · Firenze Nova</span><span class="cifre" id="cifre">Riquadro di 2 km²</span></div><button type="button" id="pApri" aria-expanded="true" aria-controls="pCorpo" aria-label="Chiudi il pannello">−</button></header>
  <div id="pCorpo">
  <div class="tabs" role="tablist" aria-label="Sezioni del pannello">
   <button type="button" role="tab" id="t-livelli" aria-controls="p-livelli" aria-selected="true">Livelli</button>
@@ -123,6 +139,13 @@ details.fl li{margin-bottom:6px;font-size:13px}
   <p class="sez">La città in 3D</p><div id="g_citta"></div>
   <p class="sez">Mobilità</p><div id="g_mobilita"></div>
   <details class="gruppo"><summary>Luoghi e servizi</summary><div id="g_luoghi"></div></details>
+  <p class="sez">Catasto</p><div id="g_catasto"></div>
+  <form id="catCerca" class="cat" aria-label="Cerca una particella catastale">
+   <label>Foglio<input id="catF" required placeholder="42B" autocomplete="off"></label>
+   <label>Particella<input id="catP" required placeholder="123" autocomplete="off"></label>
+   <button type="submit">Cerca</button>
+   <p id="catEsito" role="status"></p>
+  </form>
  </div>
 
  <div class="corpo" id="p-sole" role="tabpanel" aria-labelledby="t-sole" hidden>
@@ -139,10 +162,11 @@ details.fl li{margin-bottom:6px;font-size:13px}
  <div class="corpo" id="p-analisi" role="tabpanel" aria-labelledby="t-analisi" hidden>
   <p class="intro">Calcoli del progetto su rete pedonale, civici e LiDAR. Non sono validati sul posto.</p>
   <div id="g_analisi"></div>
+  <div class="blocco-aria"><p class="sez">Qualità dell'aria (stazioni ARPAT)</p><div id="aria"></div></div>
  </div>
 
  <div class="corpo" id="p-interventi" role="tabpanel" aria-labelledby="t-interventi" hidden>
-  <p class="intro">Interventi ipotetici per fare ombra su chi cammina. Scegli uno scenario: la vista ti porta sull'intervento. Accendi e spegni l'intervento per confrontare prima e dopo. I numeri vengono dal calcolo del progetto, non dalla scena.</p>
+  <p class="intro">Alberi e pensiline ipotetici per fare ombra. Scegli uno scenario: la vista ti porta lì. Con l'interruttore confronti prima e dopo.</p>
   <div id="g_interventi"></div>
   <div class="riga" style="margin:4px 6px 8px"><button type="button" id="vScn">Vai all'intervento</button><button type="button" id="scnSole">Sole del calcolo (15 luglio, 13:00)</button></div>
   <div id="scnLista" role="radiogroup" aria-label="Scenario"></div>

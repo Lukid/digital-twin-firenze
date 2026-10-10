@@ -68,6 +68,93 @@ def osm():
     return {"files": [p], "url": OSM_URL, "media_type": "application/x-osm+pbf",
             "content_period": {"note": "estratto regionale Centro Italia, timestamp nel nome del file (2026-10-08, ore 00 UTC circa); il ritaglio all'area allargata avviene in normalizzazione, il file originario resta intatto"}}
 
+CATASTO = "https://wfs.cartografia.agenziaentrate.gov.it/inspire/wfs/owfs01.php"
+def catasto():
+    """Particelle e fogli sul riquadro FP: solo GML in EPSG:6706 con assi lat,lon. Riquadri alti più di circa 0,017° rispondono numberMatched=0
+    senza errore: FP (0,0124° x 0,0181°) sta in una richiesta. ponytail: niente tessere, servono (e dedup per gml:id) se si allarga al margine buf_en.
+    Il server rifiuta i parametri codificati (%2C, %3A): URL scritta a mano."""
+    import re
+    s, w, n_, e = AOI["z2_ll_SWNE"]; d = rawdir("fi_catasto"); fs = []
+    def chk_(r):
+        m = re.search(r'numberMatched="(\d+)" numberReturned="(\d+)"', r.text[:3000])
+        if not m or m[1] != m[2] or m[1] == "0": raise ValueError("risposta WFS incompleta o vuota: " + r.text[:300])
+    for tipo, nome in (("CP:CadastralParcel", "particelle.gml"), ("CP:CadastralZoning", "fogli.gml")):
+        url = f"{CATASTO}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES={tipo}&COUNT=15000&BBOX={s},{w},{n_},{e},urn:ogc:def:crs:EPSG::6706"
+        (d / nome).write_bytes(lib.get(url, check=chk_).content); fs.append(d / nome)
+    return {"files": fs, "multi": True, "url": url.replace("CP:CadastralZoning", "CP:CadastralParcel"), "media_type": "application/gml+xml",
+            "content_period": {"note": "cartografia catastale aggiornata dall'Agenzia per foglio (BEGINLIFESPANVERSION dei fogli); stato alla data di scarico"}}
+
+ARPAT, ARPAT_ANNO = "https://www.arpat.toscana.it/", 2025      # ultimo anno completo dell'archivio orario (il 2026 non è pubblicato come download)
+ARPAT_IND = ["app/uploads/datiemappe/dati/pm10-medie-annuali/pm10-medie-annuali-2007-2024.csv", "app/uploads/datiemappe/dati/no2-medie-annuali/no2-medie-annuali-2007-2024.csv"]
+def arpat():
+    """Qualità dell'aria ARPAT, solo download pubblici del sito: archivio orario della rete di Firenze (zip di CSV), pagine delle stazioni fi-* (unica
+    anagrafica pubblica con coordinate: il JSON della rete su dati.toscana.it rimanda alla home) e indicatori annuali PM10 e NO2 (tipo traffico/fondo).
+    Niente API dell'app "Ambiente in Toscana": è un servizio per ARPAT. Le pagine HTML cambiano a ogni scarico: lo sha256 dello snapshot non si riproduce."""
+    import re
+    d = rawdir("arpat_aria")
+    pag = lib.get(ARPAT + "datiemappe/qualita-dellaria-dati-orari/").text
+    z = re.search(rf'https://[^"]+/FI_DATI_QA_{ARPAT_ANNO}_CSV\.zip', pag)[0]
+    fs = [download(z, d / z.rsplit("/", 1)[1])] + [download(ARPAT + u, d / u.rsplit("/", 1)[1]) for u in ARPAT_IND]
+    for s_ in sorted(set(re.findall(r"/stazione/(fi-[a-z0-9-]+)/", lib.get(ARPAT + "stazione-sitemap.xml").text))):   # filtro (rete regionale, comune, 3 km) in norm_firenze
+        p = d / f"stazione_{s_}.html"; p.write_bytes(lib.get(f"{ARPAT}stazione/{s_}/").content); fs.append(p)
+    return {"files": fs, "multi": True, "url": z, "media_type": "application/zip",
+            "content_period": {"start": f"{ARPAT_ANNO}-01-01", "end": f"{ARPAT_ANNO}-12-31", "note": f"archivio {ARPAT_ANNO} dichiarato validato (intero ciclo di validazione); ore solari; anagrafica delle stazioni alla data di scarico"}}
+
+STAC ="https://planetarycomputer.microsoft.com/api/stac/v1"
+LANDSAT_ANNI, LANDSAT_PAD = (2023, 2024, 2025, 2026), 300.0   # ritaglio: riquadro FP + 300 m (copre il margine di 110 m della scena e il ricampionamento)
+def landsat():
+    """Landsat 8 e 9 Collection 2 Level-2, giugno-settembre: ritagli di ST_B10 e QA_PIXEL attorno al riquadro, letti con richieste Range dai COG
+    del catalogo STAC di Planetary Computer. La firma SAS anonima resta in memoria: nei file e negli snapshot solo gli URL senza firma."""
+    import re, rasterio, rasterio.windows
+    from rasterio.warp import transform_bounds
+    s, w, n_, e = AOI["buf_ll_SWNE"]; d = rawdir("fi_landsat_st"); fs, items = [], []
+    for y in LANDSAT_ANNI:
+        body = {"collections": ["landsat-c2-l2"], "bbox": [w, s, e, n_], "datetime": f"{y}-06-01T00:00:00Z/{y}-09-30T23:59:59Z",
+                "query": {"platform": {"in": ["landsat-8", "landsat-9"]}}, "limit": 200}
+        r = requests.post(STAC + "/search", json=body, headers=UA, timeout=120); r.raise_for_status(); r = r.json()
+        assert not any(x["rel"] == "next" for x in r.get("links", [])), "risposta STAC su più pagine"
+        items += r["features"]
+    tok = requests.get("https://planetarycomputer.microsoft.com/api/sas/v1/token/landsateuwest/landsat-c2", headers=UA, timeout=60).json()["token"]
+    x0, y0, x1, y1 = AOI["z2_en"]; box_ = (x0 - LANDSAT_PAD, y0 - LANDSAT_PAD, x1 + LANDSAT_PAD, y1 + LANDSAT_PAD)
+    with rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR", GDAL_HTTP_MAX_RETRY="4", GDAL_HTTP_RETRY_DELAY="3"):
+        for it in items:
+            for k, suf in (("lwir11", "ST_B10"), ("qa_pixel", "QA_PIXEL")):
+                p = d / f"{it['id']}_{suf}.tif"
+                if p.exists(): fs.append(p); continue
+                href = it["assets"][k]["href"]
+                try:
+                    with rasterio.open(href + "?" + tok) as src:
+                        win = rasterio.windows.from_bounds(*transform_bounds("EPSG:7791", src.crs, *box_), src.transform).round_offsets().round_lengths()
+                        a = src.read(1, window=win, boundless=True, fill_value=0 if k == "lwir11" else 1)
+                        prof = dict(driver="GTiff", height=a.shape[0], width=a.shape[1], count=1, dtype=a.dtype, crs=src.crs, transform=src.window_transform(win),
+                                    nodata=0 if k == "lwir11" else 1, compress="deflate")
+                except Exception as ex:   # il messaggio di GDAL contiene l'URL firmato: si toglie la firma prima che finisca in uno snapshot
+                    raise RuntimeError(f"{href}: " + re.sub(r"\?\S*", "", str(ex))) from None
+                with rasterio.open(p.with_suffix(".part"), "w", **prof) as o: o.write(a, 1)
+                p.with_suffix(".part").rename(p); fs.append(p)
+    meta = [{"id": it["id"], "datetime": it["properties"]["datetime"], "platform": it["properties"]["platform"], "eo:cloud_cover": it["properties"]["eo:cloud_cover"],
+             "wrs": f"{it['properties']['landsat:wrs_path']}/{it['properties']['landsat:wrs_row']}", "categoria": it["properties"].get("landsat:collection_category"),
+             "proj:epsg": it["properties"].get("proj:epsg"), "st_b10": it["assets"]["lwir11"]["href"], "qa_pixel": it["assets"]["qa_pixel"]["href"],
+             "st_scala": it["assets"]["lwir11"]["raster:bands"][0]} for it in items]
+    (d / "scene.json").write_text(json.dumps(sorted(meta, key=lambda m: m["id"]), indent=1)); fs.append(d / "scene.json")
+    return {"files": fs, "multi": True, "url": STAC + "/search (collections=landsat-c2-l2, platform landsat-8/9, giugno-settembre 2023-2026, bbox riquadro + margine)",
+            "media_type": "image/tiff; application=geotiff", "content_period": {"start": "2023-06-01", "end": "2026-09-30", "note": f"{len(items)} scene di giugno-settembre (path 192, righe 029 e 030), ritagli attorno al riquadro"}}
+
+SIR = "https://www.sir.toscana.it/archivio/dati.php"
+SIR_STAZIONE = "TOS01001096"   # Firenze Università, a 1,3 km a est del riquadro FP
+def sir():
+    """Temperature giornaliere massime e minime (Sez. A, Tab. 1) della stazione SIR, una pagina HTML per anno dall'archivio pubblico.
+    Lo scarico CSV e i dati a 15 minuti chiedono e-mail e captcha: si usa la tabella pubblica."""
+    d = rawdir("sir_termo_firenze"); fs = []
+    def chk_(r):
+        if "Anno" not in r.text or "text-danger" not in r.text: raise ValueError("tabella SIR vuota: " + r.text[:200])
+    for y in LANDSAT_ANNI:
+        p = d / f"{SIR_STAZIONE}_{y}.html"; p.write_bytes(lib.get(f"{SIR}?A={y}&IDS={SIR_STAZIONE}&IDST=termo", check=chk_).content); fs.append(p)
+    p = d / f"{SIR_STAZIONE}_stazione.html"   # scheda della stazione: coordinate Gauss-Boaga e quota
+    p.write_bytes(lib.get(SIR.replace("dati.php", f"stazione.php?IDST=termo&IDS={SIR_STAZIONE}")).content); fs.append(p)
+    return {"files": fs, "multi": True, "url": f"{SIR}?A={LANDSAT_ANNI[0]}&IDS={SIR_STAZIONE}&IDST=termo", "media_type": "text/html",
+            "content_period": {"start": f"{LANDSAT_ANNI[0]}-01-01", "note": "massime e minime giornaliere 2023-2026; dati dichiarati PRE-VALIDATO dal SIR (possono cambiare con la validazione)"}}
+
 # ------------------------------------------------------------------------------ fonti
 # ckan: id o nome del dataset su dati.toscana.it; None = lacuna del catalogo, motivata in "lacuna" (T17)
 def S():
@@ -181,6 +268,57 @@ def S():
    checks=lambda: [chk("edifici in area allargata", (n("cm_edscol_firenze.gpkg", "edifici_scolastici") or 0) > 0, f"{n('cm_edscol_firenze.gpkg', 'edifici_scolastici')} poligoni"),
                    chk("accessi in area allargata", (n("cm_edscol_firenze.gpkg", "accessi") or 0) > 0, f"{n('cm_edscol_firenze.gpkg', 'accessi')} punti"),
                    chk("gradi coperti", True, "tutti i gradi, dai nidi alle superiori (chiude il dubbio di F01 sulle sole secondarie)")]),
+ "catasto": dict(slug="fi_catasto", title="Cartografia catastale WFS (particelle e fogli), Agenzia delle Entrate, riquadro FP", publisher="Agenzia delle Entrate",
+   ckan=None, lacuna="La cartografia catastale non è su dati.toscana.it: è un servizio nazionale dell'Agenzia delle Entrate (WFS INSPIRE).",
+   dataset_url="https://www.agenziaentrate.gov.it/portale/cartografia-catastale-wfs", res=CATASTO, origin="ogc_service",
+   lic=lic("clear", "CC-BY-4.0", "https://www.agenziaentrate.gov.it/portale/cartografia-catastale-wfs",
+           "Pagina del servizio: dati sotto CC BY 4.0 con citazione obbligatoria della titolarità: \"Agenzia delle Entrate, cartografia catastale WFS, CC BY 4.0\".", use="redistribution"),
+   period={"note": "aggiornamento dichiarato per foglio (BEGINLIFESPANVERSION dei fogli, il più recente 2026-10-06 nel riquadro); stato alla data di scarico"},
+   crs={"declared": "EPSG:6706", "vertical_datum": "not_declared", "note": "GML in RDN2008 geografico con assi lat,lon (unica proiezione offerta); convertito in EPSG:7791. Scarico limitato al riquadro FP (particelle che lo intersecano)"},
+   units={}, fields=["NATIONALCADASTRALREFERENCE", "LABEL", "NATIONALCADASTRALZONINGREFERENCE", "BEGINLIFESPANVERSION", "ORIGINALMAPSCALEDENOMINATOR"], fetch=catasto,
+   checks=lambda: [*tp(("fi_catasto_particelle.gpkg", "particelle"))(), *tp(("fi_catasto_fogli.gpkg", "fogli"))(),
+                   chk("fabbricati", False, "il servizio non pubblica i fabbricati: solo particelle (con strade e acque) e fogli", warn=True),
+                   chk("valore dei confini", False, "cartografia catastale: confini indicativi, non probatori", warn=True)]),
+ "landsat_st": dict(slug="fi_landsat_st", title="Landsat 8-9 Collection 2 Level-2, temperatura delle superfici (ST_B10) e QA_PIXEL, estati 2023-2026, riquadro FP", publisher="U.S. Geological Survey (copia di Microsoft Planetary Computer)",
+   ckan=None, lacuna="Landsat non è su dati.toscana.it: prodotto dell'USGS, letto dalla copia pubblica del catalogo STAC di Microsoft Planetary Computer (accesso anonimo).",
+   dataset_url="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature", res=STAC + "/collections/landsat-c2-l2", origin="official_download",
+   lic=lic("clear", "public-domain", "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
+           "Pagina USGS: \"There are no restrictions on the use of Landsat products.\" Politica dati USGS: \"All public domain imagery may be used, shared, transferred, or redistributed without restriction.\" "
+           "Citazione chiesta: DOI 10.5066/P9OGBGM6 (Landsat 8-9 OLI/TIRS C2 L2); credito suggerito \"Landsat Collection 2 Level-2 image courtesy of the U.S. Geological Survey\".",
+           "Il canale di accesso (Planetary Computer) dichiara license \"proprietary\" con collegamento alla politica USGS (Public Domain); il token SAS anonimo è personale e non cedibile (Supplemental Terms): non va scritto nei file.", use="redistribution"),
+   period={"start": "2023-06-01", "end": "2026-09-30", "note": "passaggi estivi (giugno-settembre) 2023-2026 alle 09:58-09:59 UTC circa; tenute solo le date con almeno l'80% di celle valide sul riquadro FP"},
+   crs={"declared": "EPSG:32632", "vertical_datum": "not_declared", "note": "COG in WGS84 UTM 32N a 30 m; ritagli ricampionati per vicinanza sul reticolo EPSG:7791 a 30 m della scena (scarto fra i due sistemi sotto il metro)"},
+   units={"st_b10": "K = DN x 0,00341802 + 149,0 (nodata 0); convertito in °C", "qa_pixel": "bit"}, fields=["ST_B10", "QA_PIXEL"], fetch=landsat,
+   checks=lambda: [chk("date valide sul riquadro", NORM.joinpath("fi_landsat_st.json").exists(), "vedi data/norm/firenze_novoli/fi_landsat_st.json"),
+                   chk("risoluzione", False, "banda termica misurata a 100 m e distribuita a 30 m: il dettaglio fra 30 e 100 m non è misurato", warn=True),
+                   chk("saturazione termica", False, "QA_RADSAT non ha un bit per la banda 10 su Landsat 8-9: la saturazione non si controlla", warn=True)]),
+ "sir_termo": dict(slug="sir_termo_firenze", title="Temperatura dell'aria giornaliera (massima e minima), stazione SIR Firenze Università TOS01001096", publisher="Regione Toscana, Settore Idrologico e Geologico Regionale (SIR)",
+   ckan="termometri", res=SIR, origin="official_download",
+   lic=lic("clear_with_reserve", "CC-BY-SA-4.0", "https://www.sir.toscana.it/licenze",
+           "Pagina Licenze del SIR: \"I dati pubblicati dal Settore Idrologico e Geologico Regionale (SIR) - Regione Toscana sono distribuiti con licenza Creative Commons Attribuzione-CondividiAlloStessoModo 4.0 Internazionale (CC BY-SA 4.0)\". "
+           "Attribuzione: \"Settore Idrologico e Geologico Regionale (SIR) - Regione Toscana. Dati distribuiti con licenza Creative Commons CC BY-SA 4.0.\"",
+           "Condividi allo stesso modo: i derivati di questo livello (meteo.json.gz) vanno distribuiti in CC BY-SA 4.0. La scheda del catalogo (anagrafica stazioni) dice cc-by-sa, le sue risorse A1_PublicDomain: vale la pagina del SIR. Dati dichiarati pre-validati.", use="redistribution"),
+   period={"start": "2023-01-01", "note": "massime e minime giornaliere 2023-2026 della stazione, dati pre-validati; ora solare"},
+   crs={"declared": "EPSG:3003", "vertical_datum": "declared", "note": "posizione della stazione dall'anagrafica WFS del SIR (Gauss-Boaga, quota 84 m s.l.m.), convertita in EPSG:7791"},
+   units={"tmax": "°C", "tmin": "°C"}, fields=["Tmax", "Tmin"], fetch=sir,
+   checks=lambda: [chk("serie normalizzata", NORM.joinpath("sir_termo_firenze.json").exists(), "vedi data/norm/firenze_novoli/sir_termo_firenze.json"),
+                   chk("distanza dal riquadro", True, "1,3 km a est del riquadro FP, in città: rappresentativa della zona, non del singolo isolato"),
+                   chk("validazione", False, "il SIR dichiara i dati pre-validati: possono cambiare", warn=True)]),
+ "arpat": dict(slug="arpat_aria", title="Qualità dell'aria ARPAT, dati orari 2025 della rete regionale (stazioni del comune di Firenze)", publisher="ARPAT, Agenzia regionale per la protezione ambientale della Toscana",
+   ckan=None, lacuna="I dati orari e l'anagrafica delle stazioni non sono su dati.toscana.it: sul catalogo ARPAT ha solo indicatori annuali fino al 2022-2024 e la risorsa \"Struttura della rete di monitoraggio della qualità dell'aria in Toscana\" (cc-by) punta a un JSON che oggi rimanda alla home del sito. Da segnalare: link morto e archivio orario da pubblicare sul catalogo.",
+   dataset_url=ARPAT + "datiemappe/qualita-dellaria-dati-orari/", res=ARPAT + f"app/uploads/2026/05/FI_DATI_QA_{ARPAT_ANNO}_CSV.zip", origin="official_download",
+   lic=lic("clear_with_reserve", "non specificata per i dati orari (note legali ARPAT)", ARPAT + "note-legali",
+           "Note legali ARPAT: \"Salvo dove diversamente specificato, i contenuti del sito Web di ARPAT sono distribuiti con licenza Creative Commons Attribuzione – Non commerciale – Condividi allo stesso modo 3.0 Italia (CC BY-NC-SA 3.0)\"; "
+           "\"Ai sensi delle Linee Guida Nazionali per la Valorizzazione del Patrimonio Informativo Pubblico, le banche banche dati distribuite in formato vettoriale sono rilasciate – dove non diversamente specificato – con licenza Creative Commons Attribution 4.0 International (CC-BY 4.0)\"; "
+           "\"Salvo diversa indicazione le informazioni contenute nel sito Web ARPAT sono fornite a scopo informativo.\" La pagina dei dati orari non indica una licenza. Indicatori annuali PM10 e NO2 (solo per il tipo di stazione): schede del catalogo regionale cc-by.",
+           "Non è scritto quale delle due licenze delle note legali vale per i CSV orari: se vale CC BY-NC-SA 3.0, niente uso commerciale e derivati nella stessa licenza. Uso deciso da Luca il 10/10/2026 (D21): pubblicato anche nella scena online, con entrambe le licenze dichiarate; per uso commerciale chiedere conferma ad ARPAT."),
+   period={"start": f"{ARPAT_ANNO}-01-01", "end": f"{ARPAT_ANNO}-12-31", "note": "archivio orario 2025 (PM10 e PM2,5 giornalieri), dichiarato validato dall'intero ciclo di validazione; il 2026 non è pubblicato come download"},
+   crs={"declared": "undeclared", "vertical_datum": "not_declared", "note": "coordinate delle pagine stazione \"N:... - E:...\" senza sistema dichiarato: Gauss-Boaga fuso Ovest (EPSG:3003) dedotto dai valori (FI-MOSSE cade in Via delle Mosse); convertite in EPSG:7791 come i civici"},
+   units={"media_oraria": "µg/m³ a 20 °C (CO mg/m³)", "media_giornaliera": "µg/m³ a temperatura ambiente (PM10, PM2,5)"},
+   fields=["STAZIONE", "PARAMETRO", "DATA (formato AAAAMMGG)", "ORA FINE MISURA (solare)", "MEDIA ORARIA", "VALIDITA'"], fetch=arpat,
+   checks=lambda: [chk("stazioni selezionate", (n("arpat_aria.gpkg", "stazioni") or 0) > 0, f"{n('arpat_aria.gpkg', 'stazioni')} stazioni della rete regionale nel comune di Firenze (nessun'altra entro 3 km dal riquadro)"),
+                   chk("stazioni nel riquadro FP", False, "nessuna: la più vicina (FI-MOSSE) è a circa 750 m; valori di stazione, non rappresentano il riquadro", warn=True),
+                   chk("anno in corso", False, "il 2026 non è pubblicato come download: passa solo dall'API dell'app, esclusa", warn=True)]),
     }
 
 def acquire(keys):

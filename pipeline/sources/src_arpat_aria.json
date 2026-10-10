@@ -1,0 +1,58 @@
+{
+ "source_id": "src_arpat_aria",
+ "title": "Qualità dell'aria ARPAT, dati orari 2025 della rete regionale (stazioni del comune di Firenze)",
+ "publisher": "ARPAT, Agenzia regionale per la protezione ambientale della Toscana",
+ "dataset_url": "https://www.arpat.toscana.it/datiemappe/qualita-dellaria-dati-orari/",
+ "resource_url": "https://www.arpat.toscana.it/app/uploads/2026/05/FI_DATI_QA_2025_CSV.zip",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: lacuna del catalogo. I dati orari e l'anagrafica delle stazioni non sono su dati.toscana.it: sul catalogo ARPAT ha solo indicatori annuali fino al 2022-2024 e la risorsa \"Struttura della rete di monitoraggio della qualità dell'aria in Toscana\" (cc-by) punta a un JSON che oggi rimanda alla home del sito. Da segnalare: link morto e archivio orario da pubblicare sul catalogo."
+ },
+ "license": {
+  "state": "clear_with_reserve",
+  "permitted_use": "internal_prototype",
+  "evidence_url": "https://www.arpat.toscana.it/note-legali",
+  "evidence_note": "Note legali ARPAT: \"Salvo dove diversamente specificato, i contenuti del sito Web di ARPAT sono distribuiti con licenza Creative Commons Attribuzione – Non commerciale – Condividi allo stesso modo 3.0 Italia (CC BY-NC-SA 3.0)\"; \"Ai sensi delle Linee Guida Nazionali per la Valorizzazione del Patrimonio Informativo Pubblico, le banche banche dati distribuite in formato vettoriale sono rilasciate – dove non diversamente specificato – con licenza Creative Commons Attribution 4.0 International (CC-BY 4.0)\"; \"Salvo diversa indicazione le informazioni contenute nel sito Web ARPAT sono fornite a scopo informativo.\" La pagina dei dati orari non indica una licenza. Indicatori annuali PM10 e NO2 (solo per il tipo di stazione): schede del catalogo regionale cc-by.",
+  "identifier": "non specificata per i dati orari (note legali ARPAT)",
+  "reserve_note": "Non è scritto quale delle due licenze delle note legali vale per i CSV orari: se vale CC BY-NC-SA 3.0, niente uso commerciale e derivati nella stessa licenza. Uso deciso da Luca il 10/10/2026 (D21): pubblicato anche nella scena online, con entrambe le licenze dichiarate; per uso commerciale chiedere conferma ad ARPAT."
+ },
+ "content_period": {
+  "start": "2025-01-01",
+  "end": "2025-12-31",
+  "note": "archivio orario 2025 (PM10 e PM2,5 giornalieri), dichiarato validato dall'intero ciclo di validazione; il 2026 non è pubblicato come download"
+ },
+ "crs": {
+  "declared": "undeclared",
+  "vertical_datum": "not_declared",
+  "note": "coordinate delle pagine stazione \"N:... - E:...\" senza sistema dichiarato: Gauss-Boaga fuso Ovest (EPSG:3003) dedotto dai valori (FI-MOSSE cade in Via delle Mosse); convertite in EPSG:7791 come i civici"
+ },
+ "units": {
+  "media_oraria": "µg/m³ a 20 °C (CO mg/m³)",
+  "media_giornaliera": "µg/m³ a temperatura ambiente (PM10, PM2,5)"
+ },
+ "checks": [
+  {
+   "name": "stazioni selezionate",
+   "result": "pass",
+   "detail": "6 stazioni della rete regionale nel comune di Firenze (nessun'altra entro 3 km dal riquadro)"
+  },
+  {
+   "name": "stazioni nel riquadro FP",
+   "result": "warn",
+   "detail": "nessuna: la più vicina (FI-MOSSE) è a circa 750 m; valori di stazione, non rappresentano il riquadro"
+  },
+  {
+   "name": "anno in corso",
+   "result": "warn",
+   "detail": "il 2026 non è pubblicato come download: passa solo dall'API dell'app, esclusa"
+  }
+ ],
+ "schema_fields": [
+  "STAZIONE",
+  "PARAMETRO",
+  "DATA (formato AAAAMMGG)",
+  "ORA FINE MISURA (solare)",
+  "MEDIA ORARIA",
+  "VALIDITA'"
+ ]
+}

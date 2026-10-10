@@ -432,7 +432,76 @@
      ]
     ]
    }
-  }
+  },
+  "aree_attesa_altre": [
+   {
+    "receiver_id": "sfc_fi_attesa_s5",
+    "kind": "surface",
+    "scenario": "scn_fi_s5_pensilina_regione_toscana",
+    "descrizione": "area di attesa della fermata bus Regione Toscana (OSM nod_osm_6027223967, shelter=no), seconda della regola di S2 a 571.5 m da un ingresso del Polo: impronta della pensilina S5 allargata di 1 m per lato (8 m x 4 m), parallela alla strada edg_osm_639684458_5974989484_12985864618",
+    "geometry": {
+     "type": "Polygon",
+     "coordinates": [
+      [
+       [
+        678823.44,
+        4851232.58
+       ],
+       [
+        678816.6,
+        4851236.74
+       ],
+       [
+        678818.68,
+        4851240.16
+       ],
+       [
+        678825.52,
+        4851236.0
+       ],
+       [
+        678823.44,
+        4851232.58
+       ]
+      ]
+     ]
+    }
+   },
+   {
+    "receiver_id": "sfc_fi_attesa_s6",
+    "kind": "surface",
+    "scenario": "scn_fi_s6_pensilina_di_novoli",
+    "descrizione": "area di attesa della fermata bus Di Novoli Sn (OSM nod_osm_3216618875, shelter=no), terza della regola di S2 a 644.4 m da un ingresso del Polo: impronta della pensilina S6 allargata di 1 m per lato (8 m x 4 m), parallela alla strada edg_osm_639696064_269352380_269352443",
+    "geometry": {
+     "type": "Polygon",
+     "coordinates": [
+      [
+       [
+        678743.22,
+        4851251.84
+       ],
+       [
+        678750.09,
+        4851247.75
+       ],
+       [
+        678748.05,
+        4851244.31
+       ],
+       [
+        678741.17,
+        4851248.41
+       ],
+       [
+        678743.22,
+        4851251.84
+       ]
+      ]
+     ]
+    }
+   }
+  ],
+  "aree_attesa_altre_nota": "aggiunte il 10 ottobre 2026 per le pensiline S5 e S6: baseline ricongelata, tutto il resto identico al record precedente (controllato da costruisci.py)"
  },
  "condizioni": {
   "date": "2026-07-15",
