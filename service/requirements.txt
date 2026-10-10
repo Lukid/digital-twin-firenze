@@ -50,7 +50,7 @@ referencing==0.37.0
 requests==2.34.2
 rpds-py==2026.6.3
 scipy==1.18.1
-shapely==2.1.2
+shapely==2.2.0
 six==1.17.0
 sse-starlette==3.5.0
 starlette==1.7.0
