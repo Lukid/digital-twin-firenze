@@ -49,7 +49,7 @@ build.py li include se esistono e li salta se mancano. Cartelle `analysis/firenz
 
 Accessibilità: file `accessibilita*.geojson`, uno per destinazione, feature Point (un civico). Proprietà: id, civico, minuti (null se non raggiungibile), stato (ok, non_raggiungibile, dati_insufficienti, vietato), destinazione, destinazione_nome, profilo. Alias accettati per l'output del motore F06: t = minuti, ind = civico, stati reachable, isolated, insufficient_data, forbidden. Colori: fino a 5, 5-10, 10-15, oltre 15 minuti. Gli stati diversi da ok sono anelli grigi: non significano "lontano".
 
-Ombra sui percorsi: file `ombra_percorsi*.geojson`, feature LineString o MultiLineString. Proprietà: id, frazione_ombra (0 sole, 1 ombra), istante (per esempio 2026-07-15T13:00), lunghezza_m. La pagina offre un selettore dell'istante; il livello mostra il calcolo di quell'istante, non segue il cursore dell'ora.
+Ombra sui percorsi: file `ombra_percorsi*.geojson`, feature LineString o MultiLineString. Proprietà: id, frazione_ombra (0 sole, 1 ombra), istante (per esempio 2026-07-15T13:00), lunghezza_m. La pagina offre un selettore dell'istante; il livello mostra il calcolo di quell'istante, non segue il cursore dell'ora. Accetta anche l'uscita del motore F07 (`tratti_ombra_*.geojson`): si disegnano solo i tratti in ombra del caso `veg_lidar_tipico`, i vuoti lungo il percorso sono al sole.
 
 ## Comandi
 

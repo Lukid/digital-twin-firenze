@@ -263,8 +263,10 @@ def accessibilita(dirpath):
 
 def ombra(dirpath):
     """Input: <dir>/ombra_percorsi*.geojson, LineString o MultiLineString EPSG:4326. Proprietà: id, frazione_ombra (0 sole, 1 ombra),
-    istante (testo, es. 2026-07-21T15:00), lunghezza_m. Un istante per file (o più istanti nello stesso file)."""
-    files = sorted(glob.glob(str(pathlib.Path(dirpath) / "ombra_percorsi*.geojson")))
+    istante (testo, es. 2026-07-21T15:00), lunghezza_m. Un istante per file (o più istanti nello stesso file).
+    Accetta anche l'uscita del motore F07, tratti_ombra_*.geojson: solo i tratti in ombra (frazione 1), caso veg_lidar_tipico."""
+    d = pathlib.Path(dirpath)
+    files = sorted(glob.glob(str(d / "ombra_percorsi*.geojson")) + glob.glob(str(d / "tratti_ombra_*.geojson")))
     ist = {}
     for fn in files:
         for f in _feats(fn):
@@ -272,6 +274,10 @@ def ombra(dirpath):
             if gt not in ("LineString", "MultiLineString"):
                 continue
             p = f["properties"]
+            if "shade_fraction" in p:   # formato F07: un tratto in ombra per percorso, ora e caso
+                if p["caso"] != "veg_lidar_tipico":
+                    continue
+                p = {"id": p["receiver_id"], "frazione_ombra": 1.0, "istante": f'{p["date"]}T{p["time_local"]}', "lunghezza_m": p["shaded_m"]}
             lines = [f["geometry"]["coordinates"]] if gt == "LineString" else f["geometry"]["coordinates"]
             for ln in lines:
                 pts = [c for q in ln for c in loc_ll(*q[:2])]

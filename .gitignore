@@ -5,3 +5,4 @@ __pycache__/
 data/
 service/cache/
 .playwright-mcp/
+.playwright-mcp/
