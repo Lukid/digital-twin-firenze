@@ -14,7 +14,7 @@
   "evidence_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
   "evidence_note": "Pagina USGS: \"There are no restrictions on the use of Landsat products.\" Politica dati USGS: \"All public domain imagery may be used, shared, transferred, or redistributed without restriction.\" Citazione chiesta: DOI 10.5066/P9OGBGM6 (Landsat 8-9 OLI/TIRS C2 L2); credito suggerito \"Landsat Collection 2 Level-2 image courtesy of the U.S. Geological Survey\".",
   "identifier": "public-domain",
-  "reserve_note": "Il canale di accesso (Planetary Computer) dichiara license \"proprietary\" con collegamento alla politica USGS (Public Domain); il token SAS anonimo è personale e non cedibile (Supplemental Terms): non va scritto nei file."
+  "reserve_note": "Dati USGS di pubblico dominio, scaricati tramite Microsoft Planetary Computer."
  },
  "content_period": {
   "start": "2023-06-01",
