@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti chiesti (accessibilità, ombre, scenari, scena alla Padova), con servizio MCP. Il 10 ottobre Polo e fermata T2 sono stati rifatti (D19, D20) e ricalcolati da F04 a F11. Revisione del codice completata: `make lint`, `make test` e record delle fonti passano; sei difetti restano aperti. Report allineati ai risultati attuali. Dettagli in [REVISIONE-CODICE-20261010.md](REVISIONE-CODICE-20261010.md). Punto di ripartenza per la prossima sessione.
+Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti chiesti (accessibilità, ombre, scenari, scena alla Padova), con servizio MCP. Il 10 ottobre Polo e fermata T2 sono stati rifatti (D19, D20) e ricalcolati da F04 a F11. Revisione del codice completata e i sei difetti trovati (R1-R6) corretti il 10 ottobre, ognuno con un test (commit `f836d95` e `df0481b`): `make lint` e `make test` passano. I numeri dei report sono confrontati con i file di risultato. Dettagli in [REVISIONE-CODICE-20261010.md](REVISIONE-CODICE-20261010.md). Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -71,13 +71,12 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 ## Prossimi passi possibili
 
-1. Correggere R1: geometrie degeneri o incoerenti con `kind` superano lo schema e causano eccezioni nel calcolo.
-2. Correggere R2/R4/R6: collisioni nella scrittura della cache, dipendenze mancanti nell'alias delle ombre, perdita degli asset precedenti se la costruzione della scena fallisce.
-3. Correggere R3/R5: sensibilità con penalità di attraversamento e risultati delle aree di attesa S5/S6 omessi dal servizio. Priorità, prove e perimetro nella [revisione del codice](REVISIONE-CODICE-20261010.md).
-4. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
-5. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. È una proposta della revisione, non una nuova decisione dell'utente.
+Revisione del codice: R1-R6 chiusi. Due regole emerse dalle correzioni:
+- Chi modifica `analysis/accessibilita.py` o `shadow/ombre.py` deve aggiornare il loro hash in `scenarios/firenze_novoli/baseline.json`, con una nota che riporta l'hash vecchio, e rieseguire il confronto degli scenari: se la modifica non deve cambiare i risultati, deve uscire identico a `confronto.json`; altrimenti va rifatto `scenarios/run.sh`. Senza questo passo `compare_scenarios` rifiuta il confronto (`incompatible_baseline`).
+- La cache del servizio si svuota da sola quando cambiano il codice dei motori o i file di dati che leggono (impronta in `service/cache/<area>/impronta.txt`). Gli job_id non cambiano.
 
-Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
+1. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
+2. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. È una proposta della revisione, non una nuova decisione dell'utente.
 
 ## Come lavora la sessione
 
