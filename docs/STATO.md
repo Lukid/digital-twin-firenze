@@ -4,7 +4,7 @@ Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti 
 
 ## In una riga
 
-Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2 km²), costruito solo da open data con licenza che ne permette il riuso, per mostrarne le potenzialità. Pisa è accantonata nel tag git `pilota-pisa-z2` (D15).
+Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2 km²), costruito solo da open data con licenza che ne permette il riuso, per mostrarne le potenzialità. Pisa è accantonata nel tag git `pilota-pisa-z2` (D15): i suoi file ancora sul ramo principale non sono più mantenuti e non girano con i motori attuali.
 
 ## Fatto su Firenze (ogni consegna ha un REPORT e un test rieseguito dall'integratore)
 
