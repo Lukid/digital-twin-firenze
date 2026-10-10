@@ -10,7 +10,7 @@ L'indice assets/index.json riporta sha256 e dimensione di ogni asset, le fonti e
 import argparse, base64, glob, gzip, hashlib, json, math, pathlib, sys, datetime as dt
 import numpy as np, geopandas as gpd, rasterio, rasterio.windows, shapely
 from rasterio.enums import Resampling
-from shapely.geometry import box, Polygon
+from shapely.geometry import box, Point, Polygon
 from shapely.geometry.polygon import orient
 from pyproj import Transformer
 
@@ -38,7 +38,7 @@ LIVELLI = {
     "alberi": {"etichetta": "Alberi", "fonti": ["src_fi_alberi", "src_fi_dsm2023", "src_fi_dtm2023"]},
     "rete": {"etichetta": "Rete pedonale", "fonti": ["src_osm_firenze"]},
     "destinazioni": {"etichetta": "Destinazioni e ingressi", "fonti": ["src_osm_firenze", "src_cm_edscol_firenze", "src_fi_scuole_statali", "src_gtfs_gest_firenze"]},
-    "tram": {"etichetta": "Fermate tram", "fonti": ["src_fi_tram_fermate"]},
+    "tram": {"etichetta": "Fermate tram", "fonti": ["src_fi_tram_fermate", "src_gtfs_gest_firenze"]},
     "scuole": {"etichetta": "Scuole statali", "fonti": ["src_fi_scuole_statali"]},
     "rifugi": {"etichetta": "Rifugi climatici", "fonti": ["src_fi_rifugi_aree"]},
     "barriere": {"etichetta": "Barriere architettoniche", "fonti": ["src_fi_barriere"]},
@@ -204,10 +204,21 @@ def punti():
                              "Aggancio alla rete": p["stato"], "Raccordo (m)": p["raccordo_m"], "Verifica": p["verifica"],
                              "Condizioni di accesso": d.get("condizioni_accesso"), "Fonte dei dati": d.get("fonte")}})
     n = NORM
-    for _, row in in_fp(gpd.read_file(n / "fi_tram_fermate.gpkg")).iterrows():
+    tram = in_fp(gpd.read_file(n / "fi_tram_fermate.gpkg"))
+    for _, row in tram.iterrows():
         x, z = loc(row.geometry.x, row.geometry.y)
         out.append({"livello": "tram", "id": row.id, "nome": "Fermata tram " + row.nome_ferma.title(), "x": x, "z": z,
                     "attr": {"Linea": row.linea, "Pensilina": "sì" if row.pensilina == 1 else "no"}})
+    # fermate T2 fra le destinazioni ma assenti dal dato comunale (San Donato - Università, fuori dal riquadro FP: D20)
+    for d in dest.values():
+        if d["categoria"] != "tram":
+            continue
+        e = next(i for i in d["ingressi"] if i["entrance_id"] == d["ingresso_predefinito"])
+        if any(Point(e["xy"]).distance(q) < 50 for q in tram.geometry):
+            continue
+        x, z = loc(*e["xy"])
+        out.append({"livello": "tram", "id": e["entrance_id"], "nome": "Fermata tram " + d["nome"], "x": x, "z": z,
+                    "attr": {"Linea": d["linee"], "Pensilina": "non nota (nessun dato nel feed)", "Fonte dei dati": d["fonte"]}})
     for _, row in in_fp(gpd.read_file(n / "fi_scuole_statali.gpkg")).iterrows():
         x, z = loc(row.geometry.x, row.geometry.y)
         out.append({"livello": "scuole", "id": row.id, "nome": row.nome.title(), "x": x, "z": z,
@@ -268,7 +279,7 @@ def ombra(dirpath):
     Accetta anche l'uscita del motore F07, tratti_ombra_*.geojson: solo i tratti in ombra (frazione 1), caso veg_lidar_tipico."""
     d = pathlib.Path(dirpath)
     files = sorted(glob.glob(str(d / "ombra_percorsi*.geojson")) + glob.glob(str(d / "tratti_ombra_*.geojson")))
-    ist = {}
+    ist, quota = {}, {}
     for fn in files:
         for f in _feats(fn):
             gt = f.get("geometry", {}).get("type")
@@ -278,7 +289,10 @@ def ombra(dirpath):
             if "shade_fraction" in p:   # formato F07: un tratto in ombra per percorso, ora e caso
                 if p["caso"] != "veg_lidar_tipico":
                     continue
-                p = {"id": p["receiver_id"], "frazione_ombra": 1.0, "istante": f'{p["date"]}T{p["time_local"]}', "lunghezza_m": p["shaded_m"]}
+                p = {"id": p["receiver_id"], "frazione_ombra": 1.0, "istante": f'{p["date"]}T{p["time_local"]}', "lunghezza_m": p["shaded_m"],
+                     "quota": p["shade_fraction"]}
+            if "quota" in p:
+                quota.setdefault(p["istante"], {})[p["id"]] = r(p["quota"], 3)
             lines = [f["geometry"]["coordinates"]] if gt == "LineString" else f["geometry"]["coordinates"]
             for ln in lines:
                 pts = [c for q in ln for c in loc_ll(*q[:2])]
@@ -286,7 +300,13 @@ def ombra(dirpath):
                 ist.setdefault(key, []).append({"id": p.get("id"), "f": r(p["frazione_ombra"], 3), "m": r(p.get("lunghezza_m"), 1), "p": pts})
     if not ist:
         return None
-    return {"n": sum(len(v) for v in ist.values()), "istanti": [{"istante": k, "tratti": v} for k, v in sorted(ist.items())]}
+    # percorsi interi, per disegnare al sole quello che non è in ombra
+    ids = {t["id"] for v in ist.values() for t in v}
+    g = json.load(open(ROOT / "network/firenze_novoli/percorsi_campione.geojson"))
+    percorsi = [{"id": "pth_fi_" + f["properties"]["id"], "p": [c for q in f["geometry"]["coordinates"] for c in loc_ll(*q[:2])]}
+                for f in g["features"] if "tipo" not in f["properties"] and "pth_fi_" + f["properties"]["id"] in ids]
+    return {"n": sum(len(v) for v in ist.values()), "percorsi": percorsi,
+            "istanti": [{"istante": k, "tratti": v, "quota": quota.get(k, {})} for k, v in sorted(ist.items())]}
 
 
 # --- scenari: interventi ipotetici (opzionale) ---------------------------------
