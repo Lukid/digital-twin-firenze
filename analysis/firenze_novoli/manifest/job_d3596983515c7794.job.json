@@ -1,0 +1,61 @@
+{
+ "job_id": "job_d3596983515c7794",
+ "tool": "compute_walk_access",
+ "status": "succeeded",
+ "created_at": "2026-10-10T08:30:27Z",
+ "started_at": "2026-10-10T08:30:27Z",
+ "finished_at": "2026-10-10T08:30:27Z",
+ "inputs": {
+  "baseline_id": "bas_firenze_novoli_20261009",
+  "snapshot_ids": [
+   "snp_fi_civici_20261009",
+   "snp_gtfs_gest_firenze_20261009",
+   "snp_osm_firenze_20261009"
+  ]
+ },
+ "params": {
+  "destination_ids": [
+   "dst_tram_fm9056"
+  ],
+  "entrance_ids": [
+   "ent_gtfs_fm9056"
+  ],
+  "origins": {
+   "kind": "address_points",
+   "aoi_id": "aoi_firenze_novoli",
+   "count": 3296
+  },
+  "profile": {
+   "speed_m_s": 0.8,
+   "crossing_penalty_s": 0,
+   "stairs": "allowed",
+   "snap_limit_m": 40.0
+  },
+  "thresholds_min": [
+   5.0,
+   10.0,
+   15.0
+  ],
+  "deviazione_alta": {
+   "ratio": 1.5,
+   "min_diretta_m": 100
+  },
+  "method_version": "0.1.0",
+  "graph": {
+   "graph_id": "grf_firenze_novoli_osm_20261009",
+   "graph_sha256": "6f15c8c01cc3ad324c55e7f6c83f2520c42d317ef4f214d9b6251dfe3be5c34e",
+   "regole_sha256": "7334ecafeafe39ede0654d6cbde541ca0c2c7380c9098a21b3b6c81fd6e8eec3"
+  }
+ },
+ "limits": {
+  "max_area_km2": 4,
+  "max_rows": 50000,
+  "max_seconds": 600,
+  "max_memory_mb": 4096
+ },
+ "progress": {
+  "fraction": 1.0,
+  "message": "completato"
+ },
+ "result_manifest_id": "man_d3596983515c7794"
+}
