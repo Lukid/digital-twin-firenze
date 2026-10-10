@@ -62,16 +62,16 @@ Barriere architettoniche del Comune (222 in città, 63 nel riquadro: 25 Accessib
 
 ## Percorsi campione (`percorsi_campione.json` e `.geojson`)
 
-Ricalcolati con `accessibilita.calcola` nella revisione del 10 ottobre. Il test F06 li confronta con F04 entro le tolleranze degli arrotondamenti. Lunghezze comprensive dei raccordi; attraversamenti contati per arco originale, senza duplicare le parti create dallo snapping.
+Valori di `percorsi_campione.json`. Ricalcolati con `accessibilita.calcola` nella revisione del 10 ottobre: stessi attraversamenti, lunghezze uguali entro 0,1 m (arrotondamento dei raccordi), controllate dal test F06. Lunghezze comprensive dei raccordi; attraversamenti contati per arco originale, senza duplicare le parti create dallo snapping.
 
 | Percorso | Origine → destinazione | Lunghezza (m) | Attraversamenti |
 |---|---|---:|---:|
 | R01 | T2 San Donato - Università → Polo D15 | 428,6 | 0 |
-| R02 | T2 Regione Toscana → Polo D15 | 711,4 | 2 |
-| R03 | T2 Regione Toscana → Polo D1 | 889,5 | 2 |
-| R04 | Civico campione → Polo D15 | 235,9 | 3 |
+| R02 | T2 Regione Toscana → Polo D15 | 711,5 | 2 |
+| R03 | T2 Regione Toscana → Polo D1 | 889,6 | 2 |
+| R04 | Civico campione → Polo D15 | 235,8 | 3 |
 | R05 | Civico campione → Polo D4 | 496,1 | 5 |
-| R06 | Civico campione → Polo D15 | 956,1 | 10 |
+| R06 | Civico campione → Polo D15 | 956,0 | 10 |
 | R07 | Civico campione → Polo D4 | 1195,2 | 6 |
 | R08 | Civico di R05 → Vamba | 785,6 | 1 |
 | R09 | T2 Torre degli Agli → Vamba | 416,6 | 3 |

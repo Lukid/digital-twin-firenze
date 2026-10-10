@@ -134,6 +134,12 @@ for tool, args in (("create_local_scenario", {"x": 1}), ("compare_scenarios", No
 # 7. ombra, parametri ridotti: un percorso (R02, 708 m), un orario, passi larghi
 SH = {"baseline_id": BAS, "receivers": [{"route_id": "R02"}], "when": {"date": "2026-09-15", "timezone": "Europe/Rome", "times": ["12:30"]},
       "method": {"name": "geometric_ray", "space_step_m": 5, "time_step_min": 30, "obstacles": "buildings_and_trees"}}
+P0 = [679800, 4851600]   # R1: geometrie ammesse dallo schema ma non trattabili -> invalid_params, non un'eccezione
+for kind, g in (("path", {"type": "LineString", "coordinates": [P0, P0]}), ("path", {"type": "Point", "coordinates": P0}),
+                ("surface", {"type": "Polygon", "coordinates": [[P0, P0, P0, P0]]}), ("surface", {"type": "LineString", "coordinates": [P0, [679810, 4851600]]}),
+                ("surface", {"type": "Polygon", "coordinates": [[P0, [679810, 4851610], [679810, 4851600], [679800, 4851610], P0]]})):   # farfalla
+    r = run("compute_shadow", {**SH, "receivers": [{"receiver_id": "rcv_x", "kind": kind, "geometry": g}]})
+    assert err_code(r) == "invalid_params" and "rcv_x" in r["error"]["message"], (kind, g, r)
 s1 = run("compute_shadow", SH)
 assert s1["status"] == "succeeded" and s1["cached"] is False and core.validate("compute_shadow", "output", s1) == [], s1
 assert s1["cases"] == ["base", "base_h_min", "base_h_max", "alberi_min", "alberi_tipico", "alberi_max"] and s1["sun_state_counts"] == {"ok": 6}
