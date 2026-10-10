@@ -10,7 +10,7 @@ DAY = os.environ.get("DT_DAY") or dt.datetime.now(dt.timezone.utc).strftime("%Y%
 UA = {"User-Agent": "digital-twin-pisa-T03/0.1 (prototipo; lettura pubblica)"}
 OP = "EPSG:7791"
 
-# --- AOI: riquadro e margine dal registro contracts/aree.json (variabile DT_AOI, default aoi_z2), in EPSG:7791 (E,N) e in lon/lat (S,W,N,E)
+# --- AOI: riquadro e margine dal registro contracts/aree.json (variabile DT_AOI, default aoi_firenze_novoli; Pisa con DT_AOI=aoi_z2, D15), in EPSG:7791 (E,N) e in lon/lat (S,W,N,E)
 # I nomi delle chiavi sono storici (z2_*): per ogni area indicano il riquadro, buf_* il riquadro più il margine della rete.
 _to_en = Transformer.from_crs(6706, 7791, always_xy=True)   # lon/lat trattati come RDN2008 geografico (ADR-T02 p.4)
 _to_ll = Transformer.from_crs(7791, 6706, always_xy=True)
@@ -24,7 +24,7 @@ def aoi(aoi_id):
     return {"aoi_id": aoi_id, "buffer_m": m, "z2_ll_SWNE": [s, w, n, e],
             "z2_en": [round(v, 2) for v in z2], "buf_en": [round(v, 2) for v in b],
             "buf_ll_SWNE": [ll[1], ll[0], ll[3], ll[2]]}
-AOI = aoi(os.environ.get("DT_AOI", "aoi_z2"))
+AOI = aoi(os.environ.get("DT_AOI", "aoi_firenze_novoli"))
 BUFFER_M = AOI["buffer_m"]
 # Pisa resta in data/norm/ (percorsi storici); le altre aree in data/norm/<area>/
 NORM = NORM if AOI["aoi_id"] == "aoi_z2" else NORM / AOI["aoi_id"].removeprefix("aoi_")

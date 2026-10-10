@@ -9,10 +9,10 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 NET = ROOT / "network"   # codice e regole (uguali per ogni area)
 REGOLE = json.load(open(NET / "regole.json"))
 
-# Nomi per area (variabile DT_AOI come in pipeline/lib.py, default Pisa: percorsi e nomi storici invariati).
+# Nomi per area (variabile DT_AOI come in pipeline/lib.py, default Firenze dal 10/10/2026, D15; Pisa con DT_AOI=aoi_z2).
 # osm = fonte OSM (cartella raw, snapshot, GeoPackage); gid = parte dell'id del grafo; stem = nome dei file della rete;
 # out = dati pesanti (non versionati); res = manifest, report e file piccoli (versionati).
-AOI_ID = os.environ.get("DT_AOI", "aoi_z2")
+AOI_ID = os.environ.get("DT_AOI", "aoi_firenze_novoli")
 AREE = {"aoi_z2": dict(osm="osm_pisa", gid="z2", stem="rete_z2", out="data/norm/network", res="network", osm_gpkg="data/norm/osm_pisa.gpkg"),
         "aoi_firenze_novoli": dict(osm="osm_firenze", gid="firenze_novoli", stem="rete_firenze_novoli", out="data/norm/firenze_novoli/network", res="network/firenze_novoli",
                                    osm_gpkg="data/norm/firenze_novoli/osm_firenze.gpkg")}
