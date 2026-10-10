@@ -61,6 +61,11 @@ button{cursor:pointer}
 .leg{display:flex;flex-direction:column;gap:5px;font-size:13px;margin:4px 6px;color:var(--tenue)}
 .sub .leg{margin:8px 0 0}
 .leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:8px;vertical-align:-2px;border:1px solid #0004}
+.fonte{margin:0 6px 8px 52px;font-size:12.5px;color:var(--tenue)}
+.fonte p{margin:6px 0}
+.liv .info{flex:none;width:24px;height:24px;margin-right:8px;border:1px solid #0003;border-radius:50%;background:transparent;color:var(--tenue);font:italic 600 13px Georgia,serif;cursor:pointer}
+.liv .info[aria-expanded=true]{background:#0001;color:inherit}
+.liv .info:focus-visible{outline:2px solid #1c6ed5;outline-offset:2px}
 .leg img{width:16px;height:16px;margin-right:6px;vertical-align:-3px}
 .sole-box{padding:0 6px}
 .staz{margin:6px 0;padding:8px 10px;border:1px solid var(--bordo);border-radius:10px;background:#fff;font-size:13px}
@@ -134,6 +139,8 @@ details.fl li{margin-bottom:6px;font-size:13px}
   <p class="sez">La città in 3D</p><div id="g_citta"></div>
   <p class="sez">Mobilità</p><div id="g_mobilita"></div>
   <details class="gruppo"><summary>Luoghi e servizi</summary><div id="g_luoghi"></div></details>
+  <details class="gruppo"><summary>Verde e sport</summary><div id="g_verde"></div></details>
+  <details class="gruppo"><summary>Rischio idraulico e rumore</summary><div id="g_ambiente"></div></details>
   <p class="sez">Catasto</p><div id="g_catasto"></div>
   <form id="catCerca" class="cat" aria-label="Cerca una particella catastale">
    <label>Foglio<input id="catF" required placeholder="42B" autocomplete="off"></label>

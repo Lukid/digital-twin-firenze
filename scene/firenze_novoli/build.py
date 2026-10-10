@@ -45,6 +45,20 @@ LIVELLI = {
     "attesa": {"etichetta": "Aree di attesa (protezione civile)", "fonti": ["src_fi_aree_attesa"]},
     "assistenza": {"etichetta": "Aree di assistenza (protezione civile)", "fonti": ["src_fi_aree_assistenza"]},
     "barriere": {"etichetta": "Barriere architettoniche", "fonti": ["src_fi_barriere"]},
+    "farmacie": {"etichetta": "Farmacie", "fonti": ["src_fi_farmacie"]},
+    "sosta_disabili": {"etichetta": "Stalli per disabili", "fonti": ["src_fi_sosta_disabili"]},
+    "bike_sharing": {"etichetta": "Sosta del bike sharing", "fonti": ["src_fi_bike_sharing"]},
+    "car_sharing": {"etichetta": "Posti del car sharing", "fonti": ["src_fi_car_sharing"]},
+    "scudo_verde": {"etichetta": "Varchi dello Scudo Verde", "fonti": ["src_fi_scudo_verde"]},
+    "zone30": {"etichetta": "Strade in zona 30", "fonti": ["src_fi_zone30"]},
+    "verde": {"etichetta": "Aree verdi del Comune", "fonti": ["src_fi_aree_verdi"]},
+    "giochi": {"etichetta": "Aree giochi", "fonti": ["src_fi_aree_giochi"]},
+    "cani": {"etichetta": "Aree cani", "fonti": ["src_fi_aree_cani"]},
+    "sport": {"etichetta": "Aree sportive", "fonti": ["src_fi_aree_sportive"]},
+    "idraulica": {"etichetta": "Pericolosità idraulica (PGRA)", "fonti": ["src_fi_pericolosita_idraulica"]},
+    "alluvione1966": {"etichetta": "Alluvione del 1966", "fonti": ["src_fi_allagate1966"]},
+    "acustica": {"etichetta": "Classi acustiche (PCCA)", "fonti": ["src_fi_pcca"]},
+    "residenti": {"etichetta": "Residenti per sezione (censimento 2011)", "fonti": ["src_fi_sezioni2011", "src_rt_censimento2011"]},
     "accessibilita": {"etichetta": "Accessibilità (minuti a piedi)", "fonti": ["src_fi_civici", "src_osm_firenze"]},
     "ombra": {"etichetta": "Ombra sui percorsi", "fonti": ["src_osm_firenze", "src_fi_dsm2023"]},
     "scenari": {"etichetta": "Scenari (interventi ipotetici)", "fonti": []},
@@ -66,6 +80,12 @@ LIMITI = [
     "Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
     "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
     "Protezione civile: aree di attesa e di assistenza del piano comunale, file del 2024 (sopralluoghi delle aree di assistenza del 2021). Sono poche per tutta la città: la scena mostra tutte quelle entro 700 m dal riquadro: in scena quelle sul terreno disegnato, in elenco con la distanza quelle più lontane. Le classi di pericolosità sono i codici della fonte, senza legenda nel pacchetto. Non è il percorso di evacuazione e non indica quale area spetta a quale via.",
+    "Servizi (farmacie, stalli per disabili, bike e car sharing, varchi dello Scudo Verde) e aree giochi, cani e sportive: dati del Comune di Firenze, solo quelli sul terreno disegnato. Gli stalli dicono dove sono, non se sono liberi; le farmacie non hanno orari né turni.",
+    "Aree verdi: tutte quelle gestite dal Comune, comprese rotonde, spartitraffico e aiuole non fruibili; il verde privato non c'è.",
+    "Strade in zona 30: porzioni di carreggiata dove vale il limite di 30 km/h, non perimetri di zona.",
+    "Pericolosità idraulica: mappa del Piano di gestione del rischio alluvioni pubblicata dalla protezione civile comunale. Le classi sono i codici della fonte (PS_PERALL_1, 2, 3), senza legenda nel pacchetto. È pianificazione, non la previsione di un evento. Alluvione del 1966: profondità dell'acqua di un evento storico, non uno scenario attuale.",
+    "Classi acustiche: limiti di legge del piano comunale di classificazione acustica, non rumore misurato.",
+    "Residenti: censimento Istat 2011 per sezione (dati della Regione Toscana), quindici anni fa. Densità calcolata sulla superficie della sezione, strade e verde compresi. Non c'è un dato per sezione più recente sul catalogo regionale.",
     "Barriere architettoniche: rilievo del 2013, grado di accessibilità dell'edificio, non dell'ostacolo sul percorso.",
     "Livelli Accessibilità e Ombra sui percorsi: mostrano solo i dati prodotti dai moduli di analisi, se presenti. Non sono calcolati dalla scena.",
     "Particelle catastali: cartografia catastale dell'Agenzia delle Entrate, confini indicativi e non probatori. I fabbricati non ci sono nel servizio. La particella di un edificio è quella che ne contiene almeno metà della superficie: aggancio geometrico, non verificato sugli atti.",
@@ -88,6 +108,21 @@ USO = {
     "src_fi_aree_attesa": "Aree di attesa della protezione civile",
     "src_fi_aree_assistenza": "Aree di assistenza della protezione civile",
     "src_fi_barriere": "Barriere architettoniche",
+    "src_fi_farmacie": "Farmacie",
+    "src_fi_sosta_disabili": "Stalli di sosta per disabili",
+    "src_fi_bike_sharing": "Aree di sosta del bike sharing",
+    "src_fi_car_sharing": "Posti del car sharing",
+    "src_fi_scudo_verde": "Varchi dello Scudo Verde",
+    "src_fi_zone30": "Strade in zona 30",
+    "src_fi_aree_verdi": "Aree verdi del Comune",
+    "src_fi_aree_giochi": "Aree giochi",
+    "src_fi_aree_cani": "Aree cani",
+    "src_fi_aree_sportive": "Aree sportive",
+    "src_fi_pericolosita_idraulica": "Pericolosità idraulica (PGRA)",
+    "src_fi_allagate1966": "Aree allagate nel 1966",
+    "src_fi_pcca": "Classi acustiche del piano comunale",
+    "src_fi_sezioni2011": "Confini delle sezioni di censimento 2011",
+    "src_rt_censimento2011": "Residenti 2011 per sezione (dati Istat)",
     "src_fi_civici": "Civici dei livelli analitici",
     "src_fi_catasto": "Particelle e fogli catastali, riferimento catastale degli edifici",
     "src_fi_landsat_st": "Temperatura delle superfici per data (Landsat 8 e 9, estati 2023-2026)",
@@ -95,6 +130,38 @@ USO = {
     "src_arpat_aria": "Stazioni e valori della qualità dell'aria 2025 (medie annue, superamenti, ultimo valore)",
 }
 
+
+# data del dato mostrata nella scena: solo quando la fonte la dichiara. Qui c'è solo la frase; le date vengono dal record di fonte
+# (content_period start/end di pipeline/sources) o dai dati, così si aggiornano quando si riscarica. La data di aggiornamento della scheda
+# del catalogo non è la data del dato (molte schede del Comune portano il 2026-02-11, un ricaricamento del catalogo) e non si mostra
+ND = "data del rilievo non dichiarata"
+DATA = {
+    "src_fi_dtm2023": "volo del {start}", "src_fi_dsm2023": "volo del {start}", "src_rt_uv_firenze_novoli": "volo del {anno}",
+    "src_osm_firenze": "stato di OpenStreetMap al {end}", "src_fi_alberi": "aggiornato ogni giorno dal Comune: stato al giorno dello scarico",
+    "src_fi_tram_fermate": "dato del {start}", "src_fi_scuole_statali": "dato del {start}", "src_cm_edscol_firenze": "dato del {start}",
+    "src_gtfs_gest_firenze": "orari dal {start} al {end}", "src_fi_rifugi_aree": "dato del {start}",
+    "src_fi_aree_attesa": "file del {start}", "src_fi_aree_assistenza": "file del {start}, sopralluoghi del 2021", "src_fi_barriere": "rilievo del {anno}",
+    "src_fi_farmacie": ND, "src_fi_sosta_disabili": ND, "src_fi_bike_sharing": ND, "src_fi_car_sharing": ND,
+    "src_fi_scudo_verde": "Scudo Verde attivo dal {start}", "src_fi_zone30": ND, "src_fi_aree_verdi": ND, "src_fi_aree_giochi": ND,
+    "src_fi_aree_cani": ND, "src_fi_aree_sportive": ND, "src_fi_pericolosita_idraulica": "data della mappa non dichiarata",
+    "src_fi_allagate1966": "alluvione del {start}", "src_fi_pcca": "data del piano non dichiarata", "src_fi_sezioni2011": "censimento {anno}",
+    "src_rt_censimento2011": "censimento {anno}", "src_fi_civici": ND, "src_fi_catasto": "aggiornamento per foglio, il più recente del {foglio}",
+    "src_fi_landsat_st": "estati dal {anno} al {anno_fine}", "src_sir_termo_firenze": "dal {start}, dati pre-validati", "src_arpat_aria": "anno {anno}, dati validati",
+}
+MESI = "gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre".split()
+
+
+def _giorno(d):
+    a, m, g = map(int, d[:10].split("-")); return f"{'1°' if g == 1 else g} {MESI[m - 1]} {a}"
+
+
+def data_dato(sid, cp):
+    """Frase di DATA con le date del record di fonte; il catasto prende la data più recente dei fogli."""
+    v = {}
+    if cp.get("start"): v.update(start=_giorno(cp["start"]), anno=cp["start"][:4])
+    if cp.get("end"): v.update(end=_giorno(cp["end"]), anno_fine=cp["end"][:4])
+    if "{foglio}" in DATA[sid]: v["foglio"] = _giorno(max(dt.datetime.strptime(x, "%d/%m/%Y") for x in gpd.read_file(NORM / "fi_catasto_fogli.gpkg").BEGINLIFESPANVERSION).strftime("%Y-%m-%d"))
+    return re.sub(r"\b(al|dal|del) (8|11) ", r"\1l'\2 ", DATA[sid].format(**v))   # all'8, dell'11; KeyError se la frase chiede una data che il record non dichiara
 
 def loc(e, n):
     """EPSG:7791 -> piano del motore (x, z)."""
@@ -356,7 +423,78 @@ def punti():
                              "Accessi": re.sub(r"(\w)\?(\w)", r"\1'\2", pc(row.note)).replace("pu? ", "può ") if pc(row.note) else None,   # la fonte ha '?' al posto di apostrofo e accenti
                              "Associazione di riferimento": pc(row.associazio), "Pericolosità indicata dalla fonte": pc(row.pericolosi),
                              "Sopralluogo": pc(row.data_rilev), "Dato del": "2024-06-25"}})
+    # servizi e aree attrezzate del Comune: solo quelli sul terreno disegnato
+    # la fonte scrive l'accento finale con l'apostrofo ("Niccolo'"): ripristinato, tranne le elisioni come "De'"
+    acc = lambda t: re.sub(r"\b(?![Dd]e')(\w+)([aeiouAEIOU])'(?=\s|$)", lambda m: m[1] + "àèìòùÀÈÌÒÙ"["aeiouAEIOU".index(m[2])], t)
+    ti = lambda v: acc(pc(v).title()) if pc(v) else None
+    sul = lambda f, l: (lambda g: g[g.intersects(terra)])(gpd.read_file(n / f, layer=l))
+    def metti(livello, row, nome, attr, area=False):
+        c = row.geometry.representative_point() if area else row.geometry.centroid; x, z = loc(c.x, c.y)
+        d = {"livello": livello, "id": row.id, "nome": nome, "x": x, "z": z, "attr": {k: v for k, v in attr.items() if (pc(v) if isinstance(v, str) else v is not None)}}
+        if area:
+            poly = max(row.geometry.geoms, key=lambda q: q.area) if row.geometry.geom_type == "MultiPolygon" else row.geometry
+            d["contorno"] = [c_ for q in poly.exterior.coords for c_ in loc(*q)]
+        out.append(d)
+    for _, r in sul("fi_farmacie.gpkg", "farmacie").iterrows():
+        metti("farmacie", r, ti(r.DENOMINAZI), {"Indirizzo": " ".join(v for v in (ti(r.VIA), pc(r.NCIVICO)) if v) or None, "Orari e turni": "non nel dato (il Comune li pubblica in un altro dataset, giornaliero)"})
+    for _, r in sul("fi_sosta_disabili.gpkg", "sosta_disabili").iterrows():
+        metti("sosta_disabili", r, "Stallo per disabili", {"Strada": ti(r.strada), "Disposizione": {"LINEA": "in linea", "LISCA": "a spina", "PETTINE": "a pettine"}.get(r.stallo, r.stallo)})
+    for _, r in sul("fi_bike_sharing.gpkg", "bike_sharing").iterrows():
+        metti("bike_sharing", r, "Sosta del bike sharing", {"Indirizzo": ti(r.indirizzo), "Disponibilità dei mezzi": "non nel dato"})
+    for _, r in sul("fi_car_sharing.gpkg", "car_sharing").iterrows():
+        metti("car_sharing", r, "Posto del car sharing", {"Nel dato": "solo la posizione"})
+    for _, r in sul("fi_scudo_verde.gpkg", "scudo_verde").iterrows():
+        metti("scudo_verde", r, f"Varco {r.num_varco} {r.nome_varco}", {"Ubicazione": r.ubicazione, "Verso": {"IN": "in entrata", "OUT": "in uscita"}.get(r.tipo_varco, r.tipo_varco),
+              "Attivo dal": r.data_ini.strftime("%Y-%m-%d") if r.data_ini is not None and str(r.data_ini) != "NaT" else None, "Atto": r.atto_ini})
+    for _, r in sul("fi_aree_giochi.gpkg", "aree_giochi").iterrows():
+        metti("giochi", r, r.NOME_AREA, {"Giardino": r.AREA_APPAR}, area=True)
+    for _, r in sul("fi_aree_cani.gpkg", "aree_cani").iterrows():
+        metti("cani", r, r.NOME_AREA, {"Giardino": r.AREA_APPAR}, area=True)
+    for _, r in sul("fi_aree_sportive.gpkg", "aree_sportive").iterrows():
+        metti("sport", r, r.NOMEAREA, {"Tipo": r.TIPOAREA, "Superficie": f"{r.SUPMQAREA:,.0f} m²".replace(",", ".") if r.SUPMQAREA == r.SUPMQAREA else None,
+              "Proprietà": {"PU": "pubblica", "PR": "privata"}.get(r.PROPRIETA, r.PROPRIETA), "Gestione": r.ENTEGEST}, area=True)
     return out
+
+
+# --- tematismi dipinti sul terreno: poligoni per classe, ritagliati sul terreno disegnato ---------------
+VERDE_FRUIBILE = {"AREA  ATTREZZATA GIARDINO", "PARCO", "AREE ATTREZZATE COMPLEMENTARI", "GIARDINO SCOLASTICO COFI", "ORTI SOCIALI"}
+ACUSTICA = {"1": "#4caf50", "2": "#c5e1a5", "3": "#ffee58", "4": "#ff9800", "5": "#e53935", "6": "#6a1b9a"}
+
+
+def tematismi():
+    terra = box(E0 - MARGINE, N0 - MARGINE, E1 + MARGINE, N1 + MARGINE)
+    def tema(f, l, classi, cl, nota):
+        g = gpd.read_file(NORM / f, layer=l); g = g[g.intersects(terra)]
+        pol = []
+        for row in g.itertuples():
+            i = cl(row)
+            if i is None: continue
+            geom = row.geometry.intersection(terra)
+            if not geom.is_empty: pol.append({"c": i, "a": _contorni(geom)})
+        return {"nota": nota, "classi": [{"t": t, "c": c} for t, c in classi], "poligoni": pol}
+    dens = lambda r: None if r.residenti_2011 != r.residenti_2011 else r.residenti_2011 / (r.geometry.area / 1e4)
+    soglie = [50, 150, 300]
+    out = {
+        "verde": tema("fi_aree_verdi.gpkg", "aree_verdi", [("giardini, parchi, giardini scolastici, orti", "#4caf50"), ("verde sportivo", "#9ccc65"), ("rotonde, aiuole, aree accessorie e altro verde", "#c5e1a5")],
+                      lambda r: 0 if r.USO_AREA in VERDE_FRUIBILE else 1 if str(r.USO_AREA).startswith("VERDE SPORTIVO") else 2,
+                      "Aree verdi gestite dal Comune, per uso. Il verde privato non c'è."),
+        "idraulica": tema("fi_pericolosita_idraulica.gpkg", "pericolosita_idraulica", [("codice PS_PERALL_1", "#bbdefb"), ("codice PS_PERALL_2", "#64b5f6"), ("codice PS_PERALL_3", "#1565c0")],
+                          lambda r: {"PS_PERALL_1": 0, "PS_PERALL_2": 1, "PS_PERALL_3": 2}.get(r.pericolo),
+                          "Classi di pericolosità da alluvione del piano di gestione del rischio. Il file dà solo i codici, senza legenda."),
+        "alluvione1966": tema("fi_allagate1966.gpkg", "allagate1966", [("acqua fino a 2 m", "#90caf9"), ("da 2 a 4 m", "#1e88e5"), ("da 4 a 5 m", "#0d47a1")],
+                              lambda r: {"0-2 (m)": 0, "2-4 (m)": 1, "4-5 (m)": 2}.get(r.AREE_ALLAG),
+                              "Profondità dell'acqua nell'alluvione del 4 novembre 1966."),
+        "acustica": tema("fi_pcca.gpkg", "pcca", [(f"classe {['I', 'II', 'III', 'IV', 'V', 'VI'][i]} ({t})", ACUSTICA[str(i + 1)]) for i, t in enumerate(["40-50 dBA", "45-55 dBA", "50-60 dBA", "55-65 dBA", "60-70 dBA", "70 dBA"])],
+                         lambda r: int(r.CLASSE_ACU) - 1,
+                         "Classe acustica del piano comunale: limiti di rumore ammessi di notte e di giorno, non rumore misurato."),
+        "zone30": tema("fi_zone30.gpkg", "zone30", [("carreggiata in zona 30", "#f06292"), ("area pedonale in zona 30", "#f8bbd0")],
+                       lambda r: {"area di circolazione veicolare": 0, "area di circolazione pedonale": 1}.get(r.tipologia, 0),
+                       "Tratti di strada dove il limite è 30 km/h."),
+        "residenti": tema("fi_sezioni2011.gpkg", "sezioni", [("meno di 50", "#fde0c5"), ("da 50 a 150", "#f59e4c"), ("da 150 a 300", "#d9480f"), ("300 e oltre", "#7f1d1d"), ("nessun dato", "#9e9e9e")],
+                          lambda r: 4 if dens(r) is None else sum(dens(r) >= q for q in soglie),
+                          "Residenti per ettaro in ogni sezione di censimento, censimento Istat 2011. Ogni area colorata è una sezione."),
+    }
+    return {"n": sum(len(v["poligoni"]) for v in out.values()), "livelli": out}
 
 
 # --- mappa di base: verde, acqua e strade da OSM, dipinti sul terreno dalla pagina ---
@@ -666,7 +804,7 @@ def fonti():
         out.append({"id": sid, "titolo": src["title"], "ente": src["publisher"], "url": src["dataset_url"],
                     "licenza": lic.get("identifier") or "non scritta sul layer (licenza regionale)", "stato_licenza": lic["state"],
                     "riserva": lic.get("reserve_note"), "scaricato": sn["retrieved_at"][:10],
-                    "periodo": cp.get("note") or cp.get("end"), "sha256_snapshot": snaps[sid]["sha256"], "uso": uso,
+                    "data": data_dato(sid, cp), "sha256_snapshot": snaps[sid]["sha256"], "uso": uso,
                     **({"fuori_baseline": True} if snaps[sid].get("fuori_baseline") else {})})
     return out
 
@@ -700,6 +838,7 @@ def main():
     assets["mappa"] = scrivi(out, "mappa.json.gz", mappa(aree))
     assets["etichette"] = scrivi(out, "etichette.json.gz", etichette(aree))
     assets["catasto"] = scrivi(out, "catasto.json.gz", catasto())
+    assets["tematismi"] = scrivi(out, "tematismi.json.gz", tematismi())
     for nome, fn in (("temperature", temperature), ("meteo", meteo), ("aria", aria)):   # opzionali: servono i file normalizzati in data/norm
         if (obj := fn()) is not None:
             assets[nome] = scrivi(out, f"{nome}.json.gz", obj)

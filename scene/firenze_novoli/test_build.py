@@ -167,6 +167,19 @@ def test_protezione_civile():
     assert {f["id"] for f in IDX["fonti"]} >= {"src_fi_aree_attesa", "src_fi_aree_assistenza"}
 
 
+def test_ricognizione_catalogo():
+    import collections
+    c = collections.Counter(p["livello"] for p in carica("punti")["punti"])
+    assert {k: c[k] for k in ("farmacie", "sosta_disabili", "bike_sharing", "car_sharing", "scudo_verde", "giochi", "cani", "sport")} == \
+        {"farmacie": 6, "sosta_disabili": 154, "bike_sharing": 15, "car_sharing": 6, "scudo_verde": 5, "giochi": 12, "cani": 3, "sport": 7}   # sul terreno disegnato
+    T = carica("tematismi")["livelli"]
+    assert {k: len(v["poligoni"]) for k, v in T.items()} == {"verde": 103, "idraulica": 30, "alluvione1966": 1, "acustica": 9, "zone30": 179, "residenti": 126}
+    assert all(q["c"] < len(v["classi"]) for v in T.values() for q in v["poligoni"]) and set(T) <= set(IDX["livelli"])
+    nuove = {"src_fi_farmacie", "src_fi_sosta_disabili", "src_fi_pericolosita_idraulica", "src_fi_pcca", "src_fi_sezioni2011", "src_rt_censimento2011"}
+    f = {x["id"]: x for x in IDX["fonti"]}
+    assert nuove <= set(f) and all(f[k].get("fuori_baseline") for k in nuove) and f["src_rt_censimento2011"]["stato_licenza"] == "clear_with_reserve"
+
+
 if __name__ == "__main__":
     for n, f in list(globals().items()):
         if n.startswith("test_"):

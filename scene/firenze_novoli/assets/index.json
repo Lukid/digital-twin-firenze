@@ -1,6 +1,6 @@
 {
  "versione": 1,
- "generato": "2026-10-10T17:21:02Z",
+ "generato": "2026-10-10T18:39:18Z",
  "aoi_id": "aoi_firenze_novoli",
  "area": {
   "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
@@ -52,10 +52,10 @@
   },
   "punti": {
    "file": "punti.json.gz",
-   "byte": 5081,
-   "byte_decompressi": 31414,
-   "sha256": "25d4b249d7fdb43a98085678bb6fa4e4d7a1db527580491efe3c250fb6efaea7",
-   "n": 90
+   "byte": 15451,
+   "byte_decompressi": 79076,
+   "sha256": "93e19a9af89a31d15da7f3d9ec8e202c52b9179da25e9a8eaa5e78498fe46334",
+   "n": 298
   },
   "mappa": {
    "file": "mappa.json.gz",
@@ -77,6 +77,13 @@
    "byte_decompressi": 559466,
    "sha256": "19fabc2f4e2b66d1123524702266db780eeb176dd3352a609047d47d0e4e5f2f",
    "n": 1631
+  },
+  "tematismi": {
+   "file": "tematismi.json.gz",
+   "byte": 83588,
+   "byte_decompressi": 250066,
+   "sha256": "629ad772c261ef201f8b151883cbfde917006515e9c8208aac327be594d3511a",
+   "n": 448
   },
   "temperature": {
    "file": "temperature.json.gz",
@@ -215,6 +222,91 @@
     "src_fi_barriere"
    ]
   },
+  "farmacie": {
+   "etichetta": "Farmacie",
+   "fonti": [
+    "src_fi_farmacie"
+   ]
+  },
+  "sosta_disabili": {
+   "etichetta": "Stalli per disabili",
+   "fonti": [
+    "src_fi_sosta_disabili"
+   ]
+  },
+  "bike_sharing": {
+   "etichetta": "Sosta del bike sharing",
+   "fonti": [
+    "src_fi_bike_sharing"
+   ]
+  },
+  "car_sharing": {
+   "etichetta": "Posti del car sharing",
+   "fonti": [
+    "src_fi_car_sharing"
+   ]
+  },
+  "scudo_verde": {
+   "etichetta": "Varchi dello Scudo Verde",
+   "fonti": [
+    "src_fi_scudo_verde"
+   ]
+  },
+  "zone30": {
+   "etichetta": "Strade in zona 30",
+   "fonti": [
+    "src_fi_zone30"
+   ]
+  },
+  "verde": {
+   "etichetta": "Aree verdi del Comune",
+   "fonti": [
+    "src_fi_aree_verdi"
+   ]
+  },
+  "giochi": {
+   "etichetta": "Aree giochi",
+   "fonti": [
+    "src_fi_aree_giochi"
+   ]
+  },
+  "cani": {
+   "etichetta": "Aree cani",
+   "fonti": [
+    "src_fi_aree_cani"
+   ]
+  },
+  "sport": {
+   "etichetta": "Aree sportive",
+   "fonti": [
+    "src_fi_aree_sportive"
+   ]
+  },
+  "idraulica": {
+   "etichetta": "Pericolosità idraulica (PGRA)",
+   "fonti": [
+    "src_fi_pericolosita_idraulica"
+   ]
+  },
+  "alluvione1966": {
+   "etichetta": "Alluvione del 1966",
+   "fonti": [
+    "src_fi_allagate1966"
+   ]
+  },
+  "acustica": {
+   "etichetta": "Classi acustiche (PCCA)",
+   "fonti": [
+    "src_fi_pcca"
+   ]
+  },
+  "residenti": {
+   "etichetta": "Residenti per sezione (censimento 2011)",
+   "fonti": [
+    "src_fi_sezioni2011",
+    "src_rt_censimento2011"
+   ]
+  },
   "accessibilita": {
    "etichetta": "Accessibilità (minuti a piedi)",
    "fonti": [
@@ -268,7 +360,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-09",
-   "periodo": "volo 2023-06-27",
+   "data": "volo del 27 giugno 2023",
    "sha256_snapshot": "3c8fdac2c02ab5cbb8353760c40962ea95ae9c6162130f30d9ac805608a79d02",
    "uso": "Terreno e quota di base degli alberi"
   },
@@ -281,7 +373,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-09",
-   "periodo": "volo 2023-06-27 (giugno: foglie presenti)",
+   "data": "volo del 27 giugno 2023",
    "sha256_snapshot": "1c6c250f2b91c77858667f8816e132c17f19916639f6e6e1a2578a45a5290451",
    "uso": "Altezza degli edifici e delle chiome"
   },
@@ -294,7 +386,7 @@
    "stato_licenza": "clear_with_reserve",
    "riserva": "Licenza non scritta sul layer: dedotta dalla politica regionale. Verificare prima di ridistribuire.",
    "scaricato": "2026-10-09",
-   "periodo": "volo 2011 (campo anno, audit edifici); data di aggiornamento del servizio non dichiarata",
+   "data": "volo del 2011",
    "sha256_snapshot": "2197d5f1105871037b7f419721a4fcb766d67be50e4adafa1ea9e1319b8f89ad",
    "uso": "Impronte e volumi degli edifici"
   },
@@ -307,7 +399,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-09",
-   "periodo": "stato di OpenStreetMap al 2026-10-08 (timestamp dell'estratto), senza data di rilievo per oggetto",
+   "data": "stato di OpenStreetMap all'8 ottobre 2026",
    "sha256_snapshot": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
    "uso": "Rete pedonale, impronte nuove, ingressi, mappa di base (verde, acqua, strade), nomi dei luoghi"
   },
@@ -320,7 +412,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-09",
-   "periodo": "dataset dichiarato aggiornato ogni giorno (frequenza DAILY): stato alla data di scarico, senza data di rilievo per albero",
+   "data": "aggiornato ogni giorno dal Comune: stato al giorno dello scarico",
    "sha256_snapshot": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
    "uso": "Alberi pubblici"
   },
@@ -333,7 +425,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-09",
-   "periodo": "dato dichiarato del 2025-03-11",
+   "data": "dato dell'11 marzo 2025",
    "sha256_snapshot": "631e460c143af00d2fb4bfbd42a06241a73471b28a88171d12c21ee28fca4085",
    "uso": "Fermate tram"
   },
@@ -346,7 +438,7 @@
    "stato_licenza": "clear_with_reserve",
    "riserva": "IODL 2.0 non è CC BY: richiede attribuzione; l'equivalenza con CC BY e la compatibilità con gli altri layer non sono state valutate giuridicamente. La fonte primaria MIM non ha licenza verificata.",
    "scaricato": "2026-10-09",
-   "periodo": "anagrafe anno scolastico 2026/27, dato dichiarato del 2026-09-18",
+   "data": "dato del 18 settembre 2026",
    "sha256_snapshot": "5a9ab7914290ea32d62aa869c8073063062a575cb3f7c82c8198d5c96d7145b3",
    "uso": "Scuole statali"
   },
@@ -359,7 +451,7 @@
    "stato_licenza": "clear_with_reserve",
    "riserva": "Le risorse non portano licenza e la versione CC non è indicata: vale solo il campo della scheda.",
    "scaricato": "2026-10-09",
-   "periodo": "dato dichiarato del 2014-02-13, scheda aggiornata il 2026-04-24, frequenza IRREG",
+   "data": "dato del 13 febbraio 2014",
    "sha256_snapshot": "791cc1192fa54892486df8343d848c76cd7d4117f00bf64ecef8c4e1047f1050",
    "uso": "Accessi delle scuole"
   },
@@ -372,7 +464,7 @@
    "stato_licenza": "clear_with_reserve",
    "riserva": "La risorsa GEST non porta licenza e la versione CC non è indicata: vale solo il campo della scheda.",
    "scaricato": "2026-10-09",
-   "periodo": "minimo e massimo di calendar_dates.txt (nessun feed_info.txt); contiene solo T2 e T1.3, la T1 non compare",
+   "data": "orari dal 10 agosto 2026 al 30 dicembre 2026",
    "sha256_snapshot": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
    "uso": "Punti delle fermate T2"
   },
@@ -385,7 +477,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-09",
-   "periodo": "dato dichiarato del 2026-06-18, frequenza AS_NEEDED",
+   "data": "dato del 18 giugno 2026",
    "sha256_snapshot": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
    "uso": "Rifugi climatici (aree)"
   },
@@ -398,7 +490,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-10",
-   "periodo": "scheda aggiornata il 2026-02-11, frequenza AS_NEEDED; file dello zip del 2024-06-25",
+   "data": "file del 25 giugno 2024",
    "sha256_snapshot": "5aa2134ee3af73dff923885fd944bec647d01b36b6ed99cf6777eadb4c5f337e",
    "uso": "Aree di attesa della protezione civile",
    "fuori_baseline": true
@@ -412,7 +504,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-10",
-   "periodo": "scheda aggiornata il 2026-02-11, frequenza AS_NEEDED; file dello zip del 2024-06-25; sopralluoghi 2021 (campo data_rilev)",
+   "data": "file del 25 giugno 2024, sopralluoghi del 2021",
    "sha256_snapshot": "b7e5bb817cffc8b674ad71ae82175573ccbc450b192756bf6b2530254003905f",
    "uso": "Aree di assistenza della protezione civile",
    "fuori_baseline": true
@@ -426,9 +518,219 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-09",
-   "periodo": "archivio dichiarato aggiornato al 2013; file dello zip del 2016-09-13; frequenza NOT_PLANNED",
+   "data": "rilievo del 2013",
    "sha256_snapshot": "0f687cebb744beb670a47d81d711f0c620f18f3a4bfbe3c4af252246a32c26dd",
    "uso": "Barriere architettoniche"
+  },
+  {
+   "id": "src_fi_farmacie",
+   "titolo": "Farmacie autorizzate (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/87aaabce-41a5-43d1-b9fe-1282fd882e69",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del rilievo non dichiarata",
+   "sha256_snapshot": "36240997341477baef5c5d43775502bb188be109c8447d88ec4809c2800b5d24",
+   "uso": "Farmacie",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_sosta_disabili",
+   "titolo": "Stalli di sosta riservati ai disabili (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/c27abf04-33c0-44ba-ad74-ef8272af90d2",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del rilievo non dichiarata",
+   "sha256_snapshot": "7564f814550a9dfbf6ecc15cca815abe2bcaaa0efae6ef0226891f245a02c0d1",
+   "uso": "Stalli di sosta per disabili",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_bike_sharing",
+   "titolo": "Aree riservate alla sosta del bike sharing (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/be9ee992-0126-4b8d-afd7-16da15bfda71",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del rilievo non dichiarata",
+   "sha256_snapshot": "7cf32cc6b0b0b9925cf4292f3c077267ba794affe3dcae101c0674ca68878ff6",
+   "uso": "Aree di sosta del bike sharing",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_car_sharing",
+   "titolo": "Posti auto riservati al car sharing (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/66de7a99-a435-45d7-8ad0-6a1caf88c943",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del rilievo non dichiarata",
+   "sha256_snapshot": "65789283a73d4a79281ff8571f69254a5c46db0227f9590351a263476854f702",
+   "uso": "Posti del car sharing",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_scudo_verde",
+   "titolo": "Varchi dello Scudo Verde (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/varchi-scudo-verde",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "Scudo Verde attivo dal 1° aprile 2025",
+   "sha256_snapshot": "2b553d015e65cc375813f35b2d4abc08d31c31825df36521c1897186ed002af3",
+   "uso": "Varchi dello Scudo Verde",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_zone30",
+   "titolo": "Zone 30 (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/88b6ca0a-61f7-42eb-9965-a9cd38df7f65",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del rilievo non dichiarata",
+   "sha256_snapshot": "ac61bab929d38cd64c05b61189482fad415ae21c3057ac69bacc0e147568a6c5",
+   "uso": "Strade in zona 30",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_aree_verdi",
+   "titolo": "Aree verdi (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/d0ffa579-e002-4dc3-94b4-d69207cae114",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del rilievo non dichiarata",
+   "sha256_snapshot": "e8036d81d5e09117acd65a805d42f4dbc738da496bdfc6dea05a8a5079c14f43",
+   "uso": "Aree verdi del Comune",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_aree_giochi",
+   "titolo": "Aree giochi (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/ab741235-f377-40de-a416-e9e00d726833",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del rilievo non dichiarata",
+   "sha256_snapshot": "f561b377624301762745d9d189c53cfde746a1667620a59a41ba7b0396b181f1",
+   "uso": "Aree giochi",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_aree_cani",
+   "titolo": "Aree cani (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/4e52a4cb-4226-47a0-8307-1a10d151ff09",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del rilievo non dichiarata",
+   "sha256_snapshot": "310bef7e245fb03c1ff0c47d75ac7f8a23f148a4534f9f4d1f4a62c8123f4b9b",
+   "uso": "Aree cani",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_aree_sportive",
+   "titolo": "Aree sportive (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/04a78eba-5eb4-48e7-92b4-f16c7b3aa63a",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del rilievo non dichiarata",
+   "sha256_snapshot": "ab95af1202f993c9b719b011b5a111061352f9444a2cdacdf08134f3ae36fd86",
+   "uso": "Aree sportive",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_pericolosita_idraulica",
+   "titolo": "Pericolosità idraulica del Piano di gestione del rischio alluvioni, a cura della protezione civile (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/3511ed47-4797-450b-a583-3163774f246b",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data della mappa non dichiarata",
+   "sha256_snapshot": "bf2c46e910987b8e497b47d2767ca029784cd2c453c51da7c5490a74a4f315a0",
+   "uso": "Pericolosità idraulica (PGRA)",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_allagate1966",
+   "titolo": "Aree allagate dall'alluvione del 1966 (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/7b27687e-1538-4bb8-a803-952f07560070",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "alluvione del 4 novembre 1966",
+   "sha256_snapshot": "5dc396ea3c16746e0e0d2d8958b02a9116254f9f02435a98de903c6693ce7391",
+   "uso": "Aree allagate nel 1966",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_pcca",
+   "titolo": "Piano comunale di classificazione acustica, classi acustiche (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/0dbc7df5-7172-4c1c-99e1-1acb017b5ad3",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "data del piano non dichiarata",
+   "sha256_snapshot": "b60d84efdf0a8298da1958ec8310358e0de99f99e12e2df907c4ef608850458a",
+   "uso": "Classi acustiche del piano comunale",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_fi_sezioni2011",
+   "titolo": "Sezioni di censimento 2011 (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-10",
+   "data": "censimento 2011",
+   "sha256_snapshot": "3c2466fcbe90548fe218a9b00e3d3f3657630374a306ab3827ce82fdbe1ddb38",
+   "uso": "Confini delle sezioni di censimento 2011",
+   "fuori_baseline": true
+  },
+  {
+   "id": "src_rt_censimento2011",
+   "titolo": "XV Censimento della popolazione e delle abitazioni 2011, dati per sezione di censimento (Toscana)",
+   "ente": "Regione Toscana (dati Istat)",
+   "url": "https://dati.toscana.it/dataset/xv-censpop-2011-datisez",
+   "licenza": "CC-BY",
+   "stato_licenza": "clear_with_reserve",
+   "riserva": "La scheda non indica la versione della licenza CC BY: attribuzione a Regione Toscana e Istat in ogni caso.",
+   "scaricato": "2026-10-10",
+   "data": "censimento 2011",
+   "sha256_snapshot": "4893b902480f9bb8bd7d1b44efb8e1e9aad6f81ef71fbc57c25b4e266076c085",
+   "uso": "Residenti 2011 per sezione (dati Istat)",
+   "fuori_baseline": true
   },
   {
    "id": "src_fi_civici",
@@ -439,7 +741,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-09",
-   "periodo": "dataset dichiarato aggiornato al bisogno (AS_NEEDED), ultima modifica 2026-10-05; stato alla data di scarico",
+   "data": "data del rilievo non dichiarata",
    "sha256_snapshot": "3c501a28c48a56ac8e9b65e3233f3073284cab4e6126205dc04f72d60507c505",
    "uso": "Civici dei livelli analitici"
   },
@@ -452,7 +754,7 @@
    "stato_licenza": "clear",
    "riserva": null,
    "scaricato": "2026-10-10",
-   "periodo": "aggiornamento dichiarato per foglio (BEGINLIFESPANVERSION dei fogli, il più recente 2026-10-06 nel riquadro); stato alla data di scarico",
+   "data": "aggiornamento per foglio, il più recente del 6 ottobre 2026",
    "sha256_snapshot": "dfa2b6b7fc288a521f76ec57fb5be2ac5f554d690301afec504b8b87b76b44ec",
    "uso": "Particelle e fogli catastali, riferimento catastale degli edifici",
    "fuori_baseline": true
@@ -464,9 +766,9 @@
    "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature",
    "licenza": "public-domain",
    "stato_licenza": "clear",
-   "riserva": "Il canale di accesso (Planetary Computer) dichiara license \"proprietary\" con collegamento alla politica USGS (Public Domain); il token SAS anonimo è personale e non cedibile (Supplemental Terms): non va scritto nei file.",
+   "riserva": "Dati USGS di pubblico dominio, scaricati tramite Microsoft Planetary Computer.",
    "scaricato": "2026-10-10",
-   "periodo": "passaggi estivi (giugno-settembre) 2023-2026 alle 09:58-09:59 UTC circa; tenute solo le date con almeno l'80% di celle valide sul riquadro FP",
+   "data": "estati dal 2023 al 2026",
    "sha256_snapshot": "1401627a99aa19e672593aff9c31acba6cfbe4436fbc7024c559432db3d03047",
    "uso": "Temperatura delle superfici per data (Landsat 8 e 9, estati 2023-2026)",
    "fuori_baseline": true
@@ -480,7 +782,7 @@
    "stato_licenza": "clear_with_reserve",
    "riserva": "Condividi allo stesso modo: i derivati di questo livello (meteo.json.gz) vanno distribuiti in CC BY-SA 4.0. La scheda del catalogo (anagrafica stazioni) dice cc-by-sa, le sue risorse A1_PublicDomain: vale la pagina del SIR. Dati dichiarati pre-validati.",
    "scaricato": "2026-10-10",
-   "periodo": "massime e minime giornaliere 2023-2026 della stazione, dati pre-validati; ora solare",
+   "data": "dal 1° gennaio 2023, dati pre-validati",
    "sha256_snapshot": "39ebcc88c788be5d392d563d0bd03d0ae171539b171d4b582a7ee77c2a466087",
    "uso": "Temperatura dell'aria, massime e minime giornaliere (CC BY-SA 4.0)",
    "fuori_baseline": true
@@ -494,7 +796,7 @@
    "stato_licenza": "clear_with_reserve",
    "riserva": "Non è scritto quale delle due licenze delle note legali vale per i CSV orari: se vale CC BY-NC-SA 3.0, niente uso commerciale e derivati nella stessa licenza. Uso deciso da Luca il 10/10/2026 (D21): pubblicato anche nella scena online, con entrambe le licenze dichiarate; per uso commerciale chiedere conferma ad ARPAT.",
    "scaricato": "2026-10-10",
-   "periodo": "archivio orario 2025 (PM10 e PM2,5 giornalieri), dichiarato validato dall'intero ciclo di validazione; il 2026 non è pubblicato come download",
+   "data": "anno 2025, dati validati",
    "sha256_snapshot": "70bdeb1ced6d2a04ac39b8fa1030c2ac3b423b0e96a257a4d1c61cfe9074e458",
    "uso": "Stazioni e valori della qualità dell'aria 2025 (medie annue, superamenti, ultimo valore)",
    "fuori_baseline": true
@@ -512,6 +814,12 @@
   "Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
   "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
   "Protezione civile: aree di attesa e di assistenza del piano comunale, file del 2024 (sopralluoghi delle aree di assistenza del 2021). Sono poche per tutta la città: la scena mostra tutte quelle entro 700 m dal riquadro: in scena quelle sul terreno disegnato, in elenco con la distanza quelle più lontane. Le classi di pericolosità sono i codici della fonte, senza legenda nel pacchetto. Non è il percorso di evacuazione e non indica quale area spetta a quale via.",
+  "Servizi (farmacie, stalli per disabili, bike e car sharing, varchi dello Scudo Verde) e aree giochi, cani e sportive: dati del Comune di Firenze, solo quelli sul terreno disegnato. Gli stalli dicono dove sono, non se sono liberi; le farmacie non hanno orari né turni.",
+  "Aree verdi: tutte quelle gestite dal Comune, comprese rotonde, spartitraffico e aiuole non fruibili; il verde privato non c'è.",
+  "Strade in zona 30: porzioni di carreggiata dove vale il limite di 30 km/h, non perimetri di zona.",
+  "Pericolosità idraulica: mappa del Piano di gestione del rischio alluvioni pubblicata dalla protezione civile comunale. Le classi sono i codici della fonte (PS_PERALL_1, 2, 3), senza legenda nel pacchetto. È pianificazione, non la previsione di un evento. Alluvione del 1966: profondità dell'acqua di un evento storico, non uno scenario attuale.",
+  "Classi acustiche: limiti di legge del piano comunale di classificazione acustica, non rumore misurato.",
+  "Residenti: censimento Istat 2011 per sezione (dati della Regione Toscana), quindici anni fa. Densità calcolata sulla superficie della sezione, strade e verde compresi. Non c'è un dato per sezione più recente sul catalogo regionale.",
   "Barriere architettoniche: rilievo del 2013, grado di accessibilità dell'edificio, non dell'ostacolo sul percorso.",
   "Livelli Accessibilità e Ombra sui percorsi: mostrano solo i dati prodotti dai moduli di analisi, se presenti. Non sono calcolati dalla scena.",
   "Particelle catastali: cartografia catastale dell'Agenzia delle Entrate, confini indicativi e non probatori. I fabbricati non ci sono nel servizio. La particella di un edificio è quella che ne contiene almeno metà della superficie: aggancio geometrico, non verificato sugli atti.",

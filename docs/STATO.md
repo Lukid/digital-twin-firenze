@@ -12,7 +12,7 @@ Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2
 |---|---|---|
 | F01 audit e riquadro | `docs/audit-firenze.md`, `docs/audit-firenze/` | approvato (D13) |
 | F02 contratti a più aree | `contracts/` (ADR-F02.md) | `contracts/.venv/bin/python contracts/validate.py` |
-| F03 acquisizione, 15 fonti (+ aree pedonali del Comune) | `pipeline/` (REPORT-F03.md) | `pipeline/.venv/bin/python pipeline/validate_records.py` |
+| F03 acquisizione, 15 fonti nella baseline, 36 record di fonte con quelle aggiunte dopo | `pipeline/` (REPORT-F03.md) | `pipeline/.venv/bin/python pipeline/validate_records.py` |
 | F04 rete e ingressi | `network/` (REPORT-F04.md) | `pipeline/.venv/bin/python network/test_rete_firenze.py` |
 | F05 edifici e verde | `geometry/` (REPORT-F05.md) | `pipeline/.venv/bin/python geometry/test_geometrie_firenze.py` |
 | F06 accessibilità | `analysis/` (REPORT-F06.md) | `bash analysis/run.sh` |
@@ -34,6 +34,8 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 - Scenari aggiunti (10 ottobre): pensiline S5 (fermata bus Regione Toscana, area di attesa da 0% a 40% d'ombra a mezzogiorno di luglio) e S6 (Di Novoli Sn, già all'ombra a mezzogiorno). Filari nuovi su R02 e verso Vamba non possibili con la regola di S1 (su R02 ricade su S1).
 - Nuovi livelli nella scena (10 ottobre): particelle catastali con ricerca per foglio e particella; temperatura delle superfici Landsat (41 giornate estive 2023-2026) con l'aria della stazione SIR Firenze Università; qualità dell'aria 2025 dalle 6 stazioni ARPAT di Firenze (la più vicina, FI-MOSSE, a 745 m dal riquadro).
+
+- Ricognizione del catalogo regionale (10 ottobre): 15 fonti nuove fuori baseline, tutte CC BY. Nella scena: farmacie, stalli per disabili, bike e car sharing, varchi dello Scudo Verde, aree giochi, cani e sportive come punti; aree verdi, pericolosità idraulica PGRA, alluvione del 1966, classi acustiche, strade in zona 30 e residenti 2011 per sezione come aree colorate sul terreno. I residenti 2011 non entrano ancora nell'accessibilità (resta sui civici).
 
 ## Limiti principali
 
