@@ -4,7 +4,7 @@ Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti 
 
 ## In una riga
 
-Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2 km²), costruito solo da open data con licenza che ne permette il riuso, per mostrarne le potenzialità. Pisa è accantonata nel tag git `pilota-pisa-z2` (D15): i suoi file ancora sul ramo principale non sono più mantenuti e non girano con i motori attuali.
+Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2 km²), costruito solo da open data con licenza che ne permette il riuso, per mostrarne le potenzialità. Pisa è accantonata nel tag git `pilota-pisa-z2` (D15); il 10 ottobre i suoi file sono stati tolti dal ramo principale, tranne gli script di rete e geometria di Pisa (`network/build.sh`, `geometry/build.sh` e i loro test), non più mantenuti.
 
 ## Fatto su Firenze (ogni consegna ha un REPORT e un test rieseguito dall'integratore)
 
@@ -63,9 +63,8 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 ## Prossimi passi possibili
 
-1. Spostare in una cartella a parte, o togliere dal ramo principale, i file di Pisa (`fieldwork/`, `nl/` tranne `nl/firenze_novoli/`, `preview/`, `scene/` vecchia, output Pisa in `analysis/`, `shadow/`, `scenarios/`); poi puntare `contracts/validate.py` (riga 58) a `scenarios/firenze_novoli/baseline.json`.
-2. Copiare three.js nella cartella della scena per l'uso senza rete.
-3. Difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`): tool che elenca gli scenari, conteggio dei civici raggiunti, accessibilità verso almeno una di più destinazioni.
+1. Copiare three.js nella cartella della scena per l'uso senza rete.
+2. Difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`): tool che elenca gli scenari, conteggio dei civici raggiunti, accessibilità verso almeno una di più destinazioni.
 
 Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
 

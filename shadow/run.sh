@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # F07: poligoni della vegetazione LiDAR, analisi d'ombra su Firenze Novoli (circa 10 minuti) e test. Richiede pipeline/.venv e geometry/build_firenze.sh già eseguito.
-# L'area viene da DT_AOI (default aoi_firenze_novoli). verifica_raster.py resta nel ramo ma non è parte del flusso (finestra e dati di Pisa, vedi tag pilota-pisa-z2).
+# L'area viene da DT_AOI (default aoi_firenze_novoli). La verifica raster di Pisa (verifica_raster.py) è nel tag pilota-pisa-z2.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 PY=pipeline/.venv/bin/python
