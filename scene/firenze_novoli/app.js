@@ -173,11 +173,13 @@ async function main() {
   gruppi.rete = nastri(dati.rete.archi, 0.2, (t) => (RC[t.tipo] || [0, 2.6])[1], (t) => hex((RC[t.tipo] || [0x8e44ad])[0]));
   scene.add(gruppi.rete);
 
-  // punti: destinazioni, tram, scuole, rifugi, aree di protezione civile, barriere
-  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x00a8e8, 6, 26], scuole: [0x7048e8, 6, 26], rifugi: [0x2f9e44, 6, 22], attesa: [0x1864ab, 6, 26], assistenza: [0xe67700, 6, 26], barriere: [0xc2255c, 1.6, 5] };
+  // punti: destinazioni, tram, scuole, rifugi, aree di protezione civile, barriere, servizi e aree attrezzate del Comune
+  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x00a8e8, 6, 26], scuole: [0x7048e8, 6, 26], rifugi: [0x2f9e44, 6, 22], attesa: [0x1864ab, 6, 26], assistenza: [0xe67700, 6, 26], barriere: [0xc2255c, 1.6, 5],
+    farmacie: [0x0ca678, 5, 20], sosta_disabili: [0x1971c2, 1.4, 4], bike_sharing: [0xf08c00, 4, 14], car_sharing: [0x5f3dc4, 4, 14], scudo_verde: [0x2b8a3e, 4, 16],
+    giochi: [0xe8590c, 5, 18], cani: [0x9c36b5, 5, 18], sport: [0x1098ad, 5, 18] };
   // icone: cerchio col colore del livello e una sigla (T tram, S scuola, R rifugio climatico, AT e AA aree di attesa e di assistenza come nei codici del Comune)
   const ICONE = {};
-  for (const [k, l] of [['tram', 'T'], ['scuole', 'S'], ['rifugi', 'R'], ['attesa', 'AT'], ['assistenza', 'AA']]) {
+  for (const [k, l] of [['tram', 'T'], ['scuole', 'S'], ['rifugi', 'R'], ['attesa', 'AT'], ['assistenza', 'AA'], ['farmacie', '+'], ['bike_sharing', 'B'], ['car_sharing', 'C'], ['scudo_verde', 'V'], ['giochi', 'G'], ['cani', 'Ca'], ['sport', 'Sp']]) {
     const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d');
     x.beginPath(); x.arc(32, 32, 29, 0, 7); x.fillStyle = '#' + PUNTO[k][0].toString(16).padStart(6, '0'); x.fill(); x.lineWidth = 4; x.strokeStyle = '#fff'; x.stroke();
     x.fillStyle = '#fff'; x.font = `bold ${l.length > 1 ? 28 : 40}px system-ui, sans-serif`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(l, 32, 35);
@@ -188,7 +190,8 @@ async function main() {
   for (const p of dati.punti.punti) {
     if (p.fuori) continue;   // oltre il terreno disegnato: elenco sotto il livello, come le stazioni ARPAT
     const [col, r, h] = PUNTO[p.livello], g = gruppi[p.livello], q = new THREE.Group();
-    const ic = ICONE[p.livello], m = ic ? new THREE.Sprite(new THREE.SpriteMaterial({ map: ic.t })) : new THREE.Mesh(sfera, new THREE.MeshStandardMaterial({ color: col, roughness: 0.6 }));
+    const ic = ICONE[p.livello], m = ic ? new THREE.Sprite(new THREE.SpriteMaterial({ map: ic.t, depthTest: false })) : new THREE.Mesh(sfera, new THREE.MeshStandardMaterial({ color: col, roughness: 0.6 }));
+    if (ic) m.renderOrder = 10;   // icone sempre sopra gli edifici, come i segnaposto delle mappe
     m.scale.setScalar(ic ? 3 * r : r); m.position.y = h; m.userData = { tipo: p.livello, punto: p }; q.add(m); sel.push(m);
     const s = new THREE.Mesh(palo, m.isSprite ? new THREE.MeshStandardMaterial({ color: col }) : m.material); s.scale.y = h; s.position.y = h / 2; q.add(s);
     q.position.set(p.x, tY(p.x, p.z), p.z); g.add(q);
@@ -228,6 +231,23 @@ async function main() {
     for (const f of C.fogli) {
       const d = document.createElement('span'); d.className = 'foglio'; d.textContent = 'Foglio ' + f.f; etiq.el.appendChild(d);
       etiq.voci.push({ d, k: 2, cat: true, p: new THREE.Vector3(f.x, tY(f.x, f.z) + 2, f.z) });
+    }
+  }
+
+  // tematismi del Comune e del censimento (verde, rischio idraulico, alluvione del 1966, classi acustiche, zone 30, residenti):
+  // poligoni per classe dipinti su copie del terreno, semitrasparenti, a 1 m per pixel (2 m su schermi piccoli)
+  if (dati.tematismi) {
+    const T0 = dati.terreno, W = (T0.nx - 1) * T0.passo, H = (T0.ny - 1) * T0.passo, k = matchMedia('(pointer:coarse)').matches || innerWidth < 700 ? 0.5 : 1;
+    for (const [nome, L] of Object.entries(dati.tematismi.livelli)) {
+      const c = document.createElement('canvas'); c.width = Math.round(W * k); c.height = Math.round(H * k);
+      const x = c.getContext('2d');
+      for (const q of L.poligoni) {
+        x.fillStyle = L.classi[q.c].c;
+        for (const anelli of q.a) { x.beginPath(); for (const r of anelli) { for (let i = 0; i < r.length; i += 2) (i ? x.lineTo : x.moveTo).call(x, (r[i] - T0.x0) * k, (r[i + 1] - T0.z0) * k); x.closePath(); } x.fill('evenodd'); }
+      }
+      const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+      const m = new THREE.Mesh(gruppi.terreno.geometry, new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0.85, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -3, polygonOffsetUnits: -3 }));
+      m.position.y = 0.3; m.renderOrder = 4; m.visible = false; gruppi[nome] = m; scene.add(m);
     }
   }
 
@@ -331,6 +351,11 @@ async function main() {
     g.visible = $('l_scenari').checked; scnGruppo = g; gruppi.scenari = g; scene.add(g); shadowDirty = dirty = true;
   }
 
+  // fonti di un livello: chi fornisce il dato, di quando è, quando è stato scaricato, licenza e link (D10)
+  const fontiDi = (k) => (idx.livelli[k]?.fonti || []).map((id) => idx.fonti.find((f) => f.id === id)).filter(Boolean);
+  const fontiTesto = (k) => fontiDi(k).map((f) => `<p><strong>${tx(f.titolo)}</strong><br>${tx(f.ente)}. ${tx(f.data.charAt(0).toUpperCase() + f.data.slice(1))}.<br>`
+    + `Scaricato il ${f.scaricato}. Licenza ${tx(f.licenza)}${f.riserva ? ', con riserva: ' + tx(f.riserva.replace(/\.$/, '')) : ''}. <a href="${f.url}" target="_blank" rel="noopener">Scheda del dato</a></p>`).join('');
+
   // --- pannello: righe dei livelli per sezione, come a Padova; i colori stanno nella scheda Legenda ----
   const tx = (v) => String(v).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const ICO = {
@@ -340,7 +365,11 @@ async function main() {
     ombra: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2', scenari: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3', catasto: 'M3 4h18v16H3zM3 11h9v9M12 4v7h9', temperature: 'M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0M12 9v8', altro: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',
   };
   const TINTA = { edifici: '#c0643c', alberi: '#55894a', terreno: '#8a7a55', etichette: '#5d7f68', rete: '#2f6fb5', accessibilita: '#31688e', ombra: '#a87a00', scenari: '#e0218a', catasto: '#8a5a2b', temperature: '#d7191c' };
-  const SEZIONE = { edifici: 'g_citta', alberi: 'g_citta', terreno: 'g_citta', etichette: 'g_citta', rete: 'g_mobilita', tram: 'g_mobilita', accessibilita: 'g_analisi', ombra: 'g_analisi', scenari: 'g_interventi', catasto: 'g_catasto', temperature: 'g_analisi' };
+  const SEZIONE = { edifici: 'g_citta', alberi: 'g_citta', terreno: 'g_citta', etichette: 'g_citta', rete: 'g_mobilita', tram: 'g_mobilita', accessibilita: 'g_analisi', ombra: 'g_analisi', scenari: 'g_interventi', catasto: 'g_catasto', temperature: 'g_analisi',
+    bike_sharing: 'g_mobilita', car_sharing: 'g_mobilita', scudo_verde: 'g_mobilita', zone30: 'g_mobilita', verde: 'g_verde', giochi: 'g_verde', cani: 'g_verde', sport: 'g_verde',
+    idraulica: 'g_ambiente', alluvione1966: 'g_ambiente', acustica: 'g_ambiente', residenti: 'g_analisi' };
+  const SPENTI = ['barriere', 'rete', 'catasto', 'temperature', 'aria', 'farmacie', 'sosta_disabili', 'bike_sharing', 'car_sharing', 'scudo_verde', 'zone30', 'verde', 'giochi', 'cani', 'sport', 'idraulica', 'alluvione1966', 'acustica', 'residenti'];   // accesi a richiesta
+  const TEMI = dati.tematismi ? dati.tematismi.livelli : {};
   const svg = (d) => `<svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`;
   const css = (n) => '#' + n.toString(16).padStart(6, '0');
   const opzioni = (lista, et) => lista.map((d, i) => `<option value="${i}">${tx(d[et])}</option>`).join('');
@@ -348,19 +377,26 @@ async function main() {
   for (const [k, L] of Object.entries(idx.livelli)) {
     if (SENZA_RIGA.includes(k)) continue;
     const an = ['accessibilita', 'ombra', 'scenari'].includes(k), presente = an ? idx.livelli_analitici[k].presente : k !== 'temperature' || !!TM;
-    const tinta = TINTA[k] || (PUNTO[k] ? css(PUNTO[k][0]) : '#5d7f68');
+    const tinta = TINTA[k] || (PUNTO[k] ? css(PUNTO[k][0]) : TEMI[k] ? TEMI[k].classi[TEMI[k].classi.length > 3 ? 2 : 0].c : '#5d7f68');
     const ico = ICONE[k] ? `<img src="${ICONE[k].url}" alt="" width="24" height="24">` : svg(ICO[k] || ICO.altro);
     const w = document.createElement('div');
     w.innerHTML = `<label class="liv"><span class="ico" style="color:${tinta};background:${tinta}1c">${ico}</span><span class="nome">${k === 'scenari' ? 'Mostra l\'intervento (dopo)' : L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</span>`
-      + `<span class="switch"><input type="checkbox" role="switch" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && !['barriere', 'rete', 'catasto', 'temperature', 'aria'].includes(k) ? 'checked' : ''}><i></i></span></label>`;
+      + (fontiDi(k).length ? `<button type="button" class="info" aria-expanded="false" aria-controls="fo_${k}" aria-label="Fonti dei dati: ${tx(L.etichetta)}" title="Fonti dei dati">i</button>` : '')
+      + `<span class="switch"><input type="checkbox" role="switch" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && !SPENTI.includes(k) ? 'checked' : ''}><i></i></span></label>`;
     if (k === 'accessibilita' && presente) w.innerHTML += `<div class="sub"><label for="s_acc">Verso</label><select id="s_acc">${opzioni(dati.accessibilita.destinazioni, 'nome')}</select><div class="leg" id="leg_accessibilita"></div></div>`;
     if (k === 'ombra' && presente) w.innerHTML += `<div class="sub"><label for="s_om">Istante del calcolo</label><select id="s_om">${dati.ombra.istanti.map((d, i) => `<option value="${i}">${new Date(d.istante + ':00Z').toLocaleString('it-IT', { timeZone: 'UTC', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}</option>`).join('')}</select><div class="riga"><button type="button" id="vOm">Vai ai percorsi</button></div><div class="leg"><span>Due percorsi campione verso il Polo universitario.</span><span><i style="background:#f2c230"></i>al sole</span><span><i style="background:#1b2a6b"></i>in ombra</span></div><div class="leg" id="leg_ombra"></div></div>`;
     if (k === 'temperature' && TM) w.innerHTML += `<div class="sub"><label for="s_t">Cosa mostrare</label><select id="s_t"><option value="media">Media delle giornate estive</option><option value="sopra_40">Giornate sopra 40 °C</option>${TM.date.map((d, i) => `<option value="${i}">${new Date(d.data).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}</option>`).join('')}</select><div class="leg" id="leg_temperature"></div></div>`;
+    if (TEMI[k]) w.innerHTML += `<div class="sub"><p class="intro">${tx(TEMI[k].nota)}</p><div class="leg">${TEMI[k].classi.map((c) => `<span><i style="background:${c.c}"></i>${tx(c.t)}</span>`).join('')}</div></div>`;
+    if (fontiDi(k).length) w.innerHTML += `<div class="fonte" id="fo_${k}" hidden>${fontiTesto(k)}</div>`;
     const lontani = dati.punti.punti.filter((p) => p.livello === k && p.fuori).sort((a, b) => a.distanza_m - b.distanza_m);
     if (lontani.length) w.innerHTML += `<div class="sub"><p class="intro">Fuori dal riquadro, quindi elenco e non punti in scena:</p>${lontani.map((p) => `<details class="staz"><summary><strong>${tx(p.nome)}</strong><small>a ${p.distanza_m} m dal riquadro</small></summary>`
       + `<ul>${Object.entries(p.attr).filter(([, v]) => v != null).map(([a, v]) => `<li><strong>${tx(a)}</strong>: ${tx(v)}</li>`).join('')}</ul></details>`).join('')}</div>`;
     $(SEZIONE[k] || 'g_luoghi').appendChild(w);
   }
+
+  for (const b of document.querySelectorAll('.liv .info')) b.addEventListener('click', (e) => {
+    e.preventDefault(); const d = $(b.getAttribute('aria-controls')), on = d.hidden; d.hidden = !on; b.setAttribute('aria-expanded', on);
+  });
 
   // scheda Interventi: uno scenario per riquadro, con i numeri del calcolo già visibili
   if (idx.livelli_analitici.scenari.presente) {
@@ -382,6 +418,9 @@ async function main() {
       + '<span>Destinazioni: i 7 ingressi del Polo delle Scienze Sociali, le scuole Vamba (primaria e infanzia), le fermate T2 San Donato - Università, Regione Toscana e Torre degli Agli.</span>'],
     ['Accessibilità', SCALA.map((s) => sw(s[1], s[2])).join('') + '<span><i style="background:#fff;border:3px double #777;border-radius:50%"></i>non raggiungibile, vietato o dati insufficienti</span>'],
     ['Ombra sui percorsi', sw('#f2c230', 'al sole') + sw('#1b2a6b', 'in ombra')],
+    ['Servizi e aree attrezzate', pin('farmacie', 'farmacia') + pin('sosta_disabili', 'stallo per disabili') + pin('bike_sharing', 'sosta del bike sharing') + pin('car_sharing', 'posto del car sharing') + pin('scudo_verde', 'varco dello Scudo Verde')
+      + pin('giochi', 'area giochi') + pin('cani', 'area cani') + pin('sport', 'area sportiva')],
+    ...Object.entries(TEMI).map(([k, L]) => [idx.livelli[k].etichetta, `<span>${tx(L.nota)}</span>` + L.classi.map((c) => sw(c.c, tx(c.t))).join('')]),
     ['Interventi', sw(css(COL_SCN), 'albero o pensilina ipotetici')],
     ['Temperatura delle superfici', `<span><i style="background:linear-gradient(90deg,${RAMPA.map((r) => r[1]).join(',')});width:120px"></i>da 20 a 50 °C</span>`],
     ['Catasto', sw(css(COL_CAT), 'confine di particella') + sw(css(COL_FOGLIO), 'confine di foglio') + sw('#ff7a1a', 'particella cercata')],
@@ -478,8 +517,7 @@ async function main() {
   function scheda(titolo, righe, livello, extra, tecnici) {
     $('schedaTit').textContent = titolo;
     $('schedaDati').innerHTML = lista(righe);
-    const fonti = idx.livelli[livello].fonti.map((id) => idx.fonti.find((f) => f.id === id));
-    $('schedaFonte').innerHTML = `<details><summary>Fonti dei dati (${fonti.length})</summary>` + fonti.map((f) => `${esc(f.titolo)}, ${esc(f.ente)}. Licenza ${esc(f.licenza)}${f.riserva ? ' (con riserva)' : ''}. Scaricato il ${f.scaricato}. <a href="${f.url}" target="_blank" rel="noopener">scheda del dato</a>`).join('<br>') + '</details>';
+    $('schedaFonte').innerHTML = `<details><summary>Fonti dei dati</summary>${fontiTesto(livello)}</details>`;
     if (extra) $('schedaFonte').innerHTML = extra;
     const t = (tecnici || []).filter(([, v]) => v != null && v !== '');
     if (t.length) $('schedaFonte').innerHTML += `<details><summary>Dettagli tecnici</summary><dl>${t.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></details>`;
@@ -548,7 +586,7 @@ async function main() {
   });
 
   // --- fonti e limiti ------------------------------------------------------------
-  $('fonti').innerHTML = idx.fonti.map((f) => `<li><strong>${esc(f.titolo)}</strong><br>${esc(f.ente)}. Licenza ${esc(f.licenza)}${f.riserva ? ' (con riserva: ' + esc(f.riserva) + ')' : ''}. Scaricato il ${f.scaricato}. ${f.periodo ? esc(f.periodo) + '. ' : ''}Uso: ${esc(f.uso)}. <a href="${f.url}" target="_blank" rel="noopener">scheda del dato</a></li>`).join('');
+  $('fonti').innerHTML = idx.fonti.map((f) => `<li><strong>${esc(f.titolo)}</strong><br>${esc(f.ente)}. Licenza ${esc(f.licenza)}${f.riserva ? ' (con riserva: ' + esc(f.riserva) + ')' : ''}. Dato: ${esc(f.data)}. Scaricato il ${f.scaricato}. Uso: ${esc(f.uso)}. <a href="${f.url}" target="_blank" rel="noopener">scheda del dato</a></li>`).join('');
   $('limiti').innerHTML = idx.limiti.map((l) => `<li>${esc(l)}</li>`).join('');
 
   // --- viste e ciclo -------------------------------------------------------------
