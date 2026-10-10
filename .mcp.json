@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "dt-pisa": {
+    "dt-firenze": {
       "type": "stdio",
       "command": "/Users/lucabaroncini/progetti/digital-twin-pisa/service/.venv/bin/python",
       "args": [
