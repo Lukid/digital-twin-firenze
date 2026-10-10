@@ -38,7 +38,7 @@ for did in DEST:
     riepilogo["destinazioni"][did]["archi_ignoti_piu_usati"] = [{k: v for k, v in x.items() if k != "geom"} for x in base["archi_ignoti_piu_usati"][:15]]
 
     # asset mappa: civici, destinazione, archi usati (EPSG:4326)
-    e0 = next(e for e in d["ingressi"] if e["entrance_id"] == d["ingresso_predefinito"]); feats = []
+    e0s = [e for e in d["ingressi"] if e["entrance_id"] in (d.get("ingressi_predefiniti") or [d["ingresso_predefinito"]])]; feats = []
     for oid in sorted(ris[did]["base_1_2"]["origini"]):
         r = ris[did]["base_1_2"]["origini"][oid]; g = A._ll(ORIG[oid][0]); ind = c["civ"].loc[oid, "indirizzo"]
         pr = {"layer": "origine", "id": oid, "ind": ind if isinstance(ind, str) else None, "stato": r["stato"]}
@@ -50,8 +50,9 @@ for did in DEST:
         if r["stato"] == "reachable": pr.update(d=r["totale_m"], dev=r["deviazione"], att=r["attraversamenti"], ign=r["m_marciapiede_ignoto"], ing=r["entrance_id"])
         elif r.get("motivo"): pr["motivo"] = r["motivo"]
         feats.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [r6(g.x), r6(g.y)]}, "properties": pr})
-    g = A._ll(Point(e0["xy"]))
-    feats.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [r6(g.x), r6(g.y)]}, "properties": {"layer": "destinazione", "id": did, "ingresso": e0["entrance_id"], "nome": d["nome"], "stato_verifica": d["stato_verifica"]}})
+    for e0 in e0s:
+        g = A._ll(Point(e0["xy"]))
+        feats.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [r6(g.x), r6(g.y)]}, "properties": {"layer": "destinazione", "id": did, "ingresso": e0["entrance_id"], "nome": d["nome"], "stato_verifica": d["stato_verifica"]}})
     for grp, chiave in (("piu_usati", "archi_piu_usati"), ("ignoti_piu_usati", "archi_ignoti_piu_usati")):
         for x in base[chiave]:
             feats.append({"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[r6(a), r6(b)] for a, b in A._ll(x["geom"]).coords]},
@@ -67,8 +68,8 @@ for did in DEST:
 for did in DEST:
     d = c["dest"][did]
     if len(d["ingressi"]) < 2: continue
-    main = d["ingresso_predefinito"]; tutti = sorted(e["entrance_id"] for e in d["ingressi"])
-    ing = {"predefinito": [main], f"tutti_i_{len(tutti)}": tutti} | {f"solo_{i}": [i] for i in tutti}
+    main = sorted(d.get("ingressi_predefiniti") or [d["ingresso_predefinito"]]); tutti = sorted(e["entrance_id"] for e in d["ingressi"])
+    ing = {"predefinito": main} | ({f"tutti_i_{len(tutti)}": tutti} if tutti != main else {}) | {f"solo_{i}": [i] for i in tutti}
     out = riepilogo["sensibilita"][f"ingressi_{did}"] = {}
     for k, ids in ing.items():
         res = A.compute_walk_access(did, origin_family=FAM, profile=base_p, entrance_ids=ids); s = sintesi(res); s["ingressi"] = ids

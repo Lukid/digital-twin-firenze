@@ -1,23 +1,24 @@
 {
- "job_id": "job_a4c59a5a6ee1e59d",
+ "job_id": "job_b47bac13db9f7131",
  "tool": "compute_walk_access",
  "status": "succeeded",
- "created_at": "2026-10-10T08:30:31Z",
- "started_at": "2026-10-10T08:30:31Z",
- "finished_at": "2026-10-10T08:30:31Z",
+ "created_at": "2026-10-10T11:56:38Z",
+ "started_at": "2026-10-10T11:56:38Z",
+ "finished_at": "2026-10-10T11:56:39Z",
  "inputs": {
   "baseline_id": "bas_firenze_novoli_20261009",
   "snapshot_ids": [
    "snp_fi_civici_20261009",
+   "snp_gtfs_gest_firenze_20261009",
    "snp_osm_firenze_20261009"
   ]
  },
  "params": {
   "destination_ids": [
-   "dst_university_w83537185"
+   "dst_tram_fm9055"
   ],
   "entrance_ids": [
-   "ent_osm_n11152998932"
+   "ent_gtfs_fm9055"
   ],
   "origins": {
    "kind": "address_points",
@@ -26,8 +27,8 @@
   },
   "profile": {
    "speed_m_s": 0.8,
-   "crossing_penalty_s": 0,
-   "stairs": "allowed",
+   "crossing_penalty_s": 10,
+   "stairs": "excluded",
    "snap_limit_m": 40.0
   },
   "thresholds_min": [
@@ -56,5 +57,5 @@
   "fraction": 1.0,
   "message": "completato"
  },
- "result_manifest_id": "man_a4c59a5a6ee1e59d"
+ "result_manifest_id": "man_b47bac13db9f7131"
 }

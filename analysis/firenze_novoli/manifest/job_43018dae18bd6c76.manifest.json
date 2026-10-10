@@ -67,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T08:30:29Z",
-  "finished_at": "2026-10-10T08:30:30Z",
-  "duration_s": 0.42
+  "started_at": "2026-10-10T11:56:42Z",
+  "finished_at": "2026-10-10T11:56:42Z",
+  "duration_s": 0.46
  },
  "metrics": [
   {

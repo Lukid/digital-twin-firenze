@@ -74,7 +74,7 @@ reg = Registry().with_resources([(s["$id"], Resource.from_contents(s)) for s in 
 for key in ("manifest", "job"):
     errs = list(Draft202012Validator(S[key], registry=reg).iter_errors(r[key]))
     assert not errs, (key, errs[0].message, list(errs[0].path))
-mans = sorted((VERS / "manifest").glob("*.manifest.json")); assert len(mans) == 4 * len(c["dest"]) == 20, len(mans)
+mans = sorted((VERS / "manifest").glob("*.manifest.json")); assert len(mans) == 4 * len(c["dest"]) == 24, len(mans)   # 6 destinazioni (con San Donato - Università, D20)
 for f in mans:
     m = json.load(open(f)); assert not list(Draft202012Validator(S["manifest"], registry=reg).iter_errors(m)), f.name
     assert m["assets"] and all((ROOT / a["path"]).exists() and hashlib.sha256((ROOT / a["path"]).read_bytes()).hexdigest() == a["sha256"] for a in m["assets"]), f.name
@@ -84,7 +84,7 @@ for f in mans:
     ids = {d["snapshot_id"] for d in m["datasets"]}; assert "snp_osm_firenze_20261009" in ids and "snp_fi_civici_20261009" in ids, f.name
 for f in list((VERS / "manifest").glob("*.json")) + list(VERS.glob("*.json")) + list(VERS.glob("*.geojson")):   # nessun residuo del primo pilota
     txt = f.read_text().lower(); assert "pisa" not in txt and "z2" not in txt and "sit di" not in txt, f.name
-print("6 ok: 20 manifest/job validi, asset con sha256 corretto, nessuna stringa Pisa/z2")
+print(f"6 ok: {len(mans)} manifest/job validi, asset con sha256 corretto, nessuna stringa Pisa/z2")
 
 # 7. coerenza fra profili: tempi monotoni; profilo senza scale non usa scale
 res = {k: A.compute_walk_access(BAT, profile=p) for k, p in A.PROFILI.items()}
@@ -95,11 +95,11 @@ assert all(o["scale"] == 0 for o in res["ridotta_0_8_senza_scale"]["origini"].va
 assert res["ridotta_0_8_senza_scale"]["aggregati"]["tempo_min"]["p50"] >= res["lento_0_8"]["aggregati"]["tempo_min"]["p50"]
 print("7 ok: monotonia profili")
 
-# 8. più ingressi: il tempo al più vicino non supera quello del singolo ingresso
-tutti = sorted(e["entrance_id"] for e in c["dest"][BAT]["ingressi"])
-rt = A.compute_walk_access(BAT, profile=base, entrance_ids=tutti)
-for k, o in O.items():
-    if o["stato"] == "reachable": assert rt["origini"][k]["tempo_s"] <= o["tempo_s"] + 1e-6, k
+# 8. più ingressi: il default del Polo sono i 7 edifici (D19) e il tempo al più vicino non supera quello del solo D1
+tutti = sorted(e["entrance_id"] for e in c["dest"][BAT]["ingressi"]); assert len(tutti) == 7 and r["manifest"]["params"]["entrance_ids"] == tutti
+r1 = A.compute_walk_access(BAT, profile=base, entrance_ids=["ent_civ_d1"])
+for k, o in r1["origini"].items():
+    if o["stato"] == "reachable": assert O[k]["tempo_s"] <= o["tempo_s"] + 1e-6, k
 print("8 ok: ingressi multipli")
 
 # 9. asset mappa: EPSG:4326, conteggi uguali al manifest, uno per destinazione
@@ -110,7 +110,7 @@ for did in sorted(c["dest"]):
     ref = A.compute_walk_access(did, profile=base)
     assert g["job_id"] == ref["job"]["job_id"]
     assert {s: sum(1 for f in org if f["properties"]["stato"] == s) for s in ref["aggregati"]["conteggi"]} == ref["aggregati"]["conteggi"]
-    assert any(f["properties"]["layer"] == "arco_usato" for f in F) and sum(f["properties"]["layer"] == "destinazione" for f in F) == 1
+    assert any(f["properties"]["layer"] == "arco_usato" for f in F) and sum(f["properties"]["layer"] == "destinazione" for f in F) == len(c["dest"][did].get("ingressi_predefiniti") or [1])
     assert fp.stat().st_size < 2_000_000
 # riepilogo: sensibilità ingressi solo per le destinazioni con più di un ingresso (il Polo)
 rie = json.load(open(VERS / "riepilogo.json")); multi = {d for d, v in c["dest"].items() if len(v["ingressi"]) > 1}

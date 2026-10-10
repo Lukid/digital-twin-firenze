@@ -231,14 +231,14 @@ def _scrivi_assets(job_id, righe, agg, soglie, out_dir):
 
 def compute_walk_access(destination_id, origin_family="address_points", profile=None, thresholds_min=(5, 10, 15), snap_limit_m=40,
                         entrance_ids=None, deviazione_alta=None, out_dir=None):
-    """Accessibilità verso una destinazione. entrance_ids: ingressi da considerare (il più vicino per tempo vince); None = ingresso predefinito.
+    """Accessibilità verso una destinazione. entrance_ids: ingressi da considerare (il più vicino per tempo vince); None = ingressi predefiniti (o l'ingresso predefinito).
     Ritorna dict con job, manifest, origini (righe), aggregati, archi_usati. Con out_dir scrive gli asset e li registra nel manifest."""
     t0 = datetime.datetime.now(datetime.timezone.utc); c = contesto(); prof = dict(profile or PROFILI["base_1_2"]); dev = dict(deviazione_alta or DEVIAZIONE_ALTA)
     if set(prof) != {"speed_m_s", "crossing_penalty_s", "stairs"} or prof["stairs"] not in ("allowed", "excluded") or not 0.3 <= prof["speed_m_s"] <= 2.5:
         raise ValueError("profilo non valido: servono speed_m_s (0,3-2,5), crossing_penalty_s, stairs (allowed|excluded)")
     if destination_id not in c["dest"]: raise ValueError(f"destinazione sconosciuta: {destination_id}")
     d = c["dest"][destination_id]; ents = {e["entrance_id"]: e for e in d["ingressi"]}
-    ids = sorted(entrance_ids or [d["ingresso_predefinito"]])
+    ids = sorted(entrance_ids or d.get("ingressi_predefiniti") or [d["ingresso_predefinito"]])   # il Polo ha 7 ingressi predefiniti (D19)
     if any(i not in ents for i in ids): raise ValueError(f"ingresso non appartenente a {destination_id}")
     soglie = sorted(float(t) for t in thresholds_min)
     snaps = {i: (Point(ents[i]["xy"]), {**ents[i]["aggancio"], "proj": tuple(ents[i]["aggancio"]["proj"])}) for i in ids}

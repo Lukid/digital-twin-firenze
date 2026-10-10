@@ -1,0 +1,287 @@
+{
+ "manifest_id": "man_b47bac13db9f7131",
+ "job_id": "job_b47bac13db9f7131",
+ "tool": "compute_walk_access",
+ "aoi_id": "aoi_firenze_novoli",
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "datasets": [
+  {
+   "snapshot_id": "snp_fi_civici_20261009",
+   "source_id": "src_fi_civici",
+   "sha256": "3c501a28c48a56ac8e9b65e3233f3073284cab4e6126205dc04f72d60507c505",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_gtfs_gest_firenze_20261009",
+   "source_id": "src_gtfs_gest_firenze",
+   "sha256": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_osm_firenze_20261009",
+   "source_id": "src_osm_firenze",
+   "sha256": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+   "license_state": "clear"
+  }
+ ],
+ "params": {
+  "destination_ids": [
+   "dst_tram_fm9055"
+  ],
+  "entrance_ids": [
+   "ent_gtfs_fm9055"
+  ],
+  "origins": {
+   "kind": "address_points",
+   "aoi_id": "aoi_firenze_novoli",
+   "count": 3296
+  },
+  "profile": {
+   "speed_m_s": 0.8,
+   "crossing_penalty_s": 10,
+   "stairs": "excluded",
+   "snap_limit_m": 40.0
+  },
+  "thresholds_min": [
+   5.0,
+   10.0,
+   15.0
+  ],
+  "deviazione_alta": {
+   "ratio": 1.5,
+   "min_diretta_m": 100
+  },
+  "method_version": "0.1.0",
+  "graph": {
+   "graph_id": "grf_firenze_novoli_osm_20261009",
+   "graph_sha256": "6f15c8c01cc3ad324c55e7f6c83f2520c42d317ef4f214d9b6251dfe3be5c34e",
+   "regole_sha256": "7334ecafeafe39ede0654d6cbde541ca0c2c7380c9098a21b3b6c81fd6e8eec3"
+  }
+ },
+ "method": {
+  "name": "shortest_path_walk_time",
+  "version": "0.1.0",
+  "description": "Cammino minimo pesato per tempo (lunghezza su velocità più penalità di attraversamento) sul grafo pedonale OSM congelato, con raccordo registrato dall'origine alla rete."
+ },
+ "crs": "EPSG:7791",
+ "vertical_datum_status": "not_confirmed",
+ "timezone": "Europe/Rome",
+ "timing": {
+  "started_at": "2026-10-10T11:56:38Z",
+  "finished_at": "2026-10-10T11:56:39Z",
+  "duration_s": 0.46
+ },
+ "metrics": [
+  {
+   "metric_id": "origins_total",
+   "label": "Origini (civici di Firenze)",
+   "value": 3296,
+   "unit": "count",
+   "classification": "derived"
+  },
+  {
+   "metric_id": "origins_reachable",
+   "label": "Origini in stato reachable",
+   "value": 3112,
+   "unit": "count",
+   "classification": "derived"
+  },
+  {
+   "metric_id": "origins_isolated",
+   "label": "Origini in stato isolated",
+   "value": 1,
+   "unit": "count",
+   "classification": "derived"
+  },
+  {
+   "metric_id": "origins_insufficient_data",
+   "label": "Origini in stato insufficient_data",
+   "value": 168,
+   "unit": "count",
+   "classification": "derived"
+  },
+  {
+   "metric_id": "origins_forbidden",
+   "label": "Origini in stato forbidden",
+   "value": 15,
+   "unit": "count",
+   "classification": "derived"
+  },
+  {
+   "metric_id": "origins_outside_model",
+   "label": "Origini in stato outside_model",
+   "value": 0,
+   "unit": "count",
+   "classification": "derived"
+  },
+  {
+   "metric_id": "served_share_5min",
+   "label": "Quota di origini (tutte) raggiunte entro 5 minuti",
+   "value": 0.013,
+   "unit": "1",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m, soglia 5 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.013,
+    "high": 0.0564,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
+   "metric_id": "served_share_10min",
+   "label": "Quota di origini (tutte) raggiunte entro 10 minuti",
+   "value": 0.0798,
+   "unit": "1",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m, soglia 10 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0798,
+    "high": 0.3383,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
+   "metric_id": "served_share_15min",
+   "label": "Quota di origini (tutte) raggiunte entro 15 minuti",
+   "value": 0.2303,
+   "unit": "1",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m, soglia 15 min",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.2306,
+    "high": 0.6981,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
+   "metric_id": "travel_time_p50",
+   "label": "Tempo mediano delle origini raggiungibili",
+   "value": 20.48,
+   "unit": "min",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 11.7,
+    "high": 20.48,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
+   "metric_id": "travel_time_p90",
+   "label": "Tempo 90° percentile delle origini raggiungibili",
+   "value": 33.45,
+   "unit": "min",
+   "classification": "estimated",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 19.11,
+    "high": 33.45,
+    "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
+   }
+  },
+  {
+   "metric_id": "network_distance_p50",
+   "label": "Distanza di cammino mediana (rete più raccordi)",
+   "value": 975.0,
+   "unit": "m",
+   "classification": "derived",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m"
+  },
+  {
+   "metric_id": "deviation_p50",
+   "label": "Deviazione mediana rispetto alla linea d'aria",
+   "value": 1.23,
+   "unit": "1",
+   "classification": "derived",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m, origini oltre 100 m"
+  },
+  {
+   "metric_id": "high_deviation_count",
+   "label": "Origini con deviazione alta (rapporto 1,5 o più, oltre 100 m)",
+   "value": 94,
+   "unit": "count",
+   "classification": "derived",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m"
+  },
+  {
+   "metric_id": "unknown_sidewalk_share",
+   "label": "Quota dei metri di rete a marciapiede ignoto",
+   "value": 0.4155,
+   "unit": "1",
+   "classification": "derived",
+   "scope": "dst_tram_fm9055, 0.8 m/s, snapping 40 m"
+  }
+ ],
+ "coverage": {
+  "accessibility_counts": {
+   "reachable": 3112,
+   "isolated": 1,
+   "insufficient_data": 168,
+   "forbidden": 15,
+   "outside_model": 0
+  },
+  "note": "Le componenti isolate restano nei conteggi."
+ },
+ "limits": [
+  {
+   "code": "grafo_osm_non_verificato",
+   "text": "Rete da OSM congelato, non verificata sul posto; percorsi, ingressi e restrizioni da controllare al sopralluogo."
+  },
+  {
+   "code": "marciapiede_ignoto",
+   "text": "Dove il marciapiede non è taggato lo stato è ignoto: il tratto è percorribile ma non certificato."
+  },
+  {
+   "code": "civici_non_residenti",
+   "text": "I civici del Comune di Firenze (CC BY 4.0) sono punti d'indirizzo, non residenti: le quote sono quote di civici, non di popolazione."
+  },
+  {
+   "code": "velocita_ipotesi",
+   "text": "Velocità e penalità sono ipotesi di esperimento, non misure sul posto e non attribuite a gruppi di persone."
+  },
+  {
+   "code": "snapping_parametro",
+   "text": "Il limite di snapping e il raccordo non attraversano edifici; i civici non agganciati restano insufficient_data."
+  },
+  {
+   "code": "no_certificazione_accessibilita",
+   "text": "Mancano pendenze, larghezze, rampe e gradini di marciapiede: nessuna certificazione di accessibilità universale."
+  },
+  {
+   "code": "ingresso_da_verificare",
+   "text": "Ingresso e orari della destinazione non verificati; cambiare ingresso può cambiare lunghezze e attraversamenti."
+  }
+ ],
+ "validation_status": "not_validated_locally",
+ "assets": [
+  {
+   "asset_id": "ast_origini_csv",
+   "path": "data/norm/firenze_novoli/analysis/dst_tram_fm9055/job_b47bac13db9f7131_origini.csv",
+   "media_type": "text/csv",
+   "bytes": 333671,
+   "sha256": "56a7b2e748d1f0d2a35b06f26e2c241cbb3794054edaddcfc340f6762d3bd37c",
+   "role": "result_table"
+  },
+  {
+   "asset_id": "ast_archi_usati",
+   "path": "data/norm/firenze_novoli/analysis/dst_tram_fm9055/job_b47bac13db9f7131_archi_usati.geojson",
+   "media_type": "application/geo+json",
+   "bytes": 22954,
+   "sha256": "362b8d50c11ff597bcf7cc7b27655e5a3791ccfef7c7e95300835fd76b40e667",
+   "role": "result_geometry"
+  },
+  {
+   "asset_id": "ast_report",
+   "path": "data/norm/firenze_novoli/analysis/dst_tram_fm9055/job_b47bac13db9f7131_report.json",
+   "media_type": "application/json",
+   "bytes": 3047,
+   "sha256": "b2357242281ede90d4fb6263634bebad0eeece6c1c6954dd4954eca70578c1b1",
+   "role": "report"
+  }
+ ]
+}
