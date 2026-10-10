@@ -34,6 +34,31 @@ function romeOffset(ms) { const p = Object.fromEntries(romeFmt.formatToParts(ms)
 function romeToUtc(y, mo, d, h, mi) { const l = Date.UTC(y, mo - 1, d, h, mi); let u = l - romeOffset(l); u = l - romeOffset(u); return u; }
 const PUNTI = ['nord', 'nord-est', 'est', 'sud-est', 'sud', 'sud-ovest', 'ovest', 'nord-ovest'];
 
+// --- mappa di base: verde, acqua e strade OSM dipinti in una texture del terreno ----
+const MAPPA = { fondo: '#ece6d8', verde: '#cfdeb0', acqua: '#a9cbe3', strada: '#d3d6da', bordo: '#c2c1bb', cammino: '#ddd5c4' };
+function mappaBase(M, x0, z0, W, H) {
+  const N = matchMedia('(pointer:coarse)').matches || innerWidth < 700 ? 2048 : 4096, k = N / Math.max(W, H);
+  const c = document.createElement('canvas'); c.width = Math.round(W * k); c.height = Math.round(H * k);
+  const x = c.getContext('2d'), px = (v) => (v - x0) * k, pz = (v) => (v - z0) * k;
+  x.fillStyle = MAPPA.fondo; x.fillRect(0, 0, c.width, c.height);
+  const aree = (lista, col) => {
+    x.fillStyle = col;
+    for (const anelli of lista) { x.beginPath(); for (const r of anelli) { for (let i = 0; i < r.length; i += 2) (i ? x.lineTo : x.moveTo).call(x, px(r[i]), pz(r[i + 1])); x.closePath(); } x.fill('evenodd'); }
+  };
+  aree(M.verde, MAPPA.verde); aree(M.acqua, MAPPA.acqua);
+  x.lineCap = x.lineJoin = 'round';
+  const linee = (filtro, col, piu) => {
+    x.strokeStyle = col;
+    for (const s of M.strade.filter(filtro)) { x.lineWidth = (s.w + piu) * k; x.beginPath(); for (let i = 0; i < s.p.length; i += 2) (i ? x.lineTo : x.moveTo).call(x, px(s.p[i]), pz(s.p[i + 1])); x.stroke(); }
+  };
+  linee((s) => s.c, MAPPA.cammino, 0);
+  linee((s) => !s.c, MAPPA.bordo, 1.5); linee((s) => !s.c, MAPPA.strada, 0);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  return t;
+}
+// tono stabile per edificio, dall'id: variazione leggera come nei tetti veri
+const hash = (s) => { let h = 2166136261; for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619); return ((h >>> 0) % 1000) / 1000; };
+
 // --- avvio -------------------------------------------------------------------
 async function main() {
   const idx = await (await fetch('assets/index.json')).json();
@@ -54,7 +79,7 @@ async function main() {
   const VISTA = { pos: new THREE.Vector3(-350, 750, 1250), tgt: new THREE.Vector3(0, 0, 0) };
   const vai = (p, t) => { camera.position.copy(p); controls.target.copy(t); controls.update(); dirty = true; };
 
-  const hemi = new THREE.HemisphereLight(0xdfeaf5, 0x8a8f78, 0.9); scene.add(hemi);
+  const hemi = new THREE.HemisphereLight(0xeef3f8, 0xb6a68c, 0.9); scene.add(hemi);
   const sun = new THREE.DirectionalLight(0xfff1d6, 2.6);
   const SM = matchMedia('(pointer:coarse)').matches || innerWidth < 700 ? 2048 : 4096;
   sun.castShadow = true; sun.shadow.mapSize.set(SM, SM); sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.7;
@@ -76,24 +101,33 @@ async function main() {
     const p = new Float32Array(T.nx * T.ny * 3), ix = [];
     for (let j = 0; j < T.ny; j++) for (let i = 0; i < T.nx; i++) { const k = (j * T.nx + i) * 3; p[k] = T.x0 + i * T.passo; p[k + 1] = T.quote_cm[j * T.nx + i] / 100; p[k + 2] = T.z0 + j * T.passo; }
     for (let j = 0; j < T.ny - 1; j++) for (let i = 0; i < T.nx - 1; i++) { const a = j * T.nx + i, b = a + 1, c = a + T.nx, d = c + 1; ix.push(a, c, b, b, c, d); }
-    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(p, 3)); g.setIndex(ix); g.computeVertexNormals();
-    const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color: 0xc9d1b8, roughness: 1 })); m.receiveShadow = true;
+    const W = (T.nx - 1) * T.passo, H = (T.ny - 1) * T.passo, uv = new Float32Array(T.nx * T.ny * 2);
+    for (let k = 0; k < T.nx * T.ny; k++) { uv[k * 2] = (p[k * 3] - T.x0) / W; uv[k * 2 + 1] = 1 - (p[k * 3 + 2] - T.z0) / H; }
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(p, 3)); g.setAttribute('uv', new THREE.BufferAttribute(uv, 2)); g.setIndex(ix); g.computeVertexNormals();
+    const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: mappaBase(dati.mappa, T.x0, T.z0, W, H), roughness: 1 })); m.receiveShadow = true;
+    // piano di fondo oltre il riquadro, dello stesso colore: il bordo sfuma nella foschia
+    const fondoPiano = new THREE.Mesh(new THREE.PlaneGeometry(20000, 20000).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: MAPPA.fondo, roughness: 1 }));
+    fondoPiano.position.y = Math.min(...T.quote_cm) / 100 - 1.5; m.add(fondoPiano);
     gruppi.terreno = m; scene.add(m);
   }
 
   // edifici
-  const COL = { measured: 0xbfc3c9, derived: 0xdccbA8, assente: 0x666b73 };
+  const COL = { measured: 0xc0643c, derived: 0xd98d62, assente: 0x7d828a }, MURO = new THREE.Color(0xf1e6d6);
   let edMesh, edStart = [];
   {
-    const E = dati.edifici, pos = f32(E.posizioni), col = new Float32Array(pos.length), c = new THREE.Color();
+    const E = dati.edifici, pos = f32(E.posizioni), col = new Float32Array(pos.length), c = new THREE.Color(), w = new THREE.Color();
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.computeVertexNormals();
+    const nor = g.attributes.normal.array;
     let v = 0;
     for (const e of E.edifici) {
       edStart.push(v); c.set(e.presente_2023 ? COL[e.classe_h] : COL.assente);
-      for (let i = v; i < v + e.n; i++) col.set([c.r, c.g, c.b], i * 3);
+      if (e.presente_2023) c.offsetHSL((hash(e.id) - 0.5) * 0.03, 0, (hash(e.id + 'l') - 0.5) * 0.1);
+      w.copy(c).lerp(MURO, 0.6);
+      for (let i = v; i < v + e.n; i++) { const q = nor[i * 3 + 1] > 0.5 ? c : w; col.set([q.r, q.g, q.b], i * 3); }   // tetto se la normale guarda in alto
       v += e.n;
     }
     edStart.push(v);
-    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('color', new THREE.BufferAttribute(col, 3)); g.computeVertexNormals();
+    g.setAttribute('color', new THREE.BufferAttribute(col, 3));
     edMesh = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.9 }));
     edMesh.castShadow = edMesh.receiveShadow = true; gruppi.edifici = edMesh; scene.add(edMesh);
   }
@@ -107,7 +141,7 @@ async function main() {
     AL.forEach((a, i) => {
       const imp = Math.min(a.imp ?? 1, a.h * 0.8), hc = Math.max(a.h - imp, 0.5), d = a.d ?? 3.5, r = Math.max(a.td ?? 0.1, 0.25) / 2;
       m.compose(new THREE.Vector3(a.x, a.y + imp + hc / 2, a.z), q, new THREE.Vector3(d / 2, hc / 2, d / 2)); chiome.setMatrixAt(i, m);
-      c.set(a.ch_cls === 'estimated' ? 0x86b564 : 0x3d7a37); chiome.setColorAt(i, c);
+      c.set(a.ch_cls === 'estimated' ? 0x9cbf74 : 0x55894a); chiome.setColorAt(i, c);
       m.compose(new THREE.Vector3(a.x, a.y + imp / 2, a.z), q, new THREE.Vector3(r, imp, r)); tronchi.setMatrixAt(i, m);
     });
     chiome.castShadow = tronchi.castShadow = true; chiome.receiveShadow = true;
@@ -158,6 +192,27 @@ async function main() {
     const s = new THREE.Mesh(palo, m.isSprite ? new THREE.MeshStandardMaterial({ color: col }) : m.material); s.scale.y = h; s.position.y = h / 2; q.add(s);
     q.position.set(p.x, tY(p.x, p.z), p.z); g.add(q);
     if (p.contorno) g.add(nastri([{ p: p.contorno }], 0.4, () => 2, () => hex(col)));
+  }
+
+  // nomi dei luoghi: testo HTML posizionato sulla proiezione del punto, senza sovrapposizioni
+  const etiq = { visible: true, el: $('etichette'), voci: [] }; gruppi.etichette = etiq;
+  for (const e of dati.etichette.etichette) {
+    const d = document.createElement('span'); d.className = e.k === 1 ? 'luogo' : 'via'; d.textContent = e.t; etiq.el.appendChild(d);
+    etiq.voci.push({ d, k: e.k, p: new THREE.Vector3(e.x, tY(e.x, e.z) + (e.k === 1 ? 30 : 4), e.z) });
+  }
+  const pr = new THREE.Vector3();
+  function posaEtichette() {
+    etiq.el.hidden = !etiq.visible; if (!etiq.visible) return;
+    const W = innerWidth, H = innerHeight, presi = [];
+    for (const v of etiq.voci) {
+      pr.copy(v.p).project(camera);
+      const lontano = camera.position.distanceTo(v.p) > (v.k === 1 ? 3200 : 1400);
+      const x = (pr.x + 1) / 2 * W, y = (1 - pr.y) / 2 * H, w = v.d.offsetWidth, h = v.d.offsetHeight;
+      const r = [x - w / 2, y - h / 2, x + w / 2, y + h / 2];
+      const ok = pr.z < 1 && !lontano && x > 0 && x < W && y > 0 && y < H && !presi.some((q) => r[0] < q[2] && r[2] > q[0] && r[1] < q[3] && r[3] > q[1]);
+      v.d.style.visibility = ok ? 'visible' : 'hidden';
+      if (ok) { presi.push(r); v.d.style.transform = `translate(${(x - w / 2).toFixed(1)}px,${(y - h / 2).toFixed(1)}px)`; }
+    }
   }
 
   // livelli analitici (vuoti se i dati non ci sono)
@@ -227,11 +282,12 @@ async function main() {
   for (const [k, L] of Object.entries(idx.livelli)) {
     const an = ['accessibilita', 'ombra', 'scenari'].includes(k), presente = !an || idx.livelli_analitici[k].presente;
     const w = document.createElement('div');
-    w.innerHTML = `<label><input type="checkbox" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && k !== 'barriere' ? 'checked' : ''}> ${L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</label>`;
+    w.innerHTML = `<label><input type="checkbox" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && k !== 'barriere' && k !== 'rete' ? 'checked' : ''}> ${L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</label>`;
     if (PUNTO[k]) w.innerHTML += `<div class="leg"><span>${ICONE[k] ? `<img src="${ICONE[k].url}" alt="" width="16" height="16" style="vertical-align:-3px;margin-right:4px">` : `<i style="background:#${PUNTO[k][0].toString(16).padStart(6, '0')};border-radius:50%"></i>`}segnaposto</span></div>`;
-    if (k === 'edifici') w.innerHTML += '<div class="leg"><span><i style="background:#bfc3c9"></i>altezza misurata</span><span><i style="background:#dccba8"></i>altezza derivata</span><span><i style="background:#666b73"></i>non presente nel 2023</span></div>';
+    if (k === 'edifici') w.innerHTML += '<div class="leg"><span><i style="background:#c0643c"></i>altezza misurata</span><span><i style="background:#d98d62"></i>altezza derivata</span><span><i style="background:#7d828a"></i>non presente nel 2023</span></div>';
     if (k === 'destinazioni') w.innerHTML += '<div class="leg"><span>I punti di arrivo dei calcoli di accessibilità e ombra: i 7 ingressi del Polo delle Scienze Sociali, le scuole Vamba (primaria e infanzia), le fermate T2 San Donato - Università, Regione Toscana e Torre degli Agli.</span></div>';
-    if (k === 'alberi') w.innerHTML += '<div class="leg"><span><i style="background:#3d7a37"></i>chioma misurata</span><span><i style="background:#86b564"></i>chioma stimata</span></div>';
+    if (k === 'terreno') w.innerHTML += `<div class="leg"><span><i style="background:${MAPPA.verde}"></i>verde</span><span><i style="background:${MAPPA.acqua}"></i>acqua</span><span><i style="background:${MAPPA.strada}"></i>strade (da OpenStreetMap)</span></div>`;
+    if (k === 'alberi') w.innerHTML += '<div class="leg"><span><i style="background:#55894a"></i>chioma misurata</span><span><i style="background:#9cbf74"></i>chioma stimata</span></div>';
     if (k === 'rete') w.innerHTML += '<div class="leg"><span><i style="background:#5b6470"></i>strada</span><span><i style="background:#b0763a"></i>sentiero</span><span><i style="background:#2f6fb5"></i>marciapiede</span><span><i style="background:#f2f2f2"></i>attraversamento</span></div>';
     if (k === 'accessibilita' && presente) w.innerHTML += `<div class="sub"><label for="s_acc">Verso:</label><select id="s_acc">${dati.accessibilita.destinazioni.map((d, i) => `<option value="${i}">${d.nome}</option>`).join('')}</select></div><div class="leg" id="leg_accessibilita"></div>`;
     if (k === 'ombra' && presente) w.innerHTML += `<div class="sub"><label for="s_om">Istante:</label><select id="s_om">${dati.ombra.istanti.map((d, i) => `<option value="${i}">${d.istante}</option>`).join('')}</select></div><div class="riga" style="margin-top:6px"><button type="button" id="vOm">Vai ai percorsi</button></div><div class="leg"><span>Due percorsi campione verso il Polo universitario.</span><span><i style="background:#f2c230"></i>al sole</span><span><i style="background:#1b2a6b"></i>in ombra</span></div><div class="leg" id="leg_ombra"></div>`;
@@ -256,8 +312,8 @@ async function main() {
   }
 
   // --- sole ---------------------------------------------------------------------
-  const fondo = new THREE.Color(), giorno = new THREE.Color(0xcfe3f2), notte = new THREE.Color(0x1a2036);
-  scene.fog = new THREE.Fog(0xcfe3f2, 2500, 7000);
+  const fondo = new THREE.Color(), giorno = new THREE.Color(0xeef0ec), notte = new THREE.Color(0x1a2036);
+  scene.fog = new THREE.Fog(0xeef0ec, 1600, 5200);
   function aggiornaSole() {
     const [y, mo, d] = $('data').value.split('-').map(Number), min = +$('ora').value, h = Math.floor(min / 60), mi = min % 60;
     $('oraTesto').textContent = `${String(h).padStart(2, '0')}:${String(mi).padStart(2, '0')}`;
@@ -339,7 +395,25 @@ async function main() {
 
   // --- viste e ciclo -------------------------------------------------------------
   $('vReset').onclick = () => vai(VISTA.pos, VISTA.tgt);
-  $('vAlto').onclick = () => vai(new THREE.Vector3(0, 1700, 1), VISTA.tgt);
+  // 2D: vista dall'alto sul punto guardato; 3D: torna obliqua alla stessa distanza
+  const dall_alto = () => controls.getPolarAngle() < 0.05;
+  $('vAlto').onclick = () => {
+    const t = controls.target.clone(), d = camera.position.distanceTo(t);
+    if (dall_alto()) vai(t.clone().add(VISTA.pos.clone().sub(VISTA.tgt).normalize().multiplyScalar(d)), t);
+    else vai(t.clone().add(new THREE.Vector3(0, d, 0.01)), t);
+  };
+  // bussola: il segno indica il nord sullo schermo; il clic riporta il nord in alto
+  $('vNord').onclick = () => {
+    const t = controls.target, o = camera.position.clone().sub(t), r = Math.hypot(o.x, o.z);
+    vai(t.clone().add(new THREE.Vector3(0, o.y, Math.max(r, 0.01))), t.clone());
+  };
+  const aggiornaComandi = () => {
+    $('bussola').style.transform = `rotate(${controls.getAzimuthalAngle()}rad)`;
+    const a = dall_alto(); $('vAlto').textContent = a ? '3D' : '2D';
+    $('vAlto').setAttribute('aria-label', a ? 'Vista obliqua in 3D' : 'Vista dall\'alto in 2D'); $('vAlto').title = $('vAlto').getAttribute('aria-label');
+  };
+  if (!document.fullscreenEnabled) $('vSchermo').hidden = true;
+  $('vSchermo').onclick = () => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen());
   $('vPiu').onclick = () => { camera.position.lerp(controls.target, 0.25); dirty = true; };
   $('vMeno').onclick = () => { camera.position.lerp(controls.target, -0.3); dirty = true; };
   controls.addEventListener('change', () => { dirty = true; });
@@ -349,7 +423,7 @@ async function main() {
   vai(VISTA.pos, VISTA.tgt);
   (function ciclo() {
     controls.update();
-    if (dirty) { if (shadowDirty) { renderer.shadowMap.needsUpdate = true; shadowDirty = false; } renderer.render(scene, camera); dirty = false; }
+    if (dirty) { if (shadowDirty) { renderer.shadowMap.needsUpdate = true; shadowDirty = false; } renderer.render(scene, camera); posaEtichette(); aggiornaComandi(); dirty = false; }
     requestAnimationFrame(ciclo);
   })();
   const nE = dati.edifici.n.toLocaleString('it-IT'), nA = dati.alberi.n.toLocaleString('it-IT');

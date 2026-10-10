@@ -1,6 +1,6 @@
 {
  "versione": 1,
- "generato": "2026-10-10T13:53:41Z",
+ "generato": "2026-10-10T15:32:21Z",
  "aoi_id": "aoi_firenze_novoli",
  "area": {
   "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
@@ -57,6 +57,20 @@
    "sha256": "3a2922c6ca523c5b26d4da354a5d452b11e3a43c322595ea740f075cddd206e3",
    "n": 86
   },
+  "mappa": {
+   "file": "mappa.json.gz",
+   "byte": 71295,
+   "byte_decompressi": 210546,
+   "sha256": "9508d270a27ab8fa3d29a38ff6495afef0061c84209c6f23b3cb7463e08dafbc",
+   "n": 1909
+  },
+  "etichette": {
+   "file": "etichette.json.gz",
+   "byte": 543,
+   "byte_decompressi": 1113,
+   "sha256": "9326797e456e85fb573972f5e35f2cf82a66e8ffc9ea9fb1a858c53c7925ebfe",
+   "n": 19
+  },
   "accessibilita": {
    "file": "accessibilita.json.gz",
    "byte": 371443,
@@ -94,7 +108,14 @@
   "terreno": {
    "etichetta": "Terreno",
    "fonti": [
-    "src_fi_dtm2023"
+    "src_fi_dtm2023",
+    "src_osm_firenze"
+   ]
+  },
+  "etichette": {
+   "etichetta": "Nomi dei luoghi",
+   "fonti": [
+    "src_osm_firenze"
    ]
   },
   "edifici": {
@@ -224,7 +245,7 @@
    "scaricato": "2026-10-09",
    "periodo": "stato di OpenStreetMap al 2026-10-08 (timestamp dell'estratto), senza data di rilievo per oggetto",
    "sha256_snapshot": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
-   "uso": "Rete pedonale, impronte nuove, ingressi"
+   "uso": "Rete pedonale, impronte nuove, ingressi, mappa di base (verde, acqua, strade), nomi dei luoghi"
   },
   {
    "id": "src_fi_alberi",
@@ -336,7 +357,9 @@
   "Portici e volumi sospesi: nessuna fonte, restano \"ignoto\" e non sono disegnati. I volumi scendono di 1,5 m sotto la quota di base per seguire la pendenza del terreno a 10 m.",
   "Edifici non più presenti nel 2023 (probabili demolizioni) sono disegnati in grigio scuro e segnalati nella scheda.",
   "Alberi: il censimento comunale non riporta altezza né chioma. Altezza e chioma sono misurate dal LiDAR dove ci sono celle sufficienti, altrimenti stimate (classe indicata nella scheda). Il tronco è disegnato con almeno 25 cm di diametro per renderlo visibile.",
-  "Terreno: DTM LiDAR 2023 ricampionato a passo 10 m, senza ortofoto né texture.",
+  "Terreno: DTM LiDAR 2023 ricampionato a passo 10 m. Verde, acqua e strade sono disegnati da OpenStreetMap: larghezze delle strade indicative per classe, non misurate.",
+  "Nessuna ortofoto: le ortofoto regionali 2016, 2019 e 2022 sono concesse alla Regione Toscana per fini istituzionali e non se ne consente il download (verificato il 10 ottobre 2026). Non c'è un'ortofoto con licenza aperta per Firenze.",
+  "Colori degli edifici: tetti in tono terracotta a scopo di lettura, non il colore reale. Tono più scuro per altezza misurata, più chiaro per altezza derivata.",
   "Ombre: sono quelle del motore grafico (sole calcolato per posizione e data), a scopo illustrativo. Non sono un calcolo analitico: gli alberi proiettano chiome piene.",
   "Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
   "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
