@@ -350,7 +350,7 @@ async function main() {
     const tinta = TINTA[k] || (PUNTO[k] ? css(PUNTO[k][0]) : '#5d7f68');
     const ico = ICONE[k] ? `<img src="${ICONE[k].url}" alt="" width="24" height="24">` : svg(ICO[k] || ICO.altro);
     const w = document.createElement('div');
-    w.innerHTML = `<label class="liv" style="--t:${tinta}"><span class="ico">${ico}</span><span class="nome">${k === 'scenari' ? 'Mostra l\'intervento (dopo)' : L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</span>`
+    w.innerHTML = `<label class="liv"><span class="ico" style="color:${tinta};background:${tinta}1c">${ico}</span><span class="nome">${k === 'scenari' ? 'Mostra l\'intervento (dopo)' : L.etichetta}${presente ? '' : ' <em>(dati non presenti)</em>'}</span>`
       + `<span class="switch"><input type="checkbox" role="switch" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && !['barriere', 'rete', 'catasto', 'temperature', 'aria'].includes(k) ? 'checked' : ''}><i></i></span></label>`;
     if (k === 'accessibilita' && presente) w.innerHTML += `<div class="sub"><label for="s_acc">Verso</label><select id="s_acc">${opzioni(dati.accessibilita.destinazioni, 'nome')}</select><div class="leg" id="leg_accessibilita"></div></div>`;
     if (k === 'ombra' && presente) w.innerHTML += `<div class="sub"><label for="s_om">Istante del calcolo</label><select id="s_om">${dati.ombra.istanti.map((d, i) => `<option value="${i}">${new Date(d.istante + ':00Z').toLocaleString('it-IT', { timeZone: 'UTC', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}</option>`).join('')}</select><div class="riga"><button type="button" id="vOm">Vai ai percorsi</button></div><div class="leg"><span>Due percorsi campione verso il Polo universitario.</span><span><i style="background:#f2c230"></i>al sole</span><span><i style="background:#1b2a6b"></i>in ombra</span></div><div class="leg" id="leg_ombra"></div></div>`;
@@ -584,7 +584,6 @@ async function main() {
     requestAnimationFrame(ciclo);
   })();
   const nE = dati.edifici.n.toLocaleString('it-IT'), nA = dati.alberi.n.toLocaleString('it-IT');
-  $('cifre').textContent = `2 km² · ${nE} edifici · ${nA} alberi`;
   stato(`Pronto: ${nE} edifici, ${nA} alberi, ${dati.rete.n.toLocaleString('it-IT')} tratti di rete. Dati: ${(Object.values(idx.assets).reduce((s, a) => s + a.byte, 0) / 1e6).toFixed(1)} MB compressi.`);
   window.scena = { THREE, scene, camera, sunPos, romeToUtc, pronta: true };
 }

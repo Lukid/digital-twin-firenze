@@ -53,7 +53,7 @@ Cartella `assets/`. `index.json` elenca per ogni asset file, byte, byte decompre
 
 ## Pannello
 
-Schede Livelli (sezioni La città in 3D, Mobilità, Luoghi e servizi, Catasto con ricerca), Sole, Analisi (accessibilità, ombra, temperatura, qualità dell'aria), Interventi (un riquadro per scenario con i numeri; la scelta porta la vista sull'intervento; pulsante per il sole del calcolo), Legenda (tutti i colori, fonti e limiti). Struttura presa da Padova, stile proprio: pietra serena e cotto, titolo con carattere graziato, schede a pulsanti, tema sempre chiaro (D23).
+Schede Livelli (sezioni La città in 3D, Mobilità, Luoghi e servizi, Catasto con ricerca), Sole, Analisi (accessibilità, ombra, temperatura, qualità dell'aria), Interventi (un riquadro per scenario con i numeri; la scelta porta la vista sull'intervento; pulsante per il sole del calcolo), Legenda (tutti i colori, fonti e limiti). Struttura e stile sul modello di Padova, tema sempre chiaro (D23). Una variante con stile proprio (pietra serena e cotto, schede a pulsanti) è stata provata e scartata.
 
 ## Livelli analitici (input GeoJSON EPSG:4326)
 
