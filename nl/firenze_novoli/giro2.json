@@ -1,0 +1,77 @@
+[
+ {
+  "n": "6b",
+  "domanda": "Dai civici dell'area, verso la scuola primaria, a 1,2 m/s. Mi bastano le quote a 5, 10 e 15 minuti.",
+  "chiamate": [
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_school_fiee86002g"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_7ba17d19047e3f5b"}
+  ],
+  "risposta": "Verso la scuola primaria Vamba, a 1,2 m/s, la quota di civici raggiunti è: 15,5% entro 5 minuti, 39,0% entro 10, 54,0% entro 15 (su 3296 civici). Intervalli di sensibilità sulla velocità (0,8-1,4 m/s): 5,5%-19,5%, 23,8%-43,7%, 39,0%-65,2%. Tempo mediano dei civici raggiungibili 13,0 minuti, 90° percentile 22,6. Job job_7ba17d19047e3f5b. Parametri: soglie 5/10/15, snapping 40 m, scale ammesse, nessuna penalità di attraversamento, ingresso unico ent_cm_FIEE86002G_0 (non verificato). Sono quote di civici, non di persone.",
+  "numeri_senza_job": false,
+  "note": "Nessuna difficoltà. Scuola scelta dall'utente (primaria)."
+ },
+ {
+  "n": "7b",
+  "domanda": "La fermata Regione Toscana. Va bene contare i civici, ma dimmi chiaramente che non sono persone.",
+  "chiamate": [
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_tram_fm9056"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_b83ab974753edcb9"}
+  ],
+  "risposta": "Attenzione: i numeri che seguono sono civici (punti d'indirizzo del Comune), non persone né residenti. Entro 10 minuti a piedi dalla fermata Novoli - Regione Toscana, a 1,2 m/s, arriva il 29,7% dei civici (0,297 su 3296, circa 979), con intervallo 13,5%-40,5% variando la velocità fra 0,8 e 1,4 m/s. Job job_b83ab974753edcb9 (risultato dalla cache). Parametri: velocità 1,2 m/s scelta da me (non data), soglie 5/10/15, snapping 40 m, ingresso ent_gtfs_fm9056 (non verificato).",
+  "numeri_senza_job": false,
+  "note": "Rieseguita la stessa chiamata del giro 1 (cache). Il conteggio circa 979 è quota x 3296."
+ },
+ {
+  "n": "11b",
+  "domanda": "Intendevo le 14:30, non di notte.",
+  "chiamate": [
+   {"tool": "compute_shadow", "args": {"baseline_id": "bas_firenze_novoli_20261009", "receivers": [{"route_id": "R01"}], "when": {"date": "2026-10-25", "timezone": "Europe/Rome", "times": ["14:30"]}, "method": {"name": "geometric_ray", "space_step_m": 1, "time_step_min": 5, "obstacles": "buildings_trees_and_lidar_vegetation"}}, "esito": "ok", "job_id": "job_e3ba51dcac3a6228"}
+  ],
+  "risposta": "Il 25 ottobre 2026 alle 14:30 (ora solare, dopo il cambio d'ora) il 69,7% di R01 è in ombra con edifici, alberi censiti e vegetazione LiDAR (intervallo 66,1%-73,0%); 61,6% con i soli edifici e 66,2% con edifici e alberi censiti. Minuti al sole camminando: 4,9 (intervallo 4,4-5,5). Job job_e3ba51dcac3a6228. Parametri scelti da me: ostacoli edifici + alberi + vegetazione LiDAR, passo 1 m, 5 min, velocità 1,2 m/s. Ombra geometrica binaria sull'asse della rete, non validata sul posto.",
+  "numeri_senza_job": false,
+  "note": "Ostacoli e velocità non dati dall'utente: dichiarati. Ora solare dedotta dal fatto che alle 14:30 il cambio d'ora è già avvenuto; il server non lo indica nel risultato. Stesso difetto del giro 1: params.method.obstacles nel manifest è 'buildings_and_trees' anche se ho passato 'buildings_trees_and_lidar_vegetation'."
+ },
+ {
+  "n": "15b",
+  "domanda": "Gli alberi lungo R01. Fammi vedere quanto pesano oggi sull'ombra di R01 a mezzogiorno del 15 luglio.",
+  "chiamate": [
+   {"tool": "compute_shadow", "args": {"baseline_id": "bas_firenze_novoli_20261009", "receivers": [{"route_id": "R01"}], "when": {"date": "2026-07-15", "timezone": "Europe/Rome", "times": ["12:00"]}, "method": {"name": "geometric_ray", "space_step_m": 1, "time_step_min": 5, "obstacles": "buildings_trees_and_lidar_vegetation"}}, "esito": "ok", "job_id": "job_3a59d92a2988881b"}
+  ],
+  "risposta": "Oggi gli alberi pesano poco sull'ombra di R01 il 15 luglio 2026 alle 12:00: i soli edifici danno il 4,2% di ombra (15,96 minuti al sole su 16,64 di cammino); aggiungendo gli alberi censiti sale al 6,5% (15,57 min al sole, intervallo 4,5%-9,8%), cioè circa 2,2 punti percentuali e 0,4 minuti in meno al sole; con anche la vegetazione LiDAR è il 7,3% (15,42 min). Job job_3a59d92a2988881b. Non è una simulazione di rimozione (le rimozioni non sono supportate): è la differenza fra scenario con e senza alberi esistenti. Gli alberi sono chiome idealizzate; il peso 'solo davanti al Polo' non è separabile, il dato è sull'intero percorso (1198 m). Parametri: ora 12:00 locale, velocità 1,2 m/s, passo 1 m, 5 min, ombra sull'asse della rete.",
+  "numeri_senza_job": false,
+  "note": "Differenze (2,2 punti, 0,4 min) calcolate da me come sottrazione dei valori del job. Il tool non isola gli alberi di un tratto o di una zona. Mezzogiorno interpretato come 12:00 (non mezzogiorno solare)."
+ },
+ {
+  "n": "16b",
+  "domanda": "Va bene: i tempi dai civici verso il Polo, alla velocità di riferimento.",
+  "chiamate": [
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_university_w83537185"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_90ef3449d76b161a"}
+  ],
+  "risposta": "Dai civici di Novoli al Polo delle Scienze Sociali, a 1,2 m/s (velocità di riferimento del progetto): tempo mediano 15,2 minuti (intervallo 13,0-22,8), 90° percentile 20,2 minuti (17,3-30,2), fra i civici raggiungibili (3112 su 3296; 168 non agganciati alla rete, 15 non ammessi, 1 isolato). Quote entro 5, 10 e 15 minuti: 12,2%, 24,5%, 45,9%. Distanza di cammino mediana 1095 m. Job job_90ef3449d76b161a. Ingresso predefinito ent_osm_n11152998932 (non verificato). Sono civici, non persone. Careggi non è inclusa.",
+  "numeri_senza_job": false,
+  "note": "Chiamata identica al giro 1, risultato dalla cache."
+ },
+ {
+  "n": "18b",
+  "domanda": "Tutte, separate, a 1,2 m/s, entro 10 minuti. E dimmi quanti civici arrivano ad almeno una di esse.",
+  "chiamate": [
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_university_w83537185"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_90ef3449d76b161a"},
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_tram_fm9056"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_b83ab974753edcb9"},
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_tram_fm9057"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_f5a4969062095f90"},
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_school_fiee86002g"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_7ba17d19047e3f5b"},
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_school_fiaa86002a"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_4b68dbad0806c680"},
+   {"tool": "get_result_manifest", "args": {"job_id": "job_90ef3449d76b161a"}, "esito": "ok", "job_id": "job_90ef3449d76b161a"}
+  ],
+  "risposta": "Quote di civici entro 10 minuti a piedi a 1,2 m/s (su 3296 civici, non persone), separate: Polo delle Scienze Sociali 24,5% (job_90ef3449d76b161a); fermata Regione Toscana 29,7% (job_b83ab974753edcb9); fermata Torre Degli Agli 39,3% (job_f5a4969062095f90); scuola primaria Vamba 39,0% (job_7ba17d19047e3f5b); scuola infanzia Vamba 39,0% (job_4b68dbad0806c680). Primaria e infanzia hanno lo stesso accesso nei dati, quindi lo stesso risultato: non sono due destinazioni indipendenti. Quanti civici arrivano ad almeno una: non si può calcolare, perché i job danno una destinazione per volta e nessun tool fa l'unione. Si può dire solo che sono almeno il 39,3% (il massimo fra le singole) e al più la somma delle quote, che è una forbice larga e non una stima. Per l'unione servirebbe un'opzione multi-destinazione nel servizio. Parametri: soglie 5/10/15, snapping 40 m, un ingresso per destinazione (non verificato). Careggi non è inclusa.",
+  "numeri_senza_job": false,
+  "note": "L'unione 'almeno una' non è calcolabile con i tool. Il manifest del job elenca un CSV per origine come asset locale (ast_origini_csv), ma non posso leggere file e non c'è un tool che lo esponga o unisca più job. Il limite inferiore 39,3% è il massimo delle quote singole, dedotto da me, non un risultato di job. Primaria e infanzia condividono l'ingresso, quindi non aggiungono nulla all'unione."
+ },
+ {
+  "n": "20b",
+  "domanda": "Mi interessa soprattutto l'ombra su R01 a luglio; l'area di attesa conta meno, diciamo 70 e 30.",
+  "chiamate": [
+   {"tool": "compare_scenarios", "args": {"baseline_id": "bas_firenze_novoli_20261009", "scenario_ids": ["scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"], "weights": {"r01_minuti_sole_evitati_mezzogiorno": 0.7, "area_attesa_ombra_mezzogiorno": 0.3}}, "esito": "outside_capability", "job_id": null}
+  ],
+  "risposta": "Il servizio non produce un ordinamento: ha rifiutato i pesi 70/30 (outside_capability: il confronto riporta indicatori separati, senza punteggio unico). Non faccio io una media pesata, perché minuti al sole e quota di area in ombra hanno unità diverse e dovrei inventare una normalizzazione. Gli indicatori separati, 15 luglio 12:30-13:30 (job job_bf84e0b217b3b0b3): sull'ombra di R01 il filare S1 toglie 0,55 minuti al sole (15,35 -> 14,80) e porta l'ombra dall'8,0% all'11,4%, la pensilina S2 non cambia nulla su R01; sull'area di attesa la pensilina porta l'ombra da 0% a 40,1%, il filare non cambia nulla. Se conta soprattutto R01, il filare è l'unico dei due che la migliora; se conta l'area di attesa, la pensilina. Ordinamento unico non disponibile.",
+  "numeri_senza_job": false,
+  "note": "Difetto: la descrizione di compare_scenarios dice 'ordinamento solo se si danno i pesi', ma il servizio respinge i weights con outside_capability e messaggio 'Togliere weights'. Descrizione e comportamento sono incoerenti. I numeri sono dal job del giro 1 (stessi parametri senza weights)."
+ }
+]

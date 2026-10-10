@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti chiesti (accessibilità, ombre, scenari, scena alla Padova), con servizio MCP. Punto di ripartenza per la prossima sessione.
+Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti chiesti (accessibilità, ombre, scenari, scena alla Padova), con servizio MCP e verifica in linguaggio naturale (F11). Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -20,6 +20,7 @@ Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2
 | F08 scenari | `scenarios/` (REPORT-F08.md) | `bash scenarios/run.sh` (15 min senza cache) |
 | F09 scena 3D, con livelli accessibilità, ombra e scenari | `scene/firenze_novoli/` (ADR-F09.md) | `pipeline/.venv/bin/python scene/firenze_novoli/test_build.py` e verifica nel browser |
 | F10 servizio e MCP `dt-firenze` | `service/` (REPORT-F10.md) | `service/.venv/bin/python service/test_service.py` |
+| F11 verifica in linguaggio naturale | `nl/firenze_novoli/` (REPORT.md) | `service/.venv/bin/python nl/firenze_novoli/test_nl.py` (30 s) |
 
 Vedere la scena: `cd scene/firenze_novoli && python3 -m http.server 8765`, poi http://localhost:8765/
 
@@ -59,10 +60,10 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 ## Prossimi passi possibili
 
-1. Verifica in linguaggio naturale su Firenze (rifare `nl/`: domande, registro, confronto con le mappe).
-2. Controllo sull'ortofoto degli ingressi del Polo.
-3. Spostare in una cartella a parte, o togliere dal ramo principale, i file di Pisa (`fieldwork/`, `nl/`, `preview/`, `scene/` vecchia, output Pisa in `analysis/`, `shadow/`, `scenarios/`); poi puntare `contracts/validate.py` (riga 58) a `scenarios/firenze_novoli/baseline.json`.
-4. Copiare three.js nella cartella della scena per l'uso senza rete.
+1. Controllo sull'ortofoto degli ingressi del Polo.
+2. Spostare in una cartella a parte, o togliere dal ramo principale, i file di Pisa (`fieldwork/`, `nl/` tranne `nl/firenze_novoli/`, `preview/`, `scene/` vecchia, output Pisa in `analysis/`, `shadow/`, `scenarios/`); poi puntare `contracts/validate.py` (riga 58) a `scenarios/firenze_novoli/baseline.json`.
+3. Copiare three.js nella cartella della scena per l'uso senza rete.
+4. Difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`): tool che elenca gli scenari, conteggio dei civici raggiunti, accessibilità verso almeno una di più destinazioni.
 
 Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
 

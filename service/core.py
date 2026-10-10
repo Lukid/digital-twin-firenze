@@ -81,9 +81,10 @@ def schema_for_client(tool):
             return {k: res(v, cur) for k, v in n.items()}
         return [res(x, cur) for x in n] if isinstance(n, list) else n
     s = res(sch["mcp.schema.json"]["$defs"][f"{tool}.input"])
-    if "oneOf" in s:   # inspect_dataset: uno tra source_id e snapshot_id; il controllo vero resta nel nucleo
+    if "oneOf" in s:   # inspect_dataset e compare_scenarios: una delle due forme; il controllo vero resta nel nucleo
+        forme = {"inspect_dataset": "Indicare source_id oppure snapshot_id.", "compare_scenarios": "Indicare baseline_id e scenario_ids (confronto con la baseline) oppure manifest_ids e metric_ids (delta fra manifest di compute_shadow)."}
         s = {"type": "object", "additionalProperties": False, "properties": {k: v for o in s["oneOf"] for k, v in o["properties"].items()},
-             "description": "Indicare source_id oppure snapshot_id."}
+             "description": forme[tool]}
     if tool == "compute_walk_access":   # forma storica civici_sit_z2 (pilota precedente): resta valida per i contratti ma non si mostra al client
         o = s["properties"]["origins"]; o["oneOf"] = [x for x in o["oneOf"] if x["properties"]["kind"].get("const") != "civici_sit_z2"]
     s.pop("$schema", None)
@@ -173,8 +174,8 @@ def _paths(job_id):
 
 
 def _read_job(job_id, what):
-    """Cerca prima nella cache del servizio, poi tra i manifest versionati di analysis/<area>/ e shadow/<area>/."""
-    for d in (CACHE, ROOT / "analysis" / SLUG / "manifest", ROOT / "shadow" / SLUG / "manifest"):
+    """Cerca prima nella cache del servizio, poi tra i manifest versionati di analysis/<area>/, shadow/<area>/ e nl/<area>/."""
+    for d in (CACHE, ROOT / "analysis" / SLUG / "manifest", ROOT / "shadow" / SLUG / "manifest", ROOT / "nl" / SLUG / "manifest"):
         p = d / f"{job_id}.{what}.json"
         if p.exists(): return _load(p)
     return None
