@@ -1,4 +1,4 @@
-"""T10: scenari locali e baseline congelata (caso C). Libreria deterministica: CLI, API e MCP la chiamano uguale.
+"""F08: scenari locali e baseline congelata (caso C) su Firenze Novoli (area da DT_AOI, default aoi_firenze_novoli). Libreria deterministica: CLI, API e MCP la chiamano uguale.
 
     b = baseline()                      # record congelato (scenarios/baseline.json)
     verifica_baseline()                 # ricalcola gli hash dei file citati: deve coincidere
@@ -13,14 +13,17 @@ import numpy as np, shapely
 from shapely.geometry import Point, Polygon, mapping, shape
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SC = ROOT / "scenarios"
-DATA = pathlib.Path(os.environ.get("DT_SCENARIOS_DIR") or ROOT / "data/norm/scenarios")   # scenari creati dagli strumenti e cache dei job (non versionati)
-JOBS, OUT = ROOT / "data/norm/scenarios/jobs", SC / "out"   # cache dei job di ombra degli scenari (chiave = contenuto, versione del motore e geometrie)
 sys.path.insert(0, str(ROOT / "shadow")); sys.path.insert(0, str(ROOT / "network")); sys.path.insert(0, str(ROOT / "analysis"))
 import ombre as O  # noqa: E402
+SLUG = O.SLUG
+SC = ROOT / "scenarios" / SLUG            # file piccoli versionati: baseline, scenari, confronto, interventi
+GRANDI = ROOT / "data/norm" / SLUG / "scenarios"   # dati grandi non versionati: cache dei job e asset
+DATA = pathlib.Path(os.environ.get("DT_SCENARIOS_DIR") or GRANDI)   # scenari creati dagli strumenti (non versionati)
+JOBS, OUT = GRANDI / "jobs", GRANDI / "out"   # cache dei job di ombra degli scenari (chiave = contenuto, versione del motore e geometrie)
 
-BASELINE_ID, AOI_ID = "bas_z2_20261001", "aoi_z2"
-VERSIONE = "0.1.0"
+BASELINE_ID, AOI_ID = O.BASELINE_ID, O.AOI_ID
+VERSIONE = "0.2.0"
+PREFISSO = "scn_fi_"
 PASSAGGIO_SEMILARGHEZZA_M = 1.0   # ipotesi: spazio libero da tenere attorno all'asse di un arco pedonale molto usato (pensiline)
 SEMILARGHEZZA_CARREGGIATA_M = 3.0   # ipotesi: la rete ha solo l'asse, la larghezza della carreggiata non è nei dati
 DIM_ALBERO = ("height_m", "crown_diameter_m", "crown_base_m")
@@ -62,7 +65,7 @@ def baseline():
 def _hash_riferimenti(b):
     """Hash correnti di tutti i file citati dal record, nello stesso ordine del record."""
     h = {"geometrie": sha_file(ROOT / b["geometrie"]["file"]), "parametri_chiome": sha_file(ROOT / b["geometrie"]["parametri_chiome"]),
-         "grafo": sha_file(ROOT / b["grafo"]["file"]), "regole": sha_file(ROOT / b["grafo"]["regole"]), "origini": sha_file(ROOT / b["origini"]["file"]),
+         "grafo": sha_file(ROOT / b["grafo"]["file"]), "regole": sha_file(ROOT / b["grafo"]["regole"]), "origini": sha_file(ROOT / b["origini"]["file"]), "vegetazione_lidar": (O.vegetazione_lidar(), O.dati()["veg_sha256"])[1],
          "percorsi": sha_file(ROOT / b["ricevitori"]["percorsi_file"]), "archi_usati": {k: sha_file(ROOT / v["file"]) for k, v in b["ricevitori"]["archi_usati"].items()},
          "motore_ombre": sha_file(ROOT / b["motori"]["ombre"]["file"]), "motore_accessibilita": sha_file(ROOT / b["motori"]["accessibilita"]["file"]),
          "snapshot": {s["snapshot_id"]: json.loads((ROOT / "pipeline/snapshots" / f"{s['snapshot_id']}.json").read_text())["sha256"] for s in b["snapshot"]}}
@@ -73,7 +76,7 @@ def verifica_baseline():
     """Lista di scostamenti fra il record e lo stato corrente dei file e delle versioni (vuota = baseline invariata)."""
     b = baseline(); h = _hash_riferimenti(b); d = []
     for k, rec in (("geometrie", b["geometrie"]["sha256"]), ("parametri_chiome", b["geometrie"]["parametri_chiome_sha256"]), ("grafo", b["grafo"]["sha256"]),
-                   ("regole", b["grafo"]["regole_sha256"]), ("origini", b["origini"]["sha256"]), ("percorsi", b["ricevitori"]["percorsi_sha256"]),
+                   ("regole", b["grafo"]["regole_sha256"]), ("origini", b["origini"]["sha256"]), ("vegetazione_lidar", b["vegetazione_lidar"]["poligoni_sha256"]), ("percorsi", b["ricevitori"]["percorsi_sha256"]),
                    ("motore_ombre", b["motori"]["ombre"]["file_sha256"]), ("motore_accessibilita", b["motori"]["accessibilita"]["file_sha256"])):
         if h[k] != rec: d.append(f"{k}: hash cambiato")
     for k, v in b["ricevitori"]["archi_usati"].items():
@@ -104,7 +107,7 @@ def _grafo():
 
 
 def ricevitori():
-    """Percorsi campione (asse della rete, come T09), area di attesa Pellico (superficie) e archi più usati di T06, tutti in EPSG:7791.
+    """Percorsi campione (asse della rete, come F07), area di attesa (superficie) e archi più usati di F06, tutti in EPSG:7791.
     Gli stessi per baseline e scenari: sono la condizione comune del confronto."""
     import shapely.ops
     from pyproj import Transformer
@@ -113,10 +116,7 @@ def ricevitori():
         i = f["properties"]["id"]
         if i in b["ricevitori"]["route_ids"] and f["properties"].get("stato") == "reachable":
             g = shapely.ops.transform(lambda x, y, z=None: to.transform(x, y), shape(f["geometry"]))
-            rec.append({"receiver_id": f"pth_t04_{i}", "kind": "path", "geometry": mapping(shapely.set_precision(g, 0.01))})
-            if i == "R01":   # sensibilità sul lato del marciapiede (incertezza dominante di T09): R01 spostata a sinistra e a destra
-                for off, suf in ((b["ricevitori"]["lato_R01_m"], "sx"), (-b["ricevitori"]["lato_R01_m"], "dx")):
-                    rec.append({"receiver_id": f"pth_t10_R01{suf}", "kind": "path", "geometry": mapping(shapely.set_precision(g.offset_curve(off), 0.01))})
+            rec.append({"receiver_id": f"pth_fi_{i}", "kind": "path", "geometry": mapping(shapely.set_precision(g, 0.01))})
     a = b["ricevitori"]["area_attesa"]
     rec.append({"receiver_id": a["receiver_id"], "kind": "surface", "geometry": a["geometry"]})
     G = _grafo(); geom = {e["edge_id"]: e["geom"] for _, _, e in G.edges(data=True)}
@@ -142,7 +142,7 @@ def _rettangolo_pensilina(op):
 
 def valida(scn, geometrie=True):
     """Controlla uno scenario. Errori (rifiuto): schema, baseline, tipi e dimensioni. Segnalazioni (non bloccano): interventi dentro edifici,
-    su carreggiata di strada carrabile senza marciapiede, fuori dall'area Z2, su un arco molto usato. Fattibilità sempre ignota.
+    su carreggiata di strada carrabile senza marciapiede, fuori dal riquadro dell'area, su un arco molto usato. Fattibilità sempre ignota.
     Ritorna {warnings: [{code, op_id, text, severity}], feasibility: {...}}."""
     e = errori_schema(scn)
     if e: raise ScenarioError("invalid_params", "; ".join(e[:5]))
@@ -160,7 +160,7 @@ def valida(scn, geometrie=True):
             d = _dim(op, DIM_ALBERO)
             if not (0 <= d["crown_base_m"] < d["height_m"]) or d["crown_diameter_m"] <= 0 or d["height_m"] > 40:
                 raise ScenarioError("invalid_params", f"{op['op_id']}: servono 0 <= crown_base_m < height_m <= 40 e crown_diameter_m > 0.")
-            if d["crown_base_m"] > 0.5 * d["height_m"]: raise ScenarioError("invalid_params", f"{op['op_id']}: l'imposta non può superare metà altezza (stessa regola della chioma di T09).")
+            if d["crown_base_m"] > 0.5 * d["height_m"]: raise ScenarioError("invalid_params", f"{op['op_id']}: l'imposta non può superare metà altezza (stessa regola della chioma di F07).")
         else:
             _rettangolo_pensilina(op); d = _dim(op, DIM_PENSILINA)
             if not (0 <= d["canopy_base_m"] < d["roof_height_m"] <= 12): raise ScenarioError("invalid_params", f"{op['op_id']}: servono 0 <= canopy_base_m < roof_height_m <= 12.")
@@ -175,8 +175,8 @@ def _contesto_geo():
     strade = [(e["geom"], e["marciapiede_stato"], e["edge_id"], e.get("name")) for _, _, e in G.edges(data=True) if e["tipo_arco"] == "strada"]
     b = baseline(); usati = {a["edge_id"]: a for a in b["ricevitori"]["archi"]}
     pass_ = [(e["geom"], e["edge_id"]) for _, _, e in G.edges(data=True) if e["edge_id"] in usati]
-    z2 = json.loads((ROOT / "network/rete_manifest.json").read_text())["z2_en"]
-    return {"bld": bld, "bld_tree": STRtree(bld), "strade": strade, "strade_tree": STRtree([s[0] for s in strade]), "usati": pass_, "usati_info": usati, "z2": z2}
+    z2 = list(O.RIQUADRO_EN)
+    return {"bld": bld, "bld_tree": STRtree(bld), "strade": strade, "strade_tree": STRtree([s[0] for s in strade]), "usati": pass_, "usati_info": usati, "riquadro": z2}
 
 
 def _impronta(op):
@@ -202,19 +202,19 @@ def _segnalazioni(scn):
                             "text": "Vicino a una strada carrabile con marciapiede ignoto: il lato e la carreggiata non sono verificabili dai dati."})
         usati = [eid for geom, eid in c["usati"] if geom.distance(g) <= (0.5 if t == "tree" else PASSAGGIO_SEMILARGHEZZA_M)]
         if usati: w.append({"code": "su_arco_molto_usato", "op_id": op["op_id"], "severity": "warning",
-                            "text": f"L'impronta tocca un arco fra i più usati da T06 ({usati[:2]}): passaggio libero e larghezza non modellati, da verificare."})
+                            "text": f"L'impronta tocca un arco fra i più usati da F06 ({usati[:2]}): passaggio libero e larghezza non modellati, da verificare."})
         if t == "tree" and any(o["op_id"] == op["op_id"] and o["n_tipica"] for o in sovrapposizioni_alberi_esistenti(scn)):
-            w.append({"code": "chioma_su_chioma_esistente", "op_id": op["op_id"], "severity": "info", "text": "La chioma in proiezione si sovrappone a quella di un albero esistente (T05, chioma tipica): il beneficio marginale nel contesto con alberi esistenti è minore."})
-        x0, y0, x1, y1 = c["z2"]
+            w.append({"code": "chioma_su_chioma_esistente", "op_id": op["op_id"], "severity": "info", "text": "La chioma in proiezione si sovrappone a quella di un albero esistente (F05, chioma tipica): il beneficio marginale nel contesto con alberi esistenti è minore."})
+        x0, y0, x1, y1 = c["riquadro"]
         px, py = g.centroid.x, g.centroid.y
-        if not (x0 <= px <= x1 and y0 <= py <= y1): w.append({"code": "fuori_z2", "op_id": op["op_id"], "severity": "warning", "text": "Fuori dall'area pilota Z2."})
+        if not (x0 <= px <= x1 and y0 <= py <= y1): w.append({"code": "fuori_riquadro", "op_id": op["op_id"], "severity": "warning", "text": "Fuori dal riquadro dell'area pilota."})
     return w
 
 
-def crea_scenario(baseline_id, titolo, operazioni, autore="prototipo digital twin Pisa", created_at=None):
-    """Scenario versionato (versione 1) validato sullo schema. scenario_id = scn_z2_ + 16 esadecimali dello sha256 di (baseline, titolo, operazioni):
+def crea_scenario(baseline_id, titolo, operazioni, autore="prototipo digital twin Firenze", created_at=None):
+    """Scenario versionato (versione 1) validato sullo schema. scenario_id = scn_fi_ + 16 esadecimali dello sha256 di (baseline, titolo, operazioni):
     stesso input, stesso id; un contenuto diverso è un altro scenario. Non scrive nulla: usare salva()."""
-    sid = "scn_z2_" + sha_obj({"baseline_id": baseline_id, "title": titolo, "operations": operazioni})[:16]
+    sid = PREFISSO + sha_obj({"baseline_id": baseline_id, "title": titolo, "operations": operazioni})[:16]
     return {"scenario_id": sid, "version": 1, "baseline_id": baseline_id, "title": titolo, "author": autore, "created_at": created_at or now_z(), "operations": operazioni}
 
 
@@ -233,7 +233,7 @@ def salva(scn, cartella=DATA):
 def elenco():
     out = {}
     for d in (SC, DATA):
-        for p in sorted(d.glob("scn_*.json")): out[p.stem] = p
+        for p in sorted(d.glob(PREFISSO + "*.json")): out[p.stem] = p
     return out
 
 
@@ -244,7 +244,7 @@ def carica(scenario_id):
 
 
 def sovrapposizioni_alberi_esistenti(scn):
-    """Per ogni albero di scenario, gli alberi esistenti (T05) la cui chioma in proiezione si sovrappone: distanza fra i centri < somma dei raggi,
+    """Per ogni albero di scenario, gli alberi esistenti (F05) la cui chioma in proiezione si sovrappone: distanza fra i centri < somma dei raggi,
     con chioma esistente tipica e massima. Ritorna lista di {op_id, vicino_m, n_tipica, n_max, ids_tipica}."""
     a = O.dati()["a"]; out = []
     if a.empty: return out
@@ -280,17 +280,18 @@ def volumi_scenario(scn):
     return prismi, alberi
 
 
-CONTESTI = ("solo_edifici", "con_alberi_esistenti")
-CASI_CONTESTO = {"solo_edifici": ("base", "base_h_min", "base_h_max"), "con_alberi_esistenti": ("alberi_tipico", "alberi_min", "alberi_max")}   # centrale, estremi
+CONTESTI = ("solo_edifici", "con_alberi_esistenti", "con_vegetazione_lidar")
+CASI_CONTESTO = {"solo_edifici": ("base", "base_h_min", "base_h_max"), "con_alberi_esistenti": ("alberi_tipico", "alberi_min", "alberi_max"),
+                 "con_vegetazione_lidar": ("veg_lidar_tipico", "veg_lidar_min", "veg_lidar_max")}   # centrale, estremi
+CASI = [c for v in CONTESTI for c in CASI_CONTESTO[v]]   # i 9 casi del motore calcolati in un solo job
+CONTESTO_PRINCIPALE = "con_vegetazione_lidar"   # base di confronto principale (D14): edifici, alberi censiti e vegetazione LiDAR
 
 
-def calcola_ombra(scn, rec, cond, casi=None, fasce=None, asset_times=(), asset_casi=("base",), asset_bbox=None, out_dir=None, walk_speed_m_s=None, contesto="solo_edifici"):
-    """Ombra della baseline più gli interventi dello scenario. Senza interventi: solo edifici documentati (stessi numeri della baseline)."""
+def calcola_ombra(scn, rec, cond, casi=None, fasce=None, asset_times=(), asset_casi=("base",), asset_bbox=None, out_dir=None, walk_speed_m_s=None):
+    """Ombra della baseline più gli interventi dello scenario, su tutti i casi del motore (edifici; con alberi censiti; con vegetazione LiDAR). cond["date"] = giorno.
+    Senza interventi: le stesse righe del motore senza scenario (delta nullo). Gli interventi entrano in ogni caso come ostacoli aggiuntivi."""
     vol, alb = volumi_scenario(scn)
-    if contesto not in CONTESTI: raise ScenarioError("invalid_params", f"contesto ammesso: {list(CONTESTI)}")
-    if contesto == "con_alberi_esistenti":   # edifici + alberi T05 (chioma tipica, min e max come intervallo), più gli interventi; baseline invariata
-        method = {**cond["method"], "obstacles": "buildings_and_trees"}; casi = casi or list(CASI_CONTESTO[contesto])
-    else: method = {**cond["method"], "obstacles": "buildings_and_scenario" if (vol or alb) else "documented_buildings_only"}
+    method = {**cond["method"], "obstacles": "buildings_and_trees"}; casi = casi or CASI
     when = {"date": cond["date"], "timezone": "Europe/Rome", "times": cond["times"]}
     r = O.compute_shadow(scn["baseline_id"], rec, when, method, scenario_id=scn["scenario_id"], scenario_volumes=vol or None, scenario_trees=alb or None,
                          walk_speed_m_s=walk_speed_m_s or cond["walk_speed_m_s"], casi=casi, fasce=fasce if fasce is not None else cond["fasce"],
@@ -298,25 +299,25 @@ def calcola_ombra(scn, rec, cond, casi=None, fasce=None, asset_times=(), asset_c
     man = r["manifest"]; man["scenario_id"], man["scenario_version"] = scn["scenario_id"], scn["version"]
     man["limits"] += [{"code": "scenario_ipotesi", "text": "Interventi ipotetici di classe scenario: dimensioni dichiarate, non da progetto; nessun modello di crescita né anni."},
                       {"code": "fattibilita_ignota", "text": "Fattibilità ignota: sottoservizi, spazio radicale, proprietà del suolo, permessi e specie non verificati."},
-                      {"code": "chioma_scenario_ellissoide", "text": "Alberi di scenario come chiome ellissoidali opache, come gli alberi esistenti di T09; tronco trascurato; baseline senza gli alberi esistenti (inventario stimato e incompleto)."}]
+                      {"code": "chioma_scenario_ellissoide", "text": "Alberi di scenario come chiome ellissoidali opache, come gli alberi esistenti di F07; tronco trascurato; la vegetazione esistente è presente solo nei casi con alberi censiti e con vegetazione LiDAR."}]
     return r
 
 
-def _chiave_cache(scn, rec, cond, casi, fasce, asset_times, asset_casi, asset_bbox, contesto="solo_edifici"):
+def _chiave_cache(scn, rec, cond, casi, fasce, asset_times, asset_casi, asset_bbox):
     g = O.dati()["gpkg_sha256"]
     return sha_obj({"scn": {k: v for k, v in scn.items() if k != "created_at"}, "rec": [(r["receiver_id"], r["geometry"]) for r in rec], "cond": cond, "casi": casi, "fasce": fasce,
-                    "assets": [list(asset_times), list(asset_casi), asset_bbox], "ombre": O.VERSIONE, "gpkg": g, "t10": VERSIONE, **({"contesto": contesto} if contesto != "solo_edifici" else {})})[:20]
+                    "assets": [list(asset_times), list(asset_casi), asset_bbox], "ombre": O.VERSIONE, "gpkg": g, "veg": (O.vegetazione_lidar(), O.dati()["veg_sha256"])[1], "f08": VERSIONE})[:20]
 
 
-def ombra_con_cache(scn, rec=None, cond=None, casi=None, asset_times=(), asset_casi=("base",), asset_bbox=None, asset=False, contesto="solo_edifici"):
-    """calcola_ombra con cache in data/norm/scenarios/jobs. Ritorna {job, manifest, sintesi, cached}. Con asset=True scrive i GeoJSON 4326 delle ombre in scenarios/out
+def ombra_con_cache(scn, rec=None, cond=None, casi=None, asset_times=(), asset_casi=("base",), asset_bbox=None, asset=False):
+    """calcola_ombra con cache in data/norm/<area>/scenarios/jobs. Ritorna {job, manifest, sintesi, cached}. Con asset=True scrive i GeoJSON 4326 delle ombre in data/norm/<area>/scenarios/out
     (nome ombre_<scenario>_<data>_<hhmm>.geojson, con scenario_id nelle proprietà)."""
-    rec = rec or ricevitori(); cond = cond or condizioni(); k = _chiave_cache(scn, rec, cond, casi, cond["fasce"], asset_times, asset_casi, asset_bbox, contesto)
+    rec = rec or ricevitori(); cond = cond or condizioni(); k = _chiave_cache(scn, rec, cond, casi, cond["fasce"], asset_times, asset_casi, asset_bbox)
     p = JOBS / f"{k}.json"
     if p.exists():
         c = json.loads(p.read_text())
         if all((ROOT / a["path"]).exists() for a in c["manifest"]["assets"] if a["role"] == "result_geometry"): return {**c, "cached": True}
-    r = calcola_ombra(scn, rec, cond, casi=casi, asset_times=asset_times if asset else (), asset_casi=asset_casi, asset_bbox=asset_bbox, out_dir=OUT if asset else None, contesto=contesto)
+    r = calcola_ombra(scn, rec, cond, casi=casi, asset_times=asset_times if asset else (), asset_casi=asset_casi, asset_bbox=asset_bbox, out_dir=OUT if asset else None)
     man = r["manifest"]
     for a in man["assets"]:   # nomi per scenario invece che per job; scenario_id nelle proprietà
         if a["role"] != "result_geometry": continue
@@ -325,7 +326,8 @@ def ombra_con_cache(scn, rec=None, cond=None, casi=None, asset_times=(), asset_c
         for f in fc["features"]: f["properties"]["scenario_id"] = scn["scenario_id"]
         dst.write_text(json.dumps(fc, ensure_ascii=False, separators=(",", ":"))); src.unlink()
         b = dst.read_bytes(); a.update(path=rel(dst), bytes=len(b), sha256=hashlib.sha256(b).hexdigest())
-    c = {"job": r["job"], "manifest": man, "sintesi": r["sintesi"]}
+    slim = ("receiver_id", "time_local", "caso", "stato", "shade_fraction", "walk_sun_min", "walk_stato")   # per-ora nel confronto
+    c = {"job": r["job"], "manifest": man, "sintesi": r["sintesi"], "righe": [{k: x[k] for k in slim if k in x} for x in r["righe"]]}
     JOBS.mkdir(parents=True, exist_ok=True); p.write_text(json.dumps(c, ensure_ascii=False))
     return {**c, "cached": False}
 

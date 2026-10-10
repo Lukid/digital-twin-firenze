@@ -1,0 +1,70 @@
+{
+ "scenario_id": "scn_fi_s2_pensilina_attesa_polo",
+ "version": 1,
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "title": "S2 pensilina all'area di attesa Forlanini Polo Scienze Sociali, vicino all'ingresso del Polo (dimensione dichiarata)",
+ "author": "agente F08 (scenario dimostrativo)",
+ "created_at": "2026-10-10T12:00:00Z",
+ "operations": [
+  {
+   "op_id": "op_pensilina_01",
+   "op": "add",
+   "target_type": "shelter",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       679572.78,
+       4851340.75
+      ],
+      [
+       679575.66,
+       4851346.01
+      ],
+      [
+       679577.42,
+       4851345.05
+      ],
+      [
+       679574.54,
+       4851339.79
+      ],
+      [
+       679572.78,
+       4851340.75
+      ]
+     ]
+    ]
+   },
+   "dimensions": {
+    "roof_height_m": {
+     "value": 3.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di dimensione tipica di una pensilina da fermata (6 m x 2 m, intradosso 2,5 m, tetto 3,0 m): non da progetto"
+    },
+    "canopy_base_m": {
+     "value": 2.5,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di dimensione tipica di una pensilina da fermata (6 m x 2 m, intradosso 2,5 m, tetto 3,0 m): non da progetto"
+    },
+    "length_m": {
+     "value": 6.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di dimensione tipica di una pensilina da fermata (6 m x 2 m, intradosso 2,5 m, tetto 3,0 m): non da progetto"
+    },
+    "depth_m": {
+     "value": 2.0,
+     "unit": "m",
+     "classification": "scenario",
+     "dimension_source": "ipotesi di dimensione tipica di una pensilina da fermata (6 m x 2 m, intradosso 2,5 m, tetto 3,0 m): non da progetto"
+    }
+   },
+   "hypothesis_status": "feasibility_unknown",
+   "note": "Alla fermata bus Forlanini Polo Scienze Sociali (OSM nod_osm_11220277322, shelter=no), centrata sulla piattaforma OSM, lato lungo parallelo al tratto di rete più vicino. Fattibilità ignota: sottoservizi, proprietà del suolo, larghezza libera del marciapiede."
+  }
+ ]
+}
