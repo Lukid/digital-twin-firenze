@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Gemello di Firenze Novoli</title>
+<meta name="description" content="Scena 3D statica di Firenze Novoli - Firenze Nova costruita solo con open data: edifici, alberi, rete pedonale, ombre del sole.">
+<style>
+:root{--bg:#eef2f5;--pannello:#ffffff;--testo:#1b2430;--tenue:#4a5563;--bordo:#c4ccd6;--acc:#0b5cad;--accsc:#ffffff;--focus:#c2410c}
+@media (prefers-color-scheme:dark){:root{--bg:#10151c;--pannello:#1a222d;--testo:#eef2f6;--tenue:#b4bfcc;--bordo:#3a4656;--acc:#7db8f5;--accsc:#0b1220;--focus:#fbbf24}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--testo);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#tela{position:fixed;inset:0;width:100%;height:100%;display:block;outline:none;touch-action:none}
+#tela:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.box{background:var(--pannello);color:var(--testo);border:1px solid var(--bordo);border-radius:10px;box-shadow:0 2px 12px #0003}
+#pannello{position:fixed;top:12px;left:12px;width:340px;max-height:calc(100% - 24px);overflow:auto;padding:0}
+#pannello>summary{cursor:pointer;padding:10px 14px;font-weight:700;font-size:16px}
+#pannello .corpo{padding:0 14px 12px}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--tenue);margin:14px 0 6px}
+label{display:block;margin:3px 0}
+input[type=range]{width:100%}
+input[type=date],select,button{font:inherit;color:var(--testo);background:var(--pannello);border:1px solid var(--tenue);border-radius:6px;padding:5px 8px;max-width:100%}
+button{cursor:pointer}
+button.p{background:var(--acc);color:var(--accsc);border-color:var(--acc);font-weight:600}
+.riga{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.sub{margin-left:22px;font-size:13px;color:var(--tenue)}
+.sub select{margin-top:2px;width:calc(100% - 4px)}
+.leg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px;margin:4px 0 4px 22px;color:var(--tenue)}
+.leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-2px;border:1px solid #0006}
+.grad{height:10px;border-radius:5px;margin:4px 0 2px 22px;background:linear-gradient(90deg,#f2c230,#1b2a6b)}
+#sole{font-size:14px}
+#stato{font-size:13px;color:var(--tenue);margin-top:8px}
+#scheda{position:fixed;right:12px;bottom:12px;width:360px;max-width:calc(100% - 24px);max-height:55%;overflow:auto;padding:12px 14px}
+#scheda[hidden]{display:none}
+#scheda h3{margin:0 28px 6px 0;font-size:16px}
+#scheda dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:14px}
+#scheda dt{color:var(--tenue)}#scheda dd{margin:0;word-break:break-word}
+#scheda .fonte{margin-top:10px;font-size:12.5px;color:var(--tenue);border-top:1px solid var(--bordo);padding-top:8px}
+#chiudi{position:absolute;top:6px;right:6px;width:36px;height:36px;padding:0;font-size:18px}
+details.fl summary{cursor:pointer;font-weight:600}
+details.fl ul{padding-left:18px;margin:6px 0}
+details.fl li{margin-bottom:6px;font-size:13px}
+.vis{position:absolute;left:-9999px}
+@media (max-width:700px){
+ #pannello{left:8px;right:8px;top:8px;width:auto;max-height:52%}
+ #scheda{left:8px;right:8px;bottom:8px;width:auto;max-height:42%}
+}
+</style>
+</head>
+<body>
+<canvas id="tela" tabindex="0" role="img" aria-label="Scena 3D di Firenze Novoli. Trascina per ruotare, rotella o pizzica per avvicinare, frecce per spostare. Tocca un edificio, un albero o un punto per la scheda."></canvas>
+
+<details id="pannello" class="box" open>
+ <summary>Firenze Novoli, gemello 3D</summary>
+ <div class="corpo">
+  <p style="margin:0;font-size:13px;color:var(--tenue)">Riquadro di 2 km². Solo open data. Il sole e le ombre sono calcolati in questa pagina.</p>
+
+  <h2>Sole e ombre</h2>
+  <label for="data">Data</label>
+  <input type="date" id="data" value="2026-06-21">
+  <label for="ora">Ora locale: <strong id="oraTesto">17:00</strong></label>
+  <input type="range" id="ora" min="0" max="1425" step="15" value="1020" aria-describedby="sole">
+  <div id="sole" role="status" aria-live="polite"></div>
+
+  <h2>Livelli</h2>
+  <div id="livelli"></div>
+
+  <h2>Vista</h2>
+  <div class="riga">
+   <button type="button" id="vReset">Vista iniziale</button>
+   <button type="button" id="vAlto">Dall'alto</button>
+   <button type="button" id="vPiu" aria-label="Avvicina">+</button>
+   <button type="button" id="vMeno" aria-label="Allontana">&minus;</button>
+  </div>
+
+  <h2>Fonti e limiti</h2>
+  <details class="fl"><summary>Fonti dei dati</summary><ul id="fonti"></ul></details>
+  <details class="fl"><summary>Limiti da tenere presenti</summary><ul id="limiti"></ul></details>
+  <div id="stato" role="status">Caricamento dei dati...</div>
+ </div>
+</details>
+
+<section id="scheda" class="box" role="region" aria-label="Scheda dell'oggetto" hidden>
+ <button type="button" id="chiudi" aria-label="Chiudi la scheda">&times;</button>
+ <h3 id="schedaTit"></h3>
+ <dl id="schedaDati"></dl>
+ <div class="fonte" id="schedaFonte"></div>
+</section>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+</script>
+<script type="module" src="app.js"></script>
+<noscript>Questa pagina richiede JavaScript.</noscript>
+</body>
+</html>

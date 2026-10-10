@@ -1,0 +1,324 @@
+{
+ "versione": 1,
+ "generato": "2026-10-10T08:35:14Z",
+ "aoi_id": "aoi_firenze_novoli",
+ "area": {
+  "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
+  "crs_origine": "EPSG:7791",
+  "origine_e_n": [
+   679073.99,
+   4851845.81
+  ],
+  "lon_lat_centro": [
+   11.226001,
+   43.798
+  ],
+  "semiassi_m": [
+   747.4,
+   710.4
+  ],
+  "quota_riferimento_m": 48.2,
+  "piano": "x = est, y = alto, z = -nord, in metri dal centro"
+ },
+ "baseline": "bas_firenze_novoli_20261009",
+ "assets": {
+  "terreno": {
+   "file": "terreno.json.gz",
+   "byte": 39264,
+   "byte_decompressi": 112802,
+   "sha256": "63f2076d79df0f420b3d8a960d0134339e6d3fb83b9c20aa5263476661294a2f",
+   "n": 25110
+  },
+  "edifici": {
+   "file": "edifici.json.gz",
+   "byte": 446187,
+   "byte_decompressi": 2528140,
+   "sha256": "95c8bfdeba9708327918cfd185beebca1c74b0e95cfed9cbd840128322bf62fa",
+   "n": 1952
+  },
+  "alberi": {
+   "file": "alberi.json.gz",
+   "byte": 98586,
+   "byte_decompressi": 692379,
+   "sha256": "16e0bae23d53905c69dad7917ddd61091d60c7cc19928dd77bb94fd62029b486",
+   "n": 2917
+  },
+  "rete": {
+   "file": "rete.json.gz",
+   "byte": 101801,
+   "byte_decompressi": 532580,
+   "sha256": "22bf293eae80f957dc355b5c085e645686b973ff596b5efd54603e63b7028f42",
+   "n": 2924
+  },
+  "punti": {
+   "file": "punti.json.gz",
+   "byte": 4039,
+   "byte_decompressi": 24569,
+   "sha256": "ba4cadb84b0ffe8af53aacae3458ebd26fd8aa3b02f2dfec30a3499bec3e6bdd",
+   "n": 79
+  },
+  "accessibilita": {
+   "file": "accessibilita.json.gz",
+   "byte": 309926,
+   "byte_decompressi": 1714016,
+   "sha256": "991ec38df4972c9a41f75a7761bc6f17de866479ae3017ba9a39c6725c8c4fa0",
+   "n": 16480
+  }
+ },
+ "livelli_analitici": {
+  "accessibilita": {
+   "presente": true
+  },
+  "ombra": {
+   "presente": false
+  }
+ },
+ "livelli": {
+  "terreno": {
+   "etichetta": "Terreno",
+   "fonti": [
+    "src_fi_dtm2023"
+   ]
+  },
+  "edifici": {
+   "etichetta": "Edifici",
+   "fonti": [
+    "src_rt_uv_firenze_novoli",
+    "src_fi_dsm2023",
+    "src_fi_dtm2023",
+    "src_osm_firenze"
+   ]
+  },
+  "alberi": {
+   "etichetta": "Alberi",
+   "fonti": [
+    "src_fi_alberi",
+    "src_fi_dsm2023",
+    "src_fi_dtm2023"
+   ]
+  },
+  "rete": {
+   "etichetta": "Rete pedonale",
+   "fonti": [
+    "src_osm_firenze"
+   ]
+  },
+  "destinazioni": {
+   "etichetta": "Destinazioni e ingressi",
+   "fonti": [
+    "src_osm_firenze",
+    "src_cm_edscol_firenze",
+    "src_fi_scuole_statali",
+    "src_gtfs_gest_firenze"
+   ]
+  },
+  "tram": {
+   "etichetta": "Fermate tram",
+   "fonti": [
+    "src_fi_tram_fermate"
+   ]
+  },
+  "scuole": {
+   "etichetta": "Scuole statali",
+   "fonti": [
+    "src_fi_scuole_statali"
+   ]
+  },
+  "rifugi": {
+   "etichetta": "Rifugi climatici",
+   "fonti": [
+    "src_fi_rifugi_aree"
+   ]
+  },
+  "barriere": {
+   "etichetta": "Barriere architettoniche",
+   "fonti": [
+    "src_fi_barriere"
+   ]
+  },
+  "accessibilita": {
+   "etichetta": "Accessibilità (minuti a piedi)",
+   "fonti": [
+    "src_fi_civici",
+    "src_osm_firenze"
+   ]
+  },
+  "ombra": {
+   "etichetta": "Ombra sui percorsi",
+   "fonti": [
+    "src_osm_firenze",
+    "src_fi_dsm2023"
+   ]
+  }
+ },
+ "fonti": [
+  {
+   "id": "src_fi_dtm2023",
+   "titolo": "DTM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/dtm-lidar-2023",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-09",
+   "periodo": "volo 2023-06-27",
+   "sha256_snapshot": "3c8fdac2c02ab5cbb8353760c40962ea95ae9c6162130f30d9ac805608a79d02",
+   "uso": "Terreno e quota di base degli alberi"
+  },
+  {
+   "id": "src_fi_dsm2023",
+   "titolo": "DSM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/dsm-lidar-2023",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-09",
+   "periodo": "volo 2023-06-27 (giugno: foglie presenti)",
+   "sha256_snapshot": "1c6c250f2b91c77858667f8816e132c17f19916639f6e6e1a2578a45a5290451",
+   "uso": "Altezza degli edifici e delle chiome"
+  },
+  {
+   "id": "src_rt_uv_firenze_novoli",
+   "titolo": "Unità volumetriche del DB topografico regionale (WFS), area di Firenze",
+   "ente": "Regione Toscana",
+   "url": "https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm",
+   "licenza": "licenza regionale non scritta sul layer",
+   "stato_licenza": "clear_with_reserve",
+   "riserva": "Licenza non scritta sul layer: dedotta dalla politica regionale. Verificare prima di ridistribuire.",
+   "scaricato": "2026-10-09",
+   "periodo": "volo 2011 (campo anno, audit edifici); data di aggiornamento del servizio non dichiarata",
+   "sha256_snapshot": "2197d5f1105871037b7f419721a4fcb766d67be50e4adafa1ea9e1319b8f89ad",
+   "uso": "Impronte e volumi degli edifici"
+  },
+  {
+   "id": "src_osm_firenze",
+   "titolo": "OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)",
+   "ente": "OpenStreetMap contributors, estratto di un distributore di estratti OSM",
+   "url": "https://download.geofabrik.de/europe/italy/centro.html",
+   "licenza": "ODbL-1.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-09",
+   "periodo": "stato di OpenStreetMap al 2026-10-08 (timestamp dell'estratto), senza data di rilievo per oggetto",
+   "sha256_snapshot": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+   "uso": "Rete pedonale, impronte nuove, ingressi"
+  },
+  {
+   "id": "src_fi_alberi",
+   "titolo": "Alberi pubblici, censimento del Comune di Firenze",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/42cd1073-521f-4040-9491-e993d03663a4",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-09",
+   "periodo": "dataset dichiarato aggiornato ogni giorno (frequenza DAILY): stato alla data di scarico, senza data di rilievo per albero",
+   "sha256_snapshot": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
+   "uso": "Alberi pubblici"
+  },
+  {
+   "id": "src_fi_tram_fermate",
+   "titolo": "Fermate tram, Comune di Firenze",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/607b8031-252b-4442-950a-7b4452d9db8f",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-09",
+   "periodo": "dato dichiarato del 2025-03-11",
+   "sha256_snapshot": "631e460c143af00d2fb4bfbd42a06241a73471b28a88171d12c21ee28fca4085",
+   "uso": "Fermate tram"
+  },
+  {
+   "id": "src_fi_scuole_statali",
+   "titolo": "Anagrafe scuole statali 2026/27 (MIM, ripubblicata dal Comune di Firenze)",
+   "ente": "Comune di Firenze (dati MIM)",
+   "url": "https://dati.toscana.it/dataset/anagrafica-scuole-statali-2026_27",
+   "licenza": "IODL-2.0",
+   "stato_licenza": "clear_with_reserve",
+   "riserva": "IODL 2.0 non è CC BY: richiede attribuzione; l'equivalenza con CC BY e la compatibilità con gli altri layer non sono state valutate giuridicamente. La fonte primaria MIM non ha licenza verificata.",
+   "scaricato": "2026-10-09",
+   "periodo": "anagrafe anno scolastico 2026/27, dato dichiarato del 2026-09-18",
+   "sha256_snapshot": "5a9ab7914290ea32d62aa869c8073063062a575cb3f7c82c8198d5c96d7145b3",
+   "uso": "Scuole statali"
+  },
+  {
+   "id": "src_cm_edscol_firenze",
+   "titolo": "Edifici scolastici della Città metropolitana di Firenze (poligoni e accessi)",
+   "ente": "Città metropolitana di Firenze",
+   "url": "https://dati.toscana.it/dataset/edifici-scolastici-citta-metropolitana-di-firenze",
+   "licenza": "cc-by",
+   "stato_licenza": "clear_with_reserve",
+   "riserva": "Le risorse non portano licenza e la versione CC non è indicata: vale solo il campo della scheda.",
+   "scaricato": "2026-10-09",
+   "periodo": "dato dichiarato del 2014-02-13, scheda aggiornata il 2026-04-24, frequenza IRREG",
+   "sha256_snapshot": "791cc1192fa54892486df8343d848c76cd7d4117f00bf64ecef8c4e1047f1050",
+   "uso": "Accessi delle scuole"
+  },
+  {
+   "id": "src_gtfs_gest_firenze",
+   "titolo": "GTFS tram (GEST), Firenze",
+   "ente": "Regione Toscana / GEST",
+   "url": "https://dati.toscana.it/dataset/rt-oraritb",
+   "licenza": "cc-by",
+   "stato_licenza": "clear_with_reserve",
+   "riserva": "La risorsa GEST non porta licenza e la versione CC non è indicata: vale solo il campo della scheda.",
+   "scaricato": "2026-10-09",
+   "periodo": "minimo e massimo di calendar_dates.txt (nessun feed_info.txt); contiene solo T2 e T1.3, la T1 non compare",
+   "sha256_snapshot": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
+   "uso": "Punti delle fermate T2"
+  },
+  {
+   "id": "src_fi_rifugi_aree",
+   "titolo": "Rifugi climatici, aree fresche (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/rifugi_climatici_aree_fresche",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-09",
+   "periodo": "dato dichiarato del 2026-06-18, frequenza AS_NEEDED",
+   "sha256_snapshot": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
+   "uso": "Rifugi climatici (aree)"
+  },
+  {
+   "id": "src_fi_barriere",
+   "titolo": "Censimento delle barriere architettoniche e urbanistiche, Comune di Firenze",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/92033b63-0598-4449-9007-22127abe505a",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-09",
+   "periodo": "archivio dichiarato aggiornato al 2013; file dello zip del 2016-09-13; frequenza NOT_PLANNED",
+   "sha256_snapshot": "0f687cebb744beb670a47d81d711f0c620f18f3a4bfbe3c4af252246a32c26dd",
+   "uso": "Barriere architettoniche"
+  },
+  {
+   "id": "src_fi_civici",
+   "titolo": "Civici del Comune di Firenze",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/11430710-56eb-4444-bd6f-c5433155afc5",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-09",
+   "periodo": "dataset dichiarato aggiornato al bisogno (AS_NEEDED), ultima modifica 2026-10-05; stato alla data di scarico",
+   "sha256_snapshot": "3c501a28c48a56ac8e9b65e3233f3073284cab4e6126205dc04f72d60507c505",
+   "uso": "Civici dei livelli analitici"
+  }
+ ],
+ "limiti": [
+  "Altezze degli edifici: quota LiDAR 2023 (DSM meno DTM) confrontata con le unità volumetriche regionali del 2011. Sono volumi, non modelli architettonici: nessun tetto a falde, nessun portico.",
+  "Portici e volumi sospesi: nessuna fonte, restano \"ignoto\" e non sono disegnati. I volumi scendono di 1,5 m sotto la quota di base per seguire la pendenza del terreno a 10 m.",
+  "Edifici non più presenti nel 2023 (probabili demolizioni) sono disegnati in grigio scuro e segnalati nella scheda.",
+  "Alberi: il censimento comunale non riporta altezza né chioma. Altezza e chioma sono misurate dal LiDAR dove ci sono celle sufficienti, altrimenti stimate (classe indicata nella scheda). Il tronco è disegnato con almeno 25 cm di diametro per renderlo visibile.",
+  "Terreno: DTM LiDAR 2023 ricampionato a passo 10 m, senza ortofoto né texture.",
+  "Ombre: sono quelle del motore grafico (sole calcolato per posizione e data), a scopo illustrativo. Non sono un calcolo analitico: gli alberi proiettano chiome piene.",
+  "Destinazioni e ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
+  "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
+  "Barriere architettoniche: rilievo del 2013, grado di accessibilità dell'edificio, non dell'ostacolo sul percorso.",
+  "Livelli Accessibilità e Ombra sui percorsi: mostrano solo i dati prodotti dai moduli di analisi, se presenti. Non sono calcolati dalla scena."
+ ]
+}
