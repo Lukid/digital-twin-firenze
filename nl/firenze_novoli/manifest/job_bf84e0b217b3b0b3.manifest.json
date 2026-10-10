@@ -1,0 +1,719 @@
+{
+ "manifest_id": "man_bf84e0b217b3b0b3",
+ "job_id": "job_bf84e0b217b3b0b3",
+ "tool": "compare_scenarios",
+ "aoi_id": "aoi_firenze_novoli",
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "datasets": [
+  {
+   "snapshot_id": "snp_cm_edscol_firenze_20261009",
+   "source_id": "src_cm_edscol_firenze",
+   "sha256": "791cc1192fa54892486df8343d848c76cd7d4117f00bf64ecef8c4e1047f1050",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_fi_alberi_20261009",
+   "source_id": "src_fi_alberi",
+   "sha256": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_barriere_20261009",
+   "source_id": "src_fi_barriere",
+   "sha256": "0f687cebb744beb670a47d81d711f0c620f18f3a4bfbe3c4af252246a32c26dd",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_civici_20261009",
+   "source_id": "src_fi_civici",
+   "sha256": "3c501a28c48a56ac8e9b65e3233f3073284cab4e6126205dc04f72d60507c505",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_dsm2023_20261009",
+   "source_id": "src_fi_dsm2023",
+   "sha256": "1c6c250f2b91c77858667f8816e132c17f19916639f6e6e1a2578a45a5290451",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_dtm2023_20261009",
+   "source_id": "src_fi_dtm2023",
+   "sha256": "3c8fdac2c02ab5cbb8353760c40962ea95ae9c6162130f30d9ac805608a79d02",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_rifugi_aree_20261009",
+   "source_id": "src_fi_rifugi_aree",
+   "sha256": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_rifugi_biblioteche_20261009",
+   "source_id": "src_fi_rifugi_biblioteche",
+   "sha256": "2b2685f9008ee030b1a23c29ae59116fc9dce7ee9071840638c9823ea34253c8",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_scuole_statali_20261009",
+   "source_id": "src_fi_scuole_statali",
+   "sha256": "5a9ab7914290ea32d62aa869c8073063062a575cb3f7c82c8198d5c96d7145b3",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_fi_tram_fermate_20261009",
+   "source_id": "src_fi_tram_fermate",
+   "sha256": "631e460c143af00d2fb4bfbd42a06241a73471b28a88171d12c21ee28fca4085",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_gtfs_at_firenze_20261009",
+   "source_id": "src_gtfs_at_firenze",
+   "sha256": "6ca6c95f0556b6bdb170cfd8f684b8e976ffd083119b92c711f988e7169795e7",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_gtfs_gest_firenze_20261009",
+   "source_id": "src_gtfs_gest_firenze",
+   "sha256": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_osm_firenze_20261009",
+   "source_id": "src_osm_firenze",
+   "sha256": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_rt_uv_firenze_novoli_20261009",
+   "source_id": "src_rt_uv_firenze_novoli",
+   "sha256": "2197d5f1105871037b7f419721a4fcb766d67be50e4adafa1ea9e1319b8f89ad",
+   "license_state": "clear_with_reserve"
+  }
+ ],
+ "params": {
+  "scenario_ids": [
+   "scn_fi_s1_filare_r01",
+   "scn_fi_s2_pensilina_attesa_polo"
+  ],
+  "scenario_sha256": [
+   "16172e8e065c80b004a14ded49f409f717f8ccc7ed064c9029f99c2aabbd3490",
+   "0106b04b2cb05639d2165df369d1a96d95faac2f9fecfe066af42a25c50232a4"
+  ],
+  "with_variants": true,
+  "context": "con_vegetazione_lidar",
+  "method_version": "0.2.0",
+  "ombre_version": "0.3.0",
+  "baseline_record_sha256": "0887f5c6b5806be7d2fb1d3dee6eab580d2508961f8ad4a769aea57a8976cb91"
+ },
+ "method": {
+  "name": "scenario_comparison",
+  "version": "0.2.0",
+  "description": "Delta accoppiati scenario meno baseline su condizioni comuni (stessi ricevitori, date, fasce, passi, geometrie), con intervalli da altezze e lato; nessun punteggio unico."
+ },
+ "crs": "EPSG:7791",
+ "vertical_datum_status": "not_confirmed",
+ "timezone": "Europe/Rome",
+ "timing": {
+  "started_at": "2026-10-10T11:21:57Z",
+  "finished_at": "2026-10-10T11:21:59Z",
+  "duration_s": 2.86
+ },
+ "metrics": [
+  {
+   "metric_id": "sc1_r01_0715_punta_sun_min_lidar",
+   "label": "Delta sun_min R01",
+   "value": -0.546,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R01, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.546,
+    "high": -0.545,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_0715_punta_shade_lidar",
+   "label": "Delta shade R01",
+   "value": 0.0341,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R01, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0341,
+    "high": 0.0341,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_0715_giornata_sun_min_lidar",
+   "label": "Delta sun_min R01",
+   "value": -0.448,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R01, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.448,
+    "high": -0.448,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_0715_giornata_shade_lidar",
+   "label": "Delta shade R01",
+   "value": 0.0267,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R01, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0267,
+    "high": 0.0267,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r02_0715_punta_sun_min_lidar",
+   "label": "Delta sun_min R02",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R02, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r02_0715_punta_shade_lidar",
+   "label": "Delta shade R02",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R02, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r02_0715_giornata_sun_min_lidar",
+   "label": "Delta sun_min R02",
+   "value": -0.111,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R02, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.111,
+    "high": -0.11,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r02_0715_giornata_shade_lidar",
+   "label": "Delta shade R02",
+   "value": 0.0114,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R02, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0114,
+    "high": 0.0114,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_attesa_0715_punta_shade_lidar",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, area di attesa Polo, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_attesa_0715_giornata_shade_lidar",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, area di attesa Polo, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_0915_punta_sun_min_lidar",
+   "label": "Delta sun_min R01",
+   "value": -0.574,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R01, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.574,
+    "high": -0.574,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_0915_punta_shade_lidar",
+   "label": "Delta shade R01",
+   "value": 0.0357,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R01, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0357,
+    "high": 0.0357,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_0915_giornata_sun_min_lidar",
+   "label": "Delta sun_min R01",
+   "value": -0.321,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R01, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.321,
+    "high": -0.321,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r01_0915_giornata_shade_lidar",
+   "label": "Delta shade R01",
+   "value": 0.0192,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R01, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0191,
+    "high": 0.0192,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r02_0915_punta_sun_min_lidar",
+   "label": "Delta sun_min R02",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R02, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r02_0915_punta_shade_lidar",
+   "label": "Delta shade R02",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R02, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r02_0915_giornata_sun_min_lidar",
+   "label": "Delta sun_min R02",
+   "value": -0.105,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R02, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": -0.105,
+    "high": -0.104,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_r02_0915_giornata_shade_lidar",
+   "label": "Delta shade R02",
+   "value": 0.0107,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, R02, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0107,
+    "high": 0.0107,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_attesa_0915_punta_shade_lidar",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, area di attesa Polo, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc1_attesa_0915_giornata_shade_lidar",
+   "label": "Delta ombra area di attesa",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s1_filare_r01, area di attesa Polo, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_0715_punta_sun_min_lidar",
+   "label": "Delta sun_min R01",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R01, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_0715_punta_shade_lidar",
+   "label": "Delta shade R01",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R01, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_0715_giornata_sun_min_lidar",
+   "label": "Delta sun_min R01",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R01, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_0715_giornata_shade_lidar",
+   "label": "Delta shade R01",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R01, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r02_0715_punta_sun_min_lidar",
+   "label": "Delta sun_min R02",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R02, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r02_0715_punta_shade_lidar",
+   "label": "Delta shade R02",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R02, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r02_0715_giornata_sun_min_lidar",
+   "label": "Delta sun_min R02",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R02, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r02_0715_giornata_shade_lidar",
+   "label": "Delta shade R02",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R02, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_attesa_0715_punta_shade_lidar",
+   "label": "Delta ombra area di attesa",
+   "value": 0.4011,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, area di attesa Polo, 2026-07-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.4011,
+    "high": 0.4011,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_attesa_0715_giornata_shade_lidar",
+   "label": "Delta ombra area di attesa",
+   "value": 0.2364,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, area di attesa Polo, 2026-07-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.2363,
+    "high": 0.2364,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_0915_punta_sun_min_lidar",
+   "label": "Delta sun_min R01",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R01, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_0915_punta_shade_lidar",
+   "label": "Delta shade R01",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R01, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_0915_giornata_sun_min_lidar",
+   "label": "Delta sun_min R01",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R01, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r01_0915_giornata_shade_lidar",
+   "label": "Delta shade R01",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R01, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r02_0915_punta_sun_min_lidar",
+   "label": "Delta sun_min R02",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R02, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r02_0915_punta_shade_lidar",
+   "label": "Delta shade R02",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R02, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r02_0915_giornata_sun_min_lidar",
+   "label": "Delta sun_min R02",
+   "value": 0.0,
+   "unit": "min",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R02, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_r02_0915_giornata_shade_lidar",
+   "label": "Delta shade R02",
+   "value": 0.0,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, R02, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.0,
+    "high": 0.0,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_attesa_0915_punta_shade_lidar",
+   "label": "Delta ombra area di attesa",
+   "value": 0.2062,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, area di attesa Polo, 2026-09-15, fascia punta_12_30_13_30, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.2062,
+    "high": 0.2062,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  },
+  {
+   "metric_id": "sc2_attesa_0915_giornata_shade_lidar",
+   "label": "Delta ombra area di attesa",
+   "value": 0.1038,
+   "unit": "1",
+   "classification": "scenario",
+   "scope": "scn_fi_s2_pensilina_attesa_polo, area di attesa Polo, 2026-09-15, fascia giornata_8_19, contesto con_vegetazione_lidar",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.1038,
+    "high": 0.1039,
+    "basis": "delta accoppiato sui casi estremi del contesto (altezze degli edifici, chiome, vegetazione LiDAR); lato del marciapiede non modellato"
+   }
+  }
+ ],
+ "limits": [
+  {
+   "code": "dichiarazione_1",
+   "text": "I pesi dei tratti sono numeri di civici (punti d'indirizzo del Comune che passano dall'arco nel cammino minimo): non sono persone e non esistono flussi pedonali misurati."
+  },
+  {
+   "code": "dichiarazione_2",
+   "text": "Base di confronto principale: edifici documentati, alberi censiti e vegetazione LiDAR (D14). Gli altri due contesti (solo edifici, con alberi censiti) sono riportati come sensibilità."
+  },
+  {
+   "code": "dichiarazione_3",
+   "text": "Ombra geometrica binaria: nessuna conversione in gradi, comfort, salute o domanda pedonale; nessun anno di crescita."
+  },
+  {
+   "code": "dichiarazione_4",
+   "text": "Un albero nuovo è un'ombra aggiunta: dove la chioma esistente ombreggia già il punto il beneficio può solo calare rispetto ai soli edifici."
+  },
+  {
+   "code": "dichiarazione_5",
+   "text": "Vegetazione LiDAR come prisma opaco pieno (limite superiore dell'ombra esistente): tende a ridurre il beneficio di un nuovo albero."
+  },
+  {
+   "code": "dichiarazione_6",
+   "text": "Percorsi sull'asse della rete: l'ombra è misurata sull'asse, non sulla linea dove si cammina. Gli alberi di S1 stanno dentro le aree di circolazione pedonale del Comune (da 1,5 a 5 m dall'asse)."
+  },
+  {
+   "code": "dichiarazione_7",
+   "text": "Dimensioni degli interventi dichiarate come ipotesi di classe scenario; fattibilità (sottoservizi, spazio radicale, proprietà del suolo, permessi, specie) ignota per tutti."
+  },
+  {
+   "code": "dichiarazione_8",
+   "text": "Nessuna validazione locale: risultati not_validated_locally."
+  }
+ ],
+ "validation_status": "not_validated_locally",
+ "assets": []
+}

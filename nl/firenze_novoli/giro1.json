@@ -1,0 +1,213 @@
+[
+ {
+  "n": 1,
+  "domanda": "Quali dati abbiamo su rete pedonale e alberi nell'area di Novoli?",
+  "chiamate": [
+   {"tool": "list_approved_sources", "args": {"theme": "rete_pedonale", "aoi_id": "aoi_firenze_novoli"}, "esito": "ok", "job_id": null},
+   {"tool": "list_approved_sources", "args": {"theme": "verde", "aoi_id": "aoi_firenze_novoli"}, "esito": "ok", "job_id": null}
+  ],
+  "risposta": "Rete pedonale: OpenStreetMap (snapshot del 9/10/2026, stato al 8/10/2026, licenza chiara, ridistribuibile) e l'archivio barriere architettoniche del Comune (aggiornato al 2013, licenza chiara). Lacune dichiarate: la rete è solo OSM, quindi lato del marciapiede, larghezze e pendenze sono ignoti. Alberi: censimento alberi del Comune (aggiornamento giornaliero dichiarato, stato alla data di scarico, licenza chiara, ridistribuibile). Lacune: censimento solo pubblico, chiome in parte stimate, imposta sempre stimata; la vegetazione privata c'è solo dal LiDAR 2023 (prismi opachi, senza specie).",
+  "numeri_senza_job": false,
+  "note": "Nessuna difficoltà. Il tema 'verde' copre gli alberi."
+ },
+ {
+  "n": 2,
+  "domanda": "Con che licenza possiamo riusare edifici e altezze?",
+  "chiamate": [
+   {"tool": "list_approved_sources", "args": {"theme": "edifici", "aoi_id": "aoi_firenze_novoli"}, "esito": "ok", "job_id": null},
+   {"tool": "list_approved_sources", "args": {"theme": "quote", "aoi_id": "aoi_firenze_novoli"}, "esito": "ok", "job_id": null},
+   {"tool": "list_approved_sources", "args": {"theme": "licenze", "aoi_id": "aoi_firenze_novoli"}, "esito": "ok", "job_id": null},
+   {"tool": "inspect_dataset", "args": {"source_id": "src_rt_uv_firenze_novoli"}, "esito": "ok", "job_id": null}
+  ],
+  "risposta": "Dipende dalla fonte. Le unità volumetriche degli edifici (Regione Toscana, volo 2011) hanno licenza 'chiara con riserva', uso consentito solo come prototipo interno: sul layer non c'è una licenza scritta, è dedotta dalla politica regionale sui dati aperti (CC BY o CC BY-SA) e va verificata prima di ridistribuire. Gli edifici OSM e le quote LiDAR 2023 (DSM e DTM del Comune) hanno licenza chiara e uso di ridistribuzione. Le altezze degli edifici combinano LiDAR 2023 e volumi 2011, quindi il prodotto edifici più altezze va trattato come uso interno finché la licenza regionale non è verificata. Il datum verticale delle quote non è confermato.",
+  "numeri_senza_job": false,
+  "note": "Il server dà lo stato di licenza ma non il nome formale della licenza per OSM e LiDAR (solo clear / redistribution): non l'ho inventato."
+ },
+ {
+  "n": 3,
+  "domanda": "Quanti civici arrivano a piedi al Polo delle Scienze Sociali in 10 minuti?",
+  "chiamate": [
+   {"tool": "list_destinations", "args": {"aoi_id": "aoi_firenze_novoli", "category": "university", "name_query": "Polo delle Scienze Sociali"}, "esito": "ok", "job_id": null},
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_university_w83537185"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_90ef3449d76b161a"}
+  ],
+  "risposta": "Entro 10 minuti a piedi arriva il 24,5% dei civici (0,2445 su 3296 civici, circa 806), intervallo 15,2%-28,9% variando la velocità fra 0,8 e 1,4 m/s. Job job_90ef3449d76b161a. Parametri scelti da me: velocità 1,2 m/s (non data), soglie 5/10/15 min, ingresso predefinito ent_osm_n11152998932 (il Polo ha due ingressi nei dati, entrambi non verificati), snapping 40 m, scale ammesse, nessuna penalità di attraversamento. Sono quote di civici, non di residenti; 168 civici non agganciati alla rete (insufficient_data) restano nel denominatore.",
+  "numeri_senza_job": false,
+  "note": "Il numero assoluto (circa 806) l'ho ricavato moltiplicando la quota del job per 3296: il job non restituisce direttamente il conteggio dei civici raggiunti. Mancherebbe una metrica 'origini raggiunte entro soglia' in valore assoluto. Velocità non data dall'utente: dichiarata 1,2. Ingresso non scelto dall'utente: predefinito."
+ },
+ {
+  "n": 4,
+  "domanda": "Che quota di civici sta entro 10 minuti a piedi dalla fermata Torre degli Agli, a 1,2 m/s?",
+  "chiamate": [
+   {"tool": "list_destinations", "args": {"aoi_id": "aoi_firenze_novoli", "category": "stop", "name_query": "torre degli agli"}, "esito": "ok", "job_id": null},
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_tram_fm9057"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_f5a4969062095f90"}
+  ],
+  "risposta": "Il 39,3% dei civici (0,3929 su 3296) sta entro 10 minuti a piedi dalla fermata Novoli - Torre Degli Agli, a 1,2 m/s. Intervallo di sensibilità sulla velocità (0,8-1,4 m/s): 30,1%-39,6%. Job job_f5a4969062095f90. Parametri: soglie 5/10/15 min, snapping 40 m, scale ammesse, nessuna penalità di attraversamento, ingresso unico ent_gtfs_fm9057 (non verificato). Sono civici, non residenti.",
+  "numeri_senza_job": false,
+  "note": "Soglie [5,10,15] scelte da me per riusare la cache dei job della mappa."
+ },
+ {
+  "n": 5,
+  "domanda": "E per un anziano che cammina a 0,8 m/s, verso la scuola primaria Vamba, entro 15 minuti?",
+  "chiamate": [
+   {"tool": "list_destinations", "args": {"aoi_id": "aoi_firenze_novoli", "category": "school", "name_query": "vamba"}, "esito": "ok", "job_id": null},
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_school_fiee86002g"], "profile": {"speed_m_s": 0.8}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_432d63b60d99bc55"}
+  ],
+  "risposta": "A 0,8 m/s il 39,0% dei civici (0,3896 su 3296, circa 1284) sta entro 15 minuti a piedi dalla scuola primaria Vamba (dst_school_fiee86002g). Job job_432d63b60d99bc55. Parametri: velocità 0,8 m/s data dall'utente, soglie 5/10/15, snapping 40 m, scale ammesse, nessuna penalità di attraversamento, ingresso unico ent_cm_FIEE86002G_0 (non verificato). Sono civici, non persone anziane: i dati non dicono dove abitano gli anziani. La velocità è un'ipotesi, non una misura. L'intervallo del servizio (39,0%-65,2%) è la sensibilità fra 0,8 e 1,4 m/s: 0,8 è l'estremo basso.",
+  "numeri_senza_job": false,
+  "note": "Esistono due scuole Vamba (primaria e infanzia): l'utente ha detto primaria, nessuna ambiguità. Il conteggio 1284 è ricavato da quota x 3296. L'intervallo di sensibilità ha il valore centrale coincidente con l'estremo basso perché 0,8 è il minimo del range: poco informativo."
+ },
+ {
+  "n": 6,
+  "domanda": "Quanto ci si mette ad arrivare alla scuola Vamba?",
+  "chiamate": [],
+  "risposta": "Non posso dare un tempo senza sapere da dove si parte. Inoltre ci sono due scuole Vamba (primaria dst_school_fiee86002g e infanzia dst_school_fiaa86002a, stesso accesso) e serve una velocità. Posso calcolare il tempo da un punto preciso oppure la distribuzione dei tempi dai civici dell'area. Domanda: da quale punto o civico parte il percorso, verso quale delle due scuole (primaria o infanzia), e a che velocità?",
+  "numeri_senza_job": false,
+  "note": "Domanda ambigua su origine, scuola e velocità: nessuna chiamata di calcolo. Il tool compute_walk_access ha soglie in minuti e metriche aggregate (p50, p90); un tempo punto-punto si ottiene solo passando un'origine di tipo points e leggendo le metriche, ma non esiste un tool dedicato 'tempo da A a B'."
+ },
+ {
+  "n": 7,
+  "domanda": "Quante persone abitano entro 10 minuti dalla fermata del tram?",
+  "chiamate": [
+   {"tool": "list_destinations", "args": {"aoi_id": "aoi_firenze_novoli", "category": "stop", "name_query": "tram"}, "esito": "ok", "job_id": null}
+  ],
+  "risposta": "Le persone non si possono calcolare: i dati sono punti d'indirizzo (civici), non residenti, e non c'è un dato di popolazione. Posso dare la quota di civici. Inoltre le fermate del tram nell'area sono due: Novoli - Regione Toscana e Novoli - Torre Degli Agli. A 1,2 m/s entro 10 minuti: Torre Degli Agli 39,3% dei civici (job_f5a4969062095f90), Regione Toscana 29,7% (job_b83ab974753edcb9). Domanda: quale delle due fermate intende, e va bene avere civici invece di persone (e velocità 1,2 m/s)?",
+  "numeri_senza_job": false,
+  "note": "Due problemi: oggetto ambiguo (due fermate) e metrica non disponibile (persone). I numeri citati vengono dai job di Q4 e Q8. Velocità 1,2 m/s non data dall'utente: dichiarata."
+ },
+ {
+  "n": 8,
+  "domanda": "Quale delle due fermate della T2 serve più civici entro 10 minuti a piedi?",
+  "chiamate": [
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_tram_fm9056"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_b83ab974753edcb9"}
+  ],
+  "risposta": "A 1,2 m/s, Novoli - Torre Degli Agli serve più civici: 39,3% (circa 1295 su 3296, job_f5a4969062095f90) contro 29,7% di Novoli - Regione Toscana (circa 979, job_b83ab974753edcb9). Le fasce di sensibilità sulla velocità (0,8-1,4 m/s) sono 30,1%-39,6% e 13,5%-40,5%: si sovrappongono nella parte alta, quindi il vantaggio vale a 1,2 m/s ma non è robusto a ogni velocità. Parametri: soglie 5/10/15, snapping 40 m, scale ammesse, nessuna penalità di attraversamento, un solo ingresso per fermata (non verificato). Sono civici, non persone.",
+  "numeri_senza_job": false,
+  "note": "Velocità 1,2 m/s scelta da me (non data). Il tool non conferma che le due fermate siano 'della T2': i dati dicono 'tram'. Conteggi assoluti ricavati da quota x 3296."
+ },
+ {
+  "n": 9,
+  "domanda": "Il percorso R01 dalla fermata al Polo è in ombra a mezzogiorno del 15 luglio?",
+  "chiamate": [
+   {"tool": "compute_shadow", "args": {"baseline_id": "bas_firenze_novoli_20261009", "receivers": [{"route_id": "R01"}], "when": {"date": "2026-07-15", "timezone": "Europe/Rome", "times": ["12:00"]}, "method": {"name": "geometric_ray", "space_step_m": 1, "time_step_min": 5, "obstacles": "buildings_trees_and_lidar_vegetation"}}, "esito": "ok", "job_id": "job_3a59d92a2988881b"}
+  ],
+  "risposta": "Quasi per niente: a mezzogiorno del 15 luglio 2026 solo il 7,3% di R01 (1198 m, dalla fermata Torre degli Agli all'ingresso del Polo) è in ombra, con intervallo 4,9%-10,9%. Camminando a 1,2 m/s si passano 15,4 minuti al sole su 16,6 di cammino. Con i soli edifici l'ombra è il 4,2%. Job job_3a59d92a2988881b. Parametri scelti da me: ora 12:00 locale (ora legale), ostacoli edifici + alberi censiti + vegetazione LiDAR, passo spaziale 1 m, passo temporale 5 min, velocità 1,2 m/s. Ombra geometrica binaria sull'asse della rete (non sul lato del marciapiede), non validata sul posto.",
+  "numeri_senza_job": false,
+  "note": "Ostacoli, ora esatta (12:00 e non mezzogiorno solare, circa 13:30 in luglio) e velocità non dati dall'utente: scelti e dichiarati. Difetto: nei parametri del job il campo method.obstacles risulta 'buildings_and_trees' anche se ho passato 'buildings_trees_and_lidar_vegetation' (le metriche e i casi veg_lidar_* ci sono comunque). L'output di compute_shadow è molto lungo (geometria completa del percorso, 9 casi)."
+ },
+ {
+  "n": 10,
+  "domanda": "Quanta ombra c'è su R02 il 15 settembre alle 12:30, contando anche la vegetazione?",
+  "chiamate": [
+   {"tool": "compute_shadow", "args": {"baseline_id": "bas_firenze_novoli_20261009", "receivers": [{"route_id": "R02"}], "when": {"date": "2026-09-15", "timezone": "Europe/Rome", "times": ["12:30"]}, "method": {"name": "geometric_ray", "space_step_m": 1, "time_step_min": 5, "obstacles": "buildings_trees_and_lidar_vegetation"}}, "esito": "ok", "job_id": "job_95ac09c7726dff17"}
+  ],
+  "risposta": "Il 15 settembre 2026 alle 12:30 (ora legale) il 49,0% di R02 è in ombra con edifici, alberi censiti e vegetazione LiDAR (intervallo 48,8%-49,0%); 48,0% con soli edifici e alberi censiti. Minuti al sole camminando: 5,05. Job job_95ac09c7726dff17. Parametri: passo 1 m, 5 min, velocità 1,2 m/s (scelta mia), ombra geometrica binaria sull'asse della rete, non validata sul posto.",
+  "numeri_senza_job": false,
+  "note": "Velocità non data: 1,2 m/s dichiarata. Il tool non dice che cosa collega R02 (non so dire fra quali punti sia): non ho descritto il percorso. Stesso difetto di Q9 su method.obstacles nel manifest."
+ },
+ {
+  "n": 11,
+  "domanda": "Com'è l'ombra su R01 alle 2:30 del 25 ottobre?",
+  "chiamate": [
+   {"tool": "compute_shadow", "args": {"baseline_id": "bas_firenze_novoli_20261009", "receivers": [{"route_id": "R01"}], "when": {"date": "2026-10-25", "timezone": "Europe/Rome", "times": ["02:30"]}, "method": {"name": "geometric_ray", "space_step_m": 1, "time_step_min": 5, "obstacles": "buildings_trees_and_lidar_vegetation"}}, "esito": "invalid_params", "job_id": null}
+  ],
+  "risposta": "Non ho calcolato nulla. Il 25 ottobre 2026 è il giorno del cambio d'ora e le 02:30 esistono due volte (ora legale e ora solare): il servizio rifiuta l'orario ambiguo. Di notte, in ogni caso, il sole è sotto l'orizzonte e non ci sarebbe un valore di ombra. Domanda: intende le 02:30 di notte (e in quel caso la prima, in ora legale, o la seconda, in ora solare) oppure le 14:30 del pomeriggio?",
+  "numeri_senza_job": false,
+  "note": "Il server ha respinto con invalid_params e messaggio chiaro che chiede di domandare all'utente. Buon comportamento. Non ho calcolato 14:30 perché non l'ha detto l'utente."
+ },
+ {
+  "n": 12,
+  "domanda": "Che effetto ha il filare di alberi previsto lungo R01?",
+  "chiamate": [
+   {"tool": "compare_scenarios", "args": {"baseline_id": "bas_firenze_novoli_20261009"}, "esito": "invalid_params", "job_id": null},
+   {"tool": "compare_scenarios", "args": {"baseline_id": "bas_firenze_novoli_20261009", "scenario_ids": ["scn_s1"]}, "esito": "unknown_id", "job_id": null},
+   {"tool": "compare_scenarios", "args": {"baseline_id": "bas_firenze_novoli_20261009", "scenario_ids": ["scn_fi_s1_filare_r01"]}, "esito": "ok", "job_id": "job_25566ae979b8df7e"}
+  ],
+  "risposta": "Lo scenario S1 (7 alberi tipici, interasse 8 m, su un tratto di 60 m di R01) riduce poco i minuti al sole su R01, con il contesto edifici + alberi + vegetazione LiDAR. 15 luglio 12:30-13:30: ombra 8,0% -> 11,4% (+3,4 punti), minuti al sole 15,35 -> 14,80 (-0,55 min). 15 luglio 8-19: ombra 17,0% -> 19,6%, -0,45 min al sole. 15 settembre 12:30-13:30: ombra 26,6% -> 30,2%, -0,57 min. L'area di attesa al Polo non cambia e R02 praticamente no. Job job_25566ae979b8df7e. Limiti: gli alberi sono ipotesi di dimensione di classe scenario, un albero (op_albero_07) risulta fuori dal riquadro dell'area pilota, la fattibilità (sottoservizi, spazio radicale, permessi, suolo) è ignota, ombra geometrica binaria, nessuna validazione locale. Velocità 1,2 m/s e contesto con_vegetazione_lidar sono i valori del confronto, non scelti da me.",
+  "numeri_senza_job": false,
+  "note": "Difficoltà: nessun tool elenca gli scenari esistenti. Ho scoperto gli ID solo provando un ID sbagliato (scn_s1) e leggendo i candidates dell'errore unknown_id. Mancherebbe un list_scenarios. Il confronto non ha restituito intervalli di sensibilità utili (intervallo di larghezza zero) nonostante with_variants=true di default; le varianti scn_fi_s1v_chioma_min/max non le ho richieste. Domanda inizialmente ambigua su 'filare previsto' ma l'unico scenario filare è S1: associato senza chiedere, dichiarato qui."
+ },
+ {
+  "n": 13,
+  "domanda": "La pensilina alla fermata dell'autobus fa ombra a chi aspetta, a luglio?",
+  "chiamate": [
+   {"tool": "list_destinations", "args": {"aoi_id": "aoi_firenze_novoli", "category": "stop", "name_query": "autobus"}, "esito": "ok", "job_id": null},
+   {"tool": "list_destinations", "args": {"aoi_id": "aoi_firenze_novoli", "category": "stop"}, "esito": "ok", "job_id": null},
+   {"tool": "compare_scenarios", "args": {"baseline_id": "bas_firenze_novoli_20261009", "scenario_ids": ["scn_fi_s2_pensilina_attesa_polo"]}, "esito": "ok", "job_id": "job_9f699200363c4cf0"}
+  ],
+  "risposta": "Sì, nello scenario S2 (pensilina di 12 m2 alla fermata bus Guidoni Barsanti, la più vicina al Polo dove c'è posto). Il 15 luglio, nella fascia 12:30-13:30, la quota di area di attesa in ombra passa da 0% a 40,1%; su tutta la giornata 8-19 da 13,4% a 37,0%. Su R01 e R02 l'effetto è nullo. Job job_9f699200363c4cf0. Limiti: dimensione della pensilina ipotetica, fattibilità ignota, ombra geometrica binaria, nessuna validazione locale. Ho assunto che la fermata sia quella dello scenario S2 (nei destinazioni i bus non compaiono, ci sono solo due fermate del tram). Se intendeva un'altra fermata, mi dica quale: non posso calcolarla con questo scenario.",
+  "numeri_senza_job": false,
+  "note": "L'utente dice 'fermata dell'autobus' senza nome: ho associato lo scenario S2 perché è l'unico con una pensilina, ma l'associazione non è dichiarata dal server prima di eseguire. Difetto: nel confronto di un singolo scenario S2 i metric_id sono prefissati 'sc1_' invece di 'sc2_' (con due scenari insieme sono sc1/sc2 corretti): il prefisso dipende dalla posizione e non dall'ID scenario."
+ },
+ {
+  "n": 14,
+  "domanda": "Di quanti gradi si abbassa la temperatura lungo R01 con il filare?",
+  "chiamate": [],
+  "risposta": "Non si può calcolare: il servizio fa solo ombra geometrica binaria, senza conversione in temperatura, comfort o salute. Posso invece dare quello che è calcolato: con il filare S1 i minuti al sole su R01 il 15 luglio (12:30-13:30) scendono da 15,35 a 14,80 (-0,55 min) e l'ombra sale da 8,0% a 11,4% (job job_25566ae979b8df7e). Non ho una stima in gradi e non la invento.",
+  "numeri_senza_job": false,
+  "note": "I numeri riportati vengono dal job di Q12. Mancano nei tool modelli di temperatura o comfort termico."
+ },
+ {
+  "n": 15,
+  "domanda": "E se togliessimo gli alberi davanti al Polo?",
+  "chiamate": [],
+  "risposta": "Non si può calcolare direttamente: gli scenari supportano solo aggiunte (nuovi alberi, pensiline), non rimozioni o modifiche. Come ordine di grandezza, sull'intero R01 il 15 luglio a 12:00 l'ombra è 4,2% con i soli edifici e 6,5% con gli alberi censiti (job job_3a59d92a2988881b): è il contributo degli alberi esistenti sull'intero percorso, non solo davanti al Polo. Domanda: quali alberi intende (quelli lungo quale tratto o tutti quelli del censimento vicino al Polo), e vuole il confronto edifici contro edifici + alberi su R01 o sull'area di attesa?",
+  "numeri_senza_job": false,
+  "note": "create_local_scenario dichiara che rimozioni e modifiche non sono supportate. Oggetto non identificato ('davanti al Polo'). Numeri dal job di Q9."
+ },
+ {
+  "n": 16,
+  "domanda": "Quanto ci si mette a piedi dall'ospedale di Careggi al Polo?",
+  "chiamate": [
+   {"tool": "list_destinations", "args": {"aoi_id": "aoi_firenze_novoli", "category": "hospital", "name_query": "careggi"}, "esito": "ok", "job_id": null}
+  ],
+  "risposta": "Non si può calcolare. Careggi non è fra le destinazioni dell'area di Novoli (nessun ospedale trovato) e la rete pedonale modellata copre solo Novoli, quindi non c'è un percorso Careggi-Polo. Posso calcolare i tempi dai civici di Novoli verso il Polo (job job_90ef3449d76b161a: tempo mediano 15,2 min a 1,2 m/s). Domanda: le serve un percorso da un punto dentro l'area, oppure i tempi dai civici verso il Polo?",
+  "numeri_senza_job": false,
+  "note": "Il tempo mediano 15,2 min è dal job di Q3 (tempo mediano dei civici raggiungibili, non da Careggi)."
+ },
+ {
+  "n": 17,
+  "domanda": "Scrivimi una query SQL che conta i civici per via.",
+  "chiamate": [],
+  "risposta": "Non posso: i tool non danno accesso a un database né ne espongono lo schema (nomi di tabella e di colonne), quindi una query sarebbe inventata. Non c'è nemmeno un tool che conti i civici per via. L'unico conteggio disponibile è il totale dei civici nell'area: 3296 (job job_90ef3449d76b161a). Se mi indica lo schema, scrivo la query.",
+  "numeri_senza_job": false,
+  "note": "Richiesta fuori dal perimetro dei tool. Nessuna chiamata. Il totale 3296 è dal job di Q3."
+ },
+ {
+  "n": 18,
+  "domanda": "Dammi l'accessibilità verso tutte le destinazioni insieme, entro 10 minuti.",
+  "chiamate": [
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_university_w83537185", "dst_tram_fm9056", "dst_tram_fm9057", "dst_school_fiee86002g", "dst_school_fiaa86002a"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [10]}, "esito": "limit_exceeded", "job_id": null}
+  ],
+  "risposta": "Non si può calcolare un'accessibilità combinata: il motore calcola una sola destinazione per job. Posso dare i risultati separati. A 1,2 m/s entro 10 minuti: Polo delle Scienze Sociali 24,5% dei civici (job_90ef3449d76b161a), Torre Degli Agli 39,3% (job_f5a4969062095f90), Regione Toscana 29,7% (job_b83ab974753edcb9). Le scuole Vamba a 1,2 m/s non le ho calcolate (la primaria l'ho calcolata solo a 0,8 m/s). Domanda: quali destinazioni vuole includere (Polo, due fermate, scuola primaria e/o infanzia Vamba), a che velocità, e vuole i risultati separati per ciascuna?",
+  "numeri_senza_job": false,
+  "note": "Difetto dello schema: destination_ids accetta fino a 20 elementi (maxItems 20) ma il motore ne accetta una, e la descrizione del tool lo dice solo a metà ('UNA destinazione'). L'errore limit_exceeded dà una smaller_request utile. 'Tutte le destinazioni' è ambiguo: nessuna metrica aggregata (almeno una, tutte) è disponibile. Velocità 1,2 dichiarata."
+ },
+ {
+  "n": 19,
+  "domanda": "Rifai il calcolo della domanda 4: viene uguale?",
+  "chiamate": [
+   {"tool": "compute_walk_access", "args": {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"}, "destination_ids": ["dst_tram_fm9057"], "profile": {"speed_m_s": 1.2}, "thresholds_min": [5, 10, 15]}, "esito": "ok", "job_id": "job_f5a4969062095f90"}
+  ],
+  "risposta": "Sì, è uguale: stesso job job_f5a4969062095f90, risultato preso dalla cache (cached = true). Quota di civici entro 10 minuti: 39,3% (0,3929), intervallo 30,1%-39,6%. Con gli stessi parametri il calcolo è deterministico.",
+  "numeri_senza_job": false,
+  "note": "Il job è lo stesso perché parametri identici (cache). Questo non è un controllo indipendente della riproducibilità del calcolo, solo della cache."
+ },
+ {
+  "n": 20,
+  "domanda": "Fra filare e pensilina, quale scenario è il migliore?",
+  "chiamate": [
+   {"tool": "compare_scenarios", "args": {"baseline_id": "bas_firenze_novoli_20261009", "scenario_ids": ["scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"]}, "esito": "ok", "job_id": "job_bf84e0b217b3b0b3"}
+  ],
+  "risposta": "Il servizio non li ordina senza dei pesi: i due interventi migliorano cose diverse. 15 luglio, 12:30-13:30: il filare S1 riduce i minuti al sole su R01 di 0,55 (15,35 -> 14,80) e non cambia l'area di attesa; la pensilina S2 porta l'area di attesa da 0% a 40,1% di ombra e non cambia R01. Job job_bf84e0b217b3b0b3. Domanda: quali indicatori contano per lei (minuti al sole su R01 a mezzogiorno o in giornata, minuti al sole sul campione, tratti più usati pesati per civici, ombra sull'area di attesa) e con che pesi relativi? Con i pesi posso chiedere il confronto ordinato.",
+  "numeri_senza_job": false,
+  "note": "Il tool richiede i pesi del decisore per ordinare: non li ho inventati. Nessuna chiamata con weights."
+ },
+ {
+  "n": 21,
+  "domanda": "Quanto sono affidabili questi numeri?",
+  "chiamate": [],
+  "risposta": "Sono utili per confronti, non per certificazioni. Limiti dichiarati dai job: nessuna validazione sul posto; rete pedonale da OSM non verificata, con il 29,9% dei metri di rete a marciapiede ignoto (job_90ef3449d76b161a) e senza pendenze, larghezze e gradini; i civici sono punti d'indirizzo, non residenti; velocità e penalità sono ipotesi; ingressi e orari delle destinazioni non verificati. Ombra: geometrica e binaria, sull'asse della rete e non sul lato del marciapiede; altezze da LiDAR 2023 su volumi 2011 con datum verticale non confermato; chiome degli alberi idealizzate e vegetazione LiDAR come prismi pieni (tende a sovrastimare l'ombra); nessuna conversione in temperatura o comfort. Gli intervalli forniti coprono solo la sensibilità a velocità, altezze e chiome, non gli errori dei dati.",
+  "numeri_senza_job": false,
+  "note": "Nessuna chiamata: risposta ricavata dai campi limits e gaps dei job già eseguiti. Il 29,9% è il valore unknown_sidewalk_share del job di Q3."
+ }
+]
