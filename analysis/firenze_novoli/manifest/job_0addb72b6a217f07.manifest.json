@@ -73,9 +73,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T13:12:16Z",
-  "finished_at": "2026-10-10T13:12:17Z",
-  "duration_s": 0.45
+  "started_at": "2026-10-10T19:30:25Z",
+  "finished_at": "2026-10-10T19:30:26Z",
+  "duration_s": 0.47
  },
  "metrics": [
   {
@@ -213,7 +213,7 @@
    "scope": "dst_school_fiaa86002a, 0.8 m/s, snapping 40 m",
    "uncertainty": {
     "kind": "interval",
-    "low": 11.41,
+    "low": 11.53,
     "high": 19.97,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
@@ -227,7 +227,7 @@
    "scope": "dst_school_fiaa86002a, 0.8 m/s, snapping 40 m",
    "uncertainty": {
     "kind": "interval",
-    "low": 19.74,
+    "low": 19.99,
     "high": 34.54,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
@@ -327,8 +327,8 @@
    "asset_id": "ast_report",
    "path": "data/norm/firenze_novoli/analysis/dst_school_fiaa86002a/job_0addb72b6a217f07_report.json",
    "media_type": "application/json",
-   "bytes": 20840,
-   "sha256": "5862cb8f9b6f8047f9a217caf736034b33ad07cda4f430b627ff955fbb355d5d",
+   "bytes": 20984,
+   "sha256": "3069fd4837f0ef524206ceb524647642e026367a7605aad9744a1432b4749fb9",
    "role": "report"
   }
  ]

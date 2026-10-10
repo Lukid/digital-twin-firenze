@@ -67,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T13:12:23Z",
-  "finished_at": "2026-10-10T13:12:24Z",
-  "duration_s": 0.46
+  "started_at": "2026-10-10T19:30:35Z",
+  "finished_at": "2026-10-10T19:30:35Z",
+  "duration_s": 0.53
  },
  "metrics": [
   {
@@ -221,7 +221,7 @@
    "scope": "dst_tram_fm9057, 0.8 m/s, snapping 40 m",
    "uncertainty": {
     "kind": "interval",
-    "low": 22.47,
+    "low": 22.48,
     "high": 39.33,
     "basis": "sensibilità velocità 0,8-1,4 m/s a parità di percorso"
    }
@@ -321,8 +321,8 @@
    "asset_id": "ast_report",
    "path": "data/norm/firenze_novoli/analysis/dst_tram_fm9057/job_dfdff0c94c32797b_report.json",
    "media_type": "application/json",
-   "bytes": 9784,
-   "sha256": "77f88a6aedf4ff5556118770c9be9f680694b998b63ef9d7e5fab7bfcf29b701",
+   "bytes": 9927,
+   "sha256": "d1654dbe5b69283104d1801081f63c04330cb083be42821e1a7b4f7ef26e5806",
    "role": "report"
   }
  ]

@@ -67,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T13:12:25Z",
-  "finished_at": "2026-10-10T13:12:26Z",
-  "duration_s": 0.45
+  "started_at": "2026-10-10T19:30:37Z",
+  "finished_at": "2026-10-10T19:30:38Z",
+  "duration_s": 0.58
  },
  "metrics": [
   {
@@ -321,8 +321,8 @@
    "asset_id": "ast_report",
    "path": "data/norm/firenze_novoli/analysis/dst_university_w83537185/job_1b4e4737215f64c0_report.json",
    "media_type": "application/json",
-   "bytes": 14851,
-   "sha256": "a1f0468c70a22fe92114c130b87a51796f21609c6457febde745aa433d6738ce",
+   "bytes": 14994,
+   "sha256": "6af6b6b10e944b3163f29086f6d1128e708e63a97e2452d1b78cad7850f9b62e",
    "role": "report"
   }
  ]

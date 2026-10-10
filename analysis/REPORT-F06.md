@@ -1,6 +1,6 @@
 # REPORT F06: accessibilità pedonale su Firenze Novoli
 
-Consegna del 10 ottobre 2026. Il motore `analysis/` non dipende più da Pisa e gira su `aoi_firenze_novoli`.
+Aggiornato dopo D19/D20 e la revisione del codice del 10 ottobre 2026. I risultati sotto sono stati ricalcolati in memoria e confrontati con il riepilogo versionato; manifest e asset non sono stati riscritti. Il motore `analysis/` non dipende più da Pisa e gira su `aoi_firenze_novoli`.
 
 ## Cosa è cambiato
 
@@ -14,9 +14,9 @@ Consegna del 10 ottobre 2026. Il motore `analysis/` non dipende più da Pisa e g
   - Testi generici o presi dall'area, per esempio "civici del Comune di Firenze (CC BY 4.0)".
   - Corretto `permissivo_m` per i civici "forbidden": ora include il raccordo dell'ingresso, come nel caso raggiungibile. A Pisa il raccordo era quasi nullo; a Firenze lo scarto era di 2,9 m sul campione V01 di F04.
 - `analysis/run.py`: riscritto.
-  - Destinazioni lette da `destinazioni.json` (5), 4 profili ciascuna.
+  - Destinazioni lette da `destinazioni.json` (6), 4 profili ciascuna.
   - Sensibilità sullo snapping (20, 40, 60 m) per ogni destinazione.
-  - Sensibilità sugli ingressi per le destinazioni con più di un ingresso (il Polo): predefinito, tutti e 2, ciascun ingresso da solo.
+  - Sensibilità sugli ingressi per le destinazioni con più di un ingresso (il Polo): predefiniti (i 7 civici degli edifici del Polo, D19), ciascun ingresso da solo.
   - Svuota e riscrive `analysis/firenze_novoli/manifest/` a ogni esecuzione.
 - 10 ottobre, dopo F11, in `analysis/accessibilita.py`:
   - `compute_walk_access` accetta una lista di destinazioni. Usa tutti i loro ingressi insieme e per ogni civico vince il più vicino: è l'accessibilità verso almeno una. Il manifest ha il limite `almeno_una_destinazione`.
@@ -29,7 +29,7 @@ Consegna del 10 ottobre 2026. Il motore `analysis/` non dipende più da Pisa e g
   - Percorsi campione R01-R10 uguali a F04, V01 e V02 forbidden.
   - Agganci uguali a `origini_snap.gpkg`.
   - Determinismo del `job_id` e job diversi per input diversi.
-  - 20 manifest e job validi per gli schemi, sha256 degli asset, nessuna stringa "pisa", "z2" o "sit di" nei file prodotti.
+  - 24 manifest e job validi per gli schemi, sha256 degli asset, nessuna stringa "pisa", "z2" o "sit di" nei file prodotti.
   - Monotonia dei profili, ingressi multipli, asset mappa e riepilogo.
 
 ## Comandi
@@ -39,39 +39,54 @@ Consegna del 10 ottobre 2026. Il motore `analysis/` non dipende più da Pisa e g
 
 ## Risultati principali
 
-Civici raggiunti entro 5, 10 e 15 minuti a 1,2 m/s (quote su tutti i 3.296 civici) e tempo mediano dei raggiungibili:
+Quote di tutti i 3.296 civici raggiunti entro 5, 10 e 15 minuti a 1,2 m/s, con mediana sui raggiungibili. Ricalcolo del 10 ottobre 2026, baseline `bas_firenze_novoli_20261009`.
 
-- Polo delle Scienze Sociali: 12,2% / 24,4% / 45,9%, mediana 15,2 min.
-- Scuola primaria Vamba: 15,5% / 39,0% / 54,0%, mediana 13,0 min.
-- Scuola infanzia Vamba: uguale alla primaria (stesso accesso nei dati).
-- Fermata T2 Novoli - Regione Toscana (`dst_tram_fm9056`): 7,3% / 29,7% / 60,0%, mediana 12,7 min.
-- Fermata T2 Novoli - Torre Degli Agli (`dst_tram_fm9057`): 15,9% / 39,3% / 45,1%, mediana 15,5 min.
+- Polo delle Scienze Sociali (7 ingressi): 17,3% / 28,2% / 53,8%; mediana 14,2 minuti.
+- Scuola primaria Vamba: 15,5% / 39,0% / 54,0%; mediana 13,0 minuti.
+- Scuola infanzia Vamba: 15,5% / 39,0% / 54,0%; mediana 13,0 minuti.
+- T2 San Donato - Università: 3,9% / 23,8% / 56,0%; mediana 13,5 minuti.
+- T2 Novoli - Regione Toscana: 7,3% / 29,7% / 60,0%; mediana 12,7 minuti.
+- T2 Novoli - Torre degli Agli: 15,9% / 39,3% / 45,1%; mediana 15,5 minuti.
 
-Stati, uguali per tutte le destinazioni: 3.112 reachable, 15 forbidden, 1 isolated, 168 insufficient_data, 0 outside_model. I 3.112 coincidono con F04.
+Stati per ogni destinazione: 3.112 `reachable`, 15 `forbidden`, 1 `isolated`, 168 `insufficient_data`, 0 `outside_model`. Le due scuole hanno lo stesso accesso e gli stessi risultati.
 
-Altri profili, quote entro 10 minuti:
-- Lento 0,8 m/s: Polo 15,2%, Vamba 23,8%, fm9056 13,5%, fm9057 30,1%.
-- Rapido 1,4 m/s: Polo 28,9%, Vamba 43,7%, fm9056 40,5%, fm9057 39,6%.
-- Ridotta senza scale: Polo 14,6%, Vamba 21,5%, fm9056 12,9%, fm9057 29,0%.
+Quote entro 10 minuti negli altri profili:
 
-Ingressi del Polo (profilo base, 5 / 10 / 15 minuti):
-- Ingresso predefinito (n11152998932): 12,2% / 24,4% / 45,9%, mediana 15,2 min.
-- Solo l'altro ingresso (n11152998933): 12,6% / 26,3% / 41,7%, mediana 15,7 min.
-- Entrambi: 14,3% / 26,3% / 47,8%, mediana 14,9 min. 1.038 civici usano il predefinito, 2.074 l'altro.
-- I 10 archi più usati coincidono solo per 1 su 10 fra predefinito ed entrambi: la scelta dell'ingresso sposta i percorsi più delle quote.
+- Lento 0,8 m/s: Polo delle Scienze Sociali (7 ingressi): 21,8%; Scuola primaria Vamba: 23,8%; T2 San Donato - Università: 8,2%; T2 Novoli - Regione Toscana: 13,5%; T2 Novoli - Torre degli Agli: 30,1%.
+- Rapido 1,4 m/s: Polo delle Scienze Sociali (7 ingressi): 34,0%; Scuola primaria Vamba: 43,7%; T2 San Donato - Università: 35,4%; T2 Novoli - Regione Toscana: 40,5%; T2 Novoli - Torre degli Agli: 39,6%.
+- Ridotta 0,8 m/s senza scale, 10 s per attraversamento: Polo delle Scienze Sociali (7 ingressi): 21,6%; Scuola primaria Vamba: 21,5%; T2 San Donato - Università: 8,0%; T2 Novoli - Regione Toscana: 12,9%; T2 Novoli - Torre degli Agli: 29,0%.
 
-Snapping del Polo: a 20 m i raggiungibili scendono a 2.858 (10 minuti: 23,1%); a 60 m salgono a 3.141 (24,7%). Stesso andamento per le altre destinazioni.
+Sensibilità agli ingressi del Polo (profilo base, quote a 5 / 10 / 15 minuti):
+
+- Tutti i 7 ingressi, impostazione predefinita: 17,3% / 28,2% / 53,8%; mediana 14,2 minuti.
+- Solo D1: 14,5% / 27,9% / 46,3%; mediana 15,1 minuti.
+- Solo D4: 13,7% / 28,2% / 46,6%; mediana 15,1 minuti.
+- Solo D5: 12,5% / 26,4% / 42,3%; mediana 15,6 minuti.
+- Solo D6: 7,7% / 24,3% / 39,8%; mediana 16,2 minuti.
+- Solo D10: 11,9% / 24,3% / 45,1%; mediana 15,3 minuti.
+- Solo D14: 11,1% / 24,5% / 44,1%; mediana 15,4 minuti.
+- Solo D15: 11,5% / 24,6% / 46,7%; mediana 15,1 minuti.
+
+Scelte del cammino minimo con tutti gli ingressi: D1 53 civici, D10 10 civici, D14 2 civici, D15 955 civici, D4 2002 civici, D5 74 civici, D6 16 civici.
+
+Snapping del Polo:
+
+- 20 m: 2858 raggiungibili; 26,2% entro 10 minuti.
+- 40 m: 3112 raggiungibili; 28,2% entro 10 minuti.
+- 60 m: 3141 raggiungibili; 28,7% entro 10 minuti.
+
+Gli intervalli con penalità di attraversamento hanno un difetto distinto dai valori centrali: vedi R3 della [revisione del codice](../docs/REVISIONE-CODICE-20261010.md).
 
 ## Output
 
-- Versionati in `analysis/firenze_novoli/`: `manifest/` (20 manifest e 20 job), `riepilogo.json`, `accessibilita_<destination_id>.geojson` (5 file di circa 1 MB: civici, destinazione, archi usati, EPSG:4326).
+- Versionati in `analysis/firenze_novoli/`: `manifest/` (24 manifest e 24 job), `riepilogo.json`, `accessibilita_<destination_id>.geojson` (6 file di circa 1 MB: civici, destinazione, archi usati, EPSG:4326).
 - Dati grandi in `data/norm/firenze_novoli/analysis/<destination_id>/` (CSV per origine, archi usati, report), non versionati.
 
 ## Limiti
 
 - Rete solo OSM, non verificata sul posto. Marciapiedi ignoti dove non taggati.
 - I civici sono punti d'indirizzo, non residenti: le quote sono quote di civici.
-- Ingressi, orari e accessi non verificati. Il Polo è un campus con cancelli e orari ignoti; i due ingressi OSM sono da verificare.
+- Ingressi, porte e cancelli non verificati. Il Polo usa un civico del Comune per ciascuno dei 7 edifici dell'Ateneo (D19); il civico non è necessariamente la porta. Le condizioni di accesso riportano orari documentati, senza verifica sul posto.
 - Le due scuole Vamba hanno un solo accesso nei dati, quindi risultati identici.
 - Velocità e penalità sono ipotesi, non misure. Mancano pendenze, larghezze e rampe: nessuna certificazione di accessibilità.
 - 168 civici (5,1%) restano insufficient_data per lo snapping.

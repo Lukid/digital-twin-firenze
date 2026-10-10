@@ -14,5 +14,6 @@ Il primo pilota su Pisa Z2 è accantonato (D15): il suo stato finale è nel tag 
 2. [Specifiche delle analisi e MCP](docs/SPEC_ANALISI.md): metodi, metriche, contratti, limiti e verifiche.
 3. [Fonti](docs/FONTI.md): evidenze raccolte e verifiche mancanti.
 4. [Backlog per agenti](docs/BACKLOG.md): incarichi, dipendenze e consegne.
+5. [Revisione del codice](docs/REVISIONE-CODICE-20261010.md): difetti confermati, priorità, verifiche eseguite e limiti della revisione.
 
 Prossimo lavoro: vedi i prossimi passi in [docs/STATO.md](docs/STATO.md).

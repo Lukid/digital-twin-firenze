@@ -7,7 +7,7 @@ Piano del motore (metri): x = est, y = alto, z = -nord; origine = centro del riq
 Ogni asset è JSON compresso gzip (.json.gz); i vettori numerici grandi sono Float32 in base64.
 L'indice assets/index.json riporta sha256 e dimensione di ogni asset, le fonti e i limiti.
 """
-import argparse, base64, glob, gzip, hashlib, json, math, pathlib, re, sys, datetime as dt
+import argparse, base64, glob, gzip, hashlib, json, math, os, pathlib, re, shutil, sys, tempfile, datetime as dt
 import numpy as np, geopandas as gpd, rasterio, rasterio.windows, shapely
 from rasterio.enums import Resampling
 from shapely.geometry import box, Point, Polygon
@@ -824,9 +824,19 @@ def main():
     ap.add_argument("--shadow", default=str(ROOT / "shadow/firenze_novoli"))
     ap.add_argument("--scenarios", default=str(ROOT / "scenarios/firenze_novoli"))
     a = ap.parse_args()
-    out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
-    for old in out.glob("*.json.gz"):
-        old.unlink()
+    dest = pathlib.Path(a.out); dest.mkdir(parents=True, exist_ok=True)
+    out = pathlib.Path(tempfile.mkdtemp(prefix=".build-", dir=dest.parent))   # stesso disco: os.replace atomico
+    try:
+        costruisci(out, a)
+        for old in dest.glob("*.json.gz"):   # gli asset vecchi si toccano solo a costruzione riuscita
+            if not (out / old.name).exists(): old.unlink()
+        for f in sorted(out.iterdir(), key=lambda f: f.name == "index.json"):   # indice per ultimo
+            os.replace(f, dest / f.name)
+    finally:
+        shutil.rmtree(out, ignore_errors=True)
+
+
+def costruisci(out, a):
     zref, ter = terreno()
     assets = {"terreno": scrivi(out, "terreno.json.gz", {"n": ter["nx"] * ter["ny"], **ter}),
               "edifici": scrivi(out, "edifici.json.gz", edifici(zref)),

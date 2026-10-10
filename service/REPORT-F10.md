@@ -1,6 +1,6 @@
 # F10: servizio di analisi e MCP su Firenze Novoli
 
-Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` (circa 16 s con la cache degli scenari, TUTTO OK). Non validato sul posto.
+Aggiornato nella revisione del codice del 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` (circa 16 s con la cache degli scenari, TUTTO OK). Non validato sul posto.
 
 ## Cosa è cambiato
 
@@ -12,7 +12,7 @@ Data: 10 ottobre 2026. Test: `service/.venv/bin/python service/test_service.py` 
   - Job storici letti da `analysis/firenze_novoli/manifest/` e `shadow/firenze_novoli/manifest/`.
 - Fonti approvate: solo le 14 della baseline, con lo snapshot del 9 ottobre. Fonte o snapshot fuori baseline: `unknown_id` con l'elenco di quelle ammesse.
 - Cache dei job: `service/cache/firenze_novoli/` (modificabile con `DT_CACHE_DIR` dentro il progetto).
-- Server MCP rinominato `dt-firenze`. Tool e nomi invariati.
+- Server MCP rinominato `dt-firenze`. Tool di calcolo invariati; aggiunto `list_scenarios` dopo il giro F11.
 - Ombra: nuova opzione `obstacles = buildings_trees_and_lidar_vegetation` (edifici, alberi censiti e vegetazione LiDAR, D14), con 9 casi. Estensione additiva di `contracts/schemas/mcp.schema.json`.
 - Replay: porta `aoi_id` nelle origini e i casi dell'ombra dal manifest.
 - Scenari: `create_local_scenario` e `compare_scenarios` usano `scenarios/` di F08 (id `scn_fi_*`, file in `scenarios/firenze_novoli/`). Le alternative negli errori sono solo `scn_fi_*`.
@@ -91,11 +91,21 @@ service/.venv/bin/python service/cli.py compute_shadow '{"baseline_id":"bas_fire
 ## Limiti
 
 - Più destinazioni in un job danno solo l'accessibilità verso almeno una, non un risultato per destinazione. Griglia e punti: `outside_capability`.
-- Senza `entrance_ids` si usa l'ingresso predefinito. Per il Polo i due ingressi OSM sono da verificare.
+- Senza `entrance_ids` si usano gli ingressi predefiniti della destinazione: per il Polo tutti i 7 civici degli edifici (D19), scegliendo il più vicino per ogni origine. Porte e cancelli restano da verificare.
 - Limiti: area massima 4 km², 50.000 origini, 600 s per l'accessibilità; ombra fino a 1.500 combinazioni (ricevitori per orari per casi). Calcolo sincrono, senza coda.
 - Il `job_id` dell'accessibilità è previsto prima del calcolo con `accessibilita.parametri_job`, la stessa funzione che usa il motore.
 - Ricevitori dell'ombra solo da percorso campione o geometria esplicita, sull'asse della rete.
 - Il `.pth` del venv usa un percorso assoluto.
 - Risultati degli scenari `not_validated_locally`: interventi ipotetici, fattibilità ignota.
 - Il confronto per scenari non produce `indicators` né `ranking` (F08 ha tolto `indicatori()`, `ordina()` e `sensibilita_pesi()`). Nel riepilogo solo R01 e R02; l'andamento per ora è in `scenarios/firenze_novoli/confronto.json`.
-- `nl/` (verifica in linguaggio naturale) resta di Pisa. Per Firenze servono nuove domande e registro (Polo, Vamba, T2, R01/R02, scenari `scn_fi_*`), confronto con le mappe di `analysis/firenze_novoli/` e `shadow/firenze_novoli/`, nome del server `dt-firenze`.
+- La verifica NL di Firenze è in `nl/firenze_novoli/`: registro dopo D19/D20 e test con replay rieseguito. Non è stato eseguito un nuovo giro di domande dopo `list_scenarios`, accessibilità verso almeno una destinazione e conteggi `served_count_*`.
+
+## Difetti confermati nella revisione del codice
+
+- Geometrie degeneri o incoerenti con `kind` possono causare eccezioni non strutturate (R1).
+- Scritture concorrenti della stessa cache possono collidere sul temporaneo (R2).
+- Gli intervalli di accessibilità con penalità di attraversamento non seguono il costo del cammino (R3).
+- L'alias di cache delle ombre non identifica tutte le dipendenze (R4).
+- `compare_scenarios` omette le aree di attesa di S5 e S6, sia nei delta sia nel riepilogo. Per queste pensiline non basta leggere i delta dell'area storica di S2 (R5).
+
+Priorità, prove e correzioni proposte nella [revisione del codice](../docs/REVISIONE-CODICE-20261010.md). I difetti sono aperti; il passaggio dei test esistenti non li chiude.

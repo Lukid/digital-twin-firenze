@@ -1,6 +1,6 @@
 # Stato del progetto
 
-Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti chiesti (accessibilità, ombre, scenari, scena alla Padova), con servizio MCP. Il 10 ottobre Polo e fermata T2 sono stati rifatti (D19, D20) e ricalcolati da F04 a F11. Punto di ripartenza per la prossima sessione.
+Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti chiesti (accessibilità, ombre, scenari, scena alla Padova), con servizio MCP. Il 10 ottobre Polo e fermata T2 sono stati rifatti (D19, D20) e ricalcolati da F04 a F11. Revisione del codice completata: `make lint`, `make test` e record delle fonti passano; sei difetti restano aperti. Report allineati ai risultati attuali. Dettagli in [REVISIONE-CODICE-20261010.md](REVISIONE-CODICE-20261010.md). Punto di ripartenza per la prossima sessione.
 
 ## In una riga
 
@@ -11,8 +11,8 @@ Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2
 | Task | Dove | Controllo |
 |---|---|---|
 | F01 audit e riquadro | `docs/audit-firenze.md`, `docs/audit-firenze/` | approvato (D13) |
-| F02 contratti a più aree | `contracts/` (ADR-F02.md) | `contracts/.venv/bin/python contracts/validate.py` |
-| F03 acquisizione, 15 fonti nella baseline, 36 record di fonte con quelle aggiunte dopo | `pipeline/` (REPORT-F03.md) | `pipeline/.venv/bin/python pipeline/validate_records.py` |
+| F02 contratti a più aree | `contracts/` (ADR-F02.md) | `pipeline/.venv/bin/python contracts/validate.py` |
+| F03 acquisizione, 14 fonti nella baseline; fonti aggiunte alla scena fuori baseline | `pipeline/` (REPORT-F03.md) | `pipeline/.venv/bin/python pipeline/validate_records.py` |
 | F04 rete e ingressi | `network/` (REPORT-F04.md) | `pipeline/.venv/bin/python network/test_rete_firenze.py` |
 | F05 edifici e verde | `geometry/` (REPORT-F05.md) | `pipeline/.venv/bin/python geometry/test_geometrie_firenze.py` |
 | F06 accessibilità | `analysis/` (REPORT-F06.md) | `bash analysis/run.sh` |
@@ -71,7 +71,11 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 ## Prossimi passi possibili
 
-1. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il giro NL non è stato rifatto.
+1. Correggere R1: geometrie degeneri o incoerenti con `kind` superano lo schema e causano eccezioni nel calcolo.
+2. Correggere R2/R4/R6: collisioni nella scrittura della cache, dipendenze mancanti nell'alias delle ombre, perdita degli asset precedenti se la costruzione della scena fallisce.
+3. Correggere R3/R5: sensibilità con penalità di attraversamento e risultati delle aree di attesa S5/S6 omessi dal servizio. Priorità, prove e perimetro nella [revisione del codice](REVISIONE-CODICE-20261010.md).
+4. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
+5. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. È una proposta della revisione, non una nuova decisione dell'utente.
 
 Da segnalare: nel progetto ARPAT (`arpat/config/services.php`, riga 35) c'è un segreto scritto nel codice come valore predefinito: va tolto e cambiato.
 
