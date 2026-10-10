@@ -1,51 +1,53 @@
-"""T10: confronto multicriterio fra scenari e baseline (caso C), su condizioni comuni.
+"""F08: confronto fra scenari e baseline su Firenze Novoli, su condizioni comuni.
 
-    r = confronta(["scn_z2_s1_filare_r01", "scn_z2_s2_pensilina_pellico"])    # riepilogo, nessun punteggio unico
-    ordina(r, pesi)                                                          # solo se il decisore dà i pesi
+    r = confronta(["scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"])    # riepilogo, nessun punteggio unico
 
-Per ogni scenario, sugli stessi ricevitori, date, fasce, passi e metodo della baseline (S0 = scenario senza interventi):
- - delta di frazione d'ombra e di minuti al sole camminando su R01 e sui percorsi campione, con intervallo: altezze degli edifici (h_min/h_max di T05,
-   delta accoppiato) e, su R01, lato del marciapiede (asse spostato di 3 m a sinistra e a destra, come T09);
- - area di attesa Pellico (superficie);
- - beneficio sui tratti più usati di T06 (archi_piu_usati), pesato per il numero di CIVICI SIT che li usano. Sono civici, non persone, e non ci sono
-   flussi pedonali misurati: il peso è un conteggio di indirizzi che passano dall'arco nel cammino minimo verso la destinazione;
+Per ogni scenario e per ciascuna data (15 luglio e 15 settembre), sugli stessi ricevitori, orari, fasce, passi e metodo della baseline (S0 = scenario senza interventi):
+ - delta di frazione d'ombra e di minuti al sole camminando su R01 (fermata T2 Torre degli Agli -> ingresso predefinito del Polo) e R02 (fermata Regione Toscana), per fascia e per ora;
+ - tre contesti del motore, ciascuno con caso centrale e due estremi: solo edifici (h, h_min, h_max), con alberi censiti (tipico, min, max), con vegetazione LiDAR
+   (tipico, min, max). Il contesto con vegetazione LiDAR è la base di confronto principale (D14). L'intervallo di ogni delta è il minimo e il massimo dei delta accoppiati
+   (stesso ricevitore, stessa ora, stesso caso) sui tre casi;
+ - area di attesa (superficie) della fermata bus Forlanini Polo Scienze Sociali;
+ - beneficio sui tratti più usati di F06 (verso il Polo e verso la fermata T2), pesato per il numero di CIVICI che li usano: sono indirizzi, non persone, e non ci sono
+   flussi pedonali misurati;
  - effetto sull'accessibilità: nullo per costruzione (alberi e pensiline non cambiano il grafo), verificato con hash e ricalcolo;
  - superficie e numero degli interventi, segnalazioni di validazione, fattibilità ignota, robustezza alle varianti.
-Indicatori separati. Un ordinamento esiste solo con pesi espliciti del decisore; senza pesi non si inventa."""
-import json, math, pathlib, sys
+Indicatori separati: nessun punteggio unico."""
+import concurrent.futures as cf, json, os, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import scenari as S
-from scenari import O, ROOT, SC, OUT
+from scenari import O, ROOT, SC
 
-VERSIONE = "0.1.0"
-S0 = "scn_z2_s0_baseline"
-VARIANTI = {"scn_z2_s1_filare_r01": ["scn_z2_s1v_chioma_min", "scn_z2_s1v_chioma_max", "scn_z2_s1v_lato_opposto"]}
-TOL = 1e-6   # tolleranza numerica per "delta nullo" (SPEC, sezione 6)
+VERSIONE = "0.2.0"
+S0 = "scn_fi_s0_baseline"
+S1, S2 = "scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"
+VARIANTI = {S1: ["scn_fi_s1v_chioma_min", "scn_fi_s1v_chioma_max", "scn_fi_s1v_lato_opposto"]}
+CASI_VARIANTI = ["base", "veg_lidar_tipico"]   # le varianti si calcolano solo sul caso centrale di due contesti (costo: un caso con vegetazione LiDAR vale circa un minuto)
+TOL = 1e-6   # tolleranza numerica per "delta nullo"
 METRICHE = {"frazione_ombra": "shade_fraction_mean", "minuti_sole": "walk_sun_min_mean"}
-INDICATORI = {  # id -> (descrizione, segno: +1 se un valore più alto è un beneficio)
-    "r01_minuti_sole_evitati_mezzogiorno": "minuti al sole evitati su R01 camminando, partenza 12:30-13:30",
-    "r01_minuti_sole_evitati_giornata": "minuti al sole evitati su R01 camminando, partenza 8-18",
-    "campione_minuti_sole_evitati_mezzogiorno": "media sui 7 percorsi campione dei minuti al sole evitati, partenza 12:30-13:30",
-    "archi_civici_minuti_evitati_mezzogiorno": "somma sui tratti più usati verso la Battisti di (civici x minuti al sole evitati), partenza 12:30-13:30",
-    "area_attesa_ombra_mezzogiorno": "aumento della frazione d'ombra dell'area di attesa Pellico, 12:30-13:30"}
-DICHIARAZIONI = ["I pesi dei tratti sono numeri di civici SIT (punti d'indirizzo che passano dall'arco nel cammino minimo): non sono persone e non esistono flussi pedonali misurati.",
-                 "Baseline = edifici documentati (alberi esistenti esclusi, inventario stimato e incompleto): un albero nuovo non è confrontato con la chioma esistente nello stesso punto.",
+POLO, FERMATA_T2 = "dst_university_w83537185", "dst_tram_fm9057"
+PRINCIPALE = S.CONTESTO_PRINCIPALE
+DICHIARAZIONI = ["I pesi dei tratti sono numeri di civici (punti d'indirizzo del Comune che passano dall'arco nel cammino minimo): non sono persone e non esistono flussi pedonali misurati.",
+                 "Base di confronto principale: edifici documentati, alberi censiti e vegetazione LiDAR (D14). Gli altri due contesti (solo edifici, con alberi censiti) sono riportati come sensibilità.",
                  "Ombra geometrica binaria: nessuna conversione in gradi, comfort, salute o domanda pedonale; nessun anno di crescita.",
-                 "Contesto con alberi esistenti: ombra unione, quindi il beneficio di un albero nuovo può solo calare o restare rispetto ai soli edifici; alberi esistenti stimati per classe, inventario incompleto.",
-                 "Percorsi sull'asse della rete: il lato del marciapiede è ignoto, l'intervallo sul lato (R01 spostata di 3 m) è riportato accanto al delta.",
+                 "Un albero nuovo è un'ombra aggiunta: dove la chioma esistente ombreggia già il punto il beneficio può solo calare rispetto ai soli edifici.",
+                 "Vegetazione LiDAR come prisma opaco pieno (limite superiore dell'ombra esistente): tende a ridurre il beneficio di un nuovo albero.",
+                 "Percorsi sull'asse della rete: il lato del marciapiede è ignoto e non è stato misurato; la variante 'lato opposto' di S1 è l'unica sensibilità sul lato.",
                  "Dimensioni degli interventi dichiarate come ipotesi di classe scenario; fattibilità (sottoservizi, spazio radicale, proprietà del suolo, permessi, specie) ignota per tutti.",
                  "Nessuna validazione locale: risultati not_validated_locally."]
 
 
 # ---------------------------------------------------------------- condizioni comuni
-CAMPI_COMUNI = ("receivers", "when", "walk_speed_m_s", "casi", "fasce", "el_min_deg", "sun_reference_lonlat", "geometrie_sha256", "method_version")
+CAMPI_COMUNI = ("receivers", "when", "walk_speed_m_s", "fasce", "el_min_deg", "sun_reference_lonlat", "geometrie_sha256", "method_version")
 
 
 def incompatibilita(ja, jb):
-    """Differenze fra due job che impediscono il confronto (lista di {code, text}; vuota = condizioni comuni)."""
+    """Differenze fra due job che impediscono il confronto (lista di {code, text}; vuota = condizioni comuni). I casi possono essere un sottoinsieme l'uno dell'altro."""
     out = []
     for k in CAMPI_COMUNI:
         if ja["params"].get(k) != jb["params"].get(k): out.append({"code": f"{k}_diverso", "text": f"Il parametro '{k}' non coincide fra i due calcoli: il confronto non è su condizioni comuni."})
+    ca, cb = set(ja["params"]["casi"]), set(jb["params"]["casi"])
+    if not (ca <= cb or cb <= ca): out.append({"code": "casi_diverso", "text": "I casi del motore non coincidono e nessuno contiene l'altro."})
     ma = {k: v for k, v in ja["params"]["method"].items() if k != "obstacles"}; mb = {k: v for k, v in jb["params"]["method"].items() if k != "obstacles"}
     if ma != mb: out.append({"code": "method_diverso", "text": "Passi spaziale/temporale o metodo diversi."})
     if ja["inputs"]["baseline_id"] != jb["inputs"]["baseline_id"]: out.append({"code": "baseline_diversa", "text": "Baseline diverse."})
@@ -62,19 +64,15 @@ def _v(ix, rid, caso, f, k):
     return (ix.get((rid, caso, f)) or {}).get(k)
 
 
-def _delta(ixb, ixs, rid, f, chiave, extra=(), casi=S.CASI_CONTESTO["solo_edifici"]):
-    """Delta accoppiato scenario - baseline: centrale (caso base), estremi h_min e h_max e, se richiesto, ricevitori alternativi `extra` (id sostitutivi, es. lato).
-    Ritorna dict o None se il valore non c'è (sole fuori supporto)."""
+def _delta(ixb, ixs, rid, f, chiave, casi):
+    """Delta accoppiato scenario - baseline: centrale e due estremi del contesto. Ritorna dict o None se il valore non c'è (sole fuori supporto, caso non calcolato)."""
     c0, c1, c2 = casi; b, x = _v(ixb, rid, c0, f, chiave), _v(ixs, rid, c0, f, chiave)
     if b is None or x is None: return None
     d = {"baseline": round(b, 4), "scenario": round(x, 4), "delta": round(x - b, 4)}
     alt = [round(_v(ixs, rid, c, f, chiave) - _v(ixb, rid, c, f, chiave), 4) for c in (c1, c2)
            if _v(ixs, rid, c, f, chiave) is not None and _v(ixb, rid, c, f, chiave) is not None]
-    lati = [round(_v(ixs, r2, c0, f, chiave) - _v(ixb, r2, c0, f, chiave), 4) for r2 in extra if _v(ixs, r2, c0, f, chiave) is not None]
-    d["intervallo_altezze"] = [min(alt + [d["delta"]]), max(alt + [d["delta"]])]
-    if lati: d["delta_lato_3m"] = lati
-    tutti = [d["delta"]] + alt + lati
-    d["intervallo"] = [min(tutti), max(tutti)]
+    d["delta_estremi"] = alt
+    d["intervallo"] = [min(alt + [d["delta"]]), max(alt + [d["delta"]])]
     d["discrimina"] = bool(d["intervallo"][0] > TOL or d["intervallo"][1] < -TOL)   # l'intero intervallo ha lo stesso segno e non è nullo
     return d
 
@@ -82,51 +80,61 @@ def _delta(ixb, ixs, rid, f, chiave, extra=(), casi=S.CASI_CONTESTO["solo_edific
 def _fasce(cond): return [f["id"] for f in cond["fasce"]]
 
 
-def tabella_percorsi(ixb, ixs, cond, casi=S.CASI_CONTESTO["solo_edifici"]):
-    out = {}
-    for r in S.baseline()["ricevitori"]["route_ids"]:
-        rid = f"pth_t04_{r}"; extra = ("pth_t10_R01sx", "pth_t10_R01dx") if r == "R01" else ()
-        out[r] = {f: {k: _delta(ixb, ixs, rid, f, ch, extra, casi) for k, ch in METRICHE.items()} for f in _fasce(cond)}
-    return out
+def tabella_percorsi(ixb, ixs, cond, casi):
+    return {r: {f: {k: _delta(ixb, ixs, f"pth_fi_{r}", f, ch, casi) for k, ch in METRICHE.items()} for f in _fasce(cond)} for r in S.baseline()["ricevitori"]["route_ids"]}
 
 
-def beneficio_archi(ixb, ixs, cond, b, casi=S.CASI_CONTESTO["solo_edifici"]):
+def beneficio_archi(ixb, ixs, cond, b, casi):
     """Per destinazione e fascia: media pesata (per civici) del delta di frazione d'ombra, civici x minuti al sole evitati, archi e civici toccati."""
     out = {}
-    for dest in ("battisti", "pellico"):
+    for dest in (POLO, FERMATA_T2):
         archi = [a for a in b["ricevitori"]["archi"] if dest in a["n_origini"]]; W = sum(a["n_origini"][dest] for a in archi); out[dest] = {"archi": len(archi), "civici_uso_totali": W, "fasce": {}}
         for f in _fasce(cond):
-            dd = [(a, _delta(ixb, ixs, a["receiver_id"], f, "shade_fraction_mean", (), casi), _delta(ixb, ixs, a["receiver_id"], f, "walk_sun_min_mean", (), casi)) for a in archi]
+            dd = [(a, _delta(ixb, ixs, a["receiver_id"], f, "shade_fraction_mean", casi), _delta(ixb, ixs, a["receiver_id"], f, "walk_sun_min_mean", casi)) for a in archi]
             dd = [(a, df, dm) for a, df, dm in dd if df and dm]
             if not dd: continue
             n = lambda a: a["n_origini"][dest]
             media = sum(n(a) * df["delta"] for a, df, dm in dd) / W
             minuti = sum(n(a) * -dm["delta"] for a, df, dm in dd)   # minuti al sole evitati, sommati sui civici
-            est = [sum(n(a) * -dm["intervallo_altezze"][i] for a, df, dm in dd) for i in (0, 1)]
+            est = [sum(n(a) * -dm["intervallo"][i] for a, df, dm in dd) for i in (0, 1)]
             toccati = [a for a, df, dm in dd if abs(df["delta"]) > TOL or abs(dm["delta"]) > TOL]
             out[dest]["fasce"][f] = {"delta_frazione_ombra_media_pesata": round(media, 5), "civici_minuti_sole_evitati": round(minuti, 2),
-                                     "civici_minuti_sole_evitati_intervallo_altezze": [round(min(est), 2), round(max(est), 2)],
+                                     "civici_minuti_sole_evitati_intervallo": [round(min(est), 2), round(max(est), 2)],
                                      "archi_toccati": len(toccati), "civici_uso_toccati": sum(n(a) for a in toccati), "edge_id_toccati": [a["edge_id"] for a in toccati][:10]}
     return out
 
 
-def area_attesa(ixb, ixs, cond, b, casi=S.CASI_CONTESTO["solo_edifici"]):
+def area_attesa(ixb, ixs, cond, b, casi):
     rid = b["ricevitori"]["area_attesa"]["receiver_id"]
-    return {f: _delta(ixb, ixs, rid, f, "shade_fraction_mean", (), casi) for f in _fasce(cond)}
+    return {f: _delta(ixb, ixs, rid, f, "shade_fraction_mean", casi) for f in _fasce(cond)}
+
+
+def per_ora(rb, rs, b, casi):
+    """Delta per ricevitore e ora nel contesto dato: {ricevitore: {HH:MM: {frazione_ombra: [centrale, estremo, estremo], minuti_sole: [...]}}} (ore con sole sotto 5 gradi assenti)."""
+    ib = {(r["receiver_id"], r["time_local"], r["caso"]): r for r in rb["righe"]}; is_ = {(r["receiver_id"], r["time_local"], r["caso"]): r for r in rs["righe"]}
+    rids = [f"pth_fi_{r}" for r in b["ricevitori"]["route_ids"]] + [b["ricevitori"]["area_attesa"]["receiver_id"]]; out = {}
+    for rid in rids:
+        for t in sorted({k[1] for k in is_ if k[0] == rid}):
+            e = {}
+            for nome, k in (("frazione_ombra", "shade_fraction"), ("minuti_sole", "walk_sun_min")):
+                v = [(is_[(rid, t, c)][k] - ib[(rid, t, c)][k]) if (rid, t, c) in is_ and (rid, t, c) in ib and k in is_[(rid, t, c)] and k in ib[(rid, t, c)] else None for c in casi]
+                if v[0] is not None: e[nome] = [round(x, 4) for x in v if x is not None]
+            if e: out.setdefault(rid, {})[t] = e
+    return out
 
 
 _ACC = {}
 
 
 def accessibilita(scn, b):
-    """Effetto sull'accessibilità. Per costruzione nullo: il motore legge solo il grafo (e origini e profilo) e alberi/pensiline non li modificano.
-    Verifica: hash di grafo, regole e origini uguali a quelli congelati; ricalcolo delle due destinazioni con lo stesso profilo = job_id e metriche di riferimento."""
+    """Effetto sull'accessibilità. Per costruzione nullo: il motore usa solo grafo, origini e profilo, che alberi e pensiline non modificano.
+    Verifica: hash di grafo, regole e origini uguali a quelli congelati; ricalcolo delle due destinazioni di riferimento con lo stesso profilo = job_id e metriche di F06."""
     if not _ACC:
         import accessibilita as A
         for dest, ref in b["accessibilita_riferimento"]["job"].items():
             r = A.compute_walk_access(dest, profile=b["accessibilita_riferimento"]["profilo"], thresholds_min=b["accessibilita_riferimento"]["soglie_min"],
                                       snap_limit_m=b["accessibilita_riferimento"]["snap_limit_m"], entrance_ids=ref["entrance_ids"])
-            rif = json.loads((ROOT / "analysis/manifest" / f"{ref['job_id']}.manifest.json").read_text())
+            rif = json.loads((A.OUT_VERS / "manifest" / f"{ref['job_id']}.manifest.json").read_text())
             metr = {m["metric_id"]: m["value"] for m in r["manifest"]["metrics"]}; metr_rif = {m["metric_id"]: m["value"] for m in rif["metrics"]}
             _ACC[dest] = {"job_id": r["job"]["job_id"], "job_id_riferimento": ref["job_id"], "stesso_job": r["job"]["job_id"] == ref["job_id"], "metriche_identiche": metr == metr_rif,
                           "quota_10min": next(m["value"] for m in r["manifest"]["metrics"] if m["metric_id"] == "served_share_10min")}
@@ -144,115 +152,90 @@ def fasce_utili(tab):
     return [f for f, m in tab["R01"].items() if m["minuti_sole"] and m["minuti_sole"]["discrimina"]]
 
 
+# ---------------------------------------------------------------- calcolo (con cache)
+def _casi(sid): return None if sid == S0 or sid in (S1, S2) else CASI_VARIANTI
+
+
+def esegui(sid, data, rec=None):
+    scn = S.carica(sid)
+    return scn, S.ombra_con_cache(scn, rec=rec or S.ricevitori(), cond={**S.condizioni(), "date": data}, casi=_casi(sid))
+
+
+def _lavoro(args):
+    sid, data = args; _, r = esegui(sid, data); return sid, data, r["job"]["job_id"], r["cached"]
+
+
+def precalcola(scenario_ids, con_varianti=True, log=None, lavoratori=6):
+    """Calcola in parallelo (un processo per scenario e data) i job mancanti della cache. Ritorna l'elenco dei job calcolati."""
+    log = log or (lambda *a: None); cond = S.condizioni()
+    ids = [S0] + list(scenario_ids) + [v for s in scenario_ids for v in (VARIANTI.get(s, []) if con_varianti else [])]
+    lavori = [(sid, d) for sid in ids for d in cond["dates"]]
+    with cf.ProcessPoolExecutor(max_workers=min(lavoratori, len(lavori))) as ex:
+        for sid, d, jid, cached in ex.map(_lavoro, lavori): log(sid, d, jid, "cache" if cached else "calcolato")
+
+
 # ---------------------------------------------------------------- confronto
-def esegui(sid, asset, contesto="solo_edifici"):
-    scn = S.carica(sid); cond = S.condizioni()
-    if contesto != "solo_edifici": return scn, S.ombra_con_cache(scn, cond=cond, contesto=contesto)   # senza asset: le ombre di scena restano quelle dei soli edifici
-    return scn, S.ombra_con_cache(scn, cond=cond, asset=asset, asset_times=cond["asset_times"], asset_bbox=cond["asset_bbox"])
-
-
-def confronta(scenario_ids, con_varianti=True, asset=True, log=None, contesti=("solo_edifici",)):
+def confronta(scenario_ids, con_varianti=True, log=None, parallelo=True):
     """Riepilogo del confronto di ciascuno scenario con S0 (baseline). Ritorna dict serializzabile; non produce un punteggio unico."""
     log = log or (lambda *a: None)
     dif = S.verifica_baseline()
     if dif: raise S.ScenarioError("incompatible_baseline", "La baseline non coincide con il record congelato: " + "; ".join(dif))
-    stato0 = S.stato_baseline(); b = S.baseline(); cond = S.condizioni()
-    s0, r0 = esegui(S0, asset); ixb = indice(r0); log("S0", r0["job"]["job_id"], "cache" if r0["cached"] else "calcolato")
+    stato0 = S.stato_baseline(); b = S.baseline(); cond = S.condizioni(); rec = S.ricevitori()
+    if parallelo: precalcola(scenario_ids, con_varianti, log)
+    CC = S.CASI_CONTESTO
+    base = {d: esegui(S0, d, rec)[1] for d in cond["dates"]}
     out = {"versione": VERSIONE, "baseline_id": b["baseline_id"], "baseline_invariata": True,
-           "condizioni_comuni": {"data": cond["date"], "fasce": cond["fasce"], "n_orari": len(cond["times"]), "method": cond["method"], "walk_speed_m_s": cond["walk_speed_m_s"], "el_min_deg": cond["el_min_deg"],
-                                 "ricevitori": [r["receiver_id"] for r in S.ricevitori()], "motore_ombre": f"geometric_ray {O.VERSIONE}", "geometrie_sha256": r0["job"]["params"]["geometrie_sha256"],
-                                 "origini_e_percorsi": "stesse origini (civici SIT Z2), stessi percorsi campione, stesso grafo (hash in baseline.json)",
-                                 "ostacoli_baseline": "edifici documentati, sensibilità altezze h_min/h_max"},
-           "riferimento": {"scenario_id": S0, "job_id": r0["job"]["job_id"], "manifest_id": r0["manifest"]["manifest_id"]}, "scenari": {}, "dichiarazioni": DICHIARAZIONI}
+           "condizioni_comuni": {"date": cond["dates"], "fasce": cond["fasce"], "orari": cond["times"], "method": cond["method"], "walk_speed_m_s": cond["walk_speed_m_s"], "el_min_deg": cond["el_min_deg"],
+                                 "ricevitori": [r["receiver_id"] for r in rec], "motore_ombre": f"geometric_ray {O.VERSIONE}", "geometrie_sha256": base[cond["dates"][0]]["job"]["params"]["geometrie_sha256"],
+                                 "origini_e_percorsi": "stesse origini (civici del Comune), stessi percorsi campione, stesso grafo (hash in baseline.json)",
+                                 "contesti": {"solo_edifici": "edifici documentati, sensibilità altezze h_min/h_max", "con_alberi_esistenti": "edifici e alberi censiti, chioma tipica (intervallo: min e max)",
+                                              "con_vegetazione_lidar": "edifici, alberi censiti e vegetazione LiDAR senza albero censito (base di confronto principale; intervallo: min e max)"},
+                                 "contesto_principale": PRINCIPALE},
+           "riferimento": {"scenario_id": S0, "job_id": {d: r["job"]["job_id"] for d, r in base.items()}}, "scenari": {}, "dichiarazioni": DICHIARAZIONI}
     for sid in scenario_ids:
-        scn, r = esegui(sid, asset); log(sid, r["job"]["job_id"], "cache" if r["cached"] else "calcolato")
-        inc = incompatibilita(r0["job"], r["job"])
-        e = {"titolo": scn["title"], "job_id": r["job"]["job_id"], "manifest_id": r["manifest"]["manifest_id"], "interventi": S.riepilogo_interventi(scn)}
-        v = S.valida(scn); e["segnalazioni"] = v["warnings"]; e["fattibilita"] = v["feasibility"]
+        scn = S.carica(sid); res = {d: esegui(sid, d, rec)[1] for d in cond["dates"]}
+        v = S.valida(scn)
+        e = {"titolo": scn["title"], "job_id": {d: r["job"]["job_id"] for d, r in res.items()}, "manifest_id": {d: r["manifest"]["manifest_id"] for d, r in res.items()},
+             "interventi": S.riepilogo_interventi(scn), "segnalazioni": v["warnings"], "fattibilita": v["feasibility"]}
+        inc = [i for d in cond["dates"] for i in incompatibilita(base[d]["job"], res[d]["job"])]
         if inc: e["stato"] = "respinto"; e["incompatibilita"] = inc; out["scenari"][sid] = e; continue
-        ixs = indice(r); e["stato"] = "confrontato"; e["incompatibilita"] = []
-        e["percorsi"] = tabella_percorsi(ixb, ixs, cond); e["area_attesa_pellico"] = area_attesa(ixb, ixs, cond, b)
-        e["archi_usati"] = beneficio_archi(ixb, ixs, cond, b); e["accessibilita"] = accessibilita(scn, b); e["fasce_utili_R01"] = fasce_utili(e["percorsi"])
-        e["assets"] = [a["path"] for a in r["manifest"]["assets"] if a["role"] == "result_geometry"]
+        e["stato"] = "confrontato"; e["incompatibilita"] = []
+        e["percorsi"], e["area_attesa_polo"], e["archi_usati"], e["per_ora"], e["fasce_utili_R01"] = {}, {}, {}, {}, {}
+        for d in cond["dates"]:
+            ib, is_ = indice(base[d]), indice(res[d])
+            e["percorsi"][d] = {c: tabella_percorsi(ib, is_, cond, CC[c]) for c in S.CONTESTI}
+            e["area_attesa_polo"][d] = {c: area_attesa(ib, is_, cond, b, CC[c]) for c in S.CONTESTI}
+            e["archi_usati"][d] = beneficio_archi(ib, is_, cond, b, CC[PRINCIPALE])
+            e["per_ora"][d] = per_ora(base[d], res[d], b, CC[PRINCIPALE])
+            e["fasce_utili_R01"][d] = fasce_utili(e["percorsi"][d][PRINCIPALE])
+        e["accessibilita"] = accessibilita(scn, b)
+        if scn["operations"] and scn["operations"][0]["target_type"] == "tree": e["sovrapposizioni_alberi_esistenti"] = S.sovrapposizioni_alberi_esistenti(scn)
         if con_varianti:
             e["robustezza"] = {}
             for vid in VARIANTI.get(sid, []):
-                _, rv = esegui(vid, False); log(vid, rv["job"]["job_id"], "cache" if rv["cached"] else "calcolato")
-                if incompatibilita(r0["job"], rv["job"]): e["robustezza"][vid] = "respinto: condizioni non comuni"; continue
-                tv = tabella_percorsi(ixb, indice(rv), cond); av = area_attesa(ixb, indice(rv), cond, b)
-                e["robustezza"][vid] = {"R01": {f: tv["R01"][f] for f in tv["R01"]}, "archi_battisti": beneficio_archi(ixb, indice(rv), cond, b)["battisti"]["fasce"]}
-        if "con_alberi_esistenti" in contesti:   # secondo contesto: edifici + alberi esistenti T05 (tipico, min e max), stessa baseline e condizioni
-            ca = S.CASI_CONTESTO["con_alberi_esistenti"]; _, ra0 = esegui(S0, False, "con_alberi_esistenti"); _, ra = esegui(sid, False, "con_alberi_esistenti")
-            log(sid, "con alberi", ra["job"]["job_id"], "cache" if ra["cached"] else "calcolato")
-            if incompatibilita(ra0["job"], ra["job"]): e["con_alberi_esistenti"] = {"stato": "respinto", "incompatibilita": incompatibilita(ra0["job"], ra["job"])}
-            else:
-                xb, xs = indice(ra0), indice(ra); t_ = tabella_percorsi(xb, xs, cond, ca)
-                e["con_alberi_esistenti"] = {"stato": "confrontato", "job_id": ra["job"]["job_id"], "manifest_id": ra["manifest"]["manifest_id"], "percorsi": t_,
-                                             "area_attesa_pellico": area_attesa(xb, xs, cond, b, ca), "archi_usati": beneficio_archi(xb, xs, cond, b, ca), "fasce_utili_R01": fasce_utili(t_),
-                                             "riferimento_job_id": ra0["job"]["job_id"]}
-            e["sovrapposizioni_alberi_esistenti"] = S.sovrapposizioni_alberi_esistenti(scn)
+                rv = {d: esegui(vid, d, rec)[1] for d in cond["dates"]}
+                if any(incompatibilita(base[d]["job"], rv[d]["job"]) for d in cond["dates"]): e["robustezza"][vid] = "respinto: condizioni non comuni"; continue
+                e["robustezza"][vid] = {"titolo": S.carica(vid)["title"].split(":")[0], "casi_calcolati": CASI_VARIANTI,
+                                        "percorsi": {d: {c: tabella_percorsi(indice(base[d]), indice(rv[d]), cond, CC[c]) for c in ("solo_edifici", PRINCIPALE)} for d in cond["dates"]}}
         out["scenari"][sid] = e
     assert S.stato_baseline() == stato0, "la baseline è cambiata durante il confronto"
-    out["indicatori"] = indicatori(out)
-    if "con_alberi_esistenti" in contesti:
-        out["contesti"] = {"solo_edifici": "edifici documentati, alberi esistenti esclusi (baseline)", "con_alberi_esistenti": "edifici documentati + alberi esistenti T05 a chioma tipica (intervallo: chioma min e max), ellissoidi opachi, inventario stimato e incompleto"}
-        out["indicatori_con_alberi_esistenti"] = indicatori(out, "con_alberi_esistenti")
-        out["delta_contesti_R01_mezzogiorno_minuti_sole"] = {sid: {c: (d or {}).get("delta") for c, d in (("solo_edifici", e["percorsi"]["R01"]["uscita_mezzogiorno"]["minuti_sole"]),
-                                                                ("con_alberi_esistenti", (e.get("con_alberi_esistenti") or {}).get("percorsi", {}).get("R01", {}).get("uscita_mezzogiorno", {}).get("minuti_sole")))}
-                                                            for sid, e in out["scenari"].items() if e.get("stato") == "confrontato"}
     return out
-
-
-def indicatori(out, ctx=None):
-    """Indicatori scalari per scenario (positivo = beneficio), per un eventuale ordinamento con pesi del decisore."""
-    ind = {}
-    for sid, e in out["scenari"].items():
-        if e.get("stato") != "confrontato": continue
-        if ctx: e = e.get(ctx) or {}
-        if e.get("stato") != "confrontato": continue
-        g = lambda rid, f: -(e["percorsi"][rid][f]["minuti_sole"] or {"delta": 0.0})["delta"]
-        camp = [g(r, "uscita_mezzogiorno") for r in e["percorsi"]]
-        arc = e["archi_usati"]["battisti"]["fasce"].get("uscita_mezzogiorno", {}).get("civici_minuti_sole_evitati", 0.0)
-        ar = (e["area_attesa_pellico"]["uscita_mezzogiorno"] or {"delta": 0.0})["delta"]
-        ind[sid] = {"r01_minuti_sole_evitati_mezzogiorno": round(g("R01", "uscita_mezzogiorno"), 4), "r01_minuti_sole_evitati_giornata": round(g("R01", "giornata_8_18"), 4),
-                    "campione_minuti_sole_evitati_mezzogiorno": round(sum(camp) / len(camp), 4), "archi_civici_minuti_evitati_mezzogiorno": round(arc, 2),
-                    "area_attesa_ombra_mezzogiorno": round(ar, 4)}
-    return {"valori": ind, "descrizioni": INDICATORI, "nota": "Indicatori separati, positivi se c'è un beneficio. Nessun punteggio unico: usare ordina() con pesi esplicitamente scelti dal decisore."}
-
-
-def ordina(riep, pesi, contesto="solo_edifici"):
-    """Ordinamento SOLO con pesi del decisore {indicatore: peso >= 0}. Ogni indicatore è diviso per il massimo valore assoluto fra gli scenari (adimensionale)."""
-    ind = (riep["indicatori"] if contesto == "solo_edifici" else riep["indicatori_con_alberi_esistenti"])["valori"]
-    if not pesi or any(k not in INDICATORI or w < 0 for k, w in pesi.items()) or sum(pesi.values()) <= 0:
-        raise S.ScenarioError("invalid_params", f"pesi non validi: indicatori ammessi {sorted(INDICATORI)}, pesi >= 0 con somma positiva.")
-    mx = {k: max((abs(v[k]) for v in ind.values()), default=0) or 1.0 for k in INDICATORI}
-    tot = sum(pesi.values()); pun = {sid: round(sum(w * v[k] / mx[k] for k, w in pesi.items()) / tot, 4) for sid, v in ind.items()}
-    return {"pesi": pesi, "punteggi": pun, "ordine": sorted(pun, key=lambda s: (-pun[s], s)), "avvertenza": "L'ordine dipende dai pesi scelti: non è una raccomandazione."}
-
-
-def sensibilita_pesi(riep):
-    """Ordine sotto ciascun indicatore preso da solo e con pesi uguali: mostra se la scelta dei pesi cambia l'ordine."""
-    o = {k: ordina(riep, {k: 1.0})["ordine"] for k in INDICATORI}; o["pesi_uguali"] = ordina(riep, {k: 1.0 for k in INDICATORI})["ordine"]
-    return {"ordini": o, "ordine_stabile": len({tuple(v) for v in o.values()}) == 1}
 
 
 # ---------------------------------------------------------------- uscite
 def scrivi_out(riep):
-    OUT.mkdir(parents=True, exist_ok=True)
-    for sid in riep["scenari"]:
-        scn = S.carica(sid)
-        if scn["operations"]: (OUT / f"interventi_{sid}.geojson").write_text(json.dumps(S.geojson_interventi(scn), ensure_ascii=False, separators=(",", ":")))
-    riep["sensibilita_pesi"] = sensibilita_pesi(riep) if len(riep["indicatori"]["valori"]) > 1 else None
-    (OUT / "confronto_riepilogo.json").write_text(json.dumps(riep, ensure_ascii=False, indent=1))
+    SC.mkdir(parents=True, exist_ok=True)
+    (SC / "confronto.json").write_text(json.dumps(riep, ensure_ascii=False, separators=(",", ":")))
     return riep
 
 
 def main():
-    ids = [s for s in ("scn_z2_s1_filare_r01", "scn_z2_s2_pensilina_pellico")]
-    r = confronta(ids, log=lambda *a: print(*a, flush=True), contesti=S.CONTESTI); scrivi_out(r)
+    r = confronta([S1, S2], log=lambda *a: print(*a, flush=True)); scrivi_out(r)
     for sid, e in r["scenari"].items():
-        print(sid, e["stato"], "R01 minuti_sole mezzogiorno:", e["percorsi"]["R01"]["uscita_mezzogiorno"]["minuti_sole"])
-    print("riepilogo scritto in scenarios/out/confronto_riepilogo.json")
+        for d in r["condizioni_comuni"]["date"]:
+            m = e["percorsi"][d][PRINCIPALE]["R01"]["punta_12_30_13_30"]["minuti_sole"]
+            print(sid, d, e["stato"], "R01 minuti al sole in punta (base LiDAR):", m and (m["delta"], m["intervallo"]))
+    print(f"riepilogo scritto in {SC / 'confronto.json'}")
 
 
 if __name__ == "__main__":

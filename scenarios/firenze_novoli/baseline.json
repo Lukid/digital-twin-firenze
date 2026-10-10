@@ -1,0 +1,490 @@
+{
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "version": 1,
+ "frozen_at": "2026-10-10T12:00:00Z",
+ "aoi_id": "aoi_firenze_novoli",
+ "descrizione": "Stato congelato di snapshot, grafo, geometrie, vegetazione LiDAR, motori e condizioni su cui ogni scenario aggiunge SOLO gli interventi dichiarati. Ostacoli di riferimento: edifici documentati, alberi censiti e vegetazione LiDAR (base di confronto principale); sensibilità sulle altezze degli edifici e sulle chiome.",
+ "snapshot": [
+  {
+   "snapshot_id": "snp_cm_edscol_firenze_20261009",
+   "source_id": "src_cm_edscol_firenze",
+   "sha256": "791cc1192fa54892486df8343d848c76cd7d4117f00bf64ecef8c4e1047f1050",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_fi_alberi_20261009",
+   "source_id": "src_fi_alberi",
+   "sha256": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_barriere_20261009",
+   "source_id": "src_fi_barriere",
+   "sha256": "0f687cebb744beb670a47d81d711f0c620f18f3a4bfbe3c4af252246a32c26dd",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_civici_20261009",
+   "source_id": "src_fi_civici",
+   "sha256": "3c501a28c48a56ac8e9b65e3233f3073284cab4e6126205dc04f72d60507c505",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_dsm2023_20261009",
+   "source_id": "src_fi_dsm2023",
+   "sha256": "1c6c250f2b91c77858667f8816e132c17f19916639f6e6e1a2578a45a5290451",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_dtm2023_20261009",
+   "source_id": "src_fi_dtm2023",
+   "sha256": "3c8fdac2c02ab5cbb8353760c40962ea95ae9c6162130f30d9ac805608a79d02",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_rifugi_aree_20261009",
+   "source_id": "src_fi_rifugi_aree",
+   "sha256": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_rifugi_biblioteche_20261009",
+   "source_id": "src_fi_rifugi_biblioteche",
+   "sha256": "2b2685f9008ee030b1a23c29ae59116fc9dce7ee9071840638c9823ea34253c8",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_scuole_statali_20261009",
+   "source_id": "src_fi_scuole_statali",
+   "sha256": "5a9ab7914290ea32d62aa869c8073063062a575cb3f7c82c8198d5c96d7145b3",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_fi_tram_fermate_20261009",
+   "source_id": "src_fi_tram_fermate",
+   "sha256": "631e460c143af00d2fb4bfbd42a06241a73471b28a88171d12c21ee28fca4085",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_gtfs_at_firenze_20261009",
+   "source_id": "src_gtfs_at_firenze",
+   "sha256": "6ca6c95f0556b6bdb170cfd8f684b8e976ffd083119b92c711f988e7169795e7",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_gtfs_gest_firenze_20261009",
+   "source_id": "src_gtfs_gest_firenze",
+   "sha256": "97d18a9d9eae546fd21526244106b56891bef6dbb7db0846b20c0f9f6bd5ad13",
+   "license_state": "clear_with_reserve"
+  },
+  {
+   "snapshot_id": "snp_osm_firenze_20261009",
+   "source_id": "src_osm_firenze",
+   "sha256": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_rt_uv_firenze_novoli_20261009",
+   "source_id": "src_rt_uv_firenze_novoli",
+   "sha256": "2197d5f1105871037b7f419721a4fcb766d67be50e4adafa1ea9e1319b8f89ad",
+   "license_state": "clear_with_reserve"
+  }
+ ],
+ "grafo": {
+  "graph_id": "grf_firenze_novoli_osm_20261009",
+  "file": "data/norm/firenze_novoli/network/rete_firenze_novoli.pkl",
+  "sha256": "6f15c8c01cc3ad324c55e7f6c83f2520c42d317ef4f214d9b6251dfe3be5c34e",
+  "regole": "network/regole.json",
+  "regole_sha256": "7334ecafeafe39ede0654d6cbde541ca0c2c7380c9098a21b3b6c81fd6e8eec3",
+  "archi": 9009,
+  "nodi": 6600
+ },
+ "geometrie": {
+  "file": "data/norm/firenze_novoli/geometry/geometrie_firenze_novoli.gpkg",
+  "sha256": "8c416bf38bcbb0fcb661ff6d5f9417e99ecc5c82139da740ecfef0b2af9d4c66",
+  "parametri_chiome": "geometry/parametri_chiome.json",
+  "parametri_chiome_sha256": "c7f6915dd5bca1142db551d061ea348aac7c5d566d6873de653c3c511c08f05c",
+  "volumi_usati": 8077,
+  "alberi_esistenti_disponibili": 8392
+ },
+ "vegetazione_lidar": {
+  "file": "data/norm/firenze_novoli/shadow/vegetazione_lidar_poligoni.gpkg",
+  "poligoni_sha256": "7539e722d1c5e420395402f3f31126fca7f97faa8cc08ad86bd6db664b3a6998",
+  "cluster_usati": 3838,
+  "frazione_z_lo_di_h95": {
+   "min": 0.4,
+   "tipico": 0.25,
+   "max": 0.15
+  },
+  "nota": "hash del contenuto dei poligoni (il file GeoPackage non è identico byte per byte a ogni ricostruzione)"
+ },
+ "motori": {
+  "ombre": {
+   "name": "geometric_ray",
+   "version": "0.3.0",
+   "file": "shadow/ombre.py",
+   "file_sha256": "44730c5bab37cef85c904b741552fad7bf48d6282517142c0df111a36b613500"
+  },
+  "accessibilita": {
+   "name": "shortest_path_walk_time",
+   "version": "0.1.0",
+   "file": "analysis/accessibilita.py",
+   "file_sha256": "67c68f900fca68ff7f972f8142c6778e38e7829601d58cab76b0e5f7087b4e31"
+  }
+ },
+ "origini": {
+  "kind": "address_points",
+  "file": "data/norm/firenze_novoli/network/origini_snap.gpkg",
+  "sha256": "60e2b6d263059e3618381416762f931654432d5e2f859b1b25238a5e11b3346d",
+  "nota": "civici del Comune di Firenze (punti d'indirizzo, non residenti): le quote sono quote di civici"
+ },
+ "accessibilita_riferimento": {
+  "profilo": {
+   "speed_m_s": 1.2,
+   "crossing_penalty_s": 0,
+   "stairs": "allowed"
+  },
+  "snap_limit_m": 40,
+  "soglie_min": [
+   5,
+   10,
+   15
+  ],
+  "job": {
+   "dst_university_w83537185": {
+    "job_id": "job_90ef3449d76b161a",
+    "entrance_ids": [
+     "ent_osm_n11152998932"
+    ]
+   },
+   "dst_tram_fm9057": {
+    "job_id": "job_f5a4969062095f90",
+    "entrance_ids": [
+     "ent_gtfs_fm9057"
+    ]
+   }
+  }
+ },
+ "ricevitori": {
+  "percorsi_file": "network/firenze_novoli/percorsi_campione.geojson",
+  "percorsi_sha256": "30e239d31eb65ba1b22080be36160b62315c1695f3e6fb207b36bce6395732b7",
+  "route_ids": [
+   "R01",
+   "R02"
+  ],
+  "archi_usati": {
+   "dst_university_w83537185": {
+    "file": "analysis/firenze_novoli/accessibilita_dst_university_w83537185.geojson",
+    "sha256": "086a67509a4122dee82effff6ae8a7cef297a7b155f6b32e8ddd63b039152dc6"
+   },
+   "dst_tram_fm9057": {
+    "file": "analysis/firenze_novoli/accessibilita_dst_tram_fm9057.geojson",
+    "sha256": "a16ae01281b171d6fdb084d71fda9d1f956b6adb8a0622a68663cd1658954cf8"
+   }
+  },
+  "archi": [
+   {
+    "receiver_id": "edg_f06_01",
+    "edge_id": "edg_osm_80835013_941158354_4796237987",
+    "n_origini": {
+     "dst_university_w83537185": 3112
+    }
+   },
+   {
+    "receiver_id": "edg_f06_02",
+    "edge_id": "edg_osm_117160328_4796237987_1319747551",
+    "n_origini": {
+     "dst_university_w83537185": 1428
+    }
+   },
+   {
+    "receiver_id": "edg_f06_03",
+    "edge_id": "edg_osm_117160327_1319747533_1319747518",
+    "n_origini": {
+     "dst_university_w83537185": 1425
+    }
+   },
+   {
+    "receiver_id": "edg_f06_04",
+    "edge_id": "edg_osm_117160329_1319747518_1319747556",
+    "n_origini": {
+     "dst_university_w83537185": 1425
+    }
+   },
+   {
+    "receiver_id": "edg_f06_05",
+    "edge_id": "edg_osm_117160330_1319747551_1319747533",
+    "n_origini": {
+     "dst_university_w83537185": 1425
+    }
+   },
+   {
+    "receiver_id": "edg_f06_06",
+    "edge_id": "edg_osm_117160332_1319747556_7204063688",
+    "n_origini": {
+     "dst_university_w83537185": 1425
+    }
+   },
+   {
+    "receiver_id": "edg_f06_07",
+    "edge_id": "edg_osm_771692234_7204063659_7204063688",
+    "n_origini": {
+     "dst_university_w83537185": 1352
+    }
+   },
+   {
+    "receiver_id": "edg_f06_08",
+    "edge_id": "edg_osm_771692234_7204063838_7204063659",
+    "n_origini": {
+     "dst_university_w83537185": 1350
+    }
+   },
+   {
+    "receiver_id": "edg_f06_09",
+    "edge_id": "edg_osm_771692234_7204063682_7204063838",
+    "n_origini": {
+     "dst_university_w83537185": 1338
+    }
+   },
+   {
+    "receiver_id": "edg_f06_10",
+    "edge_id": "edg_osm_771692146_7204063804_7204063719",
+    "n_origini": {
+     "dst_university_w83537185": 1331
+    }
+   },
+   {
+    "receiver_id": "edg_f06_11",
+    "edge_id": "edg_osm_771692173_5846923626_7204063682",
+    "n_origini": {
+     "dst_university_w83537185": 1331
+    }
+   },
+   {
+    "receiver_id": "edg_f06_12",
+    "edge_id": "edg_osm_771692173_7204063804_5846923626",
+    "n_origini": {
+     "dst_university_w83537185": 1331
+    }
+   },
+   {
+    "receiver_id": "edg_f06_13",
+    "edge_id": "edg_osm_771692159_5846923615_7204063719",
+    "n_origini": {
+     "dst_university_w83537185": 1317
+    }
+   },
+   {
+    "receiver_id": "edg_f06_14",
+    "edge_id": "edg_osm_116297466_7204051322_4796237987",
+    "n_origini": {
+     "dst_university_w83537185": 986
+    }
+   },
+   {
+    "receiver_id": "edg_f06_15",
+    "edge_id": "edg_osm_771692158_7204063681_7204051322",
+    "n_origini": {
+     "dst_university_w83537185": 907
+    }
+   },
+   {
+    "receiver_id": "edg_f06_16",
+    "edge_id": "edg_osm_353999367_5936606358_11052695849",
+    "n_origini": {
+     "dst_tram_fm9057": 3112
+    }
+   },
+   {
+    "receiver_id": "edg_f06_17",
+    "edge_id": "edg_osm_353999367_3597846584_5936606358",
+    "n_origini": {
+     "dst_tram_fm9057": 2391
+    }
+   },
+   {
+    "receiver_id": "edg_f06_18",
+    "edge_id": "edg_osm_24779658_3597846584_4681591700",
+    "n_origini": {
+     "dst_tram_fm9057": 1348
+    }
+   },
+   {
+    "receiver_id": "edg_f06_19",
+    "edge_id": "edg_osm_24779658_12390085751_13483564293",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_20",
+    "edge_id": "edg_osm_24779658_13483564293_942739335",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_21",
+    "edge_id": "edg_osm_24779658_2333138248_12390085751",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_22",
+    "edge_id": "edg_osm_24779658_4672300364_269251890",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_23",
+    "edge_id": "edg_osm_24779658_4672301116_942800334",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_24",
+    "edge_id": "edg_osm_24779658_4681591700_2333138248",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_25",
+    "edge_id": "edg_osm_24779658_5119661028_4672300364",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_26",
+    "edge_id": "edg_osm_24779658_942739335_4672301116",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_27",
+    "edge_id": "edg_osm_24779658_942800334_5119661028",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_28",
+    "edge_id": "edg_osm_392275450_269251890_4672301391",
+    "n_origini": {
+     "dst_tram_fm9057": 1287
+    }
+   },
+   {
+    "receiver_id": "edg_f06_29",
+    "edge_id": "edg_osm_392275450_1231545886_5936679338",
+    "n_origini": {
+     "dst_tram_fm9057": 1218
+    }
+   },
+   {
+    "receiver_id": "edg_f06_30",
+    "edge_id": "edg_osm_392275450_4672301391_7171638890",
+    "n_origini": {
+     "dst_tram_fm9057": 1218
+    }
+   }
+  ],
+  "archi_nota": "primi 15 archi per destinazione (Polo e fermata T2 Torre degli Agli) di archi_piu_usati (F06, profilo 1,2 m/s); n_origini = civici che li usano (non persone, nessun flusso misurato)",
+  "area_attesa": {
+   "receiver_id": "sfc_fi_attesa_polo",
+   "kind": "surface",
+   "descrizione": "area di attesa della fermata bus Forlanini Polo Scienze Sociali (OSM nod_osm_11220277322, shelter=no): impronta della pensilina S2 allargata di 1 m per lato (8 m x 4 m), orientata come il tratto di rete edg_osm_1197703753_4793202029_4793202030",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       679571.43,
+       4851340.35
+      ],
+      [
+       679575.26,
+       4851347.37
+      ],
+      [
+       679578.77,
+       4851345.45
+      ],
+      [
+       679574.94,
+       4851338.43
+      ],
+      [
+       679571.43,
+       4851340.35
+      ]
+     ]
+    ]
+   }
+  }
+ },
+ "condizioni": {
+  "date": "2026-07-15",
+  "dates": [
+   "2026-07-15",
+   "2026-09-15"
+  ],
+  "timezone": "Europe/Rome",
+  "times": [
+   "08:00",
+   "08:30",
+   "09:00",
+   "09:30",
+   "10:00",
+   "10:30",
+   "11:00",
+   "11:30",
+   "12:00",
+   "12:30",
+   "13:00",
+   "13:30",
+   "14:00",
+   "14:30",
+   "15:00",
+   "15:30",
+   "16:00",
+   "16:30",
+   "17:00",
+   "17:30",
+   "18:00",
+   "18:30",
+   "19:00"
+  ],
+  "fasce": [
+   {
+    "id": "punta_12_30_13_30",
+    "from": "12:30",
+    "to": "13:30"
+   },
+   {
+    "id": "giornata_8_19",
+    "from": "08:00",
+    "to": "19:00"
+   }
+  ],
+  "method": {
+   "name": "geometric_ray",
+   "space_step_m": 1.0,
+   "time_step_min": 5.0
+  },
+  "walk_speed_m_s": 1.2,
+  "el_min_deg": 5.0,
+  "nota": "stesse date, fasce, orari, passi e velocità di shadow/run.py (F07); il 15 luglio è la data di scelta del tratto di S1"
+ },
+ "limiti": [
+  "Percorsi sull'asse della rete: il lato del marciapiede non è noto.",
+  "Ombra binaria da edifici documentati, alberi censiti e vegetazione LiDAR; nessuna conversione in gradi, comfort o domanda pedonale.",
+  "Civici del Comune non sono residenti; nessun flusso pedonale misurato; velocità 1,2 m/s ipotesi.",
+  "Nessuna validazione locale."
+ ]
+}

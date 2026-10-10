@@ -1,0 +1,12 @@
+{
+ "regola": "regola dichiarata: tratto di 60 m di R01 (da 220 a 280 m dall'origine) con massima frazione media al sole, 15 luglio 12:30-13:30 (a parità: media 8-18, poi la prima lungo il percorso), caso con vegetazione LiDAR, asse della rete; 7 alberi, interasse 8 m, a 3 m dall'asse",
+ "data_scelta": "2026-07-15",
+ "s0_m": 220,
+ "s1_m": 280,
+ "sole_medio_finestra": 1.0,
+ "sole_medio_R01": 0.9209,
+ "sole_medio_finestra_8_18": 1.0,
+ "finestre_valide": 984,
+ "finestre_pari_a_mezzogiorno": 598,
+ "scartati_in_edificio": {}
+}
