@@ -1,8 +1,8 @@
 {
  "scenario_id": "scn_fi_s1v_chioma_max",
- "version": 2,
+ "version": 3,
  "baseline_id": "bas_firenze_novoli_20261009",
- "title": "S1v variante sensibilità: chioma massima su R01: regola dichiarata: tratto di 60 m di R01 (da 593 a 653 m dall'origine) con massima frazione media al sole, 15 luglio 12:30-13:30 (a parità: media 8-18, poi la prima lungo il percorso), caso con vegetazione LiDAR, asse della rete, solo tratti dove tutti gli alberi trovano posto; 7 alberi, interasse 8 m, ognuno sul punto più vicino all'asse fra 1.5 e 5 m dentro le aree di circolazione pedonale del Comune ristrette di 0.5 m e fuori dagli edifici; lato del sole alle 13:00",
+ "title": "S1v variante sensibilità: chioma massima su R01: regola dichiarata: tratto di 60 m di R01 (da 198 a 258 m dall'origine) con massima frazione media al sole, 15 luglio 12:30-13:30 (a parità: media 8-18, poi la prima lungo il percorso), caso con vegetazione LiDAR, asse della rete, solo tratti dove tutti gli alberi trovano posto; 7 alberi, interasse 8 m, ognuno sul punto più vicino all'asse fra 1.5 e 5 m dentro le aree di circolazione pedonale del Comune ristrette di 0.5 m e fuori dagli edifici; lato del sole alle 13:00",
  "author": "agente F08 (scenario dimostrativo)",
  "created_at": "2026-10-10T12:00:00Z",
  "operations": [
@@ -13,8 +13,8 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     678952.13,
-     4851158.72
+     679271.47,
+     4851191.61
     ]
    },
    "dimensions": {
@@ -47,8 +47,8 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     678957.28,
-     4851155.68
+     679273.61,
+     4851199.95
     ]
    },
    "dimensions": {
@@ -81,8 +81,8 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     678964.17,
-     4851151.61
+     679276.71,
+     4851207.32
     ]
    },
    "dimensions": {
@@ -115,8 +115,8 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     678970.93,
-     4851147.33
+     679279.82,
+     4851214.7
     ]
    },
    "dimensions": {
@@ -149,8 +149,8 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     678979.09,
-     4851145.42
+     679282.69,
+     4851222.17
     ]
    },
    "dimensions": {
@@ -183,8 +183,8 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     678984.71,
-     4851139.2
+     679285.8,
+     4851229.54
     ]
    },
    "dimensions": {
@@ -217,8 +217,8 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     678991.6,
-     4851135.13
+     679290.08,
+     4851236.45
     ]
    },
    "dimensions": {
