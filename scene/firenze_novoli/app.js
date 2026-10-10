@@ -107,7 +107,7 @@ async function main() {
     AL.forEach((a, i) => {
       const imp = Math.min(a.imp ?? 1, a.h * 0.8), hc = Math.max(a.h - imp, 0.5), d = a.d ?? 3.5, r = Math.max(a.td ?? 0.1, 0.25) / 2;
       m.compose(new THREE.Vector3(a.x, a.y + imp + hc / 2, a.z), q, new THREE.Vector3(d / 2, hc / 2, d / 2)); chiome.setMatrixAt(i, m);
-      c.set(a.ch_cls === 'measured' ? 0x3d7a37 : 0x86b564); chiome.setColorAt(i, c);
+      c.set(a.ch_cls === 'estimated' ? 0x86b564 : 0x3d7a37); chiome.setColorAt(i, c);
       m.compose(new THREE.Vector3(a.x, a.y + imp / 2, a.z), q, new THREE.Vector3(r, imp, r)); tronchi.setMatrixAt(i, m);
     });
     chiome.castShadow = tronchi.castShadow = true; chiome.receiveShadow = true;
@@ -140,16 +140,19 @@ async function main() {
   scene.add(gruppi.rete);
 
   // punti: destinazioni, tram, scuole, rifugi, barriere
-  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x0b7285, 4, 12], scuole: [0x7048e8, 4, 12], rifugi: [0x2b8a3e, 4, 10], barriere: [0xc2255c, 1.6, 5] };
-  const sfera = new THREE.SphereGeometry(1, 12, 8), palo = new THREE.CylinderGeometry(0.25, 0.25, 1, 6);
+  const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x0b7285, 4, 12], scuole: [0x7048e8, 4, 12], rifugi: [0x2b8a3e, 4, 10], barriere: [0xc2255c, 2.5, 6] };
+  const sfera = new THREE.SphereGeometry(1, 12, 8), palo = new THREE.CylinderGeometry(0.25, 0.25, 1, 6), segni = [];
   for (const k of Object.keys(PUNTO)) { gruppi[k] = new THREE.Group(); scene.add(gruppi[k]); }
   for (const p of dati.punti.punti) {
-    const [col, r, h] = PUNTO[p.livello], y = tY(p.x, p.z), g = gruppi[p.livello];
+    const [col, r, h] = PUNTO[p.livello], g = gruppi[p.livello], q = new THREE.Group();
     const m = new THREE.Mesh(sfera, new THREE.MeshStandardMaterial({ color: col, roughness: 0.6 }));
-    m.scale.setScalar(r); m.position.set(p.x, y + h, p.z); m.castShadow = true; m.userData = { tipo: p.livello, punto: p }; g.add(m); sel.push(m);
-    const s = new THREE.Mesh(palo, m.material); s.scale.y = h; s.position.set(p.x, y + h / 2, p.z); g.add(s);
+    m.scale.setScalar(r); m.position.y = h; m.userData = { tipo: p.livello, punto: p }; q.add(m); sel.push(m);
+    const s = new THREE.Mesh(palo, m.material); s.scale.y = h; s.position.y = h / 2; q.add(s);
+    q.position.set(p.x, tY(p.x, p.z), p.z); g.add(q); segni.push(q);
     if (p.contorno) g.add(nastri([{ p: p.contorno }], 0.4, () => 2, () => hex(col)));
   }
+  // segni a dimensione quasi costante sullo schermo: da lontano crescono, da vicino restano a grandezza reale
+  const scalaSegni = () => { for (const q of segni) q.scale.setScalar(Math.max(1, camera.position.distanceTo(q.position) / 500)); };
 
   // livelli analitici (vuoti se i dati non ci sono)
   const SCALA = [[5, '#fde725', 'fino a 5 min'], [10, '#35b779', '5-10 min'], [15, '#31688e', '10-15 min'], [1e9, '#440154', 'oltre 15 min']];
@@ -167,16 +170,18 @@ async function main() {
     const mk = (pos, colors, tx, size, col) => { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); if (colors) g.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3)); const m = new THREE.Points(g, new THREE.PointsMaterial({ size, sizeAttenuation: false, map: tx, alphaTest: 0.4, vertexColors: !!colors, color: col || 0xffffff, depthTest: false })); m.renderOrder = 10; return m; };
     accGruppo.add(mk(ok, co, T_PIENO, 9), mk(no, null, T_ANELLO, 8, 0x777777));
     accGruppo.visible = $('l_accessibilita').checked; scene.add(accGruppo); gruppi.accessibilita = accGruppo;
-    $('leg_accessibilita').innerHTML = SCALA.map((s) => `<span><i style="background:${s[1]}"></i>${s[2]}</span>`).join('') + '<span><i style="background:#fff;border:3px double #777;border-radius:50%"></i>non raggiungibile, vietato o dati insufficienti</span>' + `<span>${d.punti.filter((p) => p.stato === 'ok').length} civici su ${d.punti.length}${d.profilo ? ', profilo ' + d.profilo : ''}</span>`;
+    $('leg_accessibilita').innerHTML = '<span>Ogni pallino è un civico. Il colore indica i minuti a piedi da quel civico alla destinazione scelta.</span>' + SCALA.map((s) => `<span><i style="background:${s[1]}"></i>${s[2]}</span>`).join('') + '<span><i style="background:#fff;border:3px double #777;border-radius:50%"></i>non raggiungibile, vietato o dati insufficienti</span>' + `<span>${d.punti.filter((p) => p.stato === 'ok').length} civici su ${d.punti.length} arrivano alla destinazione${d.profilo ? ', profilo ' + d.profilo : ''}</span>`;
     dirty = true;
   }
   let ombraGruppo = null;
   function mostraOmbra(i) {
-    if (ombraGruppo) { scene.remove(ombraGruppo); ombraGruppo.geometry.dispose(); }
-    const c0 = hex(0xf2c230), c1 = hex(0x1b2a6b), I = dati.ombra.istanti[i];
-    ombraGruppo = nastri(I.tratti.map((t) => ({ ...t, p: t.p })), 0.6, () => 4, (t) => c0.clone().lerp(c1, t.f ?? 0));
+    if (ombraGruppo) { scene.remove(ombraGruppo); ombraGruppo.traverse((o) => o.geometry?.dispose()); }
+    const c0 = hex(0xf2c230), c1 = hex(0x1b2a6b), I = dati.ombra.istanti[i], P = dati.ombra.percorsi || [];
+    ombraGruppo = new THREE.Group();
+    ombraGruppo.add(nastri(P, 0.5, () => 4, () => c0), nastri(I.tratti, 0.7, () => 4, (t) => c0.clone().lerp(c1, t.f ?? 0)));
     ombraGruppo.visible = $('l_ombra').checked; scene.add(ombraGruppo); gruppi.ombra = ombraGruppo; dirty = true;
-    $('leg_ombra').innerHTML = `<span>istante del calcolo: ${I.istante} (non segue il cursore dell'ora)</span>`;
+    const pc = P.map((q) => `<span>${q.id.replace('pth_fi_', '')}: ${Math.round((I.quota?.[q.id] ?? 0) * 100)}% in ombra</span>`).join('');
+    $('leg_ombra').innerHTML = pc + `<span>istante del calcolo: ${I.istante} (non segue il cursore dell'ora)</span>`;
   }
 
   // scenari: interventi ipotetici (livello spento all'avvio)
@@ -221,7 +226,7 @@ async function main() {
     if (k === 'alberi') w.innerHTML += '<div class="leg"><span><i style="background:#3d7a37"></i>chioma misurata</span><span><i style="background:#86b564"></i>chioma stimata</span></div>';
     if (k === 'rete') w.innerHTML += '<div class="leg"><span><i style="background:#5b6470"></i>strada</span><span><i style="background:#b0763a"></i>sentiero</span><span><i style="background:#2f6fb5"></i>marciapiede</span><span><i style="background:#f2f2f2"></i>attraversamento</span></div>';
     if (k === 'accessibilita' && presente) w.innerHTML += `<div class="sub"><label for="s_acc">Verso:</label><select id="s_acc">${dati.accessibilita.destinazioni.map((d, i) => `<option value="${i}">${d.nome}</option>`).join('')}</select></div><div class="leg" id="leg_accessibilita"></div>`;
-    if (k === 'ombra' && presente) w.innerHTML += `<div class="sub"><label for="s_om">Istante:</label><select id="s_om">${dati.ombra.istanti.map((d, i) => `<option value="${i}">${d.istante}</option>`).join('')}</select></div><div class="grad"></div><div class="leg"><span>sole</span><span style="margin-left:auto">ombra</span></div><div class="leg" id="leg_ombra"></div>`;
+    if (k === 'ombra' && presente) w.innerHTML += `<div class="sub"><label for="s_om">Istante:</label><select id="s_om">${dati.ombra.istanti.map((d, i) => `<option value="${i}">${d.istante}</option>`).join('')}</select></div><div class="riga" style="margin-top:6px"><button type="button" id="vOm">Vai ai percorsi</button></div><div class="leg"><span>Due percorsi campione verso il Polo universitario.</span><span><i style="background:#f2c230"></i>al sole</span><span><i style="background:#1b2a6b"></i>in ombra</span></div><div class="leg" id="leg_ombra"></div>`;
     if (k === 'scenari' && presente) w.innerHTML += `<div class="sub"><label for="s_scn">Scenario:</label><select id="s_scn">${dati.interventi.scenari.map((d, i) => `<option value="${i}">${d.etichetta}</option>`).join('')}</select><div class="riga" style="margin-top:6px"><button type="button" id="vScn">Vai all'intervento</button></div></div><div class="leg"><span><i style="background:#e0218a"></i>albero o pensilina ipotetici</span></div>`;
     box.appendChild(w);
   }
@@ -235,7 +240,12 @@ async function main() {
     mostraScenario(0); $('s_scn').addEventListener('change', (e) => mostraScenario(+e.target.value));
     $('vScn').addEventListener('click', () => { $('l_scenari').checked = true; $('l_scenari').dispatchEvent(new Event('change')); vai(scnCentro.clone().add(new THREE.Vector3(25, 95, 55)), scnCentro); });
   }
-  if (idx.livelli_analitici.ombra.presente) { mostraOmbra(0); $('s_om').addEventListener('change', (e) => mostraOmbra(+e.target.value)); }
+  if (idx.livelli_analitici.ombra.presente) {
+    mostraOmbra(0); $('s_om').addEventListener('change', (e) => mostraOmbra(+e.target.value));
+    const bb = new THREE.Box3(); for (const q of dati.ombra.percorsi || []) for (let k = 0; k < q.p.length; k += 2) bb.expandByPoint(new THREE.Vector3(q.p[k], 0, q.p[k + 1]));
+    const c = bb.getCenter(new THREE.Vector3()), L = Math.max(bb.max.x - bb.min.x, bb.max.z - bb.min.z, 200); c.y = tY(c.x, c.z);
+    $('vOm').addEventListener('click', () => { $('l_ombra').checked = true; $('l_ombra').dispatchEvent(new Event('change')); vai(c.clone().add(new THREE.Vector3(0.3 * L, 0.9 * L, 0.6 * L)), c); });
+  }
 
   // --- sole ---------------------------------------------------------------------
   const fondo = new THREE.Color(), giorno = new THREE.Color(0xcfe3f2), notte = new THREE.Color(0x1a2036);
@@ -260,6 +270,7 @@ async function main() {
 
   // --- schede ---------------------------------------------------------------------
   const CL = { measured: 'misurata', derived: 'derivata', estimated: 'stimata' };
+  const CLA = { derived: 'misurata dal LiDAR', estimated: 'stimata' };
   const riga = (k, v) => (v == null || v === '' ? '' : `<dt>${k}</dt><dd>${/^https?:/.test(v) ? `<a href="${v}" target="_blank" rel="noopener">${v}</a>` : v}</dd>`);
   const iv = (a, b) => (a != null && b != null ? ` (da ${a} a ${b})` : '');
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -300,7 +311,7 @@ async function main() {
       scheda('Edificio ' + b.id.replace('bld_', ''), [['Altezza', `${b.h} m${iv(b.h_min, b.h_max)}`], ['Classe dell\'altezza', CL[b.classe_h]], ['Altezza LiDAR 2023', b.h_lidar != null ? b.h_lidar + ' m' : null], ['Altezza del 2011', b.h_uv != null ? b.h_uv + ' m' : null], ['Quota di base', b.z_base + ' m s.l.m.'], ['Area', b.area_m2 + ' m²'], ['Tipo', b.tipo], ['Presente nel 2023', b.presente_2023 ? 'sì' : 'no, probabile demolizione'], ['Segnalazione', b.flag], ['Portico o volume sospeso', 'ignoto (nessuna fonte)'], ['Origine dell\'altezza', b.fonte]], 'edifici');
     } else if (o === chiome) {
       const a = dati.alberi.alberi[hit.instanceId]; anello(a.x, a.y, a.z, Math.max((a.d ?? 3) / 2, 1.5));
-      scheda(a.specie || 'Albero', [['Altezza', `${a.h} m${iv(a.h_min, a.h_max)}, ${CL[a.h_cls]}`], ['Diametro della chioma', `${a.d} m${iv(a.d_min, a.d_max)}, ${CL[a.ch_cls]}`], ['Circonferenza del tronco', a.circ != null ? a.circ + ' cm' : null], ['Motivo della stima', a.motivo ? a.motivo.replaceAll('_', ' ') : null], ['Quota di base', (a.y + idx.area.quota_riferimento_m).toFixed(1) + ' m s.l.m.'], ['Codice', a.id]], 'alberi');
+      scheda(a.specie || 'Albero', [['Altezza', `${a.h} m${iv(a.h_min, a.h_max)}, ${CLA[a.h_cls]}`], ['Diametro della chioma', `${a.d} m${iv(a.d_min, a.d_max)}, ${CLA[a.ch_cls]}`], ['Circonferenza del tronco', a.circ != null ? a.circ + ' cm' : null], ['Motivo della stima', a.motivo ? a.motivo.replaceAll('_', ' ') : null], ['Quota di base', (a.y + idx.area.quota_riferimento_m).toFixed(1) + ' m s.l.m.'], ['Codice', a.id]], 'alberi');
     } else if (o.userData.scn) {
       const S = o.userData.scn, it = o.userData.pens || S.alberi[hit.instanceId];
       if (o.userData.pens) anello(hit.point.x, hit.point.y - 1, hit.point.z, 6); else anello(it.x, tY(it.x, it.z), it.z, Math.max(it.d / 2, 1.5));
@@ -330,7 +341,7 @@ async function main() {
   vai(VISTA.pos, VISTA.tgt);
   (function ciclo() {
     controls.update();
-    if (dirty) { if (shadowDirty) { renderer.shadowMap.needsUpdate = true; shadowDirty = false; } renderer.render(scene, camera); dirty = false; }
+    if (dirty) { scalaSegni(); if (shadowDirty) { renderer.shadowMap.needsUpdate = true; shadowDirty = false; } renderer.render(scene, camera); dirty = false; }
     requestAnimationFrame(ciclo);
   })();
   const nE = dati.edifici.n.toLocaleString('it-IT'), nA = dati.alberi.n.toLocaleString('it-IT');

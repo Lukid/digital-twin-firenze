@@ -65,6 +65,20 @@ def test_interventi_scenari():
     assert s1["numeri"][0][1].startswith("minuti al sole da 4,25 a 3,89") and s1["numeri"][1][1] == "da 29,5% a 35,4%"   # R01 da San Donato - Università (D20)
 
 
+def test_fermate_tram():
+    t = [p["id"] for p in carica("punti")["punti"] if p["livello"] == "tram"]
+    assert "ent_gtfs_fm9055" in t and len(t) == 3   # San Donato - Università dal GTFS (D20), le altre due dal Comune
+
+
+def test_ombra_percorsi_interi():
+    if "ombra" not in IDX["assets"]:  # opzionale: uscita del motore ombre assente
+        return
+    d = carica("ombra")
+    assert [q["id"] for q in d["percorsi"]] == ["pth_fi_R01", "pth_fi_R02"]   # il giallo sotto i tratti in ombra
+    assert all(0 <= v <= 1 for i in d["istanti"] for v in i["quota"].values())
+    assert d["istanti"][0]["quota"]["pth_fi_R01"] == 0.808
+
+
 def test_three_in_vendor():
     # la importmap e gli import di app.js e di three devono puntare a file presenti: altrimenti la scena resta bianca
     import re
