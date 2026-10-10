@@ -1,6 +1,6 @@
 # F07: ombre su Firenze Novoli
 
-Data: 10 ottobre 2026. Motore `shadow/ombre.py` versione 0.3.0. Non validato sul posto.
+Data: 10 ottobre 2026, numeri aggiornati dopo D19 e D20 (calcolo del 10 ottobre, `sintesi.json`). Motore `shadow/ombre.py` versione 0.3.0. Non validato sul posto.
 
 ## Cosa è cambiato
 
@@ -36,9 +36,9 @@ Data: 10 ottobre 2026. Motore `shadow/ombre.py` versione 0.3.0. Non validato sul
 
 ## Impostazione
 
-- Percorsi da `network/firenze_novoli/percorsi_campione.geojson`, sull'asse della rete, verso l'ingresso predefinito del Polo `ent_osm_n11152998932`:
-  - R01: dalla fermata T2 Torre degli Agli, 1.198 m.
-  - R02: dalla fermata T2 Regione Toscana, 708 m.
+- Percorsi da `network/firenze_novoli/percorsi_campione.geojson`, sull'asse della rete, verso l'ingresso del Polo più vicino per rete, `ent_civ_d15` (D19):
+  - R01: dalla fermata T2 San Donato - Università, 428,6 m (D20; prima partiva da Torre degli Agli).
+  - R02: dalla fermata T2 Novoli - Regione Toscana, 711,5 m.
 - Date: 15 luglio e 15 settembre 2026, ogni 30 minuti fra 8:00 e 19:00, passo spaziale 1 m, passo temporale 5 min, 1,2 m/s.
 - Fasce: punta 12:30-13:30 e giornata intera.
 - Casi: edifici (h_min, h, h_max); edifici e alberi (min, tipico, max); più vegetazione LiDAR (min, tipico, max).
@@ -50,24 +50,23 @@ Frazione media del percorso in ombra, valore tipico (intervallo min-max).
 
 | Percorso, data, fascia | Edifici | Edifici e alberi | Con vegetazione LiDAR |
 |---|---|---|---|
-| R01, 15 luglio, punta | 4,1% (3,3-4,3) | 6,3% (4,4-9,1) | 8,0% (5,8-10,9) |
-| R01, 15 luglio, giornata | 11,0% (9,6-12,8) | 14,3% (11,7-20,0) | 17,0% (14,0-22,7) |
-| R01, 15 settembre, punta | 21,0% (18,7-22,6) | 24,3% (22,7-26,7) | 26,6% (24,6-29,3) |
-| R01, 15 settembre, giornata | 36,8% (34,2-38,5) | 43,0% (39,1-47,7) | 45,6% (41,5-50,2) |
-| R02, 15 luglio, punta | 16,8% (13,1-17,7) | 16,8% | 17,1% |
-| R02, 15 luglio, giornata | 33,7% (31,2-35,1) | 33,7% (33,7-34,1) | 34,0% (34,0-34,4) |
-| R02, 15 settembre, punta | 43,4% (40,8-44,9) | 43,4% | 44,3% |
-| R02, 15 settembre, giornata | 52,4% (50,5-53,8) | 52,5% (52,4-52,8) | 53,3% (53,1-53,6) |
+| R01, 15 luglio, punta | 29,0% (22,3-30,6) | 29,0% | 29,5% |
+| R01, 15 luglio, giornata | 49,1% (46,1-51,0) | 49,1% | 49,7% |
+| R01, 15 settembre, punta | 70,2% (66,8-71,5) | 70,2% | 71,8% (71,6-71,8) |
+| R01, 15 settembre, giornata | 68,1% (65,4-69,8) | 68,1% | 69,5% |
+| R02, 15 luglio, punta | 15,0% (11,2-15,9) | 15,0% | 15,3% |
+| R02, 15 luglio, giornata | 33,1% (30,6-34,5) | 33,1% (33,1-33,5) | 33,5% (33,5-33,9) |
+| R02, 15 settembre, punta | 41,5% (38,7-43,0) | 41,5% | 42,4% (42,3-42,4) |
+| R02, 15 settembre, giornata | 51,1% (49,1-52,5) | 51,3% (51,1-51,5) | 52,0% (51,8-52,3) |
 
-- Minuti al sole camminando, 15 settembre, punta: R01 13,2 (edifici), 12,6 (con alberi), 12,3 (con vegetazione LiDAR) su 16,6 di cammino; R02 5,7, 5,7 e 5,6 su 9,8.
-- R01 passa vicino a molti alberi: alberi e vegetazione pesano da 2 a 6 punti.
-- R02 non ha quasi alberi censiti sul percorso: gli alberi non cambiano il risultato, la vegetazione LiDAR aggiunge meno di 1 punto.
-- A mezzogiorno di luglio R01 è al sole per oltre il 90%: è il candidato naturale per uno scenario di filare.
+- Minuti al sole camminando, 15 settembre, punta: R01 1,9 (edifici), 1,9 (con alberi), 1,8 (con vegetazione LiDAR) su 6,0 di cammino; R02 5,9, 5,9 e 5,8 su 9,9.
+- Su tutti e due i percorsi l'ombra viene quasi solo dagli edifici: gli alberi censiti non cambiano R01 e spostano R02 di 0,2 punti al massimo, la vegetazione LiDAR aggiunge meno di 2 punti.
+- A mezzogiorno di luglio R01 è al sole per il 71% e R02 per l'85%.
 - Dettaglio per ora e caso in `shadow/firenze_novoli/sintesi.json` (`frazione_per_ora`).
 
 ## File prodotti
 
-- Versionati in `shadow/firenze_novoli/`: `sintesi.json`, `tratti_ombra_2026-07-15.geojson` e `tratti_ombra_2026-09-15.geojson` (casi `base`, `alberi_tipico`, `veg_lidar_tipico`), `manifest/` (job `job_859254156d6848ac` e `job_a8aeee0223eedafa`).
+- Versionati in `shadow/firenze_novoli/`: `sintesi.json`, `tratti_ombra_2026-07-15.geojson` e `tratti_ombra_2026-09-15.geojson` (casi `base`, `alberi_tipico`, `veg_lidar_tipico`), `manifest/` (job `job_9f53a7f2ba439f75` per il 15 luglio e `job_036f7d4e2464e6d0` per il 15 settembre).
 - Grandi in `data/norm/firenze_novoli/shadow/`: poligoni della vegetazione, righe CSV e sintesi per job.
 
 ## Limiti
