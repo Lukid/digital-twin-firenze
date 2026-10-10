@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT / "pipeline"))
 from lib import AOI, NORM  # area predefinita Firenze (D15)
 
 STEP = 10.0          # passo del terreno, m
-MARGINE = 60.0       # terreno oltre il riquadro, m
+MARGINE = 110.0      # terreno oltre il riquadro, m: copre la fermata T2 San Donato - Università, circa 100 m a sud (D20)
 ARR = 2              # decimali delle coordinate (cm)
 BASSO = 1.5          # i volumi scendono 1,5 m sotto la quota di base (pendenze del terreno a 10 m)
 

@@ -1,6 +1,6 @@
 {
  "versione": 1,
- "generato": "2026-10-10T11:11:31Z",
+ "generato": "2026-10-10T12:07:33Z",
  "aoi_id": "aoi_firenze_novoli",
  "area": {
   "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
@@ -24,10 +24,10 @@
  "assets": {
   "terreno": {
    "file": "terreno.json.gz",
-   "byte": 39264,
-   "byte_decompressi": 112802,
-   "sha256": "63f2076d79df0f420b3d8a960d0134339e6d3fb83b9c20aa5263476661294a2f",
-   "n": 25110
+   "byte": 44490,
+   "byte_decompressi": 127770,
+   "sha256": "56ad3257c5c242457834e271537410342a09ab1d58a0f5d0c31144deba36d302",
+   "n": 28380
   },
   "edifici": {
    "file": "edifici.json.gz",
@@ -52,30 +52,30 @@
   },
   "punti": {
    "file": "punti.json.gz",
-   "byte": 4039,
-   "byte_decompressi": 24569,
-   "sha256": "ba4cadb84b0ffe8af53aacae3458ebd26fd8aa3b02f2dfec30a3499bec3e6bdd",
-   "n": 79
+   "byte": 4236,
+   "byte_decompressi": 28161,
+   "sha256": "67b008e4138a17316238b6da45f124a37d48144d9343e3066736033c965595af",
+   "n": 85
   },
   "accessibilita": {
    "file": "accessibilita.json.gz",
-   "byte": 309926,
-   "byte_decompressi": 1714016,
-   "sha256": "991ec38df4972c9a41f75a7761bc6f17de866479ae3017ba9a39c6725c8c4fa0",
-   "n": 16480
+   "byte": 371443,
+   "byte_decompressi": 2057031,
+   "sha256": "cd973cb8c26c147d02537212094df1c553b4ef9a24578fc52bb0c893f53e32e5",
+   "n": 19776
   },
   "ombra": {
    "file": "ombra.json.gz",
-   "byte": 18759,
-   "byte_decompressi": 112313,
-   "sha256": "b5340b80f4a121a324d96aa835de1bb2128b5a1be001ecb7c0088202ff054415",
-   "n": 1171
+   "byte": 7872,
+   "byte_decompressi": 67852,
+   "sha256": "d2c004638f5fccddfd3e89d8c2b6b2883cc71c432aaa8b622342f193c34171ab",
+   "n": 609
   },
   "interventi": {
    "file": "interventi.json.gz",
-   "byte": 842,
-   "byte_decompressi": 3799,
-   "sha256": "00cfa795ccbda24f63fc3b89e6c9fc850fb72c157e68bb67d3e1e40f4df2b54c",
+   "byte": 837,
+   "byte_decompressi": 3785,
+   "sha256": "17fa76a73bf3cfbdc76600040337d02cbf4e8efc1b91bfdeebf4a27380753b63",
    "n": 22
   }
  },

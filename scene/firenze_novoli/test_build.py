@@ -62,7 +62,7 @@ def test_interventi_scenari():
     assert IDX["assets"]["interventi"]["n"] == 22 and IDX["livelli_analitici"]["scenari"]["presente"]
     assert all(s["numeri"] and "ignota" in s["fattibilita"] for s in d["scenari"])
     s1 = next(s for s in d["scenari"] if s["id"] == "scn_fi_s1_filare_r01")
-    assert s1["numeri"][0][1].startswith("minuti al sole da 15,35 a 14,80") and s1["numeri"][1][1] == "da 8,0% a 11,4%"
+    assert s1["numeri"][0][1].startswith("minuti al sole da 4,25 a 3,89") and s1["numeri"][1][1] == "da 29,5% a 35,4%"   # R01 da San Donato - Università (D20)
 
 
 if __name__ == "__main__":
