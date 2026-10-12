@@ -16,7 +16,7 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--testo);font:15px
 a{color:var(--acc)}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .box{background:var(--pannello);color:var(--testo);border:1px solid var(--bordo);border-radius:10px;box-shadow:0 2px 12px #0003}
-#pannello{position:fixed;top:12px;left:12px;width:320px;max-height:calc(100% - 24px);display:flex;flex-direction:column;padding:0;overflow:hidden}
+#pannello{position:fixed;top:12px;left:12px;width:320px;max-height:calc(100% - 64px);display:flex;flex-direction:column;padding:0;overflow:hidden}
 #pannello header{display:flex;align-items:flex-start;gap:8px;padding:12px 10px 10px 16px;flex:none}
 #pannello header>div{flex:1;display:flex;flex-direction:column;gap:1px}
 #pApri{width:36px;height:36px;padding:0;border:0;background:none;font-size:20px;color:var(--tenue);flex:none}
@@ -95,6 +95,9 @@ button{cursor:pointer}
 #scheda details{margin-top:6px}#scheda details summary{cursor:pointer;font-weight:600}
 #scheda .fonte dl{margin-top:4px;font-size:12.5px}
 #scheda .fonte{margin-top:10px;font-size:12.5px;color:var(--tenue);border-top:1px solid var(--bordo);padding-top:8px}
+#aiuto{position:fixed;left:12px;bottom:12px;margin:0;padding:6px 12px;border-radius:8px;background:var(--pannello);color:var(--tenue);font-size:13px;box-shadow:0 1px 6px #0002;pointer-events:none}
+#aiuto .tocco{display:none}
+@media (pointer:coarse){#aiuto .mouse{display:none}#aiuto .tocco{display:inline}}
 #comandi{position:fixed;right:12px;bottom:12px;display:flex;flex-direction:column;gap:10px}
 #comandi button{width:52px;height:52px;padding:0;display:grid;place-items:center;border:0;border-radius:14px;background:#fffdf8ee;color:#1f3a2e;font-weight:700;font-size:17px;box-shadow:0 2px 10px #0002}
 #comandi button:hover{background:#fff}
@@ -114,15 +117,17 @@ details.fl li{margin-bottom:6px;font-size:13px}
 @media (max-width:700px){
  #pannello{left:8px;right:8px;top:8px;width:auto;max-height:55%}
  #scheda{left:8px;right:70px;bottom:8px;width:auto;max-height:42%}
+ #aiuto{left:8px;bottom:8px;right:70px}
  #comandi{right:8px;bottom:8px;gap:8px}
  #comandi button{width:48px;height:48px}
 }
 </style>
 </head>
 <body>
-<canvas id="tela" tabindex="0" role="img" aria-label="Scena 3D di Firenze Novoli. Trascina per ruotare, rotella o pizzica per avvicinare, frecce per spostare. Tocca un edificio, un albero o un punto per la scheda."></canvas>
+<canvas id="tela" tabindex="0" role="img" aria-label="Scena 3D di Firenze Novoli. Trascina per ruotare, tasto destro o due dita per spostare, rotella o pizzica per avvicinare, frecce per spostare, doppio clic per centrare la vista. Tocca un edificio, un albero o un punto per la scheda."></canvas>
 
 <div id="etichette" aria-hidden="true"></div>
+<p id="aiuto" aria-hidden="true"><span class="mouse">Trascina per ruotare · destro per spostare · doppio clic: Focus</span><span class="tocco">Trascina per ruotare · due dita per spostare</span></p>
 
 <section id="pannello" class="box" aria-label="Pannello della scena">
  <header><div><span class="eyebrow">GEMELLO DIGITALE · OPEN DATA</span><span class="tit">Firenze Novoli</span></div><button type="button" id="pApri" aria-expanded="true" aria-controls="pCorpo" aria-label="Chiudi il pannello">−</button></header>
