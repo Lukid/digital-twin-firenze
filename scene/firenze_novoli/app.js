@@ -534,6 +534,15 @@ async function main() {
   const ray = new THREE.Raycaster();
   let down = null;
   canvas.addEventListener('pointerdown', (e) => { down = [e.clientX, e.clientY]; });
+  canvas.addEventListener('dblclick', (e) => {   // Focus: centra la vista sul punto (edificio o terreno) e avvicina della metà
+    const r = canvas.getBoundingClientRect();
+    ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), camera);
+    const hit = ray.intersectObjects([edMesh, gruppi.terreno].filter(Boolean), false)[0];
+    if (!hit) return;
+    const d = camera.position.clone().sub(controls.target).multiplyScalar(0.5);
+    if (d.length() < controls.minDistance) d.setLength(controls.minDistance);
+    vai(hit.point.clone().add(d), hit.point);
+  });
   canvas.addEventListener('pointerup', (e) => {
     if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5) return; down = null;
     const r = canvas.getBoundingClientRect();
