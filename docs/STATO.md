@@ -46,7 +46,7 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - Civici come punti d'indirizzo, non persone.
 - Vegetazione LiDAR come prisma opaco pieno: limite superiore dell'ombra.
 - Altezze LiDAR 2023 con unità volumetriche 2011, portici ignoti, datum verticale non confermato.
-- GTFS bus congelato valido fino al 29/10/2026.
+- GTFS bus congelato valido fino al 29/10/2026: è una finestra mobile di tre settimane. Al 16/10 le fermate della zona sono identiche (più una nuova) e il tram è invariato: i calcoli usano solo le posizioni, nessun ricalcolo. Snapshot del 16/10 fuori baseline.
 - Nessuna validazione sul posto.
 
 ## Decisioni prese dall'utente
@@ -63,6 +63,10 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D22 (10 ottobre): niente webcam. Nessuna webcam pubblica entro 1 km da Novoli e nessuna fonte con licenza di riuso.
 - D23 (10 ottobre): pannello della scena a schede (Livelli, Sole, Analisi, Interventi, Legenda) sul modello di Padova, tema sempre chiaro. Una variante con stile proprio (pietra serena e cotto) è stata provata e scartata da Luca. Nuove fonti fuori dalla baseline congelata: catasto, Landsat, SIR, ARPAT.
 - D24 (10 ottobre): protezione civile dal Comune di Firenze (aree di attesa e di assistenza, CC BY 4.0), non da Cittadino Informato di ANCI che li ripubblica senza licenza. Da Cittadino Informato solo i punti critici per allagamento, dopo che ANCI avrà chiarito la licenza. Nella scena: icone AT e AA per le aree sul terreno disegnato (solo AA13), elenco con la distanza sotto il livello per le altre (AT18, AA14, AA15), come per le stazioni ARPAT.
+- D25 (16 ottobre): primo traguardo è un ufficio del Comune di Firenze che chiede una proposta sul caso caldo estivo (ombra, rifugi climatici, costi degli interventi). Piano in [PIANO-DECOLLO.md](PIANO-DECOLLO.md).
+- D26 (16 ottobre): una giornata a settimana fino a fine gennaio 2027.
+- D27 (16 ottobre): il piano sta nel repo, aggiornato a ogni sessione nel suo registro.
+- D28 (16 ottobre): l'MCP remoto va sulla macchina di staging AI di Net7.
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)

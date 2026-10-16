@@ -1,0 +1,19 @@
+{
+ "snapshot_id": "snp_gtfs_at_firenze_20261016",
+ "source_id": "src_gtfs_at_firenze",
+ "retrieved_at": "2026-10-16T19:35:14Z",
+ "bytes": 187412264,
+ "sha256": "4b0a88dfac9b23859313225dd59a6e430d18d3fdc6c88946a04bff5ffb3899e3",
+ "local_path": "data/raw/gtfs_at_firenze/20261016/gtfs.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs",
+ "media_type": "application/zip",
+ "content_period": {
+  "start": "2026-10-16",
+  "end": "2026-11-05",
+  "note": "feed_start_date e feed_end_date da feed_info.txt"
+ },
+ "expires_at": "2026-11-05",
+ "license_state": "clear_with_reserve"
+}
