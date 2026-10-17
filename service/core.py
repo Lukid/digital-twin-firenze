@@ -19,7 +19,7 @@ NET = ROOT / "network" / SLUG
 CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache" / SLUG)   # cache per area; deve stare sotto ROOT (i percorsi degli asset sono relativi a ROOT)
 ID_DEST = re.compile(r"^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$")
 ENGINE_ORIGINS = "address_points"
-TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios"]
+TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios", "get_source_card"]
 # Fonti ammesse = solo quelle della baseline dell'area. Tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso).
 _BASE = {s["source_id"]: s["snapshot_id"] for s in BASELINE["snapshot"]}
 _T = {"edifici": ["src_rt_uv_firenze_novoli", "src_osm_firenze"], "quote": ["src_fi_dsm2023", "src_fi_dtm2023"], "rete_pedonale": ["src_osm_firenze", "src_fi_barriere"],
@@ -162,6 +162,17 @@ def inspect_dataset(a):
             "extent": man["area_buffer_en"], "content_period": snap["content_period"] if "start" in snap["content_period"] else src["content_period"], "license": lic,
             "quality": [c["name"] + ": " + c["result"] + " (" + str(c["detail"]) + ")" for c in src.get("checks", [])] +
                        ["extent = riquadro del grafo dell'area pilota, non l'estensione della fonte", "unità '1' = non dichiarata dalla fonte; classificazione measured = valore grezzo di fonte"]}
+
+
+SCHEDE = ROOT / "service/schede"   # generate da service/schede.py
+
+
+def get_source_card(a):
+    """Indice delle schede delle fonti, o la scheda di una fonte. Le schede coprono tutte le fonti dell'area, anche quelle fuori baseline."""
+    ids = sorted(p.stem for p in SCHEDE.glob("src_*.md"))
+    if "source_id" not in a: return {"index": (SCHEDE / "INDEX.md").read_text(), "source_ids": ids}
+    if a["source_id"] not in ids: return err("unknown_id", f"Nessuna scheda per {a['source_id']}.", candidates=ids)
+    return {"source_id": a["source_id"], "card": (SCHEDE / f"{a['source_id']}.md").read_text()}
 
 
 def list_destinations(a):

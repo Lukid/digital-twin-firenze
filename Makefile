@@ -9,6 +9,7 @@ test-fast:
 	$(PY) geometry/test_geometrie_firenze.py
 	$(PY) scene/firenze_novoli/test_build.py
 	$(SPY) service/test_service.py
+	$(SPY) service/test_schede.py
 	$(SPY) service/test_mcp_remoto.py
 
 test: test-fast validate
@@ -27,3 +28,4 @@ validate:
 ci: lint validate
 	$(PY) geometry/test_geometrie_firenze.py
 	$(PY) scene/firenze_novoli/test_build.py
+	$(PY) service/test_schede.py

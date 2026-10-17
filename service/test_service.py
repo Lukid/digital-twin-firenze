@@ -261,7 +261,7 @@ async def mcp_test():
             init = await s.initialize()
             assert init.serverInfo.name == "dt-firenze" and "Firenze" in init.instructions and "pisa" not in init.instructions.lower()
             tools = {t.name: t for t in (await s.list_tools()).tools}
-            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios"}
+            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios", "get_source_card"}
             assert all(t.inputSchema.get("additionalProperties") is False for t in tools.values())   # niente campi liberi (SQL, codice)
             assert not any(w in json.dumps([t.model_dump() for t in tools.values()]).lower() for w in ("pisa", "z2", "pellico"))
             res = await s.call_tool("compute_walk_access", A)
