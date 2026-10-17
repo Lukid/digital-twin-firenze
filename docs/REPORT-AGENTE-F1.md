@@ -7,7 +7,7 @@ Sessione autonoma del 17 ottobre 2026 sul worker VPS, ramo `agente/f1`, secondo 
 | Compito | Stato | Commit | Verifica |
 |---|---|---|---|
 | 0 Ambiente riproducibile | non fatto del tutto: dati di oggi diversi dalla baseline, 5 test falliscono | vedi sotto | `make lint` ok, `make validate` ok, `make test` no |
-| 1 MCP remoto in sola lettura | in corso | | |
+| 1 MCP remoto in sola lettura | fatto | vedi sotto | `service/.venv/bin/python service/test_mcp_remoto.py`: OK in 22-23 s, aggiunto a `make test-fast` |
 | 2 Schede delle fonti | fatto, da committare | | `service/.venv/bin/python service/test_schede.py`: OK, 36 fonti, 14 nella baseline |
 | 3 Prompt per l'agente | in corso | | |
 | 4 Pagina di metodo | fatto, da committare | | `pipeline/.venv/bin/python scene/firenze_novoli/test_build.py`: tutti ok |
@@ -64,6 +64,21 @@ Esito dei test sul worker, con i dati di oggi:
 Conseguenza per il servizio sul worker: `compute_walk_access` e `compute_shadow` funzionano e danno le stesse metriche con job_id nuovi; `compare_scenarios` sugli scenari salvati risponde `incompatible_baseline`, perché la baseline degli scenari controlla le impronte dei dati. È il comportamento voluto (regola sugli hash dei motori in `docs/STATO.md`), ma su questa macchina il confronto fra scenari non è disponibile.
 
 Per avere `make test` verde serve una delle strade della domanda 1.
+
+## Compito 1 - MCP raggiungibile da remoto, in sola lettura
+
+Fatto. Niente installato altrove.
+
+- `service/mcp_server.py`: trasporto HTTP del protocollo (streamable HTTP, risposte JSON, senza sessioni) accanto a stdio. Si sceglie con `--http` o `DT_MCP_TRANSPORT=http`; stdio resta il default e `.mcp.json` non cambia. Percorso `/mcp` e `/mcp/`.
+- In HTTP: `create_local_scenario` risponde sempre `outside_capability` ("sola lettura"), resta nell'elenco con la descrizione che lo dice; gli altri strumenti sono invariati (stesso nucleo `core.run_tool`).
+- Limiti, da variabili d'ambiente: `DT_MCP_RICHIESTE_MINUTO` (chiamate al minuto per indirizzo del client, default 30, finestra scorrevole) e `DT_MCP_JOB_LUNGHI` (`compute_shadow` e `compare_scenarios` contemporanei, default 1). Oltre il limite: `limit_exceeded` subito, senza coda. I codici d'errore restano quelli del contratto.
+- Token facoltativo `DT_MCP_TOKEN` (confronto a tempo costante, 401 senza token); `DT_MCP_HOST_AMMESSI` attiva il controllo dell'intestazione Host. Nomi in `service/.env.example`, senza valori. Nessun segreto nel codice.
+- Pronti e non usati: `service/remoto/dt-firenze-mcp.service` (unità systemd, utente `dtfirenze` senza privilegi, file system in sola lettura tranne le due cache) e `service/INSTALLA-REMOTO.md` (porta, utente, proxy con HTTPS, dati, aggiornamento, cache, collegamento di un collega).
+- Test `service/test_mcp_remoto.py`: avvia il server HTTP su una porta libera con un token di prova; 401 senza token e con token sbagliato; stessi strumenti via HTTP e via stdio; `list_destinations` (polo) e `compute_walk_access` (Polo, 1,2 m/s, 5/10/15 minuti) uguali sui due trasporti, ognuno con la sua cache vuota; `create_local_scenario` rifiutato senza scrivere scenari; limite per client, limite dei calcoli lunghi e liberazione del posto (sulla classe `Remoto`, senza attese). Dura 22-23 s: aggiunto a `make test-fast`. Richiede `data/`, come gli altri test del servizio.
+
+Da sapere:
+- Dietro un proxy inverso il limite per client vede l'indirizzo del proxy e diventa complessivo (scritto in `INSTALLA-REMOTO.md`).
+- La cache del servizio non ha lock (nota già in `core.py`): con `DT_MCP_JOB_LUNGHI=1` due calcoli lunghi non si sovrappongono; due `compute_walk_access` uguali scrivono lo stesso file con scrittura atomica (R2).
 
 ## Compito 2 - Schede delle fonti
 

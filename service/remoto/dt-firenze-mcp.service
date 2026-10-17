@@ -1,0 +1,35 @@
+# Unità systemd del server MCP remoto in sola lettura. Pronta, non installata: vedere service/INSTALLA-REMOTO.md.
+# Percorsi d'esempio: /opt/dt-firenze è il clone del repo, l'utente dtfirenze non ha privilegi né shell.
+[Unit]
+Description=dt-firenze, server MCP in sola lettura (Firenze Novoli)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dtfirenze
+Group=dtfirenze
+WorkingDirectory=/opt/dt-firenze
+EnvironmentFile=/etc/dt-firenze/mcp.env
+ExecStart=/opt/dt-firenze/service/.venv/bin/python /opt/dt-firenze/service/mcp_server.py --http
+Restart=on-failure
+RestartSec=5
+
+# Isolamento: il servizio scrive solo nella sua cache e in quella delle ombre degli scenari.
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+ReadWritePaths=/opt/dt-firenze/service/cache /opt/dt-firenze/data/norm/firenze_novoli/scenarios
+CapabilityBoundingSet=
+AmbientCapabilities=
+MemoryMax=4G
+
+[Install]
+WantedBy=multi-user.target

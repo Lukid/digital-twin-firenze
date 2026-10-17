@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
-"""Server MCP stdio. Ogni strumento passa da core.run_tool: input validati contro lo schema, nessun SQL o codice libero.
-Gli errori di strumento sono restituiti come risultato con isError=true e codice (ambiguous_destination, outside_capability, ...)."""
-import asyncio, json, pathlib, sys
+"""Server MCP. Ogni strumento passa da core.run_tool: input validati contro lo schema, nessun SQL o codice libero.
+Gli errori di strumento sono restituiti come risultato con isError=true e codice (ambiguous_destination, outside_capability, ...).
+
+Trasporti: stdio (default, quello di .mcp.json) oppure HTTP (streamable HTTP del protocollo MCP, percorso /mcp o /mcp/) per l'uso remoto.
+    mcp_server.py                              stdio
+    mcp_server.py --http [--host H --port P]   HTTP; anche con DT_MCP_TRANSPORT=http
+In HTTP il server è in sola lettura (create_local_scenario risponde outside_capability) e ha due limiti, da variabili d'ambiente:
+    DT_MCP_HOST, DT_MCP_PORT        indirizzo d'ascolto (default 127.0.0.1:8793)
+    DT_MCP_RICHIESTE_MINUTO         chiamate di strumento al minuto per indirizzo del client (default 30)
+    DT_MCP_JOB_LUNGHI               calcoli lunghi contemporanei, compute_shadow e compare_scenarios (default 1)
+    DT_MCP_TOKEN                    se impostata, ogni richiesta deve portare Authorization: Bearer <valore>
+    DT_MCP_HOST_AMMESSI             nomi host ammessi nell'intestazione Host, separati da virgola (protezione dal DNS rebinding)"""
+import argparse, asyncio, collections, hmac, json, os, pathlib, sys, threading, time
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import core
 import mcp.types as t
@@ -18,22 +28,104 @@ DESC = {
     "compute_shadow": "Ombra geometrica su percorsi (route_id campione R01...R10, o geometrie) per data e orari locali Europe/Rome: frazione in ombra e minuti al sole camminando, con intervalli di sensibilità. Con obstacles=buildings_trees_and_lidar_vegetation aggiunge alberi censiti e vegetazione LiDAR. Con scenario_id (obstacles=buildings_and_scenario) somma gli interventi dello scenario agli edifici documentati. Orari con sole sotto 5 gradi hanno stato esplicito e nessun numero. Job lungo: tenere basso il numero di orari.",
     "create_local_scenario": "Crea uno scenario locale versionato (nuovi alberi con dimensione di classe scenario, pensiline con quota d'imposta e tetto) a partire dalla baseline congelata. Segnala interventi dentro edifici o su carreggiata senza marciapiede; la fattibilità resta sempre ignota. Rimozioni e modifiche non sono supportate.",
     "compare_scenarios": "Confronto su condizioni comuni. Con baseline_id e scenario_ids: delta di ombra e minuti al sole su R01 e percorsi campione, area di attesa, tratti più usati pesati per civici (non persone), effetto sull'accessibilità; indicatori separati, nessun ordinamento né punteggio unico (con weights risponde outside_capability). Con manifest_ids e metric_ids: delta fra manifest di compute_shadow. Il calcolo del confronto fra scenari può richiedere alcuni minuti se le ombre non sono in cache."}
-server = Server("dt-firenze", instructions="Calcoli deterministici sul pilota di Firenze, Novoli - Firenze Nova (aoi_firenze_novoli). Non dire di aver calcolato nulla se non c'è un job riuscito; riporta job_id, dataset, parametri e limiti. Se una destinazione è ambigua, chiedi all'utente.")
+ISTRUZIONI = "Calcoli deterministici sul pilota di Firenze, Novoli - Firenze Nova (aoi_firenze_novoli). Non dire di aver calcolato nulla se non c'è un job riuscito; riporta job_id, dataset, parametri e limiti. Se una destinazione è ambigua, chiedi all'utente."
+SOLA_LETTURA = {"create_local_scenario"}   # strumenti che scrivono dati di progetto: spenti nel servizio remoto
+JOB_LUNGHI = {"compute_shadow", "compare_scenarios"}
 
 
-@server.list_tools()
-async def _list():
-    return [t.Tool(name=n, description=DESC[n], inputSchema=core.schema_for_client(n)) for n in core.TOOLS]
+class Remoto:
+    """Regole del servizio remoto: sola lettura, limite di chiamate per client, limite di calcoli lunghi contemporanei."""
+    def __init__(s, richieste_minuto, job_lunghi):
+        s.rpm, s.finestre, s.lock = richieste_minuto, collections.defaultdict(collections.deque), threading.Lock()
+        s.lunghi = threading.BoundedSemaphore(job_lunghi)
+
+    def ammesso(s, client):
+        """Finestra scorrevole di 60 s per indirizzo del client."""
+        with s.lock:
+            q, ora = s.finestre[client], time.monotonic()
+            while q and ora - q[0] > 60: q.popleft()
+            if len(q) >= s.rpm: return False
+            q.append(ora); return True
+
+    def esegui(s, name, args, client):
+        if name in SOLA_LETTURA:
+            return core.err("outside_capability", f"{name} non è disponibile sul servizio remoto, che è in sola lettura. Usare gli scenari salvati (list_scenarios).")
+        if not s.ammesso(client):
+            return core.err("limit_exceeded", f"Più di {s.rpm} chiamate al minuto da questo client: riprovare fra un minuto.")
+        if name not in JOB_LUNGHI: return core.run_tool(name, args)
+        if not s.lunghi.acquire(blocking=False):
+            return core.err("limit_exceeded", "Il servizio sta già eseguendo il numero massimo di calcoli lunghi: riprovare fra qualche minuto.")
+        try: return core.run_tool(name, args)
+        finally: s.lunghi.release()
 
 
-@server.call_tool(validate_input=False)   # la validazione vera è nel nucleo, con lo schema dei contratti
-async def _call(name, arguments):
-    r = await asyncio.to_thread(core.run_tool, name, arguments or {})
-    return t.CallToolResult(content=[t.TextContent(type="text", text=json.dumps(r, ensure_ascii=False))], structuredContent=r, isError="error" in r)
+def crea_server(remoto=None):
+    server = Server("dt-firenze", instructions=ISTRUZIONI)
+
+    @server.list_tools()
+    async def _list():
+        desc = dict(DESC)
+        if remoto:
+            for n in SOLA_LETTURA: desc[n] = "Non disponibile su questo servizio remoto (sola lettura): risponde sempre outside_capability. " + desc[n]
+        return [t.Tool(name=n, description=desc[n], inputSchema=core.schema_for_client(n)) for n in core.TOOLS]
+
+    @server.call_tool(validate_input=False)   # la validazione vera è nel nucleo, con lo schema dei contratti
+    async def _call(name, arguments):
+        if remoto:
+            req = server.request_context.request
+            client = req.client.host if req is not None and req.client else "?"
+            r = await asyncio.to_thread(remoto.esegui, name, arguments or {}, client)
+        else:
+            r = await asyncio.to_thread(core.run_tool, name, arguments or {})
+        return t.CallToolResult(content=[t.TextContent(type="text", text=json.dumps(r, ensure_ascii=False))], structuredContent=r, isError="error" in r)
+
+    return server
 
 
-async def main():
+async def main_stdio():
+    server = crea_server()
     async with stdio_server() as (r, w): await server.run(r, w, server.create_initialization_options())
 
 
-if __name__ == "__main__": asyncio.run(main())
+def app_http(token=None, richieste_minuto=30, job_lunghi=1, host_ammessi=None):
+    """Applicazione ASGI con il solo percorso /mcp. Il token, se c'è, si confronta a tempo costante."""
+    import contextlib
+    from starlette.applications import Starlette
+    from starlette.responses import JSONResponse
+    from starlette.routing import Route
+    from mcp.server.streamable_http_manager import StreamableHTTPSessionManager
+    from mcp.server.transport_security import TransportSecuritySettings
+
+    sicurezza = TransportSecuritySettings(enable_dns_rebinding_protection=bool(host_ammessi), allowed_hosts=host_ammessi or [], allowed_origins=[])
+    sm = StreamableHTTPSessionManager(app=crea_server(Remoto(richieste_minuto, job_lunghi)), stateless=True, json_response=True, security_settings=sicurezza)
+
+    class McpAsgi:   # oggetto ASGI e non funzione: Route lo passa così com'è, senza trasformarlo in richiesta e risposta
+        async def __call__(self, scope, receive, send):
+            if token:
+                h = dict(scope.get("headers") or []).get(b"authorization", b"").decode("latin-1")
+                if not hmac.compare_digest(h.encode(), f"Bearer {token}".encode()):
+                    return await JSONResponse({"error": "token mancante o non valido"}, status_code=401)(scope, receive, send)
+            await sm.handle_request(scope, receive, send)
+
+    @contextlib.asynccontextmanager
+    async def ciclo(app):
+        async with sm.run(): yield
+
+    app = McpAsgi()   # /mcp e /mcp/: un redirect fra i due non è seguito da tutti i client
+    return Starlette(routes=[Route("/mcp", endpoint=app, methods=["GET", "POST", "DELETE"]), Route("/mcp/", endpoint=app, methods=["GET", "POST", "DELETE"])], lifespan=ciclo)
+
+
+def main_http(host, port):
+    import uvicorn
+    amm = [h.strip() for h in os.environ.get("DT_MCP_HOST_AMMESSI", "").split(",") if h.strip()]
+    app = app_http(os.environ.get("DT_MCP_TOKEN") or None, int(os.environ.get("DT_MCP_RICHIESTE_MINUTO", "30")), int(os.environ.get("DT_MCP_JOB_LUNGHI", "1")), amm)
+    uvicorn.run(app, host=host, port=port, log_level="warning")
+
+
+if __name__ == "__main__":
+    p = argparse.ArgumentParser(description="Server MCP dt-firenze: stdio (default) o HTTP in sola lettura.")
+    p.add_argument("--http", action="store_true", default=os.environ.get("DT_MCP_TRANSPORT") == "http")
+    p.add_argument("--host", default=os.environ.get("DT_MCP_HOST", "127.0.0.1"))
+    p.add_argument("--port", type=int, default=int(os.environ.get("DT_MCP_PORT", "8793")))
+    a = p.parse_args()
+    main_http(a.host, a.port) if a.http else asyncio.run(main_stdio())
