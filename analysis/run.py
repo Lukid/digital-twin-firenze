@@ -87,5 +87,17 @@ res = A.compute_walk_access(RIFUGI, origin_family=FAM, profile=base_p, out_dir=A
 dest_di = {e["entrance_id"]: did for did in RIFUGI for e in c["dest"][did]["ingressi"]}; a = res["aggregati"]
 riepilogo["rifugi"] = {**sintesi(res), "destinazioni": RIFUGI, "intervallo_velocita": {k: v["intervallo_velocita"] for k, v in a["quote_soglie"].items()},
                        "piu_vicino": {did: sum(1 for r in res["origini"].values() if r.get("entrance_id") and dest_di[r["entrance_id"]] == did) for did in RIFUGI}}
+# asset mappa dei rifugi (scena, D38): civici con i minuti verso il rifugio più vicino, profilo base, e ingressi dei 7 rifugi
+feats = []
+for oid in sorted(res["origini"]):
+    r = res["origini"][oid]; ind = c["civ"].loc[oid, "indirizzo"]; pr = {"layer": "origine", "id": oid, "ind": ind if isinstance(ind, str) else None, "stato": r["stato"]}
+    if r["stato"] == "reachable": pr.update(t=round(r["tempo_s"] / 60, 1), d=r["totale_m"], ing=r["entrance_id"], rifugio=dest_di[r["entrance_id"]])
+    elif r.get("motivo"): pr["motivo"] = r["motivo"]
+    feats.append({"type": "Feature", "geometry": A.arrotonda(mapping(A._ll(ORIG[oid][0]))), "properties": pr})
+for did in RIFUGI:
+    for e in c["dest"][did]["ingressi"]:
+        feats.append({"type": "Feature", "geometry": A.arrotonda(mapping(A._ll(Point(e["xy"])))), "properties": {"layer": "destinazione", "id": did, "ingresso": e["entrance_id"], "nome": c["dest"][did]["nome"], "stato_verifica": c["dest"][did]["stato_verifica"]}})
+dump({"type": "FeatureCollection", "name": "accessibilita_rifugi", "nota": "EPSG:4326 solo per la mappa; calcolo in EPSG:7791. t = minuti a 1,2 m/s verso il più vicino dei 7 rifugi climatici (rifugio = destinazione scelta). Civici: punti d'indirizzo, non residenti. Rete OSM e ingressi non verificati sul posto.",
+      "job_id": res["job"]["job_id"], "features": feats}, OUT / "accessibilita_rifugi.geojson")
 dump(riepilogo, OUT / "riepilogo.json", sort_keys=True)
 print(json.dumps({n: {p: {"conteggi": v["conteggi"], "quote": v["quote"], "t": v["tempo_min"]} for p, v in d.items() if isinstance(v, dict) and "quote" in v} for n, d in riepilogo["destinazioni"].items()}, ensure_ascii=False, indent=1))

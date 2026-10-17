@@ -176,7 +176,7 @@ async function main() {
   // punti: destinazioni, tram, scuole, rifugi, aree di protezione civile, barriere, servizi e aree attrezzate del Comune
   const PUNTO = { destinazioni: [0xd9480f, 5, 14], tram: [0x00a8e8, 6, 26], scuole: [0x7048e8, 6, 26], rifugi: [0x2f9e44, 6, 22], attesa: [0x1864ab, 6, 26], assistenza: [0xe67700, 6, 26], barriere: [0xc2255c, 1.6, 5],
     farmacie: [0x0ca678, 5, 20], sosta_disabili: [0x1971c2, 1.4, 4], bike_sharing: [0xf08c00, 4, 14], car_sharing: [0x5f3dc4, 4, 14], scudo_verde: [0x2b8a3e, 4, 16],
-    giochi: [0xe8590c, 5, 18], cani: [0x9c36b5, 5, 18], sport: [0x1098ad, 5, 18] };
+    giochi: [0xe8590c, 5, 18], cani: [0x9c36b5, 5, 18], sport: [0x1098ad, 5, 18], percorsi_rifugi: [0x087f5b, 0, 0] };
   // icone: cerchio col colore del livello e una sigla (T tram, S scuola, R rifugio climatico, AT e AA aree di attesa e di assistenza come nei codici del Comune)
   const ICONE = {};
   for (const [k, l] of [['tram', 'T'], ['scuole', 'S'], ['rifugi', 'R'], ['attesa', 'AT'], ['assistenza', 'AA'], ['farmacie', '+'], ['bike_sharing', 'B'], ['car_sharing', 'C'], ['scudo_verde', 'V'], ['giochi', 'G'], ['cani', 'Ca'], ['sport', 'Sp']]) {
@@ -189,6 +189,9 @@ async function main() {
   for (const k of Object.keys(PUNTO)) { gruppi[k] = new THREE.Group(); scene.add(gruppi[k]); }
   for (const p of dati.punti.punti) {
     if (p.fuori) continue;   // oltre il terreno disegnato: elenco sotto il livello, come le stazioni ARPAT
+    if (p.linea) {   // percorso verso un rifugio: nastro sul terreno, cliccabile
+      const m = nastri([{ p: p.linea }], 0.6, () => 5, () => hex(PUNTO[p.livello][0])); m.userData = { tipo: p.livello, punto: p }; gruppi[p.livello].add(m); sel.push(m); continue;
+    }
     const [col, r, h] = PUNTO[p.livello], g = gruppi[p.livello], q = new THREE.Group();
     const ic = ICONE[p.livello], m = ic ? new THREE.Sprite(new THREE.SpriteMaterial({ map: ic.t, depthTest: false })) : new THREE.Mesh(sfera, new THREE.MeshStandardMaterial({ color: col, roughness: 0.6 }));
     if (ic) m.renderOrder = 10;   // icone sempre sopra gli edifici, come i segnaposto delle mappe
@@ -362,7 +365,7 @@ async function main() {
     edifici: 'M4 21V8l6-4v17M10 21V10l10 3v8M3 21h18', alberi: 'M12 22v-6M7 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0', terreno: 'M3 19l6-9 4 6 3-4 5 7z',
     etichette: 'M4 7h16M4 12h11M4 17h7', rete: 'M6 21c0-5 4-5 6-9s1-6 6-9', destinazioni: 'M12 3v4M12 17v4M3 12h4M17 12h4M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6',
     barriere: 'M4 8h16v5H4zM7 13v7M17 13v7M8 8l4 5M14 8l4 5', accessibilita: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M12 7v5l3 2',
-    ombra: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2', scenari: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3', catasto: 'M3 4h18v16H3zM3 11h9v9M12 4v7h9', temperature: 'M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0M12 9v8', altro: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',
+    ombra: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2', scenari: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3', percorsi_rifugi: 'M5 19c3-6 9-2 10-8s3-6 4-6M5 19h.01M19 5h.01', catasto: 'M3 4h18v16H3zM3 11h9v9M12 4v7h9', temperature: 'M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0M12 9v8', altro: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',
   };
   const TINTA = { edifici: '#c0643c', alberi: '#55894a', terreno: '#8a7a55', etichette: '#5d7f68', rete: '#2f6fb5', accessibilita: '#31688e', ombra: '#a87a00', scenari: '#e0218a', catasto: '#8a5a2b', temperature: '#d7191c' };
   const SEZIONE = { edifici: 'g_citta', alberi: 'g_citta', terreno: 'g_citta', etichette: 'g_citta', rete: 'g_mobilita', tram: 'g_mobilita', accessibilita: 'g_analisi', ombra: 'g_analisi', scenari: 'g_interventi', catasto: 'g_catasto', temperature: 'g_analisi',
@@ -388,8 +391,8 @@ async function main() {
     if (k === 'temperature' && TM) w.innerHTML += `<div class="sub"><label for="s_t">Cosa mostrare</label><select id="s_t"><option value="media">Media delle giornate estive</option><option value="sopra_40">Giornate sopra 40 °C</option>${TM.date.map((d, i) => `<option value="${i}">${new Date(d.data).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}</option>`).join('')}</select><div class="leg" id="leg_temperature"></div></div>`;
     if (TEMI[k]) w.innerHTML += `<div class="sub"><p class="intro">${tx(TEMI[k].nota)}</p><div class="leg">${TEMI[k].classi.map((c) => `<span><i style="background:${c.c}"></i>${tx(c.t)}</span>`).join('')}</div></div>`;
     if (fontiDi(k).length) w.innerHTML += `<div class="fonte" id="fo_${k}" hidden>${fontiTesto(k)}</div>`;
-    const lontani = dati.punti.punti.filter((p) => p.livello === k && p.fuori).sort((a, b) => a.distanza_m - b.distanza_m);
-    if (lontani.length) w.innerHTML += `<div class="sub"><p class="intro">Fuori dal riquadro, quindi elenco e non punti in scena:</p>${lontani.map((p) => `<details class="staz"><summary><strong>${tx(p.nome)}</strong><small>a ${p.distanza_m} m dal riquadro</small></summary>`
+    const lontani = dati.punti.punti.filter((p) => p.livello === k && (p.fuori || p.linea)).sort((a, b) => (a.distanza_m ?? 0) - (b.distanza_m ?? 0));   // i percorsi anche in elenco: si leggono senza il clic in scena
+    if (lontani.length) w.innerHTML += `<div class="sub"><p class="intro">${lontani[0].linea ? 'I percorsi, con i loro numeri:' : 'Fuori dal riquadro, quindi elenco e non punti in scena:'}</p>${lontani.map((p) => `<details class="staz"><summary><strong>${tx(p.nome)}</strong><small>${p.linea ? tx(p.attr['Lunghezza per la rete']) + ' per la rete' : `a ${p.distanza_m} m dal riquadro`}</small></summary>`
       + `<ul>${Object.entries(p.attr).filter(([, v]) => v != null).map(([a, v]) => `<li><strong>${tx(a)}</strong>: ${tx(v)}</li>`).join('')}</ul></details>`).join('')}</div>`;
     $(SEZIONE[k] || 'g_luoghi').appendChild(w);
   }
@@ -414,8 +417,8 @@ async function main() {
     ['Alberi', sw('#55894a', 'chioma misurata dal rilievo laser') + sw('#9cbf74', 'chioma stimata')],
     ['Mappa di base (OpenStreetMap)', sw(MAPPA.verde, 'verde') + sw(MAPPA.acqua, 'acqua') + sw(MAPPA.strada, 'strade')],
     ['Rete pedonale', sw('#5b6470', 'strada') + sw('#b0763a', 'sentiero') + sw('#2f6fb5', 'marciapiede') + sw('#f2f2f2', 'attraversamento')],
-    ['Segnaposto', pin('destinazioni', 'destinazione dei calcoli') + pin('tram', 'fermata del tram') + pin('scuole', 'scuola statale') + pin('rifugi', 'rifugio climatico') + pin('attesa', 'area di attesa') + pin('assistenza', 'area di assistenza') + pin('barriere', 'barriera architettonica')
-      + '<span>Destinazioni: i 7 ingressi del Polo delle Scienze Sociali, le scuole Vamba (primaria e infanzia), le fermate T2 San Donato - Università, Regione Toscana e Torre degli Agli.</span>'],
+    ['Segnaposto', pin('destinazioni', 'destinazione dei calcoli') + pin('tram', 'fermata del tram') + pin('scuole', 'scuola statale') + pin('rifugi', 'rifugio climatico') + sw(css(PUNTO.percorsi_rifugi[0]), 'percorso verso un rifugio (da verificare)') + pin('attesa', 'area di attesa') + pin('assistenza', 'area di assistenza') + pin('barriere', 'barriera architettonica')
+      + '<span>Destinazioni: i 7 ingressi del Polo delle Scienze Sociali, le scuole Vamba (primaria e infanzia), le fermate T2 San Donato - Università, Regione Toscana e Torre degli Agli, gli ingressi dei 7 rifugi climatici entro 700 m dal riquadro (<a href="metodo.html#rifugi">metodo</a>).</span>'],
     ['Accessibilità', SCALA.map((s) => sw(s[1], s[2])).join('') + '<span><i style="background:#fff;border:3px double #777;border-radius:50%"></i>non raggiungibile, vietato o dati insufficienti</span>'],
     ['Ombra sui percorsi', sw('#f2c230', 'al sole') + sw('#1b2a6b', 'in ombra')],
     ['Servizi e aree attrezzate', pin('farmacie', 'farmacia') + pin('sosta_disabili', 'stallo per disabili') + pin('bike_sharing', 'sosta del bike sharing') + pin('car_sharing', 'posto del car sharing') + pin('scudo_verde', 'varco dello Scudo Verde')
@@ -588,8 +591,8 @@ async function main() {
       scheda((o.userData.pens ? 'Pensilina ipotetica ' : 'Albero ipotetico ') + it.id.split(':').pop(), [['Scenario', S.etichetta], ...dim, ...S.numeri, ['Fattibilità', S.fattibilita]], 'scenari',
         `<strong>Fonte dei numeri</strong><br>${esc(dati.interventi.fonte_numeri)}. Interventi: scenarios/firenze_novoli/interventi.geojson.`);
     } else {
-      const p = o.userData.punto; anello(p.x, tY(p.x, p.z), p.z, 10);
-      scheda(p.nome, Object.entries(p.attr || {}), o.userData.tipo);
+      const p = o.userData.punto; if (!p.linea) anello(p.x, tY(p.x, p.z), p.z, 10);
+      scheda(p.nome, Object.entries(p.attr || {}), o.userData.tipo, p.metodo ? `<details><summary>Fonti dei dati</summary>${fontiTesto(o.userData.tipo)}</details><p><a href="metodo.html#${p.metodo}">Metodo: come sono scelti rifugi, ingressi e percorsi</a></p>` : null);
     }
     dirty = true;
   });

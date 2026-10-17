@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # D39: sha256 dei file generati con geometrie (versionati e asset in data/norm citati dai manifest), uno per riga, in ordine.
 # Uso: bash scripts/impronte.sh > impronte.txt sul Mac e sul worker, dopo aver rigenerato i file con gli stessi comandi; poi diff fra i due elenchi.
-# Rigenerazione (ognuno riscrive i file del suo motore): network/destinazioni_firenze.py, network/percorsi_firenze.py, analysis/run.py, shadow/run.py,
-# geometry/build_firenze.py; per interventi.geojson vedi docs/REPORT-AGENTE-F3.md (compito 1). I manifest non sono nell'elenco: contengono l'ora del calcolo.
+# Rigenerazione (ognuno riscrive i file del suo motore): network/destinazioni_firenze.py, network/percorsi_firenze.py, analysis/run.py, geometry/build_firenze.py,
+# shadow/run.py e shadow/run.py --rifugi RC1 (poi RC2...RC5); per interventi.geojson vedi docs/REPORT-AGENTE-F3.md (compito 1).
+# I manifest non sono nell'elenco: contengono l'ora del calcolo. I GeoPackage in data/norm non sono nell'elenco: si riscrivono con byte diversi a ogni esecuzione.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 {

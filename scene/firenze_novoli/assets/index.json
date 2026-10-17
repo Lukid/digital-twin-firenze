@@ -1,6 +1,6 @@
 {
  "versione": 1,
- "generato": "2026-10-10T18:39:18Z",
+ "generato": "2026-10-17T19:50:11Z",
  "aoi_id": "aoi_firenze_novoli",
  "area": {
   "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
@@ -31,16 +31,16 @@
   },
   "edifici": {
    "file": "edifici.json.gz",
-   "byte": 467269,
-   "byte_decompressi": 2674013,
-   "sha256": "1d7005edcf041a1318b6a3dfe1c096430fd77e0d7e8a0428827e7eb1af39f58e",
+   "byte": 466858,
+   "byte_decompressi": 2674458,
+   "sha256": "abc80aec3e736752f62eca8bc662de57bf69b3f1e728689eb36292731470a02f",
    "n": 1952
   },
   "alberi": {
    "file": "alberi.json.gz",
-   "byte": 98586,
-   "byte_decompressi": 692379,
-   "sha256": "16e0bae23d53905c69dad7917ddd61091d60c7cc19928dd77bb94fd62029b486",
+   "byte": 98835,
+   "byte_decompressi": 692355,
+   "sha256": "fcfa5aa2a72092bf61a80ab45dd81b502e9ed0eda7046c57e9b2a6bf8b51d4ee",
    "n": 2917
   },
   "rete": {
@@ -52,10 +52,10 @@
   },
   "punti": {
    "file": "punti.json.gz",
-   "byte": 15451,
-   "byte_decompressi": 79076,
-   "sha256": "93e19a9af89a31d15da7f3d9ec8e202c52b9179da25e9a8eaa5e78498fe46334",
-   "n": 298
+   "byte": 18942,
+   "byte_decompressi": 94860,
+   "sha256": "14ddc13dcc117fd5f9143bd671c9824561847d7c80404fe15d612490bce45847",
+   "n": 317
   },
   "mappa": {
    "file": "mappa.json.gz",
@@ -108,23 +108,23 @@
   },
   "accessibilita": {
    "file": "accessibilita.json.gz",
-   "byte": 371443,
-   "byte_decompressi": 2057031,
-   "sha256": "cd973cb8c26c147d02537212094df1c553b4ef9a24578fc52bb0c893f53e32e5",
-   "n": 19776
+   "byte": 432719,
+   "byte_decompressi": 2399259,
+   "sha256": "90d409e454285736e736bf5c189dcdd806ee409b88c760590b1f3e2e52ea33dd",
+   "n": 23072
   },
   "ombra": {
    "file": "ombra.json.gz",
-   "byte": 8596,
-   "byte_decompressi": 71229,
-   "sha256": "e453e9207313bc2cc6892d33392ac40bcbfbe21c3c100da182ab46519460eb26",
+   "byte": 8489,
+   "byte_decompressi": 71162,
+   "sha256": "abefdf0ff9182bf7b172fd0144a1365a3c67ff43bcce43f0fe2bd6a808473080",
    "n": 609
   },
   "interventi": {
    "file": "interventi.json.gz",
-   "byte": 1003,
-   "byte_decompressi": 4982,
-   "sha256": "3388218ce1e7735a233d6d5ae5f5308b70682c06b3786897fe0ea698962dcd0c",
+   "byte": 1182,
+   "byte_decompressi": 5319,
+   "sha256": "4625687e12b3c9e129aa2ce65cf3a477f913d02843d4fc4d170198d409ba14e1",
    "n": 24
   }
  },
@@ -201,7 +201,18 @@
   "rifugi": {
    "etichetta": "Rifugi climatici",
    "fonti": [
-    "src_fi_rifugi_aree"
+    "src_fi_rifugi_aree",
+    "src_fi_rifugi_biblioteche",
+    "src_fi_civici"
+   ]
+  },
+  "percorsi_rifugi": {
+   "etichetta": "Percorsi verso i rifugi (da verificare)",
+   "fonti": [
+    "src_osm_firenze",
+    "src_fi_rifugi_aree",
+    "src_fi_rifugi_biblioteche",
+    "src_fi_civici"
    ]
   },
   "attesa": {
@@ -480,6 +491,19 @@
    "data": "dato del 18 giugno 2026",
    "sha256_snapshot": "c243412be2702cb5b80f72a672ed206d3e38066d4121b19ec55f6240ca2b084f",
    "uso": "Rifugi climatici (aree)"
+  },
+  {
+   "id": "src_fi_rifugi_biblioteche",
+   "titolo": "Rifugi climatici, biblioteche (Comune di Firenze)",
+   "ente": "Comune di Firenze",
+   "url": "https://dati.toscana.it/dataset/rifugi_climatici_biblioteche",
+   "licenza": "CC-BY-4.0",
+   "stato_licenza": "clear",
+   "riserva": null,
+   "scaricato": "2026-10-09",
+   "data": "dato del 18 giugno 2026",
+   "sha256_snapshot": "2b2685f9008ee030b1a23c29ae59116fc9dce7ee9071840638c9823ea34253c8",
+   "uso": "Rifugi climatici (biblioteche)"
   },
   {
    "id": "src_fi_aree_attesa",
@@ -812,6 +836,7 @@
   "Colori degli edifici: tetti in tono terracotta a scopo di lettura, non il colore reale. Tono più scuro per altezza misurata, più chiaro per altezza derivata.",
   "Ombre: sono quelle del motore grafico (sole calcolato per posizione e data), a scopo illustrativo. Non sono un calcolo analitico: gli alberi proiettano chiome piene.",
   "Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
+  "Rifugi climatici: i 7 rifugi del Comune entro 700 m dal riquadro (biblioteche e aree fresche; il Parco delle Cascine è escluso perché i suoi ingressi non sono fra i civici). Ingresso = civico all'indirizzo dichiarato dal Comune, non verificato; orari ignoti. Percorsi verso i rifugi: asse della rete, stato da verificare sul posto.",
   "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
   "Protezione civile: aree di attesa e di assistenza del piano comunale, file del 2024 (sopralluoghi delle aree di assistenza del 2021). Sono poche per tutta la città: la scena mostra tutte quelle entro 700 m dal riquadro: in scena quelle sul terreno disegnato, in elenco con la distanza quelle più lontane. Le classi di pericolosità sono i codici della fonte, senza legenda nel pacchetto. Non è il percorso di evacuazione e non indica quale area spetta a quale via.",
   "Servizi (farmacie, stalli per disabili, bike e car sharing, varchi dello Scudo Verde) e aree giochi, cani e sportive: dati del Comune di Firenze, solo quelli sul terreno disegnato. Gli stalli dicono dove sono, non se sono liberi; le farmacie non hanno orari né turni.",

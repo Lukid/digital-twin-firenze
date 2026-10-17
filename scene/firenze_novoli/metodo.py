@@ -29,6 +29,16 @@ CALCOLI = [
      "Stesso motore dell'ombra con gli interventi aggiunti agli ostacoli; dimensioni dell'albero per classe, con le varianti di chioma minima e massima. La fattibilità (sottoservizi, proprietà, norme) non è valutata.",
      "scenarios/scenari.py e scenarios/confronto.py (F08)", "scenarios/firenze_novoli/confronto.json e scn_fi_*.json", "scenarios/REPORT-F08.md",
      ["src_rt_uv_firenze_novoli", "src_fi_dsm2023", "src_fi_alberi", "src_osm_firenze", "src_fi_aree_pedonali"]),
+    ("rifugi", "Rifugi climatici e percorsi verso i rifugi",
+     "Quota di civici entro 5, 10 e 15 minuti a piedi dal rifugio climatico più vicino; per ogni rifugio, i civici per cui è il più vicino. Cinque percorsi campione (RC1-RC5) da fermate, scuola, Polo e un civico verso un rifugio, con lunghezza, attraversamenti e, se calcolata, l'ombra.",
+     "I 7 rifugi del Comune (biblioteche e aree fresche) entro 700 m dal riquadro; ingresso = civico del Comune all'indirizzo dichiarato dalla fonte, non verificato; orari ignoti. Stessa rete e stesso motore dell'accessibilità, 1,2 m/s; RC3, RC4 e RC5 vanno al rifugio più vicino per rete. Stato dei percorsi: da verificare sul posto.",
+     "analysis/accessibilita.py (F06), network/percorsi_firenze.py (F04), shadow/ombre.py (F07)", "analysis/firenze_novoli/riepilogo.json (chiave rifugi), accessibilita_rifugi.geojson e network/firenze_novoli/percorsi_campione.json", "analysis/REPORT-F2-RIFUGI.md",
+     ["src_fi_rifugi_aree", "src_fi_rifugi_biblioteche", "src_fi_civici", "src_osm_firenze"]),
+    ("costo", "Costo del filare S1",
+     "Metri quadri di suolo che passano dal sole all'ombra per mille euro di fornitura e piantagione dei 7 alberi del filare S1.",
+     "Ombra guadagnata con lo stesso motore degli scenari (15 luglio, 12:30-13:30, con vegetazione LiDAR); costo dal Prezzario dei Lavori della Regione Toscana 2026 (CC BY 4.0): platano orientale 18/20, la specie da ombra più piantata dal Comune vicino al tratto (D36), più la piantagione in sede stradale. Ombra di alberi adulti contro il prezzo di alberi da vivaio; scavo, pavimentazione, sottoservizi, manutenzione e IVA esclusi. Pensiline senza prezzo.",
+     "scenarios/costo_filare.py", "scenarios/firenze_novoli/costo_filare.json e costo_voci.json", "docs/REPORT-AGENTE-F3.md",
+     ["src_fi_alberi", "src_osm_firenze", "src_fi_aree_pedonali"]),
     ("edifici", "Edifici e alberi",
      "Volumi degli edifici con altezza, alberi con altezza e chioma, nella scena e come ostacoli per l'ombra.",
      "Impronte delle unità volumetriche 2011; altezza dal LiDAR 2023 (superficie meno terreno) dentro l'impronta; edifici nuovi solo da OSM. Alberi del censimento comunale con altezza e chioma dal LiDAR dove ci sono celle sufficienti, altrimenti stimate per classe.",
@@ -56,7 +66,8 @@ NON_SAPPIAMO = [
     "Le altezze sono del LiDAR 2023 su impronte del 2011; portici e volumi sospesi sono ignoti e trattati come pieni.",
     "Il datum verticale delle quote LiDAR non è confermato.",
     "La fermata San Donato - Università sta circa 100 m fuori dal riquadro: in scena c'è il terreno, non gli edifici attorno.",
-    "La fattibilità degli interventi degli scenari non è valutata. Nessun costo è calcolato.",
+    "La fattibilità degli interventi degli scenari non è valutata. Il solo costo calcolato è quello d'impianto del filare S1, dal prezzario regionale: non c'è un prezzo pubblico con licenza di riuso per le pensiline.",
+    "Ingressi, orari e cancelli dei rifugi climatici non sono verificati; il Parco delle Cascine non entra nei calcoli perché i suoi ingressi non sono fra i civici.",
     "Non c'è un calcolo della temperatura percepita, del rischio da calore per le persone o delle isole di calore dell'aria.",
 ]
 
@@ -104,7 +115,7 @@ def pagina():
     file = schede.genera()
     righe = []
     for k, tit, cosa, come, motore, risultato, report, fonti in CALCOLI:
-        righe.append(f"<tr><th scope=\"row\">{e(tit)}</th><td>{e(cosa)}</td><td>{e(come)}</td><td><code>{e(motore)}</code><br><small>Risultato: <code>{e(risultato)}</code>. Report: <code>{e(report)}</code></small></td>"
+        righe.append(f"<tr id=\"{k}\"><th scope=\"row\">{e(tit)}</th><td>{e(cosa)}</td><td>{e(come)}</td><td><code>{e(motore)}</code><br><small>Risultato: <code>{e(risultato)}</code>. Report: <code>{e(report)}</code></small></td>"
                      f"<td>{', '.join(link_fonte(s) for s in fonti)}</td></tr>")
     livelli = []
     for k, L in IDX["livelli"].items():

@@ -41,7 +41,8 @@ LIVELLI = {
     "destinazioni": {"etichetta": "Destinazioni dei calcoli", "fonti": ["src_osm_firenze", "src_cm_edscol_firenze", "src_fi_scuole_statali", "src_gtfs_gest_firenze"]},
     "tram": {"etichetta": "Fermate tram", "fonti": ["src_fi_tram_fermate", "src_gtfs_gest_firenze"]},
     "scuole": {"etichetta": "Scuole statali", "fonti": ["src_fi_scuole_statali"]},
-    "rifugi": {"etichetta": "Rifugi climatici", "fonti": ["src_fi_rifugi_aree"]},
+    "rifugi": {"etichetta": "Rifugi climatici", "fonti": ["src_fi_rifugi_aree", "src_fi_rifugi_biblioteche", "src_fi_civici"]},
+    "percorsi_rifugi": {"etichetta": "Percorsi verso i rifugi (da verificare)", "fonti": ["src_osm_firenze", "src_fi_rifugi_aree", "src_fi_rifugi_biblioteche", "src_fi_civici"]},
     "attesa": {"etichetta": "Aree di attesa (protezione civile)", "fonti": ["src_fi_aree_attesa"]},
     "assistenza": {"etichetta": "Aree di assistenza (protezione civile)", "fonti": ["src_fi_aree_assistenza"]},
     "barriere": {"etichetta": "Barriere architettoniche", "fonti": ["src_fi_barriere"]},
@@ -78,6 +79,7 @@ LIMITI = [
     "Colori degli edifici: tetti in tono terracotta a scopo di lettura, non il colore reale. Tono più scuro per altezza misurata, più chiaro per altezza derivata.",
     "Ombre: sono quelle del motore grafico (sole calcolato per posizione e data), a scopo illustrativo. Non sono un calcolo analitico: gli alberi proiettano chiome piene.",
     "Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.",
+    "Rifugi climatici: i 7 rifugi del Comune entro 700 m dal riquadro (biblioteche e aree fresche; il Parco delle Cascine è escluso perché i suoi ingressi non sono fra i civici). Ingresso = civico all'indirizzo dichiarato dal Comune, non verificato; orari ignoti. Percorsi verso i rifugi: asse della rete, stato da verificare sul posto.",
     "Rete pedonale da OpenStreetMap: stato del marciapiede \"ignoto\" dove non dichiarato, nessuna inferenza.",
     "Protezione civile: aree di attesa e di assistenza del piano comunale, file del 2024 (sopralluoghi delle aree di assistenza del 2021). Sono poche per tutta la città: la scena mostra tutte quelle entro 700 m dal riquadro: in scena quelle sul terreno disegnato, in elenco con la distanza quelle più lontane. Le classi di pericolosità sono i codici della fonte, senza legenda nel pacchetto. Non è il percorso di evacuazione e non indica quale area spetta a quale via.",
     "Servizi (farmacie, stalli per disabili, bike e car sharing, varchi dello Scudo Verde) e aree giochi, cani e sportive: dati del Comune di Firenze, solo quelli sul terreno disegnato. Gli stalli dicono dove sono, non se sono liberi; le farmacie non hanno orari né turni.",
@@ -105,6 +107,7 @@ USO = {
     "src_cm_edscol_firenze": "Accessi delle scuole",
     "src_gtfs_gest_firenze": "Punti delle fermate T2",
     "src_fi_rifugi_aree": "Rifugi climatici (aree)",
+    "src_fi_rifugi_biblioteche": "Rifugi climatici (biblioteche)",
     "src_fi_aree_attesa": "Aree di attesa della protezione civile",
     "src_fi_aree_assistenza": "Aree di assistenza della protezione civile",
     "src_fi_barriere": "Barriere architettoniche",
@@ -139,7 +142,7 @@ DATA = {
     "src_fi_dtm2023": "volo del {start}", "src_fi_dsm2023": "volo del {start}", "src_rt_uv_firenze_novoli": "volo del {anno}",
     "src_osm_firenze": "stato di OpenStreetMap al {end}", "src_fi_alberi": "aggiornato ogni giorno dal Comune: stato al giorno dello scarico",
     "src_fi_tram_fermate": "dato del {start}", "src_fi_scuole_statali": "dato del {start}", "src_cm_edscol_firenze": "dato del {start}",
-    "src_gtfs_gest_firenze": "orari dal {start} al {end}", "src_fi_rifugi_aree": "dato del {start}",
+    "src_gtfs_gest_firenze": "orari dal {start} al {end}", "src_fi_rifugi_aree": "dato del {start}", "src_fi_rifugi_biblioteche": "dato del {start}",
     "src_fi_aree_attesa": "file del {start}", "src_fi_aree_assistenza": "file del {start}, sopralluoghi del 2021", "src_fi_barriere": "rilievo del {anno}",
     "src_fi_farmacie": ND, "src_fi_sosta_disabili": ND, "src_fi_bike_sharing": ND, "src_fi_car_sharing": ND,
     "src_fi_scudo_verde": "Scudo Verde attivo dal {start}", "src_fi_zone30": ND, "src_fi_aree_verdi": ND, "src_fi_aree_giochi": ND,
@@ -395,16 +398,46 @@ def punti():
         out.append({"livello": "barriere", "id": row.id, "nome": "Scheda " + str(row.scheda), "x": x, "z": z,
                     "attr": {"Uso": row.destinaz_u, "Indirizzo": row.indirizzo, "Grado di accessibilità": row.grado_acce,
                              "Scheda PDF": f"http://datigis.comune.fi.it/barriere_architettoniche/scheda_{row.scheda}.pdf", "Rilievo": "2013"}})
+    # rifugi climatici (D32): i 7 fra le destinazioni (entro 700 m dal riquadro), più le aree dentro il riquadro; quelli oltre il terreno disegnato vanno in elenco
+    terra = box(E0 - MARGINE, N0 - MARGINE, E1 + MARGINE, N1 + MARGINE)
+    rif = json.load(open(ROOT / "analysis/firenze_novoli/riepilogo.json"))["rifugi"]
+    def attr_rifugio(d):
+        return {"Tipo": "biblioteca" if d["tipo_rifugio"] == "biblioteca" else "area fresca all'aperto", "Ombreggiatura dichiarata": f"oltre il {d['ombreggiatura_dichiarata_pct']}%" if "ombreggiatura_dichiarata_pct" in d else None,
+                "Ingressi usati nei calcoli": "; ".join(re.search(r"\(([^)]*)\)", e["fonte_ingresso"])[1] for e in d["ingressi"]) + " (civici del Comune agli indirizzi dichiarati)", "Condizioni di accesso": d.get("condizioni_accesso"),
+                "Civici per cui è il rifugio più vicino": f"{rif['piu_vicino'][d['destination_id']]} su {rif['conteggi']['reachable']} che arrivano a un rifugio",
+                "Verifica sul posto": "da verificare: ingresso, orari, cancelli", "Fonte dei dati": d["fonte"], "Dato del": "2026-06-18"}
+    fatti = set()
     for _, row in in_fp(gpd.read_file(n / "fi_rifugi_aree.gpkg")).iterrows():
         c = row.geometry.centroid
         x, z = loc(c.x, c.y)
         poly = max(row.geometry.geoms, key=lambda q: q.area) if row.geometry.geom_type == "MultiPolygon" else row.geometry
-        out.append({"livello": "rifugi", "id": row.id, "nome": row.nome_area, "x": x, "z": z,
+        d = dest.get(f"dst_refuge_{row.id}"); fatti.add(f"dst_refuge_{row.id}")
+        out.append({"livello": "rifugi", "id": row.id, "nome": row.nome_area, "x": x, "z": z, "metodo": "rifugi",
                     "contorno": [c_ for q in poly.exterior.coords for c_ in loc(*q)],
-                    "attr": {"Ombreggiatura": f"oltre il {row.percentuale_ombreggi}%", "Ingressi": row.ingresso, "Descrizione": row.descrizione, "Dato del": "2026-06-18"}})
+                    "attr": attr_rifugio(d) if d else {"Ombreggiatura": f"oltre il {row.percentuale_ombreggi}%", "Ingressi": row.ingresso, "Descrizione": row.descrizione, "Dato del": "2026-06-18"}})
+    for d in dest.values():
+        if d["categoria"] != "cooling_refuge" or d["destination_id"] in fatti: continue
+        p = Point(d["ingressi"][0]["xy"]); x, z = loc(p.x, p.y)
+        out.append({"livello": "rifugi", "id": d["destination_id"], "nome": d["nome"], "x": x, "z": z, "metodo": "rifugi",
+                    **({"fuori": True, "distanza_m": round(FP.distance(p))} if not terra.intersects(p) else {}), "attr": attr_rifugio(d)})
+    # percorsi campione verso i rifugi (RC1-RC5): linea sul terreno, stato da verificare; ombra se calcolata (shadow/run.py --rifugi RCn)
+    om = {}
+    for f in sorted((ROOT / "shadow/firenze_novoli").glob("sintesi_rifugi_RC*.json")):
+        for r_ in json.load(open(f))["date"].get("2026-07-15", []):
+            if r_["fascia"] == "punta_12_30_13_30": om[r_["receiver_id"].removeprefix("pth_fi_")] = r_["edifici_alberi_e_vegetazione_lidar"]["frazione"]["valore"]
+    pc_ = {r_["id"]: r_ for r_ in json.load(open(ROOT / "network/firenze_novoli/percorsi_campione.json"))}
+    nomi = {e["entrance_id"]: d["nome"] for d in dest.values() for e in d["ingressi"]}
+    for f in json.load(open(ROOT / "network/firenze_novoli/percorsi_campione.geojson"))["features"]:
+        pr = f["properties"]
+        if not pr.get("id", "").startswith("RC") or "tipo" in pr: continue
+        r_ = pc_[pr["id"]]; a_ = r_["destinazione"].split(" ")[0]; lin = [c_ for q in f["geometry"]["coordinates"] for c_ in loc_ll(*q[:2])]
+        out.append({"livello": "percorsi_rifugi", "id": pr["id"], "nome": f"Percorso {pr['id']} verso {nomi.get(a_, a_)}", "x": lin[0], "z": lin[1], "linea": lin, "metodo": "rifugi",
+                    "attr": {"Da": "Civico " + re.search(r"\((.*)\)", r_["origine"])[1].title() if r_.get("civico") else re.sub(r"\s*\(.*\)$", "", pr["descrizione"].split(" verso ")[0]), "A": nomi.get(a_, a_), "Lunghezza per la rete": f"{r_['lunghezza_totale_m']:.0f} m",
+                             "In linea d'aria": f"{r_['diretta_m']:.0f} m", "Attraversamenti": r_["attraversamenti"], "Metri con marciapiede ignoto": f"{r_['m_marciapiede_ignoto']:.0f} m",
+                             "Ombra il 15 luglio, 12:30-13:30": f"{om[pr['id']] * 100:.0f}% del percorso (con vegetazione LiDAR)".replace(".", ",") if pr["id"] in om else "non calcolata",
+                             "Verifica sul posto": "da verificare: percorso, marciapiede e ingresso"}})
     # protezione civile: poche aree per tutta la città, quindi tutte quelle dell'area allargata (riquadro + 700 m).
     # Quelle oltre il terreno disegnato hanno fuori true e la distanza dal riquadro: la pagina le elenca, come le stazioni ARPAT
-    terra = box(E0 - MARGINE, N0 - MARGINE, E1 + MARGINE, N1 + MARGINE)
     fuori = lambda g: {"fuori": True, "distanza_m": round(FP.distance(g))} if not terra.intersects(g) else {}
     pc = lambda v: v.strip() if isinstance(v, str) and v.strip() not in ("", "None") else None   # vuoti e NaN della fonte
     for _, row in gpd.read_file(n / "fi_aree_attesa.gpkg").iterrows():
@@ -588,6 +621,9 @@ STATI = {"ok": "ok", "reachable": "ok", "non_raggiungibile": "non_raggiungibile"
          "dati_insufficienti": "dati_insufficienti", "insufficient_data": "dati_insufficienti", "vietato": "vietato", "forbidden": "vietato"}
 
 
+NOMI_ACC = {"rifugi": "Rifugio climatico più vicino (7 rifugi)"}
+
+
 def accessibilita(dirpath):
     """Input: <dir>/accessibilita*.geojson, Point EPSG:4326, un file per destinazione.
     Proprietà: id, civico, minuti (null se non raggiungibile), stato (ok | non_raggiungibile | dati_insufficienti | vietato),
@@ -602,7 +638,7 @@ def accessibilita(dirpath):
             if f.get("geometry", {}).get("type") != "Point" or p.get("layer", "origine") != "origine":
                 continue
             did = p.get("destinazione") or stem.removeprefix("accessibilita").lstrip("_") or "destinazione"
-            e = dst.setdefault(did, {"id": did, "nome": p.get("destinazione_nome") or dnomi.get(did, did), "profilo": p.get("profilo"), "punti": []})
+            e = dst.setdefault(did, {"id": did, "nome": p.get("destinazione_nome") or dnomi.get(did) or NOMI_ACC.get(did, did), "profilo": p.get("profilo"), "punti": []})
             m = p.get("minuti", p.get("t"))
             x, z = loc_ll(*f["geometry"]["coordinates"][:2])
             st = STATI.get(p.get("stato"), "ok" if m is not None else "non_raggiungibile")
@@ -618,7 +654,7 @@ def ombra(dirpath):
     istante (testo, es. 2026-07-21T15:00), lunghezza_m. Un istante per file (o più istanti nello stesso file).
     Accetta anche l'uscita del motore F07, tratti_ombra_*.geojson: solo i tratti in ombra (frazione 1), caso veg_lidar_tipico."""
     d = pathlib.Path(dirpath)
-    files = sorted(glob.glob(str(d / "ombra_percorsi*.geojson")) + glob.glob(str(d / "tratti_ombra_*.geojson")))
+    files = sorted(f for f in glob.glob(str(d / "ombra_percorsi*.geojson")) + glob.glob(str(d / "tratti_ombra_*.geojson")) if "_rifugi" not in f)   # i percorsi RC stanno nel livello dei rifugi
     ist, quota = {}, {}
     for fn in files:
         for f in _feats(fn):
@@ -669,6 +705,17 @@ def _mm(v):
     return f"{v:.2f}".replace(".", ",")
 
 
+def costo_filare(sid):
+    """Costo d'impianto e metri quadri d'ombra per mille euro (scenarios/firenze_novoli/costo_filare.json, D33 e D36), solo per lo scenario calcolato."""
+    p = ROOT / "scenarios/firenze_novoli/costo_filare.json"
+    if not p.exists() or (c := json.load(open(p)))["scenario_id"] != sid:
+        return []
+    eur = lambda v: f"{v:.0f} euro"   # senza separatore delle migliaia: la scena mette la virgola fra cifre separate da un punto
+    r_, s_ = c["riferimento"], c["sensibilita_altre_specie"]
+    return [["Costo d'impianto (prezzario Toscana 2026)", f"{eur(r_['costo_eur'])} per {c['alberi']} platani orientali 18/20, fornitura e piantagione, IVA esclusa; con altre specie da {eur(s_['minimo_eur'])} a {eur(s_['massimo_eur'])}"],
+            ["Ombra per mille euro, 15 luglio, 12:30-13:30", f"{_mm(r_['m2_per_mille_euro'])} m² ({_mm(r_['m2'])} m² d'ombra in più); ombra di alberi adulti, prezzo di alberi da vivaio, manutenzione esclusa"]]
+
+
 def numeri_scenari(conf):
     """Numeri chiave letti da confronto.json (F08): caso con vegetazione LiDAR, 15 luglio, punta 12:30-13:30.
     Filare (titolo "... su Rxx"): minuti al sole e ombra sul suo percorso, anche per le varianti. Pensilina: la sua area di attesa
@@ -687,6 +734,7 @@ def numeri_scenari(conf):
                 m, f = r["minuti_sole"], r["frazione_ombra"]
                 out[vid] = [[f"Percorso {R}, 15 luglio, 12:30-13:30", f"minuti al sole da {_mm(m['baseline'])} a {_mm(m['scenario'])} ({_mm(m['delta'])})"],
                             [f"Ombra su {R}", f"da {_pc(f['baseline'])} a {_pc(f['scenario'])}"]]
+                out[vid] += costo_filare(vid)
         elif sc["interventi"]["pensiline"]:
             rid = re.search(r"\b(sfc_fi_\w+)", sc["titolo"])
             a = (sc["aree_attesa"][rid.group(1)] if rid else sc["area_attesa_polo"])["2026-07-15"]
