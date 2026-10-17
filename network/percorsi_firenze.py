@@ -23,7 +23,8 @@ POLO = dest["dst_university_w83537185"]; E_POLO, E_POLI = POLO["ingresso_predefi
 E_VAMBA = dest["dst_school_fiee86002g"]["ingresso_predefinito"]; T_AGLI, T_REG, T_SD = "ent_gtfs_fm9057", "ent_gtfs_fm9056", "ent_gtfs_fm9055"
 pb = shapely.MultiPoint([ent[e]["xy"] for e in E_POLI])   # distanza dal Polo = dall'ingresso più vicino in linea d'aria
 ok = civ[(civ.stato == "reachable_candidate") & (civ.componente == "cmp_01") & (civ.TIPO == "N")].copy(); ok["d"] = ok.geometry.distance(pb)   # solo civici neri (abitazioni)
-CIV = {t: ok.iloc[(ok.d - t).abs().argsort()[:1]].index[0] for t in (150, 400, 700, 1000)}
+CIV = {t: ok.assign(s=(ok.d - t).abs()).sort_values(["s", "CODICECIVI"]).index[0] for t in (150, 400, 700, 1000)}   # a parità di distanza decide CODICECIVI, non l'id del Comune
+def cc(codice): return civ.index[civ.CODICECIVI == codice][0]   # chiave stabile del civico (D30): il Comune rinumera gli ID, non CODICECIVI
 punti = {"ent": lambda eid: (Point(ent[eid]["xy"]), snap_of(ent[eid]), f"{eid} ({ent[eid]['classe']})"),
          "civ": lambda cid: (civ.loc[cid].geometry, SN.snap(civ.loc[cid].geometry, SO["max_m"], SO["candidati"], SO["tipi_arco_esclusi"]), f"{cid} ({civ.loc[cid].indirizzo})")}
 casi = [("R01", "ent", T_SD, "polo", None, "Fermata T2 San Donato - Università (indicata dall'Ateneo) verso l'ingresso del Polo più vicino per rete"),
@@ -36,8 +37,8 @@ casi = [("R01", "ent", T_SD, "polo", None, "Fermata T2 San Donato - Università 
         ("R08", "civ", CIV[400], "ent", E_VAMBA, "Civico di R05 verso l'accesso della scuola Vamba"),
         ("R09", "ent", T_AGLI, "ent", E_VAMBA, "Fermata Torre degli Agli verso Vamba"),
         ("R10", "civ", CIV[400], "ent", T_REG, "Civico di R05 verso la fermata Regione Toscana"),
-        ("V01", "civ", "adr_fi_31825", "polo", None, "VIETATO: via della Verna 3, collegata al resto della rete solo da tratti access=private"),
-        ("V02", "civ", "adr_fi_90008", "polo", None, "VIETATO (restrizione diversa): via del Ponte di Mezzo 27/18, collegata solo da un tunnel stradale senza marciapiede")]
+        ("V01", "civ", cc("D61200018415000300000000000N"), "polo", None, "VIETATO: via della Verna 3, collegata al resto della rete solo da tratti access=private"),
+        ("V02", "civ", cc("D61200013220002701800000000N"), "polo", None, "VIETATO (restrizione diversa): via del Ponte di Mezzo 27/18, collegata solo da un tunnel stradale senza marciapiede")]
 res, feats = [], []
 def piu_vicino(sa):
     """Ingresso del Polo con il percorso più corto (grafo verificato, poi permissivo); a parità di stato vince il primo dell'elenco."""
@@ -53,6 +54,7 @@ for cid, ta, a, tb, b, desc in casi:
     pbb, sb, nb = punti[tb](b)
     r = {"id": cid, "descrizione": desc, "origine": na, "destinazione": nb, "snap_origine": {k: sa.get(k) for k in ("edge_id", "dist_m", "stato")}, "snap_destinazione": {k: sb.get(k) for k in ("edge_id", "dist_m", "stato")},
          "diretta_m": round(pa.distance(pbb), 1), "stato_verifica": "da_verificare", "grafo": json.load(open(RES / "rete_manifest.json"))["graph_id"]}
+    if ta == "civ": r["civico"] = civ.loc[a].CODICECIVI   # per ritrovare il civico se il Comune cambia gli id
     if sa["stato"] != "agganciato" or sb["stato"] != "agganciato": r["stato"] = "insufficient_data"
     elif out := percorso(G, sa, sb):
         H, nodi, archi = out; r.update(stato="reachable", **riassunto(H, nodi, archi, sa["dist_m"] + sb["dist_m"]))

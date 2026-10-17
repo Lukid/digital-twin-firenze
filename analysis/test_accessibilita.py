@@ -35,8 +35,9 @@ ent = {e["entrance_id"]: e for d in c["dest"].values() for e in d["ingressi"]}
 snap_e = lambda e: (Point(e["xy"]), {**e["aggancio"], "proj": tuple(e["aggancio"]["proj"])})
 orig40 = A.agganci_origini(FAM, 40.0)
 punto = lambda s: snap_e(ent[s.split()[0]]) if s.startswith("ent_") else orig40[s.split()[0]]
+ID = dict(zip(c["civ"].CODICECIVI, c["civ"].index))   # civici ritrovati per CODICECIVI: il Comune rinumera gli id adr_fi_* (D30)
 for rid, t in sorted(camp.items()):
-    po, so = punto(t["origine"]); pd_, sd = punto(t["destinazione"]); eid = t["destinazione"].split()[0]
+    po, so = orig40[ID[t["civico"]]] if "civico" in t else punto(t["origine"]); pd_, sd = punto(t["destinazione"]); eid = t["destinazione"].split()[0]
     righe, _ = A.calcola({eid: (pd_, sd)}, {rid: (po, so)}, base); x = righe[rid]
     if rid.startswith("V"):
         assert t["stato"] == "forbidden" and x["stato"] == "forbidden" and abs(x["permissivo_m"] - t["permissivo_lunghezza_m"]) < 1.5, (t, x)
@@ -49,7 +50,7 @@ for rid, t in sorted(camp.items()):
     assert abs(x["totale_m"] - t["lunghezza_totale_m"]) < 0.3 and abs(x["m_marciapiede_ignoto"] - t["m_marciapiede_ignoto"]) < 0.3, (rid, x, t)
     print(f"  {rid} {x['totale_m']} m (F04 {t['lunghezza_totale_m']} m), attr {x['attraversamenti']}")
 print("3 ok: R01-R10 uguali a F04, V01 e V02 forbidden")
-assert O["adr_fi_31825"]["stato"] == "forbidden"
+assert O[ID[camp["V01"]["civico"]]]["stato"] == "forbidden"
 
 # 4. agganci a 40 m = origini_snap.gpkg di F04
 for oid, row in c["civ"].iterrows():

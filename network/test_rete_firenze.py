@@ -29,7 +29,9 @@ assert all(e["tipo_arco"] != "escluso" and not e.get("restrizione") for e in arc
 print(f"1 ok: Regione Toscana -> Polo {tot:.0f} m (diretta {diretta:.0f} m)")
 
 # 2. percorsi vietati rifiutati: via della Verna 3 (access=private) e via del Ponte di Mezzo 27/18 (tunnel stradale senza marciapiede)
-for cid, motivo in (("adr_fi_31825", "access=private"), ("adr_fi_90008", "tunnel_stradale_senza_marciapiede")):
+camp = {x["id"]: x for x in json.load(open(RES / "percorsi_campione.json"))}
+for vid, motivo in (("V01", "access=private"), ("V02", "tunnel_stradale_senza_marciapiede")):
+    cid = civ.index[civ.CODICECIVI == camp[vid]["civico"]][0]   # chiave stabile (D30), non l'id adr_fi_*
     so = SN.snap(civ.loc[cid].geometry, MAXO, 6, SO["tipi_arco_esclusi"]); assert so["stato"] == "agganciato"
     assert percorso(G, so, sb) is None, f"il grafo ha trovato un percorso vietato da {cid}"
     perm = percorso(P, so, sb); assert perm, "il grafo di controllo dovrebbe collegare i due punti (altrimenti il caso non prova nulla)"
