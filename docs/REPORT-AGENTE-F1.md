@@ -11,7 +11,7 @@ Sessione autonoma del 17 ottobre 2026 sul worker VPS, ramo `agente/f1`, secondo 
 | 2 Schede delle fonti | fatto | vedi sotto | `service/.venv/bin/python service/test_schede.py`: OK, 36 fonti, 14 nella baseline |
 | 3 Prompt per l'agente | in corso | | |
 | 4 Pagina di metodo | fatto | vedi sotto | `pipeline/.venv/bin/python scene/firenze_novoli/test_build.py`: tutti ok |
-| 5 Documento tecnico | bozza scritta | | `service/test_schede.py` controlla la tabella delle fonti |
+| 5 Documento tecnico | bozza fatta | vedi sotto | `service/test_schede.py` controlla la tabella delle fonti |
 
 ## Compito 0 - Ambiente riproducibile
 
@@ -109,7 +109,7 @@ Fatto.
 Bozza scritta: [DOCUMENTO-TECNICO.md](DOCUMENTO-TECNICO.md), circa 3.800 parole (8-9 pagine).
 
 - Sezioni: obiettivo, area, fonti e licenze, motori e metodo, servizio di interrogazione per assistenti, esempi di domande con risposte reali e job_id, limiti, come si replica su un'altra area.
-- Tabella delle fonti generata dalle schede (`service/schede.py --tabella`) e controllata da `service/test_schede.py`. Nella tabella l'editore della copia Landsat è descritto per funzione.
+- Tabella delle fonti generata dalle schede (`service/schede.py --tabella`) e controllata da `service/test_schede.py` (il test fallisce se la tabella non è aggiornata). Nella tabella l'editore della copia Landsat è descritto per funzione.
 - Esempi presi dal giro di verifica del 10 ottobre (`nl/firenze_novoli/`), con i job_id versionati.
 - Nessun nome di prodotto software (controllato con una ricerca dei nomi usati nel progetto), nessun importo, nessun nome di persona. Citati come protocollo e standard: MCP, JSON Schema, GTFS, WFS, EPSG; come fonti di dati: OpenStreetMap, Landsat.
 

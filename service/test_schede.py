@@ -39,6 +39,11 @@ for sid in fonti:
     for r in t.splitlines():
         if "scheda del catalogo:" in r.lower() and re.search(r"\d{4}-\d\d-\d\d", r): assert "non è la data del dato" in r, (sid, r)
 
+# tabella delle fonti del documento tecnico, generata dalle stesse schede
+doc = (S.ROOT / "docs/DOCUMENTO-TECNICO.md").read_text()
+blocco = re.search(r"<!-- tabella-fonti -->\n(.*?)\n<!-- /tabella-fonti -->", doc, re.S)
+assert blocco and blocco[1] == S.tabella(), "tabella delle fonti del documento tecnico da rigenerare: service/schede.py --tabella"
+
 # strumento MCP
 r = core.run_tool("get_source_card", {})
 assert core.validate("get_source_card", "output", r) == [] and r["source_ids"] == sorted(fonti) and r["index"] == file["INDEX.md"]
