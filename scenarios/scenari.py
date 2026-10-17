@@ -15,6 +15,7 @@ from shapely.geometry import Point, Polygon, mapping, shape
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "shadow")); sys.path.insert(0, str(ROOT / "network")); sys.path.insert(0, str(ROOT / "analysis"))
 import ombre as O  # noqa: E402
+from coordinate import arrotonda  # noqa: E402
 SLUG = O.SLUG
 SC = ROOT / "scenarios" / SLUG            # file piccoli versionati: baseline, scenari, confronto, interventi
 GRANDI = ROOT / "data/norm" / SLUG / "scenarios"   # dati grandi non versionati: cache dei job e asset
@@ -351,7 +352,7 @@ def geojson_interventi(scn):
     import shapely.ops
     from pyproj import Transformer
     tr = Transformer.from_crs(7791, 4326, always_xy=True).transform; feats = []
-    ll = lambda g: mapping(shapely.transform(g, lambda a: np.round(np.column_stack(tr(a[:, 0], a[:, 1])), 7)))
+    ll = lambda g: arrotonda(mapping(shapely.transform(g, lambda a: np.column_stack(tr(a[:, 0], a[:, 1])))))
     for op in scn["operations"]:
         dims = {k: v["value"] for k, v in op["dimensions"].items()}
         base = {"scenario_id": scn["scenario_id"], "op_id": op["op_id"], "target_type": op["target_type"], "dimensions_m": dims, "classification": "scenario",

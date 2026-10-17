@@ -19,6 +19,7 @@ from shapely.ops import unary_union
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "pipeline"))
 import lib  # AOI e cartella dati da DT_AOI (sola lettura)
+from coordinate import arrotonda  # noqa: E402
 assert lib.AOI["aoi_id"] == "aoi_firenze_novoli", "script solo per Firenze Novoli"
 N = lib.NORM
 OUT = ROOT / "geometry/firenze_novoli"
@@ -300,10 +301,12 @@ def export(gdf, name, cols, cls_map):
     js = json.loads(g.to_json(drop_id=True, na="null"))
     for f in js["features"]:
         f["properties"] = {k: v for k, v in f["properties"].items() if v is not None}
+        f["properties"] = json.loads(re.sub(r"(\d+\.\d{6})\d+", r"\1", json.dumps(f["properties"])))   # numeri delle proprietà a 6 decimali troncati, come prima
         f["properties"]["cls"] = cls_map
+    js = arrotonda(js)   # coordinate D39
     js["conventions"] = {"crs": "EPSG:4326 (derivato da EPSG:7791 per il client web)", "unit": "m", "vertical_datum": "not_confirmed",
                          "nota": "z_base e h relativi al terreno; datum verticale non confermato; solo anteprima, non validato sul campo"}
-    s = re.sub(r"(\d+\.\d{6})\d+", r"\1", json.dumps(js, ensure_ascii=False, separators=(",", ":")))
+    s = json.dumps(js, ensure_ascii=False, separators=(",", ":"))
     (OUT / name).write_text(s)
     return len(js["features"]), len(s)
 

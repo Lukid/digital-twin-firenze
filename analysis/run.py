@@ -4,7 +4,7 @@ Scrive manifest, riepilogo e asset mappa in analysis/<area>/ (versionati) e i da
 import json, pathlib, shutil, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import accessibilita as A
-from shapely.geometry import Point
+from shapely.geometry import Point, mapping
 
 OUT = A.OUT_VERS; MAN = OUT / "manifest"
 shutil.rmtree(MAN, ignore_errors=True); MAN.mkdir(parents=True); A.OUT_DATI.mkdir(parents=True, exist_ok=True)
@@ -12,7 +12,6 @@ c = A.contesto()
 RIFUGI = sorted(d for d in c["dest"] if c["dest"][d]["categoria"] == "cooling_refuge")   # D32: un solo job verso il più vicino dei 7, in fondo
 DEST = sorted(set(c["dest"]) - set(RIFUGI))
 dump = lambda o, p, **k: pathlib.Path(p).write_text(json.dumps(o, ensure_ascii=False, separators=(",", ":"), allow_nan=False, **k))
-r6 = lambda x: round(x, 6)
 FAM = "address_points"; ORIG = A.agganci_origini(FAM, 40.0)
 TCOL = (("base_1_2", "t"), ("lento_0_8", "t_lento"), ("rapido_1_4", "t_rapido"), ("ridotta_0_8_senza_scale", "t_ridotta"))
 
@@ -51,13 +50,13 @@ for did in DEST:
         if rid != r["stato"]: pr["stato_ridotta"] = rid
         if r["stato"] == "reachable": pr.update(d=r["totale_m"], dev=r["deviazione"], att=r["attraversamenti"], ign=r["m_marciapiede_ignoto"], ing=r["entrance_id"])
         elif r.get("motivo"): pr["motivo"] = r["motivo"]
-        feats.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [r6(g.x), r6(g.y)]}, "properties": pr})
+        feats.append({"type": "Feature", "geometry": A.arrotonda(mapping(g)), "properties": pr})
     for e0 in e0s:
         g = A._ll(Point(e0["xy"]))
-        feats.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [r6(g.x), r6(g.y)]}, "properties": {"layer": "destinazione", "id": did, "ingresso": e0["entrance_id"], "nome": d["nome"], "stato_verifica": d["stato_verifica"]}})
+        feats.append({"type": "Feature", "geometry": A.arrotonda(mapping(g)), "properties": {"layer": "destinazione", "id": did, "ingresso": e0["entrance_id"], "nome": d["nome"], "stato_verifica": d["stato_verifica"]}})
     for grp, chiave in (("piu_usati", "archi_piu_usati"), ("ignoti_piu_usati", "archi_ignoti_piu_usati")):
         for x in base[chiave]:
-            feats.append({"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[r6(a), r6(b)] for a, b in A._ll(x["geom"]).coords]},
+            feats.append({"type": "Feature", "geometry": A.arrotonda(mapping(A._ll(x["geom"]))),
                           "properties": {"layer": "arco_usato", "gruppo": grp, "id": x["edge_id"], "n_origini": x["n_origini"], "marciapiede": x["marciapiede_stato"], "nome": x["nome"], "tipo": x["tipo_arco"]}})
     dump({"type": "FeatureCollection", "name": f"accessibilita_{did}",
           "nota": "EPSG:4326 solo per la mappa; calcolo in EPSG:7791. t = minuti a 1,2 m/s (lento 0,8, rapido 1,4, ridotta 0,8 senza scale con 10 s per attraversamento). Civici: punti d'indirizzo, non residenti. Rete OSM non verificata sul posto.",

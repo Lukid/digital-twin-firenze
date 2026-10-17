@@ -86,9 +86,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-17T16:26:39Z",
-  "finished_at": "2026-10-17T16:26:39Z",
-  "duration_s": 0.41
+  "started_at": "2026-10-17T17:15:15Z",
+  "finished_at": "2026-10-17T17:15:18Z",
+  "duration_s": 2.62
  },
  "metrics": [
   {
@@ -336,8 +336,8 @@
    "asset_id": "ast_archi_usati",
    "path": "data/norm/firenze_novoli/analysis/rifugi/job_e1e75455f7511f7d_archi_usati.geojson",
    "media_type": "application/geo+json",
-   "bytes": 23826,
-   "sha256": "fdf9c9ebfd9f7c567efb3219c55a02b7f5c8ab10aff4ac5b4d1c0284523e5247",
+   "bytes": 24249,
+   "sha256": "a23ba2fc6fff8857848575daeed1ede81059b3354c6413c36002aca84ae2731c",
    "role": "result_geometry"
   },
   {

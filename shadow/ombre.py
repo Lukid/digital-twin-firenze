@@ -25,6 +25,8 @@ from shapely.geometry import LineString, MultiPolygon, Polygon, Point, box, mapp
 from shapely import affinity
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+__import__("sys").path.insert(0, str(ROOT / "pipeline"))
+from coordinate import arrotonda  # noqa: E402
 VERSIONE = "0.3.0"
 ROMA = ZoneInfo("Europe/Rome")
 UTC = dt.timezone.utc
@@ -407,7 +409,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
                         s, ds, x, y = campioni[rid]
                         if caso in tratti_casi:
                             ls = [x for x in shapely.get_parts(inter) if x.geom_type == "LineString"]; seg = shapely.line_merge(shapely.MultiLineString(ls)) if ls else LineString()
-                            tratti.append({"type": "Feature", "geometry": mapping(shapely.transform(seg, lambda c: np.round(np.column_stack(tr_4326(c[:, 0], c[:, 1])), 6))) if not seg.is_empty else None,
+                            tratti.append({"type": "Feature", "geometry": arrotonda(mapping(shapely.transform(seg, lambda c: np.column_stack(tr_4326(c[:, 0], c[:, 1]))))) if not seg.is_empty else None,
                                            "properties": {"receiver_id": rid, "date": when["date"], "time_local": hhmm, "caso": caso, "azimuth_deg": round(az, 2), "elevation_deg": round(el, 2),
                                                           "length_m": round(g.length, 2), "shaded_m": round(sh, 2), "shade_fraction": round(sh / g.length, 4)}})
                         r.update(shaded_m=round(sh, 2), shade_fraction=round(sh / g.length, 4),
@@ -447,8 +449,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
                 if U is not None and not U.is_empty:
                     c = shapely.simplify(shapely.clip_by_rect(U, *win.bounds), 0.25)
                     f["properties"]["area_m2"] = round(c.area, 1)
-                    c = shapely.transform(c, lambda a: np.round(np.column_stack(tr(a[:, 0], a[:, 1])), 6))
-                    f["geometry"] = mapping(c)
+                    f["geometry"] = arrotonda(mapping(shapely.transform(c, lambda a: np.column_stack(tr(a[:, 0], a[:, 1])))))
                 feats.append(f)
             assets_geo.append((hhmm, {"type": "FeatureCollection", "features": feats}))
     # --- job, manifest

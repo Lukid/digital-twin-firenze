@@ -14,8 +14,9 @@ from shapely.geometry import Point, mapping
 import shapely.ops
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "network"))
+sys.path.insert(0, str(ROOT / "network")); sys.path.insert(0, str(ROOT / "pipeline"))
 import rete_lib as RL  # noqa: E402
+from coordinate import arrotonda  # noqa: E402
 
 VERSIONE = "0.1.0"
 # Area, grafo, file e snapshot vengono dall'area scelta con DT_AOI (network/rete_lib.py), dal registro contracts/aree.json e dalla baseline.
@@ -220,7 +221,7 @@ def _scrivi_assets(job_id, righe, agg, soglie, out_dir):
         w = csv.DictWriter(f, cols, extrasaction="ignore", lineterminator="\n"); w.writeheader()
         for k in sorted(righe): w.writerow({c: righe[k].get(c, "") for c in cols})
     reg(f"{job_id}_origini.csv", "ast_origini_csv", "text/csv", "result_table")
-    feats = [{"type": "Feature", "geometry": {**mapping(_ll(a["geom"])), "coordinates": [[round(x, 6), round(y, 6)] for x, y in _ll(a["geom"]).coords]},
+    feats = [{"type": "Feature", "geometry": arrotonda(mapping(_ll(a["geom"]))),
               "properties": {k: v for k, v in a.items() if k != "geom"} | {"gruppo": g}} for g, lst in (("piu_usati", agg["archi_piu_usati"]), ("ignoti_piu_usati", agg["archi_ignoti_piu_usati"])) for a in lst]
     (out_dir / f"{job_id}_archi_usati.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": feats}, ensure_ascii=False, separators=(",", ":")))
     reg(f"{job_id}_archi_usati.geojson", "ast_archi_usati", "application/geo+json", "result_geometry")

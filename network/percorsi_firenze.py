@@ -9,13 +9,14 @@ from shapely.geometry import Point, mapping
 os.environ["DT_AOI"] = "aoi_firenze_novoli"      # prima di importare lib e rete_lib
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[1] / "pipeline"))
 from rete_lib import *
+from coordinate import arrotonda
 G, D = carica(); P = permissivo(G, D["esclusi"])
 SN = Snapper(G, D["esclusi"], D["bloccati"], gpd.read_file(OSM_GPKG, layer="buildings")); SO = REGOLE["snapping"]["origini"]
 dest = {d["destination_id"]: d for d in json.load(open(RES / "destinazioni.json"))["destinazioni"]}
 ent = {e["entrance_id"]: e for d in dest.values() for e in d["ingressi"]}
 civ = gpd.read_file(OUT / "origini_snap.gpkg", layer="origini").set_index("id")
 to_ll = Transformer.from_crs(7791, 4326, always_xy=True)
-def ll(g): return mapping(shapely.ops.transform(lambda x, y, z=None: to_ll.transform(x, y), g))
+def ll(g): return arrotonda(mapping(shapely.ops.transform(lambda x, y, z=None: to_ll.transform(x, y), shapely.set_precision(g, 0.01))))   # al cm in 7791 prima: i ricevitori riletti dal GeoJSON (F07, F08) restano identici (D39)
 EDG = {k: d for _, _, k, d in G.edges(keys=True, data=True)}
 def n_way_attraversamento(archi): return len({EDG[a]["way_id"] for a in archi if a in EDG and EDG[a]["tipo_arco"] == "attraversamento"})   # un attraversamento OSM è spesso spezzato in più tratti
 def snap_of(e): a = dict(e["aggancio"]); a["proj"] = tuple(a["proj"]); return a

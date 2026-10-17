@@ -11,6 +11,7 @@ os.environ["DT_AOI"] = "aoi_firenze_novoli"      # prima di importare lib e rete
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[1] / "pipeline"))
 from lib import AOI, NORM
 from rete_lib import *
+from coordinate import arrotonda
 
 Z = AOI["z2_en"]
 G, D = carica(); P = permissivo(G, D["esclusi"])
@@ -19,7 +20,7 @@ pts = gpd.read_file(OSM_GPKG, layer="points"); bld = gpd.read_file(OSM_GPKG, lay
 SN = Snapper(G, D["esclusi"], D["bloccati"], bld)
 SR = REGOLE["snapping"]; MAXI, NC_I = SR["ingressi"]["max_m"], SR["ingressi"]["candidati"]; MAXO, NC_O = SR["origini"]["max_m"], SR["origini"]["candidati"]
 to_ll = Transformer.from_crs(7791, 4326, always_xy=True)   # solo per i file di visualizzazione
-def ll(g): return mapping(shapely.ops.transform(lambda x, y, z=None: to_ll.transform(x, y), g))
+def ll(g): return arrotonda(mapping(shapely.ops.transform(lambda x, y, z=None: to_ll.transform(x, y), g)))   # D39
 def area(osm_id): return Polygon([(x, y) for _, x, y in next(a for a in osm["aree"] if a["id"] == osm_id)["nodes"]])
 def snap_ent(p):
     s = SN.snap(p, MAXI, NC_I)

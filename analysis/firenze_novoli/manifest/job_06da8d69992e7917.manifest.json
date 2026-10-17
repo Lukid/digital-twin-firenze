@@ -67,9 +67,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T19:30:36Z",
-  "finished_at": "2026-10-10T19:30:36Z",
-  "duration_s": 0.48
+  "started_at": "2026-10-17T17:14:02Z",
+  "finished_at": "2026-10-17T17:14:05Z",
+  "duration_s": 3.54
  },
  "metrics": [
   {
@@ -313,8 +313,8 @@
    "asset_id": "ast_archi_usati",
    "path": "data/norm/firenze_novoli/analysis/dst_tram_fm9057/job_06da8d69992e7917_archi_usati.geojson",
    "media_type": "application/geo+json",
-   "bytes": 23598,
-   "sha256": "82b0c21c765f99afb8f580664b1204f3668a6f539ce283c3189555f21e592d82",
+   "bytes": 23937,
+   "sha256": "249918e244ec8fc9fa7b80004854af4f54293b2404fa31c0bd48a2aac8b05fec",
    "role": "result_geometry"
   },
   {

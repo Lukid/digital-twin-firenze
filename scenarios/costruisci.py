@@ -280,7 +280,7 @@ def interventi_geojson(scenari):
     """interventi.geojson per la scena (EPSG:4326): Point per gli alberi nuovi (id, scenario, h, chioma_d, imposta), Polygon per le coperture (id, scenario, z_lo, z_hi)."""
     from pyproj import Transformer
     tr = Transformer.from_crs(7791, 4326, always_xy=True).transform; feats = []
-    ll = lambda g: mapping(shapely.transform(g, lambda a: np.round(np.column_stack(tr(a[:, 0], a[:, 1])), 7)))
+    ll = lambda g: S.arrotonda(mapping(shapely.transform(g, lambda a: np.column_stack(tr(a[:, 0], a[:, 1])))))
     for scn in scenari:
         for op in scn["operations"]:
             d = {k: v["value"] for k, v in op["dimensions"].items()}; g = shape(op["geometry"]); oid = f"{scn['scenario_id']}:{op['op_id']}"

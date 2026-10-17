@@ -73,9 +73,9 @@
  "vertical_datum_status": "not_confirmed",
  "timezone": "Europe/Rome",
  "timing": {
-  "started_at": "2026-10-10T19:30:28Z",
-  "finished_at": "2026-10-10T19:30:28Z",
-  "duration_s": 0.46
+  "started_at": "2026-10-17T17:13:31Z",
+  "finished_at": "2026-10-17T17:13:33Z",
+  "duration_s": 1.71
  },
  "metrics": [
   {
@@ -319,8 +319,8 @@
    "asset_id": "ast_archi_usati",
    "path": "data/norm/firenze_novoli/analysis/dst_school_fiee86002g/job_a911386a26b08117_archi_usati.geojson",
    "media_type": "application/geo+json",
-   "bytes": 23124,
-   "sha256": "970531928bee37ffaa7199d09b11f27a883083e59235e108a4585803bc368af8",
+   "bytes": 23419,
+   "sha256": "ee85fe654cb14239e4bab0e324201352c7fa960a5b6ad4be8706b63c959f2550",
    "role": "result_geometry"
   },
   {
