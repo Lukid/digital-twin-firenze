@@ -35,7 +35,7 @@ Dati (`data/`, 1,7 GB): scaricati con `DT_DAY` fissato ai giorni degli snapshot 
 
 Fuori baseline: uguali 13 su 22; diversi ARPAT (pagine HTML), aree cani, aree giochi, aree verdi, stalli per disabili, Landsat (contenuto riletto dal catalogo, non analizzato), SIR (giorni fino al 16 ottobre); catasto non scaricato (il servizio WFS risponde "Richiesta non valida" alla stessa richiesta del 10 ottobre).
 
-Ripiego per gli edifici scolastici: gli stessi due layer sono pubblicati dalla Città metropolitana anche come servizio WFS, citato nella stessa scheda del catalogo. Li ho scaricati e convertiti negli zip attesi, solo in `data/` (c'è un file `LEGGIMI-SOSTITUTO.txt` accanto). Non è lo snapshot e non è versionato. Gli ingressi delle scuole che ne escono sono identici a quelli di `network/firenze_novoli/destinazioni.json`. Un ciclo in background riprova l'API fino alle 11:50 UTC e, se torna, scarica il file vero.
+Ripiego per gli edifici scolastici: gli stessi due layer sono pubblicati dalla Città metropolitana anche come servizio WFS, citato nella stessa scheda del catalogo. Li ho scaricati e convertiti negli zip attesi, solo in `data/` (c'è un file `LEGGIMI-SOSTITUTO.txt` accanto). Non è lo snapshot e non è versionato. Gli ingressi delle scuole che ne escono sono identici a quelli di `network/firenze_novoli/destinazioni.json`. Un ciclo ha riprovato l'API ogni 5 minuti dalle 08:50 alle 09:35 UTC: sempre 503. L'ho fermato a fine sessione, per non lasciare scritture negli snapshot versionati.
 
 Ricostruzione e confronto con i risultati versionati (i file versionati riscritti sono stati riportati alla versione di git; le differenze sono salvate in scratchpad):
 
@@ -191,9 +191,35 @@ Voci utili trovate (prezzo con spese generali e utili, euro, Firenze 2026):
 
 Mancano nel prezzario regionale: pensiline per le fermate (nessuna voce; "pensilina" compare solo negli impianti fotovoltaici), tende e teli ombreggianti per spazi pubblici, scavo della buca d'impianto come voce del verde (da cercare fra gli scavi), manutenzione pluriennale dell'albero (ci sono le potature). Per pensiline e tende serve un'altra fonte: prezzari comunali o capitolati di gara pubblicati con licenza di riuso. Non cercati in questa sessione.
 
+## Cosa è cambiato rispetto a main
+
+Sette commit sul ramo `agente/f1`, uno per compito più questo report. Nessuna modifica a `main`, nessun tag, niente installato fuori dal worker, nessun dato o numero di REPORT cambiato.
+
+- Codice: `service/mcp_server.py` (trasporto HTTP, sola lettura, limiti, risorse `schede://`), `service/core.py` (strumento `get_source_card`), `service/schede.py`, `scene/firenze_novoli/metodo.py`, `nl/firenze_novoli/mcp_client.py` (HTTP).
+- Contratti: `get_source_card.input` e `.output` in `contracts/schemas/mcp.schema.json`, 7 esempi in `contracts/examples/`.
+- Test: nuovi `service/test_mcp_remoto.py` e `service/test_schede.py`; `test_pagina_di_metodo` in `scene/firenze_novoli/test_build.py`; elenco strumenti in `service/test_service.py`.
+- Generati e versionati: `service/schede/` (37 file), `scene/firenze_novoli/metodo.html`.
+- Installazione remota, pronta e non usata: `service/INSTALLA-REMOTO.md`, `service/remoto/dt-firenze-mcp.service`, `service/.env.example`.
+- Documenti: `service/PROMPT-AGENTE.md`, `docs/DOCUMENTO-TECNICO.md`, `nl/firenze_novoli/REPORT-REMOTO.md` e `giro_remoto.json`, questo report con due screenshot in `docs/agente-f1/`; una riga in `docs/STATO.md`, nel registro di `docs/PIANO-DECOLLO.md` e in `AGENTS.md` (comandi).
+- Ambiente: `make lint` usa ruff del venv; `ruff==0.11.0` in `pipeline/requirements.txt`; `make test-fast` comprende i due nuovi test del servizio, `make ci` anche `service/test_schede.py`.
+- Fuori da git, sul worker: i due venv, `data/` (1,7 GB, con il sostituto locale degli edifici scolastici), il pacchetto `playwright` e il suo browser dentro `service/.venv` (non in `requirements.txt`).
+
+Da pushare: niente, il ramo è su `origin/agente/f1`. Merge in `main` da decidere (domanda 6).
+
 ## Domande per Luca
 
 1. Dati del worker diversi dalla baseline (compito 0). Opzioni:
-   - a) copiare `data/` dal Mac al worker (e poi sulla macchina di staging): stessi job_id, `make test` verde, nessuna modifica. **Raccomandata**, anche per l'installazione remota.
-   - b) congelare una nuova baseline con i dati di oggi (`fonti_firenze.py baseline --force`, vietato in questa sessione) e rifare F04-F11: numeri uguali, job_id e REPORT da aggiornare.
-   - c) rendere i percorsi campione e i test indipendenti dagli identificativi dei civici (chiave = indirizzo o posizione): serve comunque, perché il Comune può rinumerare di nuovo. Da fare insieme ad a) o b).
+   - a) copiare `data/` dal Mac al worker (e poi sulla macchina di staging): stessi job_id, `make test` verde, `compare_scenarios` disponibile, nessuna modifica. **Raccomandata**, anche per l'installazione remota.
+   - b) congelare una nuova baseline con i dati di oggi (`fonti_firenze.py baseline --force`, vietato in questa sessione) e rifare F04-F11: numeri uguali, job_id, manifest e REPORT da aggiornare.
+   - c) rendere i percorsi campione e i test indipendenti dagli identificativi `adr_fi_*` dei civici: il campo `CODICECIVI` della fonte è unico sui 13.987 civici dell'area allargata e sembra stabile (codice strada più numero). Serve comunque, perché il Comune può rinumerare di nuovo. Da fare insieme ad a) o b).
+2. Installazione sulla macchina di staging (D28). Prima va riletta la minuta del 13 ottobre sulla remediation, che non ho. Decisioni: token sì o no (raccomandato sì: un valore per tutti i colleghi, consegnato a parte); nome pubblico e proxy con HTTPS; limiti (30 chiamate al minuto e un calcolo lungo sono i default). Opzioni: a) installo io in una prossima sessione con accesso alla macchina, seguendo `INSTALLA-REMOTO.md`; b) installa chi gestisce la macchina. Raccomandata b), con a) come supporto.
+3. Rifugi climatici come destinazioni (F2). Opzioni: a) aggiungere ora i 7 rifugi entro 700 m (ingressi = civici agli indirizzi dichiarati) a `destinazioni_firenze.py` e rifare la rete: lo strumento con più destinazioni dà subito "civici entro 10 minuti dal rifugio più vicino" (stima di oggi: 39,1%); b) aspettare le dieci domande con l'ufficio del Comune. Raccomandata a), dopo la domanda 1, perché è il dato più chiesto del caso caldo.
+4. Costi degli interventi (F2). Il prezzario regionale 2026 (CC BY 4.0 sulle risorse) copre alberi e piantagione, non pensiline e tende. Opzioni: a) indicatore "metri quadri d'ombra per mille euro" solo per i filari, dichiarando che le pensiline non hanno un prezzo pubblico; b) cercare capitolati o prezzari comunali con licenza di riuso per le pensiline; c) usare un costo indicativo dichiarato come ipotesi. Raccomandata a) subito, b) in parallelo; c) no, perché sarebbe un numero senza fonte.
+5. Screenshot e prove nel browser: `playwright` è installato solo nel venv del servizio sul worker. Opzioni: a) aggiungerlo a `service/requirements.txt` (scarica anche un browser, circa 100 MB); b) lasciarlo fuori e installarlo quando serve. Raccomandata b).
+6. Merge del ramo. Opzioni: a) pull request verso `main`, così gira la CI (lint, contratti, geometrie, scena, schede: tutti verdi sul worker); b) merge diretto. Raccomandata a). Prima del merge conviene la domanda 1, perché sul worker `make test` non è verde per i dati.
+7. Documento tecnico: gli esempi sono del giro del 10 ottobre (dati della baseline, job_id versionati); il giro via HTTP del 17 ha gli stessi numeri ma job_id non versionati. Va bene così per la bozza, o preferisci rifare gli esempi dopo l'installazione remota? Raccomandato: lasciarli e rifarli dopo l'installazione.
+
+## Tempo e costo della sessione
+
+- Tempo: dalle 08:10 alle 09:40 UTC circa, compresi circa 35 minuti di download e 10 di normalizzazione. Il giro di domande dell'agente: circa 9 minuti.
+- Costo: non disponibile dalla sessione. Il sottoagente del compito 3 ha usato circa 141.000 token.

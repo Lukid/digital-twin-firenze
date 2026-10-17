@@ -70,3 +70,4 @@ Fatto quando: l'ufficio chiede una proposta.
 | Settimana | Fatto | Prossimo |
 |---|---|---|
 | 12-16 ottobre | Mail a Romeo, sua risposta; demo al referente regionale; piano scritto; RUP noto; GTFS verificato; ospitalità dell'MCP decisa | Incontro con Romeo, poi F1 |
+| 17 ottobre (agente, ramo `agente/f1`) | F1 preparata: MCP HTTP in sola lettura, schede delle fonti, prompt, pagina di metodo, bozza del documento tecnico; analisi F2 su rifugi e prezzario ([REPORT-AGENTE-F1.md](REPORT-AGENTE-F1.md)) | Luca: revisione del ramo, dati del worker (domanda 1), installazione su staging |

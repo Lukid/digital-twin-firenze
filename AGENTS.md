@@ -14,8 +14,8 @@ python3.12 -m venv service/.venv  && service/.venv/bin/pip install -r service/re
 ```
 
 - `pipeline/.venv`: pipeline, rete, geometrie, ombre, scenari, analisi, scena, contratti.
-- `service/.venv`: servizio e server MCP (`service/mcp_server.py`, dichiarato in `.mcp.json`), verifica NL.
-- `data/` è ignorata da git: contiene download e output intermedi. Si ricrea con `pipeline/run_firenze.sh` (circa 10 min, scarica dalla rete).
+- `service/.venv`: servizio e server MCP (`service/mcp_server.py`, dichiarato in `.mcp.json`; con `--http` in sola lettura per l'uso remoto, vedi `service/INSTALLA-REMOTO.md`), verifica NL.
+- `data/` è ignorata da git: contiene download e output intermedi. Si ricrea con `pipeline/run_firenze.sh` (circa 10 min, scarica dalla rete); ricostruita il 17 ottobre non è più identica alla baseline (estratto OSM non più disponibile, civici rinumerati): vedi `docs/REPORT-AGENTE-F1.md`.
 
 Variabili d'ambiente (nessun segreto):
 
@@ -26,13 +26,13 @@ Variabili d'ambiente (nessun segreto):
 ## Comandi
 
 ```
-make test-fast   # rete, geometrie, scena, servizio: circa 25 s
+make test-fast   # rete, geometrie, scena, servizio, schede, MCP via HTTP: circa 50 s
 make test        # tutti i test Firenze, ombre (90 s) e scenari compresi: circa 100 s
 make lint        # ruff: nomi non definiti ed errori di sintassi
 make validate    # contratti JSON Schema
 ```
 
-Senza `data/` passano solo `geometry/test_geometrie_firenze.py`, `scene/firenze_novoli/test_build.py` e `contracts/validate.py`: sono quelli che gira la CI. Gli altri richiedono `data/` locale.
+Senza `data/` passano solo `geometry/test_geometrie_firenze.py`, `scene/firenze_novoli/test_build.py`, `service/test_schede.py` e `contracts/validate.py`: sono quelli che gira la CI. Gli altri richiedono `data/` locale.
 
 Come vedere la scena: [docs/STATO.md](docs/STATO.md), sezione "Fatto su Firenze".
 
