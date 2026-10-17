@@ -347,9 +347,9 @@ def in_fp(gdf):
     return gdf[gdf.intersects(FP)]
 
 
-CATEGORIA = {"university": "università", "tram": "fermata del tram", "school": "scuola"}
+CATEGORIA = {"university": "università", "tram": "fermata del tram", "school": "scuola", "cooling_refuge": "rifugio climatico"}
 INGRESSO = {"civico_edificio_ateneo": "civico di un edificio dell'ateneo", "ingresso_fermata": "accesso alla banchina della fermata",
-            "accesso_citta_metropolitana": "accesso indicato dalla Città metropolitana"}
+            "accesso_citta_metropolitana": "accesso indicato dalla Città metropolitana", "civico_ingresso_rifugio": "civico all'indirizzo d'ingresso dichiarato dal Comune"}
 AGGANCIO = {"agganciato": "collegato"}
 VERIFICA = {"da_verificare": "da fare"}
 

@@ -80,6 +80,27 @@ for _, r in st.iterrows():
     dest.append({"destination_id": r.id, "categoria": "tram", "nome": r.stop_name, "stop_code": r.stop_code, "linee": r.lines, "corse_giorno_rif": int(r.trips_on_ref_date), "fonte": "GTFS GEST (tram)",
                  "stato_verifica": "da_verificare", "condizioni_accesso": "non note (marciapiede e banchina: nessun dato nel feed)",
                  "ingressi": [ingresso("ent_gtfs_" + r.stop_code.lower(), "ingresso_fermata", "punto GTFS (le stop_position OSM sono sul binario)", r.geometry)]})
+
+# ---------------------------------------------------------------- Rifugi climatici del Comune entro i 700 m del margine di rete (D32, 17 ottobre 2026)
+# Ingresso = civico del Comune all'indirizzo dichiarato dalla fonte (campo ingresso delle aree, indirizzo e civico della biblioteca), cercato in tutta l'area allargata.
+# Parco delle Cascine (rif_fi_02556) escluso: i suoi indirizzi d'ingresso (Piazzale dell'Indiano 3, Viale delle Cornacchie 2) non sono fra i civici dell'area allargata.
+RIFUGI = [("rif_fi_02399", [("VIA ARCANGELO CORELLI", "19"), ("VIA FRANCESCO BARACCA", "135/D")]), ("rib_fi_6", [("VIALE ALESSANDRO GUIDONI", "188")]),
+          ("rif_fi_01523", [("VIA LUIGI MORANDI", "2")]), ("rif_fi_01631", [("VIA GUGLIELMO JERVIS", "13")]), ("rif_fi_05409", [("VIA ARTURO TOSCANINI", "20")]),
+          ("rif_fi_02394", [("VIA ARTURO TOSCANINI", "5")]), ("rif_fi_01545", [("PIAZZA GIACOMO PUCCINI", "24/A")])]
+civ_all = gpd.read_file(NORM / "fi_civici.gpkg")
+rif = pd.concat([gpd.read_file(NORM / "fi_rifugi_aree.gpkg").rename(columns={"nome_area": "nome"}), gpd.read_file(NORM / "fi_rifugi_biblioteche.gpkg")]).set_index("id")
+for rid, indirizzi in RIFUGI:
+    r = rif.loc[rid]; bib = rid.startswith("rib_"); ings = []
+    for i, (via, num) in enumerate(indirizzi):
+        c = civ_all[(civ_all.STRADA.str.strip() == via) & (civ_all.NUMEROCIVI.str.strip() == num)]
+        assert len(c) == 1, (rid, via, num, len(c))
+        c = c.iloc[0]
+        ings.append(ingresso(f"ent_{rid.replace('_fi_', '_')}_{i}", "civico_ingresso_rifugio", f"civico del Comune {c.id} ({via.title()} {num}); indirizzo d'ingresso dichiarato dalla fonte: "
+                             + (f"{r.indirizzo} {r.civico}" if bib else r.ingresso), c.geometry, civico_id=c.id, civico=c.CODICECIVI))
+    dest.append({"destination_id": f"dst_refuge_{rid}", "categoria": "cooling_refuge", "nome": r.nome, "fonte": f"{r.source_id} ({rid})", "stato_verifica": "da_verificare",
+                 "tipo_rifugio": "biblioteca" if bib else "area_fresca", **({} if bib else {"ombreggiatura_dichiarata_pct": int(r.percentuale_ombreggi)}),
+                 "condizioni_accesso": f"orari della biblioteca: {r.orario} (non sempre aperta)" if bib else "giardino pubblico: orari e cancelli non noti",
+                 "ingressi": ings, **({"ingressi_predefiniti": [e["entrance_id"] for e in ings]} if len(ings) > 1 else {})})   # più ingressi: vince il più vicino
 for d in dest: d["ingresso_predefinito"] = d["ingressi"][0]["entrance_id"]
 dest[0]["ingresso_predefinito"] = "ent_civ_d1"   # D1, scuole e segreterie: ingresso singolo per i percorsi campione e la compatibilità
 dest[0]["ingressi_predefiniti"] = [e["entrance_id"] for e in dest[0]["ingressi"]]   # accessibilità: vince l'ingresso più vicino per ogni origine

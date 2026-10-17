@@ -65,7 +65,7 @@ assert not any(k.startswith(("grado", "scheda", "barriere")) for _, _, d in G.ed
 print("4 ok: foot/access rispettati, ID stabili e univoci, marciapiede ignoto mai dichiarato, attraversamenti e scale presenti, nessuna scheda sugli archi")
 
 # 5. destinazioni: ogni destinazione agganciata a un ingresso con classe dichiarata e verifica da_verificare; barriere come attributo della destinazione
-CLASSI = {"ingresso_osm", "civico_edificio_ateneo", "accesso_citta_metropolitana", "ingresso_fermata", "punto_sul_perimetro"}
+CLASSI = {"ingresso_osm", "civico_edificio_ateneo", "accesso_citta_metropolitana", "ingresso_fermata", "punto_sul_perimetro", "civico_ingresso_rifugio"}
 for d in dest:
     assert re.fullmatch(r"dst_[a-z]{2,12}_[a-z0-9_]{2,60}", d["destination_id"]) and d["ingressi"] and d["ingresso_predefinito"] in ent, d["destination_id"]
     for e in d["ingressi"]:
@@ -77,6 +77,8 @@ assert polo["ingresso_predefinito"] == "ent_civ_d1" and polo["ingressi_predefini
 assert len({e["aggancio"]["componente"] for e in polo["ingressi"]}) == 1   # tutti nella stessa componente: lo stato dei civici rispetto al Polo resta univoco
 assert vamba["ingressi"][0]["classe"] == "accesso_citta_metropolitana" and vamba["codice_mim"] == "FIEE86002G" and D_["dst_school_fiaa86002a"]["codice_mim"] == "FIAA86002A"
 assert sorted(d["stop_code"] for d in dest if d["categoria"] == "tram") == ["FM9055", "FM9056", "FM9057"] and all(d["ingressi"][0]["classe"] == "ingresso_fermata" for d in dest if d["categoria"] == "tram")
+rif = [d for d in dest if d["categoria"] == "cooling_refuge"]   # D32: 7 rifugi entro 700 m, Cascine escluse; ingressi = civici agli indirizzi della fonte
+assert len(rif) == 7 and sum(len(d["ingressi"]) for d in rif) == 8 and "dst_refuge_rif_fi_02556" not in D_ and all(e.get("civico") for d in rif for e in d["ingressi"])
 for d in (polo, vamba):
     s = d["barriere_comune"]["schede"]; assert s and all(x["grado_accessibilita"] in ("Accessibile", "Parzialmente Accessibile", "Non Accessibile") for x in s), d["destination_id"]
 bar = json.load(open(RES / "barriere_edifici.json")); assert bar["schede_nel_riquadro"] == len(bar["schede"]) == sum(bar["per_grado"].values())

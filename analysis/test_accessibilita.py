@@ -75,7 +75,7 @@ reg = Registry().with_resources([(s["$id"], Resource.from_contents(s)) for s in 
 for key in ("manifest", "job"):
     errs = list(Draft202012Validator(S[key], registry=reg).iter_errors(r[key]))
     assert not errs, (key, errs[0].message, list(errs[0].path))
-mans = sorted((VERS / "manifest").glob("*.manifest.json")); assert len(mans) == 4 * len(c["dest"]) == 24, len(mans)   # 6 destinazioni (con San Donato - Università, D20)
+mans = sorted((VERS / "manifest").glob("*.manifest.json")); assert len(mans) == 4 * (len(c["dest"]) - 7) + 1 == 25, len(mans)   # 6 destinazioni (con San Donato - Università, D20) per 4 profili, più il job dei 7 rifugi insieme (D32)
 for f in mans:
     m = json.load(open(f)); assert not list(Draft202012Validator(S["manifest"], registry=reg).iter_errors(m)), f.name
     assert m["assets"] and all((ROOT / a["path"]).exists() and hashlib.sha256((ROOT / a["path"]).read_bytes()).hexdigest() == a["sha256"] for a in m["assets"]), f.name
@@ -108,7 +108,8 @@ for k, o in r1["origini"].items():
 print("8 ok: ingressi multipli")
 
 # 9. asset mappa: EPSG:4326, conteggi uguali al manifest, uno per destinazione
-for did in sorted(c["dest"]):
+RIF = sorted(d for d, v in c["dest"].items() if v["categoria"] == "cooling_refuge"); DEST = sorted(set(c["dest"]) - set(RIF))   # rifugi: un job insieme (test 11)
+for did in DEST:
     fp = VERS / f"accessibilita_{did}.geojson"; g = json.load(open(fp)); F = g["features"]
     org = [f for f in F if f["properties"]["layer"] == "origine"]
     assert len(org) == 3296 and all(11.1 < f["geometry"]["coordinates"][0] < 11.3 and 43.7 < f["geometry"]["coordinates"][1] < 43.9 for f in org)
@@ -118,9 +119,9 @@ for did in sorted(c["dest"]):
     assert any(f["properties"]["layer"] == "arco_usato" for f in F) and sum(f["properties"]["layer"] == "destinazione" for f in F) == len(c["dest"][did].get("ingressi_predefiniti") or [1])
     assert fp.stat().st_size < 2_000_000
 # riepilogo: sensibilità ingressi solo per le destinazioni con più di un ingresso (il Polo)
-rie = json.load(open(VERS / "riepilogo.json")); multi = {d for d, v in c["dest"].items() if len(v["ingressi"]) > 1}
+rie = json.load(open(VERS / "riepilogo.json")); multi = {d for d in DEST if len(c["dest"][d]["ingressi"]) > 1}
 assert multi == {BAT} and {k for k in rie["sensibilita"] if k.startswith("ingressi_")} == {"ingressi_" + BAT}
-assert {k for k in rie["sensibilita"] if k.startswith("snapping_")} == {"snapping_" + d for d in c["dest"]}
+assert {k for k in rie["sensibilita"] if k.startswith("snapping_")} == {"snapping_" + d for d in DEST}
 print("9 ok: asset mappa e riepilogo")
 
 # 10. input non validi respinti
@@ -128,3 +129,14 @@ for bad in (dict(profile={"speed_m_s": 5, "crossing_penalty_s": 0, "stairs": "al
     try: A.compute_walk_access(bad.pop("destination_id", BAT), **bad); raise SystemExit("doveva fallire")
     except ValueError: pass
 print("10 ok: tutti i test passati")
+
+# 11. rifugi climatici (D32): un job verso il più vicino dei 7, versionato; fonti dei rifugi nel manifest; il più vicino non è mai più lontano di un solo rifugio
+assert len(RIF) == 7
+rr = A.compute_walk_access(RIF, profile=base); jr = rr["job"]["job_id"]
+assert rie["rifugi"]["job_id"] == jr and (VERS / "manifest" / f"{jr}.manifest.json").exists() and json.load(open(VERS / "manifest" / f"{jr}.manifest.json"))["metrics"] == rr["manifest"]["metrics"]
+assert {"snp_fi_rifugi_aree_20261009", "snp_fi_rifugi_biblioteche_20261009"} <= {d["snapshot_id"] for d in rr["manifest"]["datasets"]}
+assert sum(rie["rifugi"]["piu_vicino"].values()) == rr["aggregati"]["conteggi"]["reachable"]
+uno = A.compute_walk_access("dst_refuge_rib_fi_6", profile=base)["origini"]
+for k, o in uno.items():
+    if o["stato"] == "reachable": assert rr["origini"][k]["tempo_s"] <= o["tempo_s"] + 1e-6, k
+print("11 ok: rifugi", jr, rie["rifugi"]["quote"])

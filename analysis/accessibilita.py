@@ -192,7 +192,7 @@ def _hash_job(tool, inputs, params): return "job_" + hashlib.sha256(canon({"tool
 
 
 # fonti della destinazione per categoria (sottostringhe del source_id nella baseline); osm e civici valgono sempre
-FONTI_DEST = {"school": ("scuole_statali", "cm_edscol"), "tram": ("gtfs_gest",), "stop": ("gtfs",)}
+FONTI_DEST = {"school": ("scuole_statali", "cm_edscol"), "tram": ("gtfs_gest",), "stop": ("gtfs",), "cooling_refuge": ("rifugi_aree", "rifugi_biblioteche")}
 
 
 def _snapshot_ids(destination_ids):

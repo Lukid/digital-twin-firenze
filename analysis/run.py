@@ -8,7 +8,9 @@ from shapely.geometry import Point
 
 OUT = A.OUT_VERS; MAN = OUT / "manifest"
 shutil.rmtree(MAN, ignore_errors=True); MAN.mkdir(parents=True); A.OUT_DATI.mkdir(parents=True, exist_ok=True)
-c = A.contesto(); DEST = sorted(c["dest"])
+c = A.contesto()
+RIFUGI = sorted(d for d in c["dest"] if c["dest"][d]["categoria"] == "cooling_refuge")   # D32: un solo job verso il più vicino dei 7, in fondo
+DEST = sorted(set(c["dest"]) - set(RIFUGI))
 dump = lambda o, p, **k: pathlib.Path(p).write_text(json.dumps(o, ensure_ascii=False, separators=(",", ":"), allow_nan=False, **k))
 r6 = lambda x: round(x, 6)
 FAM = "address_points"; ORIG = A.agganci_origini(FAM, 40.0)
@@ -78,5 +80,13 @@ for did in DEST:
         out[k] = s
     base10 = set(out["predefinito"]["top10_archi"])
     for s in out.values(): s["sovrapposizione_top10_con_predefinito"] = len(base10 & set(s["top10_archi"]))
+
+# rifugi climatici (D32): accessibilità verso il più vicino dei 7, profilo base; sensibilità 0,8-1,4 m/s negli intervalli del manifest
+res = A.compute_walk_access(RIFUGI, origin_family=FAM, profile=base_p, out_dir=A.OUT_DATI / "rifugi")
+(MAN / f"{res['job']['job_id']}.manifest.json").write_text(json.dumps(res["manifest"], ensure_ascii=False, indent=1))
+(MAN / f"{res['job']['job_id']}.job.json").write_text(json.dumps(res["job"], ensure_ascii=False, indent=1))
+dest_di = {e["entrance_id"]: did for did in RIFUGI for e in c["dest"][did]["ingressi"]}; a = res["aggregati"]
+riepilogo["rifugi"] = {**sintesi(res), "destinazioni": RIFUGI, "intervallo_velocita": {k: v["intervallo_velocita"] for k, v in a["quote_soglie"].items()},
+                       "piu_vicino": {did: sum(1 for r in res["origini"].values() if r.get("entrance_id") and dest_di[r["entrance_id"]] == did) for did in RIFUGI}}
 dump(riepilogo, OUT / "riepilogo.json", sort_keys=True)
 print(json.dumps({n: {p: {"conteggi": v["conteggi"], "quote": v["quote"], "t": v["tempo_min"]} for p, v in d.items() if isinstance(v, dict) and "quote" in v} for n, d in riepilogo["destinazioni"].items()}, ensure_ascii=False, indent=1))

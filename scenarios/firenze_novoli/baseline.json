@@ -130,8 +130,8 @@
    "name": "shortest_path_walk_time",
    "version": "0.1.0",
    "file": "analysis/accessibilita.py",
-   "file_sha256": "1bc6e2e2fb6f4e44c8366a65cbf4d05aaf947cba3623d3352335e68ed95b90f2",
-   "sha256_nota": "file modificato il 2026-10-10 per la revisione R3: solo gli intervalli di sensibilità alla velocità (attese dal costo del cammino); tempi, percorsi e quote centrali invariati (sha256 precedente 84f2091af6b69d5b16431198f9b5c055907d8c7cf8750a88c41bd4afc74e5e7b)"
+   "file_sha256": "b38534c6759c2062dce19d137bb31eaac1c253f7a40a829f271a4e9a7692b688",
+   "sha256_nota": "file modificato il 2026-10-17 per F2 (D32): solo le fonti dei rifugi climatici nei dataset dei job verso i rifugi; job e metriche delle altre destinazioni invariati (sha256 precedente 1bc6e2e2fb6f4e44c8366a65cbf4d05aaf947cba3623d3352335e68ed95b90f2). Prima ancora, 2026-10-10, revisione R3: solo gli intervalli di sensibilità alla velocità (sha256 precedente 84f2091af6b69d5b16431198f9b5c055907d8c7cf8750a88c41bd4afc74e5e7b)"
   }
  },
  "origini": {

@@ -604,6 +604,316 @@
     }
    ],
    "ingresso_predefinito": "ent_gtfs_fm9057"
+  },
+  {
+   "destination_id": "dst_refuge_rif_fi_02399",
+   "categoria": "cooling_refuge",
+   "nome": "Giardino di Piazza delle Medaglie d'Oro",
+   "fonte": "src_fi_rifugi_aree (rif_fi_02399)",
+   "stato_verifica": "da_verificare",
+   "tipo_rifugio": "area_fresca",
+   "ombreggiatura_dichiarata_pct": 70,
+   "condizioni_accesso": "giardino pubblico: orari e cancelli non noti",
+   "ingressi": [
+    {
+     "entrance_id": "ent_rif_02399_0",
+     "classe": "civico_ingresso_rifugio",
+     "fonte_ingresso": "civico del Comune adr_fi_44381 (Via Arcangelo Corelli 19); indirizzo d'ingresso dichiarato dalla fonte: Ingressi nei pressi di: Via Arcangelo Corelli, 19; Via Francesco Baracca, 135d",
+     "stato_verifica": "da_verificare",
+     "civico_id": "adr_fi_44381",
+     "civico": "D61200004740001900000000000N",
+     "xy": [
+      678360.18,
+      4851020.74
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_114389301_1284616269_271849422",
+      "u": "nod_osm_271849422",
+      "v": "nod_osm_1284616269",
+      "offset_m": 5.22,
+      "dist_m": 6.55,
+      "proj": [
+       678362.3401394064,
+       4851026.924953813
+      ],
+      "scartati": [],
+      "raccordo_m": 6.55,
+      "componente": "cmp_01"
+     }
+    },
+    {
+     "entrance_id": "ent_rif_02399_1",
+     "classe": "civico_ingresso_rifugio",
+     "fonte_ingresso": "civico del Comune adr_fi_25689 (Via Francesco Baracca 135/D); indirizzo d'ingresso dichiarato dalla fonte: Ingressi nei pressi di: Via Arcangelo Corelli, 19; Via Francesco Baracca, 135d",
+     "stato_verifica": "da_verificare",
+     "civico_id": "adr_fi_25689",
+     "civico": "D61200001230013500D00000000N",
+     "xy": [
+      678372.11,
+      4851138.77
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_780567151_12871228668_11383350858",
+      "u": "nod_osm_12871228668",
+      "v": "nod_osm_11383350858",
+      "offset_m": 48.59,
+      "dist_m": 5.3,
+      "proj": [
+       678373.9694146463,
+       4851143.736910193
+      ],
+      "scartati": [],
+      "raccordo_m": 5.3,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingressi_predefiniti": [
+    "ent_rif_02399_0",
+    "ent_rif_02399_1"
+   ],
+   "ingresso_predefinito": "ent_rif_02399_0"
+  },
+  {
+   "destination_id": "dst_refuge_rib_fi_6",
+   "categoria": "cooling_refuge",
+   "nome": "Biblioteca Filippo Buonarroti",
+   "fonte": "src_fi_rifugi_biblioteche (rib_fi_6)",
+   "stato_verifica": "da_verificare",
+   "tipo_rifugio": "biblioteca",
+   "condizioni_accesso": "orari della biblioteca: https://cultura.comune.fi.it/pagina/orari-e-contatti (non sempre aperta)",
+   "ingressi": [
+    {
+     "entrance_id": "ent_rib_6_0",
+     "classe": "civico_ingresso_rifugio",
+     "fonte_ingresso": "civico del Comune adr_fi_45737 (Viale Alessandro Guidoni 188); indirizzo d'ingresso dichiarato dalla fonte: Viale Guidoni 188",
+     "stato_verifica": "da_verificare",
+     "civico_id": "adr_fi_45737",
+     "civico": "D61200008090018800000000000N",
+     "xy": [
+      678289.53,
+      4851848.9
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_688854003_7171607258_12338184289",
+      "u": "nod_osm_7171607258",
+      "v": "nod_osm_12338184289",
+      "offset_m": 0.26,
+      "dist_m": 0.3,
+      "proj": [
+       678289.8330817121,
+       4851848.922252057
+      ],
+      "scartati": [],
+      "raccordo_m": 0.3,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_rib_6_0"
+  },
+  {
+   "destination_id": "dst_refuge_rif_fi_01523",
+   "categoria": "cooling_refuge",
+   "nome": "Giardino di piazza dei Cavalieri di Vittorio Veneto",
+   "fonte": "src_fi_rifugi_aree (rif_fi_01523)",
+   "stato_verifica": "da_verificare",
+   "tipo_rifugio": "area_fresca",
+   "ombreggiatura_dichiarata_pct": 97,
+   "condizioni_accesso": "giardino pubblico: orari e cancelli non noti",
+   "ingressi": [
+    {
+     "entrance_id": "ent_rif_01523_0",
+     "classe": "civico_ingresso_rifugio",
+     "fonte_ingresso": "civico del Comune adr_fi_44099 (Via Luigi Morandi 2); indirizzo d'ingresso dichiarato dalla fonte: Via Luigi Morandi, 2",
+     "stato_verifica": "da_verificare",
+     "civico_id": "adr_fi_44099",
+     "civico": "D61200010710000200000000000N",
+     "xy": [
+      679934.44,
+      4852687.01
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_771929819_7206406823_12600355176",
+      "u": "nod_osm_7206406823",
+      "v": "nod_osm_12600355176",
+      "offset_m": 1.16,
+      "dist_m": 1.72,
+      "proj": [
+       679932.9899773635,
+       4852687.93227828
+      ],
+      "scartati": [],
+      "raccordo_m": 1.72,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_rif_01523_0"
+  },
+  {
+   "destination_id": "dst_refuge_rif_fi_01631",
+   "categoria": "cooling_refuge",
+   "nome": "Giardino di via Luigi Morandi",
+   "fonte": "src_fi_rifugi_aree (rif_fi_01631)",
+   "stato_verifica": "da_verificare",
+   "tipo_rifugio": "area_fresca",
+   "ombreggiatura_dichiarata_pct": 71,
+   "condizioni_accesso": "giardino pubblico: orari e cancelli non noti",
+   "ingressi": [
+    {
+     "entrance_id": "ent_rif_01631_0",
+     "classe": "civico_ingresso_rifugio",
+     "fonte_ingresso": "civico del Comune adr_fi_25819 (Via Guglielmo Jervis 13); indirizzo d'ingresso dichiarato dalla fonte: Via Guglielmo Jervis, 13",
+     "stato_verifica": "da_verificare",
+     "civico_id": "adr_fi_25819",
+     "civico": "D61200008310001300000000000N",
+     "xy": [
+      679993.53,
+      4852893.17
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_772116443_7208081310_7208081244",
+      "u": "nod_osm_7208081310",
+      "v": "nod_osm_7208081244",
+      "offset_m": 105.66,
+      "dist_m": 1.18,
+      "proj": [
+       679994.5342332835,
+       4852892.558268826
+      ],
+      "scartati": [],
+      "raccordo_m": 1.18,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_rif_01631_0"
+  },
+  {
+   "destination_id": "dst_refuge_rif_fi_05409",
+   "categoria": "cooling_refuge",
+   "nome": "Giardino di via Arturo Toscanini",
+   "fonte": "src_fi_rifugi_aree (rif_fi_05409)",
+   "stato_verifica": "da_verificare",
+   "tipo_rifugio": "area_fresca",
+   "ombreggiatura_dichiarata_pct": 81,
+   "condizioni_accesso": "giardino pubblico: orari e cancelli non noti",
+   "ingressi": [
+    {
+     "entrance_id": "ent_rif_05409_0",
+     "classe": "civico_ingresso_rifugio",
+     "fonte_ingresso": "civico del Comune adr_fi_79523 (Via Arturo Toscanini 20); indirizzo d'ingresso dichiarato dalla fonte: Via Arturo Toscanini, 20",
+     "stato_verifica": "da_verificare",
+     "civico_id": "adr_fi_79523",
+     "civico": "D61200017700002000000000000N",
+     "xy": [
+      678791.69,
+      4850889.49
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_1197651669_11111689892_11111689893",
+      "u": "nod_osm_11111689892",
+      "v": "nod_osm_11111689893",
+      "offset_m": 53.45,
+      "dist_m": 6.7,
+      "proj": [
+       678787.3854178363,
+       4850884.358785646
+      ],
+      "scartati": [],
+      "raccordo_m": 6.7,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_rif_05409_0"
+  },
+  {
+   "destination_id": "dst_refuge_rif_fi_02394",
+   "categoria": "cooling_refuge",
+   "nome": "Giardino di via Arturo Toscanini",
+   "fonte": "src_fi_rifugi_aree (rif_fi_02394)",
+   "stato_verifica": "da_verificare",
+   "tipo_rifugio": "area_fresca",
+   "ombreggiatura_dichiarata_pct": 81,
+   "condizioni_accesso": "giardino pubblico: orari e cancelli non noti",
+   "ingressi": [
+    {
+     "entrance_id": "ent_rif_02394_0",
+     "classe": "civico_ingresso_rifugio",
+     "fonte_ingresso": "civico del Comune adr_fi_105378 (Via Arturo Toscanini 5); indirizzo d'ingresso dichiarato dalla fonte: Via Arturo Toscanini, 5",
+     "stato_verifica": "da_verificare",
+     "civico_id": "adr_fi_105378",
+     "civico": "D61200017700000500000000000N",
+     "xy": [
+      678860.76,
+      4850798.4
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_768738488_7176918448_11110180672",
+      "u": "nod_osm_7176918448",
+      "v": "nod_osm_11110180672",
+      "offset_m": 25.29,
+      "dist_m": 7.03,
+      "proj": [
+       678865.2941155372,
+       4850803.775252817
+      ],
+      "scartati": [],
+      "raccordo_m": 7.03,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_rif_02394_0"
+  },
+  {
+   "destination_id": "dst_refuge_rif_fi_01545",
+   "categoria": "cooling_refuge",
+   "nome": "Giardino di piazza Giacomo Puccini",
+   "fonte": "src_fi_rifugi_aree (rif_fi_01545)",
+   "stato_verifica": "da_verificare",
+   "tipo_rifugio": "area_fresca",
+   "ombreggiatura_dichiarata_pct": 78,
+   "condizioni_accesso": "giardino pubblico: orari e cancelli non noti",
+   "ingressi": [
+    {
+     "entrance_id": "ent_rif_01545_0",
+     "classe": "civico_ingresso_rifugio",
+     "fonte_ingresso": "civico del Comune adr_fi_97791 (Piazza Giacomo Puccini 24/A); indirizzo d'ingresso dichiarato dalla fonte: Piazza Giacomo Puccini, 24/A",
+     "stato_verifica": "da_verificare",
+     "civico_id": "adr_fi_97791",
+     "civico": "D61200013600002400A00000000N",
+     "xy": [
+      679160.08,
+      4850515.46
+     ],
+     "aggancio": {
+      "stato": "agganciato",
+      "edge_id": "edg_osm_769757729_7185356687_7185356728",
+      "u": "nod_osm_7185356687",
+      "v": "nod_osm_7185356728",
+      "offset_m": 66.64,
+      "dist_m": 0.31,
+      "proj": [
+       679160.1241475076,
+       4850515.764340065
+      ],
+      "scartati": [],
+      "raccordo_m": 0.31,
+      "componente": "cmp_01"
+     }
+    }
+   ],
+   "ingresso_predefinito": "ent_rif_01545_0"
   }
  ]
 }

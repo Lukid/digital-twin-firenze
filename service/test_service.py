@@ -78,6 +78,11 @@ hm = lambda r, k: next(m["value"] for m in r["headline_metrics"] if m["metric_id
 reg = run("compute_walk_access", {**A, "destination_ids": [T_REG]})
 for k in ("served_count_10min", "served_share_10min"): assert hm(due, k) >= max(hm(r1, k), hm(reg, k)), k
 assert hm(r1, "served_count_10min") == round(hm(r1, "served_share_10min") * hm(r1, "origins_total"))   # conteggio dei civici raggiunti, coerente con la quota
+# rifugi climatici (D32): i 7 insieme danno il job versionato di analysis/firenze_novoli/manifest, con le fonti dei rifugi
+RIF = [x["destination_id"] for x in run("list_destinations", {"aoi_id": AOI, "category": "cooling_refuge", "name_query": "rifugi climatici"})["destinations"]]
+assert len(RIF) == 7 and core.validate("list_destinations", "output", run("list_destinations", {"aoi_id": AOI, "category": "cooling_refuge"})) == []
+rif = run("compute_walk_access", {**A, "destination_ids": RIF}); assert rif["job_id"] == "job_e1e75455f7511f7d" and core.validate("compute_walk_access", "output", rif) == [], rif
+assert hm(rif, "served_share_10min") == 0.3911 and {"src_fi_rifugi_aree", "src_fi_rifugi_biblioteche"} <= {d["source_id"] for d in rif["datasets"]}
 assert err_code(run("compute_walk_access", {**A, "destination_ids": [POLO, T_REG], "entrance_ids": ["ent_gtfs_fm9055"]})) == "invalid_params"   # ingresso fuori dalle destinazioni chieste
 sc = run("list_scenarios", {}); assert core.validate("list_scenarios", "output", sc) == [] and {"scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"} <= {x["scenario_id"] for x in sc["scenarios"]}, sc
 assert err_code(run("list_scenarios", {"baseline_id": "bas_altra"})) == "incompatible_baseline"
@@ -94,7 +99,7 @@ for ids in (["la scuola"], ["vamba"], ["tram"], ["fermata"], ["polo"], [], None)
     assert err_code(r) == "ambiguous_destination" and r["error"]["candidates"], (ids, r)
 cand = lambda q: [c.split(" | ")[0] for c in run("compute_walk_access", {**NOA, "destination_ids": [q]})["error"]["candidates"]]
 assert sorted(cand("vamba")) == sorted([VAMBA_P, VAMBA_I]) and sorted(cand("tram")) == sorted([T_SD, T_REG, T_AGLI]) and cand("polo") == [POLO]
-assert len(cand("sconosciuta")) == 6   # nome senza corrispondenze: tutte le destinazioni dell'area
+assert len(cand("sconosciuta")) == 13   # nome senza corrispondenze: tutte le destinazioni dell'area (6 più i 7 rifugi)
 
 # 4. alias delle destinazioni (list_destinations, name_query) e categorie
 LD = lambda cat, q=None: [x["destination_id"] for x in run("list_destinations", {"aoi_id": AOI, "category": cat, **({"name_query": q} if q else {})})["destinations"]]

@@ -41,7 +41,8 @@ _DEST_ALIAS = {
     "tram": ["dst_tram_fm9055", "dst_tram_fm9056", "dst_tram_fm9057"], "t2": ["dst_tram_fm9055", "dst_tram_fm9056", "dst_tram_fm9057"], "fermata": ["dst_tram_fm9055", "dst_tram_fm9056", "dst_tram_fm9057"], "fermata tram": ["dst_tram_fm9055", "dst_tram_fm9056", "dst_tram_fm9057"],
     "san donato": ["dst_tram_fm9055"], "fermata san donato": ["dst_tram_fm9055"], "san donato universita": ["dst_tram_fm9055"], "fermata universita": ["dst_tram_fm9055"], "fermata del polo": ["dst_tram_fm9055"],
     "fermata regione": ["dst_tram_fm9056"], "regione toscana": ["dst_tram_fm9056"], "regione": ["dst_tram_fm9056"],
-    "torre degli agli": ["dst_tram_fm9057"], "fermata torre degli agli": ["dst_tram_fm9057"], "agli": ["dst_tram_fm9057"]}
+    "torre degli agli": ["dst_tram_fm9057"], "fermata torre degli agli": ["dst_tram_fm9057"], "agli": ["dst_tram_fm9057"],
+    **dict.fromkeys(("rifugi", "rifugio", "rifugi climatici", "rifugio climatico", "aree fresche", "area fresca"), ["dst_refuge_rib_fi_6", "dst_refuge_rif_fi_01523", "dst_refuge_rif_fi_01545", "dst_refuge_rif_fi_01631", "dst_refuge_rif_fi_02394", "dst_refuge_rif_fi_02399", "dst_refuge_rif_fi_05409"])}   # D32: i 7 rifugi entro 700 m
 CATEGORIA_CONTRATTO = {"tram": "stop"}   # il contratto ha school, university, stop, station, hospital: la fermata del tram è una fermata
 
 canon = lambda o: json.dumps(o, sort_keys=True, ensure_ascii=False, separators=(",", ":"))

@@ -185,6 +185,104 @@
     }
    ],
    "schede_barriere": 0
+  },
+  {
+   "id": "dst_refuge_rif_fi_02399",
+   "ingressi": [
+    {
+     "id": "ent_rif_02399_0",
+     "classe": "civico_ingresso_rifugio",
+     "stato": "agganciato",
+     "raccordo_m": 6.55,
+     "componente": "cmp_01"
+    },
+    {
+     "id": "ent_rif_02399_1",
+     "classe": "civico_ingresso_rifugio",
+     "stato": "agganciato",
+     "raccordo_m": 5.3,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
+  },
+  {
+   "id": "dst_refuge_rib_fi_6",
+   "ingressi": [
+    {
+     "id": "ent_rib_6_0",
+     "classe": "civico_ingresso_rifugio",
+     "stato": "agganciato",
+     "raccordo_m": 0.3,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
+  },
+  {
+   "id": "dst_refuge_rif_fi_01523",
+   "ingressi": [
+    {
+     "id": "ent_rif_01523_0",
+     "classe": "civico_ingresso_rifugio",
+     "stato": "agganciato",
+     "raccordo_m": 1.72,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
+  },
+  {
+   "id": "dst_refuge_rif_fi_01631",
+   "ingressi": [
+    {
+     "id": "ent_rif_01631_0",
+     "classe": "civico_ingresso_rifugio",
+     "stato": "agganciato",
+     "raccordo_m": 1.18,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
+  },
+  {
+   "id": "dst_refuge_rif_fi_05409",
+   "ingressi": [
+    {
+     "id": "ent_rif_05409_0",
+     "classe": "civico_ingresso_rifugio",
+     "stato": "agganciato",
+     "raccordo_m": 6.7,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
+  },
+  {
+   "id": "dst_refuge_rif_fi_02394",
+   "ingressi": [
+    {
+     "id": "ent_rif_02394_0",
+     "classe": "civico_ingresso_rifugio",
+     "stato": "agganciato",
+     "raccordo_m": 7.03,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
+  },
+  {
+   "id": "dst_refuge_rif_fi_01545",
+   "ingressi": [
+    {
+     "id": "ent_rif_01545_0",
+     "classe": "civico_ingresso_rifugio",
+     "stato": "agganciato",
+     "raccordo_m": 0.31,
+     "componente": "cmp_01"
+    }
+   ],
+   "schede_barriere": 0
   }
  ]
 }

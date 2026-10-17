@@ -223,7 +223,8 @@
       "university",
       "stop",
       "station",
-      "hospital"
+      "hospital",
+      "cooling_refuge"
      ]
     },
     "name_query": {
@@ -263,7 +264,8 @@
            "university",
            "stop",
            "station",
-           "hospital"
+           "hospital",
+           "cooling_refuge"
           ]
          },
          "name": {
