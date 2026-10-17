@@ -2,6 +2,8 @@
 
 Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti chiesti (accessibilità, ombre, scenari, scena alla Padova), con servizio MCP. Il 10 ottobre Polo e fermata T2 sono stati rifatti (D19, D20) e ricalcolati da F04 a F11. Revisione del codice completata e i sei difetti trovati (R1-R6) corretti il 10 ottobre, ognuno con un test (commit `f836d95` e `df0481b`): `make lint` e `make test` passano. I numeri dei report sono confrontati con i file di risultato. Dettagli in [REVISIONE-CODICE-20261010.md](REVISIONE-CODICE-20261010.md). Punto di ripartenza per la prossima sessione.
 
+17 ottobre 2026: sessione autonoma sulla fase F1 del [piano di decollo](PIANO-DECOLLO.md), ramo `agente/f1` (non ancora in `main`): MCP via HTTP in sola lettura (pronto, non installato), schede delle fonti e strumento `get_source_card`, prompt per l'assistente, pagina di metodo nella scena, bozza del documento tecnico. Esiti, differenze dei dati ricostruiti sul worker e domande aperte in [REPORT-AGENTE-F1.md](REPORT-AGENTE-F1.md).
+
 ## In una riga
 
 Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2 km²), costruito solo da open data con licenza che ne permette il riuso, per mostrarne le potenzialità. Pisa è accantonata nel tag git `pilota-pisa-z2` (D15); il 10 ottobre i suoi file sono stati tolti dal ramo principale, tranne gli script di rete e geometria di Pisa (`network/build.sh`, `geometry/build.sh` e i loro test), non più mantenuti.
