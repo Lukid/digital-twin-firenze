@@ -17,7 +17,7 @@ test: test-fast validate
 	$(SPY) nl/firenze_novoli/test_nl.py
 
 lint:
-	ruff check .
+	$(PY) -m ruff check .
 
 validate:
 	$(PY) contracts/validate.py
