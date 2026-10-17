@@ -9,7 +9,7 @@ Sessione autonoma del 17 ottobre 2026 sul worker VPS, ramo `agente/f1`, secondo 
 | 0 Ambiente riproducibile | non fatto del tutto: dati di oggi diversi dalla baseline, 5 test falliscono | vedi sotto | `make lint` ok, `make validate` ok, `make test` no |
 | 1 MCP remoto in sola lettura | fatto | vedi sotto | `service/.venv/bin/python service/test_mcp_remoto.py`: OK in 22-23 s, aggiunto a `make test-fast` |
 | 2 Schede delle fonti | fatto | vedi sotto | `service/.venv/bin/python service/test_schede.py`: OK, 36 fonti, 14 nella baseline |
-| 3 Prompt per l'agente | in corso | | |
+| 3 Prompt per l'agente | fatto | vedi sotto | giro di 28 domande via HTTP: [REPORT-REMOTO.md](../nl/firenze_novoli/REPORT-REMOTO.md) |
 | 4 Pagina di metodo | fatto | vedi sotto | `pipeline/.venv/bin/python scene/firenze_novoli/test_build.py`: tutti ok |
 | 5 Documento tecnico | bozza fatta | vedi sotto | `service/test_schede.py` controlla la tabella delle fonti |
 
@@ -92,6 +92,18 @@ Fatto.
 - `service/test_service.py` aggiornato: l'elenco atteso degli strumenti comprende `get_source_card` (sul worker il test si ferma prima, per il job_id del compito 0).
 - Test `service/test_schede.py` (entra in `make test-fast` e nella CI, non richiede `data/`): schede su disco uguali a quelle generate; tutte le fonti della baseline hanno una scheda; nessun campo di licenza vuoto; date degli scarichi uguali agli snapshot; data del dato uguale al periodo dichiarato; date del catalogo marcate; strumento MCP conforme al contratto.
 
+## Compito 3 - Prompt pronto per l'agente
+
+Fatto.
+
+- `service/PROMPT-AGENTE.md`: testo da incollare nell'assistente. Procedura: elencare fonti (`get_source_card`, `list_approved_sources`), destinazioni e scenari prima di calcolare; solo id restituiti; parametri di riferimento dichiarati; una chiamata lunga alla volta; ogni numero da un job riuscito con job_id, dataset, parametri e limiti; significato di ogni codice d'errore; "non lo so: il gemello non calcola questo" con esempi (temperatura percepita, rimozione di alberi, Careggi, costi, classifiche); civici non sono persone; niente SQL; date delle fonti dalle schede. Forma della risposta in tre blocchi.
+- `nl/firenze_novoli/mcp_client.py` parla anche via HTTP con `DT_MCP_URL` (e `DT_MCP_TOKEN`); senza, resta su stdio come prima.
+- Verifica: un agente nuovo, con il solo prompt e l'MCP via HTTP sul worker, ha rifatto le 21 domande di F11 e i 7 seguiti. Registro in `nl/firenze_novoli/giro_remoto.json`, esito in [REPORT-REMOTO.md](../nl/firenze_novoli/REPORT-REMOTO.md).
+  - 64 chiamate, 56 riuscite. Nessun numero senza job, nessun id inventato, chiarimenti chiesti in tutti i casi ambigui, civici mai chiamati persone, "non lo so" per i calcoli che non esistono.
+  - Accessibilità e ombre: stessi numeri del 10 ottobre, job_id diversi (dati del worker).
+  - Scenari: `compare_scenarios` con la baseline rifiutato 5 volte (`incompatible_baseline`, dati del worker). L'agente ha ricostruito l'effetto del filare con `compute_shadow` e l'ha dichiarato; per la pensilina ha risposto "non lo so, per ora".
+  - Correzioni al prompt dopo la prova: aggiunto `incompatible_baseline` fra i codici, con l'istruzione di non ricostruire il confronto senza dichiararlo; aggiunta la regola di una chiamata lunga alla volta (l'agente ne aveva lanciate due insieme e una era stata respinta). Il giro non è stato rifatto dopo le correzioni.
+
 ## Compito 4 - Pagina di metodo nella scena
 
 Fatto.
@@ -132,10 +144,17 @@ Fonti della baseline: `src_fi_rifugi_aree` (41 aree fresche in città) e `src_fi
 
 Nel riquadro c'è un solo rifugio; entro i 700 m del margine della rete ce ne sono altri 7 (6 aree e la biblioteca). Gli altri 34 e le altre 6 biblioteche sono oltre 700 m.
 
-Accessibilità verso il più vicino: non calcolata. Lo strumento con più destinazioni (`compute_walk_access` con più `destination_ids`) accetta solo le destinazioni di `network/firenze_novoli/destinazioni.json`, e i rifugi non ci sono. Per calcolarla servono:
-1. aggiungere i rifugi alle destinazioni in `network/destinazioni_firenze.py`, con un ingresso per indirizzo dichiarato (civico del Comune all'indirizzo dell'ingresso, come per il Polo in D19);
+Accessibilità verso il più vicino: lo strumento MCP con più destinazioni (`compute_walk_access` con più `destination_ids`) accetta solo le destinazioni di `network/firenze_novoli/destinazioni.json`, e i rifugi non ci sono. Ho fatto una stima fuori dal servizio, non versionata, con le stesse funzioni del motore di F06 (`accessibilita.calcola` e `_aggrega`, profilo 1,2 m/s, aggancio dei civici a 40 m, regole di aggancio degli ingressi di F04). Script in scratchpad, dati del worker (compito 0).
+
+- Ingressi: il civico del Comune all'indirizzo dichiarato dalla fonte, uno per indirizzo (9 ingressi per 7 rifugi). Il Parco delle Cascine resta fuori: i suoi due indirizzi d'ingresso non sono fra i civici dell'area allargata.
+- Risultato sui 3.296 civici del riquadro, verso il più vicino dei 7 rifugi: 14,2% entro 5 minuti, 39,1% entro 10 (26,3-42,8% fra 0,8 e 1,4 m/s), 56,4% entro 15. Mediana 12,8 minuti. Stessi esclusi di F06: 168 senza aggancio, 15 vietati, 1 isolato.
+- Rifugio più vicino per numero di civici: Biblioteca Filippo Buonarroti 1.071, Medaglie d'Oro 667, Cavalieri di Vittorio Veneto 623, Puccini 501, Toscanini 20 134, Toscanini 5 116; Morandi mai il più vicino.
+- Limiti: ingressi non verificati (un civico non è per forza il cancello del giardino); orari d'apertura ignoti (la biblioteca non è aperta sempre); nessuna ombra lungo il percorso; civici, non persone.
+
+Per farlo diventare un risultato del servizio servono:
+1. aggiungere i rifugi alle destinazioni in `network/destinazioni_firenze.py`, con gli ingressi sopra;
 2. rifare la rete (`network/build_firenze.sh`) e aggiornare l'hash del motore in `scenarios/firenze_novoli/baseline.json` se cambia;
-3. chiamare `compute_walk_access` con gli 8 id insieme: per ogni civico vince il più vicino.
+3. chiamare `compute_walk_access` con gli id dei rifugi insieme: per ogni civico vince il più vicino.
 È una modifica della rete e delle destinazioni: va decisa da Luca (domanda 3).
 
 ### Percorsi campione proposti verso i rifugi
