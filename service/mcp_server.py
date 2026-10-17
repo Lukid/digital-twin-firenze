@@ -16,6 +16,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import core
 import mcp.types as t
 from mcp.server.lowlevel import Server
+from mcp.server.lowlevel.helper_types import ReadResourceContents
 from mcp.server.stdio import stdio_server
 
 DESC = {
@@ -27,7 +28,8 @@ DESC = {
     "get_job_status": "Stato e parametri di un job già eseguito.", "get_result_manifest": "Manifest completo (metodo, dataset, metriche, limiti, asset) di un job.",
     "compute_shadow": "Ombra geometrica su percorsi (route_id campione R01...R10, o geometrie) per data e orari locali Europe/Rome: frazione in ombra e minuti al sole camminando, con intervalli di sensibilità. Con obstacles=buildings_trees_and_lidar_vegetation aggiunge alberi censiti e vegetazione LiDAR. Con scenario_id (obstacles=buildings_and_scenario) somma gli interventi dello scenario agli edifici documentati. Orari con sole sotto 5 gradi hanno stato esplicito e nessun numero. Job lungo: tenere basso il numero di orari.",
     "create_local_scenario": "Crea uno scenario locale versionato (nuovi alberi con dimensione di classe scenario, pensiline con quota d'imposta e tetto) a partire dalla baseline congelata. Segnala interventi dentro edifici o su carreggiata senza marciapiede; la fattibilità resta sempre ignota. Rimozioni e modifiche non sono supportate.",
-    "compare_scenarios": "Confronto su condizioni comuni. Con baseline_id e scenario_ids: delta di ombra e minuti al sole su R01 e percorsi campione, area di attesa, tratti più usati pesati per civici (non persone), effetto sull'accessibilità; indicatori separati, nessun ordinamento né punteggio unico (con weights risponde outside_capability). Con manifest_ids e metric_ids: delta fra manifest di compute_shadow. Il calcolo del confronto fra scenari può richiedere alcuni minuti se le ombre non sono in cache."}
+    "compare_scenarios": "Confronto su condizioni comuni. Con baseline_id e scenario_ids: delta di ombra e minuti al sole su R01 e percorsi campione, area di attesa, tratti più usati pesati per civici (non persone), effetto sull'accessibilità; indicatori separati, nessun ordinamento né punteggio unico (con weights risponde outside_capability). Con manifest_ids e metric_ids: delta fra manifest di compute_shadow. Il calcolo del confronto fra scenari può richiedere alcuni minuti se le ombre non sono in cache.",
+    "get_source_card": "Schede delle fonti: senza source_id l'indice (una riga per fonte, con licenza, uso consentito e data del dato), con source_id la scheda completa (editore, catalogo, licenza ed evidenza, date degli scarichi, campi usati, controlli, limiti). Usarla per citare fonti e licenze nelle risposte. Le stesse schede sono anche risorse MCP (schede://)."}
 ISTRUZIONI = "Calcoli deterministici sul pilota di Firenze, Novoli - Firenze Nova (aoi_firenze_novoli). Non dire di aver calcolato nulla se non c'è un job riuscito; riporta job_id, dataset, parametri e limiti. Se una destinazione è ambigua, chiedi all'utente."
 SOLA_LETTURA = {"create_local_scenario"}   # strumenti che scrivono dati di progetto: spenti nel servizio remoto
 JOB_LUNGHI = {"compute_shadow", "compare_scenarios"}
@@ -68,6 +70,18 @@ def crea_server(remoto=None):
         if remoto:
             for n in SOLA_LETTURA: desc[n] = "Non disponibile su questo servizio remoto (sola lettura): risponde sempre outside_capability. " + desc[n]
         return [t.Tool(name=n, description=desc[n], inputSchema=core.schema_for_client(n)) for n in core.TOOLS]
+
+    @server.list_resources()
+    async def _risorse():
+        return [t.Resource(uri=f"schede://{p.name}", name=p.stem, mimeType="text/markdown",
+                           description="Indice delle schede delle fonti" if p.stem == "INDEX" else f"Scheda della fonte {p.stem}") for p in sorted(core.SCHEDE.glob("*.md"))]
+
+    @server.read_resource()
+    async def _leggi(uri):
+        nome = str(uri).removeprefix("schede://")
+        p = core.SCHEDE / nome
+        if "/" in nome or not nome.endswith(".md") or not p.is_file(): raise ValueError(f"Risorsa sconosciuta: {uri}")
+        return [ReadResourceContents(content=p.read_text(), mime_type="text/markdown")]
 
     @server.call_tool(validate_input=False)   # la validazione vera è nel nucleo, con lo schema dei contratti
     async def _call(name, arguments):

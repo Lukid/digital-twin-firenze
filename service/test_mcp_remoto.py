@@ -47,6 +47,9 @@ async def via_http(url):
         out = await chiamate(s)
         r = await s.call_tool("create_local_scenario", SCN)
         out["create"] = (r.isError, json.loads(r.content[0].text))
+        ris = (await s.list_resources()).resources   # schede delle fonti come risorse
+        out["risorse"] = sorted(str(x.uri) for x in ris)
+        out["indice"] = (await s.read_resource("schede://INDEX.md")).contents[0].text
         return out
 
 
@@ -81,10 +84,14 @@ def main():
         err, r = rh["create"]
         assert err and r["error"]["code"] == "outside_capability" and "sola lettura" in r["error"]["message"], r
         assert not (TMP / "scenari").exists() or not list((TMP / "scenari").iterdir())
+
+        # 4. schede delle fonti come risorse MCP
+        assert "schede://INDEX.md" in rh["risorse"] and "schede://src_fi_civici.md" in rh["risorse"], rh["risorse"][:5]
+        assert rh["indice"] == (HERE / "schede/INDEX.md").read_text()
     finally:
         srv.terminate(); srv.wait(10)
 
-    # 4. limiti del servizio remoto, sulla classe che li applica (senza server: niente attese)
+    # 5. limiti del servizio remoto, sulla classe che li applica (senza server: niente attese)
     sys.path.insert(0, str(HERE)); os.environ["DT_CACHE_DIR"] = str(TMP / "unit")
     import core, mcp_server as M
     R = M.Remoto(richieste_minuto=3, job_lunghi=1)

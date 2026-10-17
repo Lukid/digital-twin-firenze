@@ -8,7 +8,7 @@ Sessione autonoma del 17 ottobre 2026 sul worker VPS, ramo `agente/f1`, secondo 
 |---|---|---|---|
 | 0 Ambiente riproducibile | non fatto del tutto: dati di oggi diversi dalla baseline, 5 test falliscono | vedi sotto | `make lint` ok, `make validate` ok, `make test` no |
 | 1 MCP remoto in sola lettura | fatto | vedi sotto | `service/.venv/bin/python service/test_mcp_remoto.py`: OK in 22-23 s, aggiunto a `make test-fast` |
-| 2 Schede delle fonti | fatto, da committare | | `service/.venv/bin/python service/test_schede.py`: OK, 36 fonti, 14 nella baseline |
+| 2 Schede delle fonti | fatto | vedi sotto | `service/.venv/bin/python service/test_schede.py`: OK, 36 fonti, 14 nella baseline |
 | 3 Prompt per l'agente | in corso | | |
 | 4 Pagina di metodo | fatto, da committare | | `pipeline/.venv/bin/python scene/firenze_novoli/test_build.py`: tutti ok |
 | 5 Documento tecnico | bozza scritta | | `service/test_schede.py` controlla la tabella delle fonti |
@@ -89,7 +89,8 @@ Fatto.
 - Regola di provenienza: la data del dato viene solo dal periodo dichiarato nel record di fonte. La data di modifica della scheda del catalogo compare a parte, con la scritta "non è la data del dato".
 - Limiti: avvisi dei controlli, riserva sulla licenza e una tabella di limiti noti presi da `docs/STATO.md` e `docs/FONTI.md` (in `schede.py`, dizionario `LIMITI`).
 - Nuovo strumento MCP `get_source_card`: senza argomenti l'indice, con `source_id` la scheda. Contratto in `contracts/schemas/mcp.schema.json` con esempi validi e non validi in `contracts/examples/`. Le schede sono anche risorse MCP (`schede://INDEX.md`, `schede://<source_id>.md`).
-- Test `service/test_schede.py` (entra in `make test-fast` e nella CI, non richiede `data/`): schede su disco uguali a quelle generate; tutte le fonti della baseline hanno una scheda; nessun campo di licenza vuoto; date degli scarichi uguali agli snapshot; data del dato uguale al periodo dichiarato; date del catalogo marcate; strumento MCP conforme al contratto; tabella del documento tecnico aggiornata.
+- `service/test_service.py` aggiornato: l'elenco atteso degli strumenti comprende `get_source_card` (sul worker il test si ferma prima, per il job_id del compito 0).
+- Test `service/test_schede.py` (entra in `make test-fast` e nella CI, non richiede `data/`): schede su disco uguali a quelle generate; tutte le fonti della baseline hanno una scheda; nessun campo di licenza vuoto; date degli scarichi uguali agli snapshot; data del dato uguale al periodo dichiarato; date del catalogo marcate; strumento MCP conforme al contratto.
 
 ## Compito 4 - Pagina di metodo nella scena
 
