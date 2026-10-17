@@ -408,7 +408,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
                         sh = inter.length
                         s, ds, x, y = campioni[rid]
                         if caso in tratti_casi:
-                            ls = [x for x in shapely.get_parts(inter) if x.geom_type == "LineString"]; seg = shapely.line_merge(shapely.MultiLineString(ls)) if ls else LineString()
+                            ls = [x for x in shapely.get_parts(inter) if x.geom_type == "LineString" and not x.is_empty]; seg = shapely.line_merge(shapely.MultiLineString(ls)) if ls else LineString()   # F3: niente parti vuote (RC2)
                             tratti.append({"type": "Feature", "geometry": arrotonda(mapping(shapely.transform(seg, lambda c: np.column_stack(tr_4326(c[:, 0], c[:, 1]))))) if not seg.is_empty else None,
                                            "properties": {"receiver_id": rid, "date": when["date"], "time_local": hhmm, "caso": caso, "azimuth_deg": round(az, 2), "elevation_deg": round(el, 2),
                                                           "length_m": round(g.length, 2), "shaded_m": round(sh, 2), "shade_fraction": round(sh / g.length, 4)}})

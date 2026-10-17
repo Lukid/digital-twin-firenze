@@ -1,0 +1,322 @@
+{
+ "job_id": "job_abda97de82f806e1",
+ "tool": "compute_shadow",
+ "status": "succeeded",
+ "created_at": "2026-10-17T19:37:56Z",
+ "started_at": "2026-10-17T19:37:56Z",
+ "finished_at": "2026-10-17T19:44:49Z",
+ "inputs": {
+  "baseline_id": "bas_firenze_novoli_20261009",
+  "snapshot_ids": [
+   "snp_fi_alberi_20261009",
+   "snp_fi_dsm2023_20261009",
+   "snp_fi_dtm2023_20261009",
+   "snp_osm_firenze_20261009",
+   "snp_rt_uv_firenze_novoli_20261009"
+  ]
+ },
+ "params": {
+  "receivers": [
+   {
+    "receiver_id": "pth_fi_RC5",
+    "kind": "path",
+    "geometry": {
+     "coordinates": [
+      [
+       678629.35,
+       4851588.29
+      ],
+      [
+       678629.19,
+       4851584.85
+      ],
+      [
+       678629.19,
+       4851584.84
+      ],
+      [
+       678578.65,
+       4851587.21
+      ],
+      [
+       678561.52,
+       4851588.0
+      ],
+      [
+       678560.12,
+       4851588.42
+      ],
+      [
+       678559.64,
+       4851589.84
+      ],
+      [
+       678555.44,
+       4851590.14
+      ],
+      [
+       678557.29,
+       4851604.03
+      ],
+      [
+       678558.36,
+       4851608.45
+      ],
+      [
+       678559.81,
+       4851612.35
+      ],
+      [
+       678583.32,
+       4851656.62
+      ],
+      [
+       678597.84,
+       4851684.92
+      ],
+      [
+       678536.8,
+       4851720.18
+      ],
+      [
+       678534.47,
+       4851721.52
+      ],
+      [
+       678536.86,
+       4851726.29
+      ],
+      [
+       678536.93,
+       4851729.42
+      ],
+      [
+       678540.48,
+       4851736.05
+      ],
+      [
+       678538.73,
+       4851737.75
+      ],
+      [
+       678525.13,
+       4851745.52
+      ],
+      [
+       678536.0,
+       4851762.5
+      ],
+      [
+       678529.76,
+       4851773.73
+      ],
+      [
+       678528.41,
+       4851774.51
+      ],
+      [
+       678499.21,
+       4851779.02
+      ],
+      [
+       678499.59,
+       4851783.76
+      ],
+      [
+       678500.61,
+       4851796.43
+      ],
+      [
+       678501.14,
+       4851803.05
+      ],
+      [
+       678501.64,
+       4851809.31
+      ],
+      [
+       678502.07,
+       4851813.84
+      ],
+      [
+       678490.97,
+       4851833.17
+      ],
+      [
+       678475.49,
+       4851835.81
+      ],
+      [
+       678461.85,
+       4851836.07
+      ],
+      [
+       678460.76,
+       4851836.09
+      ],
+      [
+       678454.32,
+       4851828.63
+      ],
+      [
+       678451.8,
+       4851826.77
+      ],
+      [
+       678448.83,
+       4851825.03
+      ],
+      [
+       678444.25,
+       4851823.75
+      ],
+      [
+       678422.19,
+       4851825.21
+      ],
+      [
+       678407.58,
+       4851826.41
+      ],
+      [
+       678378.25,
+       4851830.37
+      ],
+      [
+       678359.64,
+       4851832.16
+      ],
+      [
+       678355.4,
+       4851831.62
+      ],
+      [
+       678289.2,
+       4851838.61
+      ],
+      [
+       678289.57,
+       4851841.64
+      ],
+      [
+       678289.65,
+       4851842.58
+      ],
+      [
+       678290.02,
+       4851846.42
+      ],
+      [
+       678289.83,
+       4851848.93
+      ],
+      [
+       678289.83,
+       4851848.92
+      ],
+      [
+       678289.53,
+       4851848.9
+      ]
+     ],
+     "type": "LineString"
+    }
+   }
+  ],
+  "when": {
+   "date": "2026-09-15",
+   "timezone": "Europe/Rome",
+   "times": [
+    "08:00",
+    "08:30",
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "12:00",
+    "12:30",
+    "13:00",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00",
+    "18:30",
+    "19:00"
+   ]
+  },
+  "method": {
+   "name": "geometric_ray",
+   "space_step_m": 1.0,
+   "time_step_min": 5.0,
+   "obstacles": "buildings_and_trees"
+  },
+  "walk_speed_m_s": 1.2,
+  "casi": [
+   "base",
+   "base_h_min",
+   "base_h_max",
+   "alberi_min",
+   "alberi_tipico",
+   "alberi_max",
+   "veg_lidar_min",
+   "veg_lidar_tipico",
+   "veg_lidar_max"
+  ],
+  "fasce": [
+   {
+    "id": "punta_12_30_13_30",
+    "from": "12:30",
+    "to": "13:30"
+   },
+   {
+    "id": "giornata_8_19",
+    "from": "08:00",
+    "to": "19:00"
+   }
+  ],
+  "el_min_deg": 5.0,
+  "sun_reference_lonlat": [
+   11.226,
+   43.798
+  ],
+  "geometrie_sha256": "8ba7121c26e9d9e5872c55ed2bc66177861ccfd033129967d90f26d8d5538c90",
+  "chiome": {
+   "forma": "ellissoide",
+   "tronco": "trascurato",
+   "parametri": "colonne h, chioma_d, imposta (e min/max) del layer alberi di geometrie_firenze_novoli.gpkg"
+  },
+  "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni",
+  "demolizioni": "volumi con presente_2023 falso (demolizione probabile da LiDAR 2023) esclusi",
+  "method_version": "0.3.0",
+  "vegetazione_lidar": {
+   "forma": "prisma opaco sull'impronta del cluster",
+   "z_hi": "h95 del CHM nel cluster",
+   "z_lo_frazione_di_h95": {
+    "veg_lidar_min": 0.4,
+    "veg_lidar_tipico": 0.25,
+    "veg_lidar_max": 0.15
+   },
+   "esclusi": "cluster liscia (probabili tetti non mappati)",
+   "poligoni_sha256": "7539e722d1c5e420395402f3f31126fca7f97faa8cc08ad86bd6db664b3a6998"
+  }
+ },
+ "limits": {
+  "max_area_km2": 4,
+  "max_rows": 50000,
+  "max_seconds": 3600,
+  "max_memory_mb": 4096
+ },
+ "progress": {
+  "fraction": 1.0,
+  "message": "completato"
+ },
+ "result_manifest_id": "man_abda97de82f806e1"
+}

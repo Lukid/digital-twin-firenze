@@ -1,7 +1,8 @@
 """F07: analisi d'ombra sui percorsi pedonali T2 -> Polo delle Scienze Sociali (Novoli), 15 luglio e 15 settembre 2026, ogni 30 min fra 8:00 e 19:00.
 Casi: edifici (h_min/h/h_max), edifici e alberi (min/tipico/max), più vegetazione LiDAR senza albero censito (min/tipico/max).
 Output piccoli (versionati): shadow/firenze_novoli/{manifest/, sintesi.json, tratti_ombra_<data>.geojson}. Output grandi: data/norm/<area>/shadow/.
-Uso: pipeline/.venv/bin/python shadow/run.py [--rapido] [--rifugi]   (richiede shadow/veg_lidar.py già eseguito)"""
+Uso: pipeline/.venv/bin/python shadow/run.py [--rapido] [--rifugi [RCn]]   (richiede shadow/veg_lidar.py già eseguito)
+--rifugi RCn calcola un solo percorso (file con suffisso _rifugi_RCn): tutti e 5 insieme non stanno in 7,9 GB di memoria."""
 import json, pathlib, sys, time
 import shapely
 from pyproj import Transformer
@@ -18,7 +19,9 @@ FASCE = [{"id": "punta_12_30_13_30", "from": "12:30", "to": "13:30"}, {"id": "gi
 ORARI = [f"{m // 60:02d}:{m % 60:02d}" for m in range(8 * 60, 19 * 60 + 1, 30)]
 PERCORSI = ["R01", "R02"]    # da network/<area>/percorsi_campione.geojson: fermate T2 San Donato - Università e Regione Toscana -> ingresso del Polo più vicino per rete (D19, D20)
 SUFF = ""                    # --rifugi: percorsi RC1-RC5 verso i rifugi climatici (D32), file con suffisso _rifugi
-if "--rifugi" in sys.argv: PERCORSI, SUFF = ["RC1", "RC2", "RC3", "RC4", "RC5"], "_rifugi"
+if "--rifugi" in sys.argv:
+    PERCORSI, SUFF = ["RC1", "RC2", "RC3", "RC4", "RC5"], "_rifugi"
+    if (u := sys.argv[sys.argv.index("--rifugi") + 1:]) and u[0].startswith("RC"): PERCORSI, SUFF = [u[0]], f"_rifugi_{u[0]}"
 METODO = {"name": "geometric_ray", "space_step_m": 1.0, "time_step_min": 5.0, "obstacles": "buildings_and_trees"}
 CASI = ["base", "base_h_min", "base_h_max", "alberi_min", "alberi_tipico", "alberi_max", "veg_lidar_min", "veg_lidar_tipico", "veg_lidar_max"]
 CASI_TRATTI = ["base", "alberi_tipico", "veg_lidar_tipico"]

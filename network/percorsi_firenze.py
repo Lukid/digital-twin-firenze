@@ -44,7 +44,7 @@ casi = [("R01", "ent", T_SD, "polo", None, "Fermata T2 San Donato - Università 
         # verso i rifugi climatici (D32), proposti nel report F1; stato da verificare come gli altri
         ("RC1", "ent", T_REG, "vicino", E_MEDAGLIE, "Fermata T2 Novoli - Regione Toscana verso il Giardino di Piazza delle Medaglie d'Oro, ingresso più vicino per rete fra i due dichiarati"),
         ("RC2", "ent", T_AGLI, "ent", "ent_rib_6_0", "Fermata T2 Torre degli Agli verso la Biblioteca Filippo Buonarroti (Viale Guidoni 188)"),
-        ("RC3", "ent", "ent_civ_d15", "ent", "ent_rif_01523_0", "Ingresso D15 del Polo verso il Giardino di piazza dei Cavalieri di Vittorio Veneto (Via Luigi Morandi 2)"),
+        ("RC3", "ent", "ent_civ_d15", "vicino", E_RIF, "Ingresso D15 del Polo verso il rifugio climatico più vicino per rete"),   # D38: prima verso il Giardino dei Cavalieri di Vittorio Veneto, 2,4 km
         ("RC4", "civ", CIV[400], "vicino", E_RIF, "Civico di R05 verso il rifugio climatico più vicino per rete"),
         ("RC5", "ent", E_VAMBA, "vicino", E_RIF, "Accesso della scuola primaria Vamba verso il rifugio climatico più vicino per rete")]
 res, feats = [], []
