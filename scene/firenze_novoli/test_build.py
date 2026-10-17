@@ -1,5 +1,5 @@
 """Test di F09. Uso: pipeline/.venv/bin/python scene/firenze_novoli/test_build.py (richiede assets/ già costruiti)."""
-import gzip, hashlib, json, pathlib, tempfile
+import gzip, hashlib, json, pathlib, re, tempfile
 import build
 
 A = pathlib.Path(__file__).resolve().parent / "assets"
@@ -195,6 +195,19 @@ def test_costruzione_fallita_lascia_la_scena():
         finally: build.terreno, sys.argv = vero, argv
         assert (out / "edifici.json.gz").read_bytes() == b"vecchio" and (out / "index.json").exists()
         assert [f.name for f in pathlib.Path(d).iterdir()] == ["assets"]   # temporaneo rimosso
+
+def test_pagina_di_metodo():
+    """F1: metodo.html aggiornata rispetto a schede e indice, raggiungibile dalla scena, con un'ancora per ogni fonte."""
+    import metodo
+    H = pathlib.Path(__file__).resolve().parent
+    pag = (H / "metodo.html").read_text()
+    assert pag == metodo.pagina(), "metodo.html da rigenerare: pipeline/.venv/bin/python scene/firenze_novoli/metodo.py"
+    assert 'href="metodo.html"' in (H / "index.html").read_text()
+    ancore = set(re.findall(r'<details id="(src_[a-z0-9_]+)"', pag))
+    assert {f["id"] for f in IDX["fonti"]} <= ancore and set(metodo.schede.fonti()) == ancore
+    assert set(re.findall(r'href="#(src_[a-z0-9_]+)"', pag)) <= ancore   # nessun rimando a schede che non ci sono
+    assert pag.count("<h1>") == 1 and 'lang="it"' in pag and "<caption" in pag
+
 
 if __name__ == "__main__":
     for n, f in list(globals().items()):

@@ -10,7 +10,7 @@ Sessione autonoma del 17 ottobre 2026 sul worker VPS, ramo `agente/f1`, secondo 
 | 1 MCP remoto in sola lettura | fatto | vedi sotto | `service/.venv/bin/python service/test_mcp_remoto.py`: OK in 22-23 s, aggiunto a `make test-fast` |
 | 2 Schede delle fonti | fatto | vedi sotto | `service/.venv/bin/python service/test_schede.py`: OK, 36 fonti, 14 nella baseline |
 | 3 Prompt per l'agente | in corso | | |
-| 4 Pagina di metodo | fatto, da committare | | `pipeline/.venv/bin/python scene/firenze_novoli/test_build.py`: tutti ok |
+| 4 Pagina di metodo | fatto | vedi sotto | `pipeline/.venv/bin/python scene/firenze_novoli/test_build.py`: tutti ok |
 | 5 Documento tecnico | bozza scritta | | `service/test_schede.py` controlla la tabella delle fonti |
 
 ## Compito 0 - Ambiente riproducibile

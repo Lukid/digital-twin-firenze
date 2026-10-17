@@ -1,0 +1,1589 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Metodo del gemello di Firenze Novoli</title>
+<meta name="description" content="Da dove viene ogni numero della scena di Firenze Novoli, cosa calcola ogni livello, cosa non sappiamo e le schede delle fonti.">
+<style>
+:root{color-scheme:light;--bg:#eef2f5;--pannello:#ffffff;--testo:#1b2430;--tenue:#4a5563;--bordo:#c4ccd6;--acc:#0b5cad;--focus:#c2410c}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--testo);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.salta{position:absolute;left:-9999px}.salta:focus{left:12px;top:12px;background:#fff;padding:8px 12px;border-radius:8px;z-index:2}
+header,main,footer{max-width:1040px;margin:0 auto;padding:0 16px}
+header{padding-top:24px}
+.eyebrow{font-size:11px;letter-spacing:.14em;font-weight:700;color:var(--tenue);margin:0}
+h1{font-size:28px;margin:4px 0 8px}
+h2{font-size:20px;margin:36px 0 10px}
+h3{font-size:16px;margin:18px 0 6px}
+h3.sk{font-size:14px;margin:14px 0 4px;color:var(--tenue);text-transform:uppercase;letter-spacing:.08em}
+.box{background:var(--pannello);border:1px solid var(--bordo);border-radius:10px;padding:14px 18px}
+nav ul{margin:8px 0 0;padding-left:20px}
+.tab{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--pannello)}
+th,td{border:1px solid var(--bordo);padding:8px 10px;text-align:left;vertical-align:top}
+thead th{background:#e4eaf0}
+tbody th{font-weight:600}
+.calcoli td:nth-child(4){min-width:200px}
+.calcoli code{word-break:normal;overflow-wrap:anywhere}
+small,.tenue{color:var(--tenue)}
+code{font-size:.88em;background:#e7ecf1;padding:1px 4px;border-radius:4px;word-break:break-word}
+details{background:var(--pannello);border:1px solid var(--bordo);border-radius:10px;margin:8px 0;padding:0 16px}
+details summary{cursor:pointer;padding:12px 0;font-weight:600;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+details summary code{font-weight:400}
+details[open]{padding-bottom:12px}
+li{margin-bottom:4px}
+.torna{display:inline-block;margin:16px 0 0;font-weight:600}
+footer{padding:32px 16px 40px;color:var(--tenue);font-size:14px}
+@media (max-width:700px){h1{font-size:23px}table{font-size:13px}}
+</style>
+</head>
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+<header>
+<p class="eyebrow">GEMELLO DIGITALE · OPEN DATA</p>
+<h1>Metodo: da dove viene ogni numero</h1>
+<p>Firenze Novoli - Firenze Nova, riquadro di 2 km². Tutti i numeri della scena vengono da open data con licenza di riuso e da motori di calcolo deterministici: stessa richiesta, stessi dati, stesso risultato. Baseline dei calcoli: <code>bas_firenze_novoli_20261009</code>.</p>
+<a class="torna" href="index.html">← Torna alla scena</a>
+</header>
+<main id="contenuto">
+<nav class="box" aria-label="In questa pagina"><strong>In questa pagina</strong><ul>
+<li><a href="#calcoli">Cosa calcola ogni livello di analisi</a></li>
+<li><a href="#livelli">Fonti di ogni livello della scena</a></li>
+<li><a href="#non-sappiamo">Cosa non sappiamo</a></li>
+<li><a href="#limiti-scena">Limiti della rappresentazione</a></li>
+<li><a href="#schede">Schede delle fonti</a></li>
+<li><a href="#verificare">Come verificare un numero</a></li>
+</ul></nav>
+
+<h2 id="calcoli">Cosa calcola ogni livello di analisi</h2>
+<p>I livelli della scheda Analisi e degli Interventi mostrano risultati prodotti fuori dalla scena, da motori di calcolo versionati nel repository. La scena non ricalcola nulla.</p>
+<div class="tab"><table class="calcoli">
+<caption class="salta">Livelli di analisi: cosa calcolano, come, con quale motore e da quali fonti</caption>
+<thead><tr><th scope="col">Livello</th><th scope="col">Cosa calcola</th><th scope="col">Come</th><th scope="col">Motore e risultato</th><th scope="col">Fonti</th></tr></thead>
+<tbody>
+<tr><th scope="row">Accessibilità (minuti a piedi)</th><td>Per ogni civico (punto d&#x27;indirizzo) il tempo a piedi fino all&#x27;ingresso più vicino della destinazione, sulla rete pedonale. Quote di civici entro 5, 10 e 15 minuti.</td><td>Rete pedonale da OpenStreetMap costruita in F04 (marciapiedi, attraversamenti, scale); civico agganciato alla rete entro 40 m; velocità 1,2 m/s con intervallo 0,8-1,4; nessuna penalità agli attraversamenti nel profilo base.</td><td><code>analysis/accessibilita.py (F06)</code><br><small>Risultato: <code>analysis/firenze_novoli/riepilogo.json e un manifest per job in analysis/firenze_novoli/manifest/</code>. Report: <code>analysis/REPORT-F06.md</code></small></td><td><a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a>, <a href="#src_fi_civici">Civici del Comune di Firenze</a>, <a href="#src_fi_scuole_statali">Anagrafe scuole statali 2026/27 (MIM, ripubblicata dal Comune di Firenze)</a>, <a href="#src_cm_edscol_firenze">Edifici scolastici della Città metropolitana di Firenze (poligoni e accessi)</a>, <a href="#src_gtfs_gest_firenze">GTFS tram (GEST), Firenze</a>, <a href="#src_fi_tram_fermate">Fermate tram, Comune di Firenze</a></td></tr>
+<tr><th scope="row">Ombra sui percorsi</th><td>Frazione di un percorso campione in ombra e minuti passati al sole camminando, per data e ora, dalle fermate del tram al Polo.</td><td>Raggio geometrico dal punto del percorso verso il sole (posizione con l&#x27;algoritmo SPA al centro del riquadro), passo di 1 m e di 5 minuti; ostacoli: edifici con altezza LiDAR, alberi censiti con chioma misurata o stimata e, in un caso separato, vegetazione LiDAR. Il punto è sull&#x27;asse della rete.</td><td><code>shadow/ombre.py (F07)</code><br><small>Risultato: <code>shadow/firenze_novoli/sintesi.json, tratti_ombra_*.geojson e manifest</code>. Report: <code>shadow/REPORT-F07.md</code></small></td><td><a href="#src_rt_uv_firenze_novoli">Unità volumetriche del DB topografico regionale (WFS), area di Firenze</a>, <a href="#src_fi_dsm2023">DSM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a>, <a href="#src_fi_dtm2023">DTM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a>, <a href="#src_fi_alberi">Alberi pubblici, censimento del Comune di Firenze</a>, <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a></td></tr>
+<tr><th scope="row">Scenari (interventi ipotetici)</th><td>Effetto di un filare o di una pensilina ipotetici sull&#x27;ombra di un percorso o di un&#x27;area di attesa: differenza rispetto alla baseline, a parità di condizioni.</td><td>Stesso motore dell&#x27;ombra con gli interventi aggiunti agli ostacoli; dimensioni dell&#x27;albero per classe, con le varianti di chioma minima e massima. La fattibilità (sottoservizi, proprietà, norme) non è valutata.</td><td><code>scenarios/scenari.py e scenarios/confronto.py (F08)</code><br><small>Risultato: <code>scenarios/firenze_novoli/confronto.json e scn_fi_*.json</code>. Report: <code>scenarios/REPORT-F08.md</code></small></td><td><a href="#src_rt_uv_firenze_novoli">Unità volumetriche del DB topografico regionale (WFS), area di Firenze</a>, <a href="#src_fi_dsm2023">DSM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a>, <a href="#src_fi_alberi">Alberi pubblici, censimento del Comune di Firenze</a>, <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a>, <a href="#src_fi_aree_pedonali">Viabilità, aree di circolazione pedonale (poligoni), Comune di Firenze</a></td></tr>
+<tr><th scope="row">Edifici e alberi</th><td>Volumi degli edifici con altezza, alberi con altezza e chioma, nella scena e come ostacoli per l&#x27;ombra.</td><td>Impronte delle unità volumetriche 2011; altezza dal LiDAR 2023 (superficie meno terreno) dentro l&#x27;impronta; edifici nuovi solo da OSM. Alberi del censimento comunale con altezza e chioma dal LiDAR dove ci sono celle sufficienti, altrimenti stimate per classe.</td><td><code>geometry/build_firenze.py (F05)</code><br><small>Risultato: <code>geometry/firenze_novoli/report_firenze_novoli.json</code>. Report: <code>geometry/REPORT-F05.md</code></small></td><td><a href="#src_rt_uv_firenze_novoli">Unità volumetriche del DB topografico regionale (WFS), area di Firenze</a>, <a href="#src_fi_dsm2023">DSM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a>, <a href="#src_fi_dtm2023">DTM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a>, <a href="#src_fi_alberi">Alberi pubblici, censimento del Comune di Firenze</a>, <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a></td></tr>
+<tr><th scope="row">Temperatura delle superfici</th><td>Temperatura dei tetti, delle strade e del verde nelle giornate estive serene, per data, e differenze fra giornate.</td><td>Banda termica Landsat 8 e 9 (Collection 2, livello 2) convertita in gradi; tenute le date con almeno l&#x27;80% di celle valide sul riquadro.</td><td><code>pipeline/norm_firenze.py e scene/firenze_novoli/build.py (F09)</code><br><small>Risultato: <code>assets/temperature.json.gz</code>. Report: <code>scene/firenze_novoli/ADR-F09.md</code></small></td><td><a href="#src_fi_landsat_st">Landsat 8-9 Collection 2 Level-2, temperatura delle superfici (ST_B10) e QA_PIXEL, estati 2023-2026, riquadro FP</a>, <a href="#src_sir_termo_firenze">Temperatura dell&#x27;aria giornaliera (massima e minima), stazione SIR Firenze Università TOS01001096</a></td></tr>
+<tr><th scope="row">Qualità dell&#x27;aria</th><td>Medie annue e superamenti dei limiti di legge per stazione ARPAT, con la distanza dal riquadro.</td><td>Dati orari validati del 2025, contati per stazione; nessuna interpolazione fra stazioni.</td><td><code>pipeline/norm_firenze.py e scene/firenze_novoli/build.py (F09)</code><br><small>Risultato: <code>assets/aria.json.gz</code>. Report: <code>scene/firenze_novoli/ADR-F09.md</code></small></td><td><a href="#src_arpat_aria">Qualità dell&#x27;aria ARPAT, dati orari 2025 della rete regionale (stazioni del comune di Firenze)</a></td></tr>
+</tbody></table></div>
+<p>Il sole e le ombre che si vedono muovendo l'ora nella scheda Sole sono del motore grafico: servono a leggere la scena, non sono un calcolo. I numeri dell'ombra sono solo quelli del livello Ombra sui percorsi.</p>
+
+<h2 id="livelli">Fonti di ogni livello della scena</h2>
+<ul>
+<li><strong>Terreno</strong>: <a href="#src_fi_dtm2023">DTM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a>, <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a></li>
+<li><strong>Nomi dei luoghi</strong>: <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a></li>
+<li><strong>Edifici</strong>: <a href="#src_rt_uv_firenze_novoli">Unità volumetriche del DB topografico regionale (WFS), area di Firenze</a>, <a href="#src_fi_dsm2023">DSM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a>, <a href="#src_fi_dtm2023">DTM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a>, <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a></li>
+<li><strong>Alberi</strong>: <a href="#src_fi_alberi">Alberi pubblici, censimento del Comune di Firenze</a>, <a href="#src_fi_dsm2023">DSM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a>, <a href="#src_fi_dtm2023">DTM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a></li>
+<li><strong>Rete pedonale</strong>: <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a></li>
+<li><strong>Destinazioni dei calcoli</strong>: <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a>, <a href="#src_cm_edscol_firenze">Edifici scolastici della Città metropolitana di Firenze (poligoni e accessi)</a>, <a href="#src_fi_scuole_statali">Anagrafe scuole statali 2026/27 (MIM, ripubblicata dal Comune di Firenze)</a>, <a href="#src_gtfs_gest_firenze">GTFS tram (GEST), Firenze</a></li>
+<li><strong>Fermate tram</strong>: <a href="#src_fi_tram_fermate">Fermate tram, Comune di Firenze</a>, <a href="#src_gtfs_gest_firenze">GTFS tram (GEST), Firenze</a></li>
+<li><strong>Scuole statali</strong>: <a href="#src_fi_scuole_statali">Anagrafe scuole statali 2026/27 (MIM, ripubblicata dal Comune di Firenze)</a></li>
+<li><strong>Rifugi climatici</strong>: <a href="#src_fi_rifugi_aree">Rifugi climatici, aree fresche (Comune di Firenze)</a></li>
+<li><strong>Aree di attesa (protezione civile)</strong>: <a href="#src_fi_aree_attesa">Protezione civile, aree di attesa della popolazione (Comune di Firenze)</a></li>
+<li><strong>Aree di assistenza (protezione civile)</strong>: <a href="#src_fi_aree_assistenza">Protezione civile, aree di assistenza della popolazione (Comune di Firenze)</a></li>
+<li><strong>Barriere architettoniche</strong>: <a href="#src_fi_barriere">Censimento delle barriere architettoniche e urbanistiche, Comune di Firenze</a></li>
+<li><strong>Farmacie</strong>: <a href="#src_fi_farmacie">Farmacie autorizzate (Comune di Firenze)</a></li>
+<li><strong>Stalli per disabili</strong>: <a href="#src_fi_sosta_disabili">Stalli di sosta riservati ai disabili (Comune di Firenze)</a></li>
+<li><strong>Sosta del bike sharing</strong>: <a href="#src_fi_bike_sharing">Aree riservate alla sosta del bike sharing (Comune di Firenze)</a></li>
+<li><strong>Posti del car sharing</strong>: <a href="#src_fi_car_sharing">Posti auto riservati al car sharing (Comune di Firenze)</a></li>
+<li><strong>Varchi dello Scudo Verde</strong>: <a href="#src_fi_scudo_verde">Varchi dello Scudo Verde (Comune di Firenze)</a></li>
+<li><strong>Strade in zona 30</strong>: <a href="#src_fi_zone30">Zone 30 (Comune di Firenze)</a></li>
+<li><strong>Aree verdi del Comune</strong>: <a href="#src_fi_aree_verdi">Aree verdi (Comune di Firenze)</a></li>
+<li><strong>Aree giochi</strong>: <a href="#src_fi_aree_giochi">Aree giochi (Comune di Firenze)</a></li>
+<li><strong>Aree cani</strong>: <a href="#src_fi_aree_cani">Aree cani (Comune di Firenze)</a></li>
+<li><strong>Aree sportive</strong>: <a href="#src_fi_aree_sportive">Aree sportive (Comune di Firenze)</a></li>
+<li><strong>Pericolosità idraulica (PGRA)</strong>: <a href="#src_fi_pericolosita_idraulica">Pericolosità idraulica del Piano di gestione del rischio alluvioni, a cura della protezione civile (Comune di Firenze)</a></li>
+<li><strong>Alluvione del 1966</strong>: <a href="#src_fi_allagate1966">Aree allagate dall&#x27;alluvione del 1966 (Comune di Firenze)</a></li>
+<li><strong>Classi acustiche (PCCA)</strong>: <a href="#src_fi_pcca">Piano comunale di classificazione acustica, classi acustiche (Comune di Firenze)</a></li>
+<li><strong>Residenti per sezione (censimento 2011)</strong>: <a href="#src_fi_sezioni2011">Sezioni di censimento 2011 (Comune di Firenze)</a>, <a href="#src_rt_censimento2011">XV Censimento della popolazione e delle abitazioni 2011, dati per sezione di censimento (Toscana)</a></li>
+<li><strong>Accessibilità (minuti a piedi)</strong>: <a href="#src_fi_civici">Civici del Comune di Firenze</a>, <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a></li>
+<li><strong>Ombra sui percorsi</strong>: <a href="#src_osm_firenze">OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</a>, <a href="#src_fi_dsm2023">DSM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</a></li>
+<li><strong>Scenari (interventi ipotetici)</strong>: nessuna fonte diretta: interventi ipotetici del progetto</li>
+<li><strong>Particelle catastali</strong>: <a href="#src_fi_catasto">Cartografia catastale WFS (particelle e fogli), Agenzia delle Entrate, riquadro FP</a></li>
+<li><strong>Temperatura delle superfici</strong>: <a href="#src_fi_landsat_st">Landsat 8-9 Collection 2 Level-2, temperatura delle superfici (ST_B10) e QA_PIXEL, estati 2023-2026, riquadro FP</a></li>
+<li><strong>Temperatura dell&#x27;aria (stazione SIR)</strong>: <a href="#src_sir_termo_firenze">Temperatura dell&#x27;aria giornaliera (massima e minima), stazione SIR Firenze Università TOS01001096</a></li>
+<li><strong>Qualità dell&#x27;aria (stazioni ARPAT)</strong>: <a href="#src_arpat_aria">Qualità dell&#x27;aria ARPAT, dati orari 2025 della rete regionale (stazioni del comune di Firenze)</a></li>
+</ul>
+
+<h2 id="non-sappiamo">Cosa non sappiamo</h2>
+<ul>
+<li>Nessun numero è validato sul posto: ingressi, linea effettiva del marciapiede e ombra osservata sono da verificare.</li>
+<li>L&#x27;ombra è misurata sull&#x27;asse della rete pedonale, non sulla linea dove si cammina; il lato del marciapiede non è noto.</li>
+<li>La rete pedonale viene solo da OpenStreetMap: larghezze, pendenze e stato dei marciapiedi sono ignoti dove non dichiarati.</li>
+<li>I civici sono punti d&#x27;indirizzo, non persone: una quota di civici non è una quota di abitanti.</li>
+<li>Gli ingressi del Polo sono un civico del Comune per edificio dell&#x27;Ateneo: il civico non è per forza la porta.</li>
+<li>La vegetazione LiDAR è trattata come un prisma opaco pieno: è un limite superiore dell&#x27;ombra.</li>
+<li>Le altezze sono del LiDAR 2023 su impronte del 2011; portici e volumi sospesi sono ignoti e trattati come pieni.</li>
+<li>Il datum verticale delle quote LiDAR non è confermato.</li>
+<li>La fermata San Donato - Università sta circa 100 m fuori dal riquadro: in scena c&#x27;è il terreno, non gli edifici attorno.</li>
+<li>La fattibilità degli interventi degli scenari non è valutata. Nessun costo è calcolato.</li>
+<li>Non c&#x27;è un calcolo della temperatura percepita, del rischio da calore per le persone o delle isole di calore dell&#x27;aria.</li>
+</ul>
+
+<h2 id="limiti-scena">Limiti della rappresentazione</h2>
+<ul>
+<li>Altezze degli edifici: quota LiDAR 2023 (DSM meno DTM) confrontata con le unità volumetriche regionali del 2011. Sono volumi, non modelli architettonici: nessun tetto a falde, nessun portico.</li>
+<li>Portici e volumi sospesi: nessuna fonte, restano &quot;ignoto&quot; e non sono disegnati. I volumi scendono di 1,5 m sotto la quota di base per seguire la pendenza del terreno a 10 m.</li>
+<li>Edifici non più presenti nel 2023 (probabili demolizioni) sono disegnati in grigio scuro e segnalati nella scheda.</li>
+<li>Alberi: il censimento comunale non riporta altezza né chioma. Altezza e chioma sono misurate dal LiDAR dove ci sono celle sufficienti, altrimenti stimate (classe indicata nella scheda). Il tronco è disegnato con almeno 25 cm di diametro per renderlo visibile.</li>
+<li>Terreno: DTM LiDAR 2023 ricampionato a passo 10 m. Verde, acqua e strade sono disegnati da OpenStreetMap: larghezze delle strade indicative per classe, non misurate.</li>
+<li>Nessuna ortofoto: le ortofoto regionali 2016, 2019 e 2022 sono concesse alla Regione Toscana per fini istituzionali e non se ne consente il download (verificato il 10 ottobre 2026). Non c&#x27;è un&#x27;ortofoto con licenza aperta per Firenze.</li>
+<li>Colori degli edifici: tetti in tono terracotta a scopo di lettura, non il colore reale. Tono più scuro per altezza misurata, più chiaro per altezza derivata.</li>
+<li>Ombre: sono quelle del motore grafico (sole calcolato per posizione e data), a scopo illustrativo. Non sono un calcolo analitico: gli alberi proiettano chiome piene.</li>
+<li>Destinazioni dei calcoli e loro ingressi: tutti da verificare sul campo. Condizioni di accesso, orari e cancelli non sono noti.</li>
+<li>Rete pedonale da OpenStreetMap: stato del marciapiede &quot;ignoto&quot; dove non dichiarato, nessuna inferenza.</li>
+<li>Protezione civile: aree di attesa e di assistenza del piano comunale, file del 2024 (sopralluoghi delle aree di assistenza del 2021). Sono poche per tutta la città: la scena mostra tutte quelle entro 700 m dal riquadro: in scena quelle sul terreno disegnato, in elenco con la distanza quelle più lontane. Le classi di pericolosità sono i codici della fonte, senza legenda nel pacchetto. Non è il percorso di evacuazione e non indica quale area spetta a quale via.</li>
+<li>Servizi (farmacie, stalli per disabili, bike e car sharing, varchi dello Scudo Verde) e aree giochi, cani e sportive: dati del Comune di Firenze, solo quelli sul terreno disegnato. Gli stalli dicono dove sono, non se sono liberi; le farmacie non hanno orari né turni.</li>
+<li>Aree verdi: tutte quelle gestite dal Comune, comprese rotonde, spartitraffico e aiuole non fruibili; il verde privato non c&#x27;è.</li>
+<li>Strade in zona 30: porzioni di carreggiata dove vale il limite di 30 km/h, non perimetri di zona.</li>
+<li>Pericolosità idraulica: mappa del Piano di gestione del rischio alluvioni pubblicata dalla protezione civile comunale. Le classi sono i codici della fonte (PS_PERALL_1, 2, 3), senza legenda nel pacchetto. È pianificazione, non la previsione di un evento. Alluvione del 1966: profondità dell&#x27;acqua di un evento storico, non uno scenario attuale.</li>
+<li>Classi acustiche: limiti di legge del piano comunale di classificazione acustica, non rumore misurato.</li>
+<li>Residenti: censimento Istat 2011 per sezione (dati della Regione Toscana), quindici anni fa. Densità calcolata sulla superficie della sezione, strade e verde compresi. Non c&#x27;è un dato per sezione più recente sul catalogo regionale.</li>
+<li>Barriere architettoniche: rilievo del 2013, grado di accessibilità dell&#x27;edificio, non dell&#x27;ostacolo sul percorso.</li>
+<li>Livelli Accessibilità e Ombra sui percorsi: mostrano solo i dati prodotti dai moduli di analisi, se presenti. Non sono calcolati dalla scena.</li>
+<li>Particelle catastali: cartografia catastale dell&#x27;Agenzia delle Entrate, confini indicativi e non probatori. I fabbricati non ci sono nel servizio. La particella di un edificio è quella che ne contiene almeno metà della superficie: aggancio geometrico, non verificato sugli atti.</li>
+<li>Temperatura delle superfici (Landsat 8 e 9): è la temperatura dei tetti, delle strade e del verde, non dell&#x27;aria. Misura termica a 100 m ricampionata a 30 m: il dettaglio sotto i 100 m non è misurato. Solo giorni sereni sul riquadro (almeno l&#x27;80% di celle valide), passaggio del satellite verso le 10:00 UTC (12:00 ora legale), non l&#x27;ora più calda.</li>
+<li>Temperatura dell&#x27;aria: massima e minima giornaliera della stazione SIR Firenze Università, 1,3 km a est del riquadro, dati pre-validati. È un valore per tutta la zona, non per la singola strada, e non è misurata all&#x27;ora del passaggio del satellite.</li>
+<li>Qualità dell&#x27;aria: valori delle stazioni ARPAT, non una mappa e nessuna interpolazione. Nessuna stazione sta nel riquadro: la più vicina, FI-MOSSE (traffico), è a circa 750 m. Dati orari del 2025, validati da ARPAT (archivio pubblico, ora solare); il 2026 non è pubblicato come download. Superamenti contati sul solo 2025: per l&#x27;ozono la norma usa la media su 3 anni. Sotto il 90% di dati validi la media annua non vale ai fini di legge (FI-GRAMSCI è disattivata da marzo 2025 per i lavori della tramvia). ARPAT non specifica la licenza dei dati orari (note legali: CC BY-NC-SA 3.0 IT per i contenuti del sito, CC BY 4.0 per le banche dati): uso deciso il 10 ottobre 2026.</li>
+</ul>
+
+<h2 id="schede">Schede delle fonti</h2>
+<p>Una scheda per fonte: editore, licenza e uso consentito, data del dato, scarichi, campi usati, controlli e limiti. La data del dato è quella dichiarata dalla fonte; la data della scheda del catalogo non è mai la data del dato. Le stesse schede sono leggibili dagli assistenti tramite il servizio di interrogazione del progetto.</p>
+<details id="src_fi_alberi"><summary><span>Alberi pubblici, censimento del Comune di Firenze</span> <code>src_fi_alberi</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_alberi</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/42cd1073-521f-4040-9491-e993d03663a4" rel="noopener">https://dati.toscana.it/dataset/42cd1073-521f-4040-9491-e993d03663a4</a></li>
+<li>Risorsa scaricata: <a href="https://datigis.comune.fi.it/json/alberi_pubblici.json" rel="noopener">https://datigis.comune.fi.it/json/alberi_pubblici.json</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_fi_alberi_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/42cd1073-521f-4040-9491-e993d03663a4" rel="noopener">https://dati.toscana.it/dataset/42cd1073-521f-4040-9491-e993d03663a4</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: dataset dichiarato aggiornato ogni giorno (frequenza DAILY): stato alla data di scarico, senza data di rilievo per albero</li>
+<li>Ultima modifica della scheda del catalogo: 2026-10-10 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_alberi_20261009</code></td><td>2026-10-09T15:09:45Z</td><td>non dichiarato (dataset dichiarato aggiornato ogni giorno: stato alla data di scarico)</td><td>53b3e903dbbe</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>ID</code>, <code>CODSITO_ALBERO</code>, <code>QUARTIERE</code>, <code>SPECIE</code>, <code>NOME_COMUNE</code>, <code>CIRCONF_CM</code></p>
+<p>Unità: <code>circonf_cm</code> cm</p>
+<p>Sistema di riferimento dichiarato: EPSG:4326 (lon/lat trattati come RDN2008 geografico (ADR-T02); il campo CRS della scheda (ROMA40/OVEST) è inaffidabile)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>alberi in area allargata: superato. 8491 oggetti</li>
+<li>altezza e chioma: avviso. assenti nel censimento (altezza da CHM in F05)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Solo alberi pubblici: chiome in parte stimate e imposta della chioma sempre stimata.</li>
+<li>altezza e chioma: assenti nel censimento (altezza da CHM in F05)</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_civici"><summary><span>Civici del Comune di Firenze</span> <code>src_fi_civici</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_civici</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/11430710-56eb-4444-bd6f-c5433155afc5" rel="noopener">https://dati.toscana.it/dataset/11430710-56eb-4444-bd6f-c5433155afc5</a></li>
+<li>Risorsa scaricata: <a href="https://datigis.comune.fi.it/shp/civici.zip" rel="noopener">https://datigis.comune.fi.it/shp/civici.zip</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_fi_civici_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/11430710-56eb-4444-bd6f-c5433155afc5" rel="noopener">https://dati.toscana.it/dataset/11430710-56eb-4444-bd6f-c5433155afc5</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: dataset dichiarato aggiornato al bisogno (AS_NEEDED), ultima modifica 2026-10-05; stato alla data di scarico</li>
+<li>Ultima modifica della scheda del catalogo: 2026-10-05 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_civici_20261009</code></td><td>2026-10-09T15:09:46Z</td><td>non dichiarato (dataset aggiornato al bisogno (ultima modifica dichiarata 2026-10-05): stato alla data di scarico)</td><td>3c501a28c48a</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>PK_ID</code>, <code>ID</code>, <code>CODICESTRA</code>, <code>CODICECIVI</code>, <code>STRADA</code>, <code>NUMEROCIVI</code>, <code>TIPO</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (shapefile con .prj in Monte Mario Italia zona 1; convertito in EPSG:7791 come a Pisa (nessuno shift di datum), scarto non misurato su Firenze)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>civici in area allargata: superato. 13987 oggetti</li>
+<li>civici come punti d&#x27;indirizzo: superato. origins address_points (ADR-F02), non persone</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Civici come punti d&#x27;indirizzo, non persone: le quote di accessibilità sono quote di civici.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_barriere"><summary><span>Censimento delle barriere architettoniche e urbanistiche, Comune di Firenze</span> <code>src_fi_barriere</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_barriere</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/92033b63-0598-4449-9007-22127abe505a" rel="noopener">https://dati.toscana.it/dataset/92033b63-0598-4449-9007-22127abe505a</a></li>
+<li>Risorsa scaricata: <a href="https://datigis.comune.fi.it/shp/mappa_accessibilita.zip" rel="noopener">https://datigis.comune.fi.it/shp/mappa_accessibilita.zip</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_fi_barriere_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/92033b63-0598-4449-9007-22127abe505a" rel="noopener">https://dati.toscana.it/dataset/92033b63-0598-4449-9007-22127abe505a</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: dal 2013-01-01 al 2013-12-31</li>
+<li>Nota sul periodo: archivio dichiarato aggiornato al 2013; file dello zip del 2016-09-13; frequenza NOT_PLANNED</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_barriere_20261009</code></td><td>2026-10-09T15:09:47Z</td><td>non dichiarato (archivio dichiarato aggiornato al 2013)</td><td>0f687cebb744</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>pk_id</code>, <code>quartiere</code>, <code>utoe</code>, <code>scheda</code>, <code>destinaz_u</code>, <code>indirizzo</code>, <code>grado_acce</code>, <code>url</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (shapefile con .prj in Monte Mario Italia zona 1; convertito in EPSG:7791 come a Pisa)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>barriere in area allargata: superato. 222 oggetti</li>
+<li>natura del dato: avviso. schede di accessibilità di edifici (rilievo 2013), non ostacoli sul percorso</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>natura del dato: schede di accessibilità di edifici (rilievo 2013), non ostacoli sul percorso</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_aree_pedonali"><summary><span>Viabilità, aree di circolazione pedonale (poligoni), Comune di Firenze</span> <code>src_fi_aree_pedonali</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_aree_pedonali</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/25703515-6bea-4148-8651-8c494a27bbf5" rel="noopener">https://dati.toscana.it/dataset/25703515-6bea-4148-8651-8c494a27bbf5</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6527&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20272" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6527&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20272</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/25703515-6bea-4148-8651-8c494a27bbf5" rel="noopener">https://dati.toscana.it/dataset/25703515-6bea-4148-8651-8c494a27bbf5</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-02-11; data di rilievo non dichiarata: stato alla data di scarico</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_aree_pedonali_20261010</code></td><td>2026-10-10T10:09:39Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11)</td><td>867ff3c0d7e0</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>acPedId</code>, <code>acPedPos</code>, <code>acPedZon</code>, <code>acPedFon</code>, <code>acPedLiv</code>, <code>acPedSed</code></p>
+<p>Unità: <code>SHAPE_Area</code> m2, <code>SHAPE_Leng</code> m</p>
+<p>Sistema di riferimento dichiarato: EPSG:32632 (shapefile PolygonZ con .prj in WGS84 UTM 32N; convertito in EPSG:7791 e ridotto a 2D. Allineamento con i marciapiedi OSM controllato a vista su Via di Novoli (scarto sotto 1 m), non misurato)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree_pedonali in area allargata: superato. 1790 oggetti</li>
+<li>significato dei codici: avviso. codici acPedPos, acPedZon, acPedFon, acPedSed senza legenda nel pacchetto: usati solo come geometria (dove si cammina)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>significato dei codici: codici acPedPos, acPedZon, acPedFon, acPedSed senza legenda nel pacchetto: usati solo come geometria (dove si cammina)</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_rifugi_aree"><summary><span>Rifugi climatici, aree fresche (Comune di Firenze)</span> <code>src_fi_rifugi_aree</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_rifugi_aree</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/rifugi_climatici_aree_fresche" rel="noopener">https://dati.toscana.it/dataset/rifugi_climatici_aree_fresche</a></li>
+<li>Risorsa scaricata: <a href="https://datigis.comune.fi.it/json/rifugi_climatici_aree_fresche.json" rel="noopener">https://datigis.comune.fi.it/json/rifugi_climatici_aree_fresche.json</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_fi_rifugi_aree_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/rifugi_climatici_aree_fresche" rel="noopener">https://dati.toscana.it/dataset/rifugi_climatici_aree_fresche</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2026-06-18</li>
+<li>Nota sul periodo: dato dichiarato del 2026-06-18, frequenza AS_NEEDED</li>
+<li>Ultima modifica della scheda del catalogo: 2026-06-19 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_rifugi_aree_20261009</code></td><td>2026-10-09T15:09:47Z</td><td>non dichiarato (dato dichiarato del 2026-06-18)</td><td>c243412be270</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>cod_area</code>, <code>nome_area</code>, <code>percentuale_ombreggi</code>, <code>ingresso</code>, <code>descrizione</code></p>
+<p>Unità: <code>percentuale_ombreggi</code> percent</p>
+<p>Sistema di riferimento dichiarato: EPSG:4326 (lon/lat trattati come RDN2008 geografico)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree fresche in area allargata: superato. 7 aree (zero è un esito ammesso)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Non ancora usata nei calcoli di accessibilità: destinazione candidata per il caso caldo (fase F2).</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_rifugi_biblioteche"><summary><span>Rifugi climatici, biblioteche (Comune di Firenze)</span> <code>src_fi_rifugi_biblioteche</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_rifugi_biblioteche</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/rifugi_climatici_biblioteche" rel="noopener">https://dati.toscana.it/dataset/rifugi_climatici_biblioteche</a></li>
+<li>Risorsa scaricata: <a href="https://datigis.comune.fi.it/json/rifugi_climatici_biblioteche.json" rel="noopener">https://datigis.comune.fi.it/json/rifugi_climatici_biblioteche.json</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_fi_rifugi_biblioteche_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/rifugi_climatici_biblioteche" rel="noopener">https://dati.toscana.it/dataset/rifugi_climatici_biblioteche</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2026-06-18</li>
+<li>Nota sul periodo: dato dichiarato del 2026-06-18, frequenza AS_NEEDED</li>
+<li>Ultima modifica della scheda del catalogo: 2026-06-19 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_rifugi_biblioteche_20261009</code></td><td>2026-10-09T15:09:47Z</td><td>non dichiarato (dato dichiarato del 2026-06-18)</td><td>2b2685f9008e</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p>Non elencati nel record di fonte (raster, rete o file con più tabelle).</p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (il GeoJSON dichiara EPSG:3003 (audit cataloghi); letto con il CRS dichiarato e convertito)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>biblioteche in area allargata: superato. 1 punti (zero è un esito ammesso)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Non ancora usata nei calcoli di accessibilità: destinazione candidata per il caso caldo (fase F2).</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_aree_attesa"><summary><span>Protezione civile, aree di attesa della popolazione (Comune di Firenze)</span> <code>src_fi_aree_attesa</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_aree_attesa</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/ea85b242-e939-4837-bd41-32a78b828918" rel="noopener">https://dati.toscana.it/dataset/ea85b242-e939-4837-bd41-32a78b828918</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6745&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20641" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6745&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20641</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/ea85b242-e939-4837-bd41-32a78b828918" rel="noopener">https://dati.toscana.it/dataset/ea85b242-e939-4837-bd41-32a78b828918</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2024-06-25</li>
+<li>Nota sul periodo: file dello zip del 2024-06-25; scheda del catalogo aggiornata il 2026-02-11 (non è la data del dato)</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_aree_attesa_20261010</code></td><td>2026-10-10T17:00:26Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11, file del 2024-06-25)</td><td>5aa2134ee3af</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>gid</code>, <code>nome</code>, <code>indirizzo</code>, <code>codice</code>, <code>associazio</code>, <code>pericolosi</code>, <code>pericolos0</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (scheda: ROMA40/OVEST; CRS letto dal .prj dello shapefile e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree di attesa in area allargata: superato. 1 oggetti (zero è un esito ammesso: sono poche per tutta la città)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Nessun limite specifico registrato oltre ai limiti generali del progetto.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_aree_assistenza"><summary><span>Protezione civile, aree di assistenza della popolazione (Comune di Firenze)</span> <code>src_fi_aree_assistenza</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_aree_assistenza</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/f3b1e6bb-6dc3-4de9-90bb-cedc1734b61b" rel="noopener">https://dati.toscana.it/dataset/f3b1e6bb-6dc3-4de9-90bb-cedc1734b61b</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6505&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20230" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6505&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20230</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/f3b1e6bb-6dc3-4de9-90bb-cedc1734b61b" rel="noopener">https://dati.toscana.it/dataset/f3b1e6bb-6dc3-4de9-90bb-cedc1734b61b</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2024-06-25</li>
+<li>Nota sul periodo: file dello zip del 2024-06-25; sopralluoghi 2021 (campo data_rilev); scheda del catalogo aggiornata il 2026-02-11 (non è la data del dato)</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_aree_assistenza_20261010</code></td><td>2026-10-10T17:00:27Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11, file del 2024-06-25)</td><td>b7e5bb817cff</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>cod_area</code>, <code>denominazi</code>, <code>data_rilev</code>, <code>indirizzo</code>, <code>sup_mq</code>, <code>posti_lett</code>, <code>associazio</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (scheda: ROMA40/OVEST; CRS letto dal .prj dello shapefile e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree di assistenza in area allargata: superato. 3 oggetti (zero è un esito ammesso: sono poche per tutta la città)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Nessun limite specifico registrato oltre ai limiti generali del progetto.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_sosta_disabili"><summary><span>Stalli di sosta riservati ai disabili (Comune di Firenze)</span> <code>src_fi_sosta_disabili</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_sosta_disabili</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/c27abf04-33c0-44ba-ad74-ef8272af90d2" rel="noopener">https://dati.toscana.it/dataset/c27abf04-33c0-44ba-ad74-ef8272af90d2</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=7411&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=21966" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=7411&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=21966</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/c27abf04-33c0-44ba-ad74-ef8272af90d2" rel="noopener">https://dati.toscana.it/dataset/c27abf04-33c0-44ba-ad74-ef8272af90d2</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-10-05, frequenza AS_NEEDED: stato alla data di scarico</li>
+<li>Ultima modifica della scheda del catalogo: 2026-10-05 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_sosta_disabili_20261010</code></td><td>2026-10-10T18:03:43Z</td><td>non dichiarato (scheda aggiornata il 2026-10-05, frequenza AS_NEEDED: stato alla data di scarico)</td><td>7564f814550a</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>id</code>, <code>quartiere</code>, <code>strada</code>, <code>stallo</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>stalli di sosta riservati ai disabili in area allargata: superato. 359 oggetti</li>
+<li>limite: avviso. stalli come punti: non dice se lo stallo è libero né la distanza dall&#x27;ingresso accessibile</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>limite: stalli come punti: non dice se lo stallo è libero né la distanza dall&#x27;ingresso accessibile</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_aree_verdi"><summary><span>Aree verdi (Comune di Firenze)</span> <code>src_fi_aree_verdi</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_aree_verdi</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/d0ffa579-e002-4dc3-94b4-d69207cae114" rel="noopener">https://dati.toscana.it/dataset/d0ffa579-e002-4dc3-94b4-d69207cae114</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6855&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=21081" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6855&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=21081</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/d0ffa579-e002-4dc3-94b4-d69207cae114" rel="noopener">https://dati.toscana.it/dataset/d0ffa579-e002-4dc3-94b4-d69207cae114</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-10-05: stato alla data di scarico</li>
+<li>Ultima modifica della scheda del catalogo: 2026-10-05 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_aree_verdi_20261010</code></td><td>2026-10-10T18:03:44Z</td><td>non dichiarato (scheda aggiornata il 2026-10-05: stato alla data di scarico)</td><td>e8036d81d5e0</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>ID</code>, <code>CODICE_ARE</code>, <code>NOME_AREA</code>, <code>SUPERF_MQ</code>, <code>USO_AREA</code>, <code>QUARTIERE</code></p>
+<p>Unità: <code>SUPERF_MQ</code> m2</p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree verdi in area allargata: superato. 242 oggetti</li>
+<li>limite: avviso. aree verdi gestite dal Comune, comprese rotonde, spartitraffico e aree non fruibili (campo USO_AREA)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>limite: aree verdi gestite dal Comune, comprese rotonde, spartitraffico e aree non fruibili (campo USO_AREA)</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_aree_giochi"><summary><span>Aree giochi (Comune di Firenze)</span> <code>src_fi_aree_giochi</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_aree_giochi</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/ab741235-f377-40de-a416-e9e00d726833" rel="noopener">https://dati.toscana.it/dataset/ab741235-f377-40de-a416-e9e00d726833</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6372&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=21087" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6372&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=21087</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/ab741235-f377-40de-a416-e9e00d726833" rel="noopener">https://dati.toscana.it/dataset/ab741235-f377-40de-a416-e9e00d726833</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-10-05: stato alla data di scarico</li>
+<li>Ultima modifica della scheda del catalogo: 2026-10-05 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_aree_giochi_20261010</code></td><td>2026-10-10T18:03:45Z</td><td>non dichiarato (scheda aggiornata il 2026-10-05: stato alla data di scarico)</td><td>f561b3776243</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>ID</code>, <code>NOME_AREA</code>, <code>CODAREAAPP</code>, <code>AREA_APPAR</code>, <code>CATEGORIA_</code>, <code>TIPOSPECIF</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree giochi in area allargata: superato. 35 oggetti</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Nessun limite specifico registrato oltre ai limiti generali del progetto.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_aree_cani"><summary><span>Aree cani (Comune di Firenze)</span> <code>src_fi_aree_cani</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_aree_cani</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/4e52a4cb-4226-47a0-8307-1a10d151ff09" rel="noopener">https://dati.toscana.it/dataset/4e52a4cb-4226-47a0-8307-1a10d151ff09</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6329&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=21085" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6329&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=21085</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/4e52a4cb-4226-47a0-8307-1a10d151ff09" rel="noopener">https://dati.toscana.it/dataset/4e52a4cb-4226-47a0-8307-1a10d151ff09</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-10-05: stato alla data di scarico</li>
+<li>Ultima modifica della scheda del catalogo: 2026-10-05 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_aree_cani_20261010</code></td><td>2026-10-10T18:03:46Z</td><td>non dichiarato (scheda aggiornata il 2026-10-05: stato alla data di scarico)</td><td>310bef7e245f</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>ID</code>, <code>NOME_AREA</code>, <code>CODAREAAPP</code>, <code>AREA_APPAR</code>, <code>CATEGORIA_</code>, <code>TIPOSPECIF</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree cani in area allargata: superato. 7 oggetti</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Nessun limite specifico registrato oltre ai limiti generali del progetto.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_aree_sportive"><summary><span>Aree sportive (Comune di Firenze)</span> <code>src_fi_aree_sportive</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_aree_sportive</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/04a78eba-5eb4-48e7-92b4-f16c7b3aa63a" rel="noopener">https://dati.toscana.it/dataset/04a78eba-5eb4-48e7-92b4-f16c7b3aa63a</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6375&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=19941" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6375&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=19941</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/04a78eba-5eb4-48e7-92b4-f16c7b3aa63a" rel="noopener">https://dati.toscana.it/dataset/04a78eba-5eb4-48e7-92b4-f16c7b3aa63a</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-02-11, data di rilievo non dichiarata</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_aree_sportive_20261010</code></td><td>2026-10-10T18:03:47Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11, data di rilievo non dichiarata)</td><td>ab95af1202f9</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>IDOBJSTAT</code>, <code>CODAREA</code>, <code>NOMEAREA</code>, <code>QUARTIERE</code>, <code>SUPMQAREA</code>, <code>PROPRIETA</code>, <code>TIPOAREA</code>, <code>TIPOGEST</code>, <code>ENTEGEST</code></p>
+<p>Unità: <code>SUPMQAREA</code> m2</p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree sportive in area allargata: superato. 16 oggetti</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Nessun limite specifico registrato oltre ai limiti generali del progetto.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_farmacie"><summary><span>Farmacie autorizzate (Comune di Firenze)</span> <code>src_fi_farmacie</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_farmacie</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/87aaabce-41a5-43d1-b9fe-1282fd882e69" rel="noopener">https://dati.toscana.it/dataset/87aaabce-41a5-43d1-b9fe-1282fd882e69</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6413&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20036" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6413&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20036</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/87aaabce-41a5-43d1-b9fe-1282fd882e69" rel="noopener">https://dati.toscana.it/dataset/87aaabce-41a5-43d1-b9fe-1282fd882e69</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-02-11, data di rilievo non dichiarata</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_farmacie_20261010</code></td><td>2026-10-10T18:03:47Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11, data di rilievo non dichiarata)</td><td>362409973414</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>ID</code>, <code>DENOMINAZI</code>, <code>VIA</code>, <code>NCIVICO</code>, <code>ESPONENTEC</code>, <code>TIPOCIV</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>farmacie autorizzate in area allargata: superato. 10 oggetti</li>
+<li>limite: avviso. orari e turni non inclusi (sono un altro dataset, giornaliero)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>limite: orari e turni non inclusi (sono un altro dataset, giornaliero)</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_bike_sharing"><summary><span>Aree riservate alla sosta del bike sharing (Comune di Firenze)</span> <code>src_fi_bike_sharing</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_bike_sharing</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/be9ee992-0126-4b8d-afd7-16da15bfda71" rel="noopener">https://dati.toscana.it/dataset/be9ee992-0126-4b8d-afd7-16da15bfda71</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6558&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20337" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6558&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20337</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/be9ee992-0126-4b8d-afd7-16da15bfda71" rel="noopener">https://dati.toscana.it/dataset/be9ee992-0126-4b8d-afd7-16da15bfda71</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-09-19: stato alla data di scarico</li>
+<li>Ultima modifica della scheda del catalogo: 2026-09-19 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_bike_sharing_20261010</code></td><td>2026-10-10T18:03:48Z</td><td>non dichiarato (scheda aggiornata il 2026-09-19: stato alla data di scarico)</td><td>7cf32cc6b0b0</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>id</code>, <code>nome</code>, <code>indirizzo</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree riservate alla sosta del bike sharing in area allargata: superato. 30 oggetti</li>
+<li>limite: avviso. aree di sosta, non disponibilità dei mezzi</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>limite: aree di sosta, non disponibilità dei mezzi</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_car_sharing"><summary><span>Posti auto riservati al car sharing (Comune di Firenze)</span> <code>src_fi_car_sharing</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_car_sharing</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/66de7a99-a435-45d7-8ad0-6a1caf88c943" rel="noopener">https://dati.toscana.it/dataset/66de7a99-a435-45d7-8ad0-6a1caf88c943</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6563&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20352" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6563&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20352</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/66de7a99-a435-45d7-8ad0-6a1caf88c943" rel="noopener">https://dati.toscana.it/dataset/66de7a99-a435-45d7-8ad0-6a1caf88c943</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-02-11, data di rilievo non dichiarata</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_car_sharing_20261010</code></td><td>2026-10-10T18:03:49Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11, data di rilievo non dichiarata)</td><td>65789283a73d</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>id</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>posti auto riservati al car sharing in area allargata: superato. 9 oggetti</li>
+<li>limite: avviso. solo la posizione, nessun attributo</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>limite: solo la posizione, nessun attributo</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_pericolosita_idraulica"><summary><span>Pericolosità idraulica del Piano di gestione del rischio alluvioni, a cura della protezione civile (Comune di Firenze)</span> <code>src_fi_pericolosita_idraulica</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_pericolosita_idraulica</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/3511ed47-4797-450b-a583-3163774f246b" rel="noopener">https://dati.toscana.it/dataset/3511ed47-4797-450b-a583-3163774f246b</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=7470&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=22071" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=7470&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=22071</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/3511ed47-4797-450b-a583-3163774f246b" rel="noopener">https://dati.toscana.it/dataset/3511ed47-4797-450b-a583-3163774f246b</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-02-11, data della mappa non dichiarata</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_pericolosita_idraulica_20261010</code></td><td>2026-10-10T18:03:50Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11, data della mappa non dichiarata)</td><td>bf2c46e91098</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>id</code>, <code>decreto</code>, <code>nome</code>, <code>data</code>, <code>pericolo</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>pericolosità idraulica del piano di gestione del rischio alluvioni, a cura della protezione civile in area allargata: superato. 58 oggetti</li>
+<li>limite: avviso. classi nel campo pericolo come codici della fonte (PS_PERALL_1, _2, _3) senza legenda nel pacchetto; mappa di pianificazione, non previsione di un evento</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Mappa di pianificazione, non previsione; classi senza legenda nel pacchetto.</li>
+<li>limite: classi nel campo pericolo come codici della fonte (PS_PERALL_1, _2, _3) senza legenda nel pacchetto; mappa di pianificazione, non previsione di un evento</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_allagate1966"><summary><span>Aree allagate dall&#x27;alluvione del 1966 (Comune di Firenze)</span> <code>src_fi_allagate1966</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_allagate1966</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/7b27687e-1538-4bb8-a803-952f07560070" rel="noopener">https://dati.toscana.it/dataset/7b27687e-1538-4bb8-a803-952f07560070</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6482&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20198" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6482&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20198</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/7b27687e-1538-4bb8-a803-952f07560070" rel="noopener">https://dati.toscana.it/dataset/7b27687e-1538-4bb8-a803-952f07560070</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 1966-11-04</li>
+<li>Nota sul periodo: evento del 4 novembre 1966; file dello zip del 2013-01-18</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_allagate1966_20261010</code></td><td>2026-10-10T18:03:51Z</td><td>non dichiarato (evento del 4 novembre 1966; file dello zip del 2013-01-18)</td><td>5dc396ea3c16</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>AREE_ALLAG</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791: il .prj è Monte Mario con meridiano di Roma (Gauss-Boaga fuso Ovest scritto rispetto a Roma), equivalente a EPSG:3003; pyogrio non lo riconosce e il CRS è impostato a mano)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree allagate dall&#x27;alluvione del 1966 in area allargata: superato. 3 oggetti</li>
+<li>limite: avviso. classi di profondità dell&#x27;acqua (0-2, 2-4, 4-5 m) ricavate dalle curve di isoprofondità: evento storico, non scenario attuale</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Evento storico, non previsione.</li>
+<li>limite: classi di profondità dell&#x27;acqua (0-2, 2-4, 4-5 m) ricavate dalle curve di isoprofondità: evento storico, non scenario attuale</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_zone30"><summary><span>Zone 30 (Comune di Firenze)</span> <code>src_fi_zone30</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_zone30</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/88b6ca0a-61f7-42eb-9965-a9cd38df7f65" rel="noopener">https://dati.toscana.it/dataset/88b6ca0a-61f7-42eb-9965-a9cd38df7f65</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=7483&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=22111" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=7483&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=22111</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/88b6ca0a-61f7-42eb-9965-a9cd38df7f65" rel="noopener">https://dati.toscana.it/dataset/88b6ca0a-61f7-42eb-9965-a9cd38df7f65</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-02-11, campi data_inizi e data_fine per oggetto</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_zone30_20261010</code></td><td>2026-10-10T18:03:52Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11, campi data_inizi e data_fine per oggetto)</td><td>ac61bab929d3</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>id</code>, <code>tipologia</code>, <code>toponimo</code>, <code>data_inizi</code>, <code>data_fine</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>zone 30 in area allargata: superato. 416 oggetti</li>
+<li>limite: avviso. non sono perimetri di zona: sono le porzioni di strada (area veicolare o pedonale, campo tipologia) dove vale il limite di 30 km/h</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>limite: non sono perimetri di zona: sono le porzioni di strada (area veicolare o pedonale, campo tipologia) dove vale il limite di 30 km/h</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_scudo_verde"><summary><span>Varchi dello Scudo Verde (Comune di Firenze)</span> <code>src_fi_scudo_verde</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_scudo_verde</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/varchi-scudo-verde" rel="noopener">https://dati.toscana.it/dataset/varchi-scudo-verde</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=7826&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=22904" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=7826&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=22904</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/varchi-scudo-verde" rel="noopener">https://dati.toscana.it/dataset/varchi-scudo-verde</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2025-04-01</li>
+<li>Nota sul periodo: ZTL ambientale attiva dal 2025-04-01 (data_ini per varco); scheda del catalogo aggiornata il 2026-02-11</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_scudo_verde_20261010</code></td><td>2026-10-10T18:03:53Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11; ZTL ambientale attiva dal 2025-04-01)</td><td>2b553d015e65</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>id</code>, <code>num_varco</code>, <code>nome_varco</code>, <code>ubicazione</code>, <code>atto_ini</code>, <code>tipo_varco</code>, <code>tipol_cost</code>, <code>data_ini</code>, <code>data_fine</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile (EPSG:3003) e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>varchi dello scudo verde in area allargata: superato. 11 oggetti</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Nessun limite specifico registrato oltre ai limiti generali del progetto.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_pcca"><summary><span>Piano comunale di classificazione acustica, classi acustiche (Comune di Firenze)</span> <code>src_fi_pcca</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_pcca</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/0dbc7df5-7172-4c1c-99e1-1acb017b5ad3" rel="noopener">https://dati.toscana.it/dataset/0dbc7df5-7172-4c1c-99e1-1acb017b5ad3</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6792&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20688" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6792&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20688</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/0dbc7df5-7172-4c1c-99e1-1acb017b5ad3" rel="noopener">https://dati.toscana.it/dataset/0dbc7df5-7172-4c1c-99e1-1acb017b5ad3</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: scheda aggiornata il 2026-02-11, data di approvazione del piano non nel pacchetto</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_pcca_20261010</code></td><td>2026-10-10T18:03:54Z</td><td>non dichiarato (scheda aggiornata il 2026-02-11, data di approvazione del piano non nel pacchetto)</td><td>b60d84efdf0a</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>PKID</code>, <code>CLASSE_ACU</code>, <code>DESC_CLASS</code>, <code>DESC_LUOGO</code>, <code>FASCIA</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:4326 (CRS letto dal .prj dello shapefile (EPSG:4326) e convertito in EPSG:7791 (lon/lat trattati come RDN2008 geografico, ADR-T02))</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>piano comunale di classificazione acustica, classi acustiche in area allargata: superato. 29 oggetti</li>
+<li>limite: avviso. classi di pianificazione con i limiti di legge in dBA, non rumore misurato</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Classi acustiche = limiti di legge, non rumore misurato.</li>
+<li>limite: classi di pianificazione con i limiti di legge in dBA, non rumore misurato</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_sezioni2011"><summary><span>Sezioni di censimento 2011 (Comune di Firenze)</span> <code>src_fi_sezioni2011</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_sezioni2011</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07" rel="noopener">https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6440&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20109" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6440&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20109</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07" rel="noopener">https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09). Verificata il 2026-10-10.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2011-10-09</li>
+<li>Nota sul periodo: confini delle sezioni del censimento 2011; file dello zip del 2020-10-14</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_sezioni2011_20261010</code></td><td>2026-10-10T18:03:55Z</td><td>non dichiarato (confini 2011, file del 2020-10-14)</td><td>3c2466fcbe90</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>CODSEZ2011</code>, <code>CODCOMPLSE</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>sezioni in area allargata: superato. 278 oggetti</li>
+<li>residenti: avviso. popolazione del censimento 2011 (src_rt_censimento2011): quindici anni fa, nessun dato per sezione più recente sul catalogo</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Residenti del 2011: non entrano nei calcoli di accessibilità, che restano sui civici.</li>
+<li>residenti: popolazione del censimento 2011 (src_rt_censimento2011): quindici anni fa, nessun dato per sezione più recente sul catalogo</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_rt_censimento2011"><summary><span>XV Censimento della popolazione e delle abitazioni 2011, dati per sezione di censimento (Toscana)</span> <code>src_rt_censimento2011</code></summary>
+<ul>
+<li>Identificativo: <code>src_rt_censimento2011</code></li>
+<li>Editore: Regione Toscana (dati Istat)</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/xv-censpop-2011-datisez" rel="noopener">https://dati.toscana.it/dataset/xv-censpop-2011-datisez</a></li>
+<li>Risorsa scaricata: <a href="https://dati.toscana.it/dataset/46c34b90-92dd-4bd8-ab19-398da5dc933c/resource/1a338a93-65be-45a2-86a0-e13578ce953c/download/r09indicatori2011sezioni.csv" rel="noopener">https://dati.toscana.it/dataset/46c34b90-92dd-4bd8-ab19-398da5dc933c/resource/1a338a93-65be-45a2-86a0-e13578ce953c/download/r09indicatori2011sezioni.csv</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY</li>
+<li>Verifica: verificata con riserva</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/xv-censpop-2011-datisez" rel="noopener">https://dati.toscana.it/dataset/xv-censpop-2011-datisez</a></li>
+<li>Nota: Scheda del catalogo regionale: licenza cc-by (package_show del 2026-10-10).</li>
+<li>Riserva: La scheda non indica la versione della licenza CC BY: attribuzione a Regione Toscana e Istat in ogni caso.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2011-10-09</li>
+<li>Nota sul periodo: data di riferimento del censimento 2011; scheda aggiornata il 2023-09-05</li>
+<li>Ultima modifica della scheda del catalogo: 2023-09-05 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_rt_censimento2011_20261010</code></td><td>2026-10-10T18:03:58Z</td><td>non dichiarato (censimento 2011)</td><td>4893b902480f</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>PROCOM</code>, <code>SEZ2011</code>, <code>P1</code></p>
+<p>Unità: <code>P1</code> persone</p>
+<p>Sistema di riferimento dichiarato: undeclared (tabella senza geometria: agganciata ai poligoni di src_fi_sezioni2011 con SEZ2011 = 48017 x 10^7 + CODSEZ2011)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aggancio alle sezioni: superato. solo P1 (residenti); aggancio sull&#x27;intero comune: 2.067 sezioni su 2.185 (le altre senza riga nel CSV)</li>
+<li>anno: avviso. censimento 2011: Novoli è cambiato da allora (nuove residenze e studentati)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Dato di quindici anni fa; densità sulla superficie lorda della sezione.</li>
+<li>anno: censimento 2011: Novoli è cambiato da allora (nuove residenze e studentati)</li>
+<li>Licenza con riserva: vedere sopra.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_rt_uv_firenze_novoli"><summary><span>Unità volumetriche del DB topografico regionale (WFS), area di Firenze</span> <code>src_rt_uv_firenze_novoli</code></summary>
+<ul>
+<li>Identificativo: <code>src_rt_uv_firenze_novoli</code></li>
+<li>Editore: Regione Toscana</li>
+<li>Scheda del catalogo: nessuna. Le unità volumetriche di Firenze non sono su dati.toscana.it (il portale le ha per altri 40 comuni, non per Firenze): fonte il servizio WFS del Geoscopio. Da chiedere alla Regione: pubblicazione del layer per Firenze.</li>
+<li>Pagina della fonte: <a href="https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm" rel="noopener">https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm</a></li>
+<li>Risorsa scaricata: <a href="https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato" rel="noopener">https://www502.regione.toscana.it/ows2/com.rt.wms.RTmap/wms?map=owsedificato</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_rt_uv_firenze_novoli_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: nessun identificativo dichiarato (vedere evidenza)</li>
+<li>Verifica: verificata con riserva</li>
+<li>Uso consentito: solo prototipo interno: verificare prima di ridistribuire</li>
+<li>Evidenza: <a href="https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm" rel="noopener">https://www502.regione.toscana.it/geoscopio/servizi/wms/EDIFICATO.htm</a></li>
+<li>Nota: Nessuna licenza sul layer; vale la politica regionale sui dati geografici aperti (CC BY o CC BY-SA, atto 2013), come a Pisa.</li>
+<li>Riserva: Licenza non scritta sul layer: dedotta dalla politica regionale. Verificare prima di ridistribuire.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: dal 2011-01-01 al 2011-12-31</li>
+<li>Nota sul periodo: volo 2011 (campo anno, audit edifici); data di aggiornamento del servizio non dichiarata</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_rt_uv_firenze_novoli_20261009</code></td><td>2026-10-09T15:16:16Z</td><td>dal 2011-01-01 al 2011-12-31</td><td>2197d5f11058</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>uv_id</code>, <code>edifc_id</code>, <code>uv_av</code>, <code>uv_qs</code>, <code>uv_qe</code>, <code>uv_dpor</code>, <code>anno</code></p>
+<p>Unità: <code>height_m</code> m, <code>ground_elev_m</code> m, <code>roof_elev_m</code> m, <code>area_m2</code> m2</p>
+<p>Sistema di riferimento dichiarato: EPSG:7791 (richiesto direttamente in EPSG:7791; spiccato UV meno DTM 2023: mediana -0,14 m su 1.419 impronte (audit edifici), datum coerente ma non dichiarato dalla fonte)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>building_volume in area allargata: superato. 7987 oggetti</li>
+<li>portici (uv_dpor): avviso. un solo oggetto con loggia nell&#x27;audit: nessuna fonte per portici e volumi sospesi</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Unità volumetriche del 2011 con altezze dal LiDAR 2023: edifici nuovi solo dove li ha OSM; portici ignoti trattati come pieni.</li>
+<li>portici (uv_dpor): un solo oggetto con loggia nell&#x27;audit: nessuna fonte per portici e volumi sospesi</li>
+<li>Licenza con riserva: vedere sopra.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_dtm2023"><summary><span>DTM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</span> <code>src_fi_dtm2023</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_dtm2023</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/dtm-lidar-2023" rel="noopener">https://dati.toscana.it/dataset/dtm-lidar-2023</a></li>
+<li>Risorsa scaricata: <a href="https://datigis.comune.fi.it/grid/MDT_LIDAR_2023_ASCII.zip" rel="noopener">https://datigis.comune.fi.it/grid/MDT_LIDAR_2023_ASCII.zip</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_fi_dtm2023_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/dtm-lidar-2023" rel="noopener">https://dati.toscana.it/dataset/dtm-lidar-2023</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2023-06-27</li>
+<li>Nota sul periodo: volo 2023-06-27</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_dtm2023_20261009</code></td><td>2026-10-09T15:13:29Z</td><td>2023-06-27</td><td>3c8fdac2c02a</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p>Non elencati nel record di fonte (raster, rete o file con più tabelle).</p>
+<p>Unità: <code>quota</code> m</p>
+<p>Sistema di riferimento dichiarato: undeclared (i file ASCII 2023 non portano un CRS: EPSG:7791 assunto dal prefisso 32_ e confermato dalle quote (UV -0,14 m, siti alberi -0,07 m; audit edifici e verde); datum verticale non dichiarato)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>raster ritagliato su area allargata: superato. vedi report_firenze.json</li>
+<li>datum verticale: avviso. non dichiarato</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Datum verticale non confermato.</li>
+<li>datum verticale: non dichiarato</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_dsm2023"><summary><span>DSM LiDAR 2023 del Comune di Firenze (ASCII grid 0,5 m)</span> <code>src_fi_dsm2023</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_dsm2023</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/dsm-lidar-2023" rel="noopener">https://dati.toscana.it/dataset/dsm-lidar-2023</a></li>
+<li>Risorsa scaricata: <a href="https://datigis.comune.fi.it/grid/MDS_LIDAR_2023_ASCII.zip" rel="noopener">https://datigis.comune.fi.it/grid/MDS_LIDAR_2023_ASCII.zip</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_fi_dsm2023_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/dsm-lidar-2023" rel="noopener">https://dati.toscana.it/dataset/dsm-lidar-2023</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2023-06-27</li>
+<li>Nota sul periodo: volo 2023-06-27 (giugno: foglie presenti)</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_dsm2023_20261009</code></td><td>2026-10-09T15:13:51Z</td><td>2023-06-27</td><td>1c6c250f2b91</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p>Non elencati nel record di fonte (raster, rete o file con più tabelle).</p>
+<p>Unità: <code>quota</code> m</p>
+<p>Sistema di riferimento dichiarato: undeclared (come il DTM 2023: EPSG:7791 assunto dal prefisso 32_; datum verticale non dichiarato)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>raster ritagliato su area allargata: superato. vedi report_firenze.json</li>
+<li>foglie presenti: avviso. volo di giugno: l&#x27;ombra invernale va trattata a parte</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Datum verticale non confermato.</li>
+<li>Vegetazione LiDAR trattata come prisma opaco pieno: limite superiore dell&#x27;ombra.</li>
+<li>foglie presenti: volo di giugno: l&#x27;ombra invernale va trattata a parte</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_osm_firenze"><summary><span>OpenStreetMap, estratto regionale Centro Italia (ritagliato su riquadro + 700 m)</span> <code>src_osm_firenze</code></summary>
+<ul>
+<li>Identificativo: <code>src_osm_firenze</code></li>
+<li>Editore: OpenStreetMap contributors, estratto di un distributore di estratti OSM</li>
+<li>Scheda del catalogo: nessuna. OSM non è su dati.toscana.it (fonte aperta esterna, ODbL): marciapiedi, attraversamenti e ingressi non hanno altra fonte nel catalogo.</li>
+<li>Pagina della fonte: <a href="https://download.geofabrik.de/europe/italy/centro.html" rel="noopener">https://download.geofabrik.de/europe/italy/centro.html</a></li>
+<li>Risorsa scaricata: <a href="https://download.geofabrik.de/europe/italy/centro-261008.osm.pbf" rel="noopener">https://download.geofabrik.de/europe/italy/centro-261008.osm.pbf</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_osm_firenze_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: ODbL-1.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://www.openstreetmap.org/copyright" rel="noopener">https://www.openstreetmap.org/copyright</a></li>
+<li>Nota: Dati OpenStreetMap sotto ODbL.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2026-10-08</li>
+<li>Nota sul periodo: stato di OpenStreetMap al 2026-10-08 (data nel nome dell&#x27;estratto), senza data di rilievo per oggetto</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_osm_firenze_20261009</code></td><td>2026-10-09T15:07:52Z</td><td>non dichiarato (estratto regionale Centro Italia, timestamp nel nome del file (2026-10-08, ore 00 UTC circa); il ritaglio all&#x27;area allargata avviene in normalizzazione, il file originario resta intatto)</td><td>9fcfe51bab23</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>id</code>, <code>highway</code>, <code>sidewalk</code>, <code>crossing</code>, <code>entrance</code>, <code>building</code>, <code>height</code></p>
+<p>Unità: <code>length_m</code> m, <code>area_m2</code> m2</p>
+<p>Sistema di riferimento dichiarato: EPSG:4326 (lon/lat trattati come RDN2008 geografico (scarto misurato a Pisa: mediana 0,08 m))</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>strade in area allargata: superato. 4596 tratti</li>
+<li>nodi con tag in area allargata: superato. 20281 nodi</li>
+<li>edifici in area allargata: superato. 3885 edifici</li>
+<li>marciapiedi e ingressi: avviso. pochi (audit rete: 1,9 km di footway=sidewalk, 5 ingressi in FB)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Rete pedonale solo OSM: lato del marciapiede, larghezze e pendenze ignoti.</li>
+<li>Estratto regionale del 2026-10-08, non più scaricabile da Geofabrik: la baseline non si ricostruisce identica da zero.</li>
+<li>marciapiedi e ingressi: pochi (audit rete: 1,9 km di footway=sidewalk, 5 ingressi in FB)</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_gtfs_gest_firenze"><summary><span>GTFS tram (GEST), Firenze</span> <code>src_gtfs_gest_firenze</code></summary>
+<ul>
+<li>Identificativo: <code>src_gtfs_gest_firenze</code></li>
+<li>Editore: Regione Toscana / GEST</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/rt-oraritb" rel="noopener">https://dati.toscana.it/dataset/rt-oraritb</a></li>
+<li>Risorsa scaricata: <a href="https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/1f62d551-65f4-49f8-9a99-e19b02077be3/download/gest.gtfs" rel="noopener">https://dati.toscana.it/dataset/8bb8f8fe-fe7d-41d0-90dc-49f2456180d1/resource/1f62d551-65f4-49f8-9a99-e19b02077be3/download/gest.gtfs</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_gtfs_gest_firenze_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: cc-by</li>
+<li>Verifica: verificata con riserva</li>
+<li>Uso consentito: solo prototipo interno: verificare prima di ridistribuire</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/rt-oraritb" rel="noopener">https://dati.toscana.it/dataset/rt-oraritb</a></li>
+<li>Nota: Campo license_id della scheda del catalogo regionale: &#x27;cc-by&#x27;.</li>
+<li>Riserva: La risorsa GEST non porta licenza e la versione CC non è indicata: vale solo il campo della scheda.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: dal 2026-08-10 al 2026-12-30</li>
+<li>Nota sul periodo: minimo e massimo di calendar_dates.txt (nessun feed_info.txt); contiene solo T2 e T1.3, la T1 non compare</li>
+<li>Ultima modifica della scheda del catalogo: 2026-09-08 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_gtfs_gest_firenze_20261009</code></td><td>2026-10-09T15:09:58Z</td><td>dal 2026-08-10 al 2026-12-30</td><td>97d18a9d9eae</td><td>sì</td></tr><tr><td><code>snp_gtfs_gest_firenze_20261016</code></td><td>2026-10-16T19:35:15Z</td><td>dal 2026-08-10 al 2026-12-30</td><td>97d18a9d9eae</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>stop_id</code>, <code>stop_code</code>, <code>stop_name</code>, <code>wheelchair_boarding</code></p>
+<p>Unità: <code>stop_lat</code> deg, <code>stop_lon</code> deg, <code>trips_on_ref_date</code> count</p>
+<p>Sistema di riferimento dichiarato: EPSG:4326 (lat/lon come da specifica GTFS)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>fermate in area allargata: superato. 12 fermate</li>
+<li>linea T1: avviso. assente dal feed (solo T2 e T1.3)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>I calcoli usano solo le posizioni delle fermate, non gli orari.</li>
+<li>linea T1: assente dal feed (solo T2 e T1.3)</li>
+<li>Licenza con riserva: vedere sopra.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_gtfs_at_firenze"><summary><span>GTFS Autolinee Toscane, copia di Firenze</span> <code>src_gtfs_at_firenze</code></summary>
+<ul>
+<li>Identificativo: <code>src_gtfs_at_firenze</code></li>
+<li>Editore: Regione Toscana / Autolinee Toscane</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/rt-oraritb" rel="noopener">https://dati.toscana.it/dataset/rt-oraritb</a></li>
+<li>Risorsa scaricata: <a href="https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs" rel="noopener">https://regionetoscana.smartregion.toscana.it/mobility/artifacts/gtfs</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_gtfs_at_firenze_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: cc-by</li>
+<li>Verifica: verificata con riserva</li>
+<li>Uso consentito: solo prototipo interno: verificare prima di ridistribuire</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/rt-oraritb" rel="noopener">https://dati.toscana.it/dataset/rt-oraritb</a></li>
+<li>Nota: Scheda del catalogo regionale: &#x27;cc-by&#x27;; risorsa Autolinee Toscane: CC BY 4.0.</li>
+<li>Riserva: Versione CC non indicata sulla scheda e condizioni specifiche del feed non trovate: vale il campo del catalogo.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: dal 2026-10-09 al 2026-10-29</li>
+<li>Nota sul periodo: finestra mobile di tre settimane: feed_start_date e feed_end_date da feed_info.txt</li>
+<li>Ultima modifica della scheda del catalogo: 2026-09-08 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_gtfs_at_firenze_20261009</code></td><td>2026-10-09T15:11:43Z</td><td>dal 2026-10-09 al 2026-10-29</td><td>6ca6c95f0556</td><td>sì</td></tr><tr><td><code>snp_gtfs_at_firenze_20261016</code></td><td>2026-10-16T19:35:14Z</td><td>dal 2026-10-16 al 2026-11-05</td><td>4b0a88dfac9b</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>stop_id</code>, <code>stop_code</code>, <code>stop_name</code>, <code>wheelchair_boarding</code></p>
+<p>Unità: <code>stop_lat</code> deg, <code>stop_lon</code> deg, <code>trips_on_ref_date</code> count</p>
+<p>Sistema di riferimento dichiarato: EPSG:4326 (lat/lon come da specifica GTFS)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>fermate in area allargata: superato. 189 fermate</li>
+<li>scadenza: avviso. il feed scade il 2026-10-29: rifare lo snapshot per ogni uso dopo quella data (la copia dell&#x27;audit scadeva il 2026-10-25)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Finestra mobile di tre settimane: i calcoli usano solo le posizioni delle fermate, non gli orari.</li>
+<li>scadenza: il feed scade il 2026-10-29: rifare lo snapshot per ogni uso dopo quella data (la copia dell&#x27;audit scadeva il 2026-10-25)</li>
+<li>Licenza con riserva: vedere sopra.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_tram_fermate"><summary><span>Fermate tram, Comune di Firenze</span> <code>src_fi_tram_fermate</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_tram_fermate</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/607b8031-252b-4442-950a-7b4452d9db8f" rel="noopener">https://dati.toscana.it/dataset/607b8031-252b-4442-950a-7b4452d9db8f</a></li>
+<li>Risorsa scaricata: <a href="https://datigis.comune.fi.it/shp/tram_fermate.zip" rel="noopener">https://datigis.comune.fi.it/shp/tram_fermate.zip</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_fi_tram_fermate_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/607b8031-252b-4442-950a-7b4452d9db8f" rel="noopener">https://dati.toscana.it/dataset/607b8031-252b-4442-950a-7b4452d9db8f</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-09).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2025-03-11</li>
+<li>Nota sul periodo: dato dichiarato del 2025-03-11</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_tram_fermate_20261009</code></td><td>2026-10-09T15:11:43Z</td><td>non dichiarato (dato dichiarato del 2025-03-11)</td><td>631e460c143a</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p>Non elencati nel record di fonte (raster, rete o file con più tabelle).</p>
+<p>Sistema di riferimento dichiarato: undeclared (CRS letto dal .prj dello shapefile e convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>fermate in area allargata: superato. 10 fermate</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Nessun limite specifico registrato oltre ai limiti generali del progetto.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_scuole_statali"><summary><span>Anagrafe scuole statali 2026/27 (MIM, ripubblicata dal Comune di Firenze)</span> <code>src_fi_scuole_statali</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_scuole_statali</code></li>
+<li>Editore: Comune di Firenze (dati MIM)</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/anagrafica-scuole-statali-2026_27" rel="noopener">https://dati.toscana.it/dataset/anagrafica-scuole-statali-2026_27</a></li>
+<li>Risorsa scaricata: <a href="https://datigis.comune.fi.it/json/miur_scuole_statali_2026_27.json" rel="noopener">https://datigis.comune.fi.it/json/miur_scuole_statali_2026_27.json</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_fi_scuole_statali_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: IODL-2.0</li>
+<li>Verifica: verificata con riserva</li>
+<li>Uso consentito: solo prototipo interno: verificare prima di ridistribuire</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/anagrafica-scuole-statali-2026_27" rel="noopener">https://dati.toscana.it/dataset/anagrafica-scuole-statali-2026_27</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: IODL 2.0 (package_show del 2026-10-09).</li>
+<li>Riserva: IODL 2.0 non è CC BY: richiede attribuzione; l&#x27;equivalenza con CC BY e la compatibilità con gli altri layer non sono state valutate giuridicamente. La fonte primaria MIM non ha licenza verificata.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2026-09-18</li>
+<li>Nota sul periodo: anagrafe anno scolastico 2026/27, dato dichiarato del 2026-09-18</li>
+<li>Ultima modifica della scheda del catalogo: 2026-09-19 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_scuole_statali_20261009</code></td><td>2026-10-09T15:12:34Z</td><td>non dichiarato (anagrafe 2026/27, dato dichiarato del 2026-09-18)</td><td>5a9ab7914290</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>codicescuo</code>, <code>nome</code>, <code>indirizzo</code>, <code>tipologia</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:4326 (lon/lat trattati come RDN2008 geografico; due coordinate MIM sbagliate nel contesto (audit destinazioni))</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>scuole in area allargata: superato. 37 punti</li>
+<li>coordinate: avviso. FIMM700011 cade sul punto di Vamba (errore di geocodifica noto)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>coordinate: FIMM700011 cade sul punto di Vamba (errore di geocodifica noto)</li>
+<li>Licenza con riserva: vedere sopra.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_cm_edscol_firenze"><summary><span>Edifici scolastici della Città metropolitana di Firenze (poligoni e accessi)</span> <code>src_cm_edscol_firenze</code></summary>
+<ul>
+<li>Identificativo: <code>src_cm_edscol_firenze</code></li>
+<li>Editore: Città metropolitana di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/edifici-scolastici-citta-metropolitana-di-firenze" rel="noopener">https://dati.toscana.it/dataset/edifici-scolastici-citta-metropolitana-di-firenze</a></li>
+<li>Risorsa scaricata: <a href="https://dati.cittametropolitana.fi.it/geonetwork/srv/api/records/cmfi:a507767e-63e2-4856-9711-5e9a9ea96a76/attachments/form_ed_scolastici.zip" rel="noopener">https://dati.cittametropolitana.fi.it/geonetwork/srv/api/records/cmfi:a507767e-63e2-4856-9711-5e9a9ea96a76/attachments/form_ed_scolastici.zip</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: sì, snapshot <code>snp_cm_edscol_firenze_20261009</code></li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: cc-by</li>
+<li>Verifica: verificata con riserva</li>
+<li>Uso consentito: solo prototipo interno: verificare prima di ridistribuire</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/edifici-scolastici-citta-metropolitana-di-firenze" rel="noopener">https://dati.toscana.it/dataset/edifici-scolastici-citta-metropolitana-di-firenze</a></li>
+<li>Nota: Campo license_id della scheda: &#x27;cc-by&#x27;.</li>
+<li>Riserva: Le risorse non portano licenza e la versione CC non è indicata: vale solo il campo della scheda.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2014-02-13</li>
+<li>Nota sul periodo: dato dichiarato del 2014-02-13, scheda aggiornata il 2026-04-24, frequenza IRREG</li>
+<li>Ultima modifica della scheda del catalogo: 2026-04-24 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_cm_edscol_firenze_20261009</code></td><td>2026-10-09T15:12:35Z</td><td>non dichiarato (dato dichiarato del 2014-02-13, scheda del 2026-04-24)</td><td>791cc1192fa5</td><td>sì</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>COD_MECCAN</code>, <code>GRADO</code>, <code>DENOM</code>, <code>CODICE</code>, <code>TIPOLOGIA</code>, <code>DENOMINAZI</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (shapefile con .prj in Monte Mario Italia zona 1; convertito in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>edifici in area allargata: superato. 229 poligoni</li>
+<li>accessi in area allargata: superato. 36 punti</li>
+<li>gradi coperti: superato. tutti i gradi, dai nidi alle superiori (chiude il dubbio di F01 sulle sole secondarie)</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Licenza con riserva: vedere sopra.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_catasto"><summary><span>Cartografia catastale WFS (particelle e fogli), Agenzia delle Entrate, riquadro FP</span> <code>src_fi_catasto</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_catasto</code></li>
+<li>Editore: Agenzia delle Entrate</li>
+<li>Scheda del catalogo: nessuna. La cartografia catastale non è su dati.toscana.it: è un servizio nazionale dell&#x27;Agenzia delle Entrate (WFS INSPIRE).</li>
+<li>Pagina della fonte: <a href="https://www.agenziaentrate.gov.it/portale/cartografia-catastale-wfs" rel="noopener">https://www.agenziaentrate.gov.it/portale/cartografia-catastale-wfs</a></li>
+<li>Risorsa scaricata: <a href="https://wfs.cartografia.agenziaentrate.gov.it/inspire/wfs/owfs01.php" rel="noopener">https://wfs.cartografia.agenziaentrate.gov.it/inspire/wfs/owfs01.php</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://www.agenziaentrate.gov.it/portale/cartografia-catastale-wfs" rel="noopener">https://www.agenziaentrate.gov.it/portale/cartografia-catastale-wfs</a></li>
+<li>Nota: Pagina del servizio: dati sotto CC BY 4.0 con citazione obbligatoria della titolarità: &quot;Agenzia delle Entrate, cartografia catastale WFS, CC BY 4.0&quot;.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: non dichiarata: vale lo stato alla data di scarico</li>
+<li>Nota sul periodo: aggiornamento dichiarato per foglio (BEGINLIFESPANVERSION dei fogli, il più recente 2026-10-06 nel riquadro); stato alla data di scarico</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_catasto_20261010</code></td><td>2026-10-10T16:11:46Z</td><td>non dichiarato (cartografia catastale aggiornata dall&#x27;Agenzia per foglio (BEGINLIFESPANVERSION dei fogli); stato alla data di scarico)</td><td>dfa2b6b7fc28</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>NATIONALCADASTRALREFERENCE</code>, <code>LABEL</code>, <code>NATIONALCADASTRALZONINGREFERENCE</code>, <code>BEGINLIFESPANVERSION</code>, <code>ORIGINALMAPSCALEDENOMINATOR</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:6706 (GML in RDN2008 geografico con assi lat,lon (unica proiezione offerta); convertito in EPSG:7791. Scarico limitato al riquadro FP (particelle che lo intersecano))</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>particelle in area allargata: superato. 1631 oggetti</li>
+<li>fogli in area allargata: superato. 21 oggetti</li>
+<li>fabbricati: avviso. il servizio non pubblica i fabbricati: solo particelle (con strade e acque) e fogli</li>
+<li>valore dei confini: avviso. cartografia catastale: confini indicativi, non probatori</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Confini indicativi, non probatori; solo riquadro FP.</li>
+<li>fabbricati: il servizio non pubblica i fabbricati: solo particelle (con strade e acque) e fogli</li>
+<li>valore dei confini: cartografia catastale: confini indicativi, non probatori</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_fi_landsat_st"><summary><span>Landsat 8-9 Collection 2 Level-2, temperatura delle superfici (ST_B10) e QA_PIXEL, estati 2023-2026, riquadro FP</span> <code>src_fi_landsat_st</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_landsat_st</code></li>
+<li>Editore: U.S. Geological Survey (copia di Microsoft Planetary Computer)</li>
+<li>Scheda del catalogo: nessuna. Landsat non è su dati.toscana.it: prodotto dell&#x27;USGS, letto dalla copia pubblica del catalogo STAC di Microsoft Planetary Computer (accesso anonimo).</li>
+<li>Pagina della fonte: <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature" rel="noopener">https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature</a></li>
+<li>Risorsa scaricata: <a href="https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2" rel="noopener">https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: public-domain</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products" rel="noopener">https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products</a></li>
+<li>Nota: Pagina USGS: &quot;There are no restrictions on the use of Landsat products.&quot; Politica dati USGS: &quot;All public domain imagery may be used, shared, transferred, or redistributed without restriction.&quot; Citazione chiesta: DOI 10.5066/P9OGBGM6 (Landsat 8-9 OLI/TIRS C2 L2); credito suggerito &quot;Landsat Collection 2 Level-2 image courtesy of the U.S. Geological Survey&quot;.</li>
+<li>Riserva: Dati USGS di pubblico dominio, scaricati tramite Microsoft Planetary Computer.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: dal 2023-06-01 al 2026-09-30</li>
+<li>Nota sul periodo: passaggi estivi (giugno-settembre) 2023-2026 alle 09:58-09:59 UTC circa; tenute solo le date con almeno l&#x27;80% di celle valide sul riquadro FP</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_landsat_st_20261010</code></td><td>2026-10-10T16:22:29Z</td><td>dal 2023-06-01 al 2026-09-30</td><td>1401627a99aa</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>ST_B10</code>, <code>QA_PIXEL</code></p>
+<p>Unità: <code>st_b10</code> K = DN x 0,00341802 + 149,0 (nodata 0); convertito in °C, <code>qa_pixel</code> bit</p>
+<p>Sistema di riferimento dichiarato: EPSG:32632 (COG in WGS84 UTM 32N a 30 m; ritagli ricampionati per vicinanza sul reticolo EPSG:7791 a 30 m della scena (scarto fra i due sistemi sotto il metro))</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>date valide sul riquadro: superato. vedi data/norm/firenze_novoli/fi_landsat_st.json</li>
+<li>risoluzione: avviso. banda termica misurata a 100 m e distribuita a 30 m: il dettaglio fra 30 e 100 m non è misurato</li>
+<li>saturazione termica: avviso. QA_RADSAT non ha un bit per la banda 10 su Landsat 8-9: la saturazione non si controlla</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Temperatura delle superfici, non dell&#x27;aria; misura a 100 m distribuita a 30 m; solo passaggi di metà mattina.</li>
+<li>risoluzione: banda termica misurata a 100 m e distribuita a 30 m: il dettaglio fra 30 e 100 m non è misurato</li>
+<li>saturazione termica: QA_RADSAT non ha un bit per la banda 10 su Landsat 8-9: la saturazione non si controlla</li>
+<li>Licenza con riserva: vedere sopra.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_sir_termo_firenze"><summary><span>Temperatura dell&#x27;aria giornaliera (massima e minima), stazione SIR Firenze Università TOS01001096</span> <code>src_sir_termo_firenze</code></summary>
+<ul>
+<li>Identificativo: <code>src_sir_termo_firenze</code></li>
+<li>Editore: Regione Toscana, Settore Idrologico e Geologico Regionale (SIR)</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/termometri" rel="noopener">https://dati.toscana.it/dataset/termometri</a></li>
+<li>Risorsa scaricata: <a href="https://www.sir.toscana.it/archivio/dati.php" rel="noopener">https://www.sir.toscana.it/archivio/dati.php</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-SA-4.0</li>
+<li>Verifica: verificata con riserva</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://www.sir.toscana.it/licenze" rel="noopener">https://www.sir.toscana.it/licenze</a></li>
+<li>Nota: Pagina Licenze del SIR: &quot;I dati pubblicati dal Settore Idrologico e Geologico Regionale (SIR) - Regione Toscana sono distribuiti con licenza Creative Commons Attribuzione-CondividiAlloStessoModo 4.0 Internazionale (CC BY-SA 4.0)&quot;. Attribuzione: &quot;Settore Idrologico e Geologico Regionale (SIR) - Regione Toscana. Dati distribuiti con licenza Creative Commons CC BY-SA 4.0.&quot;</li>
+<li>Riserva: Condividi allo stesso modo: i derivati di questo livello (meteo.json.gz) vanno distribuiti in CC BY-SA 4.0. La scheda del catalogo (anagrafica stazioni) dice cc-by-sa, le sue risorse A1_PublicDomain: vale la pagina del SIR. Dati dichiarati pre-validati.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2023-01-01</li>
+<li>Nota sul periodo: massime e minime giornaliere 2023-2026 della stazione, dati pre-validati; ora solare</li>
+<li>Ultima modifica della scheda del catalogo: 2025-11-12 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_sir_termo_firenze_20261010</code></td><td>2026-10-10T16:22:49Z</td><td>2023-01-01</td><td>39ebcc88c788</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>Tmax</code>, <code>Tmin</code></p>
+<p>Unità: <code>tmax</code> °C, <code>tmin</code> °C</p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (posizione della stazione dall&#x27;anagrafica WFS del SIR (Gauss-Boaga, quota 84 m s.l.m.), convertita in EPSG:7791)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>serie normalizzata: superato. vedi data/norm/firenze_novoli/sir_termo_firenze.json</li>
+<li>distanza dal riquadro: superato. 1,3 km a est del riquadro FP, in città: rappresentativa della zona, non del singolo isolato</li>
+<li>validazione: avviso. il SIR dichiara i dati pre-validati: possono cambiare</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Una stazione a 1,3 km dal riquadro: temperatura dell&#x27;aria di stazione, non del riquadro. Licenza share-alike.</li>
+<li>validazione: il SIR dichiara i dati pre-validati: possono cambiare</li>
+<li>Licenza con riserva: vedere sopra.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+<details id="src_arpat_aria"><summary><span>Qualità dell&#x27;aria ARPAT, dati orari 2025 della rete regionale (stazioni del comune di Firenze)</span> <code>src_arpat_aria</code></summary>
+<ul>
+<li>Identificativo: <code>src_arpat_aria</code></li>
+<li>Editore: ARPAT, Agenzia regionale per la protezione ambientale della Toscana</li>
+<li>Scheda del catalogo: nessuna. I dati orari e l&#x27;anagrafica delle stazioni non sono su dati.toscana.it: sul catalogo ARPAT ha solo indicatori annuali fino al 2022-2024 e la risorsa &quot;Struttura della rete di monitoraggio della qualità dell&#x27;aria in Toscana&quot; (cc-by) punta a un JSON che oggi rimanda alla home del sito. Da segnalare: link morto e archivio orario da pubblicare sul catalogo.</li>
+<li>Pagina della fonte: <a href="https://www.arpat.toscana.it/datiemappe/qualita-dellaria-dati-orari/" rel="noopener">https://www.arpat.toscana.it/datiemappe/qualita-dellaria-dati-orari/</a></li>
+<li>Risorsa scaricata: <a href="https://www.arpat.toscana.it/app/uploads/2026/05/FI_DATI_QA_2025_CSV.zip" rel="noopener">https://www.arpat.toscana.it/app/uploads/2026/05/FI_DATI_QA_2025_CSV.zip</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: non specificata per i dati orari (note legali ARPAT)</li>
+<li>Verifica: verificata con riserva</li>
+<li>Uso consentito: solo prototipo interno: verificare prima di ridistribuire</li>
+<li>Evidenza: <a href="https://www.arpat.toscana.it/note-legali" rel="noopener">https://www.arpat.toscana.it/note-legali</a></li>
+<li>Nota: Note legali ARPAT: &quot;Salvo dove diversamente specificato, i contenuti del sito Web di ARPAT sono distribuiti con licenza Creative Commons Attribuzione – Non commerciale – Condividi allo stesso modo 3.0 Italia (CC BY-NC-SA 3.0)&quot;; &quot;Ai sensi delle Linee Guida Nazionali per la Valorizzazione del Patrimonio Informativo Pubblico, le banche banche dati distribuite in formato vettoriale sono rilasciate – dove non diversamente specificato – con licenza Creative Commons Attribution 4.0 International (CC-BY 4.0)&quot;; &quot;Salvo diversa indicazione le informazioni contenute nel sito Web ARPAT sono fornite a scopo informativo.&quot; La pagina dei dati orari non indica una licenza. Indicatori annuali PM10 e NO2 (solo per il tipo di stazione): schede del catalogo regionale cc-by.</li>
+<li>Riserva: Non è scritto quale delle due licenze delle note legali vale per i CSV orari: se vale CC BY-NC-SA 3.0, niente uso commerciale e derivati nella stessa licenza. Uso deciso da Luca il 10/10/2026 (D21): pubblicato anche nella scena online, con entrambe le licenze dichiarate; per uso commerciale chiedere conferma ad ARPAT.</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: dal 2025-01-01 al 2025-12-31</li>
+<li>Nota sul periodo: archivio orario 2025 (PM10 e PM2,5 giornalieri), dichiarato validato dall&#x27;intero ciclo di validazione; il 2026 non è pubblicato come download</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_arpat_aria_20261010</code></td><td>2026-10-10T16:25:34Z</td><td>dal 2025-01-01 al 2025-12-31</td><td>70bdeb1ced6d</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>STAZIONE</code>, <code>PARAMETRO</code>, <code>DATA (formato AAAAMMGG)</code>, <code>ORA FINE MISURA (solare)</code>, <code>MEDIA ORARIA</code>, <code>VALIDITA&#x27;</code></p>
+<p>Unità: <code>media_oraria</code> µg/m³ a 20 °C (CO mg/m³), <code>media_giornaliera</code> µg/m³ a temperatura ambiente (PM10, PM2,5)</p>
+<p>Sistema di riferimento dichiarato: undeclared (coordinate delle pagine stazione &quot;N:... - E:...&quot; senza sistema dichiarato: Gauss-Boaga fuso Ovest (EPSG:3003) dedotto dai valori (FI-MOSSE cade in Via delle Mosse); convertite in EPSG:7791 come i civici)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>stazioni selezionate: superato. 6 stazioni della rete regionale nel comune di Firenze (nessun&#x27;altra entro 3 km dal riquadro)</li>
+<li>stazioni nel riquadro FP: avviso. nessuna: la più vicina (FI-MOSSE) è a circa 750 m; valori di stazione, non rappresentano il riquadro</li>
+<li>anno in corso: avviso. il 2026 non è pubblicato come download: passa solo dall&#x27;API dell&#x27;app, esclusa</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>stazioni nel riquadro FP: nessuna: la più vicina (FI-MOSSE) è a circa 750 m; valori di stazione, non rappresentano il riquadro</li>
+<li>anno in corso: il 2026 non è pubblicato come download: passa solo dall&#x27;API dell&#x27;app, esclusa</li>
+<li>Licenza con riserva: vedere sopra.</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
+
+<h2 id="verificare">Come verificare un numero</h2>
+<ul>
+<li>Ogni risultato di calcolo ha un identificativo di job: lo stesso input dà sempre lo stesso identificativo e gli stessi numeri.</li>
+<li>Il manifest del job elenca i dati usati (snapshot con impronta sha256 e licenza), i parametri, le metriche e i limiti.</li>
+<li>I report di ogni motore riportano i numeri del calcolo e i test che li ricontrollano; i numeri dei report si cambiano solo rieseguendo il calcolo.</li>
+</ul>
+<a class="torna" href="index.html">← Torna alla scena</a>
+</main>
+<footer>Pagina generata da <code>scene/firenze_novoli/metodo.py</code> con le schede di <code>service/schede.py</code>. Nessun numero è validato sul posto.</footer>
+</body>
+</html>
