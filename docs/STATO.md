@@ -69,6 +69,12 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D26 (16 ottobre): una giornata a settimana fino a fine gennaio 2027.
 - D27 (16 ottobre): il piano sta nel repo, aggiornato a ogni sessione nel suo registro.
 - D28 (16 ottobre): l'MCP remoto va sulla macchina di prova.
+- D29 (17 ottobre): ramo `agente/f1` unito su `main` dopo `make test`, lint e validate verdi sul Mac; CI verde.
+- D30 (17 ottobre): dati del worker = copia di `data/raw` e `data/norm` del Mac (baseline, stessi job_id); `data/work` (semilavorati di Pisa) non copiata. In più, percorsi campione e test indipendenti dagli identificativi `adr_fi_*`, usando `CODICECIVI` (domanda 1, a+c).
+- D31 (17 ottobre): l'MCP sulla macchina di prova lo installa chi gestisce la macchina, seguendo `service/INSTALLA-REMOTO.md`, con token unico per i colleghi e proxy HTTPS; l'agente fa da supporto. (domanda 2).
+- D32 (17 ottobre): i 7 rifugi climatici entro 700 m entrano ora fra le destinazioni, dopo D30 (domanda 3).
+- D33 (17 ottobre): costi degli interventi con l'indicatore "metri quadri d'ombra per mille euro" solo per i filari, dichiarando che le pensiline non hanno un prezzo pubblico; in parallelo ricerca di prezzari comunali riusabili per le pensiline. Nessun costo ipotetico senza fonte (domanda 4).
+- D34 (17 ottobre): `playwright` fuori dai requirements, installato quando serve; gli esempi del documento tecnico restano quelli del 10 ottobre e si rifanno dopo l'installazione remota (domande 5 e 7).
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
