@@ -686,11 +686,11 @@
          "route_id"
         ],
         "additionalProperties": false,
-        "description": "Percorso campione per ID (network/percorsi_campione.geojson, es. R01), espanso dal servizio nella sua geometria sull'asse della rete.",
+        "description": "Percorso campione per ID (network/percorsi_campione.geojson, es. R01, o RC1-RC5 verso i rifugi climatici), espanso dal servizio nella sua geometria sull'asse della rete.",
         "properties": {
          "route_id": {
           "type": "string",
-          "pattern": "^R[0-9]{2}$"
+          "pattern": "^R(C[0-9]|[0-9]{2})$"
          }
         }
        }

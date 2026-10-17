@@ -1,7 +1,7 @@
 """F07: analisi d'ombra sui percorsi pedonali T2 -> Polo delle Scienze Sociali (Novoli), 15 luglio e 15 settembre 2026, ogni 30 min fra 8:00 e 19:00.
 Casi: edifici (h_min/h/h_max), edifici e alberi (min/tipico/max), più vegetazione LiDAR senza albero censito (min/tipico/max).
 Output piccoli (versionati): shadow/firenze_novoli/{manifest/, sintesi.json, tratti_ombra_<data>.geojson}. Output grandi: data/norm/<area>/shadow/.
-Uso: pipeline/.venv/bin/python shadow/run.py [--rapido]   (richiede shadow/veg_lidar.py già eseguito)"""
+Uso: pipeline/.venv/bin/python shadow/run.py [--rapido] [--rifugi]   (richiede shadow/veg_lidar.py già eseguito)"""
 import json, pathlib, sys, time
 import shapely
 from pyproj import Transformer
@@ -17,6 +17,8 @@ DATE = ["2026-07-15", "2026-09-15"]
 FASCE = [{"id": "punta_12_30_13_30", "from": "12:30", "to": "13:30"}, {"id": "giornata_8_19", "from": "08:00", "to": "19:00"}]
 ORARI = [f"{m // 60:02d}:{m % 60:02d}" for m in range(8 * 60, 19 * 60 + 1, 30)]
 PERCORSI = ["R01", "R02"]    # da network/<area>/percorsi_campione.geojson: fermate T2 San Donato - Università e Regione Toscana -> ingresso del Polo più vicino per rete (D19, D20)
+SUFF = ""                    # --rifugi: percorsi RC1-RC5 verso i rifugi climatici (D32), file con suffisso _rifugi
+if "--rifugi" in sys.argv: PERCORSI, SUFF = ["RC1", "RC2", "RC3", "RC4", "RC5"], "_rifugi"
 METODO = {"name": "geometric_ray", "space_step_m": 1.0, "time_step_min": 5.0, "obstacles": "buildings_and_trees"}
 CASI = ["base", "base_h_min", "base_h_max", "alberi_min", "alberi_tipico", "alberi_max", "veg_lidar_min", "veg_lidar_tipico", "veg_lidar_max"]
 CASI_TRATTI = ["base", "alberi_tipico", "veg_lidar_tipico"]
@@ -81,13 +83,13 @@ def main(rapido=False):
         (MAN / f"{jid}.job.json").write_text(json.dumps(r["job"], ensure_ascii=False, indent=1))
         (MAN / f"{jid}.manifest.json").write_text(json.dumps(r["manifest"], ensure_ascii=False, indent=1))
         (O.OUT_GRANDI / f"{jid}_sintesi.json").write_text(json.dumps(r["sintesi"], ensure_ascii=False, indent=0))
-        (OUT / f"tratti_ombra_{data}.geojson").write_text(json.dumps(r["tratti"], ensure_ascii=False, separators=(",", ":")))
+        (OUT / f"tratti_ombra{SUFF}_{data}.geojson").write_text(json.dumps(r["tratti"], ensure_ascii=False, separators=(",", ":")))
         riepilogo["date"][data] = compatta(r["sintesi"]); riepilogo["frazione_per_ora"][data] = per_ora(r["righe"]); riepilogo["job"][data] = jid
         print(data, jid, f"{time.time() - t:.0f} s", flush=True)
     D = O.dati(); riepilogo["vegetazione_lidar"].update(cluster_usati=len(D["veg"]), cluster_liscia_esclusi=D["n_veg_lisce"], area_usata_m2=round(float(D["veg"].area_m2.sum()), 1))
     riepilogo["volumi_usati"] = len(D["v"]); riepilogo["volumi_demoliti_esclusi"] = D["n_volumi_demoliti"]; riepilogo["alberi_usati"] = len(D["a"])
-    (OUT / "sintesi.json").write_text(json.dumps(riepilogo, ensure_ascii=False, indent=1))
-    print("sintesi scritta:", OUT / "sintesi.json")
+    (OUT / f"sintesi{SUFF}.json").write_text(json.dumps(riepilogo, ensure_ascii=False, indent=1))
+    print("sintesi scritta:", OUT / f"sintesi{SUFF}.json")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""F04 passo 5 (Firenze): percorsi campione (consentiti e vietati) sul grafo non verificato, dai civici e dalle fermate T2 al Polo (ingresso più vicino fra i 7 edifici) e a Vamba.
+"""F04 passo 5 (Firenze): percorsi campione (consentiti e vietati) sul grafo non verificato, dai civici e dalle fermate T2 al Polo (ingresso più vicino fra i 7 edifici), a Vamba e ai rifugi climatici (RC1-RC5, D32).
 Uso: python network/percorsi_firenze.py. Output: network/firenze_novoli/percorsi_campione.{json,geojson}.
 Script a parte rispetto a percorsi.py: i casi sono scritti nel codice, come a Pisa; qui cambiano ID, destinazioni e civici."""
 import json, os, sys
@@ -20,6 +20,7 @@ EDG = {k: d for _, _, k, d in G.edges(keys=True, data=True)}
 def n_way_attraversamento(archi): return len({EDG[a]["way_id"] for a in archi if a in EDG and EDG[a]["tipo_arco"] == "attraversamento"})   # un attraversamento OSM è spesso spezzato in più tratti
 def snap_of(e): a = dict(e["aggancio"]); a["proj"] = tuple(a["proj"]); return a
 POLO = dest["dst_university_w83537185"]; E_POLO, E_POLI = POLO["ingresso_predefinito"], POLO["ingressi_predefiniti"]   # D1 e i 7 ingressi degli edifici (D19)
+E_RIF = sorted(e["entrance_id"] for d in dest.values() if d["categoria"] == "cooling_refuge" for e in d["ingressi"]); E_MEDAGLIE = [e["entrance_id"] for e in dest["dst_refuge_rif_fi_02399"]["ingressi"]]
 E_VAMBA = dest["dst_school_fiee86002g"]["ingresso_predefinito"]; T_AGLI, T_REG, T_SD = "ent_gtfs_fm9057", "ent_gtfs_fm9056", "ent_gtfs_fm9055"
 pb = shapely.MultiPoint([ent[e]["xy"] for e in E_POLI])   # distanza dal Polo = dall'ingresso più vicino in linea d'aria
 ok = civ[(civ.stato == "reachable_candidate") & (civ.componente == "cmp_01") & (civ.TIPO == "N")].copy(); ok["d"] = ok.geometry.distance(pb)   # solo civici neri (abitazioni)
@@ -38,19 +39,26 @@ casi = [("R01", "ent", T_SD, "polo", None, "Fermata T2 San Donato - Università 
         ("R09", "ent", T_AGLI, "ent", E_VAMBA, "Fermata Torre degli Agli verso Vamba"),
         ("R10", "civ", CIV[400], "ent", T_REG, "Civico di R05 verso la fermata Regione Toscana"),
         ("V01", "civ", cc("D61200018415000300000000000N"), "polo", None, "VIETATO: via della Verna 3, collegata al resto della rete solo da tratti access=private"),
-        ("V02", "civ", cc("D61200013220002701800000000N"), "polo", None, "VIETATO (restrizione diversa): via del Ponte di Mezzo 27/18, collegata solo da un tunnel stradale senza marciapiede")]
+        ("V02", "civ", cc("D61200013220002701800000000N"), "polo", None, "VIETATO (restrizione diversa): via del Ponte di Mezzo 27/18, collegata solo da un tunnel stradale senza marciapiede"),
+        # verso i rifugi climatici (D32), proposti nel report F1; stato da verificare come gli altri
+        ("RC1", "ent", T_REG, "vicino", E_MEDAGLIE, "Fermata T2 Novoli - Regione Toscana verso il Giardino di Piazza delle Medaglie d'Oro, ingresso più vicino per rete fra i due dichiarati"),
+        ("RC2", "ent", T_AGLI, "ent", "ent_rib_6_0", "Fermata T2 Torre degli Agli verso la Biblioteca Filippo Buonarroti (Viale Guidoni 188)"),
+        ("RC3", "ent", "ent_civ_d15", "ent", "ent_rif_01523_0", "Ingresso D15 del Polo verso il Giardino di piazza dei Cavalieri di Vittorio Veneto (Via Luigi Morandi 2)"),
+        ("RC4", "civ", CIV[400], "vicino", E_RIF, "Civico di R05 verso il rifugio climatico più vicino per rete"),
+        ("RC5", "ent", E_VAMBA, "vicino", E_RIF, "Accesso della scuola primaria Vamba verso il rifugio climatico più vicino per rete")]
 res, feats = [], []
-def piu_vicino(sa):
-    """Ingresso del Polo con il percorso più corto (grafo verificato, poi permissivo); a parità di stato vince il primo dell'elenco."""
+def piu_vicino(sa, entrate=E_POLI, ripiego=E_POLO):
+    """Ingresso fra `entrate` (default: i 7 del Polo) con il percorso più corto (grafo verificato, poi permissivo); a parità di stato vince il primo dell'elenco."""
     def lung(e, H):
         out = percorso(H, sa, snap_of(ent[e])); return riassunto(*out, sa["dist_m"] + ent[e]["aggancio"]["dist_m"])["lunghezza_totale_m"] if out else None
     for H in (G, P):
-        l = {e: lung(e, H) for e in E_POLI if sa["stato"] == "agganciato"}; l = {e: v for e, v in l.items() if v is not None}
+        l = {e: lung(e, H) for e in entrate if sa["stato"] == "agganciato"}; l = {e: v for e, v in l.items() if v is not None}
         if l: return min(l, key=l.get)
-    return E_POLO
+    return ripiego
 for cid, ta, a, tb, b, desc in casi:
     pa, sa, na = punti[ta](a)
     if tb == "polo": tb, b = "ent", piu_vicino(sa); desc += f" ({b})"
+    elif tb == "vicino": tb, b = "ent", piu_vicino(sa, b, b[0]); desc += f" ({b})"
     pbb, sb, nb = punti[tb](b)
     r = {"id": cid, "descrizione": desc, "origine": na, "destinazione": nb, "snap_origine": {k: sa.get(k) for k in ("edge_id", "dist_m", "stato")}, "snap_destinazione": {k: sb.get(k) for k in ("edge_id", "dist_m", "stato")},
          "diretta_m": round(pa.distance(pbb), 1), "stato_verifica": "da_verificare", "grafo": json.load(open(RES / "rete_manifest.json"))["graph_id"]}

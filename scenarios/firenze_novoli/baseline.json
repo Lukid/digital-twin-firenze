@@ -175,7 +175,8 @@
  },
  "ricevitori": {
   "percorsi_file": "network/firenze_novoli/percorsi_campione.geojson",
-  "percorsi_sha256": "c79a3fb72aa28d3a213c956b3d7d2c7cdf8c25fb5118ebc5e5b56417fdc32899",
+  "percorsi_sha256": "b900f10955a2360e85423fac66b5f2aad44230dc0348fe65a6540500460cc6e9",
+  "percorsi_sha256_nota": "file modificato il 2026-10-17 per F2: aggiunti in coda i percorsi RC1-RC5 verso i rifugi climatici; le feature di R01 e R02 sono invariate (sha256 precedente c79a3fb72aa28d3a213c956b3d7d2c7cdf8c25fb5118ebc5e5b56417fdc32899)",
   "route_ids": [
    "R01",
    "R02"

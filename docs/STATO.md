@@ -4,6 +4,8 @@ Aggiornato al 10 ottobre 2026: POC di Firenze Novoli completo nei quattro punti 
 
 17 ottobre 2026: sessione autonoma sulla fase F1 del [piano di decollo](PIANO-DECOLLO.md), ramo `agente/f1` (non ancora in `main`): MCP via HTTP in sola lettura (pronto, non installato), schede delle fonti e strumento `get_source_card`, prompt per l'assistente, pagina di metodo nella scena, bozza del documento tecnico. Esiti, differenze dei dati ricostruiti sul worker e domande aperte in [REPORT-AGENTE-F1.md](REPORT-AGENTE-F1.md).
 
+17 ottobre 2026, seconda sessione autonoma, fase F2, ramo `agente/f2` (non ancora in `main`): civici dei percorsi campione e dei test ritrovati per `CODICECIVI` (D30); 7 rifugi climatici fra le destinazioni, 39,1% dei civici entro 10 minuti dal più vicino (job versionato); indicatore "metri quadri d'ombra per mille euro" del filare S1 con il prezzario regionale 2026; ricerca di prezzi pubblici per pensiline e tende; percorsi RC1-RC5 verso i rifugi. Esiti e domande in [REPORT-AGENTE-F2.md](REPORT-AGENTE-F2.md).
+
 ## In una riga
 
 Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2 km²), costruito solo da open data con licenza che ne permette il riuso, per mostrarne le potenzialità. Pisa è accantonata nel tag git `pilota-pisa-z2` (D15); il 10 ottobre i suoi file sono stati tolti dal ramo principale, tranne gli script di rete e geometria di Pisa (`network/build.sh`, `geometry/build.sh` e i loro test), non più mantenuti.
@@ -49,6 +51,9 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - Vegetazione LiDAR come prisma opaco pieno: limite superiore dell'ombra.
 - Altezze LiDAR 2023 con unità volumetriche 2011, portici ignoti, datum verticale non confermato.
 - GTFS bus congelato valido fino al 29/10/2026: è una finestra mobile di tre settimane. Al 16/10 le fermate della zona sono identiche (più una nuova) e il tram è invariato: i calcoli usano solo le posizioni, nessun ricalcolo. Snapshot del 16/10 fuori baseline.
+- Rifugi climatici (F2): ingressi = civici agli indirizzi dichiarati dal Comune, non verificati; orari ignoti (biblioteca non sempre aperta); nessuna ombra lungo il percorso; solo i 7 rifugi entro 700 m dal riquadro; Parco delle Cascine escluso (ingressi non fra i civici).
+- Indicatore di costo (F2): ombra di un albero adulto contro il costo d'impianto di un albero da vivaio; specie e circonferenza non dichiarate dallo scenario, quindi un intervallo; scavo, pavimentazione, sottoservizi e manutenzione esclusi. Pensiline e tende senza prezzo.
+- `analysis/run.py` e `network/destinazioni_firenze.py` eseguiti su Linux riscrivono alcuni file con differenze alla sesta cifra decimale o oltre rispetto al Mac (asset `archi_usati`, GeoJSON di percorsi e ingressi): i test sugli sha256 lo rilevano. Dettagli in [REPORT-AGENTE-F2.md](REPORT-AGENTE-F2.md).
 - Nessuna validazione sul posto.
 
 ## Decisioni prese dall'utente
@@ -88,7 +93,8 @@ Revisione del codice: R1-R6 chiusi. Due regole emerse dalle correzioni:
 - La cache del servizio si svuota da sola quando cambiano il codice dei motori o i file di dati che leggono (impronta in `service/cache/<area>/impronta.txt`). Gli job_id non cambiano.
 
 1. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
-2. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. È una proposta della revisione, non una nuova decisione dell'utente.
+2. Decisioni aperte dal report F2: specie e circonferenza del filare per l'indicatore di costo, uso del prezzario del Piemonte per le pensiline, RC3 (2,4 km) da tenere o togliere, merge del ramo `agente/f2`. Poi: ricostruire la scena con i rifugi e i percorsi RC.
+3. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. È una proposta della revisione, non una nuova decisione dell'utente.
 
 ## Come lavora la sessione
 
