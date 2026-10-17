@@ -8,10 +8,9 @@
   "data": "2026-07-15",
   "fascia": "punta_12_30_13_30",
   "m2": 146.0,
-  "m2_per_mille_euro": [
-   21.35,
-   65.78
-  ]
+  "m2_per_mille_euro": 38.07,
+  "costo_eur": 3834.95,
+  "regola_specie": "D36: specie da ombra più piantata dal Comune entro 400 m dal tratto fra gli alberi del censimento con circonferenza fino a 25 cm, escluse le forme colonnari (cipressi, pioppi cipressini e tremuli): platano orientale, 29 alberi, circonferenza mediana 17 cm (32 alberi e 18,8 cm entro 800 m); classe di vivaio 18/20"
  },
  "ombra": {
   "ricevitore_m2": 6849.5,
@@ -86,6 +85,31 @@
   }
  },
  "costo": {
+  "eur": 3834.95,
+  "righe": [
+   {
+    "codice": "TOS26_PR.P45.003.A91",
+    "tipo": "fornitura",
+    "descrizione": "Platanus, A, specie x acerifolia, orientalis, nome comune platano, circonferenza 18/20",
+    "unita": "cad",
+    "prezzo": 412.06573,
+    "quantita": 7,
+    "importo": 2884.46
+   },
+   {
+    "codice": "TOS26_09.V03.005.004",
+    "tipo": "piantagione",
+    "descrizione": "Tipo: Piantagione di albero. Escluso: - scavo; - fornitura. Compreso: - concimazione (0,5 kg a pianta di concime chimico); - rinterro; - predisposizione della formella; - interramento del tubo corrugato drenante. Uso: in sede stradale, con l'allestimento di cantiere come da Codice della Strada. Compreso: - fornitura; - posa in opera di 2-3 tutori in legno di pino tornito e impregnato a pressione; - fornitura di nuova terra (100*100*100 cm) per il reinterro con riempimento fino al colletto.",
+    "unita": "cad",
+    "prezzo": 135.78459,
+    "quantita": 7,
+    "importo": 950.49
+   }
+  ],
+  "regola_specie": "D36: specie da ombra più piantata dal Comune entro 400 m dal tratto fra gli alberi del censimento con circonferenza fino a 25 cm, escluse le forme colonnari (cipressi, pioppi cipressini e tremuli): platano orientale, 29 alberi, circonferenza mediana 17 cm (32 alberi e 18,8 cm entro 800 m); classe di vivaio 18/20",
+  "regola_piantagione": "voce in sede stradale con 2-3 tutori e terra nuova 100 x 100 x 100 cm (TOS26_09.V03.005.004): scelta dell'agente per un albero da 18/20 cm, da confermare; le altre tre voci in sede stradale sono nella sensibilità"
+ },
+ "sensibilita_altre_specie": {
   "minimo_eur": 2219.46,
   "massimo_eur": 6838.09,
   "righe": [
@@ -138,21 +162,23 @@
  "m2_per_mille_euro": {
   "2026-07-15": {
    "punta_12_30_13_30": {
-    "centrale": [
-     21.35,
-     65.78
-    ],
+    "valore": 38.07,
     "estremi_casi": [
+     38.07,
+     38.07
+    ],
+    "altre_specie": [
      21.35,
      65.78
     ]
    },
    "giornata_8_19": {
-    "centrale": [
-     16.06,
-     49.47
-    ],
+    "valore": 28.63,
     "estremi_casi": [
+     28.63,
+     28.63
+    ],
+    "altre_specie": [
      16.06,
      49.47
     ]
@@ -160,23 +186,25 @@
   },
   "2026-09-15": {
    "punta_12_30_13_30": {
-    "centrale": [
-     20.82,
-     64.16
-    ],
+    "valore": 37.13,
     "estremi_casi": [
-     20.81,
+     37.11,
+     37.13
+    ],
+    "altre_specie": [
+     20.82,
      64.16
     ]
    },
    "giornata_8_19": {
-    "centrale": [
+    "valore": 27.28,
+    "estremi_casi": [
+     27.09,
+     27.54
+    ],
+    "altre_specie": [
      15.3,
      47.13
-    ],
-    "estremi_casi": [
-     15.19,
-     47.58
     ]
    }
   }
@@ -197,14 +225,14 @@
   "scavo della buca (nessuna voce adatta nel prezzario: solo voci forestali)",
   "demolizione e ripristino della pavimentazione",
   "spostamento di sottoservizi",
-  "manutenzione e irrigazione negli anni di attecchimento",
+  "manutenzione e irrigazione negli anni di attecchimento e dopo",
   "potature",
   "progettazione, direzione lavori, sicurezza oltre gli oneri già nei prezzi",
   "IVA"
  ],
  "limiti": [
-  "Ombra della chioma di classe 'medio' (11 m, chioma 6 m): albero adulto. Il prezzo è di un albero da vivaio (circonferenza 16-25 cm, chioma molto più piccola): l'indicatore confronta l'ombra a maturità con il costo d'impianto, senza anni di crescita.",
-  "Specie e circonferenza non dichiarate dallo scenario: il costo è l'intervallo fra la voce più economica e la più cara delle candidate.",
+  "Ombra della chioma di classe 'medio' (11 m, chioma 6 m): albero adulto. Il prezzo è di un albero da vivaio (circonferenza 18/20 cm, chioma molto più piccola): l'indicatore confronta l'ombra a maturità con il costo d'impianto, senza anni di crescita.",
+  "Specie e circonferenza dalla regola D36 (platano orientale 18/20), non da un progetto; voce di piantagione scelta dall'agente. Sensibilità: con le altre specie e piantagioni candidate il costo va dalla voce più economica alla più cara (campo sensibilita_altre_specie).",
   "Ombra geometrica binaria su suolo piano, chiome opache; nessuna validazione sul posto.",
   "Pensiline e tende: nessun prezzo pubblico con licenza di riuso trovato (D33); l'indicatore non si calcola per S2, S5 e S6."
  ]

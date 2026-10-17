@@ -4,8 +4,9 @@
 Ombra guadagnata: superficie al suolo in ombra con S1 meno quella della baseline S0, stesse condizioni di F07/F08 (15 luglio e 15 settembre, fasce 12:30-13:30 e 8-19),
 contesto principale (edifici, alberi censiti, vegetazione LiDAR: caso tipico, intervallo sui casi min e max). Il ricevitore è una superficie: l'unione delle ombre dei soli
 alberi di S1 in tutti gli istanti, più 1 m; fuori da lì l'ombra non cambia. Sotto gli edifici il suolo conta già come ombra (impronta), quindi non è un guadagno.
-Costo: 7 x (fornitura dell'albero + piantagione in sede stradale). Lo scenario non dichiara specie né circonferenza: il costo è un intervallo sulle voci
-candidate (alberi in contenitore, circonferenza 16/18, 18/20, 20/25 cm; piantagione in sede stradale, 4 voci). Nessuna voce di scavo adatta (solo voci forestali).
+Costo: 7 x (fornitura dell'albero + piantagione in sede stradale). Specie e circonferenza dalla regola D36: platano orientale 18/20 (TOS26_PR.P45.003.A91), un numero solo.
+Sensibilità: intervallo sulle altre voci candidate (alberi in contenitore, circonferenza 16/18, 18/20, 20/25 cm; piantagione in sede stradale, 4 voci).
+Nessuna voce di scavo adatta (solo voci forestali).
 Uso: pipeline/.venv/bin/python scenarios/costo_filare.py [--prezzario Firenze-Articolo-2026.csv]
 Output: scenarios/firenze_novoli/costo_filare.json; con --prezzario rigenera anche l'estratto delle voci costo_voci.json."""
 import csv, json, pathlib, re, sys
@@ -18,6 +19,12 @@ S0, S1 = "scn_fi_s0_baseline", "scn_fi_s1_filare_r01"
 VOCI = SC / "costo_voci.json"; OUT = SC / "costo_filare.json"
 CIRCONFERENZE = ("16/18", "18/20", "20/25")   # classi del vivaio considerate: lo scenario non dichiara la circonferenza
 PIANTAGIONE = ("TOS26_09.V03.005.003", "TOS26_09.V03.005.004", "TOS26_09.V03.005.007", "TOS26_09.V03.005.008")   # in sede stradale (gli alberi di S1 stanno nelle aree pedonali)
+SCELTA = {"fornitura": "TOS26_PR.P45.003.A91",     # D36: platano orientale, circonferenza 18/20
+          "piantagione": "TOS26_09.V03.005.004"}   # scelta dell'agente (da confermare): in sede stradale, 2-3 tutori, 1 m3 di terra nuova; le altre 3 restano nella sensibilità
+REGOLA_SPECIE = ("D36: specie da ombra più piantata dal Comune entro 400 m dal tratto fra gli alberi del censimento con circonferenza fino a 25 cm, escluse le forme colonnari "
+                 "(cipressi, pioppi cipressini e tremuli): platano orientale, 29 alberi, circonferenza mediana 17 cm (32 alberi e 18,8 cm entro 800 m); classe di vivaio 18/20")
+REGOLA_PIANTAGIONE = ("voce in sede stradale con 2-3 tutori e terra nuova 100 x 100 x 100 cm (TOS26_09.V03.005.004): scelta dell'agente per un albero da 18/20 cm, "
+                      "da confermare; le altre tre voci in sede stradale sono nella sensibilità")
 FONTE = {"titolo": "Prezzario dei Lavori della Regione Toscana 2026, file di Firenze (CSV, articoli)", "editore": "Regione Toscana",
          "atto": "Delibera di Giunta regionale n. 1676 del 15/12/2025; valido dal 1/1/2026 al 31/12/2026",
          "scheda": "https://dati.toscana.it/dataset/prezzario-lavori-2026",
@@ -42,7 +49,14 @@ def estrai_voci(csv_path):
 
 
 def costo(voci, n):
-    """Intervallo di costo per n alberi: voce più economica e più cara di fornitura e di piantagione. Una riga per voce usata."""
+    """Costo per n alberi con le voci di SCELTA (D36): un numero solo. Una riga per voce usata."""
+    v = {x["codice"]: x for x in voci}
+    righe = [{**{k: v[c][k] for k in ("codice", "tipo", "descrizione", "unita", "prezzo")}, "quantita": n, "importo": round(n * v[c]["prezzo"], 2)} for c in SCELTA.values()]
+    return {"eur": round(sum(r["importo"] for r in righe), 2), "righe": righe, "regola_specie": REGOLA_SPECIE, "regola_piantagione": REGOLA_PIANTAGIONE}
+
+
+def intervallo(voci, n):
+    """Sensibilità sulle altre specie: voce più economica e più cara di fornitura e di piantagione fra tutte le candidate. Una riga per voce usata."""
     f = sorted((v for v in voci if v["tipo"] == "fornitura"), key=lambda v: (v["prezzo"], v["codice"]))
     p = sorted((v for v in voci if v["tipo"] == "piantagione"), key=lambda v: (v["prezzo"], v["codice"]))
     righe = lambda vv, lato: [{**{k: v[k] for k in ("codice", "tipo", "descrizione", "unita", "prezzo")}, "quantita": n, "importo": round(n * v["prezzo"], 2), "estremo": lato} for v in vv]
@@ -80,27 +94,29 @@ def ombra_guadagnata():
     return out
 
 
-def indicatore(m2, c):
-    """m2 per mille euro: [m2 / costo massimo, m2 / costo minimo] in migliaia di euro."""
-    return [round(m2 / (c["massimo_eur"] / 1000), 2), round(m2 / (c["minimo_eur"] / 1000), 2)]
+def indicatore(m2, eur):
+    """m2 per mille euro."""
+    return round(m2 / (eur / 1000), 2)
 
 
 if __name__ == "__main__":
     if "--prezzario" in sys.argv: estrai_voci(sys.argv[sys.argv.index("--prezzario") + 1])
     s1 = S.carica(S1); n = sum(1 for op in s1["operations"] if op["target_type"] == "tree")
-    c = costo(json.loads(VOCI.read_text())["voci"], n); og = ombra_guadagnata()
-    ind = {d: {f: {"centrale": indicatore(v["centrale"], c), "estremi_casi": [indicatore(v["intervallo"][0], c)[0], indicatore(v["intervallo"][1], c)[1]]} for f, v in fd.items()} for d, fd in og["m2"].items()}
+    voci = json.loads(VOCI.read_text())["voci"]; c, alt = costo(voci, n), intervallo(voci, n); og = ombra_guadagnata()
+    ind = {d: {f: {"valore": indicatore(v["centrale"], c["eur"]), "estremi_casi": [indicatore(v["intervallo"][0], c["eur"]), indicatore(v["intervallo"][1], c["eur"])],
+                   "altre_specie": [indicatore(v["centrale"], alt["massimo_eur"]), indicatore(v["centrale"], alt["minimo_eur"])]} for f, v in fd.items()} for d, fd in og["m2"].items()}
     res = {"scenario_id": S1, "scenario_version": s1["version"], "baseline_id": s1["baseline_id"], "alberi": n,
            "indicatore": "metri quadri di suolo che passano dal sole all'ombra (media sugli orari della fascia) per mille euro di fornitura e piantagione",
            "riferimento": {"data": "2026-07-15", "fascia": "punta_12_30_13_30", "m2": og["m2"]["2026-07-15"]["punta_12_30_13_30"]["centrale"],
-                           "m2_per_mille_euro": ind["2026-07-15"]["punta_12_30_13_30"]["centrale"]},
-           "ombra": og, "costo": c, "m2_per_mille_euro": ind, "fonte_prezzi": FONTE,
+                           "m2_per_mille_euro": ind["2026-07-15"]["punta_12_30_13_30"]["valore"], "costo_eur": c["eur"], "regola_specie": REGOLA_SPECIE},
+           "ombra": og, "costo": c, "sensibilita_altre_specie": alt, "m2_per_mille_euro": ind, "fonte_prezzi": FONTE,
            "non_compreso": ["scavo della buca (nessuna voce adatta nel prezzario: solo voci forestali)", "demolizione e ripristino della pavimentazione", "spostamento di sottoservizi",
-                            "manutenzione e irrigazione negli anni di attecchimento", "potature", "progettazione, direzione lavori, sicurezza oltre gli oneri già nei prezzi", "IVA"],
-           "limiti": ["Ombra della chioma di classe 'medio' (11 m, chioma 6 m): albero adulto. Il prezzo è di un albero da vivaio (circonferenza 16-25 cm, chioma molto più piccola): "
+                            "manutenzione e irrigazione negli anni di attecchimento e dopo", "potature", "progettazione, direzione lavori, sicurezza oltre gli oneri già nei prezzi", "IVA"],
+           "limiti": ["Ombra della chioma di classe 'medio' (11 m, chioma 6 m): albero adulto. Il prezzo è di un albero da vivaio (circonferenza 18/20 cm, chioma molto più piccola): "
                       "l'indicatore confronta l'ombra a maturità con il costo d'impianto, senza anni di crescita.",
-                      "Specie e circonferenza non dichiarate dallo scenario: il costo è l'intervallo fra la voce più economica e la più cara delle candidate.",
+                      "Specie e circonferenza dalla regola D36 (platano orientale 18/20), non da un progetto; voce di piantagione scelta dall'agente. "
+                      "Sensibilità: con le altre specie e piantagioni candidate il costo va dalla voce più economica alla più cara (campo sensibilita_altre_specie).",
                       "Ombra geometrica binaria su suolo piano, chiome opache; nessuna validazione sul posto.",
                       "Pensiline e tende: nessun prezzo pubblico con licenza di riuso trovato (D33); l'indicatore non si calcola per S2, S5 e S6."]}
     OUT.write_text(json.dumps(res, ensure_ascii=False, indent=1))
-    print(json.dumps({k: res[k] for k in ("riferimento",)}, ensure_ascii=False), c["minimo_eur"], c["massimo_eur"])
+    print(json.dumps(res["riferimento"], ensure_ascii=False), "sensibilità", alt["minimo_eur"], alt["massimo_eur"])

@@ -466,12 +466,14 @@ def _compatta(e, ctxs):
 
 
 def _indicatore_costo(sid, scn):
-    """D33: metri quadri d'ombra per mille euro, solo per il filare con le voci del prezzario regionale (scenarios/<area>/costo_filare.json, stessa versione dello scenario).
+    """D33, D36: metri quadri d'ombra per mille euro (un numero: platano 18/20; le altre specie come sensibilità), solo per il filare con le voci del prezzario regionale (scenarios/<area>/costo_filare.json, stessa versione dello scenario).
     Pensiline: nessun prezzo pubblico con licenza di riuso, indicatore non calcolato."""
     p = ROOT / "scenarios" / SLUG / "costo_filare.json"; c = _load(p) if p.exists() else None
     if c and c["scenario_id"] == sid and c["scenario_version"] == scn["version"]:
         return {"indicatore_costo": {"indicatore": c["indicatore"], "riferimento": c["riferimento"], "m2_per_mille_euro": c["m2_per_mille_euro"],
-                                     "ombra_guadagnata_m2": c["ombra"]["m2"], "costo_eur": [c["costo"]["minimo_eur"], c["costo"]["massimo_eur"]], "voci": c["costo"]["righe"],
+                                     "ombra_guadagnata_m2": c["ombra"]["m2"], "costo_eur": c["costo"]["eur"], "voci": c["costo"]["righe"],
+                                     "regola_specie": c["costo"]["regola_specie"], "regola_piantagione": c["costo"]["regola_piantagione"],
+                                     "sensibilita_altre_specie_eur": [c["sensibilita_altre_specie"]["minimo_eur"], c["sensibilita_altre_specie"]["massimo_eur"]],
                                      "fonte_prezzi": {k: c["fonte_prezzi"][k] for k in ("titolo", "atto", "scheda", "licenza")}, "non_compreso": c["non_compreso"], "limiti": c["limiti"]}}
     if any(op["target_type"] != "tree" for op in scn["operations"]):
         return {"indicatore_costo": {"non_calcolato": "Per pensiline e tende non c'è un prezzo pubblico con licenza di riuso (D33): l'indicatore di costo non si calcola."}}
