@@ -15,6 +15,7 @@ test-fast:
 test: test-fast validate
 	$(PY) analysis/test_accessibilita.py
 	$(PY) scenarios/test_scenari.py
+	$(PY) scenarios/test_costo_filare.py
 	$(PY) shadow/test_ombre.py
 	$(SPY) nl/firenze_novoli/test_nl.py
 

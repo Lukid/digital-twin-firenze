@@ -1,0 +1,528 @@
+{
+ "fonte": {
+  "titolo": "Prezzario dei Lavori della Regione Toscana 2026, file di Firenze (CSV, articoli)",
+  "editore": "Regione Toscana",
+  "atto": "Delibera di Giunta regionale n. 1676 del 15/12/2025; valido dal 1/1/2026 al 31/12/2026",
+  "scheda": "https://dati.toscana.it/dataset/prezzario-lavori-2026",
+  "risorsa": "https://dati.toscana.it/dataset/7d0fd279-fbae-44a8-8f71-6986514acf0c/resource/925a8190-ea9d-407e-a05d-9a19c2850e3d/download/2026-firenze-csv.zip",
+  "licenza": "CC BY 4.0 (campo license_type della risorsa: https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40)",
+  "scaricato": "2026-10-17",
+  "zip_sha256": "56faa24c02d3062d63b43a94f86efae23db7c2e8488c79be49fb982a9a3c812d",
+  "revisione_1": "XML 'rev 1' del 25/05/2026: stessi prezzi per tutte le voci (controllato il 17/10/2026)",
+  "prezzo": "colonna Prezzo: comprende spese generali e utili d'impresa, IVA esclusa"
+ },
+ "regola": "fornitura: PR.P45.003, piante in contenitore di tipologia A, circonferenza 16/18, 18/20, 20/25 cm; piantagione: TOS26_09.V03.005.003, TOS26_09.V03.005.004, TOS26_09.V03.005.007, TOS26_09.V03.005.008",
+ "voci": [
+  {
+   "codice": "TOS26_PR.P45.003.043",
+   "tipo": "fornitura",
+   "descrizione": "Acacia, A, da seme, specie dealbata, nome comune mimosa, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 457.71362
+  },
+  {
+   "codice": "TOS26_PR.P45.003.044",
+   "tipo": "fornitura",
+   "descrizione": "Acacia, A, da seme, specie dealbata, nome comune mimosa, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 577.14383
+  },
+  {
+   "codice": "TOS26_PR.P45.003.049",
+   "tipo": "fornitura",
+   "descrizione": "Acer, A, specie campestre, negundo, platanoides, saccharinum, nome comune acero, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 386.23949
+  },
+  {
+   "codice": "TOS26_PR.P45.003.050",
+   "tipo": "fornitura",
+   "descrizione": "Acer, A, specie campestre, negundo, platanoides, saccharinum, nome comune acero, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 461.89424
+  },
+  {
+   "codice": "TOS26_PR.P45.003.061",
+   "tipo": "fornitura",
+   "descrizione": "Acer, A, specie pseudoplatanus, japonicum, nome comune acero, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 381.12428
+  },
+  {
+   "codice": "TOS26_PR.P45.003.062",
+   "tipo": "fornitura",
+   "descrizione": "Acer, A, specie pseudoplatanus, japonicum, nome comune acero, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 501.28731
+  },
+  {
+   "codice": "TOS26_PR.P45.003.074",
+   "tipo": "fornitura",
+   "descrizione": "Aesculus, A, specie hippocastanum, carnea, nome comune ippocastano, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 423.2033
+  },
+  {
+   "codice": "TOS26_PR.P45.003.075",
+   "tipo": "fornitura",
+   "descrizione": "Aesculus, A, specie hippocastanum, carnea, nome comune ippocastano, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 561.27952
+  },
+  {
+   "codice": "TOS26_PR.P45.003.076",
+   "tipo": "fornitura",
+   "descrizione": "Aesculus, A, specie hippocastanum, carnea, nome comune ippocastano, circonferenza 20/25",
+   "unita": "cad",
+   "prezzo": 686.47761
+  },
+  {
+   "codice": "TOS26_PR.P45.003.087",
+   "tipo": "fornitura",
+   "descrizione": "Albizia, A, specie julibrissin, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 406.60994
+  },
+  {
+   "codice": "TOS26_PR.P45.003.088",
+   "tipo": "fornitura",
+   "descrizione": "Albizia, A, specie julibrissin, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 522.48906
+  },
+  {
+   "codice": "TOS26_PR.P45.003.089",
+   "tipo": "fornitura",
+   "descrizione": "Albizia, A, specie julibrissin, circonferenza 20/25",
+   "unita": "cad",
+   "prezzo": 672.37541
+  },
+  {
+   "codice": "TOS26_PR.P45.003.093",
+   "tipo": "fornitura",
+   "descrizione": "Alnus, A, specie cordata, glutinosa, nome comune ontano, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 332.79047
+  },
+  {
+   "codice": "TOS26_PR.P45.003.094",
+   "tipo": "fornitura",
+   "descrizione": "Alnus, A, specie cordata, glutinosa, nome comune ontano, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 461.28893
+  },
+  {
+   "codice": "TOS26_PR.P45.003.095",
+   "tipo": "fornitura",
+   "descrizione": "Alnus, A, specie cordata, glutinosa, nome comune ontano, circonferenza 20/25",
+   "unita": "cad",
+   "prezzo": 589.40861
+  },
+  {
+   "codice": "TOS26_PR.P45.003.145",
+   "tipo": "fornitura",
+   "descrizione": "Betula, A, specie alba, nome comune betulla, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 387.33979
+  },
+  {
+   "codice": "TOS26_PR.P45.003.154",
+   "tipo": "fornitura",
+   "descrizione": "Betula, A, specie utilis, pendula, nome comune betulla, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 489.43953
+  },
+  {
+   "codice": "TOS26_PR.P45.003.200",
+   "tipo": "fornitura",
+   "descrizione": "Carpinus, A, specie betulus, nome comune carpino bianco, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 408.60663
+  },
+  {
+   "codice": "TOS26_PR.P45.003.201",
+   "tipo": "fornitura",
+   "descrizione": "Carpinus, A, specie betulus, nome comune carpino bianco, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 523.61734
+  },
+  {
+   "codice": "TOS26_PR.P45.003.202",
+   "tipo": "fornitura",
+   "descrizione": "Carpinus, A, specie betulus, nome comune carpino bianco, circonferenza 20/25",
+   "unita": "cad",
+   "prezzo": 641.48346
+  },
+  {
+   "codice": "TOS26_PR.P45.003.257",
+   "tipo": "fornitura",
+   "descrizione": "Celtis, A, specie australis, nome comune bagolaro, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 389.84064
+  },
+  {
+   "codice": "TOS26_PR.P45.003.258",
+   "tipo": "fornitura",
+   "descrizione": "Celtis, A, specie australis, nome comune bagolaro, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 539.98956
+  },
+  {
+   "codice": "TOS26_PR.P45.003.259",
+   "tipo": "fornitura",
+   "descrizione": "Celtis, A, specie australis, nome comune bagolaro, circonferenza 20/25",
+   "unita": "cad",
+   "prezzo": 643.21058
+  },
+  {
+   "codice": "TOS26_PR.P45.003.266",
+   "tipo": "fornitura",
+   "descrizione": "Ceratonia, A, specie siliqua, nome comune carrubo, circonferenza 18/20, Clt 130",
+   "unita": "cad",
+   "prezzo": 562.49551
+  },
+  {
+   "codice": "TOS26_PR.P45.003.285",
+   "tipo": "fornitura",
+   "descrizione": "Cercis, A, specie siliquastrum, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 488.70511
+  },
+  {
+   "codice": "TOS26_PR.P45.003.286",
+   "tipo": "fornitura",
+   "descrizione": "Cercis, A, specie siliquastrum, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 661.46166
+  },
+  {
+   "codice": "TOS26_PR.P45.003.537",
+   "tipo": "fornitura",
+   "descrizione": "Fagus, A, specie sylvatica, nome comune faggio, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 496.34805
+  },
+  {
+   "codice": "TOS26_PR.P45.003.576",
+   "tipo": "fornitura",
+   "descrizione": "Fraxinus, A, specie excelsior, ornus, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 377.4505
+  },
+  {
+   "codice": "TOS26_PR.P45.003.577",
+   "tipo": "fornitura",
+   "descrizione": "Fraxinus, A, specie excelsior, ornus, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 474.67823
+  },
+  {
+   "codice": "TOS26_PR.P45.003.578",
+   "tipo": "fornitura",
+   "descrizione": "Fraxinus, A, specie excelsior, ornus, circonferenza 20/25",
+   "unita": "cad",
+   "prezzo": 600.52465
+  },
+  {
+   "codice": "TOS26_PR.P45.003.595",
+   "tipo": "fornitura",
+   "descrizione": "Ginkgo, A, specie biloba, nome comune ginco, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 423.63912
+  },
+  {
+   "codice": "TOS26_PR.P45.003.596",
+   "tipo": "fornitura",
+   "descrizione": "Ginkgo, A, specie biloba, nome comune ginco, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 541.58701
+  },
+  {
+   "codice": "TOS26_PR.P45.003.606",
+   "tipo": "fornitura",
+   "descrizione": "Gleditsia, A, specie triacanthos, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 384.8352
+  },
+  {
+   "codice": "TOS26_PR.P45.003.607",
+   "tipo": "fornitura",
+   "descrizione": "Gleditsia, A, specie triacanthos, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 502.0379
+  },
+  {
+   "codice": "TOS26_PR.P45.003.608",
+   "tipo": "fornitura",
+   "descrizione": "Gleditsia, A, specie triacanthos, circonferenza 20/25",
+   "unita": "cad",
+   "prezzo": 683.98644
+  },
+  {
+   "codice": "TOS26_PR.P45.003.839",
+   "tipo": "fornitura",
+   "descrizione": "Liriodendron, A, specie tulipifera, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 386.73988
+  },
+  {
+   "codice": "TOS26_PR.P45.003.840",
+   "tipo": "fornitura",
+   "descrizione": "Liriodendron, A, specie tulipifera, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 494.75813
+  },
+  {
+   "codice": "TOS26_PR.P45.003.933",
+   "tipo": "fornitura",
+   "descrizione": "Morus, A, spp., circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 342.03949
+  },
+  {
+   "codice": "TOS26_PR.P45.003.978",
+   "tipo": "fornitura",
+   "descrizione": "Olea, A, specie europea, nome comune olivo, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 351.07867
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A01",
+   "tipo": "fornitura",
+   "descrizione": "Ostrya, A, specie carpinifolia, nome comune carpino nero, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 444.96998
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A02",
+   "tipo": "fornitura",
+   "descrizione": "Ostrya, A, specie carpinifolia, nome comune carpino nero, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 548.82374
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A21",
+   "tipo": "fornitura",
+   "descrizione": "Paulownia, A, specie tormentosa, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 334.51008
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A22",
+   "tipo": "fornitura",
+   "descrizione": "Paulownia, A, specie tormentosa, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 405.11363
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A23",
+   "tipo": "fornitura",
+   "descrizione": "Paulownia, A, specie tormentosa, circonferenza 20/25",
+   "unita": "cad",
+   "prezzo": 520.12433
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A59",
+   "tipo": "fornitura",
+   "descrizione": "Pinus, A, specie pinea , nigra, sylvestris, nome comune pino, h. 300/350, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 473.20936
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A66",
+   "tipo": "fornitura",
+   "descrizione": "Pinus, A, specie excelsa, strobus, nome comune pino, h. 300/350, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 537.18579
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A73",
+   "tipo": "fornitura",
+   "descrizione": "Pinus, A, specie halepensis, nome comune pino, h. 300/350, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 273.65278
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A90",
+   "tipo": "fornitura",
+   "descrizione": "Platanus, A, specie x acerifolia, orientalis, nome comune platano, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 322.89579
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A91",
+   "tipo": "fornitura",
+   "descrizione": "Platanus, A, specie x acerifolia, orientalis, nome comune platano, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 412.06573
+  },
+  {
+   "codice": "TOS26_PR.P45.003.A92",
+   "tipo": "fornitura",
+   "descrizione": "Platanus, A, specie x acerifolia, orientalis, nome comune platano, circonferenza 20/25",
+   "unita": "cad",
+   "prezzo": 497.16319
+  },
+  {
+   "codice": "TOS26_PR.P45.003.B30",
+   "tipo": "fornitura",
+   "descrizione": "Prunus, A,C, specie lusitanica, virginiana, fruticosa, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 477.62506
+  },
+  {
+   "codice": "TOS26_PR.P45.003.B31",
+   "tipo": "fornitura",
+   "descrizione": "Prunus, A,C, specie lusitanica, virginiana, fruticosa, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 599.83696
+  },
+  {
+   "codice": "TOS26_PR.P45.003.B50",
+   "tipo": "fornitura",
+   "descrizione": "Pyrus, A, spp., nome comune pero, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 394.52004
+  },
+  {
+   "codice": "TOS26_PR.P45.003.B51",
+   "tipo": "fornitura",
+   "descrizione": "Pyrus, A, spp., nome comune pero, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 484.61325
+  },
+  {
+   "codice": "TOS26_PR.P45.003.B58",
+   "tipo": "fornitura",
+   "descrizione": "Quercus, A, specie cerris, rubra, pubescens, robur, palustris, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 399.65784
+  },
+  {
+   "codice": "TOS26_PR.P45.003.B59",
+   "tipo": "fornitura",
+   "descrizione": "Quercus, A, specie cerris, rubra, pubescens, robur, palustris, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 521.37529
+  },
+  {
+   "codice": "TOS26_PR.P45.003.B74",
+   "tipo": "fornitura",
+   "descrizione": "Quercus, A, specie ilex, suber, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 600.24218
+  },
+  {
+   "codice": "TOS26_PR.P45.003.B75",
+   "tipo": "fornitura",
+   "descrizione": "Quercus, A, specie ilex, suber, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 813.24409
+  },
+  {
+   "codice": "TOS26_PR.P45.003.C03",
+   "tipo": "fornitura",
+   "descrizione": "Robinia, A, specie pseudoacacia, nome comune robinia, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 338.86932
+  },
+  {
+   "codice": "TOS26_PR.P45.003.C04",
+   "tipo": "fornitura",
+   "descrizione": "Robinia, A, specie pseudoacacia, nome comune robinia, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 424.61566
+  },
+  {
+   "codice": "TOS26_PR.P45.003.C29",
+   "tipo": "fornitura",
+   "descrizione": "Salix, A, spp., nome comune salice, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 322.57782
+  },
+  {
+   "codice": "TOS26_PR.P45.003.C30",
+   "tipo": "fornitura",
+   "descrizione": "Salix, A, spp., nome comune salice, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 425.26778
+  },
+  {
+   "codice": "TOS26_PR.P45.003.C63",
+   "tipo": "fornitura",
+   "descrizione": "Sophora, A, specie japonica, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 369.64613
+  },
+  {
+   "codice": "TOS26_PR.P45.003.C64",
+   "tipo": "fornitura",
+   "descrizione": "Sophora, A, specie japonica, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 462.50492
+  },
+  {
+   "codice": "TOS26_PR.P45.003.C73",
+   "tipo": "fornitura",
+   "descrizione": "Sorbus, A, spp., circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 514.41836
+  },
+  {
+   "codice": "TOS26_PR.P45.003.D37",
+   "tipo": "fornitura",
+   "descrizione": "Tilia, A, specie hybrida, platyphyllos, cordata, tomentosa, nome comune tiglio, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 343.88446
+  },
+  {
+   "codice": "TOS26_PR.P45.003.D38",
+   "tipo": "fornitura",
+   "descrizione": "Tilia, A, specie hybrida, platyphyllos, cordata, tomentosa, nome comune tiglio, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 443.146
+  },
+  {
+   "codice": "TOS26_PR.P45.003.D44",
+   "tipo": "fornitura",
+   "descrizione": "Ulmus, A, spp., nome comune olmo, circonferenza 16/18",
+   "unita": "cad",
+   "prezzo": 359.34846
+  },
+  {
+   "codice": "TOS26_PR.P45.003.D45",
+   "tipo": "fornitura",
+   "descrizione": "Ulmus, A, spp., nome comune olmo, circonferenza 18/20",
+   "unita": "cad",
+   "prezzo": 439.66591
+  },
+  {
+   "codice": "TOS26_09.V03.005.003",
+   "tipo": "piantagione",
+   "descrizione": "Tipo: Piantagione di albero. Escluso: - scavo; - fornitura. Compreso: - concimazione (0,5 kg a pianta di concime chimico); - rinterro; - predisposizione della formella; - interramento del tubo corrugato drenante. Uso: - in sede stradale; - con l'allestimento di cantiere come da Codice della Strada. Compreso: - fornitura; - posa in opera di un tutore in legno di pino tornito e impregnato a pressione; - fornitura di nuova terra (60*60*60 cm) per il reinterro con riempimento fino al colletto.",
+   "unita": "cad",
+   "prezzo": 43.4128
+  },
+  {
+   "codice": "TOS26_09.V03.005.004",
+   "tipo": "piantagione",
+   "descrizione": "Tipo: Piantagione di albero. Escluso: - scavo; - fornitura. Compreso: - concimazione (0,5 kg a pianta di concime chimico); - rinterro; - predisposizione della formella; - interramento del tubo corrugato drenante. Uso: in sede stradale, con l'allestimento di cantiere come da Codice della Strada. Compreso: - fornitura; - posa in opera di 2-3 tutori in legno di pino tornito e impregnato a pressione; - fornitura di nuova terra (100*100*100 cm) per il reinterro con riempimento fino al colletto.",
+   "unita": "cad",
+   "prezzo": 135.78459
+  },
+  {
+   "codice": "TOS26_09.V03.005.007",
+   "tipo": "piantagione",
+   "descrizione": "Tipo: Piantagione di albero. Escluso: - scavo; - fornitura. Compreso: - concimazione (0,5 kg a pianta di concime chimico); - rinterro; - predisposizione della formella; - interramento del tubo corrugato drenante. Uso: in sede stradale, con l'allestimento di cantiere come da Codice della Strada. Compreso: - posizionamento; - tutoraggio a terra della zolla a completa scomparsa; - fornitura di nuova terra (60 x 60 x 60 cm) per il reinterro con riempimento fino al colletto.",
+   "unita": "cad",
+   "prezzo": 94.98984
+  },
+  {
+   "codice": "TOS26_09.V03.005.008",
+   "tipo": "piantagione",
+   "descrizione": "Tipo: Piantagione di albero. Escluso: - scavo; - fornitura. Compreso: - concimazione (0,5 kg a pianta di concime chimico); - rinterro; - predisposizione della formella; - interramento del tubo corrugato drenante. Uso: in sede stradale, con l'allestimento di cantiere come da Codice della Strada. Compreso: - posizionamento; - tutoraggio a terra della zolla a completa scomparsa; - fornitura di nuova terra (100 x 100 x 100 cm) cm per il reinterro con riempimento fino al colletto.",
+   "unita": "cad",
+   "prezzo": 163.62606
+  }
+ ]
+}

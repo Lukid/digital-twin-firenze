@@ -465,6 +465,19 @@ def _compatta(e, ctxs):
     return out
 
 
+def _indicatore_costo(sid, scn):
+    """D33: metri quadri d'ombra per mille euro, solo per il filare con le voci del prezzario regionale (scenarios/<area>/costo_filare.json, stessa versione dello scenario).
+    Pensiline: nessun prezzo pubblico con licenza di riuso, indicatore non calcolato."""
+    p = ROOT / "scenarios" / SLUG / "costo_filare.json"; c = _load(p) if p.exists() else None
+    if c and c["scenario_id"] == sid and c["scenario_version"] == scn["version"]:
+        return {"indicatore_costo": {"indicatore": c["indicatore"], "riferimento": c["riferimento"], "m2_per_mille_euro": c["m2_per_mille_euro"],
+                                     "ombra_guadagnata_m2": c["ombra"]["m2"], "costo_eur": [c["costo"]["minimo_eur"], c["costo"]["massimo_eur"]], "voci": c["costo"]["righe"],
+                                     "fonte_prezzi": {k: c["fonte_prezzi"][k] for k in ("titolo", "atto", "scheda", "licenza")}, "non_compreso": c["non_compreso"], "limiti": c["limiti"]}}
+    if any(op["target_type"] != "tree" for op in scn["operations"]):
+        return {"indicatore_costo": {"non_calcolato": "Per pensiline e tende non c'è un prezzo pubblico con licenza di riuso (D33): l'indicatore di costo non si calcola."}}
+    return {}
+
+
 def _compare_job(inputs, params, metrics, limits, payload, store, t0):
     import datetime
     jid = "job_" + hashlib.sha256(canon({"tool": "compare_scenarios", "inputs": inputs, "params": params}).encode()).hexdigest()[:16]
@@ -566,6 +579,7 @@ def _compare_scenari(a):
     jid2, job, man = _compare_job(inputs, params, met, lim, {"datasets": _dati_baseline(S), "method_version": C.VERSIONE}, True, t0); assert jid2 == jid
     r = {"common_conditions": cc, "deltas": deltas, "incompatibilities": inc, "job_id": jid, "result_manifest_id": man["manifest_id"], "status": "succeeded", "datasets": man["datasets"], "params": params,
          "limits": lim, "method": f"scenario_comparison {C.VERSIONE}", "scenarios": {sid: _compatta(e, ctxs) for sid, e in riep["scenari"].items()}}
+    for sid, x in r["scenarios"].items(): x.update(_indicatore_costo(sid, next(s for s in scns if s["scenario_id"] == sid)))
     _write(cp, r); _write(_paths(jid)[1], man); _write(_paths(jid)[0], job)
     return {**r, "cached": False}
 

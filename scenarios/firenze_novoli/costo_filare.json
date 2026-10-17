@@ -1,0 +1,211 @@
+{
+ "scenario_id": "scn_fi_s1_filare_r01",
+ "scenario_version": 3,
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "alberi": 7,
+ "indicatore": "metri quadri di suolo che passano dal sole all'ombra (media sugli orari della fascia) per mille euro di fornitura e piantagione",
+ "riferimento": {
+  "data": "2026-07-15",
+  "fascia": "punta_12_30_13_30",
+  "m2": 146.0,
+  "m2_per_mille_euro": [
+   21.35,
+   65.78
+  ]
+ },
+ "ombra": {
+  "ricevitore_m2": 6849.5,
+  "casi": [
+   "veg_lidar_tipico",
+   "veg_lidar_min",
+   "veg_lidar_max"
+  ],
+  "job_id": {
+   "2026-07-15": {
+    "scn_fi_s0_baseline": "job_dfed9153dd4166e7",
+    "scn_fi_s1_filare_r01": "job_bc8a598719e051c9"
+   },
+   "2026-09-15": {
+    "scn_fi_s0_baseline": "job_7bae6e3846138cf7",
+    "scn_fi_s1_filare_r01": "job_35001515c8ad7153"
+   }
+  },
+  "m2": {
+   "2026-07-15": {
+    "punta_12_30_13_30": {
+     "centrale": 146.0,
+     "intervallo": [
+      146.0,
+      146.0
+     ],
+     "per_caso": {
+      "veg_lidar_tipico": 146.0,
+      "veg_lidar_min": 146.0,
+      "veg_lidar_max": 146.0
+     }
+    },
+    "giornata_8_19": {
+     "centrale": 109.8,
+     "intervallo": [
+      109.8,
+      109.8
+     ],
+     "per_caso": {
+      "veg_lidar_tipico": 109.8,
+      "veg_lidar_min": 109.8,
+      "veg_lidar_max": 109.8
+     }
+    }
+   },
+   "2026-09-15": {
+    "punta_12_30_13_30": {
+     "centrale": 142.4,
+     "intervallo": [
+      142.3,
+      142.4
+     ],
+     "per_caso": {
+      "veg_lidar_tipico": 142.4,
+      "veg_lidar_min": 142.3,
+      "veg_lidar_max": 142.4
+     }
+    },
+    "giornata_8_19": {
+     "centrale": 104.6,
+     "intervallo": [
+      103.9,
+      105.6
+     ],
+     "per_caso": {
+      "veg_lidar_tipico": 104.6,
+      "veg_lidar_min": 105.6,
+      "veg_lidar_max": 103.9
+     }
+    }
+   }
+  }
+ },
+ "costo": {
+  "minimo_eur": 2219.46,
+  "massimo_eur": 6838.09,
+  "righe": [
+   {
+    "codice": "TOS26_PR.P45.003.A73",
+    "tipo": "fornitura",
+    "descrizione": "Pinus, A, specie halepensis, nome comune pino, h. 300/350, circonferenza 18/20",
+    "unita": "cad",
+    "prezzo": 273.65278,
+    "quantita": 7,
+    "importo": 1915.57,
+    "estremo": "minimo"
+   },
+   {
+    "codice": "TOS26_09.V03.005.003",
+    "tipo": "piantagione",
+    "descrizione": "Tipo: Piantagione di albero. Escluso: - scavo; - fornitura. Compreso: - concimazione (0,5 kg a pianta di concime chimico); - rinterro; - predisposizione della formella; - interramento del tubo corrugato drenante. Uso: - in sede stradale; - con l'allestimento di cantiere come da Codice della Strada. Compreso: - fornitura; - posa in opera di un tutore in legno di pino tornito e impregnato a pressione; - fornitura di nuova terra (60*60*60 cm) per il reinterro con riempimento fino al colletto.",
+    "unita": "cad",
+    "prezzo": 43.4128,
+    "quantita": 7,
+    "importo": 303.89,
+    "estremo": "minimo"
+   },
+   {
+    "codice": "TOS26_PR.P45.003.B75",
+    "tipo": "fornitura",
+    "descrizione": "Quercus, A, specie ilex, suber, circonferenza 18/20",
+    "unita": "cad",
+    "prezzo": 813.24409,
+    "quantita": 7,
+    "importo": 5692.71,
+    "estremo": "massimo"
+   },
+   {
+    "codice": "TOS26_09.V03.005.008",
+    "tipo": "piantagione",
+    "descrizione": "Tipo: Piantagione di albero. Escluso: - scavo; - fornitura. Compreso: - concimazione (0,5 kg a pianta di concime chimico); - rinterro; - predisposizione della formella; - interramento del tubo corrugato drenante. Uso: in sede stradale, con l'allestimento di cantiere come da Codice della Strada. Compreso: - posizionamento; - tutoraggio a terra della zolla a completa scomparsa; - fornitura di nuova terra (100 x 100 x 100 cm) cm per il reinterro con riempimento fino al colletto.",
+    "unita": "cad",
+    "prezzo": 163.62606,
+    "quantita": 7,
+    "importo": 1145.38,
+    "estremo": "massimo"
+   }
+  ],
+  "voci_candidate": {
+   "fornitura": 69,
+   "piantagione": 4
+  }
+ },
+ "m2_per_mille_euro": {
+  "2026-07-15": {
+   "punta_12_30_13_30": {
+    "centrale": [
+     21.35,
+     65.78
+    ],
+    "estremi_casi": [
+     21.35,
+     65.78
+    ]
+   },
+   "giornata_8_19": {
+    "centrale": [
+     16.06,
+     49.47
+    ],
+    "estremi_casi": [
+     16.06,
+     49.47
+    ]
+   }
+  },
+  "2026-09-15": {
+   "punta_12_30_13_30": {
+    "centrale": [
+     20.82,
+     64.16
+    ],
+    "estremi_casi": [
+     20.81,
+     64.16
+    ]
+   },
+   "giornata_8_19": {
+    "centrale": [
+     15.3,
+     47.13
+    ],
+    "estremi_casi": [
+     15.19,
+     47.58
+    ]
+   }
+  }
+ },
+ "fonte_prezzi": {
+  "titolo": "Prezzario dei Lavori della Regione Toscana 2026, file di Firenze (CSV, articoli)",
+  "editore": "Regione Toscana",
+  "atto": "Delibera di Giunta regionale n. 1676 del 15/12/2025; valido dal 1/1/2026 al 31/12/2026",
+  "scheda": "https://dati.toscana.it/dataset/prezzario-lavori-2026",
+  "risorsa": "https://dati.toscana.it/dataset/7d0fd279-fbae-44a8-8f71-6986514acf0c/resource/925a8190-ea9d-407e-a05d-9a19c2850e3d/download/2026-firenze-csv.zip",
+  "licenza": "CC BY 4.0 (campo license_type della risorsa: https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40)",
+  "scaricato": "2026-10-17",
+  "zip_sha256": "56faa24c02d3062d63b43a94f86efae23db7c2e8488c79be49fb982a9a3c812d",
+  "revisione_1": "XML 'rev 1' del 25/05/2026: stessi prezzi per tutte le voci (controllato il 17/10/2026)",
+  "prezzo": "colonna Prezzo: comprende spese generali e utili d'impresa, IVA esclusa"
+ },
+ "non_compreso": [
+  "scavo della buca (nessuna voce adatta nel prezzario: solo voci forestali)",
+  "demolizione e ripristino della pavimentazione",
+  "spostamento di sottoservizi",
+  "manutenzione e irrigazione negli anni di attecchimento",
+  "potature",
+  "progettazione, direzione lavori, sicurezza oltre gli oneri già nei prezzi",
+  "IVA"
+ ],
+ "limiti": [
+  "Ombra della chioma di classe 'medio' (11 m, chioma 6 m): albero adulto. Il prezzo è di un albero da vivaio (circonferenza 16-25 cm, chioma molto più piccola): l'indicatore confronta l'ombra a maturità con il costo d'impianto, senza anni di crescita.",
+  "Specie e circonferenza non dichiarate dallo scenario: il costo è l'intervallo fra la voce più economica e la più cara delle candidate.",
+  "Ombra geometrica binaria su suolo piano, chiome opache; nessuna validazione sul posto.",
+  "Pensiline e tende: nessun prezzo pubblico con licenza di riuso trovato (D33); l'indicatore non si calcola per S2, S5 e S6."
+ ]
+}

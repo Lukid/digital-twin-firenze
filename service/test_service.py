@@ -229,6 +229,9 @@ for sid in CS["scenario_ids"]:
     assert set(e["percorsi"]) == {"2026-07-15", "2026-09-15"} and set(e["percorsi"]["2026-07-15"]) == {"con_vegetazione_lidar"}
 assert any(d["metric_id"].startswith("sc1_r01_0715_punta_sun_min") and d["delta"] < 0 and d["discriminates"] for d in mc["deltas"])   # il filare toglie sole su R01 a luglio
 assert any(d["metric_id"].startswith("sc2_attesa_") for d in mc["deltas"])
+ic = mc["scenarios"][FILARE]["indicatore_costo"]   # D33: solo il filare ha l'indicatore di costo, con voci per codice; la pensilina no
+assert ic["riferimento"]["m2_per_mille_euro"][0] < ic["riferimento"]["m2_per_mille_euro"][1] and all(v["codice"].startswith("TOS26_") for v in ic["voci"])
+assert "non_calcolato" in mc["scenarios"][PENSILINA]["indicatore_costo"]
 m5 = run("compare_scenarios", {"baseline_id": BAS, "scenario_ids": [FILARE, "scn_fi_s5_pensilina_regione_toscana"], "with_variants": False})   # R5: pensilina S5 sulla propria area
 assert core.validate("compare_scenarios", "output", m5) == [] and "sfc_fi_attesa_s5" in m5["scenarios"]["scn_fi_s5_pensilina_regione_toscana"]["aree_attesa"], m5.get("error")
 assert next(d for d in m5["deltas"] if d["metric_id"] == "sc2_attesa_s5_0715_punta_shade_lidar")["delta"] > 0.3
