@@ -103,6 +103,7 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D48 (18 ottobre): residenti ripartiti su tutti i civici della sezione (D45), con la sensibilità sui soli civici neri accanto (domanda 2).
 - D49 (18 ottobre): "camminando soprattutto all'ombra" si calcola nella prossima sessione: ombra alle 14 del 15 luglio sul percorso di ogni civico entro 15 minuti dal rifugio più vicino, soglia 50% del percorso in ombra, dichiarata come scelta nostra da far validare all'ufficio; calcolo a blocchi per la memoria del worker (domanda 3).
 - D50 (18 ottobre): verifica sul posto di R01 sabato 12 dicembre 2026 alle 11:00, 13:00 e 14:30, riserva sabato 19 dicembre (si rifà la pagina con i due comandi del report F4). La pagina va aperta e stampata una volta sul Mac (domanda 4).
+- D51 (18 ottobre): sessione F5 su [BRIEF-AGENTE-F5.md](BRIEF-AGENTE-F5.md), in ordine di priorità: ombra sui percorsi dei civici verso i rifugi (D49), difetti 4, 5, 7 e 8 dell'MCP, scheda per il primo incontro con l'ufficio, orari dei rifugi, prototipo dell'ombra sul marciapiede solo su R01 (fuori dai risultati ufficiali).
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
