@@ -52,6 +52,9 @@ fmt = lambda x: f"{x * 100:.1f}%".replace(".", ",")
 assert all(t in caldo[0]["risposta"] for t in (f"circa {o[0]['soprattutto_ombra']['residenti_stimati']} residenti stimati ({fmt(o[0]['soprattutto_ombra']['quota_residenti'])})",
                                                f"{o[0]['sensibilita_soglia']['40%']['residenti_stimati']} ({fmt(o[0]['sensibilita_soglia']['40%']['quota_residenti'])})",
                                                f"{o[1]['soprattutto_ombra']['residenti_stimati']} soprattutto all'ombra ({fmt(o[1]['soprattutto_ombra']['quota_residenti'])})"))
+mm = lambda x: f"{x:.1f}".replace(".", ",")   # F6 (D53): indicatore di riserva, senza soglia
+assert all(t in caldo[0]["risposta"] for t in (f"in media per il {fmt(o[0]['riserva']['ombra_media'])}", f"{mm(o[0]['riserva']['minuti_sole_quartili'][1])} minuti in mediana",
+                                               f"ombra media {fmt(o[1]['riserva']['ombra_media'])}", f"{mm(o[1]['riserva']['minuti_sole_quartili'][1])} minuti al sole in mediana"))
 e = core.run_tool("get_route_exposure", {"date": "2026-07-15"}); assert e["classifica"]["14:00"]["per_metri_al_sole"][:3] == ["RC4", "R10", "R03"] and all(e["percorsi"][x]["job_id"] in caldo[1]["risposta"] for x in ("RC4", "R10", "R03"))
 
 # 4. errori attesi, oggi

@@ -7,7 +7,10 @@ sull'asse del percorso all'istante delle 14:00 del 15 luglio 2026 (motore shadow
 Riuso: l'ombra si misura una volta per tratto di rete (i pezzi del grafo con gli agganci) e per raccordo; un percorso somma i suoi tratti.
 "Soprattutto all'ombra" = almeno il 50% del percorso in ombra (sensibilità 40% e 60%): soglia scelta da noi (D49), da validare con l'ufficio.
 
+Indicatore di riserva (D53), meno sensibile alla soglia: quota media del percorso in ombra e minuti al sole camminando (mediana e quartili).
+
 Uso: pipeline/.venv/bin/python shadow/ombra_rifugi.py [--blocco 500]
+     pipeline/.venv/bin/python shadow/ombra_rifugi.py --riserva   (solo l'indicatore di riserva, dal GeoJSON dei civici già calcolato: nessun calcolo d'ombra)
 Scrive: shadow/<area>/ombra_rifugi_<data>.json (numeri, metodo, limiti, tempo e memoria per blocco),
         shadow/<area>/ombra_rifugi_civici_<data>.geojson (un punto per civico entro 15 minuti, per la scena).
 Guardiano: sotto 700 MB di memoria disponibile il calcolo si ferma (uscita 3)."""
@@ -55,8 +58,30 @@ def percorsi(m):
     return out, rac_d, ents
 
 
+def riserva(P):
+    """D53: indicatori meno sensibili alla soglia per i civici P (proprietà del GeoJSON dei civici). Minuti al sole = minuti di cammino x (1 - quota in ombra)."""
+    q = lambda v, n=2: [round(float(x), n) for x in np.percentile(v, [25, 50, 75])]
+    om, mi = np.array([p["ombra"] for p in P]), np.array([p["minuti"] for p in P]); r = [(p["residenti_stimati"], p["ombra"]) for p in P if p["residenti_stimati"] is not None]
+    return {"ombra_media": round(float(om.mean()), 4), "ombra_media_pesata_residenti": round(sum(a * b for a, b in r) / sum(a for a, _ in r), 4),
+            "ombra_media_intervallo_vegetazione": [round(float(np.mean([p["ombra_intervallo"][i] for p in P])), 4) for i in (0, 1)],
+            "ombra_media_solo_edifici": round(float(np.mean([p["ombra_solo_edifici"] for p in P])), 4), "ombra_quartili": q(om, 4),
+            "minuti_sole_quartili": q(mi * (1 - om)), "minuti_cammino_quartili": q(mi),
+            "definizione": "quartili [primo, mediana, terzo] sui civici; minuti al sole = minuti di cammino x (1 - quota del percorso in ombra alle 14), caso con vegetazione"}
+
+
+def solo_riserva():
+    """Aggiunge l'indicatore di riserva al risultato già calcolato, dal GeoJSON dei civici (stessi valori arrotondati che usa main)."""
+    f = OUT / f"ombra_rifugi_{DATA}.json"; R = json.loads(f.read_text())
+    P = [x["properties"] for x in json.loads((OUT / f"ombra_rifugi_civici_{DATA}.geojson").read_text())["features"]]
+    for x in R["soglie"]: x["riserva"] = riserva([p for p in P if p["minuti"] <= x["minuti"]])
+    f.write_text(json.dumps(R, ensure_ascii=False, indent=1) + "\n")
+    for x in R["soglie"]: print(x["minuti"], "min:", x["riserva"])
+
+
 def main():
-    a = argparse.ArgumentParser(description=__doc__.split("\n")[0]); a.add_argument("--blocco", type=int, default=500); a = a.parse_args(); ESP.guardiano()
+    a = argparse.ArgumentParser(description=__doc__.split("\n")[0]); a.add_argument("--blocco", type=int, default=500); a.add_argument("--riserva", action="store_true"); a = a.parse_args()
+    if a.riserva: return solo_riserva()
+    ESP.guardiano()
     t0 = time.time()
     m = json.loads((A.OUT_VERS / "manifest" / f"{JOB}.manifest.json").read_text())
     righe = {r["origin_id"]: r for r in csv.DictReader(open(A.ROOT / next(x["path"] for x in m["assets"] if x["asset_id"] == "ast_origini_csv")))}
@@ -117,6 +142,11 @@ def main():
         x["solo_edifici"] = conta(T, "base", SOGLIA_OMBRA)
         x["ombra_mediana"] = round(statistics.median(civ[o]["ombra"]["veg_lidar_tipico"] for o in dentro if civ[o]["minuti"] <= T), 4)
         soglie.append(x)
+    feats = [{"type": "Feature", "geometry": ESP.ll(c0.geometry[o]),
+              "properties": {"minuti": c["minuti"], "rifugio": c["rifugio"], "ombra": c["ombra"]["veg_lidar_tipico"], "ombra_intervallo": [c["ombra"]["veg_lidar_min"], c["ombra"]["veg_lidar_max"]],
+                             "ombra_solo_edifici": c["ombra"]["base"], "soprattutto_ombra": c["ombra"]["veg_lidar_tipico"] >= SOGLIA_OMBRA,
+                             "residenti_stimati": round(c["residenti_stimati"], 2) if c["residenti_stimati"] is not None else None}} for o, c in civ.items()]
+    for x in soglie: x["riserva"] = riserva([f["properties"] for f in feats if f["properties"]["minuti"] <= x["minuti"]])
     t_tot = time.time() - t0
     R = {"job_accessibilita": JOB, "destination_ids": m["params"]["destination_ids"], "speed_m_s": m["params"]["profile"]["speed_m_s"], "data": DATA, "ora_locale": ORA,
          "sole": {"azimut_deg": round(az, 2), "elevazione_deg": round(el, 2)}, "versione_motore_ombra": O.VERSIONE, "baseline_id": O.BASELINE_ID,
@@ -133,10 +163,6 @@ def main():
          "fonti": RES.stima(m)["fonti"] + [{"source_id": "edifici, alberi e LiDAR della baseline", "licenza": "vedi get_source_card per ogni snapshot", "data_del_dato": "baseline 2026-10-09"}],
          "limits": [{"code": k, "text": t} for k, t in LIMITI] + [x for x in RES.stima(m)["limits"] if x["code"] not in ("civici_non_residenti",)]}
     (OUT / f"ombra_rifugi_{DATA}.json").write_text(json.dumps(R, ensure_ascii=False, indent=1) + "\n")
-    feats = [{"type": "Feature", "geometry": ESP.ll(c0.geometry[o]),
-              "properties": {"minuti": c["minuti"], "rifugio": c["rifugio"], "ombra": c["ombra"]["veg_lidar_tipico"], "ombra_intervallo": [c["ombra"]["veg_lidar_min"], c["ombra"]["veg_lidar_max"]],
-                             "ombra_solo_edifici": c["ombra"]["base"], "soprattutto_ombra": c["ombra"]["veg_lidar_tipico"] >= SOGLIA_OMBRA,
-                             "residenti_stimati": round(c["residenti_stimati"], 2) if c["residenti_stimati"] is not None else None}} for o, c in civ.items()]
     (OUT / f"ombra_rifugi_civici_{DATA}.geojson").write_text(json.dumps({"type": "FeatureCollection", "name": "civici_ombra_rifugi", "data": DATA, "ora_locale": ORA, "job_accessibilita": JOB,
                                                                        "nota": "Un punto per civico entro 15 minuti dal rifugio più vicino; ombra sull'asse del percorso alle 14:00, caso tipico con vegetazione. Stima, da verificare.",
                                                                        "features": feats}, ensure_ascii=False, separators=(",", ":")))

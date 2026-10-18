@@ -82,11 +82,150 @@
     "residenti_stimati": 33,
     "quota_residenti": 0.0023
    },
-   "ombra_mediana": 0.1845
+   "ombra_mediana": 0.1845,
+   "riserva": {
+    "ombra_media": 0.2126,
+    "ombra_media_pesata_residenti": 0.2079,
+    "ombra_media_intervallo_vegetazione": [
+     0.1654,
+     0.3196
+    ],
+    "ombra_media_solo_edifici": 0.1087,
+    "ombra_quartili": [
+     0.137,
+     0.1845,
+     0.2778
+    ],
+    "minuti_sole_quartili": [
+     3.43,
+     4.54,
+     5.6
+    ],
+    "minuti_cammino_quartili": [
+     4.34,
+     5.69,
+     7.23
+    ],
+    "definizione": "quartili [primo, mediana, terzo] sui civici; minuti al sole = minuti di cammino x (1 - quota del percorso in ombra alle 14), caso con vegetazione"
+   }
+  },
+  {
+   "minuti": 15,
+   "arrivano": {
+    "civici": 1858,
+    "quota_civici": 0.5637,
+    "residenti_stimati": 8380,
+    "quota_residenti": 0.5994
+   },
+   "soprattutto_ombra": {
+    "civici": 13,
+    "quota_civici": 0.0039,
+    "residenti_stimati": 59,
+    "quota_residenti": 0.0042
+   },
+   "intervallo_vegetazione": {
+    "quota_civici": [
+     0.0024,
+     0.0376
+    ],
+    "quota_residenti": [
+     0.0023,
+     0.0382
+    ]
+   },
+   "sensibilita_soglia": {
+    "40%": {
+     "civici": 93,
+     "quota_civici": 0.0282,
+     "residenti_stimati": 405,
+     "quota_residenti": 0.029
+    },
+    "60%": {
+     "civici": 7,
+     "quota_civici": 0.0021,
+     "residenti_stimati": 29,
+     "quota_residenti": 0.002
+    }
+   },
+   "solo_edifici": {
+    "civici": 8,
+    "quota_civici": 0.0024,
+    "residenti_stimati": 33,
+    "quota_residenti": 0.0023
+   },
+   "ombra_mediana": 0.1761,
+   "riserva": {
+    "ombra_media": 0.2014,
+    "ombra_media_pesata_residenti": 0.2018,
+    "ombra_media_intervallo_vegetazione": [
+     0.157,
+     0.2982
+    ],
+    "ombra_media_solo_edifici": 0.0954,
+    "ombra_quartili": [
+     0.1251,
+     0.1761,
+     0.2628
+    ],
+    "minuti_sole_quartili": [
+     3.98,
+     5.48,
+     9.35
+    ],
+    "minuti_cammino_quartili": [
+     4.99,
+     7.04,
+     11.48
+    ],
+    "definizione": "quartili [primo, mediana, terzo] sui civici; minuti al sole = minuti di cammino x (1 - quota del percorso in ombra alle 14), caso con vegetazione"
+   }
   }
  ],
  "classification": "estimated",
  "metodo": "Percorso più breve per tempo di ogni civico verso l'ingresso del rifugio più vicino (stessa Dijkstra del job, controllata con le sue righe); ombra sull'asse del percorso all'istante, come frazione della lunghezza; residenti stimati come in estimate_residents (D45, D48).",
+ "calcolo": {
+  "blocco_civici": 500,
+  "tratti_unici": 4742,
+  "metri_tratti_unici": 46608,
+  "metri_percorsi": 1054712,
+  "secondi_percorsi": 4.4,
+  "secondi_totali": 597,
+  "memoria_max_gb": 0.88,
+  "blocchi": [
+   {
+    "blocco": 1,
+    "civici": 500,
+    "tratti_nuovi": 2786,
+    "secondi": 322.4,
+    "memoria_max_gb": 0.88,
+    "memoria_disponibile_min_gb": 5.56
+   },
+   {
+    "blocco": 2,
+    "civici": 500,
+    "tratti_nuovi": 883,
+    "secondi": 113.3,
+    "memoria_max_gb": 0.88,
+    "memoria_disponibile_min_gb": 5.72
+   },
+   {
+    "blocco": 3,
+    "civici": 500,
+    "tratti_nuovi": 636,
+    "secondi": 85.5,
+    "memoria_max_gb": 0.88,
+    "memoria_disponibile_min_gb": 5.53
+   },
+   {
+    "blocco": 4,
+    "civici": 358,
+    "tratti_nuovi": 437,
+    "secondi": 70.5,
+    "memoria_max_gb": 0.88,
+    "memoria_disponibile_min_gb": 5.58
+   }
+  ]
+ },
  "snapshot_ids": [
   "snp_fi_alberi_20261009",
   "snp_fi_civici_20261009",

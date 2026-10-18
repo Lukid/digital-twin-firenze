@@ -106,6 +106,12 @@ for s, r in zip(om["soglie"], res["soglie"][1:]):
     assert o["civici"] == sum(1 for f in pt if f["properties"]["minuti"] <= s["minuti"] and f["properties"]["ombra"] >= om["soglia_ombra"]) and a["civici"] == sum(1 for f in pt if f["properties"]["minuti"] <= s["minuti"])
     assert s["sensibilita_soglia"]["40%"]["civici"] >= o["civici"] >= s["sensibilita_soglia"]["60%"]["civici"] and s["intervallo_vegetazione"]["quota_civici"][0] <= o["quota_civici"] <= s["intervallo_vegetazione"]["quota_civici"][1]
 assert om["soglie"][0]["soprattutto_ombra"]["civici"] == 8 and om["soglie"][1]["soprattutto_ombra"]["residenti_stimati"] == 59 and any(x["code"] == "soglia_scelta_da_noi" for x in om["limits"])
+# indicatore di riserva (F6, D53): quota media e quartili dai punti per la scena; minuti al sole fra 0 e i minuti di cammino
+for s in om["soglie"]:
+    P = [f["properties"] for f in pt if f["properties"]["minuti"] <= s["minuti"]]; r = s["riserva"]
+    assert abs(r["ombra_media"] - sum(p["ombra"] for p in P) / len(P)) < 1e-4 and r["ombra_quartili"][1] == s["ombra_mediana"]
+    assert r["ombra_media_intervallo_vegetazione"][0] <= r["ombra_media"] <= r["ombra_media_intervallo_vegetazione"][1]
+    assert all(0 <= a <= b for a, b in zip(r["minuti_sole_quartili"], r["minuti_cammino_quartili"])) and r["minuti_cammino_quartili"][2] <= s["minuti"]
 assert err_code(run("get_shaded_access", {"job_id": rif["job_id"], "date": "2026-07-16"})) == "unknown_id" and err_code(run("get_shaded_access", {"job_id": rif["job_id"], "date": "2026-07-15", "soglia": 0.4})) == "invalid_params"
 sc = run("list_scenarios", {}); assert core.validate("list_scenarios", "output", sc) == [] and {"scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"} <= {x["scenario_id"] for x in sc["scenarios"]}, sc
 assert err_code(run("list_scenarios", {"baseline_id": "bas_altra"})) == "incompatible_baseline"

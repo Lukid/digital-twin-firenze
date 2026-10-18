@@ -1702,6 +1702,55 @@
             "maximum": 1
            }
           }
+         },
+         "riserva": {
+          "type": "object",
+          "description": "D53: indicatore meno sensibile alla soglia, dai civici già calcolati.",
+          "required": [
+           "ombra_media",
+           "ombra_quartili",
+           "minuti_sole_quartili",
+           "minuti_cammino_quartili"
+          ],
+          "properties": {
+           "ombra_media": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+           },
+           "ombra_media_pesata_residenti": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+           },
+           "ombra_quartili": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+             "type": "number",
+             "minimum": 0
+            }
+           },
+           "minuti_sole_quartili": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+             "type": "number",
+             "minimum": 0
+            }
+           },
+           "minuti_cammino_quartili": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+             "type": "number",
+             "minimum": 0
+            }
+           }
+          }
          }
         }
        }

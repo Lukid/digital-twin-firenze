@@ -14,7 +14,7 @@ Scheda per il primo incontro con l'ufficio del Comune. Ottobre 2026. Prototipo, 
 
 Le abbiamo scritte noi, non voi: servono a mostrare cosa il gemello sa e cosa no. Vorremmo rifarle con le vostre parole.
 
-1. **Quanti residenti arrivano a un rifugio climatico in 10 minuti a piedi? E quanti camminando soprattutto all'ombra?** Circa 6.100 residenti stimati, il 44% di quelli dell'area. Con almeno metà del percorso in ombra alle 14 del 15 luglio, solo circa 30 (0,2%): a quell'ora il sole è alto e l'ombra è poca.
+1. **Quanti residenti arrivano a un rifugio climatico in 10 minuti a piedi? E quanti camminando soprattutto all'ombra?** Circa 6.100 residenti stimati, il 44% di quelli dell'area. Con almeno metà del percorso in ombra alle 14 del 15 luglio, solo 33 (0,2%); con la soglia al 40% sono 363 (2,6%), al 60% 29 (0,2%): a quell'ora il sole è alto e l'ombra è poca. Senza soglia: il percorso è in ombra in media per il 21%, e metà dei civici cammina al sole almeno 4 minuti e mezzo.
 2. **Quali percorsi verso scuole e fermate sono più esposti alle 14 di luglio?** Fra i 15 percorsi di prova: da via De Pinedo alla Biblioteca Buonarroti, da via De Pinedo alla fermata Regione Toscana, dalla fermata Regione Toscana al Polo.
 3. **Dove un intervento dà più ombra per mille euro?** Non lo so per un confronto: il costo c'è solo per il filare di 7 platani sul percorso dalla fermata San Donato - Università al Polo (38 m² d'ombra per mille euro). Le pensiline non hanno un prezzo pubblico riusabile.
 4. **Quali rifugi ci sono vicino a Novoli e da dove si entra?** Sette, entro 700 m: una biblioteca e sei giardini. Gli ingressi sono i civici agli indirizzi del vostro elenco, non verificati sul posto.
@@ -40,6 +40,6 @@ Le abbiamo scritte noi, non voi: servono a mostrare cosa il gemello sa e cosa no
 
 ## Limiti da sapere
 
-- L'ombra si misura sulla linea centrale della strada, non sul marciapiede.
+- L'ombra si misura sulla linea centrale della strada. Sui due lati della strada c'è solo un primo calcolo sui 15 percorsi di prova, da verificare sul posto.
 - I residenti sono una stima: i residenti 2011 di ogni sezione divisi in parti uguali fra i suoi civici.
 - Ingressi dei rifugi, rete pedonale e ombra non sono ancora verificati sul posto.

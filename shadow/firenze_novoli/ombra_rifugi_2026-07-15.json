@@ -82,7 +82,32 @@
     "residenti_stimati": 33,
     "quota_residenti": 0.0023
    },
-   "ombra_mediana": 0.1845
+   "ombra_mediana": 0.1845,
+   "riserva": {
+    "ombra_media": 0.2126,
+    "ombra_media_pesata_residenti": 0.2079,
+    "ombra_media_intervallo_vegetazione": [
+     0.1654,
+     0.3196
+    ],
+    "ombra_media_solo_edifici": 0.1087,
+    "ombra_quartili": [
+     0.137,
+     0.1845,
+     0.2778
+    ],
+    "minuti_sole_quartili": [
+     3.43,
+     4.54,
+     5.6
+    ],
+    "minuti_cammino_quartili": [
+     4.34,
+     5.69,
+     7.23
+    ],
+    "definizione": "quartili [primo, mediana, terzo] sui civici; minuti al sole = minuti di cammino x (1 - quota del percorso in ombra alle 14), caso con vegetazione"
+   }
   },
   {
    "minuti": 15,
@@ -128,7 +153,32 @@
     "residenti_stimati": 33,
     "quota_residenti": 0.0023
    },
-   "ombra_mediana": 0.1761
+   "ombra_mediana": 0.1761,
+   "riserva": {
+    "ombra_media": 0.2014,
+    "ombra_media_pesata_residenti": 0.2018,
+    "ombra_media_intervallo_vegetazione": [
+     0.157,
+     0.2982
+    ],
+    "ombra_media_solo_edifici": 0.0954,
+    "ombra_quartili": [
+     0.1251,
+     0.1761,
+     0.2628
+    ],
+    "minuti_sole_quartili": [
+     3.98,
+     5.48,
+     9.35
+    ],
+    "minuti_cammino_quartili": [
+     4.99,
+     7.04,
+     11.48
+    ],
+    "definizione": "quartili [primo, mediana, terzo] sui civici; minuti al sole = minuti di cammino x (1 - quota del percorso in ombra alle 14), caso con vegetazione"
+   }
   }
  ],
  "classification": "estimated",
