@@ -116,6 +116,10 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D55 (18 ottobre): gli orari di luglio dei rifugi si chiedono all'ufficio; la domanda C9 resta "non lo so". L'orario d'autunno della Biblioteca Buonarroti non entra nella scheda (domanda 3).
 - D56 (18 ottobre): l'ombra sui due lati della strada si estende subito ai percorsi campione, con un valore dichiarato dove il marciapiede non è mappato, accanto ai risultati sull'asse (domanda 4).
 - D57 (18 ottobre): sessione F6 su [BRIEF-AGENTE-F6.md](BRIEF-AGENTE-F6.md), in ordine di priorità: ombra sui due lati della strada per R01-R10 e RC1-RC5 accanto all'asse (D56), indicatore di riserva per la scheda dell'ufficio (D53), civici che arrivano all'ombra nella scena (solo build).
+- D58 (18 ottobre): ramo `agente/f6` unito su `main` dopo lint, validate e `make test` verdi sul Mac e scena vista nel browser da Luca. `lati_strada.json` rifatto sul Mac: identico tranne tempo e memoria. Trovato un difetto di F3: nell'asset degli edifici della scena il civico di un edificio di Via Bisenzio è l'8 sul worker e il 10 sul Mac (pari distanza, scelta non fissata in `scene/firenze_novoli/build.py`) (domanda 3 del report F6).
+- D59 (18 ottobre): distanza del lato dove il marciapiede non è mappato ricavata dai poligoni "Aree stradali" del Comune (CC BY 4.0, file del 26 maggio 2025), con una regola scritta e dichiarata come stima nostra; i 3 m restano dove la regola non si applica (domanda 1).
+- D60 (18 ottobre): il lato più in ombra entra subito come limite superiore accanto all'asse nelle risposte di `get_route_exposure` e `get_shaded_access`; l'asse resta il valore principale (domanda 2).
+- D61 (18 ottobre): sessione F7 su [BRIEF-AGENTE-F7.md](BRIEF-AGENTE-F7.md): D59, D60 e la correzione del civico pari distanza (D58).
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
@@ -129,7 +133,7 @@ Revisione del codice: R1-R6 chiusi. Due regole emerse dalle correzioni:
 - La cache del servizio si svuota da sola quando cambiano il codice dei motori o i file di dati che leggono (impronta in `service/cache/<area>/impronta.txt`). Gli job_id non cambiano.
 
 1. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
-2. Dopo F6: domande del report F6 (distanza del lato, uso dei lati nei numeri ufficiali, confronto col Mac); aprire la scena sul Mac. Alla verifica del 12 dicembre annotare il lato e la distanza dal centro strada. Da chiedere al Comune: costo delle 72 pensiline (D37), voce di piantagione (D41), orari dei rifugi (D55), soglia dell'ombra (D49).
+2. Sessione F7 (D61). Da chiedere al Comune: costo delle 72 pensiline (D37), voce di piantagione (D41), orari dei rifugi (D55). Alla verifica del 12 dicembre: annotare il lato del marciapiede e la distanza dal centro strada.
 3. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. Kit pronto per R01 in `docs/verifica-posto/` (F4): sabato 12 dicembre 2026, ore 11:00, 13:00 e 14:30.
 
 ## Come lavora la sessione
