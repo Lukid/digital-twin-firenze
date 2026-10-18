@@ -1583,6 +1583,47 @@ footer{padding:32px 16px 40px;color:var(--tenue);font-size:14px}
 </ul>
 <p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
 </details>
+<details id="src_fi_aree_stradali"><summary><span>Aree stradali (poligoni per tronco e incrocio), Comune di Firenze</span> <code>src_fi_aree_stradali</code></summary>
+<ul>
+<li>Identificativo: <code>src_fi_aree_stradali</code></li>
+<li>Editore: Comune di Firenze</li>
+<li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/a44ea551-7b09-4d0d-af64-7c08159e9316" rel="noopener">https://dati.toscana.it/dataset/a44ea551-7b09-4d0d-af64-7c08159e9316</a></li>
+<li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6379&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=19953" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6379&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=19953</a></li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata solo per la distanza del lato della strada nell&#x27;ombra sui due lati, accanto all&#x27;asse; non nei calcoli di accessibilità e ombra sull&#x27;asse)</li>
+</ul>
+<h3 class="sk">Licenza</h3>
+<ul>
+<li>Licenza: CC-BY-4.0</li>
+<li>Verifica: verificata</li>
+<li>Uso consentito: ridistribuzione consentita, con l&#x27;attribuzione richiesta dalla licenza</li>
+<li>Evidenza: <a href="https://dati.toscana.it/dataset/a44ea551-7b09-4d0d-af64-7c08159e9316" rel="noopener">https://dati.toscana.it/dataset/a44ea551-7b09-4d0d-af64-7c08159e9316</a></li>
+<li>Nota: Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-18).</li>
+</ul>
+<h3 class="sk">Date</h3>
+<ul>
+<li>Data del dato: 2025-05-26</li>
+<li>Nota sul periodo: file dello zip del 2025-05-26 (campo modified della scheda: 26-05-2025); frequenza dichiarata WEEKLY, scheda del catalogo aggiornata il 2026-02-11</li>
+<li>Ultima modifica della scheda del catalogo: 2026-02-11 (non è la data del dato)</li>
+</ul>
+<p>Scarichi validi:</p>
+<div class="tab"><table><thead><tr><th scope="col">Snapshot</th><th scope="col">Scaricato il (UTC)</th><th scope="col">Periodo dichiarato nello scarico</th><th scope="col">sha256 (primi 12)</th><th scope="col">Baseline</th></tr></thead><tbody><tr><td><code>snp_fi_aree_stradali_20261018</code></td><td>2026-10-18T16:00:11Z</td><td>non dichiarato (file del 2025-05-26)</td><td>772f43cad021</td><td>no</td></tr></tbody></table></div>
+<h3 class="sk">Campi usati</h3>
+<p><code>ID</code>, <code>CODICESTRA</code>, <code>TOPONIMO</code></p>
+<p>Sistema di riferimento dichiarato: EPSG:3003 (shapefile con .prj in Monte Mario Italia zona 1; convertito in EPSG:7791 come le altre fonti del Comune)</p>
+<h3 class="sk">Controlli</h3>
+<ul>
+<li>aree_stradali in area allargata: superato. 1341 oggetti</li>
+<li>larghezza: avviso. nessun campo di larghezza: la distanza del lato è ricavata dalla forma del poligono con una regola nostra (shadow/lati_strada.py), una stima</li>
+</ul>
+<h3 class="sk">Limiti</h3>
+<ul>
+<li>Fuori dalla baseline congelata (D59): serve solo alla distanza del lato della strada dove il marciapiede non è mappato in OSM (shadow/lati_strada.py).</li>
+<li>Nessun campo di larghezza: la distanza è dal bordo del poligono lungo la normale, una stima nostra. Il bordo a volte comprende il marciapiede, a volte no: sui tratti con il marciapiede OSM sta in mediana circa 1,7 m più lontano.</li>
+<li>Incroci (poligoni senza toponimo) esclusi.</li>
+<li>larghezza: nessun campo di larghezza: la distanza del lato è ricavata dalla forma del poligono con una regola nostra (shadow/lati_strada.py), una stima</li>
+</ul>
+<p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
+</details>
 
 <h2 id="verificare">Come verificare un numero</h2>
 <ul>
