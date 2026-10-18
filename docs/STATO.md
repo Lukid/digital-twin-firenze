@@ -8,6 +8,8 @@ Aggiornato al 10 ottobre 2026 (sessioni del 17 ottobre sotto): POC di Firenze No
 
 17 ottobre 2026, terza sessione autonoma, fase F3, ramo `agente/f3` (non ancora in `main`): coordinate arrotondate prima di scrivere i GeoJSON (D39, funzione `arrotonda` in `pipeline/coordinate.py`, 8 decimali in gradi), file rigenerati e baseline degli scenari aggiornata senza cambiare job né metriche, `scripts/impronte.sh` per il confronto col Mac; costo del filare S1 con il platano orientale 18/20 (D36): 3.834,95 euro, 38,07 m² d'ombra per mille euro; RC3 verso il rifugio più vicino (Giardino Puccini, 996 m) e ombra dei 5 percorsi RC, uno alla volta; costi unitari di pensiline e strutture ombreggianti dagli open data ANAC (licenza CC BY-SA 4.0, non CC BY); scena con rifugi, percorsi RC, accessibilità verso il rifugio più vicino e costo di S1. Esiti e domande in [REPORT-AGENTE-F3.md](REPORT-AGENTE-F3.md).
 
+18 ottobre 2026, sessione autonoma F4, ramo `agente/f4` (non ancora in `main`): dieci domande sul caso caldo (bozza nostra, da validare con l'ufficio) con risposte solo dall'MCP e replay in `test_nl.py`; residenti 2011 stimati per civico (D45): 43,6% dei residenti stimati entro 10 minuti dal rifugio più vicino, 39,1% dei civici; percorsi più esposti alle 14 del 15 luglio (RC4, R10, R03); due strumenti MCP in sola lettura (`estimate_residents`, `get_route_exposure`); sezione 7 del documento tecnico sul caso caldo; kit stampabile per verificare R01 sul posto sabato 12 dicembre 2026. Esiti e domande in [REPORT-AGENTE-F4.md](REPORT-AGENTE-F4.md).
+
 ## In una riga
 
 Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2 km²), costruito solo da open data con licenza che ne permette il riuso, per mostrarne le potenzialità. Pisa è accantonata nel tag git `pilota-pisa-z2` (D15); il 10 ottobre i suoi file sono stati tolti dal ramo principale, tranne gli script di rete e geometria di Pisa (`network/build.sh`, `geometry/build.sh` e i loro test), non più mantenuti.
@@ -49,7 +51,9 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 
 - Rete solo OSM, lato del marciapiede ignoto. Ingressi del Polo: un civico del Comune per edificio dell'Ateneo (indirizzi dal report di accessibilità dell'Ateneo), non verificati sul posto; il civico non è per forza la porta (`network/firenze_novoli/verifica_ingressi_polo.md`).
 - La fermata San Donato - Università sta circa 100 m fuori dal riquadro FP: in scena c'è il terreno, non gli edifici attorno.
-- Civici come punti d'indirizzo, non persone.
+- Civici come punti d'indirizzo, non persone. Dal 18 ottobre (F4, D45) i residenti 2011 entrano come stima per civico (ripartizione uniforme sui civici della sezione, negozi compresi), accanto alla quota dei civici; mai al posto di essa.
+- Ombra solo sui percorsi campione: non si sa quanti residenti arrivano a un rifugio camminando soprattutto all'ombra (domanda 3 del report F4).
+- Pagina della verifica sul posto non provata in un browser sul worker (F4): aprirla e stamparla dal Mac.
 - Vegetazione LiDAR come prisma opaco pieno: limite superiore dell'ombra.
 - Altezze LiDAR 2023 con unità volumetriche 2011, portici ignoti, datum verticale non confermato.
 - GTFS bus congelato valido fino al 29/10/2026: è una finestra mobile di tre settimane. Al 16/10 le fermate della zona sono identiche (più una nuova) e il tram è invariato: i calcoli usano solo le posizioni, nessun ricalcolo. Snapshot del 16/10 fuori baseline.
@@ -107,8 +111,8 @@ Revisione del codice: R1-R6 chiusi. Due regole emerse dalle correzioni:
 - La cache del servizio si svuota da sola quando cambiano il codice dei motori o i file di dati che leggono (impronta in `service/cache/<area>/impronta.txt`). Gli job_id non cambiano.
 
 1. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
-2. Sessione F4 (D45). Da chiedere al Comune: costo del piano delle 72 pensiline (D37) e voce di piantagione del filare (D41). Confronto delle impronte dell'ombra sul Mac (D40).
-3. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. È una proposta della revisione, non una nuova decisione dell'utente.
+2. Domande del report F4; confronto sul Mac dei 17 job d'ombra della sessione F4 (circa 6 minuti) e merge di `agente/f4`. Da chiedere al Comune: costo del piano delle 72 pensiline (D37), voce di piantagione del filare (D41), orari dei rifugi climatici. Portare all'ufficio le dieci domande del caso caldo come bozza. Confronto delle impronte dell'ombra R01/R02 e RC sul Mac (D40).
+3. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. Kit pronto per R01 in `docs/verifica-posto/` (F4): sabato 12 dicembre 2026, ore 11:00, 13:00 e 14:30.
 
 ## Come lavora la sessione
 
