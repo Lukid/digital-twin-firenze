@@ -1,0 +1,134 @@
+{
+ "job_id": "job_e1e75455f7511f7d",
+ "destination_ids": [
+  "dst_refuge_rib_fi_6",
+  "dst_refuge_rif_fi_01523",
+  "dst_refuge_rif_fi_01545",
+  "dst_refuge_rif_fi_01631",
+  "dst_refuge_rif_fi_02394",
+  "dst_refuge_rif_fi_02399",
+  "dst_refuge_rif_fi_05409"
+ ],
+ "speed_m_s": 1.2,
+ "civici": 3296,
+ "civici_con_dato": 3226,
+ "civici_senza_dato": 70,
+ "residenti_stimati_totali": 13982,
+ "sezioni": 94,
+ "sezioni_tagliate_dal_ritaglio_dei_civici": [
+  62097
+ ],
+ "soglie": [
+  {
+   "minuti": 5.0,
+   "residenti_stimati": 2129,
+   "quota_residenti": 0.1523,
+   "intervallo_velocita": [
+    0.0605,
+    0.2235
+   ],
+   "quota_civici": 0.1417,
+   "sensibilita_solo_civici_neri": 0.1548
+  },
+  {
+   "minuti": 10.0,
+   "residenti_stimati": 6092,
+   "quota_residenti": 0.4357,
+   "intervallo_velocita": [
+    0.2964,
+    0.4658
+   ],
+   "quota_civici": 0.3911,
+   "sensibilita_solo_civici_neri": 0.4399
+  },
+  {
+   "minuti": 15.0,
+   "residenti_stimati": 8380,
+   "quota_residenti": 0.5994,
+   "intervallo_velocita": [
+    0.4357,
+    0.692
+   ],
+   "quota_civici": 0.5637,
+   "sensibilita_solo_civici_neri": 0.5999
+  }
+ ],
+ "classification": "estimated",
+ "metodo": "Residenti 2011 di ogni sezione di censimento divisi in parti uguali fra i civici della sezione; per ogni soglia, somma sui civici-origine raggiunti dal job. Quote sui civici con un dato di sezione. Sensibilità: stessi residenti ripartiti solo sui civici neri (i rossi in genere non sono abitazioni).",
+ "snapshot_ids": [
+  "snp_fi_civici_20261009",
+  "snp_fi_sezioni2011_20261010",
+  "snp_rt_censimento2011_20261010"
+ ],
+ "fonti": [
+  {
+   "source_id": "src_rt_censimento2011",
+   "licenza": "CC BY (versione non indicata), Regione Toscana su dati Istat",
+   "data_del_dato": "2011-10-09"
+  },
+  {
+   "source_id": "src_fi_sezioni2011",
+   "licenza": "CC BY 4.0, Comune di Firenze",
+   "data_del_dato": "2011-10-09"
+  },
+  {
+   "source_id": "src_fi_civici",
+   "licenza": "CC BY 4.0, Comune di Firenze",
+   "data_del_dato": "stato alla data di scarico (2026-10-09)"
+  }
+ ],
+ "limits": [
+  {
+   "code": "stima_2011",
+   "text": "Residenti del censimento 2011, quindici anni fa: Novoli è cambiato da allora (nuove residenze e studentati)."
+  },
+  {
+   "code": "ripartizione_uniforme",
+   "text": "Residenti di ogni sezione ripartiti in parti uguali sui civici della sezione: un condominio e un negozio valgono uguale."
+  },
+  {
+   "code": "civici_senza_abitazioni",
+   "text": "Civici senza abitazioni (negozi, uffici, civici rossi) contati come gli altri: tolgono residenti ai civici con abitazioni."
+  },
+  {
+   "code": "sezioni_senza_dato",
+   "text": "Sezioni senza riga nel censimento: i loro civici restano fuori dalle quote dei residenti (conteggio nel campo civici_senza_dato)."
+  },
+  {
+   "code": "sezioni_tagliate",
+   "text": "Le sezioni che escono dall'area allargata dei civici (campo sezioni_tagliate_dal_ritaglio_dei_civici) hanno civici mancanti: i loro residenti per civico sono sovrastimati."
+  },
+  {
+   "code": "civici_non_residenti",
+   "text": "La quota dei civici resta accanto: è il numero calcolato dal motore, i residenti sono una stima sopra di esso."
+  },
+  {
+   "code": "grafo_osm_non_verificato",
+   "text": "Rete da OSM congelato, non verificata sul posto; percorsi, ingressi e restrizioni da controllare al sopralluogo."
+  },
+  {
+   "code": "marciapiede_ignoto",
+   "text": "Dove il marciapiede non è taggato lo stato è ignoto: il tratto è percorribile ma non certificato."
+  },
+  {
+   "code": "velocita_ipotesi",
+   "text": "Velocità e penalità sono ipotesi di esperimento, non misure sul posto e non attribuite a gruppi di persone."
+  },
+  {
+   "code": "snapping_parametro",
+   "text": "Il limite di snapping e il raccordo non attraversano edifici; i civici non agganciati restano insufficient_data."
+  },
+  {
+   "code": "no_certificazione_accessibilita",
+   "text": "Mancano pendenze, larghezze, rampe e gradini di marciapiede: nessuna certificazione di accessibilità universale."
+  },
+  {
+   "code": "ingresso_da_verificare",
+   "text": "Ingresso e orari della destinazione non verificati; cambiare ingresso può cambiare lunghezze e attraversamenti."
+  },
+  {
+   "code": "almeno_una_destinazione",
+   "text": "Più destinazioni (7): per ogni origine conta la più vicina (ingresso più vicino per tempo fra tutti); la quota è di civici che ne raggiungono almeno una."
+  }
+ ]
+}

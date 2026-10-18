@@ -20,6 +20,7 @@ STATO = {"clear": "verificata", "clear_with_reserve": "verificata con riserva", 
 USO = {"redistribution": "ridistribuzione consentita, con l'attribuzione richiesta dalla licenza", "internal_prototype": "solo prototipo interno: verificare prima di ridistribuire",
        "none": "uso non consentito"}
 USO_BREVE = {"redistribution": "ridistribuzione", "internal_prototype": "solo prototipo interno", "none": "nessuno"}
+USO_RESIDENTI = {"src_fi_sezioni2011", "src_rt_censimento2011"}   # D45: stima dei residenti per civico, fuori baseline
 ESITO = {"pass": "superato", "warn": "avviso", "fail": "fallito"}
 # Limiti d'uso noti, da docs/STATO.md e docs/FONTI.md: si sommano agli avvisi dei controlli e alla riserva sulla licenza.
 LIMITI = {
@@ -36,8 +37,9 @@ LIMITI = {
     "src_fi_rifugi_biblioteche": ["Non ancora usata nei calcoli di accessibilità: destinazione candidata per il caso caldo (fase F2)."],
     "src_fi_landsat_st": ["Temperatura delle superfici, non dell'aria; misura a 100 m distribuita a 30 m; solo passaggi di metà mattina."],
     "src_sir_termo_firenze": ["Una stazione a 1,3 km dal riquadro: temperatura dell'aria di stazione, non del riquadro. Licenza share-alike."],
-    "src_fi_sezioni2011": ["Residenti del 2011: non entrano nei calcoli di accessibilità, che restano sui civici."],
-    "src_rt_censimento2011": ["Dato di quindici anni fa; densità sulla superficie lorda della sezione."],
+    "src_fi_sezioni2011": ["Residenti del 2011: l'accessibilità resta calcolata sui civici; i residenti entrano solo nella stima per civico (D45, strumento estimate_residents), accanto alla quota dei civici."],
+    "src_rt_censimento2011": ["Dato di quindici anni fa; densità sulla superficie lorda della sezione.",
+                              "Stima dei residenti per civico (D45, analysis/residenti.py, strumento estimate_residents): residenti della sezione ripartiti in parti uguali sui civici della sezione, civici senza abitazioni contati come gli altri. È una stima, non un conteggio di persone."],
     "src_fi_catasto": ["Confini indicativi, non probatori; solo riquadro FP."],
     "src_fi_pericolosita_idraulica": ["Mappa di pianificazione, non previsione; classi senza legenda nel pacchetto."],
     "src_fi_allagate1966": ["Evento storico, non previsione."],
@@ -80,7 +82,7 @@ def scheda(sid, t17):
     else: r.append(f"- Scheda del catalogo: nessuna. {t17.get('lacuna') or ''}".rstrip())
     if src.get("dataset_url") and src["dataset_url"] != t17.get("dataset_catalogo"): r.append(f"- Pagina della fonte: {src['dataset_url']}")
     r += [f"- Risorsa scaricata: {src['resource_url']}",
-          f"- Nella baseline congelata `{BASELINE['baseline_id']}`: " + (f"sì, snapshot `{NELLA_BASELINE[sid]}`" if sid in NELLA_BASELINE else "no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)"),
+          f"- Nella baseline congelata `{BASELINE['baseline_id']}`: " + (f"sì, snapshot `{NELLA_BASELINE[sid]}`" if sid in NELLA_BASELINE else ("no, fonte aggiunta dopo (usata nella scena e nella stima dei residenti per civico, non nei calcoli di accessibilità e ombra)" if sid in USO_RESIDENTI else "no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)")),
           "", "## Licenza", "", f"- Licenza: {licenza(lic)}", f"- Verifica: {STATO.get(lic['state'], lic['state'])}",
           f"- Uso consentito: {USO.get(lic['permitted_use'], lic['permitted_use'])}", f"- Evidenza: {lic['evidence_url']}", f"- Nota: {lic['evidence_note']}"]
     if lic.get("reserve_note"): r.append(f"- Riserva: {lic['reserve_note']}")

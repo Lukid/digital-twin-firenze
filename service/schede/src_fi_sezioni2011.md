@@ -4,7 +4,7 @@
 - Editore: Comune di Firenze
 - Scheda del catalogo: https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07
 - Risorsa scaricata: https://data.comune.fi.it/datastore/download.php?id=6440&type=99&format=url&file_format=shp&file_id=20109
-- Nella baseline congelata `bas_firenze_novoli_20261009`: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)
+- Nella baseline congelata `bas_firenze_novoli_20261009`: no, fonte aggiunta dopo (usata nella scena e nella stima dei residenti per civico, non nei calcoli di accessibilità e ombra)
 
 ## Licenza
 
@@ -39,7 +39,7 @@ Sistema di riferimento dichiarato: EPSG:3003 (CRS letto dal .prj dello shapefile
 
 ## Limiti
 
-- Residenti del 2011: non entrano nei calcoli di accessibilità, che restano sui civici.
+- Residenti del 2011: l'accessibilità resta calcolata sui civici; i residenti entrano solo nella stima per civico (D45, strumento estimate_residents), accanto alla quota dei civici.
 - residenti: popolazione del censimento 2011 (src_rt_censimento2011): quindici anni fa, nessun dato per sezione più recente sul catalogo
 
 Generata da `service/schede.py` a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.

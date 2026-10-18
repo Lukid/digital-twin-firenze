@@ -84,6 +84,14 @@ assert len(RIF) == 7 and core.validate("list_destinations", "output", run("list_
 rif = run("compute_walk_access", {**A, "destination_ids": RIF}); assert rif["job_id"] == "job_e1e75455f7511f7d" and core.validate("compute_walk_access", "output", rif) == [], rif
 assert hm(rif, "served_share_10min") == 0.3911 and {"src_fi_rifugi_aree", "src_fi_rifugi_biblioteche"} <= {d["source_id"] for d in rif["datasets"]}
 assert err_code(run("compute_walk_access", {**A, "destination_ids": [POLO, T_REG], "entrance_ids": ["ent_gtfs_fm9055"]})) == "invalid_params"   # ingresso fuori dalle destinazioni chieste
+# residenti stimati (F4, D45): stesse quote di civici del motore, residenti coerenti con le quote, risposta uguale al file versionato
+res = run("estimate_residents", {"job_id": rif["job_id"]}); assert core.validate("estimate_residents", "output", res) == [], res
+assert [s["quota_civici"] for s in res["soglie"]] == [hm(rif, f"served_share_{t}min") for t in (5, 10, 15)]
+assert all(abs(s["residenti_stimati"] - s["quota_residenti"] * res["residenti_stimati_totali"]) <= 1 for s in res["soglie"]) and res["soglie"][1]["quota_residenti"] == 0.4357
+assert res == json.loads((core.ROOT / "analysis/firenze_novoli/residenti_rifugi.json").read_text())
+assert {f["source_id"] for f in res["fonti"]} == {"src_rt_censimento2011", "src_fi_sezioni2011", "src_fi_civici"} and any(x["code"] == "stima_2011" for x in res["limits"])
+assert err_code(run("estimate_residents", {"job_id": "job_0000000000000000"})) == "unknown_id"
+assert err_code(run("estimate_residents", {"job_id": "job_9f53a7f2ba439f75"})) == "invalid_params"   # job d'ombra di F07
 sc = run("list_scenarios", {}); assert core.validate("list_scenarios", "output", sc) == [] and {"scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"} <= {x["scenario_id"] for x in sc["scenarios"]}, sc
 assert err_code(run("list_scenarios", {"baseline_id": "bas_altra"})) == "incompatible_baseline"
 assert err_code(run("compute_walk_access", {**A, "origins": {"kind": "grid", "aoi_id": AOI, "spacing_m": 20}})) == "outside_capability"
@@ -270,7 +278,7 @@ async def mcp_test():
             init = await s.initialize()
             assert init.serverInfo.name == "dt-firenze" and "Firenze" in init.instructions and "pisa" not in init.instructions.lower()
             tools = {t.name: t for t in (await s.list_tools()).tools}
-            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios", "get_source_card"}
+            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios", "get_source_card", "estimate_residents"}
             assert all(t.inputSchema.get("additionalProperties") is False for t in tools.values())   # niente campi liberi (SQL, codice)
             assert not any(w in json.dumps([t.model_dump() for t in tools.values()]).lower() for w in ("pisa", "z2", "pellico"))
             res = await s.call_tool("compute_walk_access", A)

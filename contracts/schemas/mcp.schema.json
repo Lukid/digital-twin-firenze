@@ -1392,6 +1392,108 @@
      "$ref": "common.schema.json#/$defs/tool_error"
     }
    ]
+  },
+  "estimate_residents.input": {
+   "type": "object",
+   "required": [
+    "job_id"
+   ],
+   "additionalProperties": false,
+   "description": "Residenti 2011 stimati sui civici raggiunti da un job di compute_walk_access già eseguito (stima: residenti di ogni sezione di censimento ripartiti in parti uguali sui civici della sezione).",
+   "properties": {
+    "job_id": {
+     "$ref": "common.schema.json#/$defs/id_job"
+    }
+   }
+  },
+  "estimate_residents.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "job_id",
+      "civici",
+      "residenti_stimati_totali",
+      "soglie",
+      "classification",
+      "fonti",
+      "limits"
+     ],
+     "properties": {
+      "job_id": {
+       "$ref": "common.schema.json#/$defs/id_job"
+      },
+      "civici": {
+       "type": "integer"
+      },
+      "residenti_stimati_totali": {
+       "type": "integer"
+      },
+      "soglie": {
+       "type": "array",
+       "minItems": 1,
+       "items": {
+        "type": "object",
+        "required": [
+         "minuti",
+         "residenti_stimati",
+         "quota_residenti",
+         "quota_civici"
+        ],
+        "properties": {
+         "minuti": {
+          "type": "number"
+         },
+         "residenti_stimati": {
+          "type": "integer",
+          "minimum": 0
+         },
+         "quota_residenti": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+         },
+         "intervallo_velocita": {
+          "type": "array",
+          "items": {
+           "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+         },
+         "quota_civici": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+         },
+         "sensibilita_solo_civici_neri": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+         }
+        }
+       }
+      },
+      "classification": {
+       "const": "estimated"
+      },
+      "fonti": {
+       "type": "array",
+       "minItems": 1
+      },
+      "limits": {
+       "type": "array",
+       "minItems": 1,
+       "items": {
+        "$ref": "common.schema.json#/$defs/limit"
+       }
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
   }
  }
 }

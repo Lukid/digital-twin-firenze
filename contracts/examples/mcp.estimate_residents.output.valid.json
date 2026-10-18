@@ -1,0 +1,72 @@
+{
+ "job_id": "job_e1e75455f7511f7d",
+ "destination_ids": [
+  "dst_refuge_rib_fi_6",
+  "dst_refuge_rif_fi_01523",
+  "dst_refuge_rif_fi_01545",
+  "dst_refuge_rif_fi_01631",
+  "dst_refuge_rif_fi_02394",
+  "dst_refuge_rif_fi_02399",
+  "dst_refuge_rif_fi_05409"
+ ],
+ "speed_m_s": 1.2,
+ "civici": 3296,
+ "civici_con_dato": 3226,
+ "civici_senza_dato": 70,
+ "residenti_stimati_totali": 13982,
+ "sezioni": 94,
+ "sezioni_tagliate_dal_ritaglio_dei_civici": [
+  62097
+ ],
+ "soglie": [
+  {
+   "minuti": 10.0,
+   "residenti_stimati": 6092,
+   "quota_residenti": 0.4357,
+   "intervallo_velocita": [
+    0.2964,
+    0.4658
+   ],
+   "quota_civici": 0.3911,
+   "sensibilita_solo_civici_neri": 0.4399
+  }
+ ],
+ "classification": "estimated",
+ "metodo": "Residenti 2011 di ogni sezione di censimento divisi in parti uguali fra i civici della sezione; per ogni soglia, somma sui civici-origine raggiunti dal job. Quote sui civici con un dato di sezione. Sensibilità: stessi residenti ripartiti solo sui civici neri (i rossi in genere non sono abitazioni).",
+ "snapshot_ids": [
+  "snp_fi_civici_20261009",
+  "snp_fi_sezioni2011_20261010",
+  "snp_rt_censimento2011_20261010"
+ ],
+ "fonti": [
+  {
+   "source_id": "src_rt_censimento2011",
+   "licenza": "CC BY (versione non indicata), Regione Toscana su dati Istat",
+   "data_del_dato": "2011-10-09"
+  },
+  {
+   "source_id": "src_fi_sezioni2011",
+   "licenza": "CC BY 4.0, Comune di Firenze",
+   "data_del_dato": "2011-10-09"
+  },
+  {
+   "source_id": "src_fi_civici",
+   "licenza": "CC BY 4.0, Comune di Firenze",
+   "data_del_dato": "stato alla data di scarico (2026-10-09)"
+  }
+ ],
+ "limits": [
+  {
+   "code": "stima_2011",
+   "text": "Residenti del censimento 2011, quindici anni fa: Novoli è cambiato da allora (nuove residenze e studentati)."
+  },
+  {
+   "code": "ripartizione_uniforme",
+   "text": "Residenti di ogni sezione ripartiti in parti uguali sui civici della sezione: un condominio e un negozio valgono uguale."
+  },
+  {
+   "code": "civici_senza_abitazioni",
+   "text": "Civici senza abitazioni (negozi, uffici, civici rossi) contati come gli altri: tolgono residenti ai civici con abitazioni."
+  }
+ ]
+}

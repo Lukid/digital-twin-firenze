@@ -19,7 +19,7 @@ NET = ROOT / "network" / SLUG
 CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache" / SLUG)   # cache per area; deve stare sotto ROOT (i percorsi degli asset sono relativi a ROOT)
 ID_DEST = re.compile(r"^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$")
 ENGINE_ORIGINS = "address_points"
-TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios", "get_source_card"]
+TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios", "get_source_card", "estimate_residents"]
 # Fonti ammesse = solo quelle della baseline dell'area. Tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso).
 _BASE = {s["source_id"]: s["snapshot_id"] for s in BASELINE["snapshot"]}
 _T = {"edifici": ["src_rt_uv_firenze_novoli", "src_osm_firenze"], "quote": ["src_fi_dsm2023", "src_fi_dtm2023"], "rete_pedonale": ["src_osm_firenze", "src_fi_barriere"],
@@ -406,6 +406,16 @@ def compute_shadow(a):
     if e: return e
     kw = _risolvi_shadow(a)
     return kw if "error" in kw else _esegui_shadow(kw)
+
+
+def estimate_residents(a):
+    """F4 (D45): residenti 2011 stimati sui civici raggiunti da un job di compute_walk_access già eseguito (analysis/residenti.py). Sola lettura: riusa le righe per origine del job."""
+    m = _read_job(a["job_id"], "manifest")
+    if not m: return err("unknown_id", f"Nessun manifest per il job {a['job_id']}.")
+    if m["tool"] != "compute_walk_access": return err("invalid_params", f"{a['job_id']} è un job di {m['tool']}: la stima dei residenti vale per compute_walk_access.")
+    sys.path.insert(0, str(ROOT / "analysis"))
+    import residenti as R
+    return R.stima(m) or err("insufficient_data", f"Righe per origine del job {a['job_id']} non disponibili su questo servizio: rieseguire compute_walk_access con gli stessi argomenti.")
 
 
 def _fuori(msg): return err("outside_capability", msg + ". Nessun risultato numerico disponibile per questa richiesta.")

@@ -4,7 +4,7 @@
 - Editore: Regione Toscana (dati Istat)
 - Scheda del catalogo: https://dati.toscana.it/dataset/xv-censpop-2011-datisez
 - Risorsa scaricata: https://dati.toscana.it/dataset/46c34b90-92dd-4bd8-ab19-398da5dc933c/resource/1a338a93-65be-45a2-86a0-e13578ce953c/download/r09indicatori2011sezioni.csv
-- Nella baseline congelata `bas_firenze_novoli_20261009`: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)
+- Nella baseline congelata `bas_firenze_novoli_20261009`: no, fonte aggiunta dopo (usata nella scena e nella stima dei residenti per civico, non nei calcoli di accessibilità e ombra)
 
 ## Licenza
 
@@ -43,6 +43,7 @@ Sistema di riferimento dichiarato: undeclared (tabella senza geometria: aggancia
 ## Limiti
 
 - Dato di quindici anni fa; densità sulla superficie lorda della sezione.
+- Stima dei residenti per civico (D45, analysis/residenti.py, strumento estimate_residents): residenti della sezione ripartiti in parti uguali sui civici della sezione, civici senza abitazioni contati come gli altri. È una stima, non un conteggio di persone.
 - anno: censimento 2011: Novoli è cambiato da allora (nuove residenze e studentati)
 - Licenza con riserva: vedere sopra.
 
