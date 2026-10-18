@@ -98,6 +98,11 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D43 (18 ottobre): pensiline S2, S5, S6 senza costo nei calcoli finché il Comune non dà quello delle 72 pensiline (D37). Nel documento per l'ufficio, come ordine di grandezza citato: mediana ANAC di 4.940 euro a pensilina, fornitura e posa, IVA esclusa (Q1 3.677, Q3 7.263) (domanda 4).
 - D44 (18 ottobre): scena con il terreno di oggi; rifugi e percorsi oltre il terreno restano in elenco e tagliati. Si allarga se l'ufficio chiede di vedere i percorsi interi (domanda 5).
 - D45 (18 ottobre): sessione F4 su [BRIEF-AGENTE-F4.md](BRIEF-AGENTE-F4.md): residenti stimati per civico dai residenti 2011 per sezione (dichiarata come stima, accanto alla quota dei civici); calcoli di luglio al 15 luglio come gli altri; data invernale della verifica sul posto proposta dall'agente.
+- D46 (18 ottobre): ramo `agente/f4` unito su `main` dopo lint, validate e `make test` verdi sul Mac. I 17 job d'ombra della sessione F4 rifatti sul Mac: stessi job_id, geometrie identiche byte per byte (`make impronte`: 55 righe uguali al worker), cambiano solo durate e orari. Difetto noto: `shadow/esposizione.py` legge `ru_maxrss` come KB, ma su macOS è in byte, quindi sul Mac la memoria massima esce 1.024 volte troppo grande (domanda 5 del report F4).
+- D47 (18 ottobre): le dieci domande del caso caldo vanno all'ufficio del Comune come bozza al primo incontro; il giro si rifà con le loro parole (domanda 1).
+- D48 (18 ottobre): residenti ripartiti su tutti i civici della sezione (D45), con la sensibilità sui soli civici neri accanto (domanda 2).
+- D49 (18 ottobre): "camminando soprattutto all'ombra" si calcola nella prossima sessione: ombra alle 14 del 15 luglio sul percorso di ogni civico entro 15 minuti dal rifugio più vicino, soglia 50% del percorso in ombra, dichiarata come scelta nostra da far validare all'ufficio; calcolo a blocchi per la memoria del worker (domanda 3).
+- D50 (18 ottobre): verifica sul posto di R01 sabato 12 dicembre 2026 alle 11:00, 13:00 e 14:30, riserva sabato 19 dicembre (si rifà la pagina con i due comandi del report F4). La pagina va aperta e stampata una volta sul Mac (domanda 4).
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
@@ -111,7 +116,7 @@ Revisione del codice: R1-R6 chiusi. Due regole emerse dalle correzioni:
 - La cache del servizio si svuota da sola quando cambiano il codice dei motori o i file di dati che leggono (impronta in `service/cache/<area>/impronta.txt`). Gli job_id non cambiano.
 
 1. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
-2. Domande del report F4; confronto sul Mac dei 17 job d'ombra della sessione F4 (circa 6 minuti) e merge di `agente/f4`. Da chiedere al Comune: costo del piano delle 72 pensiline (D37), voce di piantagione del filare (D41), orari dei rifugi climatici. Portare all'ufficio le dieci domande del caso caldo come bozza. Confronto delle impronte dell'ombra R01/R02 e RC sul Mac (D40).
+2. Prossima sessione: "camminando soprattutto all'ombra" (D49) e correzione della memoria misurata su macOS (D46). Da chiedere al Comune: costo del piano delle 72 pensiline (D37), voce di piantagione del filare (D41); da mostrare all'ufficio: le dieci domande in bozza (D47).
 3. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. Kit pronto per R01 in `docs/verifica-posto/` (F4): sabato 12 dicembre 2026, ore 11:00, 13:00 e 14:30.
 
 ## Come lavora la sessione
