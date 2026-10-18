@@ -92,6 +92,11 @@ assert res == json.loads((core.ROOT / "analysis/firenze_novoli/residenti_rifugi.
 assert {f["source_id"] for f in res["fonti"]} == {"src_rt_censimento2011", "src_fi_sezioni2011", "src_fi_civici"} and any(x["code"] == "stima_2011" for x in res["limits"])
 assert err_code(run("estimate_residents", {"job_id": "job_0000000000000000"})) == "unknown_id"
 assert err_code(run("estimate_residents", {"job_id": "job_9f53a7f2ba439f75"})) == "invalid_params"   # job d'ombra di F07
+# percorsi più esposti (F4, compito 3): classifica dal file versionato, senza geometrie; ogni job è un manifest versionato di compute_shadow
+ex = run("get_route_exposure", {"date": "2026-07-15"}); assert core.validate("get_route_exposure", "output", ex) == [], ex
+assert len(ex["percorsi"]) == 15 and ex["classifica"]["14:00"]["per_metri_al_sole"][0] == "RC4" and "geometrie" not in json.dumps(ex)
+assert all(core._read_job(p["job_id"], "manifest")["tool"] == "compute_shadow" for p in ex["percorsi"].values())
+assert err_code(run("get_route_exposure", {"date": "2026-07-16"})) == "unknown_id"
 sc = run("list_scenarios", {}); assert core.validate("list_scenarios", "output", sc) == [] and {"scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"} <= {x["scenario_id"] for x in sc["scenarios"]}, sc
 assert err_code(run("list_scenarios", {"baseline_id": "bas_altra"})) == "incompatible_baseline"
 assert err_code(run("compute_walk_access", {**A, "origins": {"kind": "grid", "aoi_id": AOI, "spacing_m": 20}})) == "outside_capability"
@@ -278,7 +283,7 @@ async def mcp_test():
             init = await s.initialize()
             assert init.serverInfo.name == "dt-firenze" and "Firenze" in init.instructions and "pisa" not in init.instructions.lower()
             tools = {t.name: t for t in (await s.list_tools()).tools}
-            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios", "get_source_card", "estimate_residents"}
+            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios", "get_source_card", "estimate_residents", "get_route_exposure"}
             assert all(t.inputSchema.get("additionalProperties") is False for t in tools.values())   # niente campi liberi (SQL, codice)
             assert not any(w in json.dumps([t.model_dump() for t in tools.values()]).lower() for w in ("pisa", "z2", "pellico"))
             res = await s.call_tool("compute_walk_access", A)

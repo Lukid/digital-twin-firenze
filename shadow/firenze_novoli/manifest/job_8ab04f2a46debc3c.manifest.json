@@ -1,0 +1,574 @@
+{
+ "manifest_id": "man_8ab04f2a46debc3c",
+ "job_id": "job_8ab04f2a46debc3c",
+ "tool": "compute_shadow",
+ "aoi_id": "aoi_firenze_novoli",
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "datasets": [
+  {
+   "snapshot_id": "snp_fi_alberi_20261009",
+   "source_id": "src_fi_alberi",
+   "sha256": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_dsm2023_20261009",
+   "source_id": "src_fi_dsm2023",
+   "sha256": "1c6c250f2b91c77858667f8816e132c17f19916639f6e6e1a2578a45a5290451",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_fi_dtm2023_20261009",
+   "source_id": "src_fi_dtm2023",
+   "sha256": "3c8fdac2c02ab5cbb8353760c40962ea95ae9c6162130f30d9ac805608a79d02",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_osm_firenze_20261009",
+   "source_id": "src_osm_firenze",
+   "sha256": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+   "license_state": "clear"
+  },
+  {
+   "snapshot_id": "snp_rt_uv_firenze_novoli_20261009",
+   "source_id": "src_rt_uv_firenze_novoli",
+   "sha256": "2197d5f1105871037b7f419721a4fcb766d67be50e4adafa1ea9e1319b8f89ad",
+   "license_state": "clear_with_reserve"
+  }
+ ],
+ "params": {
+  "receivers": [
+   {
+    "receiver_id": "pth_fi_R07",
+    "kind": "path",
+    "geometry": {
+     "coordinates": [
+      [
+       678513.59,
+       4851731.48
+      ],
+      [
+       678515.4,
+       4851730.32
+      ],
+      [
+       678525.13,
+       4851745.52
+      ],
+      [
+       678538.73,
+       4851737.75
+      ],
+      [
+       678540.48,
+       4851736.05
+      ],
+      [
+       678542.82,
+       4851740.03
+      ],
+      [
+       678546.22,
+       4851746.19
+      ],
+      [
+       678550.51,
+       4851754.45
+      ],
+      [
+       678553.34,
+       4851752.81
+      ],
+      [
+       678563.81,
+       4851772.07
+      ],
+      [
+       678595.33,
+       4851767.73
+      ],
+      [
+       678633.69,
+       4851762.88
+      ],
+      [
+       678637.45,
+       4851762.4
+      ],
+      [
+       678641.17,
+       4851761.91
+      ],
+      [
+       678670.18,
+       4851758.51
+      ],
+      [
+       678676.75,
+       4851757.49
+      ],
+      [
+       678677.72,
+       4851759.38
+      ],
+      [
+       678679.3,
+       4851762.33
+      ],
+      [
+       678703.18,
+       4851759.36
+      ],
+      [
+       678772.8,
+       4851750.25
+      ],
+      [
+       678778.21,
+       4851749.03
+      ],
+      [
+       678785.62,
+       4851746.72
+      ],
+      [
+       678788.3,
+       4851743.87
+      ],
+      [
+       678791.46,
+       4851741.55
+      ],
+      [
+       678794.99,
+       4851739.83
+      ],
+      [
+       678798.77,
+       4851738.77
+      ],
+      [
+       678802.67,
+       4851738.42
+      ],
+      [
+       678806.58,
+       4851738.77
+      ],
+      [
+       678810.36,
+       4851739.82
+      ],
+      [
+       678813.89,
+       4851741.53
+      ],
+      [
+       678819.59,
+       4851741.77
+      ],
+      [
+       678828.96,
+       4851742.09
+      ],
+      [
+       678859.45,
+       4851736.97
+      ],
+      [
+       678876.14,
+       4851733.62
+      ],
+      [
+       678891.37,
+       4851729.85
+      ],
+      [
+       678916.94,
+       4851722.6
+      ],
+      [
+       678946.68,
+       4851712.32
+      ],
+      [
+       678956.64,
+       4851708.43
+      ],
+      [
+       678960.59,
+       4851706.83
+      ],
+      [
+       678967.25,
+       4851704.13
+      ],
+      [
+       678981.75,
+       4851698.28
+      ],
+      [
+       679009.64,
+       4851685.18
+      ],
+      [
+       679012.43,
+       4851682.74
+      ],
+      [
+       679015.2,
+       4851680.81
+      ],
+      [
+       679019.57,
+       4851678.43
+      ],
+      [
+       679028.99,
+       4851673.62
+      ],
+      [
+       679127.64,
+       4851623.13
+      ],
+      [
+       679145.98,
+       4851613.9
+      ],
+      [
+       679162.09,
+       4851606.66
+      ],
+      [
+       679198.22,
+       4851588.4
+      ],
+      [
+       679204.73,
+       4851584.74
+      ],
+      [
+       679213.57,
+       4851577.39
+      ],
+      [
+       679224.46,
+       4851571.01
+      ],
+      [
+       679265.54,
+       4851550.17
+      ],
+      [
+       679328.85,
+       4851517.3
+      ],
+      [
+       679360.42,
+       4851501.47
+      ],
+      [
+       679366.16,
+       4851498.58
+      ],
+      [
+       679371.62,
+       4851495.11
+      ],
+      [
+       679375.07,
+       4851490.68
+      ],
+      [
+       679377.93,
+       4851488.31
+      ],
+      [
+       679381.45,
+       4851486.35
+      ],
+      [
+       679383.92,
+       4851485.43
+      ],
+      [
+       679386.39,
+       4851484.85
+      ],
+      [
+       679388.72,
+       4851484.57
+      ],
+      [
+       679391.05,
+       4851484.54
+      ],
+      [
+       679395.61,
+       4851485.24
+      ],
+      [
+       679419.07,
+       4851472.77
+      ],
+      [
+       679415.82,
+       4851466.46
+      ],
+      [
+       679417.79,
+       4851465.43
+      ],
+      [
+       679424.87,
+       4851461.67
+      ],
+      [
+       679492.37,
+       4851428.39
+      ],
+      [
+       679490.61,
+       4851423.72
+      ],
+      [
+       679495.21,
+       4851421.19
+      ],
+      [
+       679499.87,
+       4851418.64
+      ],
+      [
+       679501.52,
+       4851420.99
+      ],
+      [
+       679555.47,
+       4851393.79
+      ],
+      [
+       679550.09,
+       4851383.12
+      ]
+     ],
+     "type": "LineString"
+    }
+   }
+  ],
+  "when": {
+   "date": "2026-07-15",
+   "timezone": "Europe/Rome",
+   "times": [
+    "14:00"
+   ]
+  },
+  "method": {
+   "name": "geometric_ray",
+   "space_step_m": 1,
+   "time_step_min": 5,
+   "obstacles": "buildings_and_trees"
+  },
+  "walk_speed_m_s": 1.2,
+  "casi": [
+   "base",
+   "base_h_min",
+   "base_h_max",
+   "alberi_min",
+   "alberi_tipico",
+   "alberi_max",
+   "veg_lidar_min",
+   "veg_lidar_tipico",
+   "veg_lidar_max"
+  ],
+  "fasce": [],
+  "el_min_deg": 5.0,
+  "sun_reference_lonlat": [
+   11.226,
+   43.798
+  ],
+  "geometrie_sha256": "8ba7121c26e9d9e5872c55ed2bc66177861ccfd033129967d90f26d8d5538c90",
+  "chiome": {
+   "forma": "ellissoide",
+   "tronco": "trascurato",
+   "parametri": "colonne h, chioma_d, imposta (e min/max) del layer alberi di geometrie_firenze_novoli.gpkg"
+  },
+  "sospesi": "coperture OSM (building=roof) sospese, base = tetto - 0,4 m (0,2-0,8 m) come scene/build.py; portici ignoti trattati come pieni",
+  "demolizioni": "volumi con presente_2023 falso (demolizione probabile da LiDAR 2023) esclusi",
+  "method_version": "0.3.0",
+  "vegetazione_lidar": {
+   "forma": "prisma opaco sull'impronta del cluster",
+   "z_hi": "h95 del CHM nel cluster",
+   "z_lo_frazione_di_h95": {
+    "veg_lidar_min": 0.4,
+    "veg_lidar_tipico": 0.25,
+    "veg_lidar_max": 0.15
+   },
+   "esclusi": "cluster liscia (probabili tetti non mappati)",
+   "poligoni_sha256": "7539e722d1c5e420395402f3f31126fca7f97faa8cc08ad86bd6db664b3a6998"
+  }
+ },
+ "method": {
+  "name": "geometric_ray",
+  "version": "0.3.0",
+  "description": "Sole con algoritmo astronomico NOAA in Europe/Rome; ombra di ogni volume come somma di Minkowski del footprint con il segmento fra quota di base e di tetto; chiome come ellissoidi opachi; unione di tutte le ombre e intersezione con il ricevitore."
+ },
+ "crs": "EPSG:7791",
+ "vertical_datum_status": "not_confirmed",
+ "timezone": "Europe/Rome",
+ "timing": {
+  "started_at": "2026-10-18T07:13:57Z",
+  "finished_at": "2026-10-18T07:14:41Z",
+  "duration_s": 44.06
+ },
+ "metrics": [
+  {
+   "metric_id": "pth_fi_r07_tutti_shade_fraction_base",
+   "label": "Frazione ombreggiata, edifici documentati",
+   "value": 0.3396,
+   "unit": "1",
+   "classification": "derived",
+   "scope": "pth_fi_R07, 2026-07-15, fascia tutti, centerline",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.3183,
+    "high": 0.341,
+    "basis": "sensibilità altezze: intervallo h_min/h_max di F05 (±0,5 m, fino a ±1,88 m dove LiDAR e UV differiscono molto)"
+   }
+  },
+  {
+   "metric_id": "pth_fi_r07_tutti_shade_fraction_alberi",
+   "label": "Frazione ombreggiata, edifici + chiome idealizzate",
+   "value": 0.3427,
+   "unit": "1",
+   "classification": "estimated",
+   "scope": "pth_fi_R07, 2026-07-15, fascia tutti, centerline, chioma tipica",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.3396,
+    "high": 0.3585,
+    "basis": "chiome min/tipico/max del censimento alberi: altezza e diametro misurati dal LiDAR dove possibile, imposta sempre stimata"
+   }
+  },
+  {
+   "metric_id": "pth_fi_r07_tutti_shade_fraction_veg",
+   "label": "Frazione ombreggiata, edifici + alberi + vegetazione LiDAR",
+   "value": 0.3616,
+   "unit": "1",
+   "classification": "estimated",
+   "scope": "pth_fi_R07, 2026-07-15, fascia tutti, centerline, chioma tipica e vegetazione LiDAR tipica",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 0.3581,
+    "high": 0.3777,
+    "basis": "alberi min/tipico/max con vegetazione LiDAR a imposta 0,4/0,25/0,15 di h95: ipotesi dichiarate"
+   }
+  },
+  {
+   "metric_id": "pth_fi_r07_tutti_walk_sun_min_base",
+   "label": "Minuti al sole camminando, edifici documentati",
+   "value": 11.007,
+   "unit": "min",
+   "classification": "derived",
+   "scope": "pth_fi_R07, 2026-07-15, fascia tutti, centerline",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 10.979,
+    "high": 11.229,
+    "basis": "sensibilità altezze: intervallo h_min/h_max di F05 (±0,5 m, fino a ±1,88 m dove LiDAR e UV differiscono molto)"
+   }
+  },
+  {
+   "metric_id": "pth_fi_r07_tutti_walk_sun_min_alberi",
+   "label": "Minuti al sole camminando, edifici + chiome idealizzate",
+   "value": 10.965,
+   "unit": "min",
+   "classification": "estimated",
+   "scope": "pth_fi_R07, 2026-07-15, fascia tutti, centerline, chioma tipica",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 10.687,
+    "high": 11.007,
+    "basis": "chiome min/tipico/max del censimento alberi: altezza e diametro misurati dal LiDAR dove possibile, imposta sempre stimata"
+   }
+  },
+  {
+   "metric_id": "pth_fi_r07_tutti_walk_sun_min_veg",
+   "label": "Minuti al sole camminando, edifici + alberi + vegetazione LiDAR",
+   "value": 10.632,
+   "unit": "min",
+   "classification": "estimated",
+   "scope": "pth_fi_R07, 2026-07-15, fascia tutti, centerline, chioma tipica e vegetazione LiDAR tipica",
+   "uncertainty": {
+    "kind": "interval",
+    "low": 10.354,
+    "high": 10.687,
+    "basis": "alberi min/tipico/max con vegetazione LiDAR a imposta 0,4/0,25/0,15 di h95: ipotesi dichiarate"
+   }
+  }
+ ],
+ "coverage": {
+  "note": "Calcoli 9 di 9 (ricevitore, ora, caso); stati del sole: {'ok': 9}. Volumi 8077, alberi 8392, cluster di vegetazione LiDAR 3838."
+ },
+ "limits": [
+  {
+   "code": "terreno_piano",
+   "text": "Terreno quasi piano dichiarato: ogni volume riferito al proprio piede (quota base di fonte), ricevitore alla quota dei piedi vicini; dislivelli locali non modellati."
+  },
+  {
+   "code": "centerline",
+   "text": "Percorsi sull'asse della rete OSM, non sul lato del marciapiede: lato e portici non noti (marciapiede ignoto), l'effetto del lato non è nel risultato."
+  },
+  {
+   "code": "volumi_sospesi_ignoti",
+   "text": "Coperture OSM trattate come volumi sospesi (soletta 0,4 m, stima 0,2-0,8 m, come la scena); il campo sospeso dei portici delle unità volumetriche è ignoto: trattati come pieni (limite superiore dell'ombra al suolo)."
+  },
+  {
+   "code": "alberi_chioma_idealizzata",
+   "text": "Chiome idealizzate opache (ellissoide); altezza e diametro misurati dal LiDAR dove possibile, altrimenti stimati per specie e classe; imposta sempre stimata; tronco trascurato; censimento solo pubblico: non è l'ombra reale degli alberi."
+  },
+  {
+   "code": "ombra_binaria",
+   "text": "Ombra geometrica binaria: nessuna trasmissività, nessuna conversione in temperatura, comfort o domanda pedonale."
+  },
+  {
+   "code": "altezze_edifici",
+   "text": "Altezze da LiDAR 2023 con unità volumetriche 2011 (non indipendenti fra loro); datum verticale non confermato; edifici nuovi solo dove li ha OSM, nessun edificio ricavato dal solo LiDAR."
+  },
+  {
+   "code": "sole_geometrico",
+   "text": "Sole NOAA senza rifrazione, calcolato nel centro del riquadro (43.798, 11.226); sotto 5.0 gradi di elevazione il contesto dei dati non copre le ombre lunghe: istanti esclusi con stato esplicito."
+  },
+  {
+   "code": "non_validato",
+   "text": "Nessuna osservazione di campo: risultato non validato localmente."
+  },
+  {
+   "code": "camminata_velocita",
+   "text": "Minuti al sole a velocità costante 1.2 m/s (ipotesi, nessun attraversamento o attesa); istante di ogni punto = partenza + distanza/velocità, agganciato al passo temporale."
+  },
+  {
+   "code": "demolizioni_escluse",
+   "text": "Esclusi 183 volumi con demolizione probabile (LiDAR 2023 senza edificio, presente_2023 falso); 6 volumi senza altezza o quota base scartati."
+  },
+  {
+   "code": "alberi_esclusi",
+   "text": "Esclusi 99 alberi con posizione dentro un edificio."
+  },
+  {
+   "code": "vegetazione_lidar",
+   "text": "Chioma LiDAR senza albero censito: 3838 cluster (esclusi 279 'liscia', probabili tetti non mappati) come prismi opachi pieni sull'impronta, fra z_lo = frazione di h95 e h95 (percentile alto: tende a sovrastimare l'ombra). Include siepi, arbusti alti 2,5 m e oltre, auto e catenarie non filtrate; vuoti nella chioma e chioma invernale non modellati."
+  }
+ ],
+ "validation_status": "not_validated_locally",
+ "assets": [
+  {
+   "asset_id": "ast_shadow_righe_csv",
+   "path": "data/norm/firenze_novoli/shadow/job_8ab04f2a46debc3c_righe.csv",
+   "media_type": "text/csv",
+   "bytes": 1265,
+   "sha256": "98e7cacffd6d1cbb38ad8b413f8670e729598ca8e42e02de95ca632829e9e13f",
+   "role": "result_table"
+  }
+ ]
+}

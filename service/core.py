@@ -19,7 +19,7 @@ NET = ROOT / "network" / SLUG
 CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache" / SLUG)   # cache per area; deve stare sotto ROOT (i percorsi degli asset sono relativi a ROOT)
 ID_DEST = re.compile(r"^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$")
 ENGINE_ORIGINS = "address_points"
-TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios", "get_source_card", "estimate_residents"]
+TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios", "get_source_card", "estimate_residents", "get_route_exposure"]
 # Fonti ammesse = solo quelle della baseline dell'area. Tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso).
 _BASE = {s["source_id"]: s["snapshot_id"] for s in BASELINE["snapshot"]}
 _T = {"edifici": ["src_rt_uv_firenze_novoli", "src_osm_firenze"], "quote": ["src_fi_dsm2023", "src_fi_dtm2023"], "rete_pedonale": ["src_osm_firenze", "src_fi_barriere"],
@@ -416,6 +416,17 @@ def estimate_residents(a):
     sys.path.insert(0, str(ROOT / "analysis"))
     import residenti as R
     return R.stima(m) or err("insufficient_data", f"Righe per origine del job {a['job_id']} non disponibili su questo servizio: rieseguire compute_walk_access con gli stessi argomenti.")
+
+
+def get_route_exposure(a):
+    """F4: esposizione al sole dei percorsi campione in una data già calcolata da shadow/esposizione.py (un job di compute_shadow per percorso), senza le geometrie."""
+    f = ROOT / "shadow" / SLUG / f"esposizione_{a['date']}.json"
+    if not f.exists(): return err("unknown_id", f"Esposizione non calcolata per il {a['date']}.", candidates=sorted(p.stem.removeprefix("esposizione_") for p in f.parent.glob("esposizione_*.json")))
+    E = _load(f)
+    for p in E["percorsi"].values():
+        for o in p["orari"].values(): o.pop("geometrie", None)
+    m = _read_job(next(iter(E["percorsi"].values()))["job_id"], "manifest")
+    return {**E, "datasets": [{k: d[k] for k in ("snapshot_id", "source_id", "sha256", "license_state")} for d in m["datasets"]], "limits": m["limits"]}
 
 
 def _fuori(msg): return err("outside_capability", msg + ". Nessun risultato numerico disponibile per questa richiesta.")

@@ -1494,6 +1494,54 @@
      "$ref": "common.schema.json#/$defs/tool_error"
     }
    ]
+  },
+  "get_route_exposure.input": {
+   "type": "object",
+   "required": [
+    "date"
+   ],
+   "additionalProperties": false,
+   "description": "Esposizione al sole dei percorsi campione in una data già calcolata (classifica per metri e per minuti al sole, per orario).",
+   "properties": {
+    "date": {
+     "$ref": "common.schema.json#/$defs/date"
+    }
+   }
+  },
+  "get_route_exposure.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "data",
+      "percorsi",
+      "classifica",
+      "limits"
+     ],
+     "properties": {
+      "data": {
+       "$ref": "common.schema.json#/$defs/date"
+      },
+      "percorsi": {
+       "type": "object",
+       "minProperties": 1
+      },
+      "classifica": {
+       "type": "object"
+      },
+      "limits": {
+       "type": "array",
+       "minItems": 1,
+       "items": {
+        "$ref": "common.schema.json#/$defs/limit"
+       }
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
   }
  }
 }
