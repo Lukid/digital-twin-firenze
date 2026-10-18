@@ -106,6 +106,7 @@ def _dest_out(d):
     o = {"destination_id": d["destination_id"], "category": CATEGORIA_CONTRATTO.get(d["categoria"], d["categoria"]), "name": d["nome"], "verification": "verified_on_site" if d["stato_verifica"] == "verificato" else "desk_candidate",
          "entrances": [{"entrance_id": e["entrance_id"], "position": e["xy"], "verification": _ver(e["stato_verifica"])} for e in d["ingressi"]]}
     if d.get("condizioni_accesso"): o["access_conditions"] = d["condizioni_accesso"]
+    if d["categoria"] == "tram": o["lines"], o["lines_source"] = [x.strip() for x in d["linee"].split(",")], _BASE["src_gtfs_gest_firenze"]   # linee dal GTFS del tram della baseline (network/destinazioni_firenze.py)
     return o
 
 
@@ -125,6 +126,22 @@ def _snapshot_ok(source_id):
     s = _load(p); return s if s["status"] == "ok" else None
 
 
+# nome formale della licenza dall'identificativo della scheda della fonte (pipeline/sources); dicitura della fonte se non è un codice noto
+NOME_LICENZA = {"CC-BY-4.0": "CC BY 4.0", "CC-BY-SA-4.0": "CC BY-SA 4.0", "ODbL-1.0": "ODbL 1.0", "IODL-2.0": "IODL 2.0", "cc-by": "CC BY (versione non indicata)", "CC-BY": "CC BY (versione non indicata)",
+                "public-domain": "pubblico dominio"}
+
+
+def nome_licenza(source_id):
+    p = ROOT / "pipeline/sources" / f"{source_id}.json"
+    i = _load(p)["license"].get("identifier") if p.exists() else None
+    return NOME_LICENZA.get(i, i) or "non dichiarata"
+
+
+def _ds(d):
+    """Dataset di un manifest per la risposta: snapshot, fonte, sha256, stato e nome formale della licenza."""
+    return {**{k: d[k] for k in ("snapshot_id", "source_id", "sha256", "license_state")}, "license": nome_licenza(d["source_id"])}
+
+
 def _source(source_id):
     p = ROOT / "pipeline/sources" / f"{source_id}.json"
     return _load(p) if source_id in _BASE and p.exists() else None
@@ -139,7 +156,7 @@ def list_approved_sources(a):
         if not src or not snap: gaps.append({"theme": a["theme"], "text": f"{sid}: nessuno snapshot valido."}); continue
         use = src["license"]["permitted_use"]
         if use == "none": gaps.append({"theme": a["theme"], "text": f"{sid}: uso non consentito dalla licenza."}); continue
-        out.append({"source_id": sid, "snapshot_id": snap["snapshot_id"], "license_state": src["license"]["state"], "permitted_use": use,
+        out.append({"source_id": sid, "snapshot_id": snap["snapshot_id"], "license_state": src["license"]["state"], "license": nome_licenza(sid), "permitted_use": use,
                     "content_period": snap["content_period"] if "start" in snap["content_period"] else src["content_period"]})
     if a["theme"] in GAPS_NOTI: gaps.append({"theme": a["theme"], "text": GAPS_NOTI[a["theme"]]})
     return {"sources": out, "gaps": gaps}
@@ -246,7 +263,7 @@ def _write(p, o):
 
 def _risposta(job, man, cached):
     return {"job_id": job["job_id"], "status": job["status"], "result_manifest_id": man["manifest_id"], "headline_metrics": man["metrics"], "cached": cached,
-            "datasets": [{k: d[k] for k in ("snapshot_id", "source_id", "sha256", "license_state")} for d in man["datasets"]], "params": man["params"],
+            "datasets": [_ds(d) for d in man["datasets"]], "params": man["params"],
             "limits": man["limits"], "method": f"{man['method']['name']} {man['method']['version']}"}
 
 
@@ -356,7 +373,7 @@ def _alias_key(O, kw):
 
 def _risposta_shadow(job, man, extra, cached, casi):
     return {"job_id": job["job_id"], "status": job["status"], "result_manifest_id": man["manifest_id"], "headline_metrics": man["metrics"], "cached": cached,
-            "datasets": [{k: d[k] for k in ("snapshot_id", "source_id", "sha256", "license_state")} for d in man["datasets"]], "params": man["params"], "limits": man["limits"],
+            "datasets": [_ds(d) for d in man["datasets"]], "params": man["params"], "limits": man["limits"],
             "method": f"{man['method']['name']} {man['method']['version']}", "cases": casi, **extra,
             **({"scenario_id": man["scenario_id"], "scenario_version": man["scenario_version"]} if "scenario_id" in man else {})}
 
@@ -426,7 +443,7 @@ def get_route_exposure(a):
     for p in E["percorsi"].values():
         for o in p["orari"].values(): o.pop("geometrie", None)
     m = _read_job(next(iter(E["percorsi"].values()))["job_id"], "manifest")
-    return {**E, "datasets": [{k: d[k] for k in ("snapshot_id", "source_id", "sha256", "license_state")} for d in m["datasets"]], "limits": m["limits"]}
+    return {**E, "datasets": [_ds(d) for d in m["datasets"]], "limits": m["limits"]}
 
 
 def get_shaded_access(a):
@@ -561,7 +578,7 @@ def _compare_da_manifest(a):
     payload = {"datasets": ref_m["datasets"], "method_version": "0.1.0"}
     jid, job, man = _compare_job(inputs, params, met, lim, payload, True, t0)
     r = {"common_conditions": cc, "deltas": deltas, "incompatibilities": incomp, "job_id": jid, "result_manifest_id": man["manifest_id"], "status": "succeeded", "cached": False,
-         "datasets": man["datasets"], "params": params, "limits": lim, "method": "scenario_comparison 0.1.0"}
+         "datasets": [_ds(d) for d in man["datasets"]], "params": params, "limits": lim, "method": "scenario_comparison 0.1.0"}
     _write(CACHE / f"{jid}.compare.json", {k: v for k, v in r.items() if k != "cached"}); _write(_paths(jid)[1], man); _write(_paths(jid)[0], job)
     return r
 
@@ -571,7 +588,6 @@ def _compare_scenari(a):
     Le ombre degli scenari sono in cache (data/norm/<area>/scenarios/jobs): se mancano, il calcolo richiede alcuni minuti per scenario."""
     import datetime; t0 = datetime.datetime.now(datetime.timezone.utc); S, C = _sc()
     if a["baseline_id"] != BASELINE_ID: return err("incompatible_baseline", f"Baseline disponibile: {BASELINE_ID}.", candidates=[BASELINE_ID])
-    if a.get("weights"): return err("outside_capability", "Nessun ordinamento con pesi: il confronto riporta indicatori separati, senza punteggio unico. Togliere weights.")
     try: scns = [S.carica(i) for i in a["scenario_ids"]]
     except S.ScenarioError as e: return err(e.code, str(e), candidates=_cand_scn(e))
     dif = S.verifica_baseline()
@@ -608,7 +624,7 @@ def _compare_scenari(a):
           "ricevitori": len(riep["condizioni_comuni"]["ricevitori"]), "contesti": {c: riep["condizioni_comuni"]["contesti"][c] for c in ctxs}}
     lim = [{"code": f"dichiarazione_{i + 1}", "text": t} for i, t in enumerate(riep["dichiarazioni"])]
     jid2, job, man = _compare_job(inputs, params, met, lim, {"datasets": _dati_baseline(S), "method_version": C.VERSIONE}, True, t0); assert jid2 == jid
-    r = {"common_conditions": cc, "deltas": deltas, "incompatibilities": inc, "job_id": jid, "result_manifest_id": man["manifest_id"], "status": "succeeded", "datasets": man["datasets"], "params": params,
+    r = {"common_conditions": cc, "deltas": deltas, "incompatibilities": inc, "job_id": jid, "result_manifest_id": man["manifest_id"], "status": "succeeded", "datasets": [_ds(d) for d in man["datasets"]], "params": params,
          "limits": lim, "method": f"scenario_comparison {C.VERSIONE}", "scenarios": {sid: _compatta(e, ctxs) for sid, e in riep["scenari"].items()}}
     for sid, x in r["scenarios"].items(): x.update(_indicatore_costo(sid, next(s for s in scns if s["scenario_id"] == sid)))
     _write(cp, r); _write(_paths(jid)[1], man); _write(_paths(jid)[0], job)

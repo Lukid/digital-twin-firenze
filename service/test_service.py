@@ -148,6 +148,13 @@ for th in ("edifici", "quote", "rete_pedonale", "verde", "destinazioni", "traspo
 assert {s["source_id"] for s in run("list_approved_sources", {"theme": "licenze", "aoi_id": AOI})["sources"]} == base_src
 assert run("list_approved_sources", {"theme": "verde", "aoi_id": AOI})["gaps"] and run("list_approved_sources", {"theme": "edifici", "aoi_id": AOI})["gaps"]
 assert err_code(core.run_tool("list_approved_sources", {"theme": "verde", "aoi_id": "aoi_z2"})) == "unknown_id"
+# difetto 7 di F11: nome formale della licenza accanto allo stato, nelle fonti e nei dataset dei job
+lic = {s["source_id"]: s["license"] for s in run("list_approved_sources", {"theme": "licenze", "aoi_id": AOI})["sources"]}
+assert lic["src_fi_civici"] == "CC BY 4.0" and lic["src_osm_firenze"] == "ODbL 1.0" and lic["src_gtfs_gest_firenze"] == "CC BY (versione non indicata)" and all(lic.values()), lic
+assert all(d["license"] == lic[d["source_id"]] for d in rif["datasets"]) and all("license" in d for d in ex["datasets"])
+# difetto 8 di F11: la linea del tram delle tre fermate, dal GTFS della baseline
+tram = [d for d in run("list_destinations", {"aoi_id": AOI, "category": "stop"})["destinations"] if d["destination_id"].startswith("dst_tram_")]
+assert len(tram) == 3 and all(d["lines"] == ["T2"] and d["lines_source"] == "snp_gtfs_gest_firenze_20261009" for d in tram), tram
 ins = run("inspect_dataset", {"source_id": "src_fi_alberi"})
 assert core.validate("inspect_dataset", "output", ins) == [] and ins["license"]["state"] == "clear" and ins["snapshot_id"] == "snp_fi_alberi_20261009"
 assert core.validate("inspect_dataset", "output", run("inspect_dataset", {"snapshot_id": "snp_gtfs_gest_firenze_20261009"})) == []
@@ -267,7 +274,8 @@ assert core.validate("compare_scenarios", "output", me) == [] and me["job_id"] !
 assert {d["metric_id"].rsplit("_", 1)[1] for d in me["deltas"]} == {"edifici", "alb", "lidar"}
 assert err_code(run("compare_scenarios", {**CS, "context": "tutti"})) == "invalid_params"
 assert err_code(run("compare_scenarios", {**CS, "weights": {"punteggio_unico": 1}})) == "invalid_params"
-assert err_code(run("compare_scenarios", {**CS, "weights": {"area_attesa_ombra_mezzogiorno": 1}})) == "outside_capability"   # nessun ordinamento: indicatori separati
+assert err_code(run("compare_scenarios", {**CS, "weights": {"area_attesa_ombra_mezzogiorno": 1}})) == "invalid_params"   # difetto 4 di F11: weights non è più nello schema, nessun ordinamento
+assert "weights" not in json.dumps(core.schema_for_client("compare_scenarios"))
 assert err_code(run("compare_scenarios", {**CS, "scenario_ids": ["scn_fi_inesistente"]})) == "unknown_id"
 assert err_code(run("compare_scenarios", {**CS, "baseline_id": "bas_altra"})) == "incompatible_baseline"
 

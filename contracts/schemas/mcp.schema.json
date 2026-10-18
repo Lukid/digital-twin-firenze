@@ -69,6 +69,10 @@
          },
          "content_period": {
           "$ref": "common.schema.json#/$defs/content_period"
+         },
+         "license": {
+          "type": "string",
+          "description": "Nome formale della licenza (per esempio CC BY 4.0, ODbL 1.0)."
          }
         }
        }
@@ -299,6 +303,16 @@
             }
            }
           }
+         },
+         "lines": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          },
+          "description": "Linee che servono la fermata, dal GTFS della baseline (fermate del tram)."
+         },
+         "lines_source": {
+          "$ref": "common.schema.json#/$defs/id_snapshot"
          }
         }
        }
@@ -590,6 +604,10 @@
          },
          "license_state": {
           "$ref": "common.schema.json#/$defs/license_state"
+         },
+         "license": {
+          "type": "string",
+          "description": "Nome formale della licenza (per esempio CC BY 4.0, ODbL 1.0)."
          }
         }
        }
@@ -828,6 +846,10 @@
          },
          "license_state": {
           "$ref": "common.schema.json#/$defs/license_state"
+         },
+         "license": {
+          "type": "string",
+          "description": "Nome formale della licenza (per esempio CC BY 4.0, ODbL 1.0)."
          }
         }
        }
@@ -1090,7 +1112,7 @@
       "scenario_ids"
      ],
      "additionalProperties": false,
-     "description": "Confronto multicriterio di scenari con la baseline (S0) su condizioni comuni: delta su R01 e percorsi campione, area di attesa, tratti più usati pesati per civici, accessibilità. I pesi sono un parametro facoltativo del decisore: senza pesi nessun ordinamento.",
+     "description": "Confronto multicriterio di scenari con la baseline (S0) su condizioni comuni: delta su R01 e percorsi campione, area di attesa, tratti più usati pesati per civici, accessibilità. Nessun ordinamento né punteggio unico: indicatori separati.",
      "properties": {
       "baseline_id": {
        "$ref": "common.schema.json#/$defs/id_baseline"
@@ -1107,34 +1129,6 @@
       "with_variants": {
        "type": "boolean",
        "description": "Includere le varianti di sensibilità degli scenari dimostrativi (default true)."
-      },
-      "weights": {
-       "type": "object",
-       "description": "Pesi del decisore per un ordinamento esplicito (>= 0, somma positiva).",
-       "additionalProperties": false,
-       "minProperties": 1,
-       "properties": {
-        "r01_minuti_sole_evitati_mezzogiorno": {
-         "type": "number",
-         "minimum": 0
-        },
-        "r01_minuti_sole_evitati_giornata": {
-         "type": "number",
-         "minimum": 0
-        },
-        "campione_minuti_sole_evitati_mezzogiorno": {
-         "type": "number",
-         "minimum": 0
-        },
-        "archi_civici_minuti_evitati_mezzogiorno": {
-         "type": "number",
-         "minimum": 0
-        },
-        "area_attesa_ombra_mezzogiorno": {
-         "type": "number",
-         "minimum": 0
-        }
-       }
       },
       "context": {
        "enum": [
@@ -1256,6 +1250,10 @@
          },
          "license_state": {
           "$ref": "common.schema.json#/$defs/license_state"
+         },
+         "license": {
+          "type": "string",
+          "description": "Nome formale della licenza (per esempio CC BY 4.0, ODbL 1.0)."
          }
         }
        }
