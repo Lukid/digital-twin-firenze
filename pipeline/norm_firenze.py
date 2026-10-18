@@ -248,6 +248,7 @@ JOBS = {
     "civici": lambda: scrivi(leggi("fi_civici", "civici.zip", 3003, "ISO-8859-1"), "fi_civici", "src_fi_civici", "civici", "id_orig", "adr_fi_"),
     "barriere": lambda: scrivi(leggi("fi_barriere", "mappa_accessibilita.zip", 3003, "cp850"), "fi_barriere", "src_fi_barriere", "barriere", "pk_id", "bar_fi_"),   # dbf in cp850 (audit rete)
     "aree_pedonali": lambda: scrivi(leggi("fi_aree_pedonali", "acPed_s.zip", 32632).pipe(lambda g: g.set_geometry(shapely.force_2d(g.geometry.values), crs=7791)), "fi_aree_pedonali", "src_fi_aree_pedonali", "aree_pedonali", "acPedId", "ped_fi_"),   # PolygonZ ridotti a 2D
+    "aree_stradali": lambda: scrivi(leggi("fi_aree_stradali", "aree_stradali.zip", 3003), "fi_aree_stradali", "src_fi_aree_stradali", "aree_stradali", "id_orig", "ast_fi_"),
     "rifugi_aree": lambda: scrivi(leggi("fi_rifugi_aree", "rifugi_aree_fresche.json", 6706), "fi_rifugi_aree", "src_fi_rifugi_aree", "rifugi_aree", "cod_area", "rif_fi_"),
     "rifugi_bibl": lambda: scrivi(leggi("fi_rifugi_biblioteche", "rifugi_biblioteche.json", 3003), "fi_rifugi_biblioteche", "src_fi_rifugi_biblioteche", "rifugi_biblioteche", "fid_src", "rib_fi_"),
     "aree_attesa": lambda: scrivi(leggi("fi_aree_attesa", "aree_attesa.zip", 3003, "ISO-8859-1").astype({"gid": int}), "fi_aree_attesa", "src_fi_aree_attesa", "aree_attesa", "gid", "pcv_att_fi_"),   # 'codice' ha doppioni (AT04, AT14): chiave gid

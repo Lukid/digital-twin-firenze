@@ -300,7 +300,7 @@ TOL_ASSE = 1e-4   # quarta cifra: stesso motore e stessa linea, l'asse deve usci
 
 def test_lati_strada():
     # F6 (D56): i due lati stanno accanto all'asse, non al posto: sull'asse, calcolata allo stesso modo, escono i numeri di sempre (sintesi per ora, esposizione)
-    import lati_strada as LS, rete_lib as RL
+    import lati_strada as LS, rete_lib as RL, run as RUN
     f = ROOT / "shadow" / O.SLUG / "lati_strada.json"
     if not f.exists(): print("  (lati_strada.json assente: eseguire shadow/lati_strada.py)"); return
     R = json.load(open(f)); E = json.load(open(ROOT / "shadow" / O.SLUG / "esposizione_2026-07-15.json")); n = 0; peggiore = 0.0
@@ -314,8 +314,17 @@ def test_lati_strada():
                 v = x[nome]; assert v["asse_ufficiale"] == LS.ufficiale(rid, x["data"], x["ora"], caso) is not None, (rid, x)
                 d = abs(v["asse"] - v["asse_ufficiale"]); peggiore = max(peggiore, d); n += 1
                 assert d <= TOL_ASSE, (rid, x["data"], x["ora"], nome, v)
+    # F7 (D59): su ogni lato i metri di strada si dividono fra marciapiede OSM, aree stradali del Comune e valore dichiarato; R02 rifatto dà gli stessi metri
+    for rid, P in R["percorsi"].items():
+        for lato in ("sinistra", "destra"):
+            tot = P["metri_marciapiede_osm"][lato] + P["metri_aree_stradali"][lato] + P["metri_valore_dichiarato"][lato]
+            assert abs(tot - (P["lunghezza_asse_m"] - P["metri_sull_asse"])) < 0.5, (rid, lato, tot)
+    assert sum(P["metri_aree_stradali"][lato] for P in R["percorsi"].values() for lato in ("sinistra", "destra")) > 0
+    RUN.PERCORSI = ["R02"]; G, _ = RL.carica(); seg = LS.lati(shapely.geometry.shape(RUN.ricevitori()[0]["geometry"]), G)
+    assert {lato: LS.metri(seg, i, "aree") for i, lato in enumerate(("sinistra", "destra"))} == R["percorsi"]["R02"]["metri_aree_stradali"]
+    assert all(LS.AS_MIN_M <= s[2 + i] <= LS.AS_MAX_M for s in seg for i in (0, 1) if s[4] != "asse" and s[4].split("+")[i] == "aree")
     # rifatto adesso: R01 alle 14 del 15 luglio deve ridare il file
-    G, _ = RL.carica(); x = LS.percorso("R01", G, {c: O.scena_caso(c) for c in LS.CASI}, [("2026-07-15", "14:00")])["istanti"][0]
+    x = LS.percorso("R01", G, {c: O.scena_caso(c) for c in LS.CASI}, [("2026-07-15", "14:00")])["istanti"][0]
     y = next(y for y in R["percorsi"]["R01"]["istanti"] if (y["data"], y["ora"]) == ("2026-07-15", "14:00"))
     assert {k: x[k] for k in ("edifici", "con_vegetazione", "lato_piu_in_ombra")} == {k: y[k] for k in ("edifici", "con_vegetazione", "lato_piu_in_ombra")}, (x, y)
     ok(f"lati della strada: {n} quote sull'asse uguali ai risultati ufficiali entro {TOL_ASSE * 100:g} punti (scarto massimo {peggiore * 100:.2f}); R01 alle 14 rifatto identico")

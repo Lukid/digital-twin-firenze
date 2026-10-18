@@ -41,5 +41,6 @@ La data del dato è quella dichiarata dalla fonte; quando manca vale lo stato al
 | [Landsat 8-9 Collection 2 Level-2, temperatura delle superfici (ST_B10) e QA_PIXEL, estati 2023-2026, riquadro FP](src_fi_landsat_st.md) | U.S. Geological Survey (copia di Microsoft Planetary Computer) | public-domain (verificata) | ridistribuzione | dal 2023-06-01 al 2026-09-30 | 2026-10-10 | no |
 | [Temperatura dell'aria giornaliera (massima e minima), stazione SIR Firenze Università TOS01001096](src_sir_termo_firenze.md) | Regione Toscana, Settore Idrologico e Geologico Regionale (SIR) | CC-BY-SA-4.0 (verificata con riserva) | ridistribuzione | 2023-01-01 | 2026-10-10 | no |
 | [Qualità dell'aria ARPAT, dati orari 2025 della rete regionale (stazioni del comune di Firenze)](src_arpat_aria.md) | ARPAT, Agenzia regionale per la protezione ambientale della Toscana | non specificata per i dati orari (note legali ARPAT) (verificata con riserva) | solo prototipo interno | dal 2025-01-01 al 2025-12-31 | 2026-10-10 | no |
+| [Aree stradali (poligoni per tronco e incrocio), Comune di Firenze](src_fi_aree_stradali.md) | Comune di Firenze | CC-BY-4.0 (verificata) | ridistribuzione | 2025-05-26 | 2026-10-18 | no |
 
 Generato da `service/schede.py`. Non modificare a mano.

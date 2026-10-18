@@ -3,8 +3,8 @@
 Stato: prototipo, da verificare sul posto. Non scrive manifest né job: i risultati sull'asse (sintesi, esposizione, scenari) restano quelli di sempre.
 
 Ogni segmento di strada del percorso va a sinistra e a destra nel verso di marcia, della distanza dal marciapiede mappato a parte in OSM (arco pedonale
-parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento); dove non c'è, del valore dichiarato MEZZA_DEFAULT_M. Raccordi e tratti già
-pedonali (sentieri, piazze) restano sull'asse. Ombra all'istante, motore shadow/ombre.py, casi solo edifici e con vegetazione LiDAR (tipico).
+parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento); dove non c'è, della distanza dal bordo dell'area stradale del Comune (F7, D59,
+regola in aree_stradali()); dove nemmeno questa si applica, del valore dichiarato MEZZA_DEFAULT_M. Raccordi e tratti già pedonali (sentieri, piazze) restano sull'asse. Ombra all'istante, motore shadow/ombre.py, casi solo edifici e con vegetazione LiDAR (tipico).
 Istanti: quelli dei risultati ufficiali di ogni percorso (sintesi: 15 luglio e 15 settembre, 8-19 ogni 30 minuti; esposizione: 14 del 15 luglio),
 più gli orari della verifica del 12 dicembre per R01 (D50).
 
@@ -15,6 +15,7 @@ import numpy as np, shapely
 from shapely.geometry import LineString, box, shape
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "network"))
 import ombre as O, esposizione as ESP, run as RUN  # noqa: E402
+import pyogrio  # noqa: E402
 import rete_lib as RL  # noqa: E402
 
 GIORNATA = [(d, h) for d in RUN.DATE for h in RUN.ORARI]                    # sintesi.json, sintesi_rifugi_RCn.json (comprende le 14 del 15 luglio)
@@ -24,18 +25,45 @@ ISTANTI = {"R01": GIORNATA + VERIFICA, "R02": GIORNATA, **{f"R{i:02d}": LUGLIO_1
 CASI = {"base": "edifici", "veg_lidar_tipico": "con_vegetazione"}           # principale: con vegetazione, come esposizione (D14)
 MEZZA_DEFAULT_M = 3.0      # dichiarata: distanza del lato dove il marciapiede non è mappato a parte (D56)
 RAGGIO_M, ANGOLO_MAX = 8.0, 30.0
+AREE_STRADALI = O.NORM / "fi_aree_stradali.gpkg"   # src_fi_aree_stradali, fuori baseline (D59)
+AS_MIN_M, AS_MAX_M = 1.0, 25.0   # regola delle aree stradali: bordo trovato fra 1 e 25 m dal punto medio, altrimenti non si applica
 TIPI_PEDONALI = ("sentiero", "marciapiede_disegnato")
 PARI = 0.005               # sotto mezzo punto di differenza i due lati sono "pari"
 LIMITI = [("prototipo_da_verificare", "Prototipo, da verificare sul posto: nessun lato della strada è stato osservato."),
           ("lato_scelto_da_chi_cammina", "Il lato lo sceglie chi cammina: sinistra e destra sono due linee intere, non un percorso che sceglie il lato più in ombra."),
           ("attraversamenti_non_modellati", "Attraversamenti non modellati: chi cambia lato attraversa, e il percorso più breve sul grafo non sa quale lato usa."),
-          ("valore_dichiarato", f"Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è il valore dichiarato di {MEZZA_DEFAULT_M:g} m, non una larghezza misurata (metri per lato nel campo metri_valore_dichiarato)."),
+          ("aree_stradali_stima", "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è quella dal bordo dell'area stradale del Comune lungo la normale al segmento: una stima nostra, non una larghezza pubblicata; sui tratti con il marciapiede OSM il bordo sta in mediana circa 1,7 m più lontano del marciapiede, quindi la distanza è più facilmente in eccesso (metri per lato nel campo metri_aree_stradali)."),
+          ("valore_dichiarato", f"Dove non c'è né il marciapiede OSM né l'area stradale la distanza dall'asse è il valore dichiarato di {MEZZA_DEFAULT_M:g} m, non una larghezza misurata (metri per lato nel campo metri_valore_dichiarato)."),
           ("asse_nei_tratti_pedonali", "Raccordi e tratti pedonali (sentieri, piazze) restano sull'asse; ombra a un istante, non lungo il cammino."),
           ("vegetazione_prisma", "Vegetazione LiDAR come prisma opaco pieno: limite superiore dell'ombra; più i limiti del motore d'ombra sull'asse (altezze, portici ignoti).")]
 
 
+_AS = None
+
+
+def aree_stradali(m, v):
+    """F7 (D59), stima nostra: distanza dal punto medio m del segmento (direzione v) al bordo dell'area stradale del Comune, lungo la normale, a sinistra e
+    a destra. Vale solo se m sta in un solo poligono di tronco (gli incroci, poligoni senza toponimo, sono scartati) e il bordo è fra AS_MIN_M e AS_MAX_M;
+    altrimenti None per quel lato. Il bordo dell'area stradale non è per forza dove si cammina: a volte comprende il marciapiede, a volte no."""
+    global _AS
+    if _AS is None:
+        g = pyogrio.read_dataframe(AREE_STRADALI, columns=["TOPONIMO"]) if AREE_STRADALI.exists() else None
+        p = g.geometry.values[g.TOPONIMO.notna().values] if g is not None else np.array([], dtype=object)
+        _AS = (p, shapely.STRtree(p))
+    p, t = _AS
+    dentro = t.query(m, predicate="within")
+    if len(dentro) != 1: return {1: None, -1: None}
+    P = p[dentro[0]]; c = np.array(m.coords[0]); n = np.array([-v[1], v[0]]); out = {}
+    for lato in (1, -1):
+        h = shapely.get_parts(LineString([c, c + lato * n * AS_MAX_M]).intersection(P.boundary))
+        d = min((float(shapely.distance(m, q)) for q in h), default=None)
+        out[lato] = d if d is not None and d >= AS_MIN_M else None
+    return out
+
+
 def lati(L, G):
-    """Per ogni segmento di L: (a, b, distanza a sinistra, distanza a destra, fonte). Raccordi (primo e ultimo segmento) e tratti pedonali sull'asse."""
+    """Per ogni segmento di L: (a, b, distanza a sinistra, distanza a destra, fonte). Fonte per lato: osm, aree (aree stradali del Comune) o default.
+    Raccordi (primo e ultimo segmento) e tratti pedonali sull'asse."""
     E = [d for _, _, d in G.edges(data=True)]; pedonali = [d for d in E if d["tipo_arco"] in TIPI_PEDONALI]
     gp = np.array([d["geom"] for d in pedonali], dtype=object); strade = np.array([d["geom"] for d in E if d["tipo_arco"] not in TIPI_PEDONALI], dtype=object)
     c = np.array(L.coords); out = []
@@ -51,8 +79,13 @@ def lati(L, G):
             if np.linalg.norm(q) == 0 or abs(np.dot(q / np.linalg.norm(q), v)) < math.cos(math.radians(ANGOLO_MAX)): continue   # non parallelo
             w = p - np.array(m.coords[0]); lato = 1 if v[0] * w[1] - v[1] * w[0] > 0 else -1; dist = float(np.linalg.norm(w))
             if dist > 0.5 and (d[lato] is None or dist < d[lato]): d[lato] = dist
+        f = {k: "osm" if d[k] is not None else None for k in (1, -1)}
+        if None in f.values():
+            da = aree_stradali(m, v)
+            for k in (1, -1):
+                if f[k] is None and da[k] is not None: d[k], f[k] = da[k], "aree"
         out.append((a, b, d[1] if d[1] is not None else MEZZA_DEFAULT_M, d[-1] if d[-1] is not None else MEZZA_DEFAULT_M,
-                    "+".join("osm" if d[k] is not None else "default" for k in (1, -1))))
+                    "+".join(f[k] or "default" for k in (1, -1))))
     return out
 
 
@@ -104,6 +137,7 @@ def percorso(rid, G, scene, istanti):
          "lunghezza_asse_m": round(sum(la for _, _, la in linee["asse"]), 1),
          "metri_sull_asse": round(sum(float(np.linalg.norm(b - a)) for a, b, *_, f in seg if f == "asse"), 1),
          "metri_marciapiede_osm": {lato: metri(seg, i, "osm") for i, lato in enumerate(("sinistra", "destra"))},
+         "metri_aree_stradali": {lato: metri(seg, i, "aree") for i, lato in enumerate(("sinistra", "destra"))},
          "metri_valore_dichiarato": {lato: metri(seg, i, "default") for i, lato in enumerate(("sinistra", "destra"))},
          "distanza_mediana_m": {lato: round(float(np.median([s[2 + i] for s in seg if s[4] != "asse"])), 2) if any(s[4] != "asse" for s in seg) else None
                                 for i, lato in enumerate(("sinistra", "destra"))},
@@ -131,16 +165,19 @@ def main():
     G, _ = RL.carica(); scene = {c: O.scena_caso(c) for c in CASI}
     R = {"stato": "prototipo, da verificare sul posto", "versione_motore": O.VERSIONE, "baseline_id": O.BASELINE_ID,
          "ricevitore": "due linee parallele all'asse del percorso, a sinistra e a destra nel verso di marcia; l'asse accanto, calcolato allo stesso modo",
-         "metodo": {"distanza": f"dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro {RAGGIO_M:g} m, angolo sotto {ANGOLO_MAX:g} gradi, dal punto medio del segmento), altrimenti {MEZZA_DEFAULT_M:g} m dichiarati",
+         "metodo": {"distanza": f"dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro {RAGGIO_M:g} m, angolo sotto {ANGOLO_MAX:g} gradi, dal punto medio del segmento); "
+                                f"altrimenti dal bordo dell'area stradale del Comune lungo la normale dal punto medio (solo poligoni di tronco, incroci esclusi, bordo fra {AS_MIN_M:g} e {AS_MAX_M:g} m; stima nostra, D59); "
+                                f"altrimenti {MEZZA_DEFAULT_M:g} m dichiarati",
                     "asse": "raccordi e tratti pedonali restano sull'asse", "casi": CASI, "frazione": "metri in ombra della linea all'istante / lunghezza della linea",
                     "asse_ufficiale": "frazione sull'asse dei risultati ufficiali allo stesso istante (sintesi per ora o esposizione), per confronto",
                     "lato_piu_in_ombra": f"caso con vegetazione; 'pari' sotto {PARI * 100:g} punti di differenza", "unione_buchi_m": 1.0},
          "snapshot_ids": sorted(set(O.SNAPSHOT_IDS["edifici"]) | set(O.SNAPSHOT_IDS["alberi"])),
-         "fonti": [{"source_id": "edifici, alberi, LiDAR e rete OSM della baseline", "licenza": "vedi get_source_card per ogni snapshot", "data_del_dato": "baseline 2026-10-09"}],
+         "fonti": [{"source_id": "edifici, alberi, LiDAR e rete OSM della baseline", "licenza": "vedi get_source_card per ogni snapshot", "data_del_dato": "baseline 2026-10-09"},
+                   {"source_id": "src_fi_aree_stradali", "licenza": "CC-BY-4.0", "data_del_dato": "2025-05-26", "uso": "distanza del lato dove il marciapiede non è mappato in OSM (fuori baseline, D59)"}],
          "limits": [{"code": k, "text": t} for k, t in LIMITI], "percorsi": {}}
     for rid, ist in ISTANTI.items():
         tp = time.time(); R["percorsi"][rid] = P = percorso(rid, G, scene, ist)
-        print(rid, len(ist), "istanti", round(time.time() - tp), "s", ESP.memoria_max_gb(), "GB", P["metri_valore_dichiarato"], flush=True)
+        print(rid, len(ist), "istanti", round(time.time() - tp), "s", ESP.memoria_max_gb(), "GB", P["metri_aree_stradali"], P["metri_valore_dichiarato"], flush=True)
     R["calcolo"] = {"secondi": round(time.time() - t0), "memoria_max_gb": ESP.memoria_max_gb()}
     (RUN.OUT / "lati_strada.json").write_text(json.dumps(R, ensure_ascii=False, indent=1) + "\n")
     print(R["calcolo"])

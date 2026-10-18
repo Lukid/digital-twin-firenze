@@ -1,0 +1,16 @@
+{
+ "snapshot_id": "snp_fi_aree_stradali_20261018",
+ "source_id": "src_fi_aree_stradali",
+ "retrieved_at": "2026-10-18T16:00:11Z",
+ "bytes": 2005699,
+ "sha256": "772f43cad021151962c1cb1b39a029e84f709fff79181421e1704a69f366643f",
+ "local_path": "data/raw/fi_aree_stradali/20261018/aree_stradali.zip",
+ "status": "ok",
+ "stored": false,
+ "url": "https://data.comune.fi.it/datastore/download.php?id=6379&type=99&format=url&file_format=shp&file_id=19953",
+ "media_type": "application/zip",
+ "content_period": {
+  "note": "file del 2025-05-26"
+ },
+ "license_state": "clear"
+}

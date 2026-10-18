@@ -502,6 +502,21 @@
    "catalogo_live": null,
    "lacuna": "I dati orari e l'anagrafica delle stazioni non sono su dati.toscana.it: sul catalogo ARPAT ha solo indicatori annuali fino al 2022-2024 e la risorsa \"Struttura della rete di monitoraggio della qualità dell'aria in Toscana\" (cc-by) punta a un JSON che oggi rimanda alla home del sito. Da segnalare: link morto e archivio orario da pubblicare sul catalogo.",
    "licenza_dichiarata": "clear_with_reserve"
+  },
+  {
+   "source_id": "src_fi_aree_stradali",
+   "dataset_catalogo": "https://dati.toscana.it/dataset/a44ea551-7b09-4d0d-af64-7c08159e9316",
+   "catalogo_live": {
+    "nome": "a44ea551-7b09-4d0d-af64-7c08159e9316",
+    "titolo": "Aree stradali",
+    "license_id": "cc-by-4.0",
+    "licenza_risorse": [
+     "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "metadata_modified": "2026-02-11"
+   },
+   "lacuna": null,
+   "licenza_dichiarata": "clear"
   }
  ]
 }

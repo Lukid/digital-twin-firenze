@@ -1823,6 +1823,7 @@
         "required": [
          "lunghezza_asse_m",
          "metri_marciapiede_osm",
+         "metri_aree_stradali",
          "metri_valore_dichiarato",
          "istanti"
         ],

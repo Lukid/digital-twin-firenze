@@ -21,11 +21,15 @@ USO = {"redistribution": "ridistribuzione consentita, con l'attribuzione richies
        "none": "uso non consentito"}
 USO_BREVE = {"redistribution": "ridistribuzione", "internal_prototype": "solo prototipo interno", "none": "nessuno"}
 USO_RESIDENTI = {"src_fi_sezioni2011", "src_rt_censimento2011"}   # D45: stima dei residenti per civico, fuori baseline
+USO_FUORI = {"src_fi_aree_stradali": "usata solo per la distanza del lato della strada nell'ombra sui due lati, accanto all'asse; non nei calcoli di accessibilità e ombra sull'asse"}   # D59
 ESITO = {"pass": "superato", "warn": "avviso", "fail": "fallito"}
 # Limiti d'uso noti, da docs/STATO.md e docs/FONTI.md: si sommano agli avvisi dei controlli e alla riserva sulla licenza.
 LIMITI = {
     "src_osm_firenze": ["Rete pedonale solo OSM: lato del marciapiede, larghezze e pendenze ignoti.",
                         "Estratto regionale del 2026-10-08, non più scaricabile da Geofabrik: la baseline non si ricostruisce identica da zero."],
+    "src_fi_aree_stradali": ["Fuori dalla baseline congelata (D59): serve solo alla distanza del lato della strada dove il marciapiede non è mappato in OSM (shadow/lati_strada.py).",
+                             "Nessun campo di larghezza: la distanza è dal bordo del poligono lungo la normale, una stima nostra. Il bordo a volte comprende il marciapiede, a volte no: sui tratti con il marciapiede OSM sta in mediana circa 1,7 m più lontano.",
+                             "Incroci (poligoni senza toponimo) esclusi."],
     "src_fi_civici": ["Civici come punti d'indirizzo, non persone: le quote di accessibilità sono quote di civici."],
     "src_rt_uv_firenze_novoli": ["Unità volumetriche del 2011 con altezze dal LiDAR 2023: edifici nuovi solo dove li ha OSM; portici ignoti trattati come pieni."],
     "src_fi_dsm2023": ["Datum verticale non confermato.", "Vegetazione LiDAR trattata come prisma opaco pieno: limite superiore dell'ombra."],
@@ -82,7 +86,7 @@ def scheda(sid, t17):
     else: r.append(f"- Scheda del catalogo: nessuna. {t17.get('lacuna') or ''}".rstrip())
     if src.get("dataset_url") and src["dataset_url"] != t17.get("dataset_catalogo"): r.append(f"- Pagina della fonte: {src['dataset_url']}")
     r += [f"- Risorsa scaricata: {src['resource_url']}",
-          f"- Nella baseline congelata `{BASELINE['baseline_id']}`: " + (f"sì, snapshot `{NELLA_BASELINE[sid]}`" if sid in NELLA_BASELINE else ("no, fonte aggiunta dopo (usata nella scena e nella stima dei residenti per civico, non nei calcoli di accessibilità e ombra)" if sid in USO_RESIDENTI else "no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)")),
+          f"- Nella baseline congelata `{BASELINE['baseline_id']}`: " + (f"sì, snapshot `{NELLA_BASELINE[sid]}`" if sid in NELLA_BASELINE else ("no, fonte aggiunta dopo (usata nella scena e nella stima dei residenti per civico, non nei calcoli di accessibilità e ombra)" if sid in USO_RESIDENTI else f"no, fonte aggiunta dopo ({USO_FUORI[sid]})" if sid in USO_FUORI else "no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)")),
           "", "## Licenza", "", f"- Licenza: {licenza(lic)}", f"- Verifica: {STATO.get(lic['state'], lic['state'])}",
           f"- Uso consentito: {USO.get(lic['permitted_use'], lic['permitted_use'])}", f"- Evidenza: {lic['evidence_url']}", f"- Nota: {lic['evidence_note']}"]
     if lic.get("reserve_note"): r.append(f"- Riserva: {lic['reserve_note']}")

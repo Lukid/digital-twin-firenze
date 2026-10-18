@@ -4,7 +4,7 @@
  "baseline_id": "bas_firenze_novoli_20261009",
  "ricevitore": "due linee parallele all'asse del percorso, a sinistra e a destra nel verso di marcia; l'asse accanto, calcolato allo stesso modo",
  "metodo": {
-  "distanza": "dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento), altrimenti 3 m dichiarati",
+  "distanza": "dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento); altrimenti dal bordo dell'area stradale del Comune lungo la normale dal punto medio (solo poligoni di tronco, incroci esclusi, bordo fra 1 e 25 m; stima nostra, D59); altrimenti 3 m dichiarati",
   "asse": "raccordi e tratti pedonali restano sull'asse",
   "casi": {
    "base": "edifici",
@@ -27,6 +27,12 @@
    "source_id": "edifici, alberi, LiDAR e rete OSM della baseline",
    "licenza": "vedi get_source_card per ogni snapshot",
    "data_del_dato": "baseline 2026-10-09"
+  },
+  {
+   "source_id": "src_fi_aree_stradali",
+   "licenza": "CC-BY-4.0",
+   "data_del_dato": "2025-05-26",
+   "uso": "distanza del lato dove il marciapiede non è mappato in OSM (fuori baseline, D59)"
   }
  ],
  "limits": [
@@ -43,8 +49,12 @@
    "text": "Attraversamenti non modellati: chi cambia lato attraversa, e il percorso più breve sul grafo non sa quale lato usa."
   },
   {
+   "code": "aree_stradali_stima",
+   "text": "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è quella dal bordo dell'area stradale del Comune lungo la normale al segmento: una stima nostra, non una larghezza pubblicata; sui tratti con il marciapiede OSM il bordo sta in mediana circa 1,7 m più lontano del marciapiede, quindi la distanza è più facilmente in eccesso (metri per lato nel campo metri_aree_stradali)."
+  },
+  {
    "code": "valore_dichiarato",
-   "text": "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è il valore dichiarato di 3 m, non una larghezza misurata (metri per lato nel campo metri_valore_dichiarato)."
+   "text": "Dove non c'è né il marciapiede OSM né l'area stradale la distanza dall'asse è il valore dichiarato di 3 m, non una larghezza misurata (metri per lato nel campo metri_valore_dichiarato)."
   },
   {
    "code": "asse_nei_tratti_pedonali",
@@ -56,7 +66,7 @@
   }
  ],
  "calcolo": {
-  "secondi": 579,
+  "secondi": 580,
   "memoria_max_gb": 0.37
  },
  "data": "2026-12-12",
@@ -69,6 +79,10 @@
    "metri_marciapiede_osm": {
     "sinistra": 249.1,
     "destra": 242.9
+   },
+   "metri_aree_stradali": {
+    "sinistra": 0,
+    "destra": 0
    },
    "metri_valore_dichiarato": {
     "sinistra": 8.3,

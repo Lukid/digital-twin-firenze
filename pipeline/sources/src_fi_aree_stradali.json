@@ -1,0 +1,46 @@
+{
+ "source_id": "src_fi_aree_stradali",
+ "title": "Aree stradali (poligoni per tronco e incrocio), Comune di Firenze",
+ "publisher": "Comune di Firenze",
+ "dataset_url": "https://dati.toscana.it/dataset/a44ea551-7b09-4d0d-af64-7c08159e9316",
+ "resource_url": "https://data.comune.fi.it/datastore/download.php?id=6379&type=99&format=url&file_format=shp&file_id=19953",
+ "provenance": {
+  "origin": "official_download",
+  "note": "T17: dataset https://dati.toscana.it/dataset/a44ea551-7b09-4d0d-af64-7c08159e9316"
+ },
+ "license": {
+  "state": "clear",
+  "permitted_use": "redistribution",
+  "evidence_url": "https://dati.toscana.it/dataset/a44ea551-7b09-4d0d-af64-7c08159e9316",
+  "evidence_note": "Scheda e risorse del catalogo regionale: CC BY 4.0 (package_show del 2026-10-18).",
+  "identifier": "CC-BY-4.0"
+ },
+ "content_period": {
+  "start": "2025-05-26",
+  "end": "2025-05-26",
+  "note": "file dello zip del 2025-05-26 (campo modified della scheda: 26-05-2025); frequenza dichiarata WEEKLY, scheda del catalogo aggiornata il 2026-02-11"
+ },
+ "crs": {
+  "declared": "EPSG:3003",
+  "vertical_datum": "not_declared",
+  "note": "shapefile con .prj in Monte Mario Italia zona 1; convertito in EPSG:7791 come le altre fonti del Comune"
+ },
+ "units": {},
+ "checks": [
+  {
+   "name": "aree_stradali in area allargata",
+   "result": "pass",
+   "detail": "1341 oggetti"
+  },
+  {
+   "name": "larghezza",
+   "result": "warn",
+   "detail": "nessun campo di larghezza: la distanza del lato è ricavata dalla forma del poligono con una regola nostra (shadow/lati_strada.py), una stima"
+  }
+ ],
+ "schema_fields": [
+  "ID",
+  "CODICESTRA",
+  "TOPONIMO"
+ ]
+}
