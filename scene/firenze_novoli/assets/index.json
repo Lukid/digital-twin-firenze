@@ -31,9 +31,9 @@
   },
   "edifici": {
    "file": "edifici.json.gz",
-   "byte": 466858,
-   "byte_decompressi": 2674458,
-   "sha256": "abc80aec3e736752f62eca8bc662de57bf69b3f1e728689eb36292731470a02f",
+   "byte": 466856,
+   "byte_decompressi": 2674509,
+   "sha256": "fa83712415bcd0c6628bb3bf91dbe92279b3eb1db7e1d92ba7af9252942cf1e0",
    "n": 1952
   },
   "alberi": {

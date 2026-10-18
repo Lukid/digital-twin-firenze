@@ -224,6 +224,19 @@ def test_arrivo_al_rifugio_all_ombra():
     assert 'id="ombra_rifugi"' in (H / "metodo.html").read_text() and "metodo.html#ombra_rifugi" in (H / "app.js").read_text()
 
 
+def test_civico_a_pari_distanza():
+    """D58: due civici dentro l'edificio (distanza 0): vince il CODICECIVI minore, in qualunque ordine li dia l'indice spaziale."""
+    import geopandas as gpd
+    from shapely.geometry import Point, box
+    civ = gpd.GeoDataFrame({"CODICECIVI": ["B10", "B08", "A99R", "C01"], "rosso": [False, False, True, False]},
+                           geometry=[Point(1, 1), Point(2, 2), Point(1.5, 1.5), Point(20, 20)])
+    ed = box(0, 0, 3, 3)
+    assert {build.civico_vicino(civ, v, ed) for v in ([0, 1, 2, 3], [3, 2, 1, 0], [1, 0])} == {1}
+    assert build.civico_vicino(civ, [2, 3], ed) == 3 and build.civico_vicino(civ, [], ed) is None   # i neri prima dei rossi
+    bis = [e["ind"] for e in carica("edifici")["edifici"] if e["id"] == "bld_rt_RT0201010201432041"]
+    assert bis == ["Via Bisenzio 6"], bis   # dentro ci sono il 6, l'8 e il 10: sul Mac usciva il 10, sul worker l'8
+
+
 if __name__ == "__main__":
     for n, f in list(globals().items()):
         if n.startswith("test_"):

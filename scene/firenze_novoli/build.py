@@ -240,6 +240,13 @@ def _civici_e_nomi():
     return c, shapely.STRtree(c.geometry.values), o, shapely.STRtree(o.geometry.values)
 
 
+def civico_vicino(civ, vicini, geom):
+    """Indice del civico più vicino fra i candidati, i neri prima dei rossi; None se non ce ne sono.
+    D58: a pari distanza (al millimetro; di solito più civici dentro l'edificio) vince il CODICECIVI minore,
+    non l'ordine dell'indice spaziale, che cambia fra Mac e Linux."""
+    return min(vicini, key=lambda i: (civ.rosso.iat[i], round(civ.geometry.iat[i].distance(geom), 3), civ.CODICECIVI.iat[i])) if len(vicini) else None
+
+
 def edifici(zref):
     g = json.load(open(ROOT / "geometry/firenze_novoli/edifici_fp.geojson"))
     civ, tciv, osm, tosm = _civici_e_nomi()
@@ -267,9 +274,8 @@ def edifici(zref):
                     v += A + B + Bt + A + Bt + At
         if not v:
             continue
-        vicini = tciv.query(geom, predicate="dwithin", distance=15)   # civico più vicino entro 15 m, i neri prima dei rossi
-        ind = min(vicini, key=lambda i: (civ.rosso.iat[i], civ.geometry.iat[i].distance(geom))) if len(vicini) else None
-        dentro = tosm.query(geom.representative_point(), predicate="within")
+        ind = civico_vicino(civ, tciv.query(geom, predicate="dwithin", distance=15), geom)
+        dentro = sorted(tosm.query(geom.representative_point(), predicate="within"))   # più edifici OSM: il primo del file
         pos += v
         meta.append({"id": p["id"], "n": len(v) // 3, "h": r(p["h"]), "h_min": r(p["h_min"]), "h_max": r(p["h_max"]),
                      "z_base": r(p["z_base"]), "classe_h": p["classe_h"], "tipo": p["tipo"], "fonte": p["fonte"],
@@ -297,7 +303,7 @@ def _aggancio_catasto():
         g = shapely.make_valid(geom)
         if g.area <= 0:
             return []
-        return [p.rif.iat[i] for i in t.query(g, predicate="intersects") if p.geometry.iat[i].intersection(g).area / g.area >= 0.5]
+        return [p.rif.iat[i] for i in sorted(t.query(g, predicate="intersects")) if p.geometry.iat[i].intersection(g).area / g.area >= 0.5]
     return cat_di
 
 
