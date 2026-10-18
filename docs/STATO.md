@@ -112,6 +112,7 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D54 (18 ottobre): `weights` resta fuori dallo schema di `compare_scenarios` e si respinge con l'errore di validazione (domanda 2).
 - D55 (18 ottobre): gli orari di luglio dei rifugi si chiedono all'ufficio; la domanda C9 resta "non lo so". L'orario d'autunno della Biblioteca Buonarroti non entra nella scheda (domanda 3).
 - D56 (18 ottobre): l'ombra sui due lati della strada si estende subito ai percorsi campione, con un valore dichiarato dove il marciapiede non è mappato, accanto ai risultati sull'asse (domanda 4).
+- D57 (18 ottobre): sessione F6 su [BRIEF-AGENTE-F6.md](BRIEF-AGENTE-F6.md), in ordine di priorità: ombra sui due lati della strada per R01-R10 e RC1-RC5 accanto all'asse (D56), indicatore di riserva per la scheda dell'ufficio (D53), civici che arrivano all'ombra nella scena (solo build).
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
