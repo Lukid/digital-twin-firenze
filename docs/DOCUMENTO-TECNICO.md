@@ -152,8 +152,8 @@ Strumenti:
 | `compute_shadow` | ombra su percorsi campione o geometrie, per data e orari |
 | `compare_scenarios` | confronto fra baseline e scenari, o fra due calcoli d'ombra |
 | `estimate_residents` | residenti stimati raggiunti entro le soglie di un calcolo di accessibilità, accanto ai civici |
-| `get_route_exposure` | percorsi campione più esposti al sole in una data già calcolata |
-| `get_shaded_access` | civici e residenti stimati che arrivano al rifugio più vicino camminando soprattutto all'ombra, già calcolati |
+| `get_route_exposure` | percorsi campione più esposti al sole in una data già calcolata; accanto all'asse, il lato della strada più in ombra come limite superiore |
+| `get_shaded_access` | civici e residenti stimati che arrivano al rifugio più vicino camminando soprattutto all'ombra, già calcolati; accanto, il limite superiore camminando sul lato più in ombra |
 | `get_street_side_shade` | ombra sui due lati della strada dei percorsi campione, accanto all'asse, già calcolata; prototipo da verificare sul posto |
 | `get_job_status`, `get_result_manifest` | stato e manifest di un job |
 | `create_local_scenario` | crea uno scenario; spento nel servizio remoto |

@@ -461,7 +461,28 @@ def get_route_exposure(a):
     for p in E["percorsi"].values():
         for o in p["orari"].values(): o.pop("geometrie", None)
     m = _read_job(next(iter(E["percorsi"].values()))["job_id"], "manifest")
+    _lato_piu_in_ombra(E)
     return {**E, "datasets": [_ds(d) for d in m["datasets"]], "limits": m["limits"]}
+
+
+def _lato_piu_in_ombra(E):
+    """F7 (D60): accanto alla quota sull'asse di ogni percorso, il lato più in ombra agli istanti di shadow/lati_strada.py, come limite superiore. L'asse resta il valore."""
+    f = ROOT / "shadow" / SLUG / "lati_strada.json"
+    if not f.exists(): return
+    L = _load(f)
+    for rid, p in E["percorsi"].items():
+        q = L["percorsi"].get(rid)
+        x = {y["ora"]: y for y in (q["istanti"] if q else []) if y["data"] == E["data"] and "con_vegetazione" in y}
+        lato = lambda v: max(v["sinistra"], v["destra"])
+        orari = {ora: {"lato": x[ora]["lato_piu_in_ombra"], "asse": x[ora]["con_vegetazione"]["asse"], "frazione_ombra": lato(x[ora]["con_vegetazione"]),
+                       "limite_superiore": max(lato(x[ora]["con_vegetazione"]), x[ora]["con_vegetazione"]["asse"]),   # se anche il lato più in ombra ne ha meno, vale l'asse
+                       "solo_edifici": lato(x[ora]["edifici"])} for ora in p["orari"] if ora in x}
+        if orari:
+            p["lato_piu_in_ombra"] = {"classification": "limite superiore", "stato": "da verificare sul posto", "orari": orari,
+                                      "fonte_distanza": {k: q[c] for k, c in (("marciapiede_osm_m", "metri_marciapiede_osm"), ("aree_stradali_m", "metri_aree_stradali"), ("valore_dichiarato_m", "metri_valore_dichiarato"))},
+                                      "nota": "frazione_ombra: quota d'ombra del lato della strada più in ombra, camminando tutto su quel lato senza attraversare; limite_superiore: la maggiore fra questa e l'asse. "
+                                              "Si dà accanto a frazione_ombra sull'asse del percorso, che resta il valore. "
+                                              "Distanza del lato dal marciapiede OSM, altrimenti dalle aree stradali del Comune (stima nostra), altrimenti 3 m dichiarati. Dettagli: get_street_side_shade."}
 
 
 def get_shaded_access(a):

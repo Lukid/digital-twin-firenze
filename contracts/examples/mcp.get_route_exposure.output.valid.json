@@ -60,6 +60,34 @@
    "calcolo": {
     "secondi": 56,
     "memoria_max_gb": 0.43
+   },
+   "lato_piu_in_ombra": {
+    "classification": "limite superiore",
+    "stato": "da verificare sul posto",
+    "orari": {
+     "14:00": {
+      "lato": "sinistra",
+      "asse": 0.1201,
+      "frazione_ombra": 0.1525,
+      "limite_superiore": 0.1525,
+      "solo_edifici": 0.0156
+     }
+    },
+    "fonte_distanza": {
+     "marciapiede_osm_m": {
+      "sinistra": 8.0,
+      "destra": 575.7
+     },
+     "aree_stradali_m": {
+      "sinistra": 40.9,
+      "destra": 264.2
+     },
+     "valore_dichiarato_m": {
+      "sinistra": 865.9,
+      "destra": 74.9
+     }
+    },
+    "nota": "frazione_ombra: quota d'ombra del lato della strada più in ombra, camminando tutto su quel lato senza attraversare; limite_superiore: la maggiore fra questa e l'asse. Si dà accanto a frazione_ombra sull'asse del percorso, che resta il valore. Distanza del lato dal marciapiede OSM, altrimenti dalle aree stradali del Comune (stima nostra), altrimenti 3 m dichiarati. Dettagli: get_street_side_shade."
    }
   }
  },

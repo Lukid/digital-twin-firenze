@@ -97,6 +97,14 @@ ex = run("get_route_exposure", {"date": "2026-07-15"}); assert core.validate("ge
 assert len(ex["percorsi"]) == 15 and ex["classifica"]["14:00"]["per_metri_al_sole"][0] == "RC4" and "geometrie" not in json.dumps(ex)
 assert all(core._read_job(p["job_id"], "manifest")["tool"] == "compute_shadow" for p in ex["percorsi"].values())
 assert err_code(run("get_route_exposure", {"date": "2026-07-16"})) == "unknown_id"
+# lato più in ombra (F7, D60): accanto all'asse, che non cambia; limite superiore = max(asse, lato); fonte della distanza e stato
+E15 = json.loads((core.ROOT / "shadow/firenze_novoli/esposizione_2026-07-15.json").read_text()); LS15 = json.loads((core.ROOT / "shadow/firenze_novoli/lati_strada.json").read_text())
+for rid, p in ex["percorsi"].items():
+    lp = p["lato_piu_in_ombra"]; o = lp["orari"]["14:00"]; y = next(y for y in LS15["percorsi"][rid]["istanti"] if (y["data"], y["ora"]) == ("2026-07-15", "14:00"))
+    assert p["orari"]["14:00"]["frazione_ombra"] == E15["percorsi"][rid]["orari"]["14:00"]["frazione_ombra"] and abs(o["asse"] - p["orari"]["14:00"]["frazione_ombra"]) < 1e-3, rid
+    assert o["frazione_ombra"] == max(y["con_vegetazione"]["sinistra"], y["con_vegetazione"]["destra"]) and o["limite_superiore"] == max(o["frazione_ombra"], o["asse"]) and o["lato"] == y["lato_piu_in_ombra"], rid
+    assert lp["classification"] == "limite superiore" and lp["stato"] == "da verificare sul posto" and set(lp["fonte_distanza"]) == {"marciapiede_osm_m", "aree_stradali_m", "valore_dichiarato_m"}
+assert list(run("get_route_exposure", {"date": "2026-12-12"})["percorsi"]["R01"]["lato_piu_in_ombra"]["orari"]) == ["11:00", "13:00", "14:30"]
 # arrivare al rifugio all'ombra (F5, D49): chi arriva è lo stesso di estimate_residents; i conteggi tornano con i punti per la scena; soglie in ordine
 om = run("get_shaded_access", {"job_id": rif["job_id"], "date": "2026-07-15"}); assert core.validate("get_shaded_access", "output", om) == [], om
 pt = json.loads((core.ROOT / "shadow/firenze_novoli/ombra_rifugi_civici_2026-07-15.geojson").read_text())["features"]
@@ -106,6 +114,13 @@ for s, r in zip(om["soglie"], res["soglie"][1:]):
     assert o["civici"] == sum(1 for f in pt if f["properties"]["minuti"] <= s["minuti"] and f["properties"]["ombra"] >= om["soglia_ombra"]) and a["civici"] == sum(1 for f in pt if f["properties"]["minuti"] <= s["minuti"])
     assert s["sensibilita_soglia"]["40%"]["civici"] >= o["civici"] >= s["sensibilita_soglia"]["60%"]["civici"] and s["intervallo_vegetazione"]["quota_civici"][0] <= o["quota_civici"] <= s["intervallo_vegetazione"]["quota_civici"][1]
 assert om["soglie"][0]["soprattutto_ombra"]["civici"] == 8 and om["soglie"][1]["soprattutto_ombra"]["residenti_stimati"] == 59 and any(x["code"] == "soglia_scelta_da_noi" for x in om["limits"])
+# lato più in ombra (F7, D60): limite superiore accanto all'asse, mai sotto i numeri sull'asse; soglie in ordine; controlli del calcolo superati
+lp = om["lato_piu_in_ombra"]; assert lp["classification"] == "limite superiore" and lp["stato"] == "da verificare sul posto" and "aree stradali" in lp["fonte_distanza"]
+for s, l in zip(om["soglie"], lp["soglie"]):
+    q = l["soprattutto_ombra"]; assert s["minuti"] == l["minuti"] and q["40%"]["civici"] >= q["50%"]["civici"] >= q["60%"]["civici"]
+    assert q["50%"]["civici"] >= s["soprattutto_ombra"]["civici"] and q["40%"]["civici"] >= s["sensibilita_soglia"]["40%"]["civici"] and q["60%"]["civici"] >= s["sensibilita_soglia"]["60%"]["civici"]
+    assert q["50%"]["residenti_stimati"] >= s["soprattutto_ombra"]["residenti_stimati"] and sum(l["lato_piu_in_ombra"].values()) == s["arrivano"]["civici"]
+assert all(abs(v["civico"] - v["lati_strada"]) < 0.01 for v in lp["controllo_RC4"].values()) and lp["soglie"][0]["soprattutto_ombra"]["50%"]["civici"] == 179
 # indicatore di riserva (F6, D53): quota media e quartili dai punti per la scena; minuti al sole fra 0 e i minuti di cammino
 for s in om["soglie"]:
     P = [f["properties"] for f in pt if f["properties"]["minuti"] <= s["minuti"]]; r = s["riserva"]

@@ -1,0 +1,150 @@
+{
+ "data": "2026-07-15",
+ "versione_motore": "0.3.0",
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "ricevitore": "asse della rete (lato del marciapiede non noto)",
+ "metodo": {
+  "name": "geometric_ray",
+  "space_step_m": 1,
+  "time_step_min": 5,
+  "obstacles": "buildings_trees_and_lidar_vegetation",
+  "casi": [
+   "base",
+   "base_h_min",
+   "base_h_max",
+   "alberi_min",
+   "alberi_tipico",
+   "alberi_max",
+   "veg_lidar_min",
+   "veg_lidar_tipico",
+   "veg_lidar_max"
+  ],
+  "walk_speed_m_s": 1.2
+ },
+ "contesto_principale": "edifici, alberi censiti e vegetazione LiDAR, caso tipico (D14); intervallo dai casi min e max; solo edifici a parte",
+ "percorsi": {
+  "RC4": {
+   "descrizione": "Civico di R05 verso il rifugio climatico più vicino per rete (ent_rib_6_0)",
+   "lunghezza_m": 1070.5,
+   "stato_verifica": "da_verificare",
+   "job_id": "job_125a412a3ee9f23f",
+   "orari": {
+    "14:00": {
+     "stato_sole": "ok",
+     "elevazione_deg": 66.26,
+     "azimut_deg": 202.98,
+     "m_sole": 942.0,
+     "m_sole_intervallo": [
+      880.3,
+      983.3
+     ],
+     "minuti_sole": 13.077,
+     "minuti_sole_intervallo": [
+      12.175,
+      13.66
+     ],
+     "minuti_totali": 14.868,
+     "frazione_ombra": 0.1201,
+     "solo_edifici": {
+      "m_sole": 1062.3,
+      "m_sole_intervallo": [
+       1062.3,
+       1062.3
+      ],
+      "minuti_sole": 14.757,
+      "frazione_ombra": 0.0076
+     },
+     "tratto_sole_piu_lungo_m": 768.0
+    }
+   },
+   "calcolo": {
+    "secondi": 56,
+    "memoria_max_gb": 0.43
+   },
+   "lato_piu_in_ombra": {
+    "classification": "valore",
+    "stato": "da verificare sul posto",
+    "orari": {
+     "14:00": {
+      "lato": "sinistra",
+      "asse": 0.1201,
+      "frazione_ombra": 0.1525,
+      "limite_superiore": 0.1525,
+      "solo_edifici": 0.0156
+     }
+    },
+    "fonte_distanza": {
+     "marciapiede_osm_m": {
+      "sinistra": 8.0,
+      "destra": 575.7
+     },
+     "aree_stradali_m": {
+      "sinistra": 40.9,
+      "destra": 264.2
+     },
+     "valore_dichiarato_m": {
+      "sinistra": 865.9,
+      "destra": 74.9
+     }
+    },
+    "nota": "frazione_ombra: quota d'ombra del lato della strada più in ombra, camminando tutto su quel lato senza attraversare; limite_superiore: la maggiore fra questa e l'asse. Si dà accanto a frazione_ombra sull'asse del percorso, che resta il valore. Distanza del lato dal marciapiede OSM, altrimenti dalle aree stradali del Comune (stima nostra), altrimenti 3 m dichiarati. Dettagli: get_street_side_shade."
+   }
+  }
+ },
+ "classifica": {
+  "14:00": {
+   "per_metri_al_sole": [
+    "RC4",
+    "R10",
+    "R03",
+    "R06",
+    "R07",
+    "R08",
+    "RC3",
+    "RC2",
+    "R02",
+    "RC1",
+    "RC5",
+    "R09",
+    "R01",
+    "R05",
+    "R04"
+   ],
+   "per_minuti_al_sole": [
+    "RC4",
+    "R10",
+    "R03",
+    "R06",
+    "R07",
+    "R08",
+    "RC3",
+    "RC2",
+    "R02",
+    "RC1",
+    "RC5",
+    "R09",
+    "R01",
+    "R05",
+    "R04"
+   ]
+  }
+ },
+ "datasets": [
+  {
+   "snapshot_id": "snp_fi_alberi_20261009",
+   "source_id": "src_fi_alberi",
+   "sha256": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
+   "license_state": "clear"
+  }
+ ],
+ "limits": [
+  {
+   "code": "terreno_piano",
+   "text": "Terreno quasi piano dichiarato: ogni volume riferito al proprio piede (quota base di fonte), ricevitore alla quota dei piedi vicini; dislivelli locali non modellati."
+  },
+  {
+   "code": "centerline",
+   "text": "Percorsi sull'asse della rete OSM, non sul lato del marciapiede: lato e portici non noti (marciapiede ignoto), l'effetto del lato non è nel risultato."
+  }
+ ]
+}

@@ -55,7 +55,14 @@ assert all(t in caldo[0]["risposta"] for t in (f"circa {o[0]['soprattutto_ombra'
 mm = lambda x: f"{x:.1f}".replace(".", ",")   # F6 (D53): indicatore di riserva, senza soglia
 assert all(t in caldo[0]["risposta"] for t in (f"in media per il {fmt(o[0]['riserva']['ombra_media'])}", f"{mm(o[0]['riserva']['minuti_sole_quartili'][1])} minuti in mediana",
                                                f"ombra media {fmt(o[1]['riserva']['ombra_media'])}", f"{mm(o[1]['riserva']['minuti_sole_quartili'][1])} minuti al sole in mediana"))
-e = core.run_tool("get_route_exposure", {"date": "2026-07-15"}); assert e["classifica"]["14:00"]["per_metri_al_sole"][:3] == ["RC4", "R10", "R03"] and all(e["percorsi"][x]["job_id"] in caldo[1]["risposta"] for x in ("RC4", "R10", "R03"))
+lp = core.run_tool("get_shaded_access", {"job_id": "job_e1e75455f7511f7d", "date": "2026-07-15"})["lato_piu_in_ombra"]["soglie"]   # F7 (D60): limite superiore sul lato più in ombra
+assert all(t in caldo[0]["risposta"] for t in (f"al massimo circa {lp[0]['soprattutto_ombra']['50%']['residenti_stimati']} residenti stimati ({fmt(lp[0]['soprattutto_ombra']['50%']['quota_residenti'])})",
+                                               f"{lp[0]['soprattutto_ombra']['40%']['residenti_stimati']:,} ({fmt(lp[0]['soprattutto_ombra']['40%']['quota_residenti'])})".replace(",", ".", 1),
+                                               f"al massimo {lp[1]['soprattutto_ombra']['50%']['residenti_stimati']:,} ({fmt(lp[1]['soprattutto_ombra']['50%']['quota_residenti'])})".replace(",", ".", 1), "il lato è solo un tetto"))
+assert caldo[0]["risposta"].index("circa 33 residenti stimati") < caldo[0]["risposta"].index("Come limite superiore")   # prima l'asse, poi il lato
+e = core.run_tool("get_route_exposure", {"date": "2026-07-15"})
+assert all(f"{x} {fmt(e['percorsi'][x]['lato_piu_in_ombra']['orari']['14:00']['limite_superiore'])} (asse {fmt(e['percorsi'][x]['orari']['14:00']['frazione_ombra'])})" in caldo[1]["risposta"] for x in ("RC4", "R03", "R08", "R09"))
+assert e["classifica"]["14:00"]["per_metri_al_sole"][:3] == ["RC4", "R10", "R03"] and all(e["percorsi"][x]["job_id"] in caldo[1]["risposta"] for x in ("RC4", "R10", "R03"))
 
 # 4. errori attesi, oggi
 A = {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"},

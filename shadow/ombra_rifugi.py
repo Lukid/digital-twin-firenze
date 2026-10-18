@@ -9,8 +9,13 @@ Riuso: l'ombra si misura una volta per tratto di rete (i pezzi del grafo con gli
 
 Indicatore di riserva (D53), meno sensibile alla soglia: quota media del percorso in ombra e minuti al sole camminando (mediana e quartili).
 
+Lato più in ombra (F7, D60), accanto all'asse e mai al posto suo: ogni tratto del percorso va a sinistra e a destra con la distanza di shadow/lati_strada.py
+(marciapiede OSM, aree stradali del Comune, 3 m dichiarati); un civico cammina tutto su un lato, quello più in ombra. Limite superiore, da verificare sul posto.
+
 Uso: pipeline/.venv/bin/python shadow/ombra_rifugi.py [--blocco 500]
      pipeline/.venv/bin/python shadow/ombra_rifugi.py --riserva   (solo l'indicatore di riserva, dal GeoJSON dei civici già calcolato: nessun calcolo d'ombra)
+     pipeline/.venv/bin/python shadow/ombra_rifugi.py --lati [--blocco 2000]   (solo il lato più in ombra: aggiunge il campo lato_piu_in_ombra al JSON;
+                                                                                  da rifare dopo il calcolo completo, che riscrive il JSON senza)
 Scrive: shadow/<area>/ombra_rifugi_<data>.json (numeri, metodo, limiti, tempo e memoria per blocco),
         shadow/<area>/ombra_rifugi_civici_<data>.geojson (un punto per civico entro 15 minuti, per la scena).
 Guardiano: sotto 700 MB di memoria disponibile il calcolo si ferma (uscita 3)."""
@@ -78,9 +83,123 @@ def solo_riserva():
     for x in R["soglie"]: print(x["minuti"], "min:", x["riserva"])
 
 
+CASI_LATI = {"base": "solo_edifici", "veg_lidar_tipico": "con_vegetazione"}   # come shadow/lati_strada.py
+LIMITI_LATI = [("limite_superiore", "Limite superiore: chi cammina sceglie sempre il lato più in ombra per tutto il percorso, senza attraversare; il valore principale resta quello sull'asse."),
+               ("da_verificare", "Da verificare sul posto: nessun lato della strada è stato osservato."),
+               ("distanza_del_lato", "Distanza del lato dal marciapiede OSM, altrimenti dal bordo delle aree stradali del Comune (stima nostra), altrimenti 3 m dichiarati (metri per fonte nel campo metri)."),
+               ("attraversamenti_non_modellati", "Attraversamenti non modellati; raccordi e tratti pedonali restano sull'asse.")]
+
+
+def _cammino(tr, ro):
+    """Tratti nel verso di marcia (dal civico all'ingresso): [(indice nel percorso, True se il cammino segue il verso della geometria)]."""
+    cur, out = np.array(ro.coords[-1]), []
+    for i in reversed(range(len(tr))):
+        c = np.array(tr[i][1].coords); avanti = np.linalg.norm(c[0] - cur) <= np.linalg.norm(c[-1] - cur)
+        assert min(np.linalg.norm(c[0] - cur), np.linalg.norm(c[-1] - cur)) < 0.5, "tratti non contigui"
+        out.append((i, bool(avanti))); cur = c[-1] if avanti else c[0]
+    return out
+
+
+def solo_lati(blocco):
+    """F7 (D60): lato più in ombra sui percorsi dei civici entro 15 minuti, alle 14 del 15 luglio, come limite superiore accanto all'asse.
+    Ogni tratto unico si sposta a sinistra e a destra della sua geometria (shadow/lati_strada.py, raccordi esclusi); l'ombra si misura a blocchi di tratti."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "network"))
+    import lati_strada as LS, rete_lib as RL
+    ESP.guardiano(); t0 = time.time()
+    f = OUT / f"ombra_rifugi_{DATA}.json"; R = json.loads(f.read_text())
+    m = json.loads((A.OUT_VERS / "manifest" / f"{JOB}.manifest.json").read_text())
+    righe = {r["origin_id"]: r for r in csv.DictReader(open(A.ROOT / next(x["path"] for x in m["assets"] if x["asset_id"] == "ast_origini_csv")))}
+    P, rac_d, _ = percorsi(m)
+    dentro = sorted(o for o, r in righe.items() if r["stato"] == "reachable" and float(r["tempo_s"]) / 60 <= max(SOGLIE_MIN))
+    assert len(dentro) == R["civici_entro_15_min"]
+    G, _ = RL.carica()
+    # pezzi da ombreggiare: per ogni tratto unico i segmenti spostati a sinistra (+1) e a destra (-1) della sua geometria; raccordi sull'asse
+    tratti, racc, pezzi, lung, metri = {}, {}, [], [], {}
+    for o in dentro:
+        tr, ro, e, _, _ = P[o]
+        for k, g in tr:
+            if k in tratti: continue
+            seg = LS.lati(g, G, raccordi=False); tratti[k] = {}
+            for lato in (1, -1, 0):   # 0: asse, per il limite superiore max(asse, lato) e per il controllo con il calcolo sull'asse
+                ix = []
+                for q, _, la in LS.linea(seg, lato): ix.append(len(pezzi)); pezzi.append(q); lung.append(la)
+                tratti[k][lato] = np.array(ix, dtype=int)
+            metri[k] = {lato: {f: sum(float(np.linalg.norm(b - a)) for a, b, *_, fo in seg if fo != "asse" and fo.split("+")[i] == f) for f in ("osm", "aree", "default")} for i, lato in enumerate((1, -1))}
+        for k, g in ((("o", o), ro), (("d", e), rac_d[e])):
+            if k not in racc: racc[k] = len(pezzi); pezzi.append(g); lung.append(g.length)
+    pezzi = np.array(pezzi, dtype=object); lung = np.array(lung); t_lati = time.time() - t0
+    finestra = box(*shapely.total_bounds(pezzi)).buffer(1.0); ombra, blocchi = {}, []
+    for caso in CASI_LATI:
+        tc = time.time(); st, az, el, U = O.ombra_a_istante(O.scena_caso(caso), O.locale_a_utc(DATA, ORA), O.SOLE_LAT, O.SOLE_LON, finestra=finestra)
+        assert st == O.STATO_OK, st; shapely.prepare(U); v = np.zeros(len(pezzi))
+        for i in range(0, len(pezzi), blocco):
+            v[i:i + blocco] = shapely.length(shapely.intersection(pezzi[i:i + blocco], U))
+            blocchi.append({"caso": caso, "pezzi": int(min(blocco, len(pezzi) - i)), "memoria_disponibile_gb": round(psutil.virtual_memory().available / 2**30, 2)})
+        ombra[caso] = v; del U
+        print(caso, f"{time.time() - tc:.0f} s", f"memoria massima {ESP.memoria_max_gb()} GB", flush=True)
+    civ, per = {}, RES.residenti_per_civico()[0]
+    asse_f5 = [x["properties"] for x in json.loads((OUT / f"ombra_rifugi_civici_{DATA}.geojson").read_text())["features"]]   # stesso ordine di dentro (main)
+    assert len(asse_f5) == len(dentro)
+    for o in dentro:   # sinistra e destra nel verso di marcia: un tratto percorso contro il verso della geometria scambia i lati
+        tr, ro, e, t, _ = P[o]; lato = {"sinistra": [], "destra": [], "asse": [tratti[k][0] for k, _ in tr]}; mt = {"sinistra": dict.fromkeys(("osm", "aree", "default"), 0.0), "destra": dict.fromkeys(("osm", "aree", "default"), 0.0)}
+        for i, avanti in _cammino(tr, ro):
+            k = tr[i][0]
+            for nome, s in (("sinistra", 1), ("destra", -1)):
+                g = s if avanti else -s; lato[nome].append(tratti[k][g])
+                for fo, x in metri[k][g].items(): mt[nome][fo] += x
+        for nome in lato: lato[nome] = np.concatenate(lato[nome] + [np.array([racc[("o", o)], racc[("d", e)]])])
+        L = float(lung[lato["sinistra"]].sum()); assert abs(L - float(lung[lato["asse"]].sum())) < 0.01
+        civ[o] = {"minuti": t / 60, "residenti": per.get(o), "metri": mt,
+                  **{(nome, c): float(ombra[c][ix].sum()) / L for nome, ix in lato.items() for c in CASI_LATI}}
+    # l'asse calcolato qui deve ridare quello di main (GeoJSON dei civici, arrotondato alla quarta cifra)
+    scarto = max(max(abs(civ[o][("asse", "veg_lidar_tipico")] - q["ombra"]), abs(civ[o][("asse", "base")] - q["ombra_solo_edifici"])) for o, q in zip(dentro, asse_f5))
+    assert scarto < 1e-3, scarto
+    # controllo indipendente: il civico di RC4 (come in main) deve ridare i lati di RC4 in lati_strada.json alle 14
+    c0 = A.contesto()["civ"]; f4 = next(f for f in json.load(open(A.ROOT / "network" / O.SLUG / "percorsi_campione.geojson"))["features"] if f["properties"]["id"] == "RC4")
+    o4 = c0.index[np.argmin(c0.geometry.distance(Point(ESP._da_ll(*f4["geometry"]["coordinates"][0]))))]
+    x4 = next(x for x in json.loads((OUT / "lati_strada.json").read_text())["percorsi"]["RC4"]["istanti"] if (x["data"], x["ora"]) == (DATA, ORA))
+    controllo = {nome: {"civico": round(civ[o4][(nome, c)], 4), "lati_strada": x4[CASI_LATI[c]][nome]} for nome in ("sinistra", "destra") for c in ("veg_lidar_tipico",)}
+    assert all(abs(v["civico"] - v["lati_strada"]) < 0.01 for v in controllo.values()), controllo
+    con = [o for o in righe if per.get(o) is not None]; tot_res = sum(per[o] for o in con); n = len(righe)
+    piu = lambda o, c: max(civ[o][("sinistra", c)], civ[o][("destra", c)], civ[o][("asse", c)])   # limite superiore: se entrambi i lati hanno meno ombra dell'asse, vale l'asse
+    def conta(T, c, s):
+        os_ = [o for o in dentro if civ[o]["minuti"] <= T and piu(o, c) >= s]; res = sum(civ[o]["residenti"] for o in os_ if civ[o]["residenti"] is not None)
+        return {"civici": len(os_), "quota_civici": round(len(os_) / n, 4), "residenti_stimati": round(res), "quota_residenti": round(res / tot_res, 4)}
+    soglie = []
+    for T in SOGLIE_MIN:
+        dT = [o for o in dentro if civ[o]["minuti"] <= T]
+        soglie.append({"minuti": T, "soprattutto_ombra": {f"{s:.0%}": conta(T, "veg_lidar_tipico", s) for s in (SENS_OMBRA[0], SOGLIA_OMBRA, SENS_OMBRA[1])},
+                       "solo_edifici": conta(T, "base", SOGLIA_OMBRA),
+                       "ombra_media_lato_piu_in_ombra": round(float(np.mean([piu(o, "veg_lidar_tipico") for o in dT])), 4),
+                       "ombra_mediana_lato_piu_in_ombra": round(float(np.median([piu(o, "veg_lidar_tipico") for o in dT])), 4),
+                       "lato_piu_in_ombra": {k: sum(1 for o in dT if (lambda s, d: "pari" if abs(s - d) < LS.PARI else "sinistra" if s > d else "destra")(civ[o][("sinistra", "veg_lidar_tipico")], civ[o][("destra", "veg_lidar_tipico")]) == k) for k in ("sinistra", "destra", "pari")}})
+    mtot = {nome: {fo: round(sum(civ[o]["metri"][nome][fo] for o in dentro)) for fo in ("osm", "aree", "default")} for nome in ("sinistra", "destra")}
+    R["lato_piu_in_ombra"] = {
+        "classification": "limite superiore", "stato": "da verificare sul posto",
+        "valore_principale": "soglie (ombra sull'asse): il lato più in ombra si dà accanto, mai al posto suo",
+        "metodo": "Ogni tratto del percorso più breve si sposta a sinistra e a destra nel verso di marcia con la distanza di shadow/lati_strada.py; un civico arriva soprattutto all'ombra "
+                  "se almeno la soglia del percorso è in ombra sul suo lato più in ombra (lo stesso lato per tutto il percorso, nessun attraversamento), o sull'asse se entrambi i lati ne hanno meno. "
+                  "Caso con vegetazione; solo edifici a parte.",
+        "civici_con_lati_sotto_l_asse": {f"{T} min": sum(1 for o in dentro if civ[o]["minuti"] <= T and max(civ[o][("sinistra", "veg_lidar_tipico")], civ[o][("destra", "veg_lidar_tipico")]) < civ[o][("asse", "veg_lidar_tipico")]) for T in SOGLIE_MIN},
+        "controllo_asse": f"ombra sull'asse ricalcolata qui uguale a quella del GeoJSON dei civici (scarto massimo {scarto:.4f})",
+        "fonte_distanza": "marciapiede OSM; altrimenti bordo delle aree stradali del Comune (src_fi_aree_stradali, CC BY 4.0, stima nostra, D59); altrimenti 3 m dichiarati",
+        "metri_per_fonte": {"nota": "metri di strada sommati su tutti i percorsi dei civici entro 15 minuti (un tratto conta una volta per ogni civico che lo usa)", **mtot},
+        "soglie": soglie, "controllo_RC4": controllo,
+        "fonti": [{"source_id": "src_fi_aree_stradali", "licenza": "CC-BY-4.0", "data_del_dato": "2025-05-26"}],
+        "limits": [{"code": k, "text": t} for k, t in LIMITI_LATI],
+        "calcolo": {"tratti_unici": len(tratti), "pezzi": len(pezzi), "blocco_pezzi": blocco, "secondi_lati": round(t_lati, 1), "secondi_totali": round(time.time() - t0),
+                    "memoria_max_gb": ESP.memoria_max_gb(), "memoria_disponibile_min_gb": min(b["memoria_disponibile_gb"] for b in blocchi)}}
+    f.write_text(json.dumps(R, ensure_ascii=False, indent=1) + "\n")
+    for x in soglie: print(x["minuti"], "min:", x["soprattutto_ombra"], x["lato_piu_in_ombra"], flush=True)
+    print("controllo RC4:", controllo, "calcolo:", R["lato_piu_in_ombra"]["calcolo"])
+
+
 def main():
-    a = argparse.ArgumentParser(description=__doc__.split("\n")[0]); a.add_argument("--blocco", type=int, default=500); a.add_argument("--riserva", action="store_true"); a = a.parse_args()
+    a = argparse.ArgumentParser(description=__doc__.split("\n")[0]); a.add_argument("--blocco", type=int, default=None); a.add_argument("--riserva", action="store_true")
+    a.add_argument("--lati", action="store_true"); a = a.parse_args()
     if a.riserva: return solo_riserva()
+    if a.lati: return solo_lati(a.blocco or 2000)
+    a.blocco = a.blocco or 500
     ESP.guardiano()
     t0 = time.time()
     m = json.loads((A.OUT_VERS / "manifest" / f"{JOB}.manifest.json").read_text())

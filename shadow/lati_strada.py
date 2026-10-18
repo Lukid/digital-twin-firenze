@@ -61,19 +61,30 @@ def aree_stradali(m, v):
     return out
 
 
-def lati(L, G):
+_RETE = {}
+
+
+def _rete(G):
+    """Archi pedonali e strade del grafo con i loro indici spaziali, una volta per grafo (lati() gira anche su migliaia di tratti, F7)."""
+    if id(G) not in _RETE:
+        E = [d for _, _, d in G.edges(data=True)]
+        gp = np.array([d["geom"] for d in E if d["tipo_arco"] in TIPI_PEDONALI], dtype=object); strade = np.array([d["geom"] for d in E if d["tipo_arco"] not in TIPI_PEDONALI], dtype=object)
+        _RETE.clear(); _RETE[id(G)] = (gp, shapely.STRtree(gp), shapely.STRtree(strade))
+    return _RETE[id(G)]
+
+
+def lati(L, G, raccordi=True):
     """Per ogni segmento di L: (a, b, distanza a sinistra, distanza a destra, fonte). Fonte per lato: osm, aree (aree stradali del Comune) o default.
-    Raccordi (primo e ultimo segmento) e tratti pedonali sull'asse."""
-    E = [d for _, _, d in G.edges(data=True)]; pedonali = [d for d in E if d["tipo_arco"] in TIPI_PEDONALI]
-    gp = np.array([d["geom"] for d in pedonali], dtype=object); strade = np.array([d["geom"] for d in E if d["tipo_arco"] not in TIPI_PEDONALI], dtype=object)
+    Raccordi (primo e ultimo segmento, se raccordi) e tratti pedonali sull'asse. Con raccordi=False L è un tratto di rete senza raccordi (F7, percorsi dei civici)."""
+    gp, tgp, tstrade = _rete(G)
     c = np.array(L.coords); out = []
     for i, (a, b) in enumerate(zip(c[:-1], c[1:])):
         if np.linalg.norm(b - a) == 0: continue
         m = shapely.Point((a + b) / 2); v = (b - a) / np.linalg.norm(b - a)
-        if i in (0, len(c) - 2) or shapely.distance(strade, m).min() > 0.5:   # raccordo, o segmento non su una strada
+        if (raccordi and i in (0, len(c) - 2)) or not len(tstrade.query(m, predicate="dwithin", distance=0.5)):   # raccordo, o segmento non su una strada
             out.append((a, b, 0.0, 0.0, "asse")); continue
         d = {+1: None, -1: None}
-        for g in gp[shapely.distance(gp, m) <= RAGGIO_M]:
+        for g in gp[np.sort(tgp.query(m, predicate="dwithin", distance=RAGGIO_M))]:   # nell'ordine del grafo: a pari distanza vince il primo
             p = np.array(shapely.line_interpolate_point(g, shapely.line_locate_point(g, m)).coords[0]); s = shapely.line_locate_point(g, m)
             q = np.array(shapely.line_interpolate_point(g, min(s + 1.0, g.length)).coords[0]) - np.array(shapely.line_interpolate_point(g, max(s - 1.0, 0)).coords[0])
             if np.linalg.norm(q) == 0 or abs(np.dot(q / np.linalg.norm(q), v)) < math.cos(math.radians(ANGOLO_MAX)): continue   # non parallelo
