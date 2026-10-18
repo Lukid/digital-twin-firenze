@@ -1,6 +1,6 @@
 # Gemello digitale pilota di Firenze Novoli: documento tecnico
 
-Bozza del 17 ottobre 2026, per un lettore tecnico della pubblica amministrazione. Descrive cosa calcola il prototipo, come, con quali dati e con quali limiti. Nessun risultato è validato sul posto.
+Bozza del 17 ottobre 2026, con la sezione 7 sul caso caldo aggiunta il 18 ottobre, per un lettore tecnico della pubblica amministrazione. Descrive cosa calcola il prototipo, come, con quali dati e con quali limiti. Nessun risultato è validato sul posto.
 
 ## 1. Obiettivo
 
@@ -150,6 +150,8 @@ Strumenti:
 | `compute_walk_access` | accessibilità pedonale dai civici verso una o più destinazioni |
 | `compute_shadow` | ombra su percorsi campione o geometrie, per data e orari |
 | `compare_scenarios` | confronto fra baseline e scenari, o fra due calcoli d'ombra |
+| `estimate_residents` | residenti stimati raggiunti entro le soglie di un calcolo di accessibilità, accanto ai civici |
+| `get_route_exposure` | percorsi campione più esposti al sole in una data già calcolata |
 | `get_job_status`, `get_result_manifest` | stato e manifest di un job |
 | `create_local_scenario` | crea uno scenario; spento nel servizio remoto |
 
@@ -185,12 +187,75 @@ Risposte reali di un assistente collegato al servizio, dal giro di verifica del 
 
 Esito del giro: nessun numero senza un job; l'assistente si è fermato a chiedere in tutti i casi ambigui; ha distinto civici e persone; 11 job su 11 rieseguiti con gli stessi numeri. Limite della prova: domande scritte da chi conosce il sistema, una sola esecuzione.
 
-## 7. Limiti
+## 7. Il caso caldo
+
+Domanda di partenza: dove si cammina al sole d'estate a Novoli, quanto è lontano un luogo fresco e quanto costa fare ombra. Le risposte sotto vengono dai motori della sezione 4; ogni numero rimanda al calcolo (job) o al file da cui viene. Nessuno è validato sul posto.
+
+### 7.1 Rifugi climatici
+
+Il Comune di Firenze pubblica un elenco di rifugi climatici: aree verdi e biblioteche aperte al pubblico. Entrano nei calcoli i 7 entro 700 m dall'area: Giardino di Piazza delle Medaglie d'Oro, Biblioteca Filippo Buonarroti, Giardino di piazza dei Cavalieri di Vittorio Veneto, Giardino di via Luigi Morandi, due giardini in via Arturo Toscanini, Giardino di piazza Giacomo Puccini. Gli ingressi sono i civici agli indirizzi dichiarati dal Comune, non verificati sul posto. Gli orari non sono nei dati: i calcoli assumono i rifugi aperti. File: `network/firenze_novoli/destinazioni.json`.
+
+### 7.2 Accessibilità: civici e residenti
+
+Dai 3.296 civici dell'area verso il rifugio più vicino, a 1,2 m/s (job `job_e1e75455f7511f7d`):
+
+| Entro | Civici | Residenti stimati |
+|---|---|---|
+| 5 minuti | 14,2% | 15,2% (2.129) |
+| 10 minuti | 39,1% | 43,6% (6.092) |
+| 15 minuti | 56,4% | 59,9% (8.380) |
+
+Tempo mediano 12,75 minuti per i civici che lo raggiungono. Fra 0,8 e 1,4 m/s la quota dei residenti a 10 minuti va dal 29,6% al 46,6%.
+
+I residenti sono una stima, non un conteggio di persone: residenti del censimento Istat 2011 per sezione di censimento (tabella della Regione Toscana, licenza CC BY; confini del Comune, CC BY 4.0), divisi in parti uguali fra i civici di ogni sezione. Negozi e uffici contano come abitazioni; ripartendo solo sui civici neri la quota a 10 minuti è 44,0%. In tutto 13.982 residenti stimati; 70 civici stanno in sezioni senza dato. File: `analysis/firenze_novoli/residenti_rifugi.json`.
+
+### 7.3 Ombra sui percorsi
+
+Ombra degli edifici, degli alberi censiti e della vegetazione rilevata dal laser, sull'asse della strada.
+
+Percorsi verso i rifugi, 15 luglio 2026, fra le 12:30 e le 13:30 (file `shadow/firenze_novoli/sintesi_rifugi_RC1.json` … `RC5.json`):
+
+| Percorso | Lunghezza | In ombra | Minuti al sole |
+|---|---|---|---|
+| RC1 fermata Novoli - Regione Toscana → Giardino delle Medaglie d'Oro | 687 m | 18,9% | 7,7 |
+| RC2 fermata Torre degli Agli → Biblioteca Buonarroti | 717 m | 10,2% | 9,0 |
+| RC3 Polo, edificio D15 → Giardino di piazza Puccini | 996 m | 31,7% | 9,7 |
+| RC4 civico di via De Pinedo 17 → Biblioteca Buonarroti | 1.071 m | 14,6% | 12,7 |
+| RC5 scuola Vamba → Biblioteca Buonarroti | 630 m | 21,2% | 6,9 |
+
+Percorsi più esposti alle 14:00 del 15 luglio, fra i 15 percorsi campione verso Polo, scuola, fermate e rifugi (un job per percorso, file `shadow/firenze_novoli/esposizione_2026-07-15.json`):
+
+| Pos. | Percorso | Metri al sole | Minuti al sole | Job |
+|---|---|---|---|---|
+| 1 | RC4 civico di via De Pinedo 17 → Biblioteca Buonarroti | 942 su 1.071 | 13,1 su 14,9 | `job_125a412a3ee9f23f` |
+| 2 | R10 stesso civico → fermata Novoli - Regione Toscana | 904 su 941 | 12,6 su 13,1 | `job_3eec2e73fce91b71` |
+| 3 | R03 fermata Novoli - Regione Toscana → Polo, edificio D1 | 814 su 890 | 11,3 su 12,4 | `job_caf0a0f476d97f90` |
+
+A quell'ora il sole è a 66 gradi e l'ombra è poca su tutti i percorsi: i metri al sole seguono soprattutto la lunghezza. I meno ombreggiati in proporzione portano alla scuola Vamba e alla fermata Regione Toscana: R09 0,8%, R08 3,7%, R10 3,9%. Il tratto al sole più lungo dei tre più esposti è in `shadow/firenze_novoli/tratti_sole_2026-07-15.geojson`.
+
+### 7.4 Costo degli interventi
+
+Filare S1 su R01 (7 alberi): unico intervento con un costo nei calcoli. Platano orientale di circonferenza 18/20 cm, scelto con una regola dichiarata (specie da ombra più piantata dal Comune vicino al tratto), voci del Prezzario dei Lavori della Regione Toscana 2026, Firenze (CC BY 4.0), IVA esclusa: fornitura 2.884,46 euro, piantagione in sede stradale 950,49 euro, totale 3.834,95 euro. Ombra guadagnata il 15 luglio fra le 12:30 e le 13:30: 146,0 m², cioè 38,07 m² d'ombra per mille euro (con altre specie da 21,35 a 65,78). File: `scenarios/firenze_novoli/costo_filare.json`; confronto con la baseline nel job `job_fddc0dab363245c4`. Esclusi scavo, pavimentazione, sottoservizi, progettazione e manutenzione; l'ombra è quella di un albero adulto, il prezzo quello di un albero da vivaio. La voce di piantagione è da confermare con l'ufficio del verde.
+
+Pensiline S2, S5 e S6: l'ombra c'è (area di attesa da 0% a circa 40% a mezzogiorno di luglio per S2 e S5, job `job_8372d9e4c57a7983`), il costo no. Nessun prezzo pubblico con licenza compatibile entra nei calcoli. Solo come ordine di grandezza, non usato nei calcoli: dai contratti pubblici registrati presso ANAC fra il 2022 e il 2026, una pensilina per fermata d'autobus con fornitura e posa costa in mediana 4.940 euro, IVA esclusa (primo e terzo quartile 3.677 e 7.263 euro, 159 contratti, modelli e dimensioni molto diversi). Fonte: Autorità Nazionale Anticorruzione, open data sui contratti pubblici, licenza CC BY-SA 4.0; estratto in `docs/research/anac-pensiline/estratto_costi_unitari.csv`. Per il caso di Firenze serve il costo del piano comunale delle 72 pensiline, non pubblicato.
+
+### 7.5 Limiti del caso caldo
+
+- Residenti del 2011 ripartiti in modo uniforme: una stima, non persone contate.
+- Ombra sull'asse della strada; alberi e vegetazione come volumi opachi; nessuna temperatura, nessun comfort.
+- Ombra calcolata solo sui percorsi campione, non sul percorso di ogni civico: non si sa quanti residenti arrivano a un rifugio camminando soprattutto all'ombra.
+- Ingressi e orari dei rifugi non verificati.
+- Costi: solo il filare S1, con le esclusioni dette sopra.
+- Le domande di prova sul caso caldo (registro `nl/firenze_novoli/caldo.json`) sono state scritte dal gruppo di lavoro, non dall'ufficio: vanno validate.
+
+Per la verifica sul posto c'è una scheda stampabile per il percorso R01 in un giorno di dicembre: `docs/verifica-posto/`.
+
+## 8. Limiti
 
 Limiti dei dati:
 
 - Rete pedonale solo da OpenStreetMap: lato del marciapiede, larghezze e pendenze non noti dove non mappati.
-- Civici come punti d'indirizzo, non persone: le quote di accessibilità sono quote di civici. I residenti per sezione sono del 2011 e non entrano nei calcoli.
+- Civici come punti d'indirizzo, non persone: le quote di accessibilità sono quote di civici. I residenti per sezione sono del 2011 ed entrano solo come stima per civico, accanto alla quota dei civici (sezione 7.2).
 - Ingressi del Polo: un civico per edificio, non verificato sul posto; il civico non è per forza la porta.
 - Edifici: impronte del 2011 con altezze del 2023; portici e volumi sospesi ignoti, trattati come pieni. Datum verticale del rilievo laser non confermato.
 - Alberi pubblici censiti, chiome in parte stimate; vegetazione privata solo dal rilievo laser, come volume opaco pieno (limite superiore dell'ombra).
@@ -200,12 +265,12 @@ Limiti del metodo:
 
 - Ombra misurata sull'asse della rete, non sulla linea dove si cammina. Ombra geometrica binaria (ombra o sole), senza luce diffusa né trasparenza delle chiome.
 - Nessun calcolo di temperatura, comfort termico o rischio da calore per le persone.
-- Fattibilità e costi degli interventi non valutati.
+- Fattibilità degli interventi non valutata; costo solo per il filare S1 (sezione 7.4).
 - Una fermata (San Donato - Università) è 100 m fuori dal riquadro: attorno ci sono il terreno e la rete, non gli edifici.
 
 Limite generale: nessun risultato è validato sul posto. Il passo successivo proposto è la verifica di un percorso (ingressi, linea del marciapiede, ombra osservata a un'ora nota).
 
-## 8. Come si replica su un'altra area
+## 9. Come si replica su un'altra area
 
 Il codice non contiene costanti di Firenze: area, baseline e cartelle vengono da un registro delle aree. Per una nuova area:
 
