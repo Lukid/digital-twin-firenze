@@ -62,6 +62,8 @@ LIVELLI = {
     "residenti": {"etichetta": "Residenti per sezione (censimento 2011)", "fonti": ["src_fi_sezioni2011", "src_rt_censimento2011"]},
     "accessibilita": {"etichetta": "Accessibilità (minuti a piedi)", "fonti": ["src_fi_civici", "src_osm_firenze"]},
     "ombra": {"etichetta": "Ombra sui percorsi", "fonti": ["src_osm_firenze", "src_fi_dsm2023"]},
+    "ombra_rifugi": {"etichetta": "Arrivo al rifugio all'ombra (14 del 15 luglio)", "fonti": ["src_fi_civici", "src_osm_firenze", "src_rt_uv_firenze_novoli", "src_fi_dsm2023", "src_fi_alberi",
+                                                                              "src_fi_rifugi_aree", "src_fi_rifugi_biblioteche", "src_fi_sezioni2011", "src_rt_censimento2011"]},
     "scenari": {"etichetta": "Scenari (interventi ipotetici)", "fonti": []},
     "catasto": {"etichetta": "Particelle catastali", "fonti": ["src_fi_catasto"]},
     "temperature": {"etichetta": "Temperatura delle superfici", "fonti": ["src_fi_landsat_st"]},
@@ -685,6 +687,33 @@ def ombra(dirpath):
             "istanti": [{"istante": k, "tratti": v, "quota": quota.get(k, {})} for k, v in sorted(ist.items())]}
 
 
+# classi della quota di percorso in ombra (F6, compito 3): divergenti alla soglia del 50% (D49, D53), caldi sotto e freddi sopra
+CLASSI_OMBRA = [(0.2, "#f2c230", "meno del 20%"), (0.4, "#e8913a", "dal 20 al 40%"), (0.5, "#c45a3c", "dal 40 al 50%"),
+                (0.6, "#4f7fc2", "dal 50 al 60%"), (1.01, "#1b2a6b", "60% e oltre")]
+
+
+def ombra_rifugi(dirpath):
+    """Input: <dir>/ombra_rifugi_civici_<data>.geojson (un punto per civico entro 15 minuti dal rifugio più vicino, shadow/ombra_rifugi.py) e
+    <dir>/ombra_rifugi_<data>.json (numeri, soglia e limiti). Classe = quota del percorso in ombra all'istante, caso con vegetazione."""
+    fs = sorted(pathlib.Path(dirpath).glob("ombra_rifugi_civici_*.geojson"))
+    if not fs:
+        return None
+    g = json.load(open(fs[-1])); R = json.load(open(fs[-1].with_name(fs[-1].name.replace("_civici", "").replace(".geojson", ".json"))))
+    dnomi = {d["destination_id"]: d["nome"] for d in json.load(open(ROOT / "network/firenze_novoli/destinazioni.json"))["destinazioni"]}
+    s = R["soglia_ombra"]
+    punti = []
+    for f in g["features"]:
+        p = f["properties"]; x, z = loc_ll(*f["geometry"]["coordinates"][:2])
+        punti.append({"x": x, "z": z, "c": next(i for i, (lim, _, _) in enumerate(CLASSI_OMBRA) if p["ombra"] < lim), "o": r(p["ombra"], 3), "i": [r(v, 3) for v in p["ombra_intervallo"]],
+                      "e": r(p["ombra_solo_edifici"], 3), "m": r(p["minuti"], 1), "rif": dnomi.get(p["rifugio"], p["rifugio"]), "res": r(p["residenti_stimati"], 1)})
+    classi = [{"c": col, "t": t + (" (soprattutto all'ombra)" if lim > s and (i == 0 or CLASSI_OMBRA[i - 1][0] >= s) else ""),
+               "civici": sum(q["c"] == i for q in punti), "residenti": round(sum(q["res"] or 0 for q in punti if q["c"] == i))} for i, (lim, col, t) in enumerate(CLASSI_OMBRA)]
+    soglie = [{"minuti": x["minuti"], "arrivano": x["arrivano"], "soprattutto_ombra": x["soprattutto_ombra"],
+               "sensibilita": {k: v["residenti_stimati"] for k, v in x["sensibilita_soglia"].items()}, "riserva": x.get("riserva")} for x in R["soglie"]]
+    return {"n": len(punti), "data": g["data"], "ora": g["ora_locale"], "soglia": s, "sensibilita": R["sensibilita_soglia"], "classi": classi, "soglie": soglie,
+            "limiti": [x["text"] for x in R["limits"][:7]], "punti": punti}
+
+
 # --- scenari: interventi ipotetici (opzionale) ---------------------------------
 ETICHETTE_SCN = {
     "scn_fi_s1_filare_r01": "S1 filare di 7 alberi, chioma tipica (su R01)",
@@ -901,7 +930,7 @@ def costruisci(out, a):
         if (obj := fn()) is not None:
             assets[nome] = scrivi(out, f"{nome}.json.gz", obj)
     analitici = {}
-    for k, fn, d in (("accessibilita", accessibilita, a.analysis), ("ombra", ombra, a.shadow), ("scenari", interventi, a.scenarios)):
+    for k, fn, d in (("accessibilita", accessibilita, a.analysis), ("ombra", ombra, a.shadow), ("ombra_rifugi", ombra_rifugi, a.shadow), ("scenari", interventi, a.scenarios)):
         obj = fn(d)
         analitici[k] = {"presente": obj is not None}
         if obj:

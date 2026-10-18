@@ -209,6 +209,21 @@ def test_pagina_di_metodo():
     assert pag.count("<h1>") == 1 and 'lang="it"' in pag and "<caption" in pag
 
 
+
+def test_arrivo_al_rifugio_all_ombra():
+    """F6: civici entro 15 minuti dal rifugio più vicino per classe d'ombra; la soglia del 50% separa le classi e torna con il risultato; metodo collegato."""
+    with tempfile.TemporaryDirectory() as d:
+        assert build.ombra_rifugi(d) is None
+    O = carica("ombra_rifugi"); R = json.load(open(build.ROOT / "shadow/firenze_novoli/ombra_rifugi_2026-07-15.json"))
+    assert O["n"] == len(O["punti"]) == sum(c["civici"] for c in O["classi"]) == R["civici_entro_15_min"]
+    sopra = [c for c in O["classi"] if "soprattutto" in c["t"]]
+    assert O["soglia"] == 0.5 and [L for L, _, _ in build.CLASSI_OMBRA].index(0.5) == len(O["classi"]) - len(sopra) - 1
+    assert sum(c["civici"] for c in sopra) == sum(p["o"] >= O["soglia"] for p in O["punti"]) == R["soglie"][1]["soprattutto_ombra"]["civici"]
+    assert all(s["riserva"] for s in O["soglie"]) and all(c["c"].startswith("#") for c in O["classi"])
+    H = pathlib.Path(__file__).resolve().parent
+    assert 'id="ombra_rifugi"' in (H / "metodo.html").read_text() and "metodo.html#ombra_rifugi" in (H / "app.js").read_text()
+
+
 if __name__ == "__main__":
     for n, f in list(globals().items()):
         if n.startswith("test_"):

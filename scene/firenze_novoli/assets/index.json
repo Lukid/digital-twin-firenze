@@ -1,6 +1,6 @@
 {
  "versione": 1,
- "generato": "2026-10-17T19:50:11Z",
+ "generato": "2026-10-18T12:49:50Z",
  "aoi_id": "aoi_firenze_novoli",
  "area": {
   "nome": "Firenze, Novoli - Firenze Nova (riquadro FP, 2 km²)",
@@ -120,6 +120,13 @@
    "sha256": "abefdf0ff9182bf7b172fd0144a1365a3c67ff43bcce43f0fe2bd6a808473080",
    "n": 609
   },
+  "ombra_rifugi": {
+   "file": "ombra_rifugi.json.gz",
+   "byte": 41788,
+   "byte_decompressi": 242665,
+   "sha256": "fbd7a948a4053ac1a48781bda1cfb1cff8472baeedd0cabd2badbd9563f10c07",
+   "n": 1858
+  },
   "interventi": {
    "file": "interventi.json.gz",
    "byte": 1182,
@@ -133,6 +140,9 @@
    "presente": true
   },
   "ombra": {
+   "presente": true
+  },
+  "ombra_rifugi": {
    "presente": true
   },
   "scenari": {
@@ -330,6 +340,20 @@
    "fonti": [
     "src_osm_firenze",
     "src_fi_dsm2023"
+   ]
+  },
+  "ombra_rifugi": {
+   "etichetta": "Arrivo al rifugio all'ombra (14 del 15 luglio)",
+   "fonti": [
+    "src_fi_civici",
+    "src_osm_firenze",
+    "src_rt_uv_firenze_novoli",
+    "src_fi_dsm2023",
+    "src_fi_alberi",
+    "src_fi_rifugi_aree",
+    "src_fi_rifugi_biblioteche",
+    "src_fi_sezioni2011",
+    "src_rt_censimento2011"
    ]
   },
   "scenari": {

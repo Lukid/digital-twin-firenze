@@ -296,6 +296,7 @@ async function main() {
   const SCALA = [[5, '#fde725', 'fino a 5 min'], [10, '#35b779', '5-10 min'], [15, '#31688e', '10-15 min'], [1e9, '#440154', 'oltre 15 min']];
   const tex = (anello) => { const c = document.createElement('canvas'); c.width = c.height = 32; const x = c.getContext('2d'); x.beginPath(); x.arc(16, 16, 13, 0, 7); if (anello) { x.lineWidth = 4; x.strokeStyle = '#fff'; x.stroke(); } else { x.fillStyle = '#fff'; x.fill(); x.lineWidth = 3; x.strokeStyle = '#000'; x.stroke(); } return new THREE.CanvasTexture(c); };
   const T_PIENO = tex(false), T_ANELLO = tex(true);
+  const T_BORDO = (() => { const c = document.createElement('canvas'); c.width = c.height = 32; const x = c.getContext('2d'); x.beginPath(); x.arc(16, 16, 12, 0, 7); x.fillStyle = '#fff'; x.fill(); x.lineWidth = 5; x.strokeStyle = '#fff'; x.stroke(); x.lineWidth = 2; x.strokeStyle = '#000'; x.beginPath(); x.arc(16, 16, 15, 0, 7); x.stroke(); return new THREE.CanvasTexture(c); })();
   let accGruppo = null;
   function mostraAccessibilita(i) {
     if (accGruppo) { scene.remove(accGruppo); accGruppo.traverse((o) => o.geometry?.dispose()); }
@@ -310,6 +311,20 @@ async function main() {
     accGruppo.visible = $('l_accessibilita').checked; scene.add(accGruppo); gruppi.accessibilita = accGruppo;
     $('leg_accessibilita').innerHTML = '<span>Ogni pallino è un civico. Il colore indica i minuti a piedi da quel civico alla destinazione scelta.</span>' + SCALA.map((s) => `<span><i style="background:${s[1]}"></i>${s[2]}</span>`).join('') + '<span><i style="background:#fff;border:3px double #777;border-radius:50%"></i>non raggiungibile, vietato o dati insufficienti</span>' + `<span>${d.punti.filter((p) => p.stato === 'ok').length} civici su ${d.punti.length} arrivano alla destinazione${d.profilo ? ', profilo ' + d.profilo : ''}</span>`;
     dirty = true;
+  }
+  // civici entro 15 minuti dal rifugio più vicino, per quota del percorso in ombra (F6): sotto la soglia pallino pieno, sopra pallino con bordo bianco
+  const OR = dati.ombra_rifugi, orPick = [];
+  const pc0 = (v) => Math.round(v * 100) + '%', n0 = (v) => Math.round(v).toLocaleString('it-IT');
+  if (OR) {
+    const g = new THREE.Group();
+    for (const sopra of [false, true]) {
+      const pos = [], col = [], ix = [];
+      OR.punti.forEach((p, i) => { if ((p.o >= OR.soglia) !== sopra) return; pos.push(p.x, tY(p.x, p.z) + 3, p.z); const c = new THREE.Color(OR.classi[p.c].c); col.push(c.r, c.g, c.b); ix.push(i); });
+      const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); geo.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+      const m = new THREE.Points(geo, new THREE.PointsMaterial({ size: sopra ? 13 : 9, sizeAttenuation: false, map: sopra ? T_BORDO : T_PIENO, alphaTest: 0.4, vertexColors: true, depthTest: false }));
+      m.renderOrder = 11; m.userData.ombraRif = ix; g.add(m); orPick.push(m);
+    }
+    g.visible = false; scene.add(g); gruppi.ombra_rifugi = g;
   }
   let ombraGruppo = null;
   function mostraOmbra(i) {
@@ -365,10 +380,10 @@ async function main() {
     edifici: 'M4 21V8l6-4v17M10 21V10l10 3v8M3 21h18', alberi: 'M12 22v-6M7 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0', terreno: 'M3 19l6-9 4 6 3-4 5 7z',
     etichette: 'M4 7h16M4 12h11M4 17h7', rete: 'M6 21c0-5 4-5 6-9s1-6 6-9', destinazioni: 'M12 3v4M12 17v4M3 12h4M17 12h4M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6',
     barriere: 'M4 8h16v5H4zM7 13v7M17 13v7M8 8l4 5M14 8l4 5', accessibilita: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18M12 7v5l3 2',
-    ombra: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2', scenari: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3', percorsi_rifugi: 'M5 19c3-6 9-2 10-8s3-6 4-6M5 19h.01M19 5h.01', catasto: 'M3 4h18v16H3zM3 11h9v9M12 4v7h9', temperature: 'M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0M12 9v8', altro: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',
+    ombra: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 2v2M12 20v2M2 12h2M20 12h2', ombra_rifugi: 'M12 3a9 9 0 0 0 0 18zM12 3a9 9 0 0 1 0 18', scenari: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3', percorsi_rifugi: 'M5 19c3-6 9-2 10-8s3-6 4-6M5 19h.01M19 5h.01', catasto: 'M3 4h18v16H3zM3 11h9v9M12 4v7h9', temperature: 'M10 14V5a2 2 0 1 1 4 0v9a4 4 0 1 1-4 0M12 9v8', altro: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',
   };
-  const TINTA = { edifici: '#c0643c', alberi: '#55894a', terreno: '#8a7a55', etichette: '#5d7f68', rete: '#2f6fb5', accessibilita: '#31688e', ombra: '#a87a00', scenari: '#e0218a', catasto: '#8a5a2b', temperature: '#d7191c' };
-  const SEZIONE = { edifici: 'g_citta', alberi: 'g_citta', terreno: 'g_citta', etichette: 'g_citta', rete: 'g_mobilita', tram: 'g_mobilita', accessibilita: 'g_analisi', ombra: 'g_analisi', scenari: 'g_interventi', catasto: 'g_catasto', temperature: 'g_analisi',
+  const TINTA = { edifici: '#c0643c', alberi: '#55894a', terreno: '#8a7a55', etichette: '#5d7f68', rete: '#2f6fb5', accessibilita: '#31688e', ombra: '#a87a00', ombra_rifugi: '#4f7fc2', scenari: '#e0218a', catasto: '#8a5a2b', temperature: '#d7191c' };
+  const SEZIONE = { edifici: 'g_citta', alberi: 'g_citta', terreno: 'g_citta', etichette: 'g_citta', rete: 'g_mobilita', tram: 'g_mobilita', accessibilita: 'g_analisi', ombra: 'g_analisi', ombra_rifugi: 'g_analisi', scenari: 'g_interventi', catasto: 'g_catasto', temperature: 'g_analisi',
     bike_sharing: 'g_mobilita', car_sharing: 'g_mobilita', scudo_verde: 'g_mobilita', zone30: 'g_mobilita', verde: 'g_verde', giochi: 'g_verde', cani: 'g_verde', sport: 'g_verde',
     idraulica: 'g_ambiente', alluvione1966: 'g_ambiente', acustica: 'g_ambiente', residenti: 'g_analisi' };
   const SPENTI = ['barriere', 'rete', 'catasto', 'temperature', 'aria', 'farmacie', 'sosta_disabili', 'bike_sharing', 'car_sharing', 'scudo_verde', 'zone30', 'verde', 'giochi', 'cani', 'sport', 'idraulica', 'alluvione1966', 'acustica', 'residenti'];   // accesi a richiesta
@@ -379,7 +394,7 @@ async function main() {
   const SENZA_RIGA = ['meteo', 'aria'];   // dati senza oggetti in scena: stanno dentro altri livelli o nella scheda Analisi
   for (const [k, L] of Object.entries(idx.livelli)) {
     if (SENZA_RIGA.includes(k)) continue;
-    const an = ['accessibilita', 'ombra', 'scenari'].includes(k), presente = an ? idx.livelli_analitici[k].presente : k !== 'temperature' || !!TM;
+    const an = ['accessibilita', 'ombra', 'ombra_rifugi', 'scenari'].includes(k), presente = an ? idx.livelli_analitici[k].presente : k !== 'temperature' || !!TM;
     const tinta = TINTA[k] || (PUNTO[k] ? css(PUNTO[k][0]) : TEMI[k] ? TEMI[k].classi[TEMI[k].classi.length > 3 ? 2 : 0].c : '#5d7f68');
     const ico = ICONE[k] ? `<img src="${ICONE[k].url}" alt="" width="24" height="24">` : svg(ICO[k] || ICO.altro);
     const w = document.createElement('div');
@@ -388,6 +403,14 @@ async function main() {
       + `<span class="switch"><input type="checkbox" role="switch" id="l_${k}" ${presente ? '' : 'disabled'} ${!an && !SPENTI.includes(k) ? 'checked' : ''}><i></i></span></label>`;
     if (k === 'accessibilita' && presente) w.innerHTML += `<div class="sub"><label for="s_acc">Verso</label><select id="s_acc">${opzioni(dati.accessibilita.destinazioni, 'nome')}</select><div class="leg" id="leg_accessibilita"></div></div>`;
     if (k === 'ombra' && presente) w.innerHTML += `<div class="sub"><label for="s_om">Istante del calcolo</label><select id="s_om">${dati.ombra.istanti.map((d, i) => `<option value="${i}">${new Date(d.istante + ':00Z').toLocaleString('it-IT', { timeZone: 'UTC', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}</option>`).join('')}</select><div class="riga"><button type="button" id="vOm">Vai ai percorsi</button></div><div class="leg"><span>Due percorsi campione verso il Polo universitario.</span><span><i style="background:#f2c230"></i>al sole</span><span><i style="background:#1b2a6b"></i>in ombra</span></div><div class="leg" id="leg_ombra"></div></div>`;
+    if (k === 'ombra_rifugi' && presente) {
+      const S = OR.soglie, pcs = (q) => (q * 100).toFixed(1).replace('.', ',') + '%';
+      w.innerHTML += `<div class="sub"><p class="intro">Ogni pallino è un civico entro 15 minuti a piedi dal rifugio climatico più vicino. Il colore indica quanta parte del percorso è in ombra alle ${OR.ora} del 15 luglio. Sopra la soglia del ${pc0(OR.soglia)} il pallino è più grande e ha il bordo bianco: è chi arriva «soprattutto all'ombra». La soglia è una scelta nostra, da validare con l'ufficio.</p>`
+        + `<div class="leg">${OR.classi.map((c) => `<span><i style="background:${c.c}${c.t.includes('soprattutto') ? ';outline:3px solid #fff;box-shadow:0 0 0 4px #000' : ''}"></i>${tx(c.t)}: ${n0(c.civici)} civici, ${n0(c.residenti)} residenti stimati</span>`).join('')}</div>`
+        + `<ul class="numeri">${S.map((s) => `<li><strong>Entro ${s.minuti} minuti</strong>: arrivano ${n0(s.arrivano.residenti_stimati)} residenti stimati (${pcs(s.arrivano.quota_residenti)}); soprattutto all'ombra ${n0(s.soprattutto_ombra.residenti_stimati)} (${pcs(s.soprattutto_ombra.quota_residenti)}), ${n0(s.sensibilita['40%'])} con la soglia del 40% e ${n0(s.sensibilita['60%'])} con quella del 60%.`
+          + (s.riserva ? ` In media il percorso è in ombra per il ${pc0(s.riserva.ombra_media)}; a metà dei civici restano almeno ${s.riserva.minuti_sole_quartili[1].toFixed(1).replace('.', ',')} minuti al sole.` : '') + '</li>').join('')}</ul>`
+        + `<p class="intro">Tocca un pallino per leggere il civico. <a href="metodo.html#ombra_rifugi">Metodo: soglia, istante e limiti</a></p></div>`;
+    }
     if (k === 'temperature' && TM) w.innerHTML += `<div class="sub"><label for="s_t">Cosa mostrare</label><select id="s_t"><option value="media">Media delle giornate estive</option><option value="sopra_40">Giornate sopra 40 °C</option>${TM.date.map((d, i) => `<option value="${i}">${new Date(d.data).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}</option>`).join('')}</select><div class="leg" id="leg_temperature"></div></div>`;
     if (TEMI[k]) w.innerHTML += `<div class="sub"><p class="intro">${tx(TEMI[k].nota)}</p><div class="leg">${TEMI[k].classi.map((c) => `<span><i style="background:${c.c}"></i>${tx(c.t)}</span>`).join('')}</div></div>`;
     if (fontiDi(k).length) w.innerHTML += `<div class="fonte" id="fo_${k}" hidden>${fontiTesto(k)}</div>`;
@@ -421,6 +444,7 @@ async function main() {
       + '<span>Destinazioni: i 7 ingressi del Polo delle Scienze Sociali, le scuole Vamba (primaria e infanzia), le fermate T2 San Donato - Università, Regione Toscana e Torre degli Agli, gli ingressi dei 7 rifugi climatici entro 700 m dal riquadro (<a href="metodo.html#rifugi">metodo</a>).</span>'],
     ['Accessibilità', SCALA.map((s) => sw(s[1], s[2])).join('') + '<span><i style="background:#fff;border:3px double #777;border-radius:50%"></i>non raggiungibile, vietato o dati insufficienti</span>'],
     ['Ombra sui percorsi', sw('#f2c230', 'al sole') + sw('#1b2a6b', 'in ombra')],
+    ...(OR ? [['Arrivo al rifugio all\'ombra', `<span>Quota del percorso in ombra alle ${OR.ora} del 15 luglio; soglia del ${pc0(OR.soglia)} (scelta nostra), sopra la soglia pallino grande con bordo bianco.</span>` + OR.classi.map((c) => sw(c.c, tx(c.t))).join('')]] : []),
     ['Servizi e aree attrezzate', pin('farmacie', 'farmacia') + pin('sosta_disabili', 'stallo per disabili') + pin('bike_sharing', 'sosta del bike sharing') + pin('car_sharing', 'posto del car sharing') + pin('scudo_verde', 'varco dello Scudo Verde')
       + pin('giochi', 'area giochi') + pin('cani', 'area cani') + pin('sport', 'area sportiva')],
     ...Object.entries(TEMI).map(([k, L]) => [idx.livelli[k].etichetta, `<span>${tx(L.nota)}</span>` + L.classi.map((c) => sw(c.c, tx(c.t))).join('')]),
@@ -550,7 +574,8 @@ async function main() {
     if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5) return; down = null;
     const r = canvas.getBoundingClientRect();
     ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), camera);
-    const lista = [edMesh, chiome, ...sel, ...scnPick, tMesh].filter(Boolean).filter((o) => o.parent && o.visible && (!o.parent.isGroup || o.parent.visible));
+    ray.params.Points.threshold = 3;
+    const lista = [edMesh, chiome, ...sel, ...scnPick, ...orPick, tMesh].filter(Boolean).filter((o) => o.parent && o.visible && (!o.parent.isGroup || o.parent.visible));
     const hit = ray.intersectObjects(lista, false)[0];
     if (evEd) { scene.remove(evEd); evEd.geometry.dispose(); evEd = null; }
     if (!hit) { chiudi(); return; }
@@ -584,6 +609,16 @@ async function main() {
       const a = dati.alberi.alberi[hit.instanceId]; anello(a.x, a.y, a.z, Math.max((a.d ?? 3) / 2, 1.5));
       scheda(a.specie ? a.specie.charAt(0).toUpperCase() + a.specie.slice(1).toLowerCase() : 'Albero', [['Altezza', `${a.h} m${iv(a.h_min, a.h_max)}, ${CLA[a.h_cls]}`], ['Diametro della chioma', `${a.d} m${iv(a.d_min, a.d_max)}, ${CLA[a.ch_cls]}`], ['Circonferenza del tronco', a.circ != null ? a.circ + ' cm' : null], ['Perché è stimata', a.motivo ? MOTIVO[a.motivo] || a.motivo : null], ['Quota del terreno', (a.y + idx.area.quota_riferimento_m).toFixed(1) + ' m sul livello del mare']], 'alberi', null,
         [['Codice', a.id], ['Classe dell\'altezza', a.h_cls], ['Classe della chioma', a.ch_cls], ['Motivo', a.motivo]]);
+    } else if (o.userData.ombraRif) {
+      const p = OR.punti[o.userData.ombraRif[hit.index]], pc1 = (v) => (v * 100).toFixed(1).replace('.', ',') + '%';
+      anello(p.x, tY(p.x, p.z), p.z, 4);
+      scheda('Civico verso il rifugio più vicino', [['Rifugio più vicino', p.rif], ['Minuti a piedi', String(p.m).replace('.', ',') + ' a 1,2 m/s'],
+        [`Percorso in ombra alle ${OR.ora} del 15 luglio`, `${pc1(p.o)} (con la vegetazione da ${pc1(p.i[0])} a ${pc1(p.i[1])}; solo edifici ${pc1(p.e)})`],
+        ['Soprattutto all\'ombra', p.o >= OR.soglia ? `sì, almeno il ${pc0(OR.soglia)} (soglia scelta da noi)` : `no, sotto il ${pc0(OR.soglia)} (soglia scelta da noi)`],
+        ['Minuti al sole camminando', (p.m * (1 - p.o)).toFixed(1).replace('.', ',') + ' (stima all\'istante)'],
+        ['Residenti stimati nel civico', p.res != null ? String(p.res).replace('.', ',') + ' (censimento 2011, stima)' : 'non stimati'],
+        ['Stato', 'stima, da verificare sul posto']], 'ombra_rifugi',
+        `<details><summary>Fonti dei dati</summary>${fontiTesto('ombra_rifugi')}</details><details><summary>Limiti</summary><ul>${OR.limiti.map((l) => `<li>${esc(l)}</li>`).join('')}</ul></details><p><a href="metodo.html#ombra_rifugi">Metodo: soglia, istante e limiti</a></p>`);
     } else if (o.userData.scn) {
       const S = o.userData.scn, it = o.userData.pens || S.alberi[hit.instanceId];
       if (o.userData.pens) anello(hit.point.x, hit.point.y - 1, hit.point.z, 6); else anello(it.x, tY(it.x, it.z), it.z, Math.max(it.d / 2, 1.5));
