@@ -966,7 +966,7 @@ footer{padding:32px 16px 40px;color:var(--tenue);font-size:14px}
 <li>Editore: Comune di Firenze</li>
 <li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07" rel="noopener">https://dati.toscana.it/dataset/8a7483e6-5f01-497e-99c5-2458d348eb07</a></li>
 <li>Risorsa scaricata: <a href="https://data.comune.fi.it/datastore/download.php?id=6440&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20109" rel="noopener">https://data.comune.fi.it/datastore/download.php?id=6440&amp;type=99&amp;format=url&amp;file_format=shp&amp;file_id=20109</a></li>
-<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena e nella stima dei residenti per civico, non nei calcoli di accessibilità e ombra)</li>
 </ul>
 <h3 class="sk">Licenza</h3>
 <ul>
@@ -994,7 +994,7 @@ footer{padding:32px 16px 40px;color:var(--tenue);font-size:14px}
 </ul>
 <h3 class="sk">Limiti</h3>
 <ul>
-<li>Residenti del 2011: non entrano nei calcoli di accessibilità, che restano sui civici.</li>
+<li>Residenti del 2011: l&#x27;accessibilità resta calcolata sui civici; i residenti entrano solo nella stima per civico (D45, strumento estimate_residents), accanto alla quota dei civici.</li>
 <li>residenti: popolazione del censimento 2011 (src_rt_censimento2011): quindici anni fa, nessun dato per sezione più recente sul catalogo</li>
 </ul>
 <p>Generata da <code>service/schede.py</code> a partire dai record di fonte e dagli snapshot del repository. Non modificare a mano.</p>
@@ -1005,7 +1005,7 @@ footer{padding:32px 16px 40px;color:var(--tenue);font-size:14px}
 <li>Editore: Regione Toscana (dati Istat)</li>
 <li>Scheda del catalogo: <a href="https://dati.toscana.it/dataset/xv-censpop-2011-datisez" rel="noopener">https://dati.toscana.it/dataset/xv-censpop-2011-datisez</a></li>
 <li>Risorsa scaricata: <a href="https://dati.toscana.it/dataset/46c34b90-92dd-4bd8-ab19-398da5dc933c/resource/1a338a93-65be-45a2-86a0-e13578ce953c/download/r09indicatori2011sezioni.csv" rel="noopener">https://dati.toscana.it/dataset/46c34b90-92dd-4bd8-ab19-398da5dc933c/resource/1a338a93-65be-45a2-86a0-e13578ce953c/download/r09indicatori2011sezioni.csv</a></li>
-<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena, non dai calcoli del servizio)</li>
+<li>Nella baseline congelata <code>bas_firenze_novoli_20261009</code>: no, fonte aggiunta dopo (usata nella scena e nella stima dei residenti per civico, non nei calcoli di accessibilità e ombra)</li>
 </ul>
 <h3 class="sk">Licenza</h3>
 <ul>
@@ -1036,6 +1036,7 @@ footer{padding:32px 16px 40px;color:var(--tenue);font-size:14px}
 <h3 class="sk">Limiti</h3>
 <ul>
 <li>Dato di quindici anni fa; densità sulla superficie lorda della sezione.</li>
+<li>Stima dei residenti per civico (D45, analysis/residenti.py, strumento estimate_residents): residenti della sezione ripartiti in parti uguali sui civici della sezione, civici senza abitazioni contati come gli altri. È una stima, non un conteggio di persone.</li>
 <li>anno: censimento 2011: Novoli è cambiato da allora (nuove residenze e studentati)</li>
 <li>Licenza con riserva: vedere sopra.</li>
 </ul>
