@@ -32,6 +32,12 @@ def guardiano(minimo_mb=700):
     threading.Thread(target=giro, daemon=True).start()
 
 
+def memoria_max_gb():
+    """Memoria massima del processo. ru_maxrss è in KB su Linux e in byte su macOS (D46)."""
+    m = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    return round(m / (2**30 if sys.platform == "darwin" else 2**20), 2)
+
+
 def ll(g): return O.arrotonda(mapping(shapely.transform(g, lambda c: np.column_stack(_to_ll(c[:, 0], c[:, 1])))))
 
 
@@ -70,7 +76,7 @@ def calcola(rid, data, orari):
             o["geometrie"][c] = {"ombra": ll(om) if not om.is_empty else None, "sole_piu_lungo": ll(parti[0]) if parti else None}
             if c == "veg_lidar_tipico": o["tratto_sole_piu_lungo_m"] = round(parti[0].length, 1) if parti else 0.0
         out["orari"][h] = o
-    out["calcolo"] = {"secondi": round(time.time() - t), "memoria_max_gb": round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 2**20, 2)}
+    out["calcolo"] = {"secondi": round(time.time() - t), "memoria_max_gb": memoria_max_gb()}
     return out
 
 

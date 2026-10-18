@@ -285,6 +285,14 @@ def test_risultati_versionati():
     ok("sintesi e GeoJSON versionati coerenti: intervalli ordinati, edifici <= alberi <= vegetazione, EPSG:4326")
 
 
+def test_memoria_misurata():
+    # D46: ru_maxrss è in KB su Linux e in byte su macOS; il massimo non può stare sotto la memoria residente di adesso né sopra quella della macchina
+    import esposizione, psutil
+    m = esposizione.memoria_max_gb() * 2**30; rss = psutil.Process().memory_info().rss
+    assert 0.9 * rss <= m + 0.01 * 2**30 and m <= psutil.virtual_memory().total, (m, rss)
+    ok(f"memoria massima {m / 2**30:.2f} GB, residente {rss / 2**30:.2f} GB")
+
+
 if __name__ == "__main__":
     for nome, f in sorted(globals().items()):
         if nome.startswith("test_"): print(nome); f()
