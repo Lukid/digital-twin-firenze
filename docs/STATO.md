@@ -107,6 +107,11 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D49 (18 ottobre): "camminando soprattutto all'ombra" si calcola nella prossima sessione: ombra alle 14 del 15 luglio sul percorso di ogni civico entro 15 minuti dal rifugio più vicino, soglia 50% del percorso in ombra, dichiarata come scelta nostra da far validare all'ufficio; calcolo a blocchi per la memoria del worker (domanda 3).
 - D50 (18 ottobre): verifica sul posto di R01 sabato 12 dicembre 2026 alle 11:00, 13:00 e 14:30, riserva sabato 19 dicembre (si rifà la pagina con i due comandi del report F4). La pagina va aperta e stampata una volta sul Mac (domanda 4).
 - D51 (18 ottobre): sessione F5 su [BRIEF-AGENTE-F5.md](BRIEF-AGENTE-F5.md), in ordine di priorità: ombra sui percorsi dei civici verso i rifugi (D49), difetti 4, 5, 7 e 8 dell'MCP, scheda per il primo incontro con l'ufficio, orari dei rifugi, prototipo dell'ombra sul marciapiede solo su R01 (fuori dai risultati ufficiali).
+- D52 (18 ottobre): ramo `agente/f5` unito su `main` dopo lint, validate e `make test` verdi sul Mac. `shadow/ombra_rifugi.py` rifatto sul Mac: GeoJSON dei civici identico al worker (`make impronte`: 56 righe), cambiano solo tempi e memoria (domanda 5 del report F5).
+- D53 (18 ottobre): "soprattutto all'ombra" resta al 50% del percorso, con 40% e 60% accanto. Nella scheda per l'ufficio si aggiunge un indicatore di riserva meno sensibile alla soglia (quota media del percorso in ombra o minuti al sole), dai dati già calcolati (domanda 1).
+- D54 (18 ottobre): `weights` resta fuori dallo schema di `compare_scenarios` e si respinge con l'errore di validazione (domanda 2).
+- D55 (18 ottobre): gli orari di luglio dei rifugi si chiedono all'ufficio; la domanda C9 resta "non lo so". L'orario d'autunno della Biblioteca Buonarroti non entra nella scheda (domanda 3).
+- D56 (18 ottobre): l'ombra sui due lati della strada si estende subito ai percorsi campione, con un valore dichiarato dove il marciapiede non è mappato, accanto ai risultati sull'asse (domanda 4).
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
@@ -120,7 +125,7 @@ Revisione del codice: R1-R6 chiusi. Due regole emerse dalle correzioni:
 - La cache del servizio si svuota da sola quando cambiano il codice dei motori o i file di dati che leggono (impronta in `service/cache/<area>/impronta.txt`). Gli job_id non cambiano.
 
 1. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
-2. Dopo F5: rifare sul Mac `shadow/ombra_rifugi.py` (10 minuti) e confrontare `make impronte`; mettere nella scena i civici che arrivano all'ombra (`shadow/firenze_novoli/ombra_rifugi_civici_2026-07-15.geojson`). Da chiedere al Comune, con la scheda `docs/incontro-ufficio/scheda.md`: costo del piano delle 72 pensiline (D37), voce di piantagione del filare (D41), orari estivi dei rifugi, soglia di "soprattutto all'ombra", le loro domande (D47).
+2. Prossima sessione: ombra sui due lati della strada per i percorsi campione (D56), indicatore di riserva nella scheda per l'ufficio (D53), civici che arrivano all'ombra nella scena. Da chiedere al Comune: costo delle 72 pensiline (D37), voce di piantagione (D41), orari dei rifugi (D55).
 3. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. Kit pronto per R01 in `docs/verifica-posto/` (F4): sabato 12 dicembre 2026, ore 11:00, 13:00 e 14:30.
 
 ## Come lavora la sessione
