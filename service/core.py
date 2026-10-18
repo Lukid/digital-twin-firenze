@@ -19,7 +19,7 @@ NET = ROOT / "network" / SLUG
 CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache" / SLUG)   # cache per area; deve stare sotto ROOT (i percorsi degli asset sono relativi a ROOT)
 ID_DEST = re.compile(r"^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$")
 ENGINE_ORIGINS = "address_points"
-TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios", "get_source_card", "estimate_residents", "get_route_exposure", "get_shaded_access"]
+TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios", "get_source_card", "estimate_residents", "get_route_exposure", "get_shaded_access", "get_street_side_shade"]
 # Fonti ammesse = solo quelle della baseline dell'area. Tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso).
 _BASE = {s["source_id"]: s["snapshot_id"] for s in BASELINE["snapshot"]}
 _T = {"edifici": ["src_rt_uv_firenze_novoli", "src_osm_firenze"], "quote": ["src_fi_dsm2023", "src_fi_dtm2023"], "rete_pedonale": ["src_osm_firenze", "src_fi_barriere"],
@@ -470,6 +470,17 @@ def get_shaded_access(a):
     E = fs.get((a["job_id"], a["date"]))
     if not E: return err("unknown_id", f"Ombra sui percorsi non calcolata per il job {a['job_id']} il {a['date']}.", candidates=[f"{j} | {d}" for j, d in fs])
     return E
+
+
+def get_street_side_shade(a):
+    """F6 (D56): ombra sui due lati della strada dei percorsi campione, accanto all'asse, già calcolata da shadow/lati_strada.py. Prototipo, da verificare sul posto."""
+    E = _load(ROOT / "shadow" / SLUG / "lati_strada.json")
+    P = {rid: {**p, "istanti": [x for x in p["istanti"] if x["data"] == a["date"]]} for rid, p in E["percorsi"].items() if a.get("route_id") in (None, rid)}
+    P = {rid: p for rid, p in P.items() if p["istanti"]}
+    if not P: return err("unknown_id", f"Ombra sui due lati non calcolata per {a.get('route_id') or 'nessun percorso'} il {a['date']}.",
+                         candidates=sorted({f"{rid} | {x['data']}" for rid, p in E["percorsi"].items() for x in p["istanti"]}))
+    m = _read_job(_load(ROOT / "shadow" / SLUG / "esposizione_2026-07-15.json")["percorsi"]["R01"]["job_id"], "manifest")   # stessi dati del motore sull'asse
+    return {**{k: v for k, v in E.items() if k != "percorsi"}, "data": a["date"], "percorsi": P, "datasets": [_ds(d) for d in m["datasets"]]}
 
 
 def _fuori(msg): return err("outside_capability", msg + ". Nessun risultato numerico disponibile per questa richiesta.")

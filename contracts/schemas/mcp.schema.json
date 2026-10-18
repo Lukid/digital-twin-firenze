@@ -1775,6 +1775,176 @@
      "$ref": "common.schema.json#/$defs/tool_error"
     }
    ]
+  },
+  "get_street_side_shade.input": {
+   "type": "object",
+   "required": [
+    "date"
+   ],
+   "additionalProperties": false,
+   "description": "Ombra sui due lati della strada dei percorsi campione, accanto all'asse, per una data già calcolata e, se dato, un percorso. Prototipo, da verificare sul posto.",
+   "properties": {
+    "date": {
+     "$ref": "common.schema.json#/$defs/date"
+    },
+    "route_id": {
+     "type": "string",
+     "pattern": "^R(C[0-9]|[0-9]{2})$"
+    }
+   }
+  },
+  "get_street_side_shade.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "stato",
+      "data",
+      "percorsi",
+      "fonti",
+      "datasets",
+      "limits"
+     ],
+     "properties": {
+      "stato": {
+       "const": "prototipo, da verificare sul posto"
+      },
+      "data": {
+       "$ref": "common.schema.json#/$defs/date"
+      },
+      "percorsi": {
+       "type": "object",
+       "minProperties": 1,
+       "propertyNames": {
+        "pattern": "^R(C[0-9]|[0-9]{2})$"
+       },
+       "additionalProperties": {
+        "type": "object",
+        "required": [
+         "lunghezza_asse_m",
+         "metri_marciapiede_osm",
+         "metri_valore_dichiarato",
+         "istanti"
+        ],
+        "properties": {
+         "istanti": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+           "type": "object",
+           "required": [
+            "data",
+            "ora",
+            "sole"
+           ],
+           "properties": {
+            "data": {
+             "$ref": "common.schema.json#/$defs/date"
+            },
+            "ora": {
+             "type": "string",
+             "pattern": "^[0-2][0-9]:[0-5][0-9]$"
+            },
+            "edifici": {
+             "type": "object",
+             "required": [
+              "asse",
+              "sinistra",
+              "destra"
+             ],
+             "properties": {
+              "asse": {
+               "type": "number",
+               "minimum": 0,
+               "maximum": 1
+              },
+              "sinistra": {
+               "type": "number",
+               "minimum": 0,
+               "maximum": 1
+              },
+              "destra": {
+               "type": "number",
+               "minimum": 0,
+               "maximum": 1
+              },
+              "asse_ufficiale": {
+               "type": [
+                "number",
+                "null"
+               ],
+               "minimum": 0,
+               "maximum": 1
+              }
+             }
+            },
+            "con_vegetazione": {
+             "type": "object",
+             "required": [
+              "asse",
+              "sinistra",
+              "destra"
+             ],
+             "properties": {
+              "asse": {
+               "type": "number",
+               "minimum": 0,
+               "maximum": 1
+              },
+              "sinistra": {
+               "type": "number",
+               "minimum": 0,
+               "maximum": 1
+              },
+              "destra": {
+               "type": "number",
+               "minimum": 0,
+               "maximum": 1
+              },
+              "asse_ufficiale": {
+               "type": [
+                "number",
+                "null"
+               ],
+               "minimum": 0,
+               "maximum": 1
+              }
+             }
+            },
+            "lato_piu_in_ombra": {
+             "enum": [
+              "sinistra",
+              "destra",
+              "pari"
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "fonti": {
+       "type": "array",
+       "minItems": 1
+      },
+      "datasets": {
+       "type": "array",
+       "minItems": 1
+      },
+      "limits": {
+       "type": "array",
+       "minItems": 1,
+       "items": {
+        "$ref": "common.schema.json#/$defs/limit"
+       }
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
   }
  }
 }

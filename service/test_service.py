@@ -112,6 +112,13 @@ for s in om["soglie"]:
     assert abs(r["ombra_media"] - sum(p["ombra"] for p in P) / len(P)) < 1e-4 and r["ombra_quartili"][1] == s["ombra_mediana"]
     assert r["ombra_media_intervallo_vegetazione"][0] <= r["ombra_media"] <= r["ombra_media_intervallo_vegetazione"][1]
     assert all(0 <= a <= b for a, b in zip(r["minuti_sole_quartili"], r["minuti_cammino_quartili"])) and r["minuti_cammino_quartili"][2] <= s["minuti"]
+# ombra sui due lati della strada (F6, D56): accanto all'asse, prototipo; filtri per data e percorso; errori con le combinazioni calcolate
+ls = run("get_street_side_shade", {"date": "2026-07-15"}); assert core.validate("get_street_side_shade", "output", ls) == [], ls
+assert set(ls["percorsi"]) == {f"R{i:02d}" for i in range(1, 11)} | {f"RC{i}" for i in range(1, 6)} and ls["stato"].startswith("prototipo")
+assert {x["code"] for x in ls["limits"]} >= {"lato_scelto_da_chi_cammina", "attraversamenti_non_modellati", "valore_dichiarato"}
+assert len(ls["percorsi"]["R01"]["istanti"]) == 23 and len(ls["percorsi"]["R03"]["istanti"]) == 1
+l1 = run("get_street_side_shade", {"date": "2026-12-12", "route_id": "R01"}); assert core.validate("get_street_side_shade", "output", l1) == [] and list(l1["percorsi"]) == ["R01"] and len(l1["percorsi"]["R01"]["istanti"]) == 3
+assert err_code(run("get_street_side_shade", {"date": "2026-12-12", "route_id": "R02"})) == "unknown_id" and err_code(run("get_street_side_shade", {"date": "2026-07-15", "route_id": "R1"})) == "invalid_params"
 assert err_code(run("get_shaded_access", {"job_id": rif["job_id"], "date": "2026-07-16"})) == "unknown_id" and err_code(run("get_shaded_access", {"job_id": rif["job_id"], "date": "2026-07-15", "soglia": 0.4})) == "invalid_params"
 sc = run("list_scenarios", {}); assert core.validate("list_scenarios", "output", sc) == [] and {"scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"} <= {x["scenario_id"] for x in sc["scenarios"]}, sc
 assert err_code(run("list_scenarios", {"baseline_id": "bas_altra"})) == "incompatible_baseline"
@@ -315,7 +322,7 @@ async def mcp_test():
             init = await s.initialize()
             assert init.serverInfo.name == "dt-firenze" and "Firenze" in init.instructions and "pisa" not in init.instructions.lower()
             tools = {t.name: t for t in (await s.list_tools()).tools}
-            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios", "get_source_card", "estimate_residents", "get_route_exposure", "get_shaded_access"}
+            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios", "get_source_card", "estimate_residents", "get_route_exposure", "get_shaded_access", "get_street_side_shade"}
             assert all(t.inputSchema.get("additionalProperties") is False for t in tools.values())   # niente campi liberi (SQL, codice)
             assert not any(w in json.dumps([t.model_dump() for t in tools.values()]).lower() for w in ("pisa", "z2", "pellico"))
             res = await s.call_tool("compute_walk_access", A)

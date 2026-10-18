@@ -1,0 +1,376 @@
+{
+ "stato": "prototipo, da verificare sul posto",
+ "versione_motore": "0.3.0",
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "ricevitore": "due linee parallele all'asse del percorso, a sinistra e a destra nel verso di marcia; l'asse accanto, calcolato allo stesso modo",
+ "metodo": {
+  "distanza": "dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento), altrimenti 3 m dichiarati",
+  "asse": "raccordi e tratti pedonali restano sull'asse",
+  "casi": {
+   "base": "edifici",
+   "veg_lidar_tipico": "con_vegetazione"
+  },
+  "frazione": "metri in ombra della linea all'istante / lunghezza della linea",
+  "asse_ufficiale": "frazione sull'asse dei risultati ufficiali allo stesso istante (sintesi per ora o esposizione), per confronto",
+  "lato_piu_in_ombra": "caso con vegetazione; 'pari' sotto 0.5 punti di differenza",
+  "unione_buchi_m": 1.0
+ },
+ "snapshot_ids": [
+  "snp_fi_alberi_20261009",
+  "snp_fi_dsm2023_20261009",
+  "snp_fi_dtm2023_20261009",
+  "snp_osm_firenze_20261009",
+  "snp_rt_uv_firenze_novoli_20261009"
+ ],
+ "fonti": [
+  {
+   "source_id": "edifici, alberi, LiDAR e rete OSM della baseline",
+   "licenza": "vedi get_source_card per ogni snapshot",
+   "data_del_dato": "baseline 2026-10-09"
+  }
+ ],
+ "limits": [
+  {
+   "code": "prototipo_da_verificare",
+   "text": "Prototipo, da verificare sul posto: nessun lato della strada è stato osservato."
+  },
+  {
+   "code": "lato_scelto_da_chi_cammina",
+   "text": "Il lato lo sceglie chi cammina: sinistra e destra sono due linee intere, non un percorso che sceglie il lato più in ombra."
+  },
+  {
+   "code": "attraversamenti_non_modellati",
+   "text": "Attraversamenti non modellati: chi cambia lato attraversa, e il percorso più breve sul grafo non sa quale lato usa."
+  },
+  {
+   "code": "valore_dichiarato",
+   "text": "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è il valore dichiarato di 3 m, non una larghezza misurata (metri per lato nel campo metri_valore_dichiarato)."
+  },
+  {
+   "code": "asse_nei_tratti_pedonali",
+   "text": "Raccordi e tratti pedonali (sentieri, piazze) restano sull'asse; ombra a un istante, non lungo il cammino."
+  },
+  {
+   "code": "vegetazione_prisma",
+   "text": "Vegetazione LiDAR come prisma opaco pieno: limite superiore dell'ombra; più i limiti del motore d'ombra sull'asse (altezze, portici ignoti)."
+  }
+ ],
+ "calcolo": {
+  "secondi": 579,
+  "memoria_max_gb": 0.37
+ },
+ "data": "2026-12-12",
+ "percorsi": {
+  "R01": {
+   "descrizione": "Fermata T2 San Donato - Università (indicata dall'Ateneo) verso l'ingresso del Polo più vicino per rete (ent_civ_d15)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 428.6,
+   "metri_sull_asse": 171.3,
+   "metri_marciapiede_osm": {
+    "sinistra": 249.1,
+    "destra": 242.9
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 8.3,
+    "destra": 14.5
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-12-12",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 163.0,
+      "elevazione_deg": 21.3
+     },
+     "tratti_ombra_m": {
+      "asse": [
+       [
+        0.0,
+        18.4
+       ],
+       [
+        27.3,
+        428.6
+       ]
+      ],
+      "sinistra": [
+       [
+        0.0,
+        18.3
+       ],
+       [
+        29.2,
+        217.9
+       ],
+       [
+        222.9,
+        428.6
+       ]
+      ],
+      "destra": [
+       [
+        0.0,
+        15.6
+       ],
+       [
+        25.1,
+        428.6
+       ]
+      ]
+     },
+     "edifici": {
+      "asse": 0.978,
+      "sinistra": 0.9621,
+      "destra": 0.9773,
+      "asse_ufficiale": 0.978
+     },
+     "con_vegetazione": {
+      "asse": 0.9785,
+      "sinistra": 0.9627,
+      "destra": 0.9779,
+      "asse_ufficiale": 0.9785
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-12-12",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 192.7,
+      "elevazione_deg": 22.1
+     },
+     "tratti_ombra_m": {
+      "asse": [
+       [
+        36.2,
+        237.7
+       ],
+       [
+        253.7,
+        307.3
+       ],
+       [
+        311.7,
+        360.0
+       ],
+       [
+        370.3,
+        407.7
+       ],
+       [
+        420.9,
+        428.6
+       ]
+      ],
+      "sinistra": [
+       [
+        41.4,
+        237.7
+       ],
+       [
+        256.5,
+        307.3
+       ],
+       [
+        311.7,
+        360.0
+       ],
+       [
+        370.3,
+        407.7
+       ],
+       [
+        420.9,
+        428.6
+       ]
+      ],
+      "destra": [
+       [
+        29.4,
+        307.3
+       ],
+       [
+        311.7,
+        360.0
+       ],
+       [
+        370.3,
+        407.7
+       ],
+       [
+        420.9,
+        428.6
+       ]
+      ]
+     },
+     "edifici": {
+      "asse": 0.8132,
+      "sinistra": 0.7947,
+      "destra": 0.8665,
+      "asse_ufficiale": 0.8132
+     },
+     "con_vegetazione": {
+      "asse": 0.8165,
+      "sinistra": 0.798,
+      "destra": 0.8698,
+      "asse_ufficiale": 0.8165
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-12-12",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 213.5,
+      "elevazione_deg": 15.7
+     },
+     "tratti_ombra_m": {
+      "asse": [
+       [
+        0.0,
+        0.1
+       ],
+       [
+        81.2,
+        191.1
+       ],
+       [
+        236.6,
+        257.3
+       ],
+       [
+        267.2,
+        321.4
+       ],
+       [
+        324.0,
+        428.6
+       ]
+      ],
+      "sinistra": [
+       [
+        0.0,
+        0.1
+       ],
+       [
+        4.6,
+        4.6
+       ],
+       [
+        6.5,
+        15.6
+       ],
+       [
+        97.6,
+        120.8
+       ],
+       [
+        126.1,
+        127.5
+       ],
+       [
+        130.6,
+        146.5
+       ],
+       [
+        192.4,
+        209.0
+       ],
+       [
+        213.7,
+        259.1
+       ],
+       [
+        267.2,
+        321.4
+       ],
+       [
+        324.0,
+        428.6
+       ]
+      ],
+      "destra": [
+       [
+        0.0,
+        0.1
+       ],
+       [
+        64.6,
+        191.0
+       ],
+       [
+        192.4,
+        209.7
+       ],
+       [
+        267.2,
+        321.4
+       ],
+       [
+        324.0,
+        428.6
+       ]
+      ]
+     },
+     "edifici": {
+      "asse": 0.6751,
+      "sinistra": 0.631,
+      "destra": 0.7056,
+      "asse_ufficiale": 0.6751
+     },
+     "con_vegetazione": {
+      "asse": 0.6795,
+      "sinistra": 0.6354,
+      "destra": 0.71,
+      "asse_ufficiale": 0.6795
+     },
+     "lato_piu_in_ombra": "destra"
+    }
+   ]
+  }
+ },
+ "datasets": [
+  {
+   "snapshot_id": "snp_fi_alberi_20261009",
+   "source_id": "src_fi_alberi",
+   "sha256": "53b3e903dbbe5e83a5d53b8a0e3a49644731d6eaa1c3eda53e458729f848230c",
+   "license_state": "clear",
+   "license": "CC BY 4.0"
+  },
+  {
+   "snapshot_id": "snp_fi_dsm2023_20261009",
+   "source_id": "src_fi_dsm2023",
+   "sha256": "1c6c250f2b91c77858667f8816e132c17f19916639f6e6e1a2578a45a5290451",
+   "license_state": "clear",
+   "license": "CC BY 4.0"
+  },
+  {
+   "snapshot_id": "snp_fi_dtm2023_20261009",
+   "source_id": "src_fi_dtm2023",
+   "sha256": "3c8fdac2c02ab5cbb8353760c40962ea95ae9c6162130f30d9ac805608a79d02",
+   "license_state": "clear",
+   "license": "CC BY 4.0"
+  },
+  {
+   "snapshot_id": "snp_osm_firenze_20261009",
+   "source_id": "src_osm_firenze",
+   "sha256": "9fcfe51bab23b3a828da521c0bf4e54bff21527f5a71fe2008f7c18138aa4ec5",
+   "license_state": "clear",
+   "license": "ODbL 1.0"
+  },
+  {
+   "snapshot_id": "snp_rt_uv_firenze_novoli_20261009",
+   "source_id": "src_rt_uv_firenze_novoli",
+   "sha256": "2197d5f1105871037b7f419721a4fcb766d67be50e4adafa1ea9e1319b8f89ad",
+   "license_state": "clear_with_reserve",
+   "license": "non dichiarata"
+  }
+ ]
+}

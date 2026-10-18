@@ -294,6 +294,33 @@ def test_memoria_misurata():
     ok(f"memoria massima {m / 2**30:.2f} GB, residente {rss / 2**30:.2f} GB")
 
 
+
+TOL_ASSE = 1e-4   # quarta cifra: stesso motore e stessa linea, l'asse deve uscire uguale
+
+
+def test_lati_strada():
+    # F6 (D56): i due lati stanno accanto all'asse, non al posto: sull'asse, calcolata allo stesso modo, escono i numeri di sempre (sintesi per ora, esposizione)
+    import lati_strada as LS, rete_lib as RL
+    f = ROOT / "shadow" / O.SLUG / "lati_strada.json"
+    if not f.exists(): print("  (lati_strada.json assente: eseguire shadow/lati_strada.py)"); return
+    R = json.load(open(f)); E = json.load(open(ROOT / "shadow" / O.SLUG / "esposizione_2026-07-15.json")); n = 0; peggiore = 0.0
+    assert set(R["percorsi"]) == set(LS.ISTANTI) and R["stato"].startswith("prototipo")
+    for rid, P in R["percorsi"].items():
+        assert [(x["data"], x["ora"]) for x in P["istanti"]] == LS.ISTANTI[rid], rid
+        assert abs(P["lunghezza_asse_m"] - E["percorsi"][rid]["lunghezza_m"]) < 0.2, rid
+        for x in P["istanti"]:
+            for caso, nome in LS.CASI.items():
+                if nome not in x: continue
+                v = x[nome]; assert v["asse_ufficiale"] == LS.ufficiale(rid, x["data"], x["ora"], caso) is not None, (rid, x)
+                d = abs(v["asse"] - v["asse_ufficiale"]); peggiore = max(peggiore, d); n += 1
+                assert d <= TOL_ASSE, (rid, x["data"], x["ora"], nome, v)
+    # rifatto adesso: R01 alle 14 del 15 luglio deve ridare il file
+    G, _ = RL.carica(); x = LS.percorso("R01", G, {c: O.scena_caso(c) for c in LS.CASI}, [("2026-07-15", "14:00")])["istanti"][0]
+    y = next(y for y in R["percorsi"]["R01"]["istanti"] if (y["data"], y["ora"]) == ("2026-07-15", "14:00"))
+    assert {k: x[k] for k in ("edifici", "con_vegetazione", "lato_piu_in_ombra")} == {k: y[k] for k in ("edifici", "con_vegetazione", "lato_piu_in_ombra")}, (x, y)
+    ok(f"lati della strada: {n} quote sull'asse uguali ai risultati ufficiali entro {TOL_ASSE * 100:g} punti (scarto massimo {peggiore * 100:.2f}); R01 alle 14 rifatto identico")
+
+
 if __name__ == "__main__":
     for nome, f in sorted(globals().items()):
         if nome.startswith("test_"): print(nome); f()

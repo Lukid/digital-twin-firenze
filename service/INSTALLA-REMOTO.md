@@ -120,7 +120,7 @@ Questa sezione basta al collega: non serve leggere il resto.
 3. Collegare il server dal proprio assistente, come server MCP su HTTP con l'intestazione `Authorization: Bearer <token>`. Per Claude Code, uno dei due:
    - da riga di comando: `claude mcp add --transport http dt-firenze https://<nome>/mcp/ --header "Authorization: Bearer $DT_MCP_TOKEN"`;
    - oppure in `.mcp.json` del proprio progetto: `{"mcpServers": {"dt-firenze": {"type": "http", "url": "https://<nome>/mcp/", "headers": {"Authorization": "Bearer ${DT_MCP_TOKEN}"}}}}`.
-4. Controllare il collegamento: l'assistente deve vedere 14 strumenti di `dt-firenze` (in Claude Code: `/mcp`). Se non li vede, vedere "Se qualcosa non va" qui sotto.
+4. Controllare il collegamento: l'assistente deve vedere 15 strumenti di `dt-firenze` (in Claude Code: `/mcp`). Se non li vede, vedere "Se qualcosa non va" qui sotto.
 5. Incollare come istruzioni dell'assistente il testo fra le due righe di `service/PROMPT-AGENTE.md`.
 6. Prima domanda di prova: "Quale quota dei civici di Novoli arriva a piedi alla fermata del tram Torre degli Agli entro 10 minuti?". Risposta attesa: circa il 39,3% dei 3.296 civici (1.295), intervallo di velocità 30,1-39,6%, con job_id, fonti e limiti. Se l'assistente chiede quale fermata o quale velocità, è giusto: rispondere "Torre degli Agli, 1,2 m/s".
 7. Altre domande da provare: le dieci del caso caldo in `nl/firenze_novoli/caldo.json` (campo `domanda`), con le risposte date dal gemello nel campo `risposta`.

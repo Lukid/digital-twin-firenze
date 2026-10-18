@@ -1,0 +1,7787 @@
+{
+ "stato": "prototipo, da verificare sul posto",
+ "versione_motore": "0.3.0",
+ "baseline_id": "bas_firenze_novoli_20261009",
+ "ricevitore": "due linee parallele all'asse del percorso, a sinistra e a destra nel verso di marcia; l'asse accanto, calcolato allo stesso modo",
+ "metodo": {
+  "distanza": "dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento), altrimenti 3 m dichiarati",
+  "asse": "raccordi e tratti pedonali restano sull'asse",
+  "casi": {
+   "base": "edifici",
+   "veg_lidar_tipico": "con_vegetazione"
+  },
+  "frazione": "metri in ombra della linea all'istante / lunghezza della linea",
+  "asse_ufficiale": "frazione sull'asse dei risultati ufficiali allo stesso istante (sintesi per ora o esposizione), per confronto",
+  "lato_piu_in_ombra": "caso con vegetazione; 'pari' sotto 0.5 punti di differenza",
+  "unione_buchi_m": 1.0
+ },
+ "snapshot_ids": [
+  "snp_fi_alberi_20261009",
+  "snp_fi_dsm2023_20261009",
+  "snp_fi_dtm2023_20261009",
+  "snp_osm_firenze_20261009",
+  "snp_rt_uv_firenze_novoli_20261009"
+ ],
+ "fonti": [
+  {
+   "source_id": "edifici, alberi, LiDAR e rete OSM della baseline",
+   "licenza": "vedi get_source_card per ogni snapshot",
+   "data_del_dato": "baseline 2026-10-09"
+  }
+ ],
+ "limits": [
+  {
+   "code": "prototipo_da_verificare",
+   "text": "Prototipo, da verificare sul posto: nessun lato della strada è stato osservato."
+  },
+  {
+   "code": "lato_scelto_da_chi_cammina",
+   "text": "Il lato lo sceglie chi cammina: sinistra e destra sono due linee intere, non un percorso che sceglie il lato più in ombra."
+  },
+  {
+   "code": "attraversamenti_non_modellati",
+   "text": "Attraversamenti non modellati: chi cambia lato attraversa, e il percorso più breve sul grafo non sa quale lato usa."
+  },
+  {
+   "code": "valore_dichiarato",
+   "text": "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è il valore dichiarato di 3 m, non una larghezza misurata (metri per lato nel campo metri_valore_dichiarato)."
+  },
+  {
+   "code": "asse_nei_tratti_pedonali",
+   "text": "Raccordi e tratti pedonali (sentieri, piazze) restano sull'asse; ombra a un istante, non lungo il cammino."
+  },
+  {
+   "code": "vegetazione_prisma",
+   "text": "Vegetazione LiDAR come prisma opaco pieno: limite superiore dell'ombra; più i limiti del motore d'ombra sull'asse (altezze, portici ignoti)."
+  }
+ ],
+ "percorsi": {
+  "R01": {
+   "descrizione": "Fermata T2 San Donato - Università (indicata dall'Ateneo) verso l'ingresso del Polo più vicino per rete (ent_civ_d15)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 428.6,
+   "metri_sull_asse": 171.3,
+   "metri_marciapiede_osm": {
+    "sinistra": 249.1,
+    "destra": 242.9
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 8.3,
+    "destra": 14.5
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 80.4,
+      "elevazione_deg": 21.5
+     },
+     "edifici": {
+      "asse": 0.8079,
+      "sinistra": 0.8017,
+      "destra": 0.8116,
+      "asse_ufficiale": 0.8079
+     },
+     "con_vegetazione": {
+      "asse": 0.8079,
+      "sinistra": 0.8017,
+      "destra": 0.8116,
+      "asse_ufficiale": 0.8079
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 85.2,
+      "elevazione_deg": 26.9
+     },
+     "edifici": {
+      "asse": 0.7765,
+      "sinistra": 0.7715,
+      "destra": 0.788,
+      "asse_ufficiale": 0.7765
+     },
+     "con_vegetazione": {
+      "asse": 0.7765,
+      "sinistra": 0.7715,
+      "destra": 0.788,
+      "asse_ufficiale": 0.7765
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 90.3,
+      "elevazione_deg": 32.3
+     },
+     "edifici": {
+      "asse": 0.7309,
+      "sinistra": 0.7265,
+      "destra": 0.7354,
+      "asse_ufficiale": 0.7309
+     },
+     "con_vegetazione": {
+      "asse": 0.7399,
+      "sinistra": 0.7286,
+      "destra": 0.7387,
+      "asse_ufficiale": 0.7399
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 95.7,
+      "elevazione_deg": 37.7
+     },
+     "edifici": {
+      "asse": 0.6828,
+      "sinistra": 0.6519,
+      "destra": 0.6842,
+      "asse_ufficiale": 0.6828
+     },
+     "con_vegetazione": {
+      "asse": 0.6866,
+      "sinistra": 0.652,
+      "destra": 0.7017,
+      "asse_ufficiale": 0.6866
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.6,
+      "elevazione_deg": 43.1
+     },
+     "edifici": {
+      "asse": 0.6176,
+      "sinistra": 0.6037,
+      "destra": 0.6255,
+      "asse_ufficiale": 0.6176
+     },
+     "con_vegetazione": {
+      "asse": 0.6197,
+      "sinistra": 0.6057,
+      "destra": 0.6403,
+      "asse_ufficiale": 0.6197
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 108.2,
+      "elevazione_deg": 48.3
+     },
+     "edifici": {
+      "asse": 0.5366,
+      "sinistra": 0.5273,
+      "destra": 0.5429,
+      "asse_ufficiale": 0.5366
+     },
+     "con_vegetazione": {
+      "asse": 0.5396,
+      "sinistra": 0.5298,
+      "destra": 0.5496,
+      "asse_ufficiale": 0.5396
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 115.9,
+      "elevazione_deg": 53.3
+     },
+     "edifici": {
+      "asse": 0.51,
+      "sinistra": 0.4824,
+      "destra": 0.5256,
+      "asse_ufficiale": 0.51
+     },
+     "con_vegetazione": {
+      "asse": 0.5136,
+      "sinistra": 0.4856,
+      "destra": 0.5291,
+      "asse_ufficiale": 0.5136
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 125.2,
+      "elevazione_deg": 58.0
+     },
+     "edifici": {
+      "asse": 0.4964,
+      "sinistra": 0.4605,
+      "destra": 0.5121,
+      "asse_ufficiale": 0.4964
+     },
+     "con_vegetazione": {
+      "asse": 0.5007,
+      "sinistra": 0.4646,
+      "destra": 0.5165,
+      "asse_ufficiale": 0.5007
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 136.5,
+      "elevazione_deg": 62.1
+     },
+     "edifici": {
+      "asse": 0.5081,
+      "sinistra": 0.3479,
+      "destra": 0.5195,
+      "asse_ufficiale": 0.5081
+     },
+     "con_vegetazione": {
+      "asse": 0.5126,
+      "sinistra": 0.3513,
+      "destra": 0.5233,
+      "asse_ufficiale": 0.5126
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 150.5,
+      "elevazione_deg": 65.3
+     },
+     "edifici": {
+      "asse": 0.4875,
+      "sinistra": 0.1805,
+      "destra": 0.5399,
+      "asse_ufficiale": 0.4875
+     },
+     "con_vegetazione": {
+      "asse": 0.4927,
+      "sinistra": 0.1805,
+      "destra": 0.5445,
+      "asse_ufficiale": 0.4927
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 167.2,
+      "elevazione_deg": 67.3
+     },
+     "edifici": {
+      "asse": 0.2794,
+      "sinistra": 0.0877,
+      "destra": 0.5279,
+      "asse_ufficiale": 0.2794
+     },
+     "con_vegetazione": {
+      "asse": 0.2855,
+      "sinistra": 0.0877,
+      "destra": 0.5336,
+      "asse_ufficiale": 0.2855
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 185.4,
+      "elevazione_deg": 67.6
+     },
+     "edifici": {
+      "asse": 0.1027,
+      "sinistra": 0.0589,
+      "destra": 0.3422,
+      "asse_ufficiale": 0.1027
+     },
+     "con_vegetazione": {
+      "asse": 0.1072,
+      "sinistra": 0.0589,
+      "destra": 0.3504,
+      "asse_ufficiale": 0.1072
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.069,
+      "sinistra": 0.069,
+      "destra": 0.1571,
+      "asse_ufficiale": 0.069
+     },
+     "con_vegetazione": {
+      "asse": 0.069,
+      "sinistra": 0.069,
+      "destra": 0.1624,
+      "asse_ufficiale": 0.069
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.1,
+      "elevazione_deg": 63.5
+     },
+     "edifici": {
+      "asse": 0.0868,
+      "sinistra": 0.1271,
+      "destra": 0.0909,
+      "asse_ufficiale": 0.0868
+     },
+     "con_vegetazione": {
+      "asse": 0.0868,
+      "sinistra": 0.1271,
+      "destra": 0.0909,
+      "asse_ufficiale": 0.0868
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 230.5,
+      "elevazione_deg": 59.7
+     },
+     "edifici": {
+      "asse": 0.1059,
+      "sinistra": 0.3466,
+      "destra": 0.094,
+      "asse_ufficiale": 0.1059
+     },
+     "con_vegetazione": {
+      "asse": 0.1059,
+      "sinistra": 0.3466,
+      "destra": 0.094,
+      "asse_ufficiale": 0.1059
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 240.5,
+      "elevazione_deg": 55.2
+     },
+     "edifici": {
+      "asse": 0.274,
+      "sinistra": 0.5485,
+      "destra": 0.1169,
+      "asse_ufficiale": 0.274
+     },
+     "con_vegetazione": {
+      "asse": 0.274,
+      "sinistra": 0.5497,
+      "destra": 0.1169,
+      "asse_ufficiale": 0.274
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.7,
+      "elevazione_deg": 50.3
+     },
+     "edifici": {
+      "asse": 0.5192,
+      "sinistra": 0.5857,
+      "destra": 0.2849,
+      "asse_ufficiale": 0.5192
+     },
+     "con_vegetazione": {
+      "asse": 0.5192,
+      "sinistra": 0.5975,
+      "destra": 0.2849,
+      "asse_ufficiale": 0.5192
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 255.7,
+      "elevazione_deg": 45.2
+     },
+     "edifici": {
+      "asse": 0.5786,
+      "sinistra": 0.6029,
+      "destra": 0.5313,
+      "asse_ufficiale": 0.5786
+     },
+     "con_vegetazione": {
+      "asse": 0.5851,
+      "sinistra": 0.6263,
+      "destra": 0.5379,
+      "asse_ufficiale": 0.5851
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 261.9,
+      "elevazione_deg": 39.9
+     },
+     "edifici": {
+      "asse": 0.5988,
+      "sinistra": 0.6324,
+      "destra": 0.5803,
+      "asse_ufficiale": 0.5988
+     },
+     "con_vegetazione": {
+      "asse": 0.6315,
+      "sinistra": 0.6531,
+      "destra": 0.5969,
+      "asse_ufficiale": 0.6315
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 267.5,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.6114,
+      "sinistra": 0.6377,
+      "destra": 0.5909,
+      "asse_ufficiale": 0.6114
+     },
+     "con_vegetazione": {
+      "asse": 0.6405,
+      "sinistra": 0.6583,
+      "destra": 0.608,
+      "asse_ufficiale": 0.6405
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 272.7,
+      "elevazione_deg": 29.1
+     },
+     "edifici": {
+      "asse": 0.6299,
+      "sinistra": 0.6452,
+      "destra": 0.6036,
+      "asse_ufficiale": 0.6299
+     },
+     "con_vegetazione": {
+      "asse": 0.6452,
+      "sinistra": 0.6569,
+      "destra": 0.6206,
+      "asse_ufficiale": 0.6452
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 277.6,
+      "elevazione_deg": 23.7
+     },
+     "edifici": {
+      "asse": 0.629,
+      "sinistra": 0.6375,
+      "destra": 0.6066,
+      "asse_ufficiale": 0.629
+     },
+     "con_vegetazione": {
+      "asse": 0.6322,
+      "sinistra": 0.6402,
+      "destra": 0.6261,
+      "asse_ufficiale": 0.6322
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 282.4,
+      "elevazione_deg": 18.4
+     },
+     "edifici": {
+      "asse": 0.6574,
+      "sinistra": 0.6597,
+      "destra": 0.6416,
+      "asse_ufficiale": 0.6574
+     },
+     "con_vegetazione": {
+      "asse": 0.661,
+      "sinistra": 0.6627,
+      "destra": 0.6564,
+      "asse_ufficiale": 0.661
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 96.5,
+      "elevazione_deg": 11.0
+     },
+     "edifici": {
+      "asse": 0.9594,
+      "sinistra": 0.9571,
+      "destra": 0.961,
+      "asse_ufficiale": 0.9594
+     },
+     "con_vegetazione": {
+      "asse": 0.9594,
+      "sinistra": 0.9571,
+      "destra": 0.961,
+      "asse_ufficiale": 0.9594
+     },
+     "lato_piu_in_ombra": "pari"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.9,
+      "elevazione_deg": 16.3
+     },
+     "edifici": {
+      "asse": 0.8731,
+      "sinistra": 0.8719,
+      "destra": 0.8698,
+      "asse_ufficiale": 0.8731
+     },
+     "con_vegetazione": {
+      "asse": 0.8731,
+      "sinistra": 0.8719,
+      "destra": 0.8698,
+      "asse_ufficiale": 0.8731
+     },
+     "lato_piu_in_ombra": "pari"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 107.6,
+      "elevazione_deg": 21.6
+     },
+     "edifici": {
+      "asse": 0.6754,
+      "sinistra": 0.6641,
+      "destra": 0.6825,
+      "asse_ufficiale": 0.6754
+     },
+     "con_vegetazione": {
+      "asse": 0.6754,
+      "sinistra": 0.6683,
+      "destra": 0.6825,
+      "asse_ufficiale": 0.6754
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 113.6,
+      "elevazione_deg": 26.6
+     },
+     "edifici": {
+      "asse": 0.5902,
+      "sinistra": 0.5796,
+      "destra": 0.5979,
+      "asse_ufficiale": 0.5902
+     },
+     "con_vegetazione": {
+      "asse": 0.6028,
+      "sinistra": 0.5966,
+      "destra": 0.6091,
+      "asse_ufficiale": 0.6028
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 120.2,
+      "elevazione_deg": 31.5
+     },
+     "edifici": {
+      "asse": 0.5626,
+      "sinistra": 0.5459,
+      "destra": 0.5667,
+      "asse_ufficiale": 0.5626
+     },
+     "con_vegetazione": {
+      "asse": 0.5908,
+      "sinistra": 0.5735,
+      "destra": 0.5929,
+      "asse_ufficiale": 0.5908
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 127.4,
+      "elevazione_deg": 36.0
+     },
+     "edifici": {
+      "asse": 0.6238,
+      "sinistra": 0.6188,
+      "destra": 0.6315,
+      "asse_ufficiale": 0.6238
+     },
+     "con_vegetazione": {
+      "asse": 0.6555,
+      "sinistra": 0.6348,
+      "destra": 0.6619,
+      "asse_ufficiale": 0.6555
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 135.4,
+      "elevazione_deg": 40.0
+     },
+     "edifici": {
+      "asse": 0.658,
+      "sinistra": 0.6482,
+      "destra": 0.6669,
+      "asse_ufficiale": 0.658
+     },
+     "con_vegetazione": {
+      "asse": 0.7029,
+      "sinistra": 0.6746,
+      "destra": 0.7143,
+      "asse_ufficiale": 0.7029
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 144.3,
+      "elevazione_deg": 43.5
+     },
+     "edifici": {
+      "asse": 0.6923,
+      "sinistra": 0.6722,
+      "destra": 0.7038,
+      "asse_ufficiale": 0.6923
+     },
+     "con_vegetazione": {
+      "asse": 0.7462,
+      "sinistra": 0.7279,
+      "destra": 0.777,
+      "asse_ufficiale": 0.7462
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 154.1,
+      "elevazione_deg": 46.3
+     },
+     "edifici": {
+      "asse": 0.7916,
+      "sinistra": 0.7545,
+      "destra": 0.8106,
+      "asse_ufficiale": 0.7916
+     },
+     "con_vegetazione": {
+      "asse": 0.8097,
+      "sinistra": 0.7732,
+      "destra": 0.8405,
+      "asse_ufficiale": 0.8097
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 164.8,
+      "elevazione_deg": 48.2
+     },
+     "edifici": {
+      "asse": 0.7886,
+      "sinistra": 0.7356,
+      "destra": 0.8227,
+      "asse_ufficiale": 0.7886
+     },
+     "con_vegetazione": {
+      "asse": 0.8069,
+      "sinistra": 0.7539,
+      "destra": 0.8399,
+      "asse_ufficiale": 0.8069
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 176.1,
+      "elevazione_deg": 49.1
+     },
+     "edifici": {
+      "asse": 0.7335,
+      "sinistra": 0.5628,
+      "destra": 0.7957,
+      "asse_ufficiale": 0.7335
+     },
+     "con_vegetazione": {
+      "asse": 0.7488,
+      "sinistra": 0.5781,
+      "destra": 0.8074,
+      "asse_ufficiale": 0.7488
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 187.5,
+      "elevazione_deg": 48.9
+     },
+     "edifici": {
+      "asse": 0.5841,
+      "sinistra": 0.3912,
+      "destra": 0.71,
+      "asse_ufficiale": 0.5841
+     },
+     "con_vegetazione": {
+      "asse": 0.5975,
+      "sinistra": 0.396,
+      "destra": 0.7207,
+      "asse_ufficiale": 0.5975
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 198.6,
+      "elevazione_deg": 47.7
+     },
+     "edifici": {
+      "asse": 0.4398,
+      "sinistra": 0.2164,
+      "destra": 0.5855,
+      "asse_ufficiale": 0.4398
+     },
+     "con_vegetazione": {
+      "asse": 0.4551,
+      "sinistra": 0.2196,
+      "destra": 0.599,
+      "asse_ufficiale": 0.4551
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 209.0,
+      "elevazione_deg": 45.5
+     },
+     "edifici": {
+      "asse": 0.2213,
+      "sinistra": 0.2317,
+      "destra": 0.4769,
+      "asse_ufficiale": 0.2213
+     },
+     "con_vegetazione": {
+      "asse": 0.2255,
+      "sinistra": 0.2359,
+      "destra": 0.4907,
+      "asse_ufficiale": 0.2255
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.6,
+      "elevazione_deg": 42.4
+     },
+     "edifici": {
+      "asse": 0.2439,
+      "sinistra": 0.3428,
+      "destra": 0.2533,
+      "asse_ufficiale": 0.2439
+     },
+     "con_vegetazione": {
+      "asse": 0.2511,
+      "sinistra": 0.35,
+      "destra": 0.2605,
+      "asse_ufficiale": 0.2511
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 227.1,
+      "elevazione_deg": 38.7
+     },
+     "edifici": {
+      "asse": 0.3271,
+      "sinistra": 0.6016,
+      "destra": 0.2843,
+      "asse_ufficiale": 0.3271
+     },
+     "con_vegetazione": {
+      "asse": 0.3377,
+      "sinistra": 0.6123,
+      "destra": 0.295,
+      "asse_ufficiale": 0.3377
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 234.9,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.6999,
+      "sinistra": 0.8207,
+      "destra": 0.4714,
+      "asse_ufficiale": 0.6999
+     },
+     "con_vegetazione": {
+      "asse": 0.7178,
+      "sinistra": 0.8364,
+      "destra": 0.4858,
+      "asse_ufficiale": 0.7178
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 241.9,
+      "elevazione_deg": 29.9
+     },
+     "edifici": {
+      "asse": 0.8286,
+      "sinistra": 0.8694,
+      "destra": 0.7908,
+      "asse_ufficiale": 0.8286
+     },
+     "con_vegetazione": {
+      "asse": 0.8387,
+      "sinistra": 0.8779,
+      "destra": 0.801,
+      "asse_ufficiale": 0.8387
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.2,
+      "elevazione_deg": 25.0
+     },
+     "edifici": {
+      "asse": 0.871,
+      "sinistra": 0.8829,
+      "destra": 0.8506,
+      "asse_ufficiale": 0.871
+     },
+     "con_vegetazione": {
+      "asse": 0.871,
+      "sinistra": 0.8829,
+      "destra": 0.8506,
+      "asse_ufficiale": 0.871
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 254.1,
+      "elevazione_deg": 19.9
+     },
+     "edifici": {
+      "asse": 0.8845,
+      "sinistra": 0.8939,
+      "destra": 0.8729,
+      "asse_ufficiale": 0.8845
+     },
+     "con_vegetazione": {
+      "asse": 0.8845,
+      "sinistra": 0.8939,
+      "destra": 0.8729,
+      "asse_ufficiale": 0.8845
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 259.7,
+      "elevazione_deg": 14.6
+     },
+     "edifici": {
+      "asse": 0.9553,
+      "sinistra": 0.9553,
+      "destra": 0.9553,
+      "asse_ufficiale": 0.9553
+     },
+     "con_vegetazione": {
+      "asse": 0.9553,
+      "sinistra": 0.9553,
+      "destra": 0.9553,
+      "asse_ufficiale": 0.9553
+     },
+     "lato_piu_in_ombra": "pari"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 265.1,
+      "elevazione_deg": 9.2
+     },
+     "edifici": {
+      "asse": 0.9861,
+      "sinistra": 0.9861,
+      "destra": 0.9861,
+      "asse_ufficiale": 0.9861
+     },
+     "con_vegetazione": {
+      "asse": 0.9861,
+      "sinistra": 0.9861,
+      "destra": 0.9861,
+      "asse_ufficiale": 0.9861
+     },
+     "lato_piu_in_ombra": "pari"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "sole_basso_fuori_supporto",
+      "azimut_deg": 270.3,
+      "elevazione_deg": 3.8
+     }
+    },
+    {
+     "data": "2026-12-12",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 163.0,
+      "elevazione_deg": 21.3
+     },
+     "tratti_ombra_m": {
+      "asse": [
+       [
+        0.0,
+        18.4
+       ],
+       [
+        27.3,
+        428.6
+       ]
+      ],
+      "sinistra": [
+       [
+        0.0,
+        18.3
+       ],
+       [
+        29.2,
+        217.9
+       ],
+       [
+        222.9,
+        428.6
+       ]
+      ],
+      "destra": [
+       [
+        0.0,
+        15.6
+       ],
+       [
+        25.1,
+        428.6
+       ]
+      ]
+     },
+     "edifici": {
+      "asse": 0.978,
+      "sinistra": 0.9621,
+      "destra": 0.9773,
+      "asse_ufficiale": 0.978
+     },
+     "con_vegetazione": {
+      "asse": 0.9785,
+      "sinistra": 0.9627,
+      "destra": 0.9779,
+      "asse_ufficiale": 0.9785
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-12-12",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 192.7,
+      "elevazione_deg": 22.1
+     },
+     "tratti_ombra_m": {
+      "asse": [
+       [
+        36.2,
+        237.7
+       ],
+       [
+        253.7,
+        307.3
+       ],
+       [
+        311.7,
+        360.0
+       ],
+       [
+        370.3,
+        407.7
+       ],
+       [
+        420.9,
+        428.6
+       ]
+      ],
+      "sinistra": [
+       [
+        41.4,
+        237.7
+       ],
+       [
+        256.5,
+        307.3
+       ],
+       [
+        311.7,
+        360.0
+       ],
+       [
+        370.3,
+        407.7
+       ],
+       [
+        420.9,
+        428.6
+       ]
+      ],
+      "destra": [
+       [
+        29.4,
+        307.3
+       ],
+       [
+        311.7,
+        360.0
+       ],
+       [
+        370.3,
+        407.7
+       ],
+       [
+        420.9,
+        428.6
+       ]
+      ]
+     },
+     "edifici": {
+      "asse": 0.8132,
+      "sinistra": 0.7947,
+      "destra": 0.8665,
+      "asse_ufficiale": 0.8132
+     },
+     "con_vegetazione": {
+      "asse": 0.8165,
+      "sinistra": 0.798,
+      "destra": 0.8698,
+      "asse_ufficiale": 0.8165
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-12-12",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 213.5,
+      "elevazione_deg": 15.7
+     },
+     "tratti_ombra_m": {
+      "asse": [
+       [
+        0.0,
+        0.1
+       ],
+       [
+        81.2,
+        191.1
+       ],
+       [
+        236.6,
+        257.3
+       ],
+       [
+        267.2,
+        321.4
+       ],
+       [
+        324.0,
+        428.6
+       ]
+      ],
+      "sinistra": [
+       [
+        0.0,
+        0.1
+       ],
+       [
+        4.6,
+        4.6
+       ],
+       [
+        6.5,
+        15.6
+       ],
+       [
+        97.6,
+        120.8
+       ],
+       [
+        126.1,
+        127.5
+       ],
+       [
+        130.6,
+        146.5
+       ],
+       [
+        192.4,
+        209.0
+       ],
+       [
+        213.7,
+        259.1
+       ],
+       [
+        267.2,
+        321.4
+       ],
+       [
+        324.0,
+        428.6
+       ]
+      ],
+      "destra": [
+       [
+        0.0,
+        0.1
+       ],
+       [
+        64.6,
+        191.0
+       ],
+       [
+        192.4,
+        209.7
+       ],
+       [
+        267.2,
+        321.4
+       ],
+       [
+        324.0,
+        428.6
+       ]
+      ]
+     },
+     "edifici": {
+      "asse": 0.6751,
+      "sinistra": 0.631,
+      "destra": 0.7056,
+      "asse_ufficiale": 0.6751
+     },
+     "con_vegetazione": {
+      "asse": 0.6795,
+      "sinistra": 0.6354,
+      "destra": 0.71,
+      "asse_ufficiale": 0.6795
+     },
+     "lato_piu_in_ombra": "destra"
+    }
+   ]
+  },
+  "R02": {
+   "descrizione": "Fermata T2 Novoli - Regione Toscana verso l'ingresso del Polo più vicino per rete (ent_civ_d15)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 711.5,
+   "metri_sull_asse": 257.4,
+   "metri_marciapiede_osm": {
+    "sinistra": 431.9,
+    "destra": 187.2
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 22.2,
+    "destra": 266.8
+   },
+   "distanza_mediana_m": {
+    "sinistra": 4.47,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 80.4,
+      "elevazione_deg": 21.5
+     },
+     "edifici": {
+      "asse": 0.5696,
+      "sinistra": 0.5834,
+      "destra": 0.5718,
+      "asse_ufficiale": 0.5696
+     },
+     "con_vegetazione": {
+      "asse": 0.5748,
+      "sinistra": 0.659,
+      "destra": 0.5718,
+      "asse_ufficiale": 0.5748
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 85.2,
+      "elevazione_deg": 26.9
+     },
+     "edifici": {
+      "asse": 0.5407,
+      "sinistra": 0.5462,
+      "destra": 0.5501,
+      "asse_ufficiale": 0.5407
+     },
+     "con_vegetazione": {
+      "asse": 0.5407,
+      "sinistra": 0.5987,
+      "destra": 0.5501,
+      "asse_ufficiale": 0.5407
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 90.3,
+      "elevazione_deg": 32.3
+     },
+     "edifici": {
+      "asse": 0.5044,
+      "sinistra": 0.5057,
+      "destra": 0.5098,
+      "asse_ufficiale": 0.5044
+     },
+     "con_vegetazione": {
+      "asse": 0.5069,
+      "sinistra": 0.5212,
+      "destra": 0.51,
+      "asse_ufficiale": 0.5069
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 95.7,
+      "elevazione_deg": 37.7
+     },
+     "edifici": {
+      "asse": 0.471,
+      "sinistra": 0.4604,
+      "destra": 0.48,
+      "asse_ufficiale": 0.471
+     },
+     "con_vegetazione": {
+      "asse": 0.4733,
+      "sinistra": 0.467,
+      "destra": 0.4844,
+      "asse_ufficiale": 0.4733
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.6,
+      "elevazione_deg": 43.1
+     },
+     "edifici": {
+      "asse": 0.4405,
+      "sinistra": 0.4333,
+      "destra": 0.4452,
+      "asse_ufficiale": 0.4405
+     },
+     "con_vegetazione": {
+      "asse": 0.4417,
+      "sinistra": 0.4345,
+      "destra": 0.4477,
+      "asse_ufficiale": 0.4417
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 108.2,
+      "elevazione_deg": 48.3
+     },
+     "edifici": {
+      "asse": 0.3919,
+      "sinistra": 0.3871,
+      "destra": 0.3806,
+      "asse_ufficiale": 0.3919
+     },
+     "con_vegetazione": {
+      "asse": 0.3937,
+      "sinistra": 0.3886,
+      "destra": 0.3819,
+      "asse_ufficiale": 0.3937
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 115.9,
+      "elevazione_deg": 53.3
+     },
+     "edifici": {
+      "asse": 0.357,
+      "sinistra": 0.3417,
+      "destra": 0.3485,
+      "asse_ufficiale": 0.357
+     },
+     "con_vegetazione": {
+      "asse": 0.3592,
+      "sinistra": 0.3436,
+      "destra": 0.3506,
+      "asse_ufficiale": 0.3592
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 125.2,
+      "elevazione_deg": 58.0
+     },
+     "edifici": {
+      "asse": 0.3015,
+      "sinistra": 0.2963,
+      "destra": 0.3069,
+      "asse_ufficiale": 0.3015
+     },
+     "con_vegetazione": {
+      "asse": 0.3042,
+      "sinistra": 0.2987,
+      "destra": 0.3096,
+      "asse_ufficiale": 0.3042
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 136.5,
+      "elevazione_deg": 62.1
+     },
+     "edifici": {
+      "asse": 0.2993,
+      "sinistra": 0.2234,
+      "destra": 0.3049,
+      "asse_ufficiale": 0.2993
+     },
+     "con_vegetazione": {
+      "asse": 0.3021,
+      "sinistra": 0.2254,
+      "destra": 0.3071,
+      "asse_ufficiale": 0.3021
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 150.5,
+      "elevazione_deg": 65.3
+     },
+     "edifici": {
+      "asse": 0.2653,
+      "sinistra": 0.1116,
+      "destra": 0.2944,
+      "asse_ufficiale": 0.2653
+     },
+     "con_vegetazione": {
+      "asse": 0.2684,
+      "sinistra": 0.1116,
+      "destra": 0.2972,
+      "asse_ufficiale": 0.2684
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 167.2,
+      "elevazione_deg": 67.3
+     },
+     "edifici": {
+      "asse": 0.1317,
+      "sinistra": 0.0533,
+      "destra": 0.2655,
+      "asse_ufficiale": 0.1317
+     },
+     "con_vegetazione": {
+      "asse": 0.1354,
+      "sinistra": 0.0533,
+      "destra": 0.2689,
+      "asse_ufficiale": 0.1354
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 185.4,
+      "elevazione_deg": 67.6
+     },
+     "edifici": {
+      "asse": 0.0525,
+      "sinistra": 0.0355,
+      "destra": 0.1552,
+      "asse_ufficiale": 0.0525
+     },
+     "con_vegetazione": {
+      "asse": 0.0552,
+      "sinistra": 0.0355,
+      "destra": 0.1601,
+      "asse_ufficiale": 0.0552
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.0416,
+      "sinistra": 0.0416,
+      "destra": 0.0836,
+      "asse_ufficiale": 0.0416
+     },
+     "con_vegetazione": {
+      "asse": 0.0416,
+      "sinistra": 0.0416,
+      "destra": 0.0867,
+      "asse_ufficiale": 0.0416
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.1,
+      "elevazione_deg": 63.5
+     },
+     "edifici": {
+      "asse": 0.0523,
+      "sinistra": 0.0766,
+      "destra": 0.0523,
+      "asse_ufficiale": 0.0523
+     },
+     "con_vegetazione": {
+      "asse": 0.0523,
+      "sinistra": 0.0766,
+      "destra": 0.0523,
+      "asse_ufficiale": 0.0523
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 230.5,
+      "elevazione_deg": 59.7
+     },
+     "edifici": {
+      "asse": 0.1321,
+      "sinistra": 0.2089,
+      "destra": 0.1249,
+      "asse_ufficiale": 0.1321
+     },
+     "con_vegetazione": {
+      "asse": 0.1321,
+      "sinistra": 0.2089,
+      "destra": 0.1249,
+      "asse_ufficiale": 0.1321
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 240.5,
+      "elevazione_deg": 55.2
+     },
+     "edifici": {
+      "asse": 0.1787,
+      "sinistra": 0.3338,
+      "destra": 0.146,
+      "asse_ufficiale": 0.1787
+     },
+     "con_vegetazione": {
+      "asse": 0.1787,
+      "sinistra": 0.3345,
+      "destra": 0.146,
+      "asse_ufficiale": 0.1787
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.7,
+      "elevazione_deg": 50.3
+     },
+     "edifici": {
+      "asse": 0.3231,
+      "sinistra": 0.3561,
+      "destra": 0.2034,
+      "asse_ufficiale": 0.3231
+     },
+     "con_vegetazione": {
+      "asse": 0.3231,
+      "sinistra": 0.3633,
+      "destra": 0.2034,
+      "asse_ufficiale": 0.3231
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 255.7,
+      "elevazione_deg": 45.2
+     },
+     "edifici": {
+      "asse": 0.3572,
+      "sinistra": 0.3665,
+      "destra": 0.3352,
+      "asse_ufficiale": 0.3572
+     },
+     "con_vegetazione": {
+      "asse": 0.3611,
+      "sinistra": 0.3806,
+      "destra": 0.3392,
+      "asse_ufficiale": 0.3611
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 261.9,
+      "elevazione_deg": 39.9
+     },
+     "edifici": {
+      "asse": 0.3683,
+      "sinistra": 0.3843,
+      "destra": 0.4154,
+      "asse_ufficiale": 0.3683
+     },
+     "con_vegetazione": {
+      "asse": 0.388,
+      "sinistra": 0.3967,
+      "destra": 0.4255,
+      "asse_ufficiale": 0.388
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 267.5,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.3812,
+      "sinistra": 0.3874,
+      "destra": 0.4585,
+      "asse_ufficiale": 0.3812
+     },
+     "con_vegetazione": {
+      "asse": 0.3987,
+      "sinistra": 0.3998,
+      "destra": 0.4688,
+      "asse_ufficiale": 0.3987
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 272.7,
+      "elevazione_deg": 29.1
+     },
+     "edifici": {
+      "asse": 0.47,
+      "sinistra": 0.3919,
+      "destra": 0.4769,
+      "asse_ufficiale": 0.47
+     },
+     "con_vegetazione": {
+      "asse": 0.4792,
+      "sinistra": 0.399,
+      "destra": 0.4872,
+      "asse_ufficiale": 0.4792
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 277.6,
+      "elevazione_deg": 23.7
+     },
+     "edifici": {
+      "asse": 0.4859,
+      "sinistra": 0.3873,
+      "destra": 0.5048,
+      "asse_ufficiale": 0.4859
+     },
+     "con_vegetazione": {
+      "asse": 0.4879,
+      "sinistra": 0.389,
+      "destra": 0.5166,
+      "asse_ufficiale": 0.4879
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 282.4,
+      "elevazione_deg": 18.4
+     },
+     "edifici": {
+      "asse": 0.5038,
+      "sinistra": 0.4007,
+      "destra": 0.5275,
+      "asse_ufficiale": 0.5038
+     },
+     "con_vegetazione": {
+      "asse": 0.506,
+      "sinistra": 0.4083,
+      "destra": 0.5364,
+      "asse_ufficiale": 0.506
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 96.5,
+      "elevazione_deg": 11.0
+     },
+     "edifici": {
+      "asse": 0.738,
+      "sinistra": 0.7366,
+      "destra": 0.739,
+      "asse_ufficiale": 0.738
+     },
+     "con_vegetazione": {
+      "asse": 0.7667,
+      "sinistra": 0.8165,
+      "destra": 0.7483,
+      "asse_ufficiale": 0.7667
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.9,
+      "elevazione_deg": 16.3
+     },
+     "edifici": {
+      "asse": 0.6477,
+      "sinistra": 0.6669,
+      "destra": 0.6483,
+      "asse_ufficiale": 0.6477
+     },
+     "con_vegetazione": {
+      "asse": 0.6477,
+      "sinistra": 0.706,
+      "destra": 0.6483,
+      "asse_ufficiale": 0.6477
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 107.6,
+      "elevazione_deg": 21.6
+     },
+     "edifici": {
+      "asse": 0.4886,
+      "sinistra": 0.5115,
+      "destra": 0.4885,
+      "asse_ufficiale": 0.4886
+     },
+     "con_vegetazione": {
+      "asse": 0.4886,
+      "sinistra": 0.5264,
+      "destra": 0.4885,
+      "asse_ufficiale": 0.4886
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 113.6,
+      "elevazione_deg": 26.6
+     },
+     "edifici": {
+      "asse": 0.4337,
+      "sinistra": 0.4333,
+      "destra": 0.4213,
+      "asse_ufficiale": 0.4337
+     },
+     "con_vegetazione": {
+      "asse": 0.4425,
+      "sinistra": 0.4436,
+      "destra": 0.4297,
+      "asse_ufficiale": 0.4425
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 120.2,
+      "elevazione_deg": 31.5
+     },
+     "edifici": {
+      "asse": 0.3419,
+      "sinistra": 0.3637,
+      "destra": 0.3444,
+      "asse_ufficiale": 0.3419
+     },
+     "con_vegetazione": {
+      "asse": 0.3597,
+      "sinistra": 0.3803,
+      "destra": 0.3618,
+      "asse_ufficiale": 0.3597
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 127.4,
+      "elevazione_deg": 36.0
+     },
+     "edifici": {
+      "asse": 0.3783,
+      "sinistra": 0.4046,
+      "destra": 0.378,
+      "asse_ufficiale": 0.3783
+     },
+     "con_vegetazione": {
+      "asse": 0.3877,
+      "sinistra": 0.4142,
+      "destra": 0.3911,
+      "asse_ufficiale": 0.3877
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 135.4,
+      "elevazione_deg": 40.0
+     },
+     "edifici": {
+      "asse": 0.3953,
+      "sinistra": 0.4053,
+      "destra": 0.3993,
+      "asse_ufficiale": 0.3953
+     },
+     "con_vegetazione": {
+      "asse": 0.4107,
+      "sinistra": 0.4212,
+      "destra": 0.4159,
+      "asse_ufficiale": 0.4107
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 144.3,
+      "elevazione_deg": 43.5
+     },
+     "edifici": {
+      "asse": 0.4153,
+      "sinistra": 0.4123,
+      "destra": 0.4199,
+      "asse_ufficiale": 0.4153
+     },
+     "con_vegetazione": {
+      "asse": 0.4478,
+      "sinistra": 0.4458,
+      "destra": 0.4528,
+      "asse_ufficiale": 0.4478
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 154.1,
+      "elevazione_deg": 46.3
+     },
+     "edifici": {
+      "asse": 0.4744,
+      "sinistra": 0.4564,
+      "destra": 0.4826,
+      "asse_ufficiale": 0.4744
+     },
+     "con_vegetazione": {
+      "asse": 0.4853,
+      "sinistra": 0.4677,
+      "destra": 0.4918,
+      "asse_ufficiale": 0.4853
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 164.8,
+      "elevazione_deg": 48.2
+     },
+     "edifici": {
+      "asse": 0.4716,
+      "sinistra": 0.4439,
+      "destra": 0.4877,
+      "asse_ufficiale": 0.4716
+     },
+     "con_vegetazione": {
+      "asse": 0.4826,
+      "sinistra": 0.4549,
+      "destra": 0.4961,
+      "asse_ufficiale": 0.4826
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 176.1,
+      "elevazione_deg": 49.1
+     },
+     "edifici": {
+      "asse": 0.4371,
+      "sinistra": 0.3391,
+      "destra": 0.4737,
+      "asse_ufficiale": 0.4371
+     },
+     "con_vegetazione": {
+      "asse": 0.4463,
+      "sinistra": 0.3483,
+      "destra": 0.4807,
+      "asse_ufficiale": 0.4463
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 187.5,
+      "elevazione_deg": 48.9
+     },
+     "edifici": {
+      "asse": 0.3356,
+      "sinistra": 0.2354,
+      "destra": 0.4853,
+      "asse_ufficiale": 0.3356
+     },
+     "con_vegetazione": {
+      "asse": 0.3437,
+      "sinistra": 0.2383,
+      "destra": 0.4918,
+      "asse_ufficiale": 0.3437
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 198.6,
+      "elevazione_deg": 47.7
+     },
+     "edifici": {
+      "asse": 0.3143,
+      "sinistra": 0.1304,
+      "destra": 0.3833,
+      "asse_ufficiale": 0.3143
+     },
+     "con_vegetazione": {
+      "asse": 0.3235,
+      "sinistra": 0.1323,
+      "destra": 0.3914,
+      "asse_ufficiale": 0.3235
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 209.0,
+      "elevazione_deg": 45.5
+     },
+     "edifici": {
+      "asse": 0.2182,
+      "sinistra": 0.1682,
+      "destra": 0.3492,
+      "asse_ufficiale": 0.2182
+     },
+     "con_vegetazione": {
+      "asse": 0.2208,
+      "sinistra": 0.1707,
+      "destra": 0.3575,
+      "asse_ufficiale": 0.2208
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.6,
+      "elevazione_deg": 42.4
+     },
+     "edifici": {
+      "asse": 0.2334,
+      "sinistra": 0.2909,
+      "destra": 0.2267,
+      "asse_ufficiale": 0.2334
+     },
+     "con_vegetazione": {
+      "asse": 0.2377,
+      "sinistra": 0.2953,
+      "destra": 0.231,
+      "asse_ufficiale": 0.2377
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 227.1,
+      "elevazione_deg": 38.7
+     },
+     "edifici": {
+      "asse": 0.3612,
+      "sinistra": 0.4546,
+      "destra": 0.3446,
+      "asse_ufficiale": 0.3612
+     },
+     "con_vegetazione": {
+      "asse": 0.3676,
+      "sinistra": 0.461,
+      "destra": 0.351,
+      "asse_ufficiale": 0.3676
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 234.9,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.5469,
+      "sinistra": 0.5963,
+      "destra": 0.4512,
+      "asse_ufficiale": 0.5469
+     },
+     "con_vegetazione": {
+      "asse": 0.5577,
+      "sinistra": 0.6058,
+      "destra": 0.4599,
+      "asse_ufficiale": 0.5577
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 241.9,
+      "elevazione_deg": 29.9
+     },
+     "edifici": {
+      "asse": 0.6646,
+      "sinistra": 0.65,
+      "destra": 0.6863,
+      "asse_ufficiale": 0.6646
+     },
+     "con_vegetazione": {
+      "asse": 0.6708,
+      "sinistra": 0.6551,
+      "destra": 0.6924,
+      "asse_ufficiale": 0.6708
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.2,
+      "elevazione_deg": 25.0
+     },
+     "edifici": {
+      "asse": 0.7435,
+      "sinistra": 0.7128,
+      "destra": 0.749,
+      "asse_ufficiale": 0.7435
+     },
+     "con_vegetazione": {
+      "asse": 0.7435,
+      "sinistra": 0.7128,
+      "destra": 0.749,
+      "asse_ufficiale": 0.7435
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 254.1,
+      "elevazione_deg": 19.9
+     },
+     "edifici": {
+      "asse": 0.7883,
+      "sinistra": 0.7646,
+      "destra": 0.813,
+      "asse_ufficiale": 0.7883
+     },
+     "con_vegetazione": {
+      "asse": 0.7883,
+      "sinistra": 0.7646,
+      "destra": 0.813,
+      "asse_ufficiale": 0.7883
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 259.7,
+      "elevazione_deg": 14.6
+     },
+     "edifici": {
+      "asse": 0.8708,
+      "sinistra": 0.8862,
+      "destra": 0.8635,
+      "asse_ufficiale": 0.8708
+     },
+     "con_vegetazione": {
+      "asse": 0.8708,
+      "sinistra": 0.8862,
+      "destra": 0.8635,
+      "asse_ufficiale": 0.8708
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 265.1,
+      "elevazione_deg": 9.2
+     },
+     "edifici": {
+      "asse": 0.9515,
+      "sinistra": 0.9508,
+      "destra": 0.9515,
+      "asse_ufficiale": 0.9515
+     },
+     "con_vegetazione": {
+      "asse": 0.9515,
+      "sinistra": 0.9508,
+      "destra": 0.9515,
+      "asse_ufficiale": 0.9515
+     },
+     "lato_piu_in_ombra": "pari"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "sole_basso_fuori_supporto",
+      "azimut_deg": 270.3,
+      "elevazione_deg": 3.8
+     }
+    }
+   ]
+  },
+  "R03": {
+   "descrizione": "Fermata Regione Toscana verso l'edificio D1 (sensibilità alla scelta dell'ingresso)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 889.6,
+   "metri_sull_asse": 435.5,
+   "metri_marciapiede_osm": {
+    "sinistra": 431.9,
+    "destra": 187.2
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 22.2,
+    "destra": 266.8
+   },
+   "distanza_mediana_m": {
+    "sinistra": 4.47,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.084,
+      "sinistra": 0.084,
+      "destra": 0.1176,
+      "asse_ufficiale": 0.084
+     },
+     "con_vegetazione": {
+      "asse": 0.0846,
+      "sinistra": 0.0846,
+      "destra": 0.1207,
+      "asse_ufficiale": 0.0846
+     },
+     "lato_piu_in_ombra": "destra"
+    }
+   ]
+  },
+  "R04": {
+   "descrizione": "Civico a circa 150 m in linea d'aria dal Polo, verso l'ingresso più vicino per rete (ent_civ_d15)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 235.9,
+   "metri_sull_asse": 213.8,
+   "metri_marciapiede_osm": {
+    "sinistra": 19.2,
+    "destra": 19.0
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 2.8,
+    "destra": 3.1
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.26,
+    "destra": 2.79
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.266,
+      "sinistra": 0.266,
+      "destra": 0.266,
+      "asse_ufficiale": 0.266
+     },
+     "con_vegetazione": {
+      "asse": 0.266,
+      "sinistra": 0.266,
+      "destra": 0.266,
+      "asse_ufficiale": 0.266
+     },
+     "lato_piu_in_ombra": "pari"
+    }
+   ]
+  },
+  "R05": {
+   "descrizione": "Civico a circa 400 m (ent_civ_d4)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 496.1,
+   "metri_sull_asse": 232.7,
+   "metri_marciapiede_osm": {
+    "sinistra": 6.9,
+    "destra": 0
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 256.5,
+    "destra": 263.4
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.2052,
+      "sinistra": 0.2052,
+      "destra": 0.2248,
+      "asse_ufficiale": 0.2052
+     },
+     "con_vegetazione": {
+      "asse": 0.2374,
+      "sinistra": 0.2354,
+      "destra": 0.3348,
+      "asse_ufficiale": 0.2374
+     },
+     "lato_piu_in_ombra": "destra"
+    }
+   ]
+  },
+  "R06": {
+   "descrizione": "Civico a circa 700 m (ent_civ_d15)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 956.0,
+   "metri_sull_asse": 747.2,
+   "metri_marciapiede_osm": {
+    "sinistra": 69.8,
+    "destra": 28.2
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 139.0,
+    "destra": 180.6
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.1096,
+      "sinistra": 0.1107,
+      "destra": 0.12,
+      "asse_ufficiale": 0.1096
+     },
+     "con_vegetazione": {
+      "asse": 0.1822,
+      "sinistra": 0.1784,
+      "destra": 0.2082,
+      "asse_ufficiale": 0.1822
+     },
+     "lato_piu_in_ombra": "destra"
+    }
+   ]
+  },
+  "R07": {
+   "descrizione": "Civico a circa 1000 m (ent_civ_d4)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 1195.2,
+   "metri_sull_asse": 325.6,
+   "metri_marciapiede_osm": {
+    "sinistra": 44.4,
+    "destra": 409.1
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 825.2,
+    "destra": 460.5
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.3396,
+      "sinistra": 0.3198,
+      "destra": 0.3612,
+      "asse_ufficiale": 0.3396
+     },
+     "con_vegetazione": {
+      "asse": 0.3616,
+      "sinistra": 0.3369,
+      "destra": 0.3925,
+      "asse_ufficiale": 0.3616
+     },
+     "lato_piu_in_ombra": "destra"
+    }
+   ]
+  },
+  "R08": {
+   "descrizione": "Civico di R05 verso l'accesso della scuola Vamba",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 785.6,
+   "metri_sull_asse": 221.7,
+   "metri_marciapiede_osm": {
+    "sinistra": 91.3,
+    "destra": 200.6
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 472.6,
+    "destra": 363.3
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.016,
+      "sinistra": 0.0566,
+      "destra": 0.0104,
+      "asse_ufficiale": 0.016
+     },
+     "con_vegetazione": {
+      "asse": 0.0366,
+      "sinistra": 0.0945,
+      "destra": 0.031,
+      "asse_ufficiale": 0.0366
+     },
+     "lato_piu_in_ombra": "sinistra"
+    }
+   ]
+  },
+  "R09": {
+   "descrizione": "Fermata Torre degli Agli verso Vamba",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 416.6,
+   "metri_sull_asse": 62.1,
+   "metri_marciapiede_osm": {
+    "sinistra": 151.5,
+    "destra": 283.2
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 203.1,
+    "destra": 71.4
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.0,
+      "sinistra": 0.0144,
+      "destra": 0.117,
+      "asse_ufficiale": 0.0
+     },
+     "con_vegetazione": {
+      "asse": 0.0078,
+      "sinistra": 0.1073,
+      "destra": 0.1848,
+      "asse_ufficiale": 0.0078
+     },
+     "lato_piu_in_ombra": "destra"
+    }
+   ]
+  },
+  "R10": {
+   "descrizione": "Civico di R05 verso la fermata Regione Toscana",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 940.5,
+   "metri_sull_asse": 763.5,
+   "metri_marciapiede_osm": {
+    "sinistra": 36.1,
+    "destra": 83.7
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 140.9,
+    "destra": 93.3
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.0292,
+      "sinistra": 0.0292,
+      "destra": 0.0292,
+      "asse_ufficiale": 0.0292
+     },
+     "con_vegetazione": {
+      "asse": 0.039,
+      "sinistra": 0.039,
+      "destra": 0.039,
+      "asse_ufficiale": 0.039
+     },
+     "lato_piu_in_ombra": "pari"
+    }
+   ]
+  },
+  "RC1": {
+   "descrizione": "Fermata T2 Novoli - Regione Toscana verso il Giardino di Piazza delle Medaglie d'Oro, ingresso più vicino per rete fra i due dichiarati (ent_rif_02399_1)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 686.6,
+   "metri_sull_asse": 126.0,
+   "metri_marciapiede_osm": {
+    "sinistra": 390.7,
+    "destra": 490.3
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 169.9,
+    "destra": 70.4
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.88
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 80.4,
+      "elevazione_deg": 21.5
+     },
+     "edifici": {
+      "asse": 0.6346,
+      "sinistra": 0.6385,
+      "destra": 0.6462,
+      "asse_ufficiale": 0.6346
+     },
+     "con_vegetazione": {
+      "asse": 0.6702,
+      "sinistra": 0.6821,
+      "destra": 0.6687,
+      "asse_ufficiale": 0.6702
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 85.2,
+      "elevazione_deg": 26.9
+     },
+     "edifici": {
+      "asse": 0.5462,
+      "sinistra": 0.5321,
+      "destra": 0.5699,
+      "asse_ufficiale": 0.5462
+     },
+     "con_vegetazione": {
+      "asse": 0.5746,
+      "sinistra": 0.5782,
+      "destra": 0.5903,
+      "asse_ufficiale": 0.5746
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 90.3,
+      "elevazione_deg": 32.3
+     },
+     "edifici": {
+      "asse": 0.5095,
+      "sinistra": 0.3218,
+      "destra": 0.5536,
+      "asse_ufficiale": 0.5095
+     },
+     "con_vegetazione": {
+      "asse": 0.5388,
+      "sinistra": 0.3702,
+      "destra": 0.5796,
+      "asse_ufficiale": 0.5388
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 95.7,
+      "elevazione_deg": 37.7
+     },
+     "edifici": {
+      "asse": 0.4351,
+      "sinistra": 0.251,
+      "destra": 0.4902,
+      "asse_ufficiale": 0.4351
+     },
+     "con_vegetazione": {
+      "asse": 0.4634,
+      "sinistra": 0.2694,
+      "destra": 0.5187,
+      "asse_ufficiale": 0.4634
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.6,
+      "elevazione_deg": 43.1
+     },
+     "edifici": {
+      "asse": 0.2269,
+      "sinistra": 0.2073,
+      "destra": 0.41,
+      "asse_ufficiale": 0.2269
+     },
+     "con_vegetazione": {
+      "asse": 0.2556,
+      "sinistra": 0.2346,
+      "destra": 0.4529,
+      "asse_ufficiale": 0.2556
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 108.2,
+      "elevazione_deg": 48.3
+     },
+     "edifici": {
+      "asse": 0.1714,
+      "sinistra": 0.1799,
+      "destra": 0.2054,
+      "asse_ufficiale": 0.1714
+     },
+     "con_vegetazione": {
+      "asse": 0.2072,
+      "sinistra": 0.2105,
+      "destra": 0.2917,
+      "asse_ufficiale": 0.2072
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 115.9,
+      "elevazione_deg": 53.3
+     },
+     "edifici": {
+      "asse": 0.1635,
+      "sinistra": 0.1707,
+      "destra": 0.1624,
+      "asse_ufficiale": 0.1635
+     },
+     "con_vegetazione": {
+      "asse": 0.225,
+      "sinistra": 0.2258,
+      "destra": 0.279,
+      "asse_ufficiale": 0.225
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 125.2,
+      "elevazione_deg": 58.0
+     },
+     "edifici": {
+      "asse": 0.161,
+      "sinistra": 0.2029,
+      "destra": 0.1488,
+      "asse_ufficiale": 0.161
+     },
+     "con_vegetazione": {
+      "asse": 0.2314,
+      "sinistra": 0.27,
+      "destra": 0.2259,
+      "asse_ufficiale": 0.2314
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 136.5,
+      "elevazione_deg": 62.1
+     },
+     "edifici": {
+      "asse": 0.155,
+      "sinistra": 0.305,
+      "destra": 0.0396,
+      "asse_ufficiale": 0.155
+     },
+     "con_vegetazione": {
+      "asse": 0.2259,
+      "sinistra": 0.3739,
+      "destra": 0.106,
+      "asse_ufficiale": 0.2259
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 150.5,
+      "elevazione_deg": 65.3
+     },
+     "edifici": {
+      "asse": 0.1581,
+      "sinistra": 0.3657,
+      "destra": 0.0024,
+      "asse_ufficiale": 0.1581
+     },
+     "con_vegetazione": {
+      "asse": 0.229,
+      "sinistra": 0.4443,
+      "destra": 0.0645,
+      "asse_ufficiale": 0.229
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 167.2,
+      "elevazione_deg": 67.3
+     },
+     "edifici": {
+      "asse": 0.1625,
+      "sinistra": 0.4129,
+      "destra": 0.0036,
+      "asse_ufficiale": 0.1625
+     },
+     "con_vegetazione": {
+      "asse": 0.2316,
+      "sinistra": 0.4951,
+      "destra": 0.0621,
+      "asse_ufficiale": 0.2316
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 185.4,
+      "elevazione_deg": 67.6
+     },
+     "edifici": {
+      "asse": 0.0391,
+      "sinistra": 0.4081,
+      "destra": 0.0142,
+      "asse_ufficiale": 0.0391
+     },
+     "con_vegetazione": {
+      "asse": 0.1054,
+      "sinistra": 0.4965,
+      "destra": 0.0691,
+      "asse_ufficiale": 0.1054
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.0447,
+      "sinistra": 0.2651,
+      "destra": 0.0176,
+      "asse_ufficiale": 0.0447
+     },
+     "con_vegetazione": {
+      "asse": 0.1058,
+      "sinistra": 0.3599,
+      "destra": 0.0728,
+      "asse_ufficiale": 0.1058
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.1,
+      "elevazione_deg": 63.5
+     },
+     "edifici": {
+      "asse": 0.0481,
+      "sinistra": 0.2628,
+      "destra": 0.0572,
+      "asse_ufficiale": 0.0481
+     },
+     "con_vegetazione": {
+      "asse": 0.1109,
+      "sinistra": 0.3608,
+      "destra": 0.1142,
+      "asse_ufficiale": 0.1109
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 230.5,
+      "elevazione_deg": 59.7
+     },
+     "edifici": {
+      "asse": 0.0454,
+      "sinistra": 0.2703,
+      "destra": 0.1912,
+      "asse_ufficiale": 0.0454
+     },
+     "con_vegetazione": {
+      "asse": 0.1087,
+      "sinistra": 0.3769,
+      "destra": 0.2498,
+      "asse_ufficiale": 0.1087
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 240.5,
+      "elevazione_deg": 55.2
+     },
+     "edifici": {
+      "asse": 0.1114,
+      "sinistra": 0.2675,
+      "destra": 0.2538,
+      "asse_ufficiale": 0.1114
+     },
+     "con_vegetazione": {
+      "asse": 0.1753,
+      "sinistra": 0.3804,
+      "destra": 0.3087,
+      "asse_ufficiale": 0.1753
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.7,
+      "elevazione_deg": 50.3
+     },
+     "edifici": {
+      "asse": 0.2653,
+      "sinistra": 0.3003,
+      "destra": 0.2762,
+      "asse_ufficiale": 0.2653
+     },
+     "con_vegetazione": {
+      "asse": 0.3272,
+      "sinistra": 0.4077,
+      "destra": 0.3268,
+      "asse_ufficiale": 0.3272
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 255.7,
+      "elevazione_deg": 45.2
+     },
+     "edifici": {
+      "asse": 0.3281,
+      "sinistra": 0.4798,
+      "destra": 0.2944,
+      "asse_ufficiale": 0.3281
+     },
+     "con_vegetazione": {
+      "asse": 0.3857,
+      "sinistra": 0.5891,
+      "destra": 0.3402,
+      "asse_ufficiale": 0.3857
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 261.9,
+      "elevazione_deg": 39.9
+     },
+     "edifici": {
+      "asse": 0.3737,
+      "sinistra": 0.524,
+      "destra": 0.3305,
+      "asse_ufficiale": 0.3737
+     },
+     "con_vegetazione": {
+      "asse": 0.4299,
+      "sinistra": 0.6289,
+      "destra": 0.3681,
+      "asse_ufficiale": 0.4299
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 267.5,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.3952,
+      "sinistra": 0.5533,
+      "destra": 0.3359,
+      "asse_ufficiale": 0.3952
+     },
+     "con_vegetazione": {
+      "asse": 0.4484,
+      "sinistra": 0.6562,
+      "destra": 0.3664,
+      "asse_ufficiale": 0.4484
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 272.7,
+      "elevazione_deg": 29.1
+     },
+     "edifici": {
+      "asse": 0.4186,
+      "sinistra": 0.5715,
+      "destra": 0.3585,
+      "asse_ufficiale": 0.4186
+     },
+     "con_vegetazione": {
+      "asse": 0.4566,
+      "sinistra": 0.6524,
+      "destra": 0.3743,
+      "asse_ufficiale": 0.4566
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 277.6,
+      "elevazione_deg": 23.7
+     },
+     "edifici": {
+      "asse": 0.4198,
+      "sinistra": 0.6349,
+      "destra": 0.4075,
+      "asse_ufficiale": 0.4198
+     },
+     "con_vegetazione": {
+      "asse": 0.4356,
+      "sinistra": 0.6817,
+      "destra": 0.4075,
+      "asse_ufficiale": 0.4356
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 282.4,
+      "elevazione_deg": 18.4
+     },
+     "edifici": {
+      "asse": 0.4069,
+      "sinistra": 0.6618,
+      "destra": 0.4003,
+      "asse_ufficiale": 0.4069
+     },
+     "con_vegetazione": {
+      "asse": 0.4069,
+      "sinistra": 0.6921,
+      "destra": 0.4003,
+      "asse_ufficiale": 0.4069
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 96.5,
+      "elevazione_deg": 11.0
+     },
+     "edifici": {
+      "asse": 0.6588,
+      "sinistra": 0.6683,
+      "destra": 0.6602,
+      "asse_ufficiale": 0.6588
+     },
+     "con_vegetazione": {
+      "asse": 0.6851,
+      "sinistra": 0.6898,
+      "destra": 0.7247,
+      "asse_ufficiale": 0.6851
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.9,
+      "elevazione_deg": 16.3
+     },
+     "edifici": {
+      "asse": 0.6012,
+      "sinistra": 0.3362,
+      "destra": 0.5786,
+      "asse_ufficiale": 0.6012
+     },
+     "con_vegetazione": {
+      "asse": 0.6339,
+      "sinistra": 0.3895,
+      "destra": 0.6146,
+      "asse_ufficiale": 0.6339
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 107.6,
+      "elevazione_deg": 21.6
+     },
+     "edifici": {
+      "asse": 0.2092,
+      "sinistra": 0.1993,
+      "destra": 0.4529,
+      "asse_ufficiale": 0.2092
+     },
+     "con_vegetazione": {
+      "asse": 0.2613,
+      "sinistra": 0.2446,
+      "destra": 0.5191,
+      "asse_ufficiale": 0.2613
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 113.6,
+      "elevazione_deg": 26.6
+     },
+     "edifici": {
+      "asse": 0.1749,
+      "sinistra": 0.2074,
+      "destra": 0.183,
+      "asse_ufficiale": 0.1749
+     },
+     "con_vegetazione": {
+      "asse": 0.2772,
+      "sinistra": 0.3017,
+      "destra": 0.3757,
+      "asse_ufficiale": 0.2772
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 120.2,
+      "elevazione_deg": 31.5
+     },
+     "edifici": {
+      "asse": 0.1677,
+      "sinistra": 0.3828,
+      "destra": 0.1724,
+      "asse_ufficiale": 0.1677
+     },
+     "con_vegetazione": {
+      "asse": 0.2753,
+      "sinistra": 0.4854,
+      "destra": 0.2943,
+      "asse_ufficiale": 0.2753
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 127.4,
+      "elevazione_deg": 36.0
+     },
+     "edifici": {
+      "asse": 0.197,
+      "sinistra": 0.4336,
+      "destra": 0.1662,
+      "asse_ufficiale": 0.197
+     },
+     "con_vegetazione": {
+      "asse": 0.3012,
+      "sinistra": 0.5609,
+      "destra": 0.2822,
+      "asse_ufficiale": 0.3012
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 135.4,
+      "elevazione_deg": 40.0
+     },
+     "edifici": {
+      "asse": 0.2132,
+      "sinistra": 0.4381,
+      "destra": 0.172,
+      "asse_ufficiale": 0.2132
+     },
+     "con_vegetazione": {
+      "asse": 0.3089,
+      "sinistra": 0.5728,
+      "destra": 0.275,
+      "asse_ufficiale": 0.3089
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 144.3,
+      "elevazione_deg": 43.5
+     },
+     "edifici": {
+      "asse": 0.2701,
+      "sinistra": 0.4493,
+      "destra": 0.2154,
+      "asse_ufficiale": 0.2701
+     },
+     "con_vegetazione": {
+      "asse": 0.3791,
+      "sinistra": 0.6066,
+      "destra": 0.3078,
+      "asse_ufficiale": 0.3791
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 154.1,
+      "elevazione_deg": 46.3
+     },
+     "edifici": {
+      "asse": 0.2817,
+      "sinistra": 0.461,
+      "destra": 0.2132,
+      "asse_ufficiale": 0.2817
+     },
+     "con_vegetazione": {
+      "asse": 0.3941,
+      "sinistra": 0.6353,
+      "destra": 0.3009,
+      "asse_ufficiale": 0.3941
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 164.8,
+      "elevazione_deg": 48.2
+     },
+     "edifici": {
+      "asse": 0.3202,
+      "sinistra": 0.477,
+      "destra": 0.2017,
+      "asse_ufficiale": 0.3202
+     },
+     "con_vegetazione": {
+      "asse": 0.434,
+      "sinistra": 0.6562,
+      "destra": 0.2858,
+      "asse_ufficiale": 0.434
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 176.1,
+      "elevazione_deg": 49.1
+     },
+     "edifici": {
+      "asse": 0.3095,
+      "sinistra": 0.4933,
+      "destra": 0.0945,
+      "asse_ufficiale": 0.3095
+     },
+     "con_vegetazione": {
+      "asse": 0.4247,
+      "sinistra": 0.6741,
+      "destra": 0.1747,
+      "asse_ufficiale": 0.4247
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 187.5,
+      "elevazione_deg": 48.9
+     },
+     "edifici": {
+      "asse": 0.3073,
+      "sinistra": 0.4825,
+      "destra": 0.0984,
+      "asse_ufficiale": 0.3073
+     },
+     "con_vegetazione": {
+      "asse": 0.4392,
+      "sinistra": 0.6637,
+      "destra": 0.1732,
+      "asse_ufficiale": 0.4392
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 198.6,
+      "elevazione_deg": 47.7
+     },
+     "edifici": {
+      "asse": 0.215,
+      "sinistra": 0.4693,
+      "destra": 0.1063,
+      "asse_ufficiale": 0.215
+     },
+     "con_vegetazione": {
+      "asse": 0.3694,
+      "sinistra": 0.6511,
+      "destra": 0.1739,
+      "asse_ufficiale": 0.3694
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 209.0,
+      "elevazione_deg": 45.5
+     },
+     "edifici": {
+      "asse": 0.2345,
+      "sinistra": 0.315,
+      "destra": 0.1242,
+      "asse_ufficiale": 0.2345
+     },
+     "con_vegetazione": {
+      "asse": 0.4,
+      "sinistra": 0.4973,
+      "destra": 0.198,
+      "asse_ufficiale": 0.4
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.6,
+      "elevazione_deg": 42.4
+     },
+     "edifici": {
+      "asse": 0.3261,
+      "sinistra": 0.3679,
+      "destra": 0.3657,
+      "asse_ufficiale": 0.3261
+     },
+     "con_vegetazione": {
+      "asse": 0.4951,
+      "sinistra": 0.5506,
+      "destra": 0.4472,
+      "asse_ufficiale": 0.4951
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 227.1,
+      "elevazione_deg": 38.7
+     },
+     "edifici": {
+      "asse": 0.3493,
+      "sinistra": 0.3773,
+      "destra": 0.4605,
+      "asse_ufficiale": 0.3493
+     },
+     "con_vegetazione": {
+      "asse": 0.5257,
+      "sinistra": 0.5606,
+      "destra": 0.5473,
+      "asse_ufficiale": 0.5257
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 234.9,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.5658,
+      "sinistra": 0.5332,
+      "destra": 0.4734,
+      "asse_ufficiale": 0.5658
+     },
+     "con_vegetazione": {
+      "asse": 0.7445,
+      "sinistra": 0.7195,
+      "destra": 0.5726,
+      "asse_ufficiale": 0.7445
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 241.9,
+      "elevazione_deg": 29.9
+     },
+     "edifici": {
+      "asse": 0.6484,
+      "sinistra": 0.6539,
+      "destra": 0.5577,
+      "asse_ufficiale": 0.6484
+     },
+     "con_vegetazione": {
+      "asse": 0.8436,
+      "sinistra": 0.8447,
+      "destra": 0.6666,
+      "asse_ufficiale": 0.8436
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.2,
+      "elevazione_deg": 25.0
+     },
+     "edifici": {
+      "asse": 0.7361,
+      "sinistra": 0.7485,
+      "destra": 0.6228,
+      "asse_ufficiale": 0.7361
+     },
+     "con_vegetazione": {
+      "asse": 0.9315,
+      "sinistra": 0.9366,
+      "destra": 0.7601,
+      "asse_ufficiale": 0.9315
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 254.1,
+      "elevazione_deg": 19.9
+     },
+     "edifici": {
+      "asse": 0.7623,
+      "sinistra": 0.7849,
+      "destra": 0.7209,
+      "asse_ufficiale": 0.7623
+     },
+     "con_vegetazione": {
+      "asse": 0.9557,
+      "sinistra": 0.9648,
+      "destra": 0.8836,
+      "asse_ufficiale": 0.9557
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 259.7,
+      "elevazione_deg": 14.6
+     },
+     "edifici": {
+      "asse": 0.7865,
+      "sinistra": 0.7994,
+      "destra": 0.7835,
+      "asse_ufficiale": 0.7865
+     },
+     "con_vegetazione": {
+      "asse": 0.9741,
+      "sinistra": 0.9708,
+      "destra": 0.9725,
+      "asse_ufficiale": 0.9741
+     },
+     "lato_piu_in_ombra": "pari"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 265.1,
+      "elevazione_deg": 9.2
+     },
+     "edifici": {
+      "asse": 0.8608,
+      "sinistra": 0.8576,
+      "destra": 0.869,
+      "asse_ufficiale": 0.8608
+     },
+     "con_vegetazione": {
+      "asse": 1.0,
+      "sinistra": 1.0,
+      "destra": 1.0,
+      "asse_ufficiale": 1.0
+     },
+     "lato_piu_in_ombra": "pari"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "sole_basso_fuori_supporto",
+      "azimut_deg": 270.3,
+      "elevazione_deg": 3.8
+     }
+    }
+   ]
+  },
+  "RC2": {
+   "descrizione": "Fermata T2 Torre degli Agli verso la Biblioteca Filippo Buonarroti (Viale Guidoni 188)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 716.9,
+   "metri_sull_asse": 62.1,
+   "metri_marciapiede_osm": {
+    "sinistra": 255.8,
+    "destra": 341.8
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 399.0,
+    "destra": 313.0
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 80.4,
+      "elevazione_deg": 21.5
+     },
+     "edifici": {
+      "asse": 0.4264,
+      "sinistra": 0.401,
+      "destra": 0.4724,
+      "asse_ufficiale": 0.4264
+     },
+     "con_vegetazione": {
+      "asse": 0.5594,
+      "sinistra": 0.5112,
+      "destra": 0.6446,
+      "asse_ufficiale": 0.5594
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 85.2,
+      "elevazione_deg": 26.9
+     },
+     "edifici": {
+      "asse": 0.3734,
+      "sinistra": 0.3054,
+      "destra": 0.4208,
+      "asse_ufficiale": 0.3734
+     },
+     "con_vegetazione": {
+      "asse": 0.4925,
+      "sinistra": 0.3944,
+      "destra": 0.5511,
+      "asse_ufficiale": 0.4925
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 90.3,
+      "elevazione_deg": 32.3
+     },
+     "edifici": {
+      "asse": 0.3418,
+      "sinistra": 0.2606,
+      "destra": 0.3967,
+      "asse_ufficiale": 0.3418
+     },
+     "con_vegetazione": {
+      "asse": 0.4506,
+      "sinistra": 0.3753,
+      "destra": 0.5124,
+      "asse_ufficiale": 0.4506
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 95.7,
+      "elevazione_deg": 37.7
+     },
+     "edifici": {
+      "asse": 0.2737,
+      "sinistra": 0.2367,
+      "destra": 0.371,
+      "asse_ufficiale": 0.2737
+     },
+     "con_vegetazione": {
+      "asse": 0.3805,
+      "sinistra": 0.3987,
+      "destra": 0.4636,
+      "asse_ufficiale": 0.3805
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.6,
+      "elevazione_deg": 43.1
+     },
+     "edifici": {
+      "asse": 0.2489,
+      "sinistra": 0.2169,
+      "destra": 0.3415,
+      "asse_ufficiale": 0.2489
+     },
+     "con_vegetazione": {
+      "asse": 0.3331,
+      "sinistra": 0.3828,
+      "destra": 0.4141,
+      "asse_ufficiale": 0.3331
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 108.2,
+      "elevazione_deg": 48.3
+     },
+     "edifici": {
+      "asse": 0.2267,
+      "sinistra": 0.2037,
+      "destra": 0.2839,
+      "asse_ufficiale": 0.2267
+     },
+     "con_vegetazione": {
+      "asse": 0.2944,
+      "sinistra": 0.3592,
+      "destra": 0.3493,
+      "asse_ufficiale": 0.2944
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 115.9,
+      "elevazione_deg": 53.3
+     },
+     "edifici": {
+      "asse": 0.2119,
+      "sinistra": 0.1912,
+      "destra": 0.2444,
+      "asse_ufficiale": 0.2119
+     },
+     "con_vegetazione": {
+      "asse": 0.262,
+      "sinistra": 0.3313,
+      "destra": 0.2937,
+      "asse_ufficiale": 0.262
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 125.2,
+      "elevazione_deg": 58.0
+     },
+     "edifici": {
+      "asse": 0.2047,
+      "sinistra": 0.1718,
+      "destra": 0.2235,
+      "asse_ufficiale": 0.2047
+     },
+     "con_vegetazione": {
+      "asse": 0.2314,
+      "sinistra": 0.3041,
+      "destra": 0.2618,
+      "asse_ufficiale": 0.2314
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 136.5,
+      "elevazione_deg": 62.1
+     },
+     "edifici": {
+      "asse": 0.2004,
+      "sinistra": 0.0516,
+      "destra": 0.2187,
+      "asse_ufficiale": 0.2004
+     },
+     "con_vegetazione": {
+      "asse": 0.2333,
+      "sinistra": 0.2055,
+      "destra": 0.252,
+      "asse_ufficiale": 0.2333
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 150.5,
+      "elevazione_deg": 65.3
+     },
+     "edifici": {
+      "asse": 0.179,
+      "sinistra": 0.0225,
+      "destra": 0.2099,
+      "asse_ufficiale": 0.179
+     },
+     "con_vegetazione": {
+      "asse": 0.2127,
+      "sinistra": 0.2007,
+      "destra": 0.2528,
+      "asse_ufficiale": 0.2127
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 167.2,
+      "elevazione_deg": 67.3
+     },
+     "edifici": {
+      "asse": 0.0196,
+      "sinistra": 0.0199,
+      "destra": 0.1981,
+      "asse_ufficiale": 0.0196
+     },
+     "con_vegetazione": {
+      "asse": 0.0568,
+      "sinistra": 0.2151,
+      "destra": 0.245,
+      "asse_ufficiale": 0.0568
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 185.4,
+      "elevazione_deg": 67.6
+     },
+     "edifici": {
+      "asse": 0.0,
+      "sinistra": 0.0237,
+      "destra": 0.125,
+      "asse_ufficiale": 0.0
+     },
+     "con_vegetazione": {
+      "asse": 0.035,
+      "sinistra": 0.2193,
+      "destra": 0.1732,
+      "asse_ufficiale": 0.035
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.0,
+      "sinistra": 0.0396,
+      "destra": 0.029,
+      "asse_ufficiale": 0.0
+     },
+     "con_vegetazione": {
+      "asse": 0.0417,
+      "sinistra": 0.2351,
+      "destra": 0.0974,
+      "asse_ufficiale": 0.0417
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.1,
+      "elevazione_deg": 63.5
+     },
+     "edifici": {
+      "asse": 0.0171,
+      "sinistra": 0.0518,
+      "destra": 0.0232,
+      "asse_ufficiale": 0.0171
+     },
+     "con_vegetazione": {
+      "asse": 0.0747,
+      "sinistra": 0.2554,
+      "destra": 0.0964,
+      "asse_ufficiale": 0.0747
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 230.5,
+      "elevazione_deg": 59.7
+     },
+     "edifici": {
+      "asse": 0.0497,
+      "sinistra": 0.181,
+      "destra": 0.0494,
+      "asse_ufficiale": 0.0497
+     },
+     "con_vegetazione": {
+      "asse": 0.1332,
+      "sinistra": 0.4204,
+      "destra": 0.1284,
+      "asse_ufficiale": 0.1332
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 240.5,
+      "elevazione_deg": 55.2
+     },
+     "edifici": {
+      "asse": 0.1434,
+      "sinistra": 0.213,
+      "destra": 0.0803,
+      "asse_ufficiale": 0.1434
+     },
+     "con_vegetazione": {
+      "asse": 0.242,
+      "sinistra": 0.4665,
+      "destra": 0.1533,
+      "asse_ufficiale": 0.242
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.7,
+      "elevazione_deg": 50.3
+     },
+     "edifici": {
+      "asse": 0.2225,
+      "sinistra": 0.283,
+      "destra": 0.1778,
+      "asse_ufficiale": 0.2225
+     },
+     "con_vegetazione": {
+      "asse": 0.3327,
+      "sinistra": 0.5316,
+      "destra": 0.2434,
+      "asse_ufficiale": 0.3327
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 255.7,
+      "elevazione_deg": 45.2
+     },
+     "edifici": {
+      "asse": 0.2723,
+      "sinistra": 0.3496,
+      "destra": 0.2339,
+      "asse_ufficiale": 0.2723
+     },
+     "con_vegetazione": {
+      "asse": 0.3777,
+      "sinistra": 0.5772,
+      "destra": 0.2921,
+      "asse_ufficiale": 0.3777
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 261.9,
+      "elevazione_deg": 39.9
+     },
+     "edifici": {
+      "asse": 0.3408,
+      "sinistra": 0.3954,
+      "destra": 0.2634,
+      "asse_ufficiale": 0.3408
+     },
+     "con_vegetazione": {
+      "asse": 0.4304,
+      "sinistra": 0.6108,
+      "destra": 0.3334,
+      "asse_ufficiale": 0.4304
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 267.5,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.4012,
+      "sinistra": 0.4317,
+      "destra": 0.3535,
+      "asse_ufficiale": 0.4012
+     },
+     "con_vegetazione": {
+      "asse": 0.4758,
+      "sinistra": 0.6404,
+      "destra": 0.4307,
+      "asse_ufficiale": 0.4758
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 272.7,
+      "elevazione_deg": 29.1
+     },
+     "edifici": {
+      "asse": 0.413,
+      "sinistra": 0.4348,
+      "destra": 0.3808,
+      "asse_ufficiale": 0.413
+     },
+     "con_vegetazione": {
+      "asse": 0.4769,
+      "sinistra": 0.6339,
+      "destra": 0.4601,
+      "asse_ufficiale": 0.4769
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 277.6,
+      "elevazione_deg": 23.7
+     },
+     "edifici": {
+      "asse": 0.4145,
+      "sinistra": 0.4375,
+      "destra": 0.389,
+      "asse_ufficiale": 0.4145
+     },
+     "con_vegetazione": {
+      "asse": 0.4712,
+      "sinistra": 0.5771,
+      "destra": 0.4661,
+      "asse_ufficiale": 0.4712
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 282.4,
+      "elevazione_deg": 18.4
+     },
+     "edifici": {
+      "asse": 0.4176,
+      "sinistra": 0.44,
+      "destra": 0.4076,
+      "asse_ufficiale": 0.4176
+     },
+     "con_vegetazione": {
+      "asse": 0.4645,
+      "sinistra": 0.4946,
+      "destra": 0.549,
+      "asse_ufficiale": 0.4645
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 96.5,
+      "elevazione_deg": 11.0
+     },
+     "edifici": {
+      "asse": 0.5384,
+      "sinistra": 0.5202,
+      "destra": 0.5448,
+      "asse_ufficiale": 0.5384
+     },
+     "con_vegetazione": {
+      "asse": 0.6398,
+      "sinistra": 0.8196,
+      "destra": 0.6673,
+      "asse_ufficiale": 0.6398
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.9,
+      "elevazione_deg": 16.3
+     },
+     "edifici": {
+      "asse": 0.4879,
+      "sinistra": 0.3907,
+      "destra": 0.5113,
+      "asse_ufficiale": 0.4879
+     },
+     "con_vegetazione": {
+      "asse": 0.6136,
+      "sinistra": 0.6937,
+      "destra": 0.6043,
+      "asse_ufficiale": 0.6136
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 107.6,
+      "elevazione_deg": 21.6
+     },
+     "edifici": {
+      "asse": 0.4112,
+      "sinistra": 0.3559,
+      "destra": 0.4832,
+      "asse_ufficiale": 0.4112
+     },
+     "con_vegetazione": {
+      "asse": 0.5798,
+      "sinistra": 0.6528,
+      "destra": 0.5543,
+      "asse_ufficiale": 0.5798
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 113.6,
+      "elevazione_deg": 26.6
+     },
+     "edifici": {
+      "asse": 0.3248,
+      "sinistra": 0.249,
+      "destra": 0.4309,
+      "asse_ufficiale": 0.3248
+     },
+     "con_vegetazione": {
+      "asse": 0.5497,
+      "sinistra": 0.54,
+      "destra": 0.5157,
+      "asse_ufficiale": 0.5497
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 120.2,
+      "elevazione_deg": 31.5
+     },
+     "edifici": {
+      "asse": 0.2647,
+      "sinistra": 0.2218,
+      "destra": 0.3243,
+      "asse_ufficiale": 0.2647
+     },
+     "con_vegetazione": {
+      "asse": 0.4887,
+      "sinistra": 0.4711,
+      "destra": 0.3998,
+      "asse_ufficiale": 0.4887
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 127.4,
+      "elevazione_deg": 36.0
+     },
+     "edifici": {
+      "asse": 0.2263,
+      "sinistra": 0.223,
+      "destra": 0.2908,
+      "asse_ufficiale": 0.2263
+     },
+     "con_vegetazione": {
+      "asse": 0.4491,
+      "sinistra": 0.4332,
+      "destra": 0.3716,
+      "asse_ufficiale": 0.4491
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 135.4,
+      "elevazione_deg": 40.0
+     },
+     "edifici": {
+      "asse": 0.2273,
+      "sinistra": 0.2212,
+      "destra": 0.2754,
+      "asse_ufficiale": 0.2273
+     },
+     "con_vegetazione": {
+      "asse": 0.4389,
+      "sinistra": 0.418,
+      "destra": 0.3565,
+      "asse_ufficiale": 0.4389
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 144.3,
+      "elevazione_deg": 43.5
+     },
+     "edifici": {
+      "asse": 0.2254,
+      "sinistra": 0.2052,
+      "destra": 0.2636,
+      "asse_ufficiale": 0.2254
+     },
+     "con_vegetazione": {
+      "asse": 0.4199,
+      "sinistra": 0.4181,
+      "destra": 0.3287,
+      "asse_ufficiale": 0.4199
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 154.1,
+      "elevazione_deg": 46.3
+     },
+     "edifici": {
+      "asse": 0.2237,
+      "sinistra": 0.1994,
+      "destra": 0.2449,
+      "asse_ufficiale": 0.2237
+     },
+     "con_vegetazione": {
+      "asse": 0.3956,
+      "sinistra": 0.4112,
+      "destra": 0.3094,
+      "asse_ufficiale": 0.3956
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 164.8,
+      "elevazione_deg": 48.2
+     },
+     "edifici": {
+      "asse": 0.2179,
+      "sinistra": 0.1883,
+      "destra": 0.2364,
+      "asse_ufficiale": 0.2179
+     },
+     "con_vegetazione": {
+      "asse": 0.3599,
+      "sinistra": 0.3825,
+      "destra": 0.2974,
+      "asse_ufficiale": 0.3599
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 176.1,
+      "elevazione_deg": 49.1
+     },
+     "edifici": {
+      "asse": 0.2033,
+      "sinistra": 0.0639,
+      "destra": 0.2299,
+      "asse_ufficiale": 0.2033
+     },
+     "con_vegetazione": {
+      "asse": 0.3304,
+      "sinistra": 0.2647,
+      "destra": 0.3075,
+      "asse_ufficiale": 0.3304
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 187.5,
+      "elevazione_deg": 48.9
+     },
+     "edifici": {
+      "asse": 0.0914,
+      "sinistra": 0.0279,
+      "destra": 0.2161,
+      "asse_ufficiale": 0.0914
+     },
+     "con_vegetazione": {
+      "asse": 0.2333,
+      "sinistra": 0.2314,
+      "destra": 0.2909,
+      "asse_ufficiale": 0.2333
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 198.6,
+      "elevazione_deg": 47.7
+     },
+     "edifici": {
+      "asse": 0.0,
+      "sinistra": 0.0679,
+      "destra": 0.1445,
+      "asse_ufficiale": 0.0
+     },
+     "con_vegetazione": {
+      "asse": 0.1777,
+      "sinistra": 0.2637,
+      "destra": 0.2257,
+      "asse_ufficiale": 0.1777
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 209.0,
+      "elevazione_deg": 45.5
+     },
+     "edifici": {
+      "asse": 0.0363,
+      "sinistra": 0.1022,
+      "destra": 0.0527,
+      "asse_ufficiale": 0.0363
+     },
+     "con_vegetazione": {
+      "asse": 0.2234,
+      "sinistra": 0.283,
+      "destra": 0.1651,
+      "asse_ufficiale": 0.2234
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.6,
+      "elevazione_deg": 42.4
+     },
+     "edifici": {
+      "asse": 0.0812,
+      "sinistra": 0.196,
+      "destra": 0.0833,
+      "asse_ufficiale": 0.0812
+     },
+     "con_vegetazione": {
+      "asse": 0.2637,
+      "sinistra": 0.3922,
+      "destra": 0.2346,
+      "asse_ufficiale": 0.2637
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 227.1,
+      "elevazione_deg": 38.7
+     },
+     "edifici": {
+      "asse": 0.2109,
+      "sinistra": 0.3349,
+      "destra": 0.1225,
+      "asse_ufficiale": 0.2109
+     },
+     "con_vegetazione": {
+      "asse": 0.394,
+      "sinistra": 0.5328,
+      "destra": 0.2884,
+      "asse_ufficiale": 0.394
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 234.9,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.3378,
+      "sinistra": 0.427,
+      "destra": 0.2709,
+      "asse_ufficiale": 0.3378
+     },
+     "con_vegetazione": {
+      "asse": 0.5103,
+      "sinistra": 0.6159,
+      "destra": 0.4021,
+      "asse_ufficiale": 0.5103
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 241.9,
+      "elevazione_deg": 29.9
+     },
+     "edifici": {
+      "asse": 0.4464,
+      "sinistra": 0.5049,
+      "destra": 0.3627,
+      "asse_ufficiale": 0.4464
+     },
+     "con_vegetazione": {
+      "asse": 0.6448,
+      "sinistra": 0.6918,
+      "destra": 0.4879,
+      "asse_ufficiale": 0.6448
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.2,
+      "elevazione_deg": 25.0
+     },
+     "edifici": {
+      "asse": 0.5461,
+      "sinistra": 0.5651,
+      "destra": 0.4726,
+      "asse_ufficiale": 0.5461
+     },
+     "con_vegetazione": {
+      "asse": 0.7493,
+      "sinistra": 0.7513,
+      "destra": 0.5969,
+      "asse_ufficiale": 0.7493
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 254.1,
+      "elevazione_deg": 19.9
+     },
+     "edifici": {
+      "asse": 0.5423,
+      "sinistra": 0.5505,
+      "destra": 0.5357,
+      "asse_ufficiale": 0.5423
+     },
+     "con_vegetazione": {
+      "asse": 0.7919,
+      "sinistra": 0.7761,
+      "destra": 0.6694,
+      "asse_ufficiale": 0.7919
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 259.7,
+      "elevazione_deg": 14.6
+     },
+     "edifici": {
+      "asse": 0.5184,
+      "sinistra": 0.5369,
+      "destra": 0.5095,
+      "asse_ufficiale": 0.5184
+     },
+     "con_vegetazione": {
+      "asse": 0.7948,
+      "sinistra": 0.8071,
+      "destra": 0.7148,
+      "asse_ufficiale": 0.7948
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 265.1,
+      "elevazione_deg": 9.2
+     },
+     "edifici": {
+      "asse": 0.5842,
+      "sinistra": 0.5855,
+      "destra": 0.5825,
+      "asse_ufficiale": 0.5842
+     },
+     "con_vegetazione": {
+      "asse": 0.8818,
+      "sinistra": 0.9041,
+      "destra": 0.8669,
+      "asse_ufficiale": 0.8818
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "sole_basso_fuori_supporto",
+      "azimut_deg": 270.3,
+      "elevazione_deg": 3.8
+     }
+    }
+   ]
+  },
+  "RC3": {
+   "descrizione": "Ingresso D15 del Polo verso il rifugio climatico più vicino per rete (ent_rif_01545_0)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 995.7,
+   "metri_sull_asse": 402.5,
+   "metri_marciapiede_osm": {
+    "sinistra": 160.4,
+    "destra": 107.1
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 432.7,
+    "destra": 486.1
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 80.4,
+      "elevazione_deg": 21.5
+     },
+     "edifici": {
+      "asse": 0.7237,
+      "sinistra": 0.7352,
+      "destra": 0.718,
+      "asse_ufficiale": 0.7237
+     },
+     "con_vegetazione": {
+      "asse": 0.8358,
+      "sinistra": 0.8548,
+      "destra": 0.8339,
+      "asse_ufficiale": 0.8358
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 85.2,
+      "elevazione_deg": 26.9
+     },
+     "edifici": {
+      "asse": 0.6594,
+      "sinistra": 0.6652,
+      "destra": 0.6481,
+      "asse_ufficiale": 0.6594
+     },
+     "con_vegetazione": {
+      "asse": 0.7716,
+      "sinistra": 0.7797,
+      "destra": 0.7462,
+      "asse_ufficiale": 0.7716
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 90.3,
+      "elevazione_deg": 32.3
+     },
+     "edifici": {
+      "asse": 0.5745,
+      "sinistra": 0.5934,
+      "destra": 0.5657,
+      "asse_ufficiale": 0.5745
+     },
+     "con_vegetazione": {
+      "asse": 0.6753,
+      "sinistra": 0.7173,
+      "destra": 0.6353,
+      "asse_ufficiale": 0.6753
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 95.7,
+      "elevazione_deg": 37.7
+     },
+     "edifici": {
+      "asse": 0.5394,
+      "sinistra": 0.551,
+      "destra": 0.5367,
+      "asse_ufficiale": 0.5394
+     },
+     "con_vegetazione": {
+      "asse": 0.6292,
+      "sinistra": 0.6746,
+      "destra": 0.598,
+      "asse_ufficiale": 0.6292
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.6,
+      "elevazione_deg": 43.1
+     },
+     "edifici": {
+      "asse": 0.5089,
+      "sinistra": 0.5235,
+      "destra": 0.497,
+      "asse_ufficiale": 0.5089
+     },
+     "con_vegetazione": {
+      "asse": 0.572,
+      "sinistra": 0.6405,
+      "destra": 0.5386,
+      "asse_ufficiale": 0.572
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 108.2,
+      "elevazione_deg": 48.3
+     },
+     "edifici": {
+      "asse": 0.5005,
+      "sinistra": 0.5158,
+      "destra": 0.4896,
+      "asse_ufficiale": 0.5005
+     },
+     "con_vegetazione": {
+      "asse": 0.5561,
+      "sinistra": 0.6157,
+      "destra": 0.5205,
+      "asse_ufficiale": 0.5561
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 115.9,
+      "elevazione_deg": 53.3
+     },
+     "edifici": {
+      "asse": 0.4811,
+      "sinistra": 0.5054,
+      "destra": 0.4473,
+      "asse_ufficiale": 0.4811
+     },
+     "con_vegetazione": {
+      "asse": 0.5298,
+      "sinistra": 0.58,
+      "destra": 0.4703,
+      "asse_ufficiale": 0.5298
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 125.2,
+      "elevazione_deg": 58.0
+     },
+     "edifici": {
+      "asse": 0.4618,
+      "sinistra": 0.489,
+      "destra": 0.3987,
+      "asse_ufficiale": 0.4618
+     },
+     "con_vegetazione": {
+      "asse": 0.5041,
+      "sinistra": 0.5495,
+      "destra": 0.4218,
+      "asse_ufficiale": 0.5041
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 136.5,
+      "elevazione_deg": 62.1
+     },
+     "edifici": {
+      "asse": 0.4016,
+      "sinistra": 0.4662,
+      "destra": 0.3066,
+      "asse_ufficiale": 0.4016
+     },
+     "con_vegetazione": {
+      "asse": 0.4425,
+      "sinistra": 0.518,
+      "destra": 0.3421,
+      "asse_ufficiale": 0.4425
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 150.5,
+      "elevazione_deg": 65.3
+     },
+     "edifici": {
+      "asse": 0.3778,
+      "sinistra": 0.4359,
+      "destra": 0.2407,
+      "asse_ufficiale": 0.3778
+     },
+     "con_vegetazione": {
+      "asse": 0.4137,
+      "sinistra": 0.4899,
+      "destra": 0.27,
+      "asse_ufficiale": 0.4137
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 167.2,
+      "elevazione_deg": 67.3
+     },
+     "edifici": {
+      "asse": 0.2427,
+      "sinistra": 0.3911,
+      "destra": 0.233,
+      "asse_ufficiale": 0.2427
+     },
+     "con_vegetazione": {
+      "asse": 0.2812,
+      "sinistra": 0.4444,
+      "destra": 0.2656,
+      "asse_ufficiale": 0.2812
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 185.4,
+      "elevazione_deg": 67.6
+     },
+     "edifici": {
+      "asse": 0.2278,
+      "sinistra": 0.2357,
+      "destra": 0.2176,
+      "asse_ufficiale": 0.2278
+     },
+     "con_vegetazione": {
+      "asse": 0.2571,
+      "sinistra": 0.2928,
+      "destra": 0.2551,
+      "asse_ufficiale": 0.2571
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.228,
+      "sinistra": 0.2301,
+      "destra": 0.2161,
+      "asse_ufficiale": 0.228
+     },
+     "con_vegetazione": {
+      "asse": 0.2586,
+      "sinistra": 0.2912,
+      "destra": 0.2597,
+      "asse_ufficiale": 0.2586
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.1,
+      "elevazione_deg": 63.5
+     },
+     "edifici": {
+      "asse": 0.1576,
+      "sinistra": 0.1724,
+      "destra": 0.1612,
+      "asse_ufficiale": 0.1576
+     },
+     "con_vegetazione": {
+      "asse": 0.1881,
+      "sinistra": 0.2272,
+      "destra": 0.2095,
+      "asse_ufficiale": 0.1881
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 230.5,
+      "elevazione_deg": 59.7
+     },
+     "edifici": {
+      "asse": 0.212,
+      "sinistra": 0.2301,
+      "destra": 0.2126,
+      "asse_ufficiale": 0.212
+     },
+     "con_vegetazione": {
+      "asse": 0.2513,
+      "sinistra": 0.2814,
+      "destra": 0.2762,
+      "asse_ufficiale": 0.2513
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 240.5,
+      "elevazione_deg": 55.2
+     },
+     "edifici": {
+      "asse": 0.2327,
+      "sinistra": 0.2439,
+      "destra": 0.2272,
+      "asse_ufficiale": 0.2327
+     },
+     "con_vegetazione": {
+      "asse": 0.2796,
+      "sinistra": 0.2868,
+      "destra": 0.4584,
+      "asse_ufficiale": 0.2796
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.7,
+      "elevazione_deg": 50.3
+     },
+     "edifici": {
+      "asse": 0.2332,
+      "sinistra": 0.2458,
+      "destra": 0.2279,
+      "asse_ufficiale": 0.2332
+     },
+     "con_vegetazione": {
+      "asse": 0.304,
+      "sinistra": 0.2829,
+      "destra": 0.5419,
+      "asse_ufficiale": 0.304
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 255.7,
+      "elevazione_deg": 45.2
+     },
+     "edifici": {
+      "asse": 0.2355,
+      "sinistra": 0.2393,
+      "destra": 0.2293,
+      "asse_ufficiale": 0.2355
+     },
+     "con_vegetazione": {
+      "asse": 0.4796,
+      "sinistra": 0.2944,
+      "destra": 0.5764,
+      "asse_ufficiale": 0.4796
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 261.9,
+      "elevazione_deg": 39.9
+     },
+     "edifici": {
+      "asse": 0.2389,
+      "sinistra": 0.2437,
+      "destra": 0.2506,
+      "asse_ufficiale": 0.2389
+     },
+     "con_vegetazione": {
+      "asse": 0.5636,
+      "sinistra": 0.4585,
+      "destra": 0.6106,
+      "asse_ufficiale": 0.5636
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 267.5,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.2729,
+      "sinistra": 0.2503,
+      "destra": 0.2715,
+      "asse_ufficiale": 0.2729
+     },
+     "con_vegetazione": {
+      "asse": 0.6374,
+      "sinistra": 0.5544,
+      "destra": 0.6434,
+      "asse_ufficiale": 0.6374
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 272.7,
+      "elevazione_deg": 29.1
+     },
+     "edifici": {
+      "asse": 0.3149,
+      "sinistra": 0.3113,
+      "destra": 0.3133,
+      "asse_ufficiale": 0.3149
+     },
+     "con_vegetazione": {
+      "asse": 0.6773,
+      "sinistra": 0.6605,
+      "destra": 0.6373,
+      "asse_ufficiale": 0.6773
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 277.6,
+      "elevazione_deg": 23.7
+     },
+     "edifici": {
+      "asse": 0.4734,
+      "sinistra": 0.382,
+      "destra": 0.4864,
+      "asse_ufficiale": 0.4734
+     },
+     "con_vegetazione": {
+      "asse": 0.6891,
+      "sinistra": 0.69,
+      "destra": 0.6827,
+      "asse_ufficiale": 0.6891
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 282.4,
+      "elevazione_deg": 18.4
+     },
+     "edifici": {
+      "asse": 0.5025,
+      "sinistra": 0.4959,
+      "destra": 0.5172,
+      "asse_ufficiale": 0.5025
+     },
+     "con_vegetazione": {
+      "asse": 0.6895,
+      "sinistra": 0.7064,
+      "destra": 0.6719,
+      "asse_ufficiale": 0.6895
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 96.5,
+      "elevazione_deg": 11.0
+     },
+     "edifici": {
+      "asse": 0.7632,
+      "sinistra": 0.7582,
+      "destra": 0.7746,
+      "asse_ufficiale": 0.7632
+     },
+     "con_vegetazione": {
+      "asse": 0.8734,
+      "sinistra": 0.9073,
+      "destra": 0.8607,
+      "asse_ufficiale": 0.8734
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.9,
+      "elevazione_deg": 16.3
+     },
+     "edifici": {
+      "asse": 0.741,
+      "sinistra": 0.7597,
+      "destra": 0.7296,
+      "asse_ufficiale": 0.741
+     },
+     "con_vegetazione": {
+      "asse": 0.8306,
+      "sinistra": 0.8622,
+      "destra": 0.8075,
+      "asse_ufficiale": 0.8306
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 107.6,
+      "elevazione_deg": 21.6
+     },
+     "edifici": {
+      "asse": 0.6219,
+      "sinistra": 0.6341,
+      "destra": 0.6182,
+      "asse_ufficiale": 0.6219
+     },
+     "con_vegetazione": {
+      "asse": 0.7354,
+      "sinistra": 0.7692,
+      "destra": 0.69,
+      "asse_ufficiale": 0.7354
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 113.6,
+      "elevazione_deg": 26.6
+     },
+     "edifici": {
+      "asse": 0.5702,
+      "sinistra": 0.5833,
+      "destra": 0.5628,
+      "asse_ufficiale": 0.5702
+     },
+     "con_vegetazione": {
+      "asse": 0.6555,
+      "sinistra": 0.7166,
+      "destra": 0.6254,
+      "asse_ufficiale": 0.6555
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 120.2,
+      "elevazione_deg": 31.5
+     },
+     "edifici": {
+      "asse": 0.539,
+      "sinistra": 0.5557,
+      "destra": 0.529,
+      "asse_ufficiale": 0.539
+     },
+     "con_vegetazione": {
+      "asse": 0.6081,
+      "sinistra": 0.651,
+      "destra": 0.5824,
+      "asse_ufficiale": 0.6081
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 127.4,
+      "elevazione_deg": 36.0
+     },
+     "edifici": {
+      "asse": 0.5415,
+      "sinistra": 0.5508,
+      "destra": 0.5337,
+      "asse_ufficiale": 0.5415
+     },
+     "con_vegetazione": {
+      "asse": 0.5903,
+      "sinistra": 0.6259,
+      "destra": 0.6079,
+      "asse_ufficiale": 0.5903
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 135.4,
+      "elevazione_deg": 40.0
+     },
+     "edifici": {
+      "asse": 0.5827,
+      "sinistra": 0.5987,
+      "destra": 0.5754,
+      "asse_ufficiale": 0.5827
+     },
+     "con_vegetazione": {
+      "asse": 0.642,
+      "sinistra": 0.6591,
+      "destra": 0.648,
+      "asse_ufficiale": 0.642
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 144.3,
+      "elevazione_deg": 43.5
+     },
+     "edifici": {
+      "asse": 0.5892,
+      "sinistra": 0.6099,
+      "destra": 0.5705,
+      "asse_ufficiale": 0.5892
+     },
+     "con_vegetazione": {
+      "asse": 0.6628,
+      "sinistra": 0.6794,
+      "destra": 0.6391,
+      "asse_ufficiale": 0.6628
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 154.1,
+      "elevazione_deg": 46.3
+     },
+     "edifici": {
+      "asse": 0.5908,
+      "sinistra": 0.6092,
+      "destra": 0.5679,
+      "asse_ufficiale": 0.5908
+     },
+     "con_vegetazione": {
+      "asse": 0.6655,
+      "sinistra": 0.686,
+      "destra": 0.6296,
+      "asse_ufficiale": 0.6655
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 164.8,
+      "elevazione_deg": 48.2
+     },
+     "edifici": {
+      "asse": 0.5521,
+      "sinistra": 0.5941,
+      "destra": 0.4989,
+      "asse_ufficiale": 0.5521
+     },
+     "con_vegetazione": {
+      "asse": 0.6258,
+      "sinistra": 0.6685,
+      "destra": 0.5502,
+      "asse_ufficiale": 0.6258
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 176.1,
+      "elevazione_deg": 49.1
+     },
+     "edifici": {
+      "asse": 0.4675,
+      "sinistra": 0.5449,
+      "destra": 0.4102,
+      "asse_ufficiale": 0.4675
+     },
+     "con_vegetazione": {
+      "asse": 0.5501,
+      "sinistra": 0.614,
+      "destra": 0.4771,
+      "asse_ufficiale": 0.5501
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 187.5,
+      "elevazione_deg": 48.9
+     },
+     "edifici": {
+      "asse": 0.3661,
+      "sinistra": 0.4562,
+      "destra": 0.2505,
+      "asse_ufficiale": 0.3661
+     },
+     "con_vegetazione": {
+      "asse": 0.4549,
+      "sinistra": 0.5416,
+      "destra": 0.2974,
+      "asse_ufficiale": 0.4549
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 198.6,
+      "elevazione_deg": 47.7
+     },
+     "edifici": {
+      "asse": 0.242,
+      "sinistra": 0.3145,
+      "destra": 0.2481,
+      "asse_ufficiale": 0.242
+     },
+     "con_vegetazione": {
+      "asse": 0.3175,
+      "sinistra": 0.4092,
+      "destra": 0.3038,
+      "asse_ufficiale": 0.3175
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 209.0,
+      "elevazione_deg": 45.5
+     },
+     "edifici": {
+      "asse": 0.2568,
+      "sinistra": 0.2633,
+      "destra": 0.2671,
+      "asse_ufficiale": 0.2568
+     },
+     "con_vegetazione": {
+      "asse": 0.3233,
+      "sinistra": 0.3662,
+      "destra": 0.324,
+      "asse_ufficiale": 0.3233
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.6,
+      "elevazione_deg": 42.4
+     },
+     "edifici": {
+      "asse": 0.2754,
+      "sinistra": 0.2605,
+      "destra": 0.2825,
+      "asse_ufficiale": 0.2754
+     },
+     "con_vegetazione": {
+      "asse": 0.3337,
+      "sinistra": 0.3625,
+      "destra": 0.3488,
+      "asse_ufficiale": 0.3337
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 227.1,
+      "elevazione_deg": 38.7
+     },
+     "edifici": {
+      "asse": 0.3088,
+      "sinistra": 0.2966,
+      "destra": 0.3194,
+      "asse_ufficiale": 0.3088
+     },
+     "con_vegetazione": {
+      "asse": 0.3762,
+      "sinistra": 0.3728,
+      "destra": 0.4884,
+      "asse_ufficiale": 0.3762
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 234.9,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.3796,
+      "sinistra": 0.3672,
+      "destra": 0.3818,
+      "asse_ufficiale": 0.3796
+     },
+     "con_vegetazione": {
+      "asse": 0.4501,
+      "sinistra": 0.4056,
+      "destra": 0.6892,
+      "asse_ufficiale": 0.4501
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 241.9,
+      "elevazione_deg": 29.9
+     },
+     "edifici": {
+      "asse": 0.3852,
+      "sinistra": 0.4018,
+      "destra": 0.3777,
+      "asse_ufficiale": 0.3852
+     },
+     "con_vegetazione": {
+      "asse": 0.6532,
+      "sinistra": 0.517,
+      "destra": 0.7253,
+      "asse_ufficiale": 0.6532
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.2,
+      "elevazione_deg": 25.0
+     },
+     "edifici": {
+      "asse": 0.3777,
+      "sinistra": 0.3883,
+      "destra": 0.3774,
+      "asse_ufficiale": 0.3777
+     },
+     "con_vegetazione": {
+      "asse": 0.7192,
+      "sinistra": 0.6682,
+      "destra": 0.7294,
+      "asse_ufficiale": 0.7192
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 254.1,
+      "elevazione_deg": 19.9
+     },
+     "edifici": {
+      "asse": 0.4098,
+      "sinistra": 0.4147,
+      "destra": 0.4141,
+      "asse_ufficiale": 0.4098
+     },
+     "con_vegetazione": {
+      "asse": 0.7438,
+      "sinistra": 0.7593,
+      "destra": 0.7431,
+      "asse_ufficiale": 0.7438
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 259.7,
+      "elevazione_deg": 14.6
+     },
+     "edifici": {
+      "asse": 0.6308,
+      "sinistra": 0.6212,
+      "destra": 0.6445,
+      "asse_ufficiale": 0.6308
+     },
+     "con_vegetazione": {
+      "asse": 0.8015,
+      "sinistra": 0.7881,
+      "destra": 0.809,
+      "asse_ufficiale": 0.8015
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 265.1,
+      "elevazione_deg": 9.2
+     },
+     "edifici": {
+      "asse": 0.7841,
+      "sinistra": 0.7753,
+      "destra": 0.7963,
+      "asse_ufficiale": 0.7841
+     },
+     "con_vegetazione": {
+      "asse": 0.9314,
+      "sinistra": 0.9383,
+      "destra": 0.9264,
+      "asse_ufficiale": 0.9314
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "sole_basso_fuori_supporto",
+      "azimut_deg": 270.3,
+      "elevazione_deg": 3.8
+     }
+    }
+   ]
+  },
+  "RC4": {
+   "descrizione": "Civico di R05 verso il rifugio climatico più vicino per rete (ent_rib_6_0)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 1070.5,
+   "metri_sull_asse": 155.7,
+   "metri_marciapiede_osm": {
+    "sinistra": 8.0,
+    "destra": 575.7
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 906.9,
+    "destra": 339.1
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 4.09
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 80.4,
+      "elevazione_deg": 21.5
+     },
+     "edifici": {
+      "asse": 0.4328,
+      "sinistra": 0.2926,
+      "destra": 0.5042,
+      "asse_ufficiale": 0.4328
+     },
+     "con_vegetazione": {
+      "asse": 0.6376,
+      "sinistra": 0.4687,
+      "destra": 0.7337,
+      "asse_ufficiale": 0.6376
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 85.2,
+      "elevazione_deg": 26.9
+     },
+     "edifici": {
+      "asse": 0.2312,
+      "sinistra": 0.1861,
+      "destra": 0.3782,
+      "asse_ufficiale": 0.2312
+     },
+     "con_vegetazione": {
+      "asse": 0.3926,
+      "sinistra": 0.3672,
+      "destra": 0.5791,
+      "asse_ufficiale": 0.3926
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 90.3,
+      "elevazione_deg": 32.3
+     },
+     "edifici": {
+      "asse": 0.1619,
+      "sinistra": 0.1464,
+      "destra": 0.3425,
+      "asse_ufficiale": 0.1619
+     },
+     "con_vegetazione": {
+      "asse": 0.2627,
+      "sinistra": 0.2864,
+      "destra": 0.5302,
+      "asse_ufficiale": 0.2627
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 95.7,
+      "elevazione_deg": 37.7
+     },
+     "edifici": {
+      "asse": 0.1209,
+      "sinistra": 0.0886,
+      "destra": 0.2277,
+      "asse_ufficiale": 0.1209
+     },
+     "con_vegetazione": {
+      "asse": 0.2282,
+      "sinistra": 0.2342,
+      "destra": 0.452,
+      "asse_ufficiale": 0.2282
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.6,
+      "elevazione_deg": 43.1
+     },
+     "edifici": {
+      "asse": 0.0475,
+      "sinistra": 0.0489,
+      "destra": 0.2216,
+      "asse_ufficiale": 0.0475
+     },
+     "con_vegetazione": {
+      "asse": 0.1635,
+      "sinistra": 0.1942,
+      "destra": 0.4155,
+      "asse_ufficiale": 0.1635
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 108.2,
+      "elevazione_deg": 48.3
+     },
+     "edifici": {
+      "asse": 0.0397,
+      "sinistra": 0.0397,
+      "destra": 0.1311,
+      "asse_ufficiale": 0.0397
+     },
+     "con_vegetazione": {
+      "asse": 0.1548,
+      "sinistra": 0.1809,
+      "destra": 0.2848,
+      "asse_ufficiale": 0.1548
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 115.9,
+      "elevazione_deg": 53.3
+     },
+     "edifici": {
+      "asse": 0.0384,
+      "sinistra": 0.0384,
+      "destra": 0.0384,
+      "asse_ufficiale": 0.0384
+     },
+     "con_vegetazione": {
+      "asse": 0.1541,
+      "sinistra": 0.1733,
+      "destra": 0.1678,
+      "asse_ufficiale": 0.1541
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 125.2,
+      "elevazione_deg": 58.0
+     },
+     "edifici": {
+      "asse": 0.0409,
+      "sinistra": 0.0409,
+      "destra": 0.0409,
+      "asse_ufficiale": 0.0409
+     },
+     "con_vegetazione": {
+      "asse": 0.153,
+      "sinistra": 0.1769,
+      "destra": 0.1489,
+      "asse_ufficiale": 0.153
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 136.5,
+      "elevazione_deg": 62.1
+     },
+     "edifici": {
+      "asse": 0.049,
+      "sinistra": 0.049,
+      "destra": 0.049,
+      "asse_ufficiale": 0.049
+     },
+     "con_vegetazione": {
+      "asse": 0.1591,
+      "sinistra": 0.1854,
+      "destra": 0.1411,
+      "asse_ufficiale": 0.1591
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 150.5,
+      "elevazione_deg": 65.3
+     },
+     "edifici": {
+      "asse": 0.0483,
+      "sinistra": 0.0483,
+      "destra": 0.0483,
+      "asse_ufficiale": 0.0483
+     },
+     "con_vegetazione": {
+      "asse": 0.1582,
+      "sinistra": 0.1854,
+      "destra": 0.1297,
+      "asse_ufficiale": 0.1582
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 167.2,
+      "elevazione_deg": 67.3
+     },
+     "edifici": {
+      "asse": 0.0468,
+      "sinistra": 0.0468,
+      "destra": 0.0468,
+      "asse_ufficiale": 0.0468
+     },
+     "con_vegetazione": {
+      "asse": 0.1579,
+      "sinistra": 0.1864,
+      "destra": 0.1175,
+      "asse_ufficiale": 0.1579
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 185.4,
+      "elevazione_deg": 67.6
+     },
+     "edifici": {
+      "asse": 0.0091,
+      "sinistra": 0.0091,
+      "destra": 0.0091,
+      "asse_ufficiale": 0.0091
+     },
+     "con_vegetazione": {
+      "asse": 0.1209,
+      "sinistra": 0.152,
+      "destra": 0.0721,
+      "asse_ufficiale": 0.1209
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.0076,
+      "sinistra": 0.0076,
+      "destra": 0.0076,
+      "asse_ufficiale": 0.0076
+     },
+     "con_vegetazione": {
+      "asse": 0.1201,
+      "sinistra": 0.1525,
+      "destra": 0.0692,
+      "asse_ufficiale": 0.1201
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.1,
+      "elevazione_deg": 63.5
+     },
+     "edifici": {
+      "asse": 0.0069,
+      "sinistra": 0.0069,
+      "destra": 0.0069,
+      "asse_ufficiale": 0.0069
+     },
+     "con_vegetazione": {
+      "asse": 0.1193,
+      "sinistra": 0.1537,
+      "destra": 0.0681,
+      "asse_ufficiale": 0.1193
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 230.5,
+      "elevazione_deg": 59.7
+     },
+     "edifici": {
+      "asse": 0.0063,
+      "sinistra": 0.0063,
+      "destra": 0.0063,
+      "asse_ufficiale": 0.0063
+     },
+     "con_vegetazione": {
+      "asse": 0.1217,
+      "sinistra": 0.1585,
+      "destra": 0.0713,
+      "asse_ufficiale": 0.1217
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 240.5,
+      "elevazione_deg": 55.2
+     },
+     "edifici": {
+      "asse": 0.0056,
+      "sinistra": 0.0056,
+      "destra": 0.0056,
+      "asse_ufficiale": 0.0056
+     },
+     "con_vegetazione": {
+      "asse": 0.12,
+      "sinistra": 0.1618,
+      "destra": 0.0717,
+      "asse_ufficiale": 0.12
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.7,
+      "elevazione_deg": 50.3
+     },
+     "edifici": {
+      "asse": 0.0049,
+      "sinistra": 0.0049,
+      "destra": 0.0049,
+      "asse_ufficiale": 0.0049
+     },
+     "con_vegetazione": {
+      "asse": 0.1165,
+      "sinistra": 0.1616,
+      "destra": 0.0707,
+      "asse_ufficiale": 0.1165
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 255.7,
+      "elevazione_deg": 45.2
+     },
+     "edifici": {
+      "asse": 0.0302,
+      "sinistra": 0.0302,
+      "destra": 0.0302,
+      "asse_ufficiale": 0.0302
+     },
+     "con_vegetazione": {
+      "asse": 0.1471,
+      "sinistra": 0.198,
+      "destra": 0.1019,
+      "asse_ufficiale": 0.1471
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 261.9,
+      "elevazione_deg": 39.9
+     },
+     "edifici": {
+      "asse": 0.0411,
+      "sinistra": 0.0415,
+      "destra": 0.0411,
+      "asse_ufficiale": 0.0411
+     },
+     "con_vegetazione": {
+      "asse": 0.161,
+      "sinistra": 0.2186,
+      "destra": 0.119,
+      "asse_ufficiale": 0.161
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 267.5,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.0428,
+      "sinistra": 0.0514,
+      "destra": 0.0428,
+      "asse_ufficiale": 0.0428
+     },
+     "con_vegetazione": {
+      "asse": 0.1718,
+      "sinistra": 0.2416,
+      "destra": 0.1341,
+      "asse_ufficiale": 0.1718
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 272.7,
+      "elevazione_deg": 29.1
+     },
+     "edifici": {
+      "asse": 0.0442,
+      "sinistra": 0.0621,
+      "destra": 0.0441,
+      "asse_ufficiale": 0.0442
+     },
+     "con_vegetazione": {
+      "asse": 0.195,
+      "sinistra": 0.2853,
+      "destra": 0.1842,
+      "asse_ufficiale": 0.195
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 277.6,
+      "elevazione_deg": 23.7
+     },
+     "edifici": {
+      "asse": 0.0506,
+      "sinistra": 0.0742,
+      "destra": 0.0454,
+      "asse_ufficiale": 0.0506
+     },
+     "con_vegetazione": {
+      "asse": 0.2173,
+      "sinistra": 0.322,
+      "destra": 0.227,
+      "asse_ufficiale": 0.2173
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 282.4,
+      "elevazione_deg": 18.4
+     },
+     "edifici": {
+      "asse": 0.0528,
+      "sinistra": 0.0764,
+      "destra": 0.0803,
+      "asse_ufficiale": 0.0528
+     },
+     "con_vegetazione": {
+      "asse": 0.2276,
+      "sinistra": 0.3639,
+      "destra": 0.3493,
+      "asse_ufficiale": 0.2276
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 96.5,
+      "elevazione_deg": 11.0
+     },
+     "edifici": {
+      "asse": 0.3691,
+      "sinistra": 0.3719,
+      "destra": 0.5041,
+      "asse_ufficiale": 0.3691
+     },
+     "con_vegetazione": {
+      "asse": 0.5432,
+      "sinistra": 0.61,
+      "destra": 0.7172,
+      "asse_ufficiale": 0.5432
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.9,
+      "elevazione_deg": 16.3
+     },
+     "edifici": {
+      "asse": 0.2391,
+      "sinistra": 0.2287,
+      "destra": 0.2697,
+      "asse_ufficiale": 0.2391
+     },
+     "con_vegetazione": {
+      "asse": 0.4568,
+      "sinistra": 0.4236,
+      "destra": 0.5651,
+      "asse_ufficiale": 0.4568
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 107.6,
+      "elevazione_deg": 21.6
+     },
+     "edifici": {
+      "asse": 0.1013,
+      "sinistra": 0.0507,
+      "destra": 0.2339,
+      "asse_ufficiale": 0.1013
+     },
+     "con_vegetazione": {
+      "asse": 0.2579,
+      "sinistra": 0.2542,
+      "destra": 0.4347,
+      "asse_ufficiale": 0.2579
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 113.6,
+      "elevazione_deg": 26.6
+     },
+     "edifici": {
+      "asse": 0.04,
+      "sinistra": 0.04,
+      "destra": 0.1461,
+      "asse_ufficiale": 0.04
+     },
+     "con_vegetazione": {
+      "asse": 0.1806,
+      "sinistra": 0.2583,
+      "destra": 0.2994,
+      "asse_ufficiale": 0.1806
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 120.2,
+      "elevazione_deg": 31.5
+     },
+     "edifici": {
+      "asse": 0.0495,
+      "sinistra": 0.0495,
+      "destra": 0.0495,
+      "asse_ufficiale": 0.0495
+     },
+     "con_vegetazione": {
+      "asse": 0.1928,
+      "sinistra": 0.2655,
+      "destra": 0.1751,
+      "asse_ufficiale": 0.1928
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 127.4,
+      "elevazione_deg": 36.0
+     },
+     "edifici": {
+      "asse": 0.0493,
+      "sinistra": 0.0493,
+      "destra": 0.0493,
+      "asse_ufficiale": 0.0493
+     },
+     "con_vegetazione": {
+      "asse": 0.1856,
+      "sinistra": 0.2514,
+      "destra": 0.1655,
+      "asse_ufficiale": 0.1856
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 135.4,
+      "elevazione_deg": 40.0
+     },
+     "edifici": {
+      "asse": 0.049,
+      "sinistra": 0.049,
+      "destra": 0.049,
+      "asse_ufficiale": 0.049
+     },
+     "con_vegetazione": {
+      "asse": 0.1793,
+      "sinistra": 0.2493,
+      "destra": 0.1677,
+      "asse_ufficiale": 0.1793
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 144.3,
+      "elevazione_deg": 43.5
+     },
+     "edifici": {
+      "asse": 0.0486,
+      "sinistra": 0.0486,
+      "destra": 0.0486,
+      "asse_ufficiale": 0.0486
+     },
+     "con_vegetazione": {
+      "asse": 0.1734,
+      "sinistra": 0.2439,
+      "destra": 0.1706,
+      "asse_ufficiale": 0.1734
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 154.1,
+      "elevazione_deg": 46.3
+     },
+     "edifici": {
+      "asse": 0.0481,
+      "sinistra": 0.0481,
+      "destra": 0.0481,
+      "asse_ufficiale": 0.0481
+     },
+     "con_vegetazione": {
+      "asse": 0.1737,
+      "sinistra": 0.2424,
+      "destra": 0.1729,
+      "asse_ufficiale": 0.1737
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 164.8,
+      "elevazione_deg": 48.2
+     },
+     "edifici": {
+      "asse": 0.0471,
+      "sinistra": 0.0471,
+      "destra": 0.0471,
+      "asse_ufficiale": 0.0471
+     },
+     "con_vegetazione": {
+      "asse": 0.1729,
+      "sinistra": 0.2462,
+      "destra": 0.168,
+      "asse_ufficiale": 0.1729
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 176.1,
+      "elevazione_deg": 49.1
+     },
+     "edifici": {
+      "asse": 0.0498,
+      "sinistra": 0.0706,
+      "destra": 0.0451,
+      "asse_ufficiale": 0.0498
+     },
+     "con_vegetazione": {
+      "asse": 0.1755,
+      "sinistra": 0.274,
+      "destra": 0.1647,
+      "asse_ufficiale": 0.1755
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 187.5,
+      "elevazione_deg": 48.9
+     },
+     "edifici": {
+      "asse": 0.0681,
+      "sinistra": 0.0719,
+      "destra": 0.0409,
+      "asse_ufficiale": 0.0681
+     },
+     "con_vegetazione": {
+      "asse": 0.1954,
+      "sinistra": 0.2755,
+      "destra": 0.1596,
+      "asse_ufficiale": 0.1954
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 198.6,
+      "elevazione_deg": 47.7
+     },
+     "edifici": {
+      "asse": 0.0433,
+      "sinistra": 0.0432,
+      "destra": 0.0376,
+      "asse_ufficiale": 0.0433
+     },
+     "con_vegetazione": {
+      "asse": 0.1746,
+      "sinistra": 0.2565,
+      "destra": 0.1592,
+      "asse_ufficiale": 0.1746
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 209.0,
+      "elevazione_deg": 45.5
+     },
+     "edifici": {
+      "asse": 0.0431,
+      "sinistra": 0.043,
+      "destra": 0.0434,
+      "asse_ufficiale": 0.0431
+     },
+     "con_vegetazione": {
+      "asse": 0.1812,
+      "sinistra": 0.2742,
+      "destra": 0.1692,
+      "asse_ufficiale": 0.1812
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.6,
+      "elevazione_deg": 42.4
+     },
+     "edifici": {
+      "asse": 0.043,
+      "sinistra": 0.0432,
+      "destra": 0.0436,
+      "asse_ufficiale": 0.043
+     },
+     "con_vegetazione": {
+      "asse": 0.1961,
+      "sinistra": 0.2936,
+      "destra": 0.1757,
+      "asse_ufficiale": 0.1961
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 227.1,
+      "elevazione_deg": 38.7
+     },
+     "edifici": {
+      "asse": 0.0426,
+      "sinistra": 0.0428,
+      "destra": 0.0439,
+      "asse_ufficiale": 0.0426
+     },
+     "con_vegetazione": {
+      "asse": 0.2137,
+      "sinistra": 0.3106,
+      "destra": 0.1823,
+      "asse_ufficiale": 0.2137
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 234.9,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.0691,
+      "sinistra": 0.0866,
+      "destra": 0.0681,
+      "asse_ufficiale": 0.0691
+     },
+     "con_vegetazione": {
+      "asse": 0.2697,
+      "sinistra": 0.3739,
+      "destra": 0.2132,
+      "asse_ufficiale": 0.2697
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 241.9,
+      "elevazione_deg": 29.9
+     },
+     "edifici": {
+      "asse": 0.0924,
+      "sinistra": 0.0957,
+      "destra": 0.0824,
+      "asse_ufficiale": 0.0924
+     },
+     "con_vegetazione": {
+      "asse": 0.3249,
+      "sinistra": 0.4023,
+      "destra": 0.2391,
+      "asse_ufficiale": 0.3249
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.2,
+      "elevazione_deg": 25.0
+     },
+     "edifici": {
+      "asse": 0.1017,
+      "sinistra": 0.1063,
+      "destra": 0.0956,
+      "asse_ufficiale": 0.1017
+     },
+     "con_vegetazione": {
+      "asse": 0.3771,
+      "sinistra": 0.4442,
+      "destra": 0.2663,
+      "asse_ufficiale": 0.3771
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 254.1,
+      "elevazione_deg": 19.9
+     },
+     "edifici": {
+      "asse": 0.0977,
+      "sinistra": 0.1034,
+      "destra": 0.0974,
+      "asse_ufficiale": 0.0977
+     },
+     "con_vegetazione": {
+      "asse": 0.4446,
+      "sinistra": 0.4839,
+      "destra": 0.3028,
+      "asse_ufficiale": 0.4446
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 259.7,
+      "elevazione_deg": 14.6
+     },
+     "edifici": {
+      "asse": 0.1659,
+      "sinistra": 0.2061,
+      "destra": 0.1512,
+      "asse_ufficiale": 0.1659
+     },
+     "con_vegetazione": {
+      "asse": 0.5915,
+      "sinistra": 0.5842,
+      "destra": 0.4081,
+      "asse_ufficiale": 0.5915
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 265.1,
+      "elevazione_deg": 9.2
+     },
+     "edifici": {
+      "asse": 0.318,
+      "sinistra": 0.3882,
+      "destra": 0.2842,
+      "asse_ufficiale": 0.318
+     },
+     "con_vegetazione": {
+      "asse": 0.7699,
+      "sinistra": 0.6373,
+      "destra": 0.6514,
+      "asse_ufficiale": 0.7699
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "sole_basso_fuori_supporto",
+      "azimut_deg": 270.3,
+      "elevazione_deg": 3.8
+     }
+    }
+   ]
+  },
+  "RC5": {
+   "descrizione": "Accesso della scuola primaria Vamba verso il rifugio climatico più vicino per rete (ent_rib_6_0)",
+   "verso": "sinistra e destra nel verso di marcia, dall'origine alla destinazione della descrizione",
+   "lunghezza_asse_m": 629.8,
+   "metri_sull_asse": 193.9,
+   "metri_marciapiede_osm": {
+    "sinistra": 184.1,
+    "destra": 195.3
+   },
+   "metri_valore_dichiarato": {
+    "sinistra": 251.8,
+    "destra": 240.6
+   },
+   "distanza_mediana_m": {
+    "sinistra": 3.0,
+    "destra": 3.0
+   },
+   "istanti": [
+    {
+     "data": "2026-07-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 80.4,
+      "elevazione_deg": 21.5
+     },
+     "edifici": {
+      "asse": 0.3053,
+      "sinistra": 0.2858,
+      "destra": 0.3744,
+      "asse_ufficiale": 0.3053
+     },
+     "con_vegetazione": {
+      "asse": 0.4351,
+      "sinistra": 0.3837,
+      "destra": 0.5694,
+      "asse_ufficiale": 0.4351
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 85.2,
+      "elevazione_deg": 26.9
+     },
+     "edifici": {
+      "asse": 0.2698,
+      "sinistra": 0.2547,
+      "destra": 0.2842,
+      "asse_ufficiale": 0.2698
+     },
+     "con_vegetazione": {
+      "asse": 0.3744,
+      "sinistra": 0.3459,
+      "destra": 0.4322,
+      "asse_ufficiale": 0.3744
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 90.3,
+      "elevazione_deg": 32.3
+     },
+     "edifici": {
+      "asse": 0.2572,
+      "sinistra": 0.261,
+      "destra": 0.285,
+      "asse_ufficiale": 0.2572
+     },
+     "con_vegetazione": {
+      "asse": 0.3316,
+      "sinistra": 0.3764,
+      "destra": 0.4027,
+      "asse_ufficiale": 0.3316
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 95.7,
+      "elevazione_deg": 37.7
+     },
+     "edifici": {
+      "asse": 0.2586,
+      "sinistra": 0.2696,
+      "destra": 0.2828,
+      "asse_ufficiale": 0.2586
+     },
+     "con_vegetazione": {
+      "asse": 0.2983,
+      "sinistra": 0.4098,
+      "destra": 0.3482,
+      "asse_ufficiale": 0.2983
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.6,
+      "elevazione_deg": 43.1
+     },
+     "edifici": {
+      "asse": 0.231,
+      "sinistra": 0.2479,
+      "destra": 0.245,
+      "asse_ufficiale": 0.231
+     },
+     "con_vegetazione": {
+      "asse": 0.2437,
+      "sinistra": 0.4023,
+      "destra": 0.2803,
+      "asse_ufficiale": 0.2437
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 108.2,
+      "elevazione_deg": 48.3
+     },
+     "edifici": {
+      "asse": 0.2351,
+      "sinistra": 0.2387,
+      "destra": 0.2268,
+      "asse_ufficiale": 0.2351
+     },
+     "con_vegetazione": {
+      "asse": 0.2403,
+      "sinistra": 0.3911,
+      "destra": 0.2519,
+      "asse_ufficiale": 0.2403
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 115.9,
+      "elevazione_deg": 53.3
+     },
+     "edifici": {
+      "asse": 0.2219,
+      "sinistra": 0.2246,
+      "destra": 0.2267,
+      "asse_ufficiale": 0.2219
+     },
+     "con_vegetazione": {
+      "asse": 0.2271,
+      "sinistra": 0.3701,
+      "destra": 0.2395,
+      "asse_ufficiale": 0.2271
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 125.2,
+      "elevazione_deg": 58.0
+     },
+     "edifici": {
+      "asse": 0.2169,
+      "sinistra": 0.2207,
+      "destra": 0.2283,
+      "asse_ufficiale": 0.2169
+     },
+     "con_vegetazione": {
+      "asse": 0.2248,
+      "sinistra": 0.359,
+      "destra": 0.2358,
+      "asse_ufficiale": 0.2248
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 136.5,
+      "elevazione_deg": 62.1
+     },
+     "edifici": {
+      "asse": 0.2097,
+      "sinistra": 0.1062,
+      "destra": 0.2239,
+      "asse_ufficiale": 0.2097
+     },
+     "con_vegetazione": {
+      "asse": 0.2321,
+      "sinistra": 0.2485,
+      "destra": 0.2361,
+      "asse_ufficiale": 0.2321
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 150.5,
+      "elevazione_deg": 65.3
+     },
+     "edifici": {
+      "asse": 0.2189,
+      "sinistra": 0.1679,
+      "destra": 0.2348,
+      "asse_ufficiale": 0.2189
+     },
+     "con_vegetazione": {
+      "asse": 0.2537,
+      "sinistra": 0.319,
+      "destra": 0.2502,
+      "asse_ufficiale": 0.2537
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 167.2,
+      "elevazione_deg": 67.3
+     },
+     "edifici": {
+      "asse": 0.1526,
+      "sinistra": 0.1549,
+      "destra": 0.2289,
+      "asse_ufficiale": 0.1526
+     },
+     "con_vegetazione": {
+      "asse": 0.192,
+      "sinistra": 0.3104,
+      "destra": 0.2469,
+      "asse_ufficiale": 0.192
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 185.4,
+      "elevazione_deg": 67.6
+     },
+     "edifici": {
+      "asse": 0.1456,
+      "sinistra": 0.1853,
+      "destra": 0.237,
+      "asse_ufficiale": 0.1456
+     },
+     "con_vegetazione": {
+      "asse": 0.1904,
+      "sinistra": 0.3442,
+      "destra": 0.2556,
+      "asse_ufficiale": 0.1904
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 203.0,
+      "elevazione_deg": 66.3
+     },
+     "edifici": {
+      "asse": 0.1479,
+      "sinistra": 0.1948,
+      "destra": 0.1669,
+      "asse_ufficiale": 0.1479
+     },
+     "con_vegetazione": {
+      "asse": 0.2018,
+      "sinistra": 0.3656,
+      "destra": 0.1897,
+      "asse_ufficiale": 0.2018
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.1,
+      "elevazione_deg": 63.5
+     },
+     "edifici": {
+      "asse": 0.1517,
+      "sinistra": 0.1966,
+      "destra": 0.1508,
+      "asse_ufficiale": 0.1517
+     },
+     "con_vegetazione": {
+      "asse": 0.2119,
+      "sinistra": 0.3778,
+      "destra": 0.1768,
+      "asse_ufficiale": 0.2119
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 230.5,
+      "elevazione_deg": 59.7
+     },
+     "edifici": {
+      "asse": 0.1899,
+      "sinistra": 0.253,
+      "destra": 0.1906,
+      "asse_ufficiale": 0.1899
+     },
+     "con_vegetazione": {
+      "asse": 0.2544,
+      "sinistra": 0.4581,
+      "destra": 0.2214,
+      "asse_ufficiale": 0.2544
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 240.5,
+      "elevazione_deg": 55.2
+     },
+     "edifici": {
+      "asse": 0.215,
+      "sinistra": 0.2813,
+      "destra": 0.1924,
+      "asse_ufficiale": 0.215
+     },
+     "con_vegetazione": {
+      "asse": 0.3055,
+      "sinistra": 0.5351,
+      "destra": 0.2255,
+      "asse_ufficiale": 0.3055
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.7,
+      "elevazione_deg": 50.3
+     },
+     "edifici": {
+      "asse": 0.2396,
+      "sinistra": 0.3278,
+      "destra": 0.187,
+      "asse_ufficiale": 0.2396
+     },
+     "con_vegetazione": {
+      "asse": 0.3408,
+      "sinistra": 0.5637,
+      "destra": 0.2214,
+      "asse_ufficiale": 0.3408
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 255.7,
+      "elevazione_deg": 45.2
+     },
+     "edifici": {
+      "asse": 0.2492,
+      "sinistra": 0.3407,
+      "destra": 0.2023,
+      "asse_ufficiale": 0.2492
+     },
+     "con_vegetazione": {
+      "asse": 0.3804,
+      "sinistra": 0.5891,
+      "destra": 0.268,
+      "asse_ufficiale": 0.3804
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 261.9,
+      "elevazione_deg": 39.9
+     },
+     "edifici": {
+      "asse": 0.2822,
+      "sinistra": 0.3466,
+      "destra": 0.2061,
+      "asse_ufficiale": 0.2822
+     },
+     "con_vegetazione": {
+      "asse": 0.4095,
+      "sinistra": 0.61,
+      "destra": 0.3158,
+      "asse_ufficiale": 0.4095
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 267.5,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.2912,
+      "sinistra": 0.3511,
+      "destra": 0.2335,
+      "asse_ufficiale": 0.2912
+     },
+     "con_vegetazione": {
+      "asse": 0.4165,
+      "sinistra": 0.6282,
+      "destra": 0.3547,
+      "asse_ufficiale": 0.4165
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 272.7,
+      "elevazione_deg": 29.1
+     },
+     "edifici": {
+      "asse": 0.2767,
+      "sinistra": 0.3375,
+      "destra": 0.24,
+      "asse_ufficiale": 0.2767
+     },
+     "con_vegetazione": {
+      "asse": 0.4255,
+      "sinistra": 0.637,
+      "destra": 0.3886,
+      "asse_ufficiale": 0.4255
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 277.6,
+      "elevazione_deg": 23.7
+     },
+     "edifici": {
+      "asse": 0.2693,
+      "sinistra": 0.3193,
+      "destra": 0.2262,
+      "asse_ufficiale": 0.2693
+     },
+     "con_vegetazione": {
+      "asse": 0.4459,
+      "sinistra": 0.5936,
+      "destra": 0.4058,
+      "asse_ufficiale": 0.4459
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-07-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 282.4,
+      "elevazione_deg": 18.4
+     },
+     "edifici": {
+      "asse": 0.3142,
+      "sinistra": 0.338,
+      "destra": 0.2591,
+      "asse_ufficiale": 0.3142
+     },
+     "con_vegetazione": {
+      "asse": 0.478,
+      "sinistra": 0.5119,
+      "destra": 0.5472,
+      "asse_ufficiale": 0.478
+     },
+     "lato_piu_in_ombra": "destra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 96.5,
+      "elevazione_deg": 11.0
+     },
+     "edifici": {
+      "asse": 0.3763,
+      "sinistra": 0.3765,
+      "destra": 0.3762,
+      "asse_ufficiale": 0.3763
+     },
+     "con_vegetazione": {
+      "asse": 0.4785,
+      "sinistra": 0.687,
+      "destra": 0.5491,
+      "asse_ufficiale": 0.4785
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "08:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 101.9,
+      "elevazione_deg": 16.3
+     },
+     "edifici": {
+      "asse": 0.3333,
+      "sinistra": 0.3491,
+      "destra": 0.3405,
+      "asse_ufficiale": 0.3333
+     },
+     "con_vegetazione": {
+      "asse": 0.4549,
+      "sinistra": 0.6434,
+      "destra": 0.4199,
+      "asse_ufficiale": 0.4549
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 107.6,
+      "elevazione_deg": 21.6
+     },
+     "edifici": {
+      "asse": 0.3973,
+      "sinistra": 0.4125,
+      "destra": 0.3934,
+      "asse_ufficiale": 0.3973
+     },
+     "con_vegetazione": {
+      "asse": 0.5537,
+      "sinistra": 0.6896,
+      "destra": 0.4535,
+      "asse_ufficiale": 0.5537
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "09:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 113.6,
+      "elevazione_deg": 26.6
+     },
+     "edifici": {
+      "asse": 0.4071,
+      "sinistra": 0.429,
+      "destra": 0.3712,
+      "asse_ufficiale": 0.4071
+     },
+     "con_vegetazione": {
+      "asse": 0.6144,
+      "sinistra": 0.6968,
+      "destra": 0.4416,
+      "asse_ufficiale": 0.6144
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 120.2,
+      "elevazione_deg": 31.5
+     },
+     "edifici": {
+      "asse": 0.4058,
+      "sinistra": 0.4026,
+      "destra": 0.4064,
+      "asse_ufficiale": 0.4058
+     },
+     "con_vegetazione": {
+      "asse": 0.5996,
+      "sinistra": 0.6218,
+      "destra": 0.4607,
+      "asse_ufficiale": 0.5996
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "10:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 127.4,
+      "elevazione_deg": 36.0
+     },
+     "edifici": {
+      "asse": 0.3796,
+      "sinistra": 0.4268,
+      "destra": 0.3826,
+      "asse_ufficiale": 0.3796
+     },
+     "con_vegetazione": {
+      "asse": 0.5509,
+      "sinistra": 0.6196,
+      "destra": 0.439,
+      "asse_ufficiale": 0.5509
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 135.4,
+      "elevazione_deg": 40.0
+     },
+     "edifici": {
+      "asse": 0.4126,
+      "sinistra": 0.4345,
+      "destra": 0.3685,
+      "asse_ufficiale": 0.4126
+     },
+     "con_vegetazione": {
+      "asse": 0.5707,
+      "sinistra": 0.6163,
+      "destra": 0.4217,
+      "asse_ufficiale": 0.5707
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "11:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 144.3,
+      "elevazione_deg": 43.5
+     },
+     "edifici": {
+      "asse": 0.3784,
+      "sinistra": 0.4064,
+      "destra": 0.3794,
+      "asse_ufficiale": 0.3784
+     },
+     "con_vegetazione": {
+      "asse": 0.5396,
+      "sinistra": 0.5851,
+      "destra": 0.4295,
+      "asse_ufficiale": 0.5396
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 154.1,
+      "elevazione_deg": 46.3
+     },
+     "edifici": {
+      "asse": 0.3698,
+      "sinistra": 0.3972,
+      "destra": 0.3825,
+      "asse_ufficiale": 0.3698
+     },
+     "con_vegetazione": {
+      "asse": 0.5342,
+      "sinistra": 0.5735,
+      "destra": 0.4386,
+      "asse_ufficiale": 0.5342
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "12:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 164.8,
+      "elevazione_deg": 48.2
+     },
+     "edifici": {
+      "asse": 0.3581,
+      "sinistra": 0.3804,
+      "destra": 0.3714,
+      "asse_ufficiale": 0.3581
+     },
+     "con_vegetazione": {
+      "asse": 0.5195,
+      "sinistra": 0.5501,
+      "destra": 0.4282,
+      "asse_ufficiale": 0.5195
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 176.1,
+      "elevazione_deg": 49.1
+     },
+     "edifici": {
+      "asse": 0.3505,
+      "sinistra": 0.2851,
+      "destra": 0.361,
+      "asse_ufficiale": 0.3505
+     },
+     "con_vegetazione": {
+      "asse": 0.517,
+      "sinistra": 0.4613,
+      "destra": 0.4265,
+      "asse_ufficiale": 0.517
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "13:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 187.5,
+      "elevazione_deg": 48.9
+     },
+     "edifici": {
+      "asse": 0.2627,
+      "sinistra": 0.2522,
+      "destra": 0.3492,
+      "asse_ufficiale": 0.2627
+     },
+     "con_vegetazione": {
+      "asse": 0.433,
+      "sinistra": 0.4395,
+      "destra": 0.4216,
+      "asse_ufficiale": 0.433
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 198.6,
+      "elevazione_deg": 47.7
+     },
+     "edifici": {
+      "asse": 0.2223,
+      "sinistra": 0.2456,
+      "destra": 0.3191,
+      "asse_ufficiale": 0.2223
+     },
+     "con_vegetazione": {
+      "asse": 0.3932,
+      "sinistra": 0.4389,
+      "destra": 0.3947,
+      "asse_ufficiale": 0.3932
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "14:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 209.0,
+      "elevazione_deg": 45.5
+     },
+     "edifici": {
+      "asse": 0.2055,
+      "sinistra": 0.2193,
+      "destra": 0.2086,
+      "asse_ufficiale": 0.2055
+     },
+     "con_vegetazione": {
+      "asse": 0.3763,
+      "sinistra": 0.4216,
+      "destra": 0.2866,
+      "asse_ufficiale": 0.3763
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 218.6,
+      "elevazione_deg": 42.4
+     },
+     "edifici": {
+      "asse": 0.236,
+      "sinistra": 0.264,
+      "destra": 0.2377,
+      "asse_ufficiale": 0.236
+     },
+     "con_vegetazione": {
+      "asse": 0.4106,
+      "sinistra": 0.5079,
+      "destra": 0.3186,
+      "asse_ufficiale": 0.4106
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "15:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 227.1,
+      "elevazione_deg": 38.7
+     },
+     "edifici": {
+      "asse": 0.2416,
+      "sinistra": 0.2911,
+      "destra": 0.2319,
+      "asse_ufficiale": 0.2416
+     },
+     "con_vegetazione": {
+      "asse": 0.457,
+      "sinistra": 0.5745,
+      "destra": 0.315,
+      "asse_ufficiale": 0.457
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 234.9,
+      "elevazione_deg": 34.5
+     },
+     "edifici": {
+      "asse": 0.2663,
+      "sinistra": 0.3436,
+      "destra": 0.2348,
+      "asse_ufficiale": 0.2663
+     },
+     "con_vegetazione": {
+      "asse": 0.5275,
+      "sinistra": 0.5972,
+      "destra": 0.3415,
+      "asse_ufficiale": 0.5275
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "16:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 241.9,
+      "elevazione_deg": 29.9
+     },
+     "edifici": {
+      "asse": 0.2958,
+      "sinistra": 0.3727,
+      "destra": 0.2555,
+      "asse_ufficiale": 0.2958
+     },
+     "con_vegetazione": {
+      "asse": 0.596,
+      "sinistra": 0.6179,
+      "destra": 0.4177,
+      "asse_ufficiale": 0.596
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 248.2,
+      "elevazione_deg": 25.0
+     },
+     "edifici": {
+      "asse": 0.3151,
+      "sinistra": 0.3892,
+      "destra": 0.2919,
+      "asse_ufficiale": 0.3151
+     },
+     "con_vegetazione": {
+      "asse": 0.6397,
+      "sinistra": 0.643,
+      "destra": 0.4981,
+      "asse_ufficiale": 0.6397
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "17:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 254.1,
+      "elevazione_deg": 19.9
+     },
+     "edifici": {
+      "asse": 0.382,
+      "sinistra": 0.4421,
+      "destra": 0.3697,
+      "asse_ufficiale": 0.382
+     },
+     "con_vegetazione": {
+      "asse": 0.745,
+      "sinistra": 0.7134,
+      "destra": 0.6057,
+      "asse_ufficiale": 0.745
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:00",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 259.7,
+      "elevazione_deg": 14.6
+     },
+     "edifici": {
+      "asse": 0.4708,
+      "sinistra": 0.4829,
+      "destra": 0.4193,
+      "asse_ufficiale": 0.4708
+     },
+     "con_vegetazione": {
+      "asse": 0.7924,
+      "sinistra": 0.7906,
+      "destra": 0.7007,
+      "asse_ufficiale": 0.7924
+     },
+     "lato_piu_in_ombra": "sinistra"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "18:30",
+     "sole": {
+      "stato": "ok",
+      "azimut_deg": 265.1,
+      "elevazione_deg": 9.2
+     },
+     "edifici": {
+      "asse": 0.558,
+      "sinistra": 0.5513,
+      "destra": 0.557,
+      "asse_ufficiale": 0.558
+     },
+     "con_vegetazione": {
+      "asse": 0.8408,
+      "sinistra": 0.8361,
+      "destra": 0.8354,
+      "asse_ufficiale": 0.8408
+     },
+     "lato_piu_in_ombra": "pari"
+    },
+    {
+     "data": "2026-09-15",
+     "ora": "19:00",
+     "sole": {
+      "stato": "sole_basso_fuori_supporto",
+      "azimut_deg": 270.3,
+      "elevazione_deg": 3.8
+     }
+    }
+   ]
+  }
+ },
+ "calcolo": {
+  "secondi": 579,
+  "memoria_max_gb": 0.37
+ }
+}
