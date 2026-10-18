@@ -113,11 +113,26 @@ La cache del servizio si svuota da sola quando cambiano il codice dei motori o i
 
 ## Come si collega un collega
 
-Da un assistente che supporta MCP su HTTP, aggiungere un server con URL `https://<nome>/mcp/` e intestazione `Authorization: Bearer <token>`. Poi incollare il testo di `service/PROMPT-AGENTE.md` come istruzioni. Per Claude Code, in `.mcp.json` del progetto del collega:
+Questa sezione basta al collega: non serve leggere il resto.
 
-```
-{"mcpServers": {"dt-firenze": {"type": "http", "url": "https://<nome>/mcp/", "headers": {"Authorization": "Bearer ${DT_MCP_TOKEN}"}}}}
-```
+1. Chiedere a Luca, a parte, l'indirizzo del servizio (`https://<nome>/mcp/`) e il token. Il token non va scritto in file condivisi né in chat.
+2. Mettere il token in una variabile d'ambiente del proprio terminale: `export DT_MCP_TOKEN=<token>` (per non ripeterlo, nel file di avvio della shell).
+3. Collegare il server dal proprio assistente, come server MCP su HTTP con l'intestazione `Authorization: Bearer <token>`. Per Claude Code, uno dei due:
+   - da riga di comando: `claude mcp add --transport http dt-firenze https://<nome>/mcp/ --header "Authorization: Bearer $DT_MCP_TOKEN"`;
+   - oppure in `.mcp.json` del proprio progetto: `{"mcpServers": {"dt-firenze": {"type": "http", "url": "https://<nome>/mcp/", "headers": {"Authorization": "Bearer ${DT_MCP_TOKEN}"}}}}`.
+4. Controllare il collegamento: l'assistente deve vedere 14 strumenti di `dt-firenze` (in Claude Code: `/mcp`). Se non li vede, vedere "Se qualcosa non va" qui sotto.
+5. Incollare come istruzioni dell'assistente il testo fra le due righe di `service/PROMPT-AGENTE.md`.
+6. Prima domanda di prova: "Quale quota dei civici di Novoli arriva a piedi alla fermata del tram Torre degli Agli entro 10 minuti?". Risposta attesa: circa il 39,3% dei 3.296 civici (1.295), intervallo di velocità 30,1-39,6%, con job_id, fonti e limiti. Se l'assistente chiede quale fermata o quale velocità, è giusto: rispondere "Torre degli Agli, 1,2 m/s".
+7. Altre domande da provare: le dieci del caso caldo in `nl/firenze_novoli/caldo.json` (campo `domanda`), con le risposte date dal gemello nel campo `risposta`.
+
+Se qualcosa non va:
+- risposta 401: token mancante o sbagliato; controllare la variabile `DT_MCP_TOKEN` nel terminale da cui parte l'assistente;
+- `limit_exceeded`: troppe chiamate in un minuto, o un altro calcolo d'ombra in corso; riprovare dopo un minuto;
+- `outside_capability` su `create_local_scenario`: normale, il servizio remoto è in sola lettura; usare gli scenari salvati (`list_scenarios`);
+- risposta lenta: `compute_shadow` e `compare_scenarios` senza cache durano da decine di secondi ad alcuni minuti;
+- l'assistente dà numeri senza `job_id`: ricordargli le istruzioni di `service/PROMPT-AGENTE.md` (ogni numero viene da un job).
+
+Il servizio remoto non è ancora installato (D28, D31): fino ad allora si prova solo in locale, sul clone con `data/` (`.mcp.json` del repository, server via stdio).
 
 ## Verifica dopo l'installazione
 

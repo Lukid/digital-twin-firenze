@@ -184,8 +184,16 @@ assert run("get_result_manifest", {"job_id": s1["job_id"]})["tool"] == "compute_
 sv = run("compute_shadow", {**SH, "method": {**SH["method"], "obstacles": "buildings_trees_and_lidar_vegetation"}})   # vegetazione LiDAR (D14)
 assert sv["status"] == "succeeded" and core.validate("compute_shadow", "output", sv) == [] and sv["cases"][-3:] == ["veg_lidar_min", "veg_lidar_tipico", "veg_lidar_max"] and sv["job_id"] != s1["job_id"], sv
 shw = lambda **k: {**SH, "when": {**SH["when"], **k}}
-r = run("compute_shadow", shw(date="2026-10-25", times=["02:30"])); assert err_code(r) == "invalid_params" and "ambigua" in r["error"]["message"], r   # fine ora legale
+r = run("compute_shadow", shw(date="2026-10-25", times=["02:30"])); assert err_code(r) == "invalid_params" and "ambigua" in r["error"]["message"] and "ambiguous_time" in r["error"]["message"], r   # fine ora legale
 r = run("compute_shadow", shw(date="2026-03-29", times=["02:30"])); assert err_code(r) == "invalid_params" and "inesistente" in r["error"]["message"], r
+# difetto 5 di F11: ora legale o solare nella risposta, scelta fra le due 02:30 del cambio d'ora, risposta senza geometrie (stesso job)
+assert s1["time_basis"] == [{"time_local": "12:30", "utc": "2026-09-15T10:30:00Z", "utc_offset": "+02:00", "clock": "ora_legale"}]
+due = {k: run("compute_shadow", shw(date="2026-10-25", times=["02:30"], ambiguous_time=k)) for k in ("daylight_saving", "standard")}
+assert [(r["time_basis"][0]["utc"], r["time_basis"][0]["clock"]) for r in due.values()] == [("2026-10-25T00:30:00Z", "ora_legale"), ("2026-10-25T01:30:00Z", "ora_solare")], due
+assert due["daylight_saving"]["job_id"] != due["standard"]["job_id"] and all(core.validate("compute_shadow", "output", r) == [] for r in due.values())
+assert err_code(run("compute_shadow", shw(ambiguous_time="estate"))) == "invalid_params"
+leggera = run("compute_shadow", {**SH, "include_geometry": False}); assert leggera["job_id"] == s1["job_id"] and "coordinates" not in json.dumps(leggera) and "coordinates" in json.dumps(s1)
+assert core.validate("compute_shadow", "output", leggera) == [] and len(json.dumps(leggera)) < len(json.dumps(s1))
 r = run("compute_shadow", shw(date="2026-12-21", times=["06:00", "12:00"]))   # inverno: alba sotto l'orizzonte
 assert r["status"] == "succeeded" and set(r["sun_state_counts"]) <= {"ok", "sole_sotto_orizzonte", "sole_basso_fuori_supporto"} and r["sun_state_counts"].get("sole_sotto_orizzonte"), r["sun_state_counts"]
 big = {**SH, "receivers": [{"route_id": f"R{i:02d}"} for i in range(1, 11)], "when": {**SH["when"], "times": [f"{m // 60:02d}:{m % 60:02d}" for m in range(0, 1440, 15)]}}

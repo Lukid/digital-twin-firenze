@@ -394,7 +394,7 @@ def _esegui_shadow(kw, store=True):
             res = S.calcola_ombra(S.carica(kw["scenario_id"]), kw["receivers"], cond)
         else: res = O.compute_shadow(kw["baseline_id"], kw["receivers"], kw["when"], method, walk_speed_m_s=kw["walk_speed_m_s"], casi=casi_kw)
     except O.OraInesistente as e: return err("invalid_params", f"Ora inesistente: {str(e).split(' (')[0]} (salto dell'ora legale). Indicare un orario diverso.")
-    except O.OraAmbigua as e: return err("invalid_params", f"Ora ambigua: {str(e).split(':')[0]} (fine ora legale). Chiedere all'utente se intende la prima (ora legale) o la seconda (ora solare), oppure scegliere un altro orario.")
+    except O.OraAmbigua as e: return err("invalid_params", f"Ora ambigua: {str(e).split(':')[0]} (fine ora legale). Chiedere all'utente se intende la prima (ora legale) o la seconda (ora solare) e indicarla con when.ambiguous_time (daylight_saving o standard), oppure scegliere un altro orario.")
     except ValueError as e: return err("invalid_params", str(e))
     job, man = json.loads(json.dumps(res["job"])), json.loads(json.dumps(res["manifest"])); rows = res["righe"]; casi = job["params"]["casi"]   # via JSON: stessa forma della cache (liste, non tuple)
     extra = {"sun_state_counts": {s: sum(1 for r in rows if r["stato"] == s) for s in sorted({r["stato"] for r in rows})}, "summary": res["sintesi"]}
@@ -418,11 +418,29 @@ def _limite_shadow(a):
                f"Ridurre gli orari (uno ogni {passo}) o i percorsi.", smaller_request=small)
 
 
+def _ora_di(when):
+    """Per ogni orario locale: istante UTC, scarto e ora legale o solare (difetto 5 di F11)."""
+    sys.path.insert(0, str(ROOT / "shadow"))
+    import ombre as O
+    out = []
+    for h in when["times"]:
+        u = O.locale_a_utc(when["date"], h, O.FOLD.get(when.get("ambiguous_time"))); off = u.astimezone(O.ROMA).utcoffset()
+        out.append({"time_local": h, "utc": u.strftime("%Y-%m-%dT%H:%M:%SZ"), "utc_offset": f"+{off.seconds // 3600:02d}:00", "clock": "ora_legale" if u.astimezone(O.ROMA).dst() else "ora_solare"})
+    return out
+
+
 def compute_shadow(a):
     e = _limite_shadow(a)
     if e: return e
     kw = _risolvi_shadow(a)
-    return kw if "error" in kw else _esegui_shadow(kw)
+    if "error" in kw: return kw
+    r = _esegui_shadow(kw)
+    if "error" in r: return r
+    r["time_basis"] = _ora_di(kw["when"])
+    if a.get("include_geometry") is False:   # stesso job, risposta senza geometrie
+        r["params"] = {**r["params"], "receivers": [{k: v for k, v in x.items() if k != "geometry"} for x in r["params"]["receivers"]]}
+        if "scenario_volumes" in r["params"]: r["params"]["scenario_volumes"] = [{k: v for k, v in x.items() if k != "geometry"} for x in r["params"]["scenario_volumes"]]
+    return r
 
 
 def estimate_residents(a):
