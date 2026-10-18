@@ -55,6 +55,9 @@ def locale_a_utc(data, hhmm, fold=None):
     return a.astimezone(UTC)
 
 
+FOLD = {"daylight_saving": 0, "standard": 1}   # when["ambiguous_time"]: quale delle due ore ripetute a fine ora legale (02:00-02:59 di fine ottobre)
+
+
 def istanti_giorno(data, step_min):
     """Tutti gli istanti UTC del giorno locale, a passo costante: 92 passi da 15 min il 29/3/2026, 100 il 25/10/2026, 96 gli altri giorni."""
     d = dt.date.fromisoformat(data) if isinstance(data, str) else data
@@ -336,6 +339,7 @@ TIPI_RICEVITORE = {"path": ("LineString",), "surface": ("Polygon", "MultiPolygon
 
 def _validate(receivers, when, method, walk_speed_m_s):
     if when.get("timezone") != "Europe/Rome": raise ValueError("timezone ammessa: Europe/Rome")
+    if when.get("ambiguous_time", "daylight_saving") not in FOLD: raise ValueError(f"ambiguous_time ammesso: {', '.join(FOLD)}")
     if method.get("name") != "geometric_ray": raise ValueError("metodo ammesso: geometric_ray")
     if not 0.25 <= method["space_step_m"] <= 5 or not 1 <= method["time_step_min"] <= 30: raise ValueError("passi fuori dai limiti (0,25-5 m; 1-30 min)")
     if method["obstacles"] not in CASI_PER_OSTACOLI: raise ValueError(f"ostacoli ammessi: {sorted(CASI_PER_OSTACOLI)}")
@@ -395,7 +399,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
         from pyproj import Transformer as T0
         tr_4326 = T0.from_crs(7791, 4326, always_xy=True).transform
     for hhmm in when["times"]:
-        t_utc = locale_a_utc(when["date"], hhmm); t0 = t_utc.timestamp()
+        t_utc = locale_a_utc(when["date"], hhmm, FOLD.get(when.get("ambiguous_time"))); t0 = t_utc.timestamp()
         for rid, g in geoms.items():
             for caso in casi:
                 st, az, el, U = ombra(caso, t0)
@@ -438,7 +442,7 @@ def compute_shadow(baseline_id, receivers, when, method, scenario_id=None, scena
         tr = T.from_crs(7791, 4326, always_xy=True).transform
         win = box(*(asset_bbox or allg.buffer(100).bounds))
         for hhmm in asset_times:
-            t_utc = locale_a_utc(when["date"], hhmm); feats = []
+            t_utc = locale_a_utc(when["date"], hhmm, FOLD.get(when.get("ambiguous_time"))); feats = []
             for caso in asset_casi:
                 if caso not in scene: scene[caso] = scena_caso(caso, extra)
                 st, az, el, U = ombra_a_istante(scene[caso], t_utc, lat, lon, el_min, win)

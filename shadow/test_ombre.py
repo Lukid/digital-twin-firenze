@@ -34,6 +34,7 @@ def test_cambio_ora():
         except esc: pass
     assert O.locale_a_utc("2026-10-25", "02:30", fold=0).isoformat() == "2026-10-25T00:30:00+00:00"
     assert O.locale_a_utc("2026-10-25", "02:30", fold=1).isoformat() == "2026-10-25T01:30:00+00:00"
+    assert [O.locale_a_utc("2026-10-25", "02:30", O.FOLD[k]).isoformat() for k in ("daylight_saving", "standard")] == ["2026-10-25T00:30:00+00:00", "2026-10-25T01:30:00+00:00"]   # when["ambiguous_time"] (F5)
     assert len(O.istanti_giorno("2026-03-29", 15)) == 92 and len(O.istanti_giorno("2026-10-25", 15)) == 100 and len(O.istanti_giorno("2026-09-15", 15)) == 96
     # 12:00 locale del 29/3 (UTC+2) è lo stesso istante UTC di 11:00 locale del 28/3 (UTC+1), a meno di un giorno di moto del sole (< 1 grado)
     a29, e29 = O.sole(O.locale_a_utc("2026-03-29", "12:00"), LAT, LON); a28, e28 = O.sole(O.locale_a_utc("2026-03-28", "11:00"), LAT, LON)
