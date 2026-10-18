@@ -1,0 +1,358 @@
+{
+ "percorso": "R01",
+ "data": "2026-12-12",
+ "job_id": "job_0daa07c6e5ee59c4",
+ "caso": "solo edifici (base)",
+ "lunghezza_m": 428.6,
+ "strade": [
+  "Via di Novoli",
+  "Via dei Barucci",
+  "Piazza Ugo di Toscana",
+  "vialetto pedonale",
+  "Piazza Ugo di Toscana",
+  "Largo Paolo Frezza"
+ ],
+ "orari": {
+  "11:00": {
+   "elevazione_deg": 21.28,
+   "azimut_deg": 163.03,
+   "frazione_ombra_solo_edifici": 0.978,
+   "frazione_ombra_con_vegetazione": 0.9785,
+   "tratti_ombra_m": [
+    [
+     0.0,
+     18.4
+    ],
+    [
+     27.3,
+     428.6
+    ]
+   ]
+  },
+  "13:00": {
+   "elevazione_deg": 22.08,
+   "azimut_deg": 192.7,
+   "frazione_ombra_solo_edifici": 0.8132,
+   "frazione_ombra_con_vegetazione": 0.8165,
+   "tratti_ombra_m": [
+    [
+     36.2,
+     237.7
+    ],
+    [
+     253.7,
+     307.3
+    ],
+    [
+     311.7,
+     360.0
+    ],
+    [
+     370.3,
+     407.7
+    ],
+    [
+     420.9,
+     428.6
+    ]
+   ]
+  },
+  "14:30": {
+   "elevazione_deg": 15.69,
+   "azimut_deg": 213.5,
+   "frazione_ombra_solo_edifici": 0.6751,
+   "frazione_ombra_con_vegetazione": 0.6795,
+   "tratti_ombra_m": [
+    [
+     81.2,
+     191.1
+    ],
+    [
+     236.6,
+     257.3
+    ],
+    [
+     267.2,
+     321.4
+    ],
+    [
+     324.0,
+     428.6
+    ]
+   ]
+  }
+ },
+ "punti": [
+  {
+   "n": 1,
+   "m": 0.0,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "sole",
+     "dopo": "sole"
+    },
+    "14:30": {
+     "prima": "sole",
+     "dopo": "sole"
+    }
+   }
+  },
+  {
+   "n": 2,
+   "m": 18.4,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "sole"
+    },
+    "13:00": {
+     "prima": "sole",
+     "dopo": "sole"
+    },
+    "14:30": {
+     "prima": "sole",
+     "dopo": "sole"
+    }
+   }
+  },
+  {
+   "n": 3,
+   "m": 27.3,
+   "atteso": {
+    "11:00": {
+     "prima": "sole",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "sole",
+     "dopo": "sole"
+    },
+    "14:30": {
+     "prima": "sole",
+     "dopo": "sole"
+    }
+   }
+  },
+  {
+   "n": 4,
+   "m": 36.2,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "sole",
+     "dopo": "ombra"
+    },
+    "14:30": {
+     "prima": "sole",
+     "dopo": "sole"
+    }
+   }
+  },
+  {
+   "n": 5,
+   "m": 81.2,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "14:30": {
+     "prima": "sole",
+     "dopo": "ombra"
+    }
+   }
+  },
+  {
+   "n": 6,
+   "m": 191.1,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "14:30": {
+     "prima": "ombra",
+     "dopo": "sole"
+    }
+   }
+  },
+  {
+   "n": 7,
+   "m": 236.6,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "14:30": {
+     "prima": "sole",
+     "dopo": "ombra"
+    }
+   }
+  },
+  {
+   "n": 8,
+   "m": 253.7,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "sole",
+     "dopo": "ombra"
+    },
+    "14:30": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    }
+   }
+  },
+  {
+   "n": 9,
+   "m": 267.2,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "14:30": {
+     "prima": "sole",
+     "dopo": "ombra"
+    }
+   }
+  },
+  {
+   "n": 10,
+   "m": 307.3,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "ombra",
+     "dopo": "sole"
+    },
+    "14:30": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    }
+   }
+  },
+  {
+   "n": 11,
+   "m": 321.4,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "14:30": {
+     "prima": "ombra",
+     "dopo": "sole"
+    }
+   }
+  },
+  {
+   "n": 12,
+   "m": 360.0,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "ombra",
+     "dopo": "sole"
+    },
+    "14:30": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    }
+   }
+  },
+  {
+   "n": 13,
+   "m": 370.3,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "sole",
+     "dopo": "ombra"
+    },
+    "14:30": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    }
+   }
+  },
+  {
+   "n": 14,
+   "m": 407.7,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "ombra",
+     "dopo": "sole"
+    },
+    "14:30": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    }
+   }
+  },
+  {
+   "n": 15,
+   "m": 420.9,
+   "atteso": {
+    "11:00": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    },
+    "13:00": {
+     "prima": "sole",
+     "dopo": "ombra"
+    },
+    "14:30": {
+     "prima": "ombra",
+     "dopo": "ombra"
+    }
+   }
+  }
+ ],
+ "stato_verifica": "da_verificare"
+}
