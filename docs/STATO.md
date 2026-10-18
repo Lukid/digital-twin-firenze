@@ -12,6 +12,8 @@ Aggiornato al 10 ottobre 2026 (sessioni del 17 ottobre sotto): POC di Firenze No
 
 18 ottobre 2026, sessione autonoma F5, ramo `agente/f5` (non ancora in `main`): ombra alle 14 del 15 luglio sul percorso di ogni civico entro 15 minuti dal rifugio più vicino (D49): circa 33 residenti stimati (0,2%) arrivano entro 10 minuti con almeno metà del percorso in ombra, contro 6.092 (43,6%) che arrivano e basta; strumento `get_shaded_access`; difetti 4, 5, 7 e 8 dell'MCP chiusi (una piccola correzione al motore d'ombra per le ore ripetute del cambio d'ora); scheda per il primo incontro con l'ufficio; orari estivi dei rifugi non trovati; prototipo dell'ombra sui due lati della strada su R01. Esiti e domande in [REPORT-AGENTE-F5.md](REPORT-AGENTE-F5.md).
 
+18 ottobre 2026, sessione autonoma F6, ramo `agente/f6` (non ancora in `main`): ombra sui due lati della strada per R01-R10 e RC1-RC5 accanto all'asse (D56), prototipo da verificare: il lato più in ombra ha in media 4-15 punti più dell'asse, 3 m dichiarati su circa metà dei metri di strada, nessun grafo con la larghezza misurata nei cataloghi; strumento `get_street_side_shade`; indicatore di riserva per la scheda dell'ufficio (D53): percorso in ombra in media per il 21% entro 10 minuti, 4,5 minuti al sole in mediana; livello della scena con i civici che arrivano al rifugio all'ombra (solo build). Esiti e domande in [REPORT-AGENTE-F6.md](REPORT-AGENTE-F6.md).
+
 ## In una riga
 
 Gemello digitale pilota di Firenze, area Novoli - Firenze Nova (riquadro FP di 2 km²), costruito solo da open data con licenza che ne permette il riuso, per mostrarne le potenzialità. Pisa è accantonata nel tag git `pilota-pisa-z2` (D15); il 10 ottobre i suoi file sono stati tolti dal ramo principale, tranne gli script di rete e geometria di Pisa (`network/build.sh`, `geometry/build.sh` e i loro test), non più mantenuti.
@@ -54,8 +56,9 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - Rete solo OSM, lato del marciapiede ignoto. Ingressi del Polo: un civico del Comune per edificio dell'Ateneo (indirizzi dal report di accessibilità dell'Ateneo), non verificati sul posto; il civico non è per forza la porta (`network/firenze_novoli/verifica_ingressi_polo.md`).
 - La fermata San Donato - Università sta circa 100 m fuori dal riquadro FP: in scena c'è il terreno, non gli edifici attorno.
 - Civici come punti d'indirizzo, non persone. Dal 18 ottobre (F4, D45) i residenti 2011 entrano come stima per civico (ripartizione uniforme sui civici della sezione, negozi compresi), accanto alla quota dei civici; mai al posto di essa.
-- "Soprattutto all'ombra" (F5, D49): calcolato a un solo istante (14 del 15 luglio), sul percorso più breve e sull'asse; soglia del 50% scelta da noi, da validare con l'ufficio. Il risultato dipende molto dalla soglia (da 29 a 405 residenti stimati fra 60% e 40%).
-- Ombra sul marciapiede: solo un prototipo su R01 (F5). Un lato può differire di 5-9 punti dall'asse; solo il 24% dei metri di strada ha il marciapiede mappato a parte.
+- "Soprattutto all'ombra" (F5, D49): calcolato a un solo istante (14 del 15 luglio), sul percorso più breve e sull'asse; soglia del 50% scelta da noi, da validare con l'ufficio. Il risultato dipende molto dalla soglia (da 29 a 405 residenti stimati fra 60% e 40%); accanto, dal F6, l'indicatore di riserva senza soglia (ombra media del percorso, minuti al sole).
+- Ombra sui due lati della strada (F6, D56): prototipo da verificare sul posto, accanto all'asse, solo per i 15 percorsi campione. Valore dichiarato di 3 m dove il marciapiede non è mappato (63% dei metri di strada a sinistra, 51% a destra); il lato lo sceglie chi cammina; attraversamenti non modellati. Nessun grafo con la larghezza misurata nei cataloghi (il grafo regionale ha solo classi di larghezza della carreggiata).
+- Scena: livello dell'arrivo al rifugio all'ombra costruito sul worker, non provato in un browser.
 - Pagina della verifica sul posto non provata in un browser sul worker (F4): aprirla e stamparla dal Mac.
 - Vegetazione LiDAR come prisma opaco pieno: limite superiore dell'ombra.
 - Altezze LiDAR 2023 con unità volumetriche 2011, portici ignoti, datum verticale non confermato.
@@ -126,7 +129,7 @@ Revisione del codice: R1-R6 chiusi. Due regole emerse dalle correzioni:
 - La cache del servizio si svuota da sola quando cambiano il codice dei motori o i file di dati che leggono (impronta in `service/cache/<area>/impronta.txt`). Gli job_id non cambiano.
 
 1. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
-2. Prossima sessione: ombra sui due lati della strada per i percorsi campione (D56), indicatore di riserva nella scheda per l'ufficio (D53), civici che arrivano all'ombra nella scena. Da chiedere al Comune: costo delle 72 pensiline (D37), voce di piantagione (D41), orari dei rifugi (D55).
+2. Dopo F6: domande del report F6 (distanza del lato, uso dei lati nei numeri ufficiali, confronto col Mac); aprire la scena sul Mac. Alla verifica del 12 dicembre annotare il lato e la distanza dal centro strada. Da chiedere al Comune: costo delle 72 pensiline (D37), voce di piantagione (D41), orari dei rifugi (D55), soglia dell'ombra (D49).
 3. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. Kit pronto per R01 in `docs/verifica-posto/` (F4): sabato 12 dicembre 2026, ore 11:00, 13:00 e 14:30.
 
 ## Come lavora la sessione
