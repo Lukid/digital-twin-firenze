@@ -2,7 +2,7 @@
 PY  := pipeline/.venv/bin/python
 SPY := service/.venv/bin/python
 
-.PHONY: test-fast test lint validate ci
+.PHONY: test-fast test lint validate ci impronte
 
 test-fast:
 	$(PY) network/test_rete_firenze.py
@@ -24,6 +24,10 @@ lint:
 
 validate:
 	$(PY) contracts/validate.py
+
+# D39: sha256 dei file generati con geometrie, per il confronto fra Mac e worker
+impronte:
+	@bash scripts/impronte.sh
 
 # Quello che gira la CI: solo i controlli che non richiedono data/.
 ci: lint validate
