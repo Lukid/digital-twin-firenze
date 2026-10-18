@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""F11: controlli sul registro delle domande NL di Firenze Novoli (giro1.json, giro2.json).
+"""F11: controlli sul registro delle domande NL di Firenze Novoli (giro1.json, giro2.json; caldo.json del caso caldo, F4).
 Replay di ogni job, confronto con i job della mappa (F06, F07), errori attesi, nessuna percentuale senza job.
 Uso: service/.venv/bin/python nl/firenze_novoli/test_nl.py"""
 import gzip, json, pathlib, re, sys
@@ -8,7 +8,7 @@ ROOT = HERE.parents[1]
 sys.path.insert(0, str(ROOT / "service"))
 import core, replay
 
-log = [q for f in ("giro1.json", "giro2.json") for q in json.loads((HERE / f).read_text())]
+log = [q for f in ("giro1.json", "giro2.json", "caldo.json") for q in json.loads((HERE / f).read_text())]
 jobs = {c["job_id"]: q["n"] for q in log for c in q["chiamate"] if c["esito"] == "ok" and c["job_id"]}
 
 # 1. nessuna percentuale o minuto calcolato in una risposta senza un job riuscito
@@ -42,6 +42,12 @@ for job_id, ist, rid in (("job_753fc5aff57df501", "2026-07-15T12:00", "pth_fi_R0
     lung = next(x["length_m"] for x in righe if x["caso"] == "veg_lidar_tipico")
     m = met[f"{rid.lower()}_tutti_shade_fraction_veg"] * lung
     assert abs(m - m_mappa(ist, rid)) < 0.5, (job_id, m, m_mappa(ist, rid))
+
+# 3c. caso caldo (F4): dieci domande, bozza dichiarata; residenti e percorsi esposti uguali ai file versionati
+caldo = json.loads((HERE / "caldo.json").read_text())
+assert len(caldo) == 10 and all("da validare" in q["origine"] for q in caldo) and sum("Non lo so" in q["risposta"] for q in caldo) >= 2
+r = core.run_tool("estimate_residents", {"job_id": "job_e1e75455f7511f7d"}); assert "6.092" in caldo[0]["risposta"] and r["soglie"][1]["residenti_stimati"] == 6092
+e = core.run_tool("get_route_exposure", {"date": "2026-07-15"}); assert e["classifica"]["14:00"]["per_metri_al_sole"][:3] == ["RC4", "R10", "R03"] and all(e["percorsi"][x]["job_id"] in caldo[1]["risposta"] for x in ("RC4", "R10", "R03"))
 
 # 4. errori attesi, oggi
 A = {"baseline_id": "bas_firenze_novoli_20261009", "origins": {"kind": "address_points", "aoi_id": "aoi_firenze_novoli"},

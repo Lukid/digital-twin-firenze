@@ -1,0 +1,214 @@
+{
+ "sun_state_counts": {
+  "ok": 9
+ },
+ "summary": [
+  {
+   "receiver_id": "pth_fi_RC3",
+   "caso": "alberi_max",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.3095,
+   "shade_fraction_min": 0.3095,
+   "shade_fraction_max": 0.3095,
+   "el_min_deg": 67.26,
+   "el_max_deg": 67.26,
+   "shaded_m_mean": 308.2,
+   "length_m": 995.68,
+   "walk_sun_min_mean": 9.511,
+   "walk_sun_min_min": 9.511,
+   "walk_sun_min_max": 9.511,
+   "walk_total_min": 13.829,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 310.9,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_RC3",
+   "caso": "alberi_min",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.2494,
+   "shade_fraction_min": 0.2494,
+   "shade_fraction_max": 0.2494,
+   "el_min_deg": 67.26,
+   "el_max_deg": 67.26,
+   "shaded_m_mean": 248.3,
+   "length_m": 995.68,
+   "walk_sun_min_mean": 10.358,
+   "walk_sun_min_min": 10.358,
+   "walk_sun_min_max": 10.358,
+   "walk_total_min": 13.829,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 249.9,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_RC3",
+   "caso": "alberi_tipico",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.2619,
+   "shade_fraction_min": 0.2619,
+   "shade_fraction_max": 0.2619,
+   "el_min_deg": 67.26,
+   "el_max_deg": 67.26,
+   "shaded_m_mean": 260.7,
+   "length_m": 995.68,
+   "walk_sun_min_mean": 10.191,
+   "walk_sun_min_min": 10.191,
+   "walk_sun_min_max": 10.191,
+   "walk_total_min": 13.829,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 261.9,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_RC3",
+   "caso": "base",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.2427,
+   "shade_fraction_min": 0.2427,
+   "shade_fraction_max": 0.2427,
+   "el_min_deg": 67.26,
+   "el_max_deg": 67.26,
+   "shaded_m_mean": 241.6,
+   "length_m": 995.68,
+   "walk_sun_min_mean": 10.441,
+   "walk_sun_min_min": 10.441,
+   "walk_sun_min_max": 10.441,
+   "walk_total_min": 13.829,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 243.9,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_RC3",
+   "caso": "base_h_max",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.2439,
+   "shade_fraction_min": 0.2439,
+   "shade_fraction_max": 0.2439,
+   "el_min_deg": 67.26,
+   "el_max_deg": 67.26,
+   "shaded_m_mean": 242.9,
+   "length_m": 995.68,
+   "walk_sun_min_mean": 10.441,
+   "walk_sun_min_min": 10.441,
+   "walk_sun_min_max": 10.441,
+   "walk_total_min": 13.829,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 243.9,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_RC3",
+   "caso": "base_h_min",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.1892,
+   "shade_fraction_min": 0.1892,
+   "shade_fraction_max": 0.1892,
+   "el_min_deg": 67.26,
+   "el_max_deg": 67.26,
+   "shaded_m_mean": 188.4,
+   "length_m": 995.68,
+   "walk_sun_min_mean": 10.871,
+   "walk_sun_min_min": 10.871,
+   "walk_sun_min_max": 10.871,
+   "walk_total_min": 13.829,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 212.9,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_RC3",
+   "caso": "veg_lidar_max",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.3274,
+   "shade_fraction_min": 0.3274,
+   "shade_fraction_max": 0.3274,
+   "el_min_deg": 67.26,
+   "el_max_deg": 67.26,
+   "shaded_m_mean": 326.0,
+   "length_m": 995.68,
+   "walk_sun_min_mean": 9.275,
+   "walk_sun_min_min": 9.275,
+   "walk_sun_min_max": 9.275,
+   "walk_total_min": 13.829,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 327.9,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_RC3",
+   "caso": "veg_lidar_min",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.2685,
+   "shade_fraction_min": 0.2685,
+   "shade_fraction_max": 0.2685,
+   "el_min_deg": 67.26,
+   "el_max_deg": 67.26,
+   "shaded_m_mean": 267.3,
+   "length_m": 995.68,
+   "walk_sun_min_mean": 10.094,
+   "walk_sun_min_min": 10.094,
+   "walk_sun_min_max": 10.094,
+   "walk_total_min": 13.829,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 268.9,
+   "stati": [
+    "ok"
+   ]
+  },
+  {
+   "receiver_id": "pth_fi_RC3",
+   "caso": "veg_lidar_tipico",
+   "fascia": "tutti",
+   "n_orari": 1,
+   "n_orari_calcolati": 1,
+   "shade_fraction_mean": 0.2812,
+   "shade_fraction_min": 0.2812,
+   "shade_fraction_max": 0.2812,
+   "el_min_deg": 67.26,
+   "el_max_deg": 67.26,
+   "shaded_m_mean": 279.9,
+   "length_m": 995.68,
+   "walk_sun_min_mean": 9.927,
+   "walk_sun_min_min": 9.927,
+   "walk_sun_min_max": 9.927,
+   "walk_total_min": 13.829,
+   "n_orari_walk": 1,
+   "walk_shade_m_mean": 280.9,
+   "stati": [
+    "ok"
+   ]
+  }
+ ]
+}

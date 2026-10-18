@@ -1,0 +1,294 @@
+[
+ {
+  "n": "C1",
+  "domanda": "Quanti residenti di Novoli raggiungono un rifugio climatico in 10 minuti a piedi? E quanti ci arrivano camminando soprattutto all'ombra?",
+  "chiamate": [
+   {
+    "tool": "list_destinations",
+    "args": {
+     "aoi_id": "aoi_firenze_novoli",
+     "category": "cooling_refuge"
+    },
+    "esito": "ok",
+    "job_id": null
+   },
+   {
+    "tool": "compute_walk_access",
+    "args": {
+     "baseline_id": "bas_firenze_novoli_20261009",
+     "origins": {
+      "kind": "address_points",
+      "aoi_id": "aoi_firenze_novoli"
+     },
+     "destination_ids": [
+      "dst_refuge_rib_fi_6",
+      "dst_refuge_rif_fi_01523",
+      "dst_refuge_rif_fi_01545",
+      "dst_refuge_rif_fi_01631",
+      "dst_refuge_rif_fi_02394",
+      "dst_refuge_rif_fi_02399",
+      "dst_refuge_rif_fi_05409"
+     ],
+     "profile": {
+      "speed_m_s": 1.2
+     },
+     "thresholds_min": [
+      5,
+      10,
+      15
+     ]
+    },
+    "esito": "ok",
+    "job_id": "job_e1e75455f7511f7d"
+   },
+   {
+    "tool": "estimate_residents",
+    "args": {
+     "job_id": "job_e1e75455f7511f7d"
+    },
+    "esito": "ok",
+    "job_id": "job_e1e75455f7511f7d"
+   }
+  ],
+  "risposta": "Entro 10 minuti a piedi dal rifugio climatico più vicino (7 rifugi, 1,2 m/s) arrivano circa 6.092 residenti stimati, il 43,6% dei 13.982 stimati nell'area (intervallo di velocità 29,6%-46,6%). In civici è il 39,1% dei 3.296 civici (1.289). La seconda parte non la so: il gemello calcola l'ombra solo sui 15 percorsi campione, non sul percorso di ogni civico verso il rifugio; servirebbe un calcolo d'ombra sui percorsi di tutti i civici (circa 3.100 percorsi) con una soglia di 'soprattutto all'ombra' da fissare.\n\nCome l'ho calcolato: list_destinations (cooling_refuge, 7 rifugi), compute_walk_access verso tutti e 7 insieme, job job_e1e75455f7511f7d; estimate_residents sullo stesso job. Fonti: civici del Comune di Firenze (CC BY 4.0), rete OSM (ODbL), rifugi del Comune (aree e biblioteche); residenti 2011 per sezione di Regione Toscana su dati Istat (CC BY, versione non indicata) e sezioni 2011 del Comune (CC BY 4.0).\n\nLimiti: i residenti sono una stima, non un conteggio: censimento 2011, residenti di ogni sezione divisi in parti uguali sui civici, negozi e uffici contati come abitazioni (con i soli civici neri: 44,0%); 70 civici in sezioni senza dato; ingressi e orari dei rifugi non verificati; rete OSM non verificata sul posto.",
+  "numeri_senza_job": false,
+  "note": "Domanda dell'esempio del piano. 'Soprattutto all'ombra' è la parte senza risposta: nessuno strumento la calcola.",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ },
+ {
+  "n": "C2",
+  "domanda": "Quali percorsi verso scuole e fermate sono più esposti al sole alle 14 di un giorno di luglio?",
+  "chiamate": [
+   {
+    "tool": "get_route_exposure",
+    "args": {
+     "date": "2026-07-15"
+    },
+    "esito": "ok",
+    "job_id": null
+   }
+  ],
+  "risposta": "Alle 14:00 del 15 luglio 2026 i tre percorsi campione con più metri al sole sono: RC4 (civico di via De Pinedo 17 → Biblioteca Buonarroti, 942 m al sole su 1.071, 13,1 minuti al sole su 14,9; job job_125a412a3ee9f23f), R10 (stesso civico → fermata T2 Regione Toscana, 904 m su 941, 12,6 minuti; job job_3eec2e73fce91b71) e R03 (fermata Regione Toscana → Polo, edificio D1, 814 m su 890, 11,3 minuti; job job_caf0a0f476d97f90). Verso la scuola Vamba: R08 da via De Pinedo, 757 m al sole su 786 (job job_25782292cf882af5). In proporzione i meno ombreggiati sono R09 (fermata Torre degli Agli → Vamba, 0,8% d'ombra), R08 (3,7%) e R10 (3,9%). La classifica per minuti al sole è la stessa.\n\nCome l'ho calcolato: get_route_exposure per il 2026-07-15: un job compute_shadow per percorso (edifici, alberi censiti e vegetazione LiDAR, caso tipico, intervallo dai casi min e max), sole a 66 gradi. Fonti: unità volumetriche della Regione Toscana, OSM (ODbL), DSM e DTM 2023 e alberi del Comune (CC BY 4.0).\n\nLimiti: alle 14 il sole è quasi a picco, quindi i metri al sole seguono soprattutto la lunghezza; ombra sull'asse della strada, non sul marciapiede; vegetazione LiDAR come prisma pieno; percorsi da verificare; nessuna validazione sul posto.",
+  "numeri_senza_job": false,
+  "note": "Domanda dell'esempio del piano. Risponde lo strumento nuovo get_route_exposure (compito 3).",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ },
+ {
+  "n": "C3",
+  "domanda": "Dove un intervento dà più ombra per mille euro spesi?",
+  "chiamate": [
+   {
+    "tool": "list_scenarios",
+    "args": {},
+    "esito": "ok",
+    "job_id": null
+   },
+   {
+    "tool": "compare_scenarios",
+    "args": {
+     "baseline_id": "bas_firenze_novoli_20261009",
+     "scenario_ids": [
+      "scn_fi_s1_filare_r01",
+      "scn_fi_s2_pensilina_attesa_polo",
+      "scn_fi_s5_pensilina_regione_toscana",
+      "scn_fi_s6_pensilina_di_novoli"
+     ]
+    },
+    "esito": "ok",
+    "job_id": "job_8372d9e4c57a7983"
+   }
+  ],
+  "risposta": "Non lo so per un confronto fra interventi: il costo c'è solo per il filare S1 su R01. S1 dà 38,07 m² d'ombra per mille euro alle 12:30-13:30 del 15 luglio (146,0 m² guadagnati, 3.834,95 euro per 7 platani orientali 18/20 con piantagione; con altre specie 21,35-65,78 m² per mille euro). Per le pensiline S2, S5 e S6 il servizio non calcola il costo: non c'è un prezzo pubblico con licenza di riuso. Quindi non posso dire dove l'ombra costa meno.\n\nCome l'ho calcolato: list_scenarios, poi compare_scenarios con S1, S2, S5, S6 rispetto alla baseline, job job_8372d9e4c57a7983, campo indicatore_costo. Prezzi: Prezzario dei Lavori della Regione Toscana 2026, Firenze (CC BY 4.0).\n\nLimiti: ombra di un albero adulto contro il prezzo di un albero da vivaio; scavo, pavimentazione, sottoservizi, manutenzione e IVA esclusi; voce di piantagione da confermare con l'ufficio del verde.",
+  "numeri_senza_job": false,
+  "note": "Domanda dell'esempio del piano: risposta in parte 'non lo so' (costi delle pensiline).",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ },
+ {
+  "n": "C4",
+  "domanda": "Quali rifugi climatici ci sono vicino a Novoli e da dove si entra?",
+  "chiamate": [
+   {
+    "tool": "list_destinations",
+    "args": {
+     "aoi_id": "aoi_firenze_novoli",
+     "category": "cooling_refuge"
+    },
+    "esito": "ok",
+    "job_id": null
+   }
+  ],
+  "risposta": "Sette rifugi climatici del Comune entro 700 m dall'area: Giardino di Piazza delle Medaglie d'Oro, Biblioteca Filippo Buonarroti (Viale Guidoni 188), Giardino di piazza dei Cavalieri di Vittorio Veneto, Giardino di via Luigi Morandi, due giardini in via Arturo Toscanini, Giardino di piazza Giacomo Puccini. Ogni rifugio ha uno o due ingressi, presi dai civici agli indirizzi dichiarati dal Comune.\n\nCome l'ho calcolato: list_destinations, categoria cooling_refuge. Nessun job di calcolo: è l'elenco delle destinazioni. Fonti: aree e biblioteche rifugio climatico del Comune di Firenze, civici del Comune (CC BY 4.0).\n\nLimiti: ingressi da verificare sul posto (non verificati); per i giardini orari e cancelli non noti; la biblioteca non è sempre aperta.",
+  "numeri_senza_job": false,
+  "note": "",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ },
+ {
+  "n": "C5",
+  "domanda": "Quanto ci mette a piedi, in mediana, un civico dell'area per arrivare al rifugio più vicino? E quanti restano oltre i 15 minuti?",
+  "chiamate": [
+   {
+    "tool": "compute_walk_access",
+    "args": {
+     "baseline_id": "bas_firenze_novoli_20261009",
+     "origins": {
+      "kind": "address_points",
+      "aoi_id": "aoi_firenze_novoli"
+     },
+     "destination_ids": [
+      "dst_refuge_rib_fi_6",
+      "dst_refuge_rif_fi_01523",
+      "dst_refuge_rif_fi_01545",
+      "dst_refuge_rif_fi_01631",
+      "dst_refuge_rif_fi_02394",
+      "dst_refuge_rif_fi_02399",
+      "dst_refuge_rif_fi_05409"
+     ],
+     "profile": {
+      "speed_m_s": 1.2
+     },
+     "thresholds_min": [
+      5,
+      10,
+      15
+     ]
+    },
+    "esito": "ok",
+    "job_id": "job_e1e75455f7511f7d"
+   }
+  ],
+  "risposta": "Tempo mediano a piedi dal rifugio più vicino: 12,75 minuti per i civici che lo raggiungono (10,9-19,1 minuti fra 1,4 e 0,8 m/s); il 90% ci arriva entro 22,1 minuti. Entro 15 minuti arrivano 1.858 civici su 3.296 (56,4%); gli altri 1.438 restano oltre i 15 minuti o non hanno un percorso calcolato (168 civici non agganciati alla rete, 15 raggiungibili solo da tratti vietati, 1 isolato).\n\nCome l'ho calcolato: compute_walk_access verso i 7 rifugi insieme, 1,2 m/s, job job_e1e75455f7511f7d (metriche travel_time_p50, travel_time_p90, served_count_15min, origins_*). Fonti: civici del Comune (CC BY 4.0), OSM (ODbL), rifugi del Comune.\n\nLimiti: civici, non persone; distanza mediana 918 m sulla rete; il 35% dei metri ha marciapiede ignoto; ingressi dei rifugi non verificati.",
+  "numeri_senza_job": true,
+  "note": "1.438 = 3.296 - 1.858, ricavato dalle metriche dello stesso job.",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ },
+ {
+  "n": "C6",
+  "domanda": "Dal Polo al rifugio più vicino, quanta parte del percorso è all'ombra all'una del 15 luglio?",
+  "chiamate": [
+   {
+    "tool": "compute_shadow",
+    "args": {
+     "baseline_id": "bas_firenze_novoli_20261009",
+     "receivers": [
+      {
+       "route_id": "RC3"
+      }
+     ],
+     "when": {
+      "date": "2026-07-15",
+      "timezone": "Europe/Rome",
+      "times": [
+       "13:00"
+      ]
+     },
+     "method": {
+      "name": "geometric_ray",
+      "space_step_m": 1,
+      "time_step_min": 5,
+      "obstacles": "buildings_trees_and_lidar_vegetation"
+     }
+    },
+    "esito": "ok",
+    "job_id": "job_38a35384643b9f88"
+   }
+  ],
+  "risposta": "Sul percorso RC3 (ingresso D15 del Polo → Giardino di piazza Giacomo Puccini, 996 m) alle 13:00 del 15 luglio è in ombra il 28,1% del percorso con edifici, alberi e vegetazione LiDAR (26,9%-32,7%); il 24,3% con i soli edifici (18,9%-24,4%). Camminando a 1,2 m/s si passano al sole 9,9 minuti su 13,8 (9,3-10,1).\n\nCome l'ho calcolato: compute_shadow su RC3, 15 luglio 2026 13:00 Europe/Rome, passo 1 m e 5 minuti, job job_38a35384643b9f88, sole a 67 gradi. Fonti: unità volumetriche della Regione Toscana, OSM (ODbL), DSM e DTM 2023 e alberi del Comune (CC BY 4.0).\n\nLimiti: ombra sull'asse della strada, non sul marciapiede; chiome idealizzate e vegetazione LiDAR come prisma pieno; ingresso del rifugio non verificato; nessuna validazione sul posto.",
+  "numeri_senza_job": false,
+  "note": "Un solo orario: il calcolo con tutti i casi dura circa 30 s.",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ },
+ {
+  "n": "C7",
+  "domanda": "Una pensilina alla fermata bus Regione Toscana: quanta ombra dà a chi aspetta e quanto costa?",
+  "chiamate": [
+   {
+    "tool": "list_scenarios",
+    "args": {},
+    "esito": "ok",
+    "job_id": null
+   },
+   {
+    "tool": "compare_scenarios",
+    "args": {
+     "baseline_id": "bas_firenze_novoli_20261009",
+     "scenario_ids": [
+      "scn_fi_s5_pensilina_regione_toscana"
+     ]
+    },
+    "esito": "ok",
+    "job_id": "job_d7ea4583b071eaf7"
+   }
+  ],
+  "risposta": "Con la pensilina S5 l'area di attesa della fermata bus Regione Toscana passa dallo 0% al 40,0% d'ombra alle 12:30-13:30 del 15 luglio (con edifici, alberi e vegetazione LiDAR; stesso valore nei casi min e max). Sul percorso R01 non cambia nulla. Il costo non lo so: il servizio non calcola il costo delle pensiline perché non c'è un prezzo pubblico con licenza di riuso; il Comune ha un piano di 72 pensiline con importo non pubblicato.\n\nCome l'ho calcolato: list_scenarios, compare_scenarios con S5 rispetto alla baseline, job job_d7ea4583b071eaf7 (metrica sc1_attesa_s5_0715_punta_shade_lidar). Fonti: geometrie della baseline (edifici della Regione Toscana, OSM ODbL, LiDAR e alberi del Comune CC BY 4.0).\n\nLimiti: pensilina di dimensione dichiarata (12 m²), posizione da verificare; fattibilità (sottoservizi, permessi, proprietà del suolo) ignota; ombra geometrica, nessun effetto sulla temperatura.",
+  "numeri_senza_job": false,
+  "note": "Risposta in parte 'non lo so' (costo).",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ },
+ {
+  "n": "C8",
+  "domanda": "I dati sui residenti che usate quanto sono vecchi e possiamo riusarli in un documento pubblico?",
+  "chiamate": [
+   {
+    "tool": "get_source_card",
+    "args": {
+     "source_id": "src_rt_censimento2011"
+    },
+    "esito": "ok",
+    "job_id": null
+   },
+   {
+    "tool": "get_source_card",
+    "args": {
+     "source_id": "src_fi_sezioni2011"
+    },
+    "esito": "ok",
+    "job_id": null
+   }
+  ],
+  "risposta": "Sono i residenti del censimento Istat del 9 ottobre 2011, per sezione di censimento: quindici anni fa, e Novoli è cambiato (nuove residenze e studentati). Si possono riusare con attribuzione: tabella della Regione Toscana su dati Istat con licenza CC BY (la scheda del catalogo non indica la versione: citare Regione Toscana e Istat), confini delle sezioni del Comune di Firenze con licenza CC BY 4.0.\n\nCome l'ho calcolato: get_source_card per src_rt_censimento2011 e src_fi_sezioni2011. Nessun job di calcolo. Scarichi del 10 ottobre 2026 (snp_rt_censimento2011_20261010, snp_fi_sezioni2011_20261010), fuori dalla baseline congelata.\n\nLimiti: sul catalogo regionale non c'è un dato per sezione più recente; nei calcoli i residenti entrano solo come stima per civico, accanto alla quota dei civici.",
+  "numeri_senza_job": false,
+  "note": "",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ },
+ {
+  "n": "C9",
+  "domanda": "Il Giardino di piazza Puccini è aperto alle 14 di un giorno di luglio?",
+  "chiamate": [
+   {
+    "tool": "list_destinations",
+    "args": {
+     "aoi_id": "aoi_firenze_novoli",
+     "category": "cooling_refuge",
+     "name_query": "puccini"
+    },
+    "esito": "ok",
+    "job_id": null
+   }
+  ],
+  "risposta": "Non lo so: il gemello non ha gli orari dei rifugi. Per il Giardino di piazza Giacomo Puccini (dst_refuge_rif_fi_01545) la condizione di accesso registrata è 'giardino pubblico: orari e cancelli non noti', e l'ingresso usato nei calcoli (civico di Piazza Giacomo Puccini 24/A) non è verificato sul posto. Serve l'orario dal Comune o un sopralluogo.\n\nCome l'ho calcolato: list_destinations, categoria cooling_refuge, name_query 'puccini'. Fonte: aree rifugio climatico del Comune di Firenze.\n\nLimiti: tutti i calcoli verso i rifugi assumono che siano aperti.",
+  "numeri_senza_job": false,
+  "note": "Domanda a cui la risposta giusta è 'non lo so': orari non nei dati.",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ },
+ {
+  "n": "C10",
+  "domanda": "Con il filare S1 su R01, di quanti gradi scende la temperatura per chi cammina?",
+  "chiamate": [
+   {
+    "tool": "compare_scenarios",
+    "args": {
+     "baseline_id": "bas_firenze_novoli_20261009",
+     "scenario_ids": [
+      "scn_fi_s1_filare_r01"
+     ]
+    },
+    "esito": "ok",
+    "job_id": "job_fddc0dab363245c4"
+   }
+  ],
+  "risposta": "Non lo so: il gemello calcola ombra geometrica, non temperatura dell'aria né temperatura percepita, e non converte l'ombra in gradi. Quello che posso dire: con S1, alle 12:30-13:30 del 15 luglio, R01 passa dal 29,5% al 35,4% d'ombra e chi lo percorre sta al sole 0,37 minuti in meno (da 4,25 a 3,89 minuti). Per i gradi servirebbe un modello microclimatico con vento, radiazione e materiali, che non c'è.\n\nCome l'ho calcolato: compare_scenarios con S1 rispetto alla baseline, job job_fddc0dab363245c4, contesto con vegetazione LiDAR. Fonti: geometrie della baseline (Regione Toscana, OSM ODbL, LiDAR e alberi del Comune CC BY 4.0).\n\nLimiti: chioma di un albero adulto; ombra sull'asse della strada; nessuna validazione sul posto.",
+  "numeri_senza_job": false,
+  "note": "Domanda a cui la risposta giusta è 'non lo so': temperatura fuori capacità.",
+  "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
+ }
+]

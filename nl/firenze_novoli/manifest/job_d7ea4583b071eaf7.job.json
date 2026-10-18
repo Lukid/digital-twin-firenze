@@ -1,0 +1,51 @@
+{
+ "job_id": "job_d7ea4583b071eaf7",
+ "tool": "compare_scenarios",
+ "status": "succeeded",
+ "created_at": "2026-10-18T07:20:56Z",
+ "started_at": "2026-10-18T07:20:56Z",
+ "finished_at": "2026-10-18T07:21:06Z",
+ "inputs": {
+  "baseline_id": "bas_firenze_novoli_20261009",
+  "snapshot_ids": [
+   "snp_cm_edscol_firenze_20261009",
+   "snp_fi_alberi_20261009",
+   "snp_fi_barriere_20261009",
+   "snp_fi_civici_20261009",
+   "snp_fi_dsm2023_20261009",
+   "snp_fi_dtm2023_20261009",
+   "snp_fi_rifugi_aree_20261009",
+   "snp_fi_rifugi_biblioteche_20261009",
+   "snp_fi_scuole_statali_20261009",
+   "snp_fi_tram_fermate_20261009",
+   "snp_gtfs_at_firenze_20261009",
+   "snp_gtfs_gest_firenze_20261009",
+   "snp_osm_firenze_20261009",
+   "snp_rt_uv_firenze_novoli_20261009"
+  ]
+ },
+ "params": {
+  "scenario_ids": [
+   "scn_fi_s5_pensilina_regione_toscana"
+  ],
+  "scenario_sha256": [
+   "e5d1fe70b334dff336e1048323634f9a5193c72e4cefc9c232d39655bb549ee6"
+  ],
+  "with_variants": true,
+  "context": "con_vegetazione_lidar",
+  "method_version": "0.2.0",
+  "ombre_version": "0.3.0",
+  "baseline_record_sha256": "09455534543314148780991ee1a85eeddc877338e599dc38d8bab65cc971ced0"
+ },
+ "limits": {
+  "max_area_km2": 4,
+  "max_rows": 50000,
+  "max_seconds": 3600,
+  "max_memory_mb": 4096
+ },
+ "progress": {
+  "fraction": 1.0,
+  "message": "completato"
+ },
+ "result_manifest_id": "man_d7ea4583b071eaf7"
+}
