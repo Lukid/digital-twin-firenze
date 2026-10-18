@@ -19,7 +19,7 @@ NET = ROOT / "network" / SLUG
 CACHE = pathlib.Path(os.environ.get("DT_CACHE_DIR") or ROOT / "service/cache" / SLUG)   # cache per area; deve stare sotto ROOT (i percorsi degli asset sono relativi a ROOT)
 ID_DEST = re.compile(r"^dst_[a-z]{2,12}_[a-z0-9_]{2,60}$")
 ENGINE_ORIGINS = "address_points"
-TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios", "get_source_card", "estimate_residents", "get_route_exposure"]
+TOOLS = ["list_approved_sources", "inspect_dataset", "list_destinations", "list_scenarios", "compute_walk_access", "get_job_status", "get_result_manifest", "compute_shadow", "create_local_scenario", "compare_scenarios", "get_source_card", "estimate_residents", "get_route_exposure", "get_shaded_access"]
 # Fonti ammesse = solo quelle della baseline dell'area. Tema -> fonti candidate (le lacune nascono da fonti senza snapshot ok o senza uso permesso).
 _BASE = {s["source_id"]: s["snapshot_id"] for s in BASELINE["snapshot"]}
 _T = {"edifici": ["src_rt_uv_firenze_novoli", "src_osm_firenze"], "quote": ["src_fi_dsm2023", "src_fi_dtm2023"], "rete_pedonale": ["src_osm_firenze", "src_fi_barriere"],
@@ -427,6 +427,14 @@ def get_route_exposure(a):
         for o in p["orari"].values(): o.pop("geometrie", None)
     m = _read_job(next(iter(E["percorsi"].values()))["job_id"], "manifest")
     return {**E, "datasets": [{k: d[k] for k in ("snapshot_id", "source_id", "sha256", "license_state")} for d in m["datasets"]], "limits": m["limits"]}
+
+
+def get_shaded_access(a):
+    """F5 (D49): civici e residenti stimati che arrivano al rifugio più vicino camminando soprattutto all'ombra, già calcolati da shadow/ombra_rifugi.py."""
+    fs = {(E["job_accessibilita"], E["data"]): E for E in (_load(f) for f in sorted((ROOT / "shadow" / SLUG).glob("ombra_rifugi_2*.json")))}
+    E = fs.get((a["job_id"], a["date"]))
+    if not E: return err("unknown_id", f"Ombra sui percorsi non calcolata per il job {a['job_id']} il {a['date']}.", candidates=[f"{j} | {d}" for j, d in fs])
+    return E
 
 
 def _fuori(msg): return err("outside_capability", msg + ". Nessun risultato numerico disponibile per questa richiesta.")

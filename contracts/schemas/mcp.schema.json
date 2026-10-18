@@ -1542,6 +1542,149 @@
      "$ref": "common.schema.json#/$defs/tool_error"
     }
    ]
+  },
+  "get_shaded_access.input": {
+   "type": "object",
+   "required": [
+    "job_id",
+    "date"
+   ],
+   "additionalProperties": false,
+   "description": "Civici e residenti stimati che arrivano al rifugio più vicino camminando soprattutto all'ombra, per un job di compute_walk_access e una data già calcolati.",
+   "properties": {
+    "job_id": {
+     "$ref": "common.schema.json#/$defs/id_job"
+    },
+    "date": {
+     "$ref": "common.schema.json#/$defs/date"
+    }
+   }
+  },
+  "get_shaded_access.output": {
+   "oneOf": [
+    {
+     "type": "object",
+     "required": [
+      "job_accessibilita",
+      "data",
+      "ora_locale",
+      "soglia_ombra",
+      "soglie",
+      "classification",
+      "fonti",
+      "limits"
+     ],
+     "properties": {
+      "job_accessibilita": {
+       "$ref": "common.schema.json#/$defs/id_job"
+      },
+      "data": {
+       "$ref": "common.schema.json#/$defs/date"
+      },
+      "ora_locale": {
+       "type": "string",
+       "pattern": "^[0-2][0-9]:[0-5][0-9]$"
+      },
+      "soglia_ombra": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      "soglie": {
+       "type": "array",
+       "minItems": 1,
+       "items": {
+        "type": "object",
+        "required": [
+         "minuti",
+         "arrivano",
+         "soprattutto_ombra"
+        ],
+        "properties": {
+         "minuti": {
+          "type": "number"
+         },
+         "arrivano": {
+          "type": "object",
+          "required": [
+           "civici",
+           "residenti_stimati",
+           "quota_civici",
+           "quota_residenti"
+          ],
+          "properties": {
+           "civici": {
+            "type": "integer",
+            "minimum": 0
+           },
+           "residenti_stimati": {
+            "type": "integer",
+            "minimum": 0
+           },
+           "quota_civici": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+           },
+           "quota_residenti": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+           }
+          }
+         },
+         "soprattutto_ombra": {
+          "type": "object",
+          "required": [
+           "civici",
+           "residenti_stimati",
+           "quota_civici",
+           "quota_residenti"
+          ],
+          "properties": {
+           "civici": {
+            "type": "integer",
+            "minimum": 0
+           },
+           "residenti_stimati": {
+            "type": "integer",
+            "minimum": 0
+           },
+           "quota_civici": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+           },
+           "quota_residenti": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+           }
+          }
+         }
+        }
+       }
+      },
+      "classification": {
+       "const": "estimated"
+      },
+      "fonti": {
+       "type": "array",
+       "minItems": 1
+      },
+      "limits": {
+       "type": "array",
+       "minItems": 1,
+       "items": {
+        "$ref": "common.schema.json#/$defs/limit"
+       }
+      }
+     }
+    },
+    {
+     "$ref": "common.schema.json#/$defs/tool_error"
+    }
+   ]
   }
  }
 }

@@ -48,11 +48,20 @@
     },
     "esito": "ok",
     "job_id": "job_e1e75455f7511f7d"
+   },
+   {
+    "tool": "get_shaded_access",
+    "args": {
+     "job_id": "job_e1e75455f7511f7d",
+     "date": "2026-07-15"
+    },
+    "esito": "ok",
+    "job_id": null
    }
   ],
-  "risposta": "Entro 10 minuti a piedi dal rifugio climatico più vicino (7 rifugi, 1,2 m/s) arrivano circa 6.092 residenti stimati, il 43,6% dei 13.982 stimati nell'area (intervallo di velocità 29,6%-46,6%). In civici è il 39,1% dei 3.296 civici (1.289). La seconda parte non la so: il gemello calcola l'ombra solo sui 15 percorsi campione, non sul percorso di ogni civico verso il rifugio; servirebbe un calcolo d'ombra sui percorsi di tutti i civici (circa 3.100 percorsi) con una soglia di 'soprattutto all'ombra' da fissare.\n\nCome l'ho calcolato: list_destinations (cooling_refuge, 7 rifugi), compute_walk_access verso tutti e 7 insieme, job job_e1e75455f7511f7d; estimate_residents sullo stesso job. Fonti: civici del Comune di Firenze (CC BY 4.0), rete OSM (ODbL), rifugi del Comune (aree e biblioteche); residenti 2011 per sezione di Regione Toscana su dati Istat (CC BY, versione non indicata) e sezioni 2011 del Comune (CC BY 4.0).\n\nLimiti: i residenti sono una stima, non un conteggio: censimento 2011, residenti di ogni sezione divisi in parti uguali sui civici, negozi e uffici contati come abitazioni (con i soli civici neri: 44,0%); 70 civici in sezioni senza dato; ingressi e orari dei rifugi non verificati; rete OSM non verificata sul posto.",
+  "risposta": "Entro 10 minuti a piedi dal rifugio climatico più vicino (7 rifugi, 1,2 m/s) arrivano circa 6.092 residenti stimati, il 43,6% dei 13.982 stimati nell'area (intervallo di velocità 29,6%-46,6%). In civici è il 39,1% dei 3.296 civici (1.289). Camminando soprattutto all'ombra, cioè con almeno metà del percorso in ombra alle 14 del 15 luglio, ci arrivano pochissimi: circa 33 residenti stimati (0,2%), 8 civici. Con la vegetazione più o meno fitta il risultato va dallo 0,2% al 3,5% dei residenti. Con una soglia del 40% del percorso sono 363 (2,6%), con il 60% sono 29 (0,2%). A metà percorso in ombra non ci arriva quasi nessuno perché alle 14 di luglio il sole è alto (66 gradi) e l'ombra mediana sui percorsi è circa il 18%. Entro 15 minuti: 8.380 residenti stimati arrivano (59,9%), 59 soprattutto all'ombra (0,4%).\n\nCome l'ho calcolato: list_destinations (cooling_refuge, 7 rifugi), compute_walk_access verso tutti e 7 insieme, job job_e1e75455f7511f7d; estimate_residents sullo stesso job; get_shaded_access sullo stesso job al 15 luglio 2026, ombra alle 14:00 sul percorso più breve di ogni civico entro 15 minuti. Fonti: civici del Comune di Firenze (CC BY 4.0), rete OSM (ODbL), rifugi del Comune (aree e biblioteche); residenti 2011 per sezione di Regione Toscana su dati Istat (CC BY, versione non indicata) e sezioni 2011 del Comune (CC BY 4.0); edifici, alberi e LiDAR della baseline.\n\nLimiti: la soglia del 50% è una scelta nostra, da validare con voi; l'ombra è all'istante delle 14, sull'asse della strada e non sul marciapiede, sul percorso più breve (chi cerca l'ombra può sceglierne uno diverso); vegetazione LiDAR come chioma piena; i residenti sono una stima (censimento 2011 ripartito in parti uguali sui civici, con i soli civici neri: 44,0%); 70 civici in sezioni senza dato; ingressi e orari dei rifugi non verificati; nessuna verifica sul posto.",
   "numeri_senza_job": false,
-  "note": "Domanda dell'esempio del piano. 'Soprattutto all'ombra' è la parte senza risposta: nessuno strumento la calcola.",
+  "note": "Domanda dell'esempio del piano. Seconda parte calcolata in F5 (D49) con get_shaded_access; prima di F5 era senza risposta.",
   "origine": "Bozza dell'agente F4, non dall'ufficio del Comune: da validare con l'ufficio."
  },
  {

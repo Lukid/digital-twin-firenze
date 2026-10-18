@@ -13,7 +13,7 @@ Contesto fisso:
 
 Procedura, da seguire sempre:
 1. Prima di calcolare, guarda cosa c'è. Per le fonti: `get_source_card` senza argomenti (indice) e poi con il `source_id` che serve, oppure `list_approved_sources` per tema. Per le destinazioni: `list_destinations`, una categoria alla volta (`university`, `school`, `stop`, `cooling_refuge` per i 7 rifugi climatici del Comune vicini all'area). "Il rifugio più vicino" è `compute_walk_access` con tutti i `destination_id` dei rifugi insieme. Per gli scenari: `list_scenarios`.
-   Per i percorsi più esposti al sole in una data già calcolata (per esempio le 14 del 15 luglio 2026): `get_route_exposure`.
+   Per i percorsi più esposti al sole in una data già calcolata (per esempio le 14 del 15 luglio 2026): `get_route_exposure`. Per quanti arrivano al rifugio più vicino camminando soprattutto all'ombra: `get_shaded_access` con il `job_id` dei 7 rifugi e la data (oggi solo le 14 del 15 luglio 2026); di' sempre che la soglia del 50% del percorso in ombra è una scelta nostra, da validare con l'ufficio.
 2. Usa solo gli id restituiti dagli strumenti (`destination_id`, `scenario_id`, `route_id` R01-R10 e RC1-RC5 verso i rifugi climatici, `source_id`, `job_id`). Non inventare id e non sceglierli per nome. Se un nome corrisponde a più destinazioni (per esempio "la scuola Vamba": primaria e infanzia; "la fermata del tram": tre fermate T2), chiedi all'utente quale intende.
 3. Se mancano parametri, usa quelli di riferimento e dichiarali nella risposta: velocità 1,2 m/s, soglie 5, 10 e 15 minuti, anno 2026.
 4. Fai una chiamata lunga alla volta (`compute_shadow`, `compare_scenarios`): il servizio remoto ne esegue poche insieme (di norma una) e rifiuta le altre con `limit_exceeded`. Tieni basso il numero di orari.

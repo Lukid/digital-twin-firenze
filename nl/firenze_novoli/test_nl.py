@@ -47,6 +47,11 @@ for job_id, ist, rid in (("job_753fc5aff57df501", "2026-07-15T12:00", "pth_fi_R0
 caldo = json.loads((HERE / "caldo.json").read_text())
 assert len(caldo) == 10 and all("da validare" in q["origine"] for q in caldo) and sum("Non lo so" in q["risposta"] for q in caldo) >= 2
 r = core.run_tool("estimate_residents", {"job_id": "job_e1e75455f7511f7d"}); assert "6.092" in caldo[0]["risposta"] and r["soglie"][1]["residenti_stimati"] == 6092
+o = core.run_tool("get_shaded_access", {"job_id": "job_e1e75455f7511f7d", "date": "2026-07-15"})["soglie"]   # F5 (D49): arrivare soprattutto all'ombra
+fmt = lambda x: f"{x * 100:.1f}%".replace(".", ",")
+assert all(t in caldo[0]["risposta"] for t in (f"circa {o[0]['soprattutto_ombra']['residenti_stimati']} residenti stimati ({fmt(o[0]['soprattutto_ombra']['quota_residenti'])})",
+                                               f"{o[0]['sensibilita_soglia']['40%']['residenti_stimati']} ({fmt(o[0]['sensibilita_soglia']['40%']['quota_residenti'])})",
+                                               f"{o[1]['soprattutto_ombra']['residenti_stimati']} soprattutto all'ombra ({fmt(o[1]['soprattutto_ombra']['quota_residenti'])})"))
 e = core.run_tool("get_route_exposure", {"date": "2026-07-15"}); assert e["classifica"]["14:00"]["per_metri_al_sole"][:3] == ["RC4", "R10", "R03"] and all(e["percorsi"][x]["job_id"] in caldo[1]["risposta"] for x in ("RC4", "R10", "R03"))
 
 # 4. errori attesi, oggi

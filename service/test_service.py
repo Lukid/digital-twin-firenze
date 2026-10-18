@@ -97,6 +97,16 @@ ex = run("get_route_exposure", {"date": "2026-07-15"}); assert core.validate("ge
 assert len(ex["percorsi"]) == 15 and ex["classifica"]["14:00"]["per_metri_al_sole"][0] == "RC4" and "geometrie" not in json.dumps(ex)
 assert all(core._read_job(p["job_id"], "manifest")["tool"] == "compute_shadow" for p in ex["percorsi"].values())
 assert err_code(run("get_route_exposure", {"date": "2026-07-16"})) == "unknown_id"
+# arrivare al rifugio all'ombra (F5, D49): chi arriva è lo stesso di estimate_residents; i conteggi tornano con i punti per la scena; soglie in ordine
+om = run("get_shaded_access", {"job_id": rif["job_id"], "date": "2026-07-15"}); assert core.validate("get_shaded_access", "output", om) == [], om
+pt = json.loads((core.ROOT / "shadow/firenze_novoli/ombra_rifugi_civici_2026-07-15.geojson").read_text())["features"]
+for s, r in zip(om["soglie"], res["soglie"][1:]):
+    a, o = s["arrivano"], s["soprattutto_ombra"]
+    assert (a["residenti_stimati"], a["quota_residenti"], a["quota_civici"]) == (r["residenti_stimati"], r["quota_residenti"], r["quota_civici"])
+    assert o["civici"] == sum(1 for f in pt if f["properties"]["minuti"] <= s["minuti"] and f["properties"]["ombra"] >= om["soglia_ombra"]) and a["civici"] == sum(1 for f in pt if f["properties"]["minuti"] <= s["minuti"])
+    assert s["sensibilita_soglia"]["40%"]["civici"] >= o["civici"] >= s["sensibilita_soglia"]["60%"]["civici"] and s["intervallo_vegetazione"]["quota_civici"][0] <= o["quota_civici"] <= s["intervallo_vegetazione"]["quota_civici"][1]
+assert om["soglie"][0]["soprattutto_ombra"]["civici"] == 8 and om["soglie"][1]["soprattutto_ombra"]["residenti_stimati"] == 59 and any(x["code"] == "soglia_scelta_da_noi" for x in om["limits"])
+assert err_code(run("get_shaded_access", {"job_id": rif["job_id"], "date": "2026-07-16"})) == "unknown_id" and err_code(run("get_shaded_access", {"job_id": rif["job_id"], "date": "2026-07-15", "soglia": 0.4})) == "invalid_params"
 sc = run("list_scenarios", {}); assert core.validate("list_scenarios", "output", sc) == [] and {"scn_fi_s1_filare_r01", "scn_fi_s2_pensilina_attesa_polo"} <= {x["scenario_id"] for x in sc["scenarios"]}, sc
 assert err_code(run("list_scenarios", {"baseline_id": "bas_altra"})) == "incompatible_baseline"
 assert err_code(run("compute_walk_access", {**A, "origins": {"kind": "grid", "aoi_id": AOI, "spacing_m": 20}})) == "outside_capability"
@@ -283,7 +293,7 @@ async def mcp_test():
             init = await s.initialize()
             assert init.serverInfo.name == "dt-firenze" and "Firenze" in init.instructions and "pisa" not in init.instructions.lower()
             tools = {t.name: t for t in (await s.list_tools()).tools}
-            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios", "get_source_card", "estimate_residents", "get_route_exposure"}
+            assert set(tools) == set(core.TOOLS) == {"list_approved_sources", "inspect_dataset", "list_destinations", "compute_walk_access", "compute_shadow", "get_job_status", "get_result_manifest", "create_local_scenario", "compare_scenarios", "list_scenarios", "get_source_card", "estimate_residents", "get_route_exposure", "get_shaded_access"}
             assert all(t.inputSchema.get("additionalProperties") is False for t in tools.values())   # niente campi liberi (SQL, codice)
             assert not any(w in json.dumps([t.model_dump() for t in tools.values()]).lower() for w in ("pisa", "z2", "pellico"))
             res = await s.call_tool("compute_walk_access", A)
