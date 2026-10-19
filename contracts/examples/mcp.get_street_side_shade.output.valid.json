@@ -4,7 +4,7 @@
  "baseline_id": "bas_firenze_novoli_20261009",
  "ricevitore": "due linee parallele all'asse del percorso, a sinistra e a destra nel verso di marcia; l'asse accanto, calcolato allo stesso modo",
  "metodo": {
-  "distanza": "dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento); altrimenti dal bordo dell'area stradale del Comune lungo la normale dal punto medio (solo poligoni di tronco, incroci esclusi, bordo fra 1 e 25 m; stima nostra, D59); altrimenti 3 m dichiarati",
+  "distanza": "dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento); altrimenti dal bordo dell'area stradale del Comune lungo la normale dal punto medio (solo poligoni di tronco, incroci esclusi, bordo fra 1 e 25 m; stima nostra, D59), meno 1,7 m (D63; sotto 1 m dopo il margine, valore dichiarato); altrimenti 3 m dichiarati",
   "asse": "raccordi e tratti pedonali restano sull'asse",
   "casi": {
    "base": "edifici",
@@ -50,7 +50,7 @@
   },
   {
    "code": "aree_stradali_stima",
-   "text": "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è quella dal bordo dell'area stradale del Comune lungo la normale al segmento: una stima nostra, non una larghezza pubblicata; sui tratti con il marciapiede OSM il bordo sta in mediana circa 1,7 m più lontano del marciapiede, quindi la distanza è più facilmente in eccesso (metri per lato nel campo metri_aree_stradali)."
+   "text": "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è quella dal bordo dell'area stradale del Comune lungo la normale al segmento, meno un margine di 1,7 m (D63): una stima nostra, non una larghezza pubblicata. Il margine è la mediana dello scarto fra bordo e marciapiede OSM dove ci sono tutti e due, tarato su pochi tratti e da ricontrollare sul posto; se dopo il margine resta meno di 1 m vale il valore dichiarato (metri per lato nel campo metri_aree_stradali)."
   },
   {
    "code": "valore_dichiarato",
@@ -66,7 +66,7 @@
   }
  ],
  "calcolo": {
-  "secondi": 580,
+  "secondi": 594,
   "memoria_max_gb": 0.37
  },
  "data": "2026-12-12",

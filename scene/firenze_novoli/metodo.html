@@ -1618,7 +1618,7 @@ footer{padding:32px 16px 40px;color:var(--tenue);font-size:14px}
 <h3 class="sk">Limiti</h3>
 <ul>
 <li>Fuori dalla baseline congelata (D59): serve solo alla distanza del lato della strada dove il marciapiede non è mappato in OSM (shadow/lati_strada.py).</li>
-<li>Nessun campo di larghezza: la distanza è dal bordo del poligono lungo la normale, una stima nostra. Il bordo a volte comprende il marciapiede, a volte no: sui tratti con il marciapiede OSM sta in mediana circa 1,7 m più lontano.</li>
+<li>Nessun campo di larghezza: la distanza è dal bordo del poligono lungo la normale, una stima nostra. Il bordo a volte comprende il marciapiede, a volte no: sui tratti con il marciapiede OSM sta in mediana circa 1,7 m più lontano, e questo margine si toglie alla distanza (D63, taratura su pochi tratti da ricontrollare sul posto).</li>
 <li>Incroci (poligoni senza toponimo) esclusi.</li>
 <li>larghezza: nessun campo di larghezza: la distanza del lato è ricavata dalla forma del poligono con una regola nostra (shadow/lati_strada.py), una stima</li>
 </ul>

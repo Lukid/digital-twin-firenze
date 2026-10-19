@@ -40,7 +40,7 @@ Sistema di riferimento dichiarato: EPSG:3003 (shapefile con .prj in Monte Mario 
 ## Limiti
 
 - Fuori dalla baseline congelata (D59): serve solo alla distanza del lato della strada dove il marciapiede non è mappato in OSM (shadow/lati_strada.py).
-- Nessun campo di larghezza: la distanza è dal bordo del poligono lungo la normale, una stima nostra. Il bordo a volte comprende il marciapiede, a volte no: sui tratti con il marciapiede OSM sta in mediana circa 1,7 m più lontano.
+- Nessun campo di larghezza: la distanza è dal bordo del poligono lungo la normale, una stima nostra. Il bordo a volte comprende il marciapiede, a volte no: sui tratti con il marciapiede OSM sta in mediana circa 1,7 m più lontano, e questo margine si toglie alla distanza (D63, taratura su pochi tratti da ricontrollare sul posto).
 - Incroci (poligoni senza toponimo) esclusi.
 - larghezza: nessun campo di larghezza: la distanza del lato è ricavata dalla forma del poligono con una regola nostra (shadow/lati_strada.py), una stima
 

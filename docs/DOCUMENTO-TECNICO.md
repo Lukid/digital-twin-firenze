@@ -267,6 +267,7 @@ Limiti dei dati:
 Limiti del metodo:
 
 - Ombra misurata sull'asse della rete, non sulla linea dove si cammina. Ombra geometrica binaria (ombra o sole), senza luce diffusa né trasparenza delle chiome.
+- Il lato della strada più in ombra è solo un limite superiore, accanto all'asse. La distanza del lato viene dal marciapiede OSM; altrimenti dal bordo delle aree stradali del Comune meno un margine di 1,7 m, tarato su pochi tratti con il marciapiede OSM; altrimenti è un valore dichiarato di 3 m. Da verificare sul posto.
 - Nessun calcolo di temperatura, comfort termico o rischio da calore per le persone.
 - Fattibilità degli interventi non valutata; costo solo per il filare S1 (sezione 7.4).
 - Una fermata (San Donato - Università) è 100 m fuori dal riquadro: attorno ci sono il terreno e la rete, non gli edifici.

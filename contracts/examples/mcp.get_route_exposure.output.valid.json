@@ -70,7 +70,7 @@
       "asse": 0.1201,
       "frazione_ombra": 0.1525,
       "limite_superiore": 0.1525,
-      "solo_edifici": 0.0156
+      "solo_edifici": 0.0083
      }
     },
     "fonte_distanza": {
@@ -87,7 +87,7 @@
       "destra": 74.9
      }
     },
-    "nota": "frazione_ombra: quota d'ombra del lato della strada più in ombra, camminando tutto su quel lato senza attraversare; limite_superiore: la maggiore fra questa e l'asse. Si dà accanto a frazione_ombra sull'asse del percorso, che resta il valore. Distanza del lato dal marciapiede OSM, altrimenti dalle aree stradali del Comune (stima nostra), altrimenti 3 m dichiarati. Dettagli: get_street_side_shade."
+    "nota": "frazione_ombra: quota d'ombra del lato della strada più in ombra, camminando tutto su quel lato senza attraversare; limite_superiore: la maggiore fra questa e l'asse. Si dà accanto a frazione_ombra sull'asse del percorso, che resta il valore. Distanza del lato dal marciapiede OSM, altrimenti dal bordo delle aree stradali del Comune meno 1,7 m (stima nostra), altrimenti 3 m dichiarati. Dettagli: get_street_side_shade."
    }
   }
  },

@@ -120,7 +120,7 @@ for s, l in zip(om["soglie"], lp["soglie"]):
     q = l["soprattutto_ombra"]; assert s["minuti"] == l["minuti"] and q["40%"]["civici"] >= q["50%"]["civici"] >= q["60%"]["civici"]
     assert q["50%"]["civici"] >= s["soprattutto_ombra"]["civici"] and q["40%"]["civici"] >= s["sensibilita_soglia"]["40%"]["civici"] and q["60%"]["civici"] >= s["sensibilita_soglia"]["60%"]["civici"]
     assert q["50%"]["residenti_stimati"] >= s["soprattutto_ombra"]["residenti_stimati"] and sum(l["lato_piu_in_ombra"].values()) == s["arrivano"]["civici"]
-assert all(abs(v["civico"] - v["lati_strada"]) < 0.01 for v in lp["controllo_RC4"].values()) and lp["soglie"][0]["soprattutto_ombra"]["50%"]["civici"] == 179
+assert all(abs(v["civico"] - v["lati_strada"]) < 0.01 for v in lp["controllo_RC4"].values()) and lp["soglie"][0]["soprattutto_ombra"]["50%"]["civici"] == 182   # F8 (D63): 179 prima del margine
 # indicatore di riserva (F6, D53): quota media e quartili dai punti per la scena; minuti al sole fra 0 e i minuti di cammino
 for s in om["soglie"]:
     P = [f["properties"] for f in pt if f["properties"]["minuti"] <= s["minuti"]]; r = s["riserva"]

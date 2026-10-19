@@ -343,22 +343,22 @@
   "valore_principale": "soglie (ombra sull'asse): il lato più in ombra si dà accanto, mai al posto suo",
   "metodo": "Ogni tratto del percorso più breve si sposta a sinistra e a destra nel verso di marcia con la distanza di shadow/lati_strada.py; un civico arriva soprattutto all'ombra se almeno la soglia del percorso è in ombra sul suo lato più in ombra (lo stesso lato per tutto il percorso, nessun attraversamento), o sull'asse se entrambi i lati ne hanno meno. Caso con vegetazione; solo edifici a parte.",
   "civici_con_lati_sotto_l_asse": {
-   "10 min": 78,
-   "15 min": 79
+   "10 min": 67,
+   "15 min": 84
   },
   "controllo_asse": "ombra sull'asse ricalcolata qui uguale a quella del GeoJSON dei civici (scarto massimo 0.0000)",
-  "fonte_distanza": "marciapiede OSM; altrimenti bordo delle aree stradali del Comune (src_fi_aree_stradali, CC BY 4.0, stima nostra, D59); altrimenti 3 m dichiarati",
+  "fonte_distanza": "marciapiede OSM; altrimenti bordo delle aree stradali del Comune meno 1,7 m (src_fi_aree_stradali, CC BY 4.0, stima nostra, D59 e D63); altrimenti 3 m dichiarati",
   "metri_per_fonte": {
    "nota": "metri di strada sommati su tutti i percorsi dei civici entro 15 minuti (un tratto conta una volta per ogni civico che lo usa)",
    "sinistra": {
     "osm": 200467,
-    "aree": 235006,
-    "default": 231227
+    "aree": 228414,
+    "default": 237819
    },
    "destra": {
     "osm": 259823,
-    "aree": 255206,
-    "default": 151671
+    "aree": 249428,
+    "default": 157449
    }
   },
   "soglie": [
@@ -366,16 +366,16 @@
     "minuti": 10,
     "soprattutto_ombra": {
      "40%": {
-      "civici": 387,
-      "quota_civici": 0.1174,
-      "residenti_stimati": 1721,
-      "quota_residenti": 0.1231
+      "civici": 351,
+      "quota_civici": 0.1065,
+      "residenti_stimati": 1571,
+      "quota_residenti": 0.1123
      },
      "50%": {
-      "civici": 179,
-      "quota_civici": 0.0543,
-      "residenti_stimati": 836,
-      "quota_residenti": 0.0598
+      "civici": 182,
+      "quota_civici": 0.0552,
+      "residenti_stimati": 849,
+      "quota_residenti": 0.0607
      },
      "60%": {
       "civici": 61,
@@ -390,48 +390,48 @@
      "residenti_stimati": 86,
      "quota_residenti": 0.0062
     },
-    "ombra_media_lato_piu_in_ombra": 0.3366,
-    "ombra_mediana_lato_piu_in_ombra": 0.3223,
+    "ombra_media_lato_piu_in_ombra": 0.3303,
+    "ombra_mediana_lato_piu_in_ombra": 0.3099,
     "lato_piu_in_ombra": {
-     "sinistra": 990,
-     "destra": 189,
-     "pari": 110
+     "sinistra": 1013,
+     "destra": 135,
+     "pari": 141
     }
    },
    {
     "minuti": 15,
     "soprattutto_ombra": {
      "40%": {
-      "civici": 625,
-      "quota_civici": 0.1896,
-      "residenti_stimati": 3063,
-      "quota_residenti": 0.2191
+      "civici": 579,
+      "quota_civici": 0.1757,
+      "residenti_stimati": 2817,
+      "quota_residenti": 0.2015
      },
      "50%": {
-      "civici": 320,
-      "quota_civici": 0.0971,
-      "residenti_stimati": 1418,
-      "quota_residenti": 0.1014
+      "civici": 294,
+      "quota_civici": 0.0892,
+      "residenti_stimati": 1164,
+      "quota_residenti": 0.0832
      },
      "60%": {
-      "civici": 103,
-      "quota_civici": 0.0312,
-      "residenti_stimati": 424,
-      "quota_residenti": 0.0303
+      "civici": 95,
+      "quota_civici": 0.0288,
+      "residenti_stimati": 400,
+      "quota_residenti": 0.0286
      }
     },
     "solo_edifici": {
-     "civici": 56,
-     "quota_civici": 0.017,
-     "residenti_stimati": 175,
-     "quota_residenti": 0.0125
+     "civici": 20,
+     "quota_civici": 0.0061,
+     "residenti_stimati": 92,
+     "quota_residenti": 0.0065
     },
-    "ombra_media_lato_piu_in_ombra": 0.3403,
-    "ombra_mediana_lato_piu_in_ombra": 0.3255,
+    "ombra_media_lato_piu_in_ombra": 0.3294,
+    "ombra_mediana_lato_piu_in_ombra": 0.3026,
     "lato_piu_in_ombra": {
-     "sinistra": 1379,
-     "destra": 363,
-     "pari": 116
+     "sinistra": 1324,
+     "destra": 384,
+     "pari": 150
     }
    }
   ],
@@ -441,8 +441,8 @@
     "lati_strada": 0.1525
    },
    "destra": {
-    "civico": 0.0833,
-    "lati_strada": 0.0833
+    "civico": 0.0765,
+    "lati_strada": 0.0766
    }
   },
   "fonti": [
@@ -463,7 +463,7 @@
    },
    {
     "code": "distanza_del_lato",
-    "text": "Distanza del lato dal marciapiede OSM, altrimenti dal bordo delle aree stradali del Comune (stima nostra), altrimenti 3 m dichiarati (metri per fonte nel campo metri)."
+    "text": "Distanza del lato dal marciapiede OSM, altrimenti dal bordo delle aree stradali del Comune meno un margine di 1,7 m (stima nostra, D63), altrimenti 3 m dichiarati (metri per fonte nel campo metri)."
    },
    {
     "code": "attraversamenti_non_modellati",
@@ -474,10 +474,10 @@
    "tratti_unici": 2878,
    "pezzi": 13069,
    "blocco_pezzi": 2000,
-   "secondi_lati": 5.0,
-   "secondi_totali": 485,
+   "secondi_lati": 5.3,
+   "secondi_totali": 498,
    "memoria_max_gb": 0.89,
-   "memoria_disponibile_min_gb": 5.88
+   "memoria_disponibile_min_gb": 5.87
   }
  }
 }

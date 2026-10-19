@@ -4,7 +4,7 @@
  "baseline_id": "bas_firenze_novoli_20261009",
  "ricevitore": "due linee parallele all'asse del percorso, a sinistra e a destra nel verso di marcia; l'asse accanto, calcolato allo stesso modo",
  "metodo": {
-  "distanza": "dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento); altrimenti dal bordo dell'area stradale del Comune lungo la normale dal punto medio (solo poligoni di tronco, incroci esclusi, bordo fra 1 e 25 m; stima nostra, D59); altrimenti 3 m dichiarati",
+  "distanza": "dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento); altrimenti dal bordo dell'area stradale del Comune lungo la normale dal punto medio (solo poligoni di tronco, incroci esclusi, bordo fra 1 e 25 m; stima nostra, D59), meno 1,7 m (D63; sotto 1 m dopo il margine, valore dichiarato); altrimenti 3 m dichiarati",
   "asse": "raccordi e tratti pedonali restano sull'asse",
   "casi": {
    "base": "edifici",
@@ -50,7 +50,7 @@
   },
   {
    "code": "aree_stradali_stima",
-   "text": "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è quella dal bordo dell'area stradale del Comune lungo la normale al segmento: una stima nostra, non una larghezza pubblicata; sui tratti con il marciapiede OSM il bordo sta in mediana circa 1,7 m più lontano del marciapiede, quindi la distanza è più facilmente in eccesso (metri per lato nel campo metri_aree_stradali)."
+   "text": "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è quella dal bordo dell'area stradale del Comune lungo la normale al segmento, meno un margine di 1,7 m (D63): una stima nostra, non una larghezza pubblicata. Il margine è la mediana dello scarto fra bordo e marciapiede OSM dove ci sono tutti e due, tarato su pochi tratti e da ricontrollare sul posto; se dopo il margine resta meno di 1 m vale il valore dichiarato (metri per lato nel campo metri_aree_stradali)."
   },
   {
    "code": "valore_dichiarato",
@@ -1354,11 +1354,11 @@
    },
    "metri_aree_stradali": {
     "sinistra": 0,
-    "destra": 166.5
+    "destra": 164.9
    },
    "metri_valore_dichiarato": {
     "sinistra": 22.2,
-    "destra": 100.3
+    "destra": 101.9
    },
    "distanza_mediana_m": {
     "sinistra": 4.47,
@@ -1376,13 +1376,13 @@
      "edifici": {
       "asse": 0.5696,
       "sinistra": 0.5834,
-      "destra": 0.5761,
+      "destra": 0.5696,
       "asse_ufficiale": 0.5696
      },
      "con_vegetazione": {
       "asse": 0.5748,
       "sinistra": 0.659,
-      "destra": 0.5761,
+      "destra": 0.5696,
       "asse_ufficiale": 0.5748
      },
      "lato_piu_in_ombra": "sinistra"
@@ -1398,13 +1398,13 @@
      "edifici": {
       "asse": 0.5407,
       "sinistra": 0.5462,
-      "destra": 0.5587,
+      "destra": 0.5516,
       "asse_ufficiale": 0.5407
      },
      "con_vegetazione": {
       "asse": 0.5407,
       "sinistra": 0.5987,
-      "destra": 0.5587,
+      "destra": 0.5516,
       "asse_ufficiale": 0.5407
      },
      "lato_piu_in_ombra": "sinistra"
@@ -1420,16 +1420,16 @@
      "edifici": {
       "asse": 0.5044,
       "sinistra": 0.5057,
-      "destra": 0.519,
+      "destra": 0.5113,
       "asse_ufficiale": 0.5044
      },
      "con_vegetazione": {
       "asse": 0.5069,
       "sinistra": 0.5212,
-      "destra": 0.5192,
+      "destra": 0.5114,
       "asse_ufficiale": 0.5069
      },
-     "lato_piu_in_ombra": "pari"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-07-15",
@@ -1442,13 +1442,13 @@
      "edifici": {
       "asse": 0.471,
       "sinistra": 0.4604,
-      "destra": 0.4891,
+      "destra": 0.4815,
       "asse_ufficiale": 0.471
      },
      "con_vegetazione": {
       "asse": 0.4733,
       "sinistra": 0.467,
-      "destra": 0.5073,
+      "destra": 0.4859,
       "asse_ufficiale": 0.4733
      },
      "lato_piu_in_ombra": "destra"
@@ -1464,13 +1464,13 @@
      "edifici": {
       "asse": 0.4405,
       "sinistra": 0.4333,
-      "destra": 0.4491,
+      "destra": 0.4487,
       "asse_ufficiale": 0.4405
      },
      "con_vegetazione": {
       "asse": 0.4417,
       "sinistra": 0.4345,
-      "destra": 0.471,
+      "destra": 0.4551,
       "asse_ufficiale": 0.4417
      },
      "lato_piu_in_ombra": "destra"
@@ -1486,16 +1486,16 @@
      "edifici": {
       "asse": 0.3919,
       "sinistra": 0.3871,
-      "destra": 0.3812,
+      "destra": 0.3747,
       "asse_ufficiale": 0.3919
      },
      "con_vegetazione": {
       "asse": 0.3937,
       "sinistra": 0.3886,
-      "destra": 0.4036,
+      "destra": 0.385,
       "asse_ufficiale": 0.3937
      },
-     "lato_piu_in_ombra": "destra"
+     "lato_piu_in_ombra": "pari"
     },
     {
      "data": "2026-07-15",
@@ -1508,13 +1508,13 @@
      "edifici": {
       "asse": 0.357,
       "sinistra": 0.3417,
-      "destra": 0.3562,
+      "destra": 0.3503,
       "asse_ufficiale": 0.357
      },
      "con_vegetazione": {
       "asse": 0.3592,
       "sinistra": 0.3436,
-      "destra": 0.3789,
+      "destra": 0.3674,
       "asse_ufficiale": 0.3592
      },
      "lato_piu_in_ombra": "destra"
@@ -1530,13 +1530,13 @@
      "edifici": {
       "asse": 0.3015,
       "sinistra": 0.2963,
-      "destra": 0.3135,
+      "destra": 0.3133,
       "asse_ufficiale": 0.3015
      },
      "con_vegetazione": {
       "asse": 0.3042,
       "sinistra": 0.2987,
-      "destra": 0.346,
+      "destra": 0.333,
       "asse_ufficiale": 0.3042
      },
      "lato_piu_in_ombra": "destra"
@@ -1552,13 +1552,13 @@
      "edifici": {
       "asse": 0.2993,
       "sinistra": 0.2234,
-      "destra": 0.3104,
+      "destra": 0.3114,
       "asse_ufficiale": 0.2993
      },
      "con_vegetazione": {
       "asse": 0.3021,
       "sinistra": 0.2254,
-      "destra": 0.3386,
+      "destra": 0.3371,
       "asse_ufficiale": 0.3021
      },
      "lato_piu_in_ombra": "destra"
@@ -1574,13 +1574,13 @@
      "edifici": {
       "asse": 0.2653,
       "sinistra": 0.1116,
-      "destra": 0.3192,
+      "destra": 0.3008,
       "asse_ufficiale": 0.2653
      },
      "con_vegetazione": {
       "asse": 0.2684,
       "sinistra": 0.1116,
-      "destra": 0.3429,
+      "destra": 0.3265,
       "asse_ufficiale": 0.2684
      },
      "lato_piu_in_ombra": "destra"
@@ -1596,13 +1596,13 @@
      "edifici": {
       "asse": 0.1317,
       "sinistra": 0.0533,
-      "destra": 0.2918,
+      "destra": 0.2888,
       "asse_ufficiale": 0.1317
      },
      "con_vegetazione": {
       "asse": 0.1354,
       "sinistra": 0.0533,
-      "destra": 0.3115,
+      "destra": 0.3116,
       "asse_ufficiale": 0.1354
      },
      "lato_piu_in_ombra": "destra"
@@ -1618,13 +1618,13 @@
      "edifici": {
       "asse": 0.0525,
       "sinistra": 0.0355,
-      "destra": 0.2266,
+      "destra": 0.2247,
       "asse_ufficiale": 0.0525
      },
      "con_vegetazione": {
       "asse": 0.0552,
       "sinistra": 0.0355,
-      "destra": 0.238,
+      "destra": 0.2402,
       "asse_ufficiale": 0.0552
      },
      "lato_piu_in_ombra": "destra"
@@ -1640,13 +1640,13 @@
      "edifici": {
       "asse": 0.0416,
       "sinistra": 0.0416,
-      "destra": 0.1528,
+      "destra": 0.1523,
       "asse_ufficiale": 0.0416
      },
      "con_vegetazione": {
       "asse": 0.0416,
       "sinistra": 0.0416,
-      "destra": 0.1598,
+      "destra": 0.1617,
       "asse_ufficiale": 0.0416
      },
      "lato_piu_in_ombra": "destra"
@@ -1662,13 +1662,13 @@
      "edifici": {
       "asse": 0.0523,
       "sinistra": 0.0766,
-      "destra": 0.1195,
+      "destra": 0.1191,
       "asse_ufficiale": 0.0523
      },
      "con_vegetazione": {
       "asse": 0.0523,
       "sinistra": 0.0766,
-      "destra": 0.1227,
+      "destra": 0.1252,
       "asse_ufficiale": 0.0523
      },
      "lato_piu_in_ombra": "destra"
@@ -1684,13 +1684,13 @@
      "edifici": {
       "asse": 0.1321,
       "sinistra": 0.2089,
-      "destra": 0.1952,
+      "destra": 0.1941,
       "asse_ufficiale": 0.1321
      },
      "con_vegetazione": {
       "asse": 0.1321,
       "sinistra": 0.2089,
-      "destra": 0.1976,
+      "destra": 0.2002,
       "asse_ufficiale": 0.1321
      },
      "lato_piu_in_ombra": "sinistra"
@@ -1706,13 +1706,13 @@
      "edifici": {
       "asse": 0.1787,
       "sinistra": 0.3338,
-      "destra": 0.2204,
+      "destra": 0.2187,
       "asse_ufficiale": 0.1787
      },
      "con_vegetazione": {
       "asse": 0.1787,
       "sinistra": 0.3345,
-      "destra": 0.2215,
+      "destra": 0.2249,
       "asse_ufficiale": 0.1787
      },
      "lato_piu_in_ombra": "sinistra"
@@ -1728,13 +1728,13 @@
      "edifici": {
       "asse": 0.3231,
       "sinistra": 0.3561,
-      "destra": 0.2983,
+      "destra": 0.2833,
       "asse_ufficiale": 0.3231
      },
      "con_vegetazione": {
       "asse": 0.3231,
       "sinistra": 0.3633,
-      "destra": 0.2983,
+      "destra": 0.2864,
       "asse_ufficiale": 0.3231
      },
      "lato_piu_in_ombra": "sinistra"
@@ -1750,13 +1750,13 @@
      "edifici": {
       "asse": 0.3572,
       "sinistra": 0.3665,
-      "destra": 0.4445,
+      "destra": 0.4334,
       "asse_ufficiale": 0.3572
      },
      "con_vegetazione": {
       "asse": 0.3611,
       "sinistra": 0.3806,
-      "destra": 0.4485,
+      "destra": 0.4374,
       "asse_ufficiale": 0.3611
      },
      "lato_piu_in_ombra": "destra"
@@ -1772,13 +1772,13 @@
      "edifici": {
       "asse": 0.3683,
       "sinistra": 0.3843,
-      "destra": 0.4878,
+      "destra": 0.4868,
       "asse_ufficiale": 0.3683
      },
      "con_vegetazione": {
       "asse": 0.388,
       "sinistra": 0.3967,
-      "destra": 0.4978,
+      "destra": 0.4969,
       "asse_ufficiale": 0.388
      },
      "lato_piu_in_ombra": "destra"
@@ -1794,13 +1794,13 @@
      "edifici": {
       "asse": 0.3812,
       "sinistra": 0.3874,
-      "destra": 0.5068,
+      "destra": 0.5016,
       "asse_ufficiale": 0.3812
      },
      "con_vegetazione": {
       "asse": 0.3987,
       "sinistra": 0.3998,
-      "destra": 0.5171,
+      "destra": 0.5119,
       "asse_ufficiale": 0.3987
      },
      "lato_piu_in_ombra": "destra"
@@ -1816,13 +1816,13 @@
      "edifici": {
       "asse": 0.47,
       "sinistra": 0.3919,
-      "destra": 0.5308,
+      "destra": 0.5257,
       "asse_ufficiale": 0.47
      },
      "con_vegetazione": {
       "asse": 0.4792,
       "sinistra": 0.399,
-      "destra": 0.5411,
+      "destra": 0.5359,
       "asse_ufficiale": 0.4792
      },
      "lato_piu_in_ombra": "destra"
@@ -1838,13 +1838,13 @@
      "edifici": {
       "asse": 0.4859,
       "sinistra": 0.3873,
-      "destra": 0.5676,
+      "destra": 0.5629,
       "asse_ufficiale": 0.4859
      },
      "con_vegetazione": {
       "asse": 0.4879,
       "sinistra": 0.389,
-      "destra": 0.5793,
+      "destra": 0.5764,
       "asse_ufficiale": 0.4879
      },
      "lato_piu_in_ombra": "destra"
@@ -1860,13 +1860,13 @@
      "edifici": {
       "asse": 0.5038,
       "sinistra": 0.4007,
-      "destra": 0.6043,
+      "destra": 0.6041,
       "asse_ufficiale": 0.5038
      },
      "con_vegetazione": {
       "asse": 0.506,
       "sinistra": 0.4083,
-      "destra": 0.6132,
+      "destra": 0.613,
       "asse_ufficiale": 0.506
      },
      "lato_piu_in_ombra": "destra"
@@ -1904,13 +1904,13 @@
      "edifici": {
       "asse": 0.6477,
       "sinistra": 0.6669,
-      "destra": 0.6208,
+      "destra": 0.61,
       "asse_ufficiale": 0.6477
      },
      "con_vegetazione": {
       "asse": 0.6477,
       "sinistra": 0.706,
-      "destra": 0.6208,
+      "destra": 0.61,
       "asse_ufficiale": 0.6477
      },
      "lato_piu_in_ombra": "sinistra"
@@ -1926,16 +1926,16 @@
      "edifici": {
       "asse": 0.4886,
       "sinistra": 0.5115,
-      "destra": 0.5021,
+      "destra": 0.4901,
       "asse_ufficiale": 0.4886
      },
      "con_vegetazione": {
       "asse": 0.4886,
       "sinistra": 0.5264,
-      "destra": 0.5239,
+      "destra": 0.4901,
       "asse_ufficiale": 0.4886
      },
-     "lato_piu_in_ombra": "pari"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-09-15",
@@ -1948,16 +1948,16 @@
      "edifici": {
       "asse": 0.4337,
       "sinistra": 0.4333,
-      "destra": 0.4171,
+      "destra": 0.4136,
       "asse_ufficiale": 0.4337
      },
      "con_vegetazione": {
       "asse": 0.4425,
       "sinistra": 0.4436,
-      "destra": 0.4603,
+      "destra": 0.4352,
       "asse_ufficiale": 0.4425
      },
-     "lato_piu_in_ombra": "destra"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-09-15",
@@ -1970,13 +1970,13 @@
      "edifici": {
       "asse": 0.3419,
       "sinistra": 0.3637,
-      "destra": 0.3551,
+      "destra": 0.3514,
       "asse_ufficiale": 0.3419
      },
      "con_vegetazione": {
       "asse": 0.3597,
       "sinistra": 0.3803,
-      "destra": 0.4055,
+      "destra": 0.3956,
       "asse_ufficiale": 0.3597
      },
      "lato_piu_in_ombra": "destra"
@@ -1992,13 +1992,13 @@
      "edifici": {
       "asse": 0.3783,
       "sinistra": 0.4046,
-      "destra": 0.4029,
+      "destra": 0.3872,
       "asse_ufficiale": 0.3783
      },
      "con_vegetazione": {
       "asse": 0.3877,
       "sinistra": 0.4142,
-      "destra": 0.4706,
+      "destra": 0.4425,
       "asse_ufficiale": 0.3877
      },
      "lato_piu_in_ombra": "destra"
@@ -2014,13 +2014,13 @@
      "edifici": {
       "asse": 0.3953,
       "sinistra": 0.4053,
-      "destra": 0.4356,
+      "destra": 0.4299,
       "asse_ufficiale": 0.3953
      },
      "con_vegetazione": {
       "asse": 0.4107,
       "sinistra": 0.4212,
-      "destra": 0.4852,
+      "destra": 0.4906,
       "asse_ufficiale": 0.4107
      },
      "lato_piu_in_ombra": "destra"
@@ -2036,13 +2036,13 @@
      "edifici": {
       "asse": 0.4153,
       "sinistra": 0.4123,
-      "destra": 0.4714,
+      "destra": 0.4635,
       "asse_ufficiale": 0.4153
      },
      "con_vegetazione": {
       "asse": 0.4478,
       "sinistra": 0.4458,
-      "destra": 0.5259,
+      "destra": 0.5309,
       "asse_ufficiale": 0.4478
      },
      "lato_piu_in_ombra": "destra"
@@ -2058,13 +2058,13 @@
      "edifici": {
       "asse": 0.4744,
       "sinistra": 0.4564,
-      "destra": 0.5499,
+      "destra": 0.5452,
       "asse_ufficiale": 0.4744
      },
      "con_vegetazione": {
       "asse": 0.4853,
       "sinistra": 0.4677,
-      "destra": 0.5724,
+      "destra": 0.5812,
       "asse_ufficiale": 0.4853
      },
      "lato_piu_in_ombra": "destra"
@@ -2080,13 +2080,13 @@
      "edifici": {
       "asse": 0.4716,
       "sinistra": 0.4439,
-      "destra": 0.5663,
+      "destra": 0.5588,
       "asse_ufficiale": 0.4716
      },
      "con_vegetazione": {
       "asse": 0.4826,
       "sinistra": 0.4549,
-      "destra": 0.578,
+      "destra": 0.5884,
       "asse_ufficiale": 0.4826
      },
      "lato_piu_in_ombra": "destra"
@@ -2102,13 +2102,13 @@
      "edifici": {
       "asse": 0.4371,
       "sinistra": 0.3391,
-      "destra": 0.5618,
+      "destra": 0.555,
       "asse_ufficiale": 0.4371
      },
      "con_vegetazione": {
       "asse": 0.4463,
       "sinistra": 0.3483,
-      "destra": 0.5708,
+      "destra": 0.5767,
       "asse_ufficiale": 0.4463
      },
      "lato_piu_in_ombra": "destra"
@@ -2124,13 +2124,13 @@
      "edifici": {
       "asse": 0.3356,
       "sinistra": 0.2354,
-      "destra": 0.5406,
+      "destra": 0.5374,
       "asse_ufficiale": 0.3356
      },
      "con_vegetazione": {
       "asse": 0.3437,
       "sinistra": 0.2383,
-      "destra": 0.548,
+      "destra": 0.5512,
       "asse_ufficiale": 0.3437
      },
      "lato_piu_in_ombra": "destra"
@@ -2146,13 +2146,13 @@
      "edifici": {
       "asse": 0.3143,
       "sinistra": 0.1304,
-      "destra": 0.4377,
+      "destra": 0.4277,
       "asse_ufficiale": 0.3143
      },
      "con_vegetazione": {
       "asse": 0.3235,
       "sinistra": 0.1323,
-      "destra": 0.4461,
+      "destra": 0.4411,
       "asse_ufficiale": 0.3235
      },
      "lato_piu_in_ombra": "destra"
@@ -2174,7 +2174,7 @@
      "con_vegetazione": {
       "asse": 0.2208,
       "sinistra": 0.1707,
-      "destra": 0.4143,
+      "destra": 0.4182,
       "asse_ufficiale": 0.2208
      },
      "lato_piu_in_ombra": "destra"
@@ -2190,13 +2190,13 @@
      "edifici": {
       "asse": 0.2334,
       "sinistra": 0.2909,
-      "destra": 0.2897,
+      "destra": 0.289,
       "asse_ufficiale": 0.2334
      },
      "con_vegetazione": {
       "asse": 0.2377,
       "sinistra": 0.2953,
-      "destra": 0.2956,
+      "destra": 0.2953,
       "asse_ufficiale": 0.2377
      },
      "lato_piu_in_ombra": "pari"
@@ -2212,13 +2212,13 @@
      "edifici": {
       "asse": 0.3612,
       "sinistra": 0.4546,
-      "destra": 0.4235,
+      "destra": 0.4214,
       "asse_ufficiale": 0.3612
      },
      "con_vegetazione": {
       "asse": 0.3676,
       "sinistra": 0.461,
-      "destra": 0.4331,
+      "destra": 0.4279,
       "asse_ufficiale": 0.3676
      },
      "lato_piu_in_ombra": "sinistra"
@@ -2234,13 +2234,13 @@
      "edifici": {
       "asse": 0.5469,
       "sinistra": 0.5963,
-      "destra": 0.5204,
+      "destra": 0.5203,
       "asse_ufficiale": 0.5469
      },
      "con_vegetazione": {
       "asse": 0.5577,
       "sinistra": 0.6058,
-      "destra": 0.5291,
+      "destra": 0.529,
       "asse_ufficiale": 0.5577
      },
      "lato_piu_in_ombra": "sinistra"
@@ -2256,13 +2256,13 @@
      "edifici": {
       "asse": 0.6646,
       "sinistra": 0.65,
-      "destra": 0.7229,
+      "destra": 0.7115,
       "asse_ufficiale": 0.6646
      },
      "con_vegetazione": {
       "asse": 0.6708,
       "sinistra": 0.6551,
-      "destra": 0.7297,
+      "destra": 0.7177,
       "asse_ufficiale": 0.6708
      },
      "lato_piu_in_ombra": "destra"
@@ -2278,13 +2278,13 @@
      "edifici": {
       "asse": 0.7435,
       "sinistra": 0.7128,
-      "destra": 0.78,
+      "destra": 0.7641,
       "asse_ufficiale": 0.7435
      },
      "con_vegetazione": {
       "asse": 0.7435,
       "sinistra": 0.7128,
-      "destra": 0.7822,
+      "destra": 0.766,
       "asse_ufficiale": 0.7435
      },
      "lato_piu_in_ombra": "destra"
@@ -2306,7 +2306,7 @@
      "con_vegetazione": {
       "asse": 0.7883,
       "sinistra": 0.7646,
-      "destra": 0.8404,
+      "destra": 0.8408,
       "asse_ufficiale": 0.7883
      },
      "lato_piu_in_ombra": "destra"
@@ -2322,16 +2322,16 @@
      "edifici": {
       "asse": 0.8708,
       "sinistra": 0.8862,
-      "destra": 0.8786,
+      "destra": 0.8741,
       "asse_ufficiale": 0.8708
      },
      "con_vegetazione": {
       "asse": 0.8708,
       "sinistra": 0.8862,
-      "destra": 0.8833,
+      "destra": 0.8797,
       "asse_ufficiale": 0.8708
      },
-     "lato_piu_in_ombra": "pari"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-09-15",
@@ -2344,13 +2344,13 @@
      "edifici": {
       "asse": 0.9515,
       "sinistra": 0.9508,
-      "destra": 0.9649,
+      "destra": 0.9616,
       "asse_ufficiale": 0.9515
      },
      "con_vegetazione": {
       "asse": 0.9515,
       "sinistra": 0.9508,
-      "destra": 0.967,
+      "destra": 0.968,
       "asse_ufficiale": 0.9515
      },
      "lato_piu_in_ombra": "destra"
@@ -2377,11 +2377,11 @@
    },
    "metri_aree_stradali": {
     "sinistra": 0,
-    "destra": 166.5
+    "destra": 164.9
    },
    "metri_valore_dichiarato": {
     "sinistra": 22.2,
-    "destra": 100.3
+    "destra": 101.9
    },
    "distanza_mediana_m": {
     "sinistra": 4.47,
@@ -2399,13 +2399,13 @@
      "edifici": {
       "asse": 0.084,
       "sinistra": 0.084,
-      "destra": 0.173,
+      "destra": 0.1725,
       "asse_ufficiale": 0.084
      },
      "con_vegetazione": {
       "asse": 0.0846,
       "sinistra": 0.0846,
-      "destra": 0.1791,
+      "destra": 0.1806,
       "asse_ufficiale": 0.0846
      },
      "lato_piu_in_ombra": "destra"
@@ -2422,11 +2422,11 @@
     "destra": 19.0
    },
    "metri_aree_stradali": {
-    "sinistra": 1.4,
+    "sinistra": 0,
     "destra": 0
    },
    "metri_valore_dichiarato": {
-    "sinistra": 1.4,
+    "sinistra": 2.8,
     "destra": 3.1
    },
    "distanza_mediana_m": {
@@ -2469,15 +2469,15 @@
    },
    "metri_aree_stradali": {
     "sinistra": 30.2,
-    "destra": 211.2
+    "destra": 207.7
    },
    "metri_valore_dichiarato": {
     "sinistra": 226.3,
-    "destra": 52.2
+    "destra": 55.7
    },
    "distanza_mediana_m": {
     "sinistra": 3.0,
-    "destra": 4.44
+    "destra": 3.15
    },
    "istanti": [
     {
@@ -2490,14 +2490,14 @@
      },
      "edifici": {
       "asse": 0.2052,
-      "sinistra": 0.2344,
-      "destra": 0.5146,
+      "sinistra": 0.2113,
+      "destra": 0.5142,
       "asse_ufficiale": 0.2052
      },
      "con_vegetazione": {
       "asse": 0.2374,
-      "sinistra": 0.2645,
-      "destra": 0.5306,
+      "sinistra": 0.2415,
+      "destra": 0.5414,
       "asse_ufficiale": 0.2374
      },
      "lato_piu_in_ombra": "destra"
@@ -2522,8 +2522,8 @@
     "destra": 67.8
    },
    "distanza_mediana_m": {
-    "sinistra": 5.61,
-    "destra": 7.53
+    "sinistra": 5.29,
+    "destra": 6.42
    },
    "istanti": [
     {
@@ -2537,13 +2537,13 @@
      "edifici": {
       "asse": 0.1096,
       "sinistra": 0.1107,
-      "destra": 0.1626,
+      "destra": 0.162,
       "asse_ufficiale": 0.1096
      },
      "con_vegetazione": {
       "asse": 0.1822,
-      "sinistra": 0.1889,
-      "destra": 0.2323,
+      "sinistra": 0.1784,
+      "destra": 0.2284,
       "asse_ufficiale": 0.1822
      },
      "lato_piu_in_ombra": "destra"
@@ -2560,16 +2560,16 @@
     "destra": 409.1
    },
    "metri_aree_stradali": {
-    "sinistra": 61.9,
+    "sinistra": 51.7,
     "destra": 378.5
    },
    "metri_valore_dichiarato": {
-    "sinistra": 763.3,
+    "sinistra": 773.5,
     "destra": 82.0
    },
    "distanza_mediana_m": {
     "sinistra": 3.0,
-    "destra": 5.64
+    "destra": 5.37
    },
    "istanti": [
     {
@@ -2582,14 +2582,14 @@
      },
      "edifici": {
       "asse": 0.3396,
-      "sinistra": 0.3267,
-      "destra": 0.3604,
+      "sinistra": 0.3094,
+      "destra": 0.3612,
       "asse_ufficiale": 0.3396
      },
      "con_vegetazione": {
       "asse": 0.3616,
-      "sinistra": 0.3438,
-      "destra": 0.3803,
+      "sinistra": 0.3265,
+      "destra": 0.3811,
       "asse_ufficiale": 0.3616
      },
      "lato_piu_in_ombra": "destra"
@@ -2614,7 +2614,7 @@
     "destra": 278.7
    },
    "distanza_mediana_m": {
-    "sinistra": 6.66,
+    "sinistra": 6.06,
     "destra": 3.0
    },
    "istanti": [
@@ -2628,17 +2628,17 @@
      },
      "edifici": {
       "asse": 0.016,
-      "sinistra": 0.0739,
-      "destra": 0.0736,
+      "sinistra": 0.0566,
+      "destra": 0.0258,
       "asse_ufficiale": 0.016
      },
      "con_vegetazione": {
       "asse": 0.0366,
-      "sinistra": 0.0945,
-      "destra": 0.0996,
+      "sinistra": 0.0772,
+      "destra": 0.0652,
       "asse_ufficiale": 0.0366
      },
-     "lato_piu_in_ombra": "destra"
+     "lato_piu_in_ombra": "sinistra"
     }
    ]
   },
@@ -2674,13 +2674,13 @@
      },
      "edifici": {
       "asse": 0.0,
-      "sinistra": 0.0356,
+      "sinistra": 0.0144,
       "destra": 0.117,
       "asse_ufficiale": 0.0
      },
      "con_vegetazione": {
       "asse": 0.0078,
-      "sinistra": 0.17,
+      "sinistra": 0.1616,
       "destra": 0.1795,
       "asse_ufficiale": 0.0078
      },
@@ -2766,14 +2766,14 @@
      },
      "edifici": {
       "asse": 0.6346,
-      "sinistra": 0.6314,
+      "sinistra": 0.6329,
       "destra": 0.6462,
       "asse_ufficiale": 0.6346
      },
      "con_vegetazione": {
       "asse": 0.6702,
-      "sinistra": 0.6737,
-      "destra": 0.6659,
+      "sinistra": 0.679,
+      "destra": 0.67,
       "asse_ufficiale": 0.6702
      },
      "lato_piu_in_ombra": "sinistra"
@@ -2788,14 +2788,14 @@
      },
      "edifici": {
       "asse": 0.5462,
-      "sinistra": 0.5314,
+      "sinistra": 0.5326,
       "destra": 0.5699,
       "asse_ufficiale": 0.5462
      },
      "con_vegetazione": {
       "asse": 0.5746,
-      "sinistra": 0.5748,
-      "destra": 0.5903,
+      "sinistra": 0.5837,
+      "destra": 0.5981,
       "asse_ufficiale": 0.5746
      },
      "lato_piu_in_ombra": "destra"
@@ -2816,8 +2816,8 @@
      },
      "con_vegetazione": {
       "asse": 0.5388,
-      "sinistra": 0.3902,
-      "destra": 0.5795,
+      "sinistra": 0.3909,
+      "destra": 0.5878,
       "asse_ufficiale": 0.5388
      },
      "lato_piu_in_ombra": "destra"
@@ -2838,8 +2838,8 @@
      },
      "con_vegetazione": {
       "asse": 0.4634,
-      "sinistra": 0.3379,
-      "destra": 0.522,
+      "sinistra": 0.2847,
+      "destra": 0.5264,
       "asse_ufficiale": 0.4634
      },
      "lato_piu_in_ombra": "destra"
@@ -2860,8 +2860,8 @@
      },
      "con_vegetazione": {
       "asse": 0.2556,
-      "sinistra": 0.3359,
-      "destra": 0.4576,
+      "sinistra": 0.2637,
+      "destra": 0.4591,
       "asse_ufficiale": 0.2556
      },
      "lato_piu_in_ombra": "destra"
@@ -2882,11 +2882,11 @@
      },
      "con_vegetazione": {
       "asse": 0.2072,
-      "sinistra": 0.318,
+      "sinistra": 0.2871,
       "destra": 0.2969,
       "asse_ufficiale": 0.2072
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-07-15",
@@ -2898,14 +2898,14 @@
      },
      "edifici": {
       "asse": 0.1635,
-      "sinistra": 0.1763,
+      "sinistra": 0.1707,
       "destra": 0.1624,
       "asse_ufficiale": 0.1635
      },
      "con_vegetazione": {
       "asse": 0.225,
-      "sinistra": 0.3359,
-      "destra": 0.2843,
+      "sinistra": 0.3217,
+      "destra": 0.2831,
       "asse_ufficiale": 0.225
      },
      "lato_piu_in_ombra": "sinistra"
@@ -2920,14 +2920,14 @@
      },
      "edifici": {
       "asse": 0.161,
-      "sinistra": 0.2068,
+      "sinistra": 0.2029,
       "destra": 0.1488,
       "asse_ufficiale": 0.161
      },
      "con_vegetazione": {
       "asse": 0.2314,
-      "sinistra": 0.3777,
-      "destra": 0.2309,
+      "sinistra": 0.3715,
+      "destra": 0.2295,
       "asse_ufficiale": 0.2314
      },
      "lato_piu_in_ombra": "sinistra"
@@ -2942,14 +2942,14 @@
      },
      "edifici": {
       "asse": 0.155,
-      "sinistra": 0.3199,
+      "sinistra": 0.3194,
       "destra": 0.0396,
       "asse_ufficiale": 0.155
      },
      "con_vegetazione": {
       "asse": 0.2259,
-      "sinistra": 0.4907,
-      "destra": 0.1112,
+      "sinistra": 0.4863,
+      "destra": 0.1129,
       "asse_ufficiale": 0.2259
      },
      "lato_piu_in_ombra": "sinistra"
@@ -2964,14 +2964,14 @@
      },
      "edifici": {
       "asse": 0.1581,
-      "sinistra": 0.3791,
+      "sinistra": 0.3787,
       "destra": 0.0024,
       "asse_ufficiale": 0.1581
      },
      "con_vegetazione": {
       "asse": 0.229,
-      "sinistra": 0.5494,
-      "destra": 0.0697,
+      "sinistra": 0.5442,
+      "destra": 0.0686,
       "asse_ufficiale": 0.229
      },
      "lato_piu_in_ombra": "sinistra"
@@ -2992,8 +2992,8 @@
      },
      "con_vegetazione": {
       "asse": 0.2316,
-      "sinistra": 0.5932,
-      "destra": 0.0672,
+      "sinistra": 0.5866,
+      "destra": 0.0621,
       "asse_ufficiale": 0.2316
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3009,13 +3009,13 @@
      "edifici": {
       "asse": 0.0391,
       "sinistra": 0.4201,
-      "destra": 0.0142,
+      "destra": 0.0141,
       "asse_ufficiale": 0.0391
      },
      "con_vegetazione": {
       "asse": 0.1054,
-      "sinistra": 0.5862,
-      "destra": 0.0741,
+      "sinistra": 0.5803,
+      "destra": 0.069,
       "asse_ufficiale": 0.1054
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3036,8 +3036,8 @@
      },
      "con_vegetazione": {
       "asse": 0.1058,
-      "sinistra": 0.4436,
-      "destra": 0.0778,
+      "sinistra": 0.4385,
+      "destra": 0.0728,
       "asse_ufficiale": 0.1058
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3058,8 +3058,8 @@
      },
      "con_vegetazione": {
       "asse": 0.1109,
-      "sinistra": 0.4429,
-      "destra": 0.1191,
+      "sinistra": 0.4385,
+      "destra": 0.1142,
       "asse_ufficiale": 0.1109
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3080,8 +3080,8 @@
      },
      "con_vegetazione": {
       "asse": 0.1087,
-      "sinistra": 0.4614,
-      "destra": 0.2546,
+      "sinistra": 0.4575,
+      "destra": 0.2498,
       "asse_ufficiale": 0.1087
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3096,14 +3096,14 @@
      },
      "edifici": {
       "asse": 0.1114,
-      "sinistra": 0.2898,
+      "sinistra": 0.2899,
       "destra": 0.2538,
       "asse_ufficiale": 0.1114
      },
      "con_vegetazione": {
       "asse": 0.1753,
-      "sinistra": 0.4639,
-      "destra": 0.3136,
+      "sinistra": 0.4577,
+      "destra": 0.3087,
       "asse_ufficiale": 0.1753
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3118,14 +3118,14 @@
      },
      "edifici": {
       "asse": 0.2653,
-      "sinistra": 0.3249,
+      "sinistra": 0.325,
       "destra": 0.2762,
       "asse_ufficiale": 0.2653
      },
      "con_vegetazione": {
       "asse": 0.3272,
-      "sinistra": 0.4925,
-      "destra": 0.3316,
+      "sinistra": 0.4852,
+      "destra": 0.3268,
       "asse_ufficiale": 0.3272
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3140,14 +3140,14 @@
      },
      "edifici": {
       "asse": 0.3281,
-      "sinistra": 0.506,
+      "sinistra": 0.5046,
       "destra": 0.2944,
       "asse_ufficiale": 0.3281
      },
      "con_vegetazione": {
       "asse": 0.3857,
-      "sinistra": 0.6668,
-      "destra": 0.3449,
+      "sinistra": 0.659,
+      "destra": 0.3402,
       "asse_ufficiale": 0.3857
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3162,14 +3162,14 @@
      },
      "edifici": {
       "asse": 0.3737,
-      "sinistra": 0.5471,
-      "destra": 0.3334,
+      "sinistra": 0.5489,
+      "destra": 0.3305,
       "asse_ufficiale": 0.3737
      },
      "con_vegetazione": {
       "asse": 0.4299,
-      "sinistra": 0.7002,
-      "destra": 0.3756,
+      "sinistra": 0.6972,
+      "destra": 0.3681,
       "asse_ufficiale": 0.4299
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3184,14 +3184,14 @@
      },
      "edifici": {
       "asse": 0.3952,
-      "sinistra": 0.5717,
+      "sinistra": 0.57,
       "destra": 0.3388,
       "asse_ufficiale": 0.3952
      },
      "con_vegetazione": {
       "asse": 0.4484,
-      "sinistra": 0.7248,
-      "destra": 0.374,
+      "sinistra": 0.7213,
+      "destra": 0.3693,
       "asse_ufficiale": 0.4484
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3206,14 +3206,14 @@
      },
      "edifici": {
       "asse": 0.4186,
-      "sinistra": 0.5812,
-      "destra": 0.3678,
+      "sinistra": 0.5798,
+      "destra": 0.3677,
       "asse_ufficiale": 0.4186
      },
      "con_vegetazione": {
       "asse": 0.4566,
-      "sinistra": 0.7289,
-      "destra": 0.3877,
+      "sinistra": 0.7242,
+      "destra": 0.3835,
       "asse_ufficiale": 0.4566
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3229,13 +3229,13 @@
      "edifici": {
       "asse": 0.4198,
       "sinistra": 0.6153,
-      "destra": 0.3865,
+      "destra": 0.3875,
       "asse_ufficiale": 0.4198
      },
      "con_vegetazione": {
       "asse": 0.4356,
-      "sinistra": 0.744,
-      "destra": 0.3894,
+      "sinistra": 0.7413,
+      "destra": 0.3875,
       "asse_ufficiale": 0.4356
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3250,14 +3250,14 @@
      },
      "edifici": {
       "asse": 0.4069,
-      "sinistra": 0.6658,
-      "destra": 0.3907,
+      "sinistra": 0.6639,
+      "destra": 0.3916,
       "asse_ufficiale": 0.4069
      },
      "con_vegetazione": {
       "asse": 0.4069,
-      "sinistra": 0.7692,
-      "destra": 0.3919,
+      "sinistra": 0.766,
+      "destra": 0.3916,
       "asse_ufficiale": 0.4069
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3272,14 +3272,14 @@
      },
      "edifici": {
       "asse": 0.6588,
-      "sinistra": 0.6721,
+      "sinistra": 0.6706,
       "destra": 0.6602,
       "asse_ufficiale": 0.6588
      },
      "con_vegetazione": {
       "asse": 0.6851,
-      "sinistra": 0.6951,
-      "destra": 0.7272,
+      "sinistra": 0.6964,
+      "destra": 0.7267,
       "asse_ufficiale": 0.6851
      },
      "lato_piu_in_ombra": "destra"
@@ -3300,8 +3300,8 @@
      },
      "con_vegetazione": {
       "asse": 0.6339,
-      "sinistra": 0.4149,
-      "destra": 0.6163,
+      "sinistra": 0.407,
+      "destra": 0.6257,
       "asse_ufficiale": 0.6339
      },
      "lato_piu_in_ombra": "destra"
@@ -3317,13 +3317,13 @@
      "edifici": {
       "asse": 0.2092,
       "sinistra": 0.1993,
-      "destra": 0.4535,
+      "destra": 0.4534,
       "asse_ufficiale": 0.2092
      },
      "con_vegetazione": {
       "asse": 0.2613,
-      "sinistra": 0.3429,
-      "destra": 0.5253,
+      "sinistra": 0.3103,
+      "destra": 0.5328,
       "asse_ufficiale": 0.2613
      },
      "lato_piu_in_ombra": "destra"
@@ -3338,13 +3338,13 @@
      },
      "edifici": {
       "asse": 0.1749,
-      "sinistra": 0.2301,
+      "sinistra": 0.2074,
       "destra": 0.183,
       "asse_ufficiale": 0.1749
      },
      "con_vegetazione": {
       "asse": 0.2772,
-      "sinistra": 0.4194,
+      "sinistra": 0.4073,
       "destra": 0.3884,
       "asse_ufficiale": 0.2772
      },
@@ -3360,14 +3360,14 @@
      },
      "edifici": {
       "asse": 0.1677,
-      "sinistra": 0.4007,
+      "sinistra": 0.4003,
       "destra": 0.1724,
       "asse_ufficiale": 0.1677
      },
      "con_vegetazione": {
       "asse": 0.2753,
-      "sinistra": 0.5996,
-      "destra": 0.307,
+      "sinistra": 0.5993,
+      "destra": 0.3068,
       "asse_ufficiale": 0.2753
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3382,14 +3382,14 @@
      },
      "edifici": {
       "asse": 0.197,
-      "sinistra": 0.4563,
+      "sinistra": 0.4473,
       "destra": 0.1662,
       "asse_ufficiale": 0.197
      },
      "con_vegetazione": {
       "asse": 0.3012,
-      "sinistra": 0.6561,
-      "destra": 0.2938,
+      "sinistra": 0.6407,
+      "destra": 0.2875,
       "asse_ufficiale": 0.3012
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3404,14 +3404,14 @@
      },
      "edifici": {
       "asse": 0.2132,
-      "sinistra": 0.4618,
+      "sinistra": 0.4599,
       "destra": 0.172,
       "asse_ufficiale": 0.2132
      },
      "con_vegetazione": {
       "asse": 0.3089,
-      "sinistra": 0.6535,
-      "destra": 0.2821,
+      "sinistra": 0.6433,
+      "destra": 0.2751,
       "asse_ufficiale": 0.3089
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3426,14 +3426,14 @@
      },
      "edifici": {
       "asse": 0.2701,
-      "sinistra": 0.4704,
-      "destra": 0.2154,
+      "sinistra": 0.47,
+      "destra": 0.215,
       "asse_ufficiale": 0.2701
      },
      "con_vegetazione": {
       "asse": 0.3791,
-      "sinistra": 0.661,
-      "destra": 0.3141,
+      "sinistra": 0.6544,
+      "destra": 0.3078,
       "asse_ufficiale": 0.3791
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3448,14 +3448,14 @@
      },
      "edifici": {
       "asse": 0.2817,
-      "sinistra": 0.4769,
+      "sinistra": 0.4765,
       "destra": 0.2132,
       "asse_ufficiale": 0.2817
      },
      "con_vegetazione": {
       "asse": 0.3941,
-      "sinistra": 0.6635,
-      "destra": 0.3064,
+      "sinistra": 0.6626,
+      "destra": 0.3009,
       "asse_ufficiale": 0.3941
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3470,14 +3470,14 @@
      },
      "edifici": {
       "asse": 0.3202,
-      "sinistra": 0.4817,
-      "destra": 0.2018,
+      "sinistra": 0.4814,
+      "destra": 0.2017,
       "asse_ufficiale": 0.3202
      },
      "con_vegetazione": {
       "asse": 0.434,
-      "sinistra": 0.6704,
-      "destra": 0.2907,
+      "sinistra": 0.669,
+      "destra": 0.2858,
       "asse_ufficiale": 0.434
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3492,14 +3492,14 @@
      },
      "edifici": {
       "asse": 0.3095,
-      "sinistra": 0.4823,
+      "sinistra": 0.482,
       "destra": 0.0946,
       "asse_ufficiale": 0.3095
      },
      "con_vegetazione": {
       "asse": 0.4247,
-      "sinistra": 0.6718,
-      "destra": 0.1793,
+      "sinistra": 0.6717,
+      "destra": 0.1747,
       "asse_ufficiale": 0.4247
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3515,13 +3515,13 @@
      "edifici": {
       "asse": 0.3073,
       "sinistra": 0.4661,
-      "destra": 0.0986,
+      "destra": 0.0985,
       "asse_ufficiale": 0.3073
      },
      "con_vegetazione": {
       "asse": 0.4392,
-      "sinistra": 0.6533,
-      "destra": 0.1776,
+      "sinistra": 0.6534,
+      "destra": 0.1733,
       "asse_ufficiale": 0.4392
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3537,13 +3537,13 @@
      "edifici": {
       "asse": 0.215,
       "sinistra": 0.4498,
-      "destra": 0.1035,
+      "destra": 0.1033,
       "asse_ufficiale": 0.215
      },
      "con_vegetazione": {
       "asse": 0.3694,
-      "sinistra": 0.6316,
-      "destra": 0.175,
+      "sinistra": 0.6326,
+      "destra": 0.171,
       "asse_ufficiale": 0.3694
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3559,13 +3559,13 @@
      "edifici": {
       "asse": 0.2345,
       "sinistra": 0.2914,
-      "destra": 0.1022,
+      "destra": 0.1064,
       "asse_ufficiale": 0.2345
      },
      "con_vegetazione": {
       "asse": 0.4,
       "sinistra": 0.4715,
-      "destra": 0.1795,
+      "destra": 0.1802,
       "asse_ufficiale": 0.4
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3580,14 +3580,14 @@
      },
      "edifici": {
       "asse": 0.3261,
-      "sinistra": 0.3591,
+      "sinistra": 0.3675,
       "destra": 0.3482,
       "asse_ufficiale": 0.3261
      },
      "con_vegetazione": {
       "asse": 0.4951,
-      "sinistra": 0.5378,
-      "destra": 0.4326,
+      "sinistra": 0.5457,
+      "destra": 0.4297,
       "asse_ufficiale": 0.4951
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3603,13 +3603,13 @@
      "edifici": {
       "asse": 0.3493,
       "sinistra": 0.3916,
-      "destra": 0.4438,
+      "destra": 0.4461,
       "asse_ufficiale": 0.3493
      },
      "con_vegetazione": {
       "asse": 0.5257,
-      "sinistra": 0.5724,
-      "destra": 0.5327,
+      "sinistra": 0.5689,
+      "destra": 0.5328,
       "asse_ufficiale": 0.5257
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3630,7 +3630,7 @@
      },
      "con_vegetazione": {
       "asse": 0.7445,
-      "sinistra": 0.7427,
+      "sinistra": 0.7459,
       "destra": 0.5722,
       "asse_ufficiale": 0.7445
      },
@@ -3647,13 +3647,13 @@
      "edifici": {
       "asse": 0.6484,
       "sinistra": 0.69,
-      "destra": 0.5715,
+      "destra": 0.5714,
       "asse_ufficiale": 0.6484
      },
      "con_vegetazione": {
       "asse": 0.8436,
-      "sinistra": 0.8724,
-      "destra": 0.6805,
+      "sinistra": 0.8768,
+      "destra": 0.6804,
       "asse_ufficiale": 0.8436
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3668,14 +3668,14 @@
      },
      "edifici": {
       "asse": 0.7361,
-      "sinistra": 0.747,
-      "destra": 0.6112,
+      "sinistra": 0.7448,
+      "destra": 0.6103,
       "asse_ufficiale": 0.7361
      },
      "con_vegetazione": {
       "asse": 0.9315,
-      "sinistra": 0.925,
-      "destra": 0.7484,
+      "sinistra": 0.9294,
+      "destra": 0.7475,
       "asse_ufficiale": 0.9315
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3690,13 +3690,13 @@
      },
      "edifici": {
       "asse": 0.7623,
-      "sinistra": 0.7756,
+      "sinistra": 0.7849,
       "destra": 0.7209,
       "asse_ufficiale": 0.7623
      },
      "con_vegetazione": {
       "asse": 0.9557,
-      "sinistra": 0.9417,
+      "sinistra": 0.9611,
       "destra": 0.8836,
       "asse_ufficiale": 0.9557
      },
@@ -3718,7 +3718,7 @@
      },
      "con_vegetazione": {
       "asse": 0.9741,
-      "sinistra": 0.9514,
+      "sinistra": 0.9638,
       "destra": 0.9725,
       "asse_ufficiale": 0.9741
      },
@@ -3734,13 +3734,13 @@
      },
      "edifici": {
       "asse": 0.8608,
-      "sinistra": 0.8568,
+      "sinistra": 0.8581,
       "destra": 0.869,
       "asse_ufficiale": 0.8608
      },
      "con_vegetazione": {
       "asse": 1.0,
-      "sinistra": 0.992,
+      "sinistra": 0.9943,
       "destra": 1.0,
       "asse_ufficiale": 1.0
      },
@@ -3767,15 +3767,15 @@
     "destra": 341.8
    },
    "metri_aree_stradali": {
-    "sinistra": 121.3,
-    "destra": 114.2
+    "sinistra": 110.4,
+    "destra": 108.5
    },
    "metri_valore_dichiarato": {
-    "sinistra": 277.7,
-    "destra": 198.8
+    "sinistra": 288.5,
+    "destra": 204.5
    },
    "distanza_mediana_m": {
-    "sinistra": 3.77,
+    "sinistra": 3.19,
     "destra": 3.0
    },
    "istanti": [
@@ -3789,14 +3789,14 @@
      },
      "edifici": {
       "asse": 0.4264,
-      "sinistra": 0.3798,
-      "destra": 0.4958,
+      "sinistra": 0.3783,
+      "destra": 0.4968,
       "asse_ufficiale": 0.4264
      },
      "con_vegetazione": {
       "asse": 0.5594,
-      "sinistra": 0.5078,
-      "destra": 0.6518,
+      "sinistra": 0.514,
+      "destra": 0.6391,
       "asse_ufficiale": 0.5594
      },
      "lato_piu_in_ombra": "destra"
@@ -3811,14 +3811,14 @@
      },
      "edifici": {
       "asse": 0.3734,
-      "sinistra": 0.3043,
-      "destra": 0.4433,
+      "sinistra": 0.3054,
+      "destra": 0.4255,
       "asse_ufficiale": 0.3734
      },
      "con_vegetazione": {
       "asse": 0.4925,
-      "sinistra": 0.4114,
-      "destra": 0.5856,
+      "sinistra": 0.4201,
+      "destra": 0.5486,
       "asse_ufficiale": 0.4925
      },
      "lato_piu_in_ombra": "destra"
@@ -3833,14 +3833,14 @@
      },
      "edifici": {
       "asse": 0.3418,
-      "sinistra": 0.2597,
+      "sinistra": 0.2606,
       "destra": 0.3983,
       "asse_ufficiale": 0.3418
      },
      "con_vegetazione": {
       "asse": 0.4506,
-      "sinistra": 0.3867,
-      "destra": 0.5178,
+      "sinistra": 0.3969,
+      "destra": 0.5126,
       "asse_ufficiale": 0.4506
      },
      "lato_piu_in_ombra": "destra"
@@ -3856,13 +3856,13 @@
      "edifici": {
       "asse": 0.2737,
       "sinistra": 0.2367,
-      "destra": 0.3726,
+      "destra": 0.371,
       "asse_ufficiale": 0.2737
      },
      "con_vegetazione": {
       "asse": 0.3805,
-      "sinistra": 0.4078,
-      "destra": 0.4598,
+      "sinistra": 0.4091,
+      "destra": 0.4549,
       "asse_ufficiale": 0.3805
      },
      "lato_piu_in_ombra": "destra"
@@ -3878,13 +3878,13 @@
      "edifici": {
       "asse": 0.2489,
       "sinistra": 0.2169,
-      "destra": 0.3441,
+      "destra": 0.3417,
       "asse_ufficiale": 0.2489
      },
      "con_vegetazione": {
       "asse": 0.3331,
-      "sinistra": 0.3839,
-      "destra": 0.4088,
+      "sinistra": 0.379,
+      "destra": 0.405,
       "asse_ufficiale": 0.3331
      },
      "lato_piu_in_ombra": "destra"
@@ -3900,13 +3900,13 @@
      "edifici": {
       "asse": 0.2267,
       "sinistra": 0.2037,
-      "destra": 0.2892,
+      "destra": 0.2867,
       "asse_ufficiale": 0.2267
      },
      "con_vegetazione": {
       "asse": 0.2944,
-      "sinistra": 0.3556,
-      "destra": 0.3447,
+      "sinistra": 0.3525,
+      "destra": 0.3472,
       "asse_ufficiale": 0.2944
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3922,13 +3922,13 @@
      "edifici": {
       "asse": 0.2119,
       "sinistra": 0.1912,
-      "destra": 0.2508,
+      "destra": 0.2492,
       "asse_ufficiale": 0.2119
      },
      "con_vegetazione": {
       "asse": 0.262,
-      "sinistra": 0.3235,
-      "destra": 0.2868,
+      "sinistra": 0.3232,
+      "destra": 0.302,
       "asse_ufficiale": 0.262
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3943,14 +3943,14 @@
      },
      "edifici": {
       "asse": 0.2047,
-      "sinistra": 0.1725,
-      "destra": 0.2299,
+      "sinistra": 0.1718,
+      "destra": 0.2283,
       "asse_ufficiale": 0.2047
      },
      "con_vegetazione": {
       "asse": 0.2314,
-      "sinistra": 0.2951,
-      "destra": 0.2539,
+      "sinistra": 0.2948,
+      "destra": 0.2734,
       "asse_ufficiale": 0.2314
      },
      "lato_piu_in_ombra": "sinistra"
@@ -3965,14 +3965,14 @@
      },
      "edifici": {
       "asse": 0.2004,
-      "sinistra": 0.0523,
-      "destra": 0.2231,
+      "sinistra": 0.0516,
+      "destra": 0.2216,
       "asse_ufficiale": 0.2004
      },
      "con_vegetazione": {
       "asse": 0.2333,
       "sinistra": 0.1967,
-      "destra": 0.2433,
+      "destra": 0.2636,
       "asse_ufficiale": 0.2333
      },
      "lato_piu_in_ombra": "destra"
@@ -3987,14 +3987,14 @@
      },
      "edifici": {
       "asse": 0.179,
-      "sinistra": 0.0242,
-      "destra": 0.2127,
+      "sinistra": 0.0225,
+      "destra": 0.2111,
       "asse_ufficiale": 0.179
      },
      "con_vegetazione": {
       "asse": 0.2127,
-      "sinistra": 0.1933,
-      "destra": 0.2435,
+      "sinistra": 0.1928,
+      "destra": 0.2652,
       "asse_ufficiale": 0.2127
      },
      "lato_piu_in_ombra": "destra"
@@ -4009,14 +4009,14 @@
      },
      "edifici": {
       "asse": 0.0196,
-      "sinistra": 0.0219,
-      "destra": 0.1996,
+      "sinistra": 0.0199,
+      "destra": 0.1981,
       "asse_ufficiale": 0.0196
      },
      "con_vegetazione": {
       "asse": 0.0568,
-      "sinistra": 0.2084,
-      "destra": 0.2397,
+      "sinistra": 0.2079,
+      "destra": 0.2629,
       "asse_ufficiale": 0.0568
      },
      "lato_piu_in_ombra": "destra"
@@ -4031,14 +4031,14 @@
      },
      "edifici": {
       "asse": 0.0,
-      "sinistra": 0.0262,
-      "destra": 0.1269,
+      "sinistra": 0.0249,
+      "destra": 0.1254,
       "asse_ufficiale": 0.0
      },
      "con_vegetazione": {
       "asse": 0.035,
-      "sinistra": 0.2137,
-      "destra": 0.1666,
+      "sinistra": 0.2141,
+      "destra": 0.1924,
       "asse_ufficiale": 0.035
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4053,14 +4053,14 @@
      },
      "edifici": {
       "asse": 0.0,
-      "sinistra": 0.0419,
-      "destra": 0.0353,
+      "sinistra": 0.0414,
+      "destra": 0.0338,
       "asse_ufficiale": 0.0
      },
      "con_vegetazione": {
       "asse": 0.0417,
-      "sinistra": 0.2308,
-      "destra": 0.0997,
+      "sinistra": 0.2321,
+      "destra": 0.1243,
       "asse_ufficiale": 0.0417
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4076,13 +4076,13 @@
      "edifici": {
       "asse": 0.0171,
       "sinistra": 0.0518,
-      "destra": 0.0297,
+      "destra": 0.028,
       "asse_ufficiale": 0.0171
      },
      "con_vegetazione": {
       "asse": 0.0747,
-      "sinistra": 0.2506,
-      "destra": 0.1017,
+      "sinistra": 0.2522,
+      "destra": 0.126,
       "asse_ufficiale": 0.0747
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4098,13 +4098,13 @@
      "edifici": {
       "asse": 0.0497,
       "sinistra": 0.181,
-      "destra": 0.0558,
+      "destra": 0.0541,
       "asse_ufficiale": 0.0497
      },
      "con_vegetazione": {
       "asse": 0.1332,
-      "sinistra": 0.4143,
-      "destra": 0.1328,
+      "sinistra": 0.418,
+      "destra": 0.1592,
       "asse_ufficiale": 0.1332
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4120,13 +4120,13 @@
      "edifici": {
       "asse": 0.1434,
       "sinistra": 0.213,
-      "destra": 0.0868,
+      "destra": 0.0851,
       "asse_ufficiale": 0.1434
      },
      "con_vegetazione": {
       "asse": 0.242,
-      "sinistra": 0.4649,
-      "destra": 0.1589,
+      "sinistra": 0.4641,
+      "destra": 0.1908,
       "asse_ufficiale": 0.242
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4142,13 +4142,13 @@
      "edifici": {
       "asse": 0.2225,
       "sinistra": 0.283,
-      "destra": 0.1835,
+      "destra": 0.1826,
       "asse_ufficiale": 0.2225
      },
      "con_vegetazione": {
       "asse": 0.3327,
-      "sinistra": 0.5261,
-      "destra": 0.25,
+      "sinistra": 0.529,
+      "destra": 0.2845,
       "asse_ufficiale": 0.3327
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4164,13 +4164,13 @@
      "edifici": {
       "asse": 0.2723,
       "sinistra": 0.3496,
-      "destra": 0.2232,
+      "destra": 0.2218,
       "asse_ufficiale": 0.2723
      },
      "con_vegetazione": {
       "asse": 0.3777,
-      "sinistra": 0.5726,
-      "destra": 0.2927,
+      "sinistra": 0.5744,
+      "destra": 0.3251,
       "asse_ufficiale": 0.3777
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4185,14 +4185,14 @@
      },
      "edifici": {
       "asse": 0.3408,
-      "sinistra": 0.3951,
-      "destra": 0.2541,
+      "sinistra": 0.3954,
+      "destra": 0.2521,
       "asse_ufficiale": 0.3408
      },
      "con_vegetazione": {
       "asse": 0.4304,
-      "sinistra": 0.6078,
-      "destra": 0.3444,
+      "sinistra": 0.6077,
+      "destra": 0.3623,
       "asse_ufficiale": 0.4304
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4208,13 +4208,13 @@
      "edifici": {
       "asse": 0.4012,
       "sinistra": 0.4317,
-      "destra": 0.3576,
+      "destra": 0.3571,
       "asse_ufficiale": 0.4012
      },
      "con_vegetazione": {
       "asse": 0.4758,
-      "sinistra": 0.638,
-      "destra": 0.4579,
+      "sinistra": 0.6357,
+      "destra": 0.4596,
       "asse_ufficiale": 0.4758
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4230,13 +4230,13 @@
      "edifici": {
       "asse": 0.413,
       "sinistra": 0.4348,
-      "destra": 0.3842,
+      "destra": 0.3817,
       "asse_ufficiale": 0.413
      },
      "con_vegetazione": {
       "asse": 0.4769,
-      "sinistra": 0.64,
-      "destra": 0.4899,
+      "sinistra": 0.6308,
+      "destra": 0.4802,
       "asse_ufficiale": 0.4769
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4252,13 +4252,13 @@
      "edifici": {
       "asse": 0.4145,
       "sinistra": 0.4409,
-      "destra": 0.3907,
+      "destra": 0.389,
       "asse_ufficiale": 0.4145
      },
      "con_vegetazione": {
       "asse": 0.4712,
-      "sinistra": 0.6126,
-      "destra": 0.4837,
+      "sinistra": 0.6131,
+      "destra": 0.4887,
       "asse_ufficiale": 0.4712
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4273,17 +4273,17 @@
      },
      "edifici": {
       "asse": 0.4176,
-      "sinistra": 0.4436,
-      "destra": 0.4216,
+      "sinistra": 0.4445,
+      "destra": 0.4103,
       "asse_ufficiale": 0.4176
      },
      "con_vegetazione": {
       "asse": 0.4645,
-      "sinistra": 0.533,
-      "destra": 0.5434,
+      "sinistra": 0.5417,
+      "destra": 0.5324,
       "asse_ufficiale": 0.4645
      },
-     "lato_piu_in_ombra": "destra"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-09-15",
@@ -4295,14 +4295,14 @@
      },
      "edifici": {
       "asse": 0.5384,
-      "sinistra": 0.5005,
-      "destra": 0.5614,
+      "sinistra": 0.5008,
+      "destra": 0.5504,
       "asse_ufficiale": 0.5384
      },
      "con_vegetazione": {
       "asse": 0.6398,
-      "sinistra": 0.7804,
-      "destra": 0.665,
+      "sinistra": 0.794,
+      "destra": 0.6649,
       "asse_ufficiale": 0.6398
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4317,14 +4317,14 @@
      },
      "edifici": {
       "asse": 0.4879,
-      "sinistra": 0.3915,
-      "destra": 0.5166,
+      "sinistra": 0.3907,
+      "destra": 0.5153,
       "asse_ufficiale": 0.4879
      },
      "con_vegetazione": {
       "asse": 0.6136,
-      "sinistra": 0.6744,
-      "destra": 0.6054,
+      "sinistra": 0.67,
+      "destra": 0.6648,
       "asse_ufficiale": 0.6136
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4340,13 +4340,13 @@
      "edifici": {
       "asse": 0.4112,
       "sinistra": 0.3559,
-      "destra": 0.4895,
+      "destra": 0.488,
       "asse_ufficiale": 0.4112
      },
      "con_vegetazione": {
       "asse": 0.5798,
-      "sinistra": 0.642,
-      "destra": 0.5577,
+      "sinistra": 0.6392,
+      "destra": 0.61,
       "asse_ufficiale": 0.5798
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4361,14 +4361,14 @@
      },
      "edifici": {
       "asse": 0.3248,
-      "sinistra": 0.2493,
-      "destra": 0.4359,
+      "sinistra": 0.249,
+      "destra": 0.4343,
       "asse_ufficiale": 0.3248
      },
      "con_vegetazione": {
       "asse": 0.5497,
-      "sinistra": 0.5231,
-      "destra": 0.532,
+      "sinistra": 0.5318,
+      "destra": 0.557,
       "asse_ufficiale": 0.5497
      },
      "lato_piu_in_ombra": "destra"
@@ -4383,14 +4383,14 @@
      },
      "edifici": {
       "asse": 0.2647,
-      "sinistra": 0.2223,
-      "destra": 0.3263,
+      "sinistra": 0.2221,
+      "destra": 0.3248,
       "asse_ufficiale": 0.2647
      },
      "con_vegetazione": {
       "asse": 0.4887,
-      "sinistra": 0.4538,
-      "destra": 0.4145,
+      "sinistra": 0.465,
+      "destra": 0.4286,
       "asse_ufficiale": 0.4887
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4405,14 +4405,14 @@
      },
      "edifici": {
       "asse": 0.2263,
-      "sinistra": 0.2271,
-      "destra": 0.2923,
+      "sinistra": 0.2267,
+      "destra": 0.2908,
       "asse_ufficiale": 0.2263
      },
      "con_vegetazione": {
       "asse": 0.4491,
-      "sinistra": 0.4227,
-      "destra": 0.3781,
+      "sinistra": 0.4321,
+      "destra": 0.3867,
       "asse_ufficiale": 0.4491
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4427,14 +4427,14 @@
      },
      "edifici": {
       "asse": 0.2273,
-      "sinistra": 0.2217,
-      "destra": 0.277,
+      "sinistra": 0.2216,
+      "destra": 0.2754,
       "asse_ufficiale": 0.2273
      },
      "con_vegetazione": {
       "asse": 0.4389,
-      "sinistra": 0.4023,
-      "destra": 0.359,
+      "sinistra": 0.4172,
+      "destra": 0.3655,
       "asse_ufficiale": 0.4389
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4449,14 +4449,14 @@
      },
      "edifici": {
       "asse": 0.2254,
-      "sinistra": 0.2059,
-      "destra": 0.2651,
+      "sinistra": 0.2055,
+      "destra": 0.2636,
       "asse_ufficiale": 0.2254
      },
      "con_vegetazione": {
       "asse": 0.4199,
-      "sinistra": 0.4029,
-      "destra": 0.3286,
+      "sinistra": 0.4086,
+      "destra": 0.3334,
       "asse_ufficiale": 0.4199
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4471,14 +4471,14 @@
      },
      "edifici": {
       "asse": 0.2237,
-      "sinistra": 0.2012,
-      "destra": 0.2464,
+      "sinistra": 0.1998,
+      "destra": 0.2449,
       "asse_ufficiale": 0.2237
      },
      "con_vegetazione": {
       "asse": 0.3956,
-      "sinistra": 0.4007,
-      "destra": 0.305,
+      "sinistra": 0.4017,
+      "destra": 0.3089,
       "asse_ufficiale": 0.3956
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4493,14 +4493,14 @@
      },
      "edifici": {
       "asse": 0.2179,
-      "sinistra": 0.1915,
-      "destra": 0.2379,
+      "sinistra": 0.1889,
+      "destra": 0.2364,
       "asse_ufficiale": 0.2179
      },
      "con_vegetazione": {
       "asse": 0.3599,
-      "sinistra": 0.3746,
-      "destra": 0.2894,
+      "sinistra": 0.3757,
+      "destra": 0.2935,
       "asse_ufficiale": 0.3599
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4515,14 +4515,14 @@
      },
      "edifici": {
       "asse": 0.2033,
-      "sinistra": 0.0457,
-      "destra": 0.2314,
+      "sinistra": 0.0445,
+      "destra": 0.2299,
       "asse_ufficiale": 0.2033
      },
      "con_vegetazione": {
       "asse": 0.3304,
-      "sinistra": 0.235,
-      "destra": 0.2999,
+      "sinistra": 0.238,
+      "destra": 0.3083,
       "asse_ufficiale": 0.3304
      },
      "lato_piu_in_ombra": "destra"
@@ -4537,14 +4537,14 @@
      },
      "edifici": {
       "asse": 0.0914,
-      "sinistra": 0.0305,
-      "destra": 0.2195,
+      "sinistra": 0.0293,
+      "destra": 0.218,
       "asse_ufficiale": 0.0914
      },
      "con_vegetazione": {
       "asse": 0.2333,
-      "sinistra": 0.2211,
-      "destra": 0.2886,
+      "sinistra": 0.226,
+      "destra": 0.2984,
       "asse_ufficiale": 0.2333
      },
      "lato_piu_in_ombra": "destra"
@@ -4559,14 +4559,14 @@
      },
      "edifici": {
       "asse": 0.0,
-      "sinistra": 0.0694,
-      "destra": 0.1508,
+      "sinistra": 0.07,
+      "destra": 0.1493,
       "asse_ufficiale": 0.0
      },
      "con_vegetazione": {
       "asse": 0.1777,
-      "sinistra": 0.2539,
-      "destra": 0.2322,
+      "sinistra": 0.2607,
+      "destra": 0.2417,
       "asse_ufficiale": 0.1777
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4581,14 +4581,14 @@
      },
      "edifici": {
       "asse": 0.0363,
-      "sinistra": 0.1035,
-      "destra": 0.0575,
+      "sinistra": 0.1031,
+      "destra": 0.0559,
       "asse_ufficiale": 0.0363
      },
      "con_vegetazione": {
       "asse": 0.2234,
-      "sinistra": 0.2722,
-      "destra": 0.1694,
+      "sinistra": 0.2801,
+      "destra": 0.1774,
       "asse_ufficiale": 0.2234
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4609,8 +4609,8 @@
      },
      "con_vegetazione": {
       "asse": 0.2637,
-      "sinistra": 0.3802,
-      "destra": 0.2465,
+      "sinistra": 0.3887,
+      "destra": 0.2494,
       "asse_ufficiale": 0.2637
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4626,13 +4626,13 @@
      "edifici": {
       "asse": 0.2109,
       "sinistra": 0.3349,
-      "destra": 0.1288,
+      "destra": 0.1273,
       "asse_ufficiale": 0.2109
      },
      "con_vegetazione": {
       "asse": 0.394,
-      "sinistra": 0.5257,
-      "destra": 0.3028,
+      "sinistra": 0.529,
+      "destra": 0.3121,
       "asse_ufficiale": 0.394
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4647,14 +4647,14 @@
      },
      "edifici": {
       "asse": 0.3378,
-      "sinistra": 0.4291,
-      "destra": 0.2772,
+      "sinistra": 0.4233,
+      "destra": 0.2757,
       "asse_ufficiale": 0.3378
      },
      "con_vegetazione": {
       "asse": 0.5103,
-      "sinistra": 0.6058,
-      "destra": 0.4168,
+      "sinistra": 0.6025,
+      "destra": 0.4343,
       "asse_ufficiale": 0.5103
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4669,14 +4669,14 @@
      },
      "edifici": {
       "asse": 0.4464,
-      "sinistra": 0.5254,
-      "destra": 0.3655,
+      "sinistra": 0.5064,
+      "destra": 0.364,
       "asse_ufficiale": 0.4464
      },
      "con_vegetazione": {
       "asse": 0.6448,
-      "sinistra": 0.6962,
-      "destra": 0.5068,
+      "sinistra": 0.6882,
+      "destra": 0.5147,
       "asse_ufficiale": 0.6448
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4691,14 +4691,14 @@
      },
      "edifici": {
       "asse": 0.5461,
-      "sinistra": 0.5682,
-      "destra": 0.4563,
+      "sinistra": 0.5666,
+      "destra": 0.4548,
       "asse_ufficiale": 0.5461
      },
      "con_vegetazione": {
       "asse": 0.7493,
-      "sinistra": 0.7378,
-      "destra": 0.5916,
+      "sinistra": 0.7464,
+      "destra": 0.5926,
       "asse_ufficiale": 0.7493
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4713,14 +4713,14 @@
      },
      "edifici": {
       "asse": 0.5423,
-      "sinistra": 0.5475,
-      "destra": 0.5373,
+      "sinistra": 0.5484,
+      "destra": 0.5357,
       "asse_ufficiale": 0.5423
      },
      "con_vegetazione": {
       "asse": 0.7919,
-      "sinistra": 0.7464,
-      "destra": 0.6674,
+      "sinistra": 0.7605,
+      "destra": 0.663,
       "asse_ufficiale": 0.7919
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4735,14 +4735,14 @@
      },
      "edifici": {
       "asse": 0.5184,
-      "sinistra": 0.5344,
-      "destra": 0.511,
+      "sinistra": 0.5354,
+      "destra": 0.5095,
       "asse_ufficiale": 0.5184
      },
      "con_vegetazione": {
       "asse": 0.7948,
-      "sinistra": 0.7731,
-      "destra": 0.7125,
+      "sinistra": 0.7912,
+      "destra": 0.6981,
       "asse_ufficiale": 0.7948
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4757,14 +4757,14 @@
      },
      "edifici": {
       "asse": 0.5842,
-      "sinistra": 0.571,
-      "destra": 0.584,
+      "sinistra": 0.569,
+      "destra": 0.5825,
       "asse_ufficiale": 0.5842
      },
      "con_vegetazione": {
       "asse": 0.8818,
-      "sinistra": 0.8916,
-      "destra": 0.8629,
+      "sinistra": 0.9139,
+      "destra": 0.8557,
       "asse_ufficiale": 0.8818
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4790,16 +4790,16 @@
     "destra": 107.1
    },
    "metri_aree_stradali": {
-    "sinistra": 370.5,
-    "destra": 418.3
+    "sinistra": 358.7,
+    "destra": 414.6
    },
    "metri_valore_dichiarato": {
-    "sinistra": 62.2,
-    "destra": 67.8
+    "sinistra": 74.0,
+    "destra": 71.5
    },
    "distanza_mediana_m": {
-    "sinistra": 5.48,
-    "destra": 10.11
+    "sinistra": 5.23,
+    "destra": 8.41
    },
    "istanti": [
     {
@@ -4812,14 +4812,14 @@
      },
      "edifici": {
       "asse": 0.7237,
-      "sinistra": 0.7468,
-      "destra": 0.6587,
+      "sinistra": 0.742,
+      "destra": 0.67,
       "asse_ufficiale": 0.7237
      },
      "con_vegetazione": {
       "asse": 0.8358,
-      "sinistra": 0.8623,
-      "destra": 0.7844,
+      "sinistra": 0.8525,
+      "destra": 0.7605,
       "asse_ufficiale": 0.8358
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4834,14 +4834,14 @@
      },
      "edifici": {
       "asse": 0.6594,
-      "sinistra": 0.678,
-      "destra": 0.5982,
+      "sinistra": 0.6732,
+      "destra": 0.6045,
       "asse_ufficiale": 0.6594
      },
      "con_vegetazione": {
       "asse": 0.7716,
-      "sinistra": 0.7896,
-      "destra": 0.7306,
+      "sinistra": 0.7848,
+      "destra": 0.7091,
       "asse_ufficiale": 0.7716
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4856,14 +4856,14 @@
      },
      "edifici": {
       "asse": 0.5745,
-      "sinistra": 0.6189,
-      "destra": 0.5014,
+      "sinistra": 0.6106,
+      "destra": 0.5073,
       "asse_ufficiale": 0.5745
      },
      "con_vegetazione": {
       "asse": 0.6753,
-      "sinistra": 0.7318,
-      "destra": 0.6764,
+      "sinistra": 0.7354,
+      "destra": 0.6301,
       "asse_ufficiale": 0.6753
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4878,14 +4878,14 @@
      },
      "edifici": {
       "asse": 0.5394,
-      "sinistra": 0.586,
-      "destra": 0.4628,
+      "sinistra": 0.5786,
+      "destra": 0.4772,
       "asse_ufficiale": 0.5394
      },
      "con_vegetazione": {
       "asse": 0.6292,
-      "sinistra": 0.7125,
-      "destra": 0.6568,
+      "sinistra": 0.7164,
+      "destra": 0.6207,
       "asse_ufficiale": 0.6292
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4900,14 +4900,14 @@
      },
      "edifici": {
       "asse": 0.5089,
-      "sinistra": 0.5585,
-      "destra": 0.4,
+      "sinistra": 0.5509,
+      "destra": 0.4179,
       "asse_ufficiale": 0.5089
      },
      "con_vegetazione": {
       "asse": 0.572,
-      "sinistra": 0.6805,
-      "destra": 0.627,
+      "sinistra": 0.6784,
+      "destra": 0.6049,
       "asse_ufficiale": 0.572
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4922,14 +4922,14 @@
      },
      "edifici": {
       "asse": 0.5005,
-      "sinistra": 0.5525,
-      "destra": 0.2879,
+      "sinistra": 0.5462,
+      "destra": 0.3455,
       "asse_ufficiale": 0.5005
      },
      "con_vegetazione": {
       "asse": 0.5561,
-      "sinistra": 0.6615,
-      "destra": 0.6271,
+      "sinistra": 0.6554,
+      "destra": 0.5995,
       "asse_ufficiale": 0.5561
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4944,14 +4944,14 @@
      },
      "edifici": {
       "asse": 0.4811,
-      "sinistra": 0.5402,
-      "destra": 0.2805,
+      "sinistra": 0.5341,
+      "destra": 0.2721,
       "asse_ufficiale": 0.4811
      },
      "con_vegetazione": {
       "asse": 0.5298,
-      "sinistra": 0.6305,
-      "destra": 0.6136,
+      "sinistra": 0.6256,
+      "destra": 0.5928,
       "asse_ufficiale": 0.5298
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4966,14 +4966,14 @@
      },
      "edifici": {
       "asse": 0.4618,
-      "sinistra": 0.5211,
-      "destra": 0.2614,
+      "sinistra": 0.5148,
+      "destra": 0.2561,
       "asse_ufficiale": 0.4618
      },
      "con_vegetazione": {
       "asse": 0.5041,
-      "sinistra": 0.6073,
-      "destra": 0.5907,
+      "sinistra": 0.5981,
+      "destra": 0.5819,
       "asse_ufficiale": 0.5041
      },
      "lato_piu_in_ombra": "sinistra"
@@ -4988,17 +4988,17 @@
      },
      "edifici": {
       "asse": 0.4016,
-      "sinistra": 0.5196,
-      "destra": 0.2506,
+      "sinistra": 0.5074,
+      "destra": 0.2425,
       "asse_ufficiale": 0.4016
      },
      "con_vegetazione": {
       "asse": 0.4425,
-      "sinistra": 0.5985,
-      "destra": 0.5789,
+      "sinistra": 0.58,
+      "destra": 0.5758,
       "asse_ufficiale": 0.4425
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "pari"
     },
     {
      "data": "2026-07-15",
@@ -5010,14 +5010,14 @@
      },
      "edifici": {
       "asse": 0.3778,
-      "sinistra": 0.5397,
-      "destra": 0.2653,
+      "sinistra": 0.5287,
+      "destra": 0.2618,
       "asse_ufficiale": 0.3778
      },
      "con_vegetazione": {
       "asse": 0.4137,
-      "sinistra": 0.6153,
-      "destra": 0.5776,
+      "sinistra": 0.5982,
+      "destra": 0.5902,
       "asse_ufficiale": 0.4137
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5032,17 +5032,17 @@
      },
      "edifici": {
       "asse": 0.2427,
-      "sinistra": 0.5338,
-      "destra": 0.2563,
+      "sinistra": 0.5229,
+      "destra": 0.2559,
       "asse_ufficiale": 0.2427
      },
      "con_vegetazione": {
       "asse": 0.2812,
-      "sinistra": 0.6064,
-      "destra": 0.5443,
+      "sinistra": 0.5881,
+      "destra": 0.5857,
       "asse_ufficiale": 0.2812
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "pari"
     },
     {
      "data": "2026-07-15",
@@ -5054,17 +5054,17 @@
      },
      "edifici": {
       "asse": 0.2278,
-      "sinistra": 0.5074,
-      "destra": 0.2409,
+      "sinistra": 0.4851,
+      "destra": 0.2394,
       "asse_ufficiale": 0.2278
      },
      "con_vegetazione": {
       "asse": 0.2571,
-      "sinistra": 0.5756,
-      "destra": 0.4894,
+      "sinistra": 0.5474,
+      "destra": 0.566,
       "asse_ufficiale": 0.2571
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-07-15",
@@ -5076,17 +5076,17 @@
      },
      "edifici": {
       "asse": 0.228,
-      "sinistra": 0.4992,
-      "destra": 0.2381,
+      "sinistra": 0.4361,
+      "destra": 0.2367,
       "asse_ufficiale": 0.228
      },
      "con_vegetazione": {
       "asse": 0.2586,
-      "sinistra": 0.5622,
-      "destra": 0.4251,
+      "sinistra": 0.5041,
+      "destra": 0.5457,
       "asse_ufficiale": 0.2586
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-07-15",
@@ -5098,17 +5098,17 @@
      },
      "edifici": {
       "asse": 0.1576,
-      "sinistra": 0.2903,
-      "destra": 0.1814,
+      "sinistra": 0.1891,
+      "destra": 0.1809,
       "asse_ufficiale": 0.1576
      },
      "con_vegetazione": {
       "asse": 0.1881,
-      "sinistra": 0.3713,
-      "destra": 0.3155,
+      "sinistra": 0.2729,
+      "destra": 0.4424,
       "asse_ufficiale": 0.1881
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-07-15",
@@ -5120,17 +5120,17 @@
      },
      "edifici": {
       "asse": 0.212,
-      "sinistra": 0.3251,
-      "destra": 0.2317,
+      "sinistra": 0.2413,
+      "destra": 0.2304,
       "asse_ufficiale": 0.212
      },
      "con_vegetazione": {
       "asse": 0.2513,
-      "sinistra": 0.401,
-      "destra": 0.3017,
+      "sinistra": 0.2959,
+      "destra": 0.4143,
       "asse_ufficiale": 0.2513
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-07-15",
@@ -5142,17 +5142,17 @@
      },
      "edifici": {
       "asse": 0.2327,
-      "sinistra": 0.3402,
-      "destra": 0.2438,
+      "sinistra": 0.2585,
+      "destra": 0.2429,
       "asse_ufficiale": 0.2327
      },
      "con_vegetazione": {
       "asse": 0.2796,
-      "sinistra": 0.3977,
-      "destra": 0.3592,
+      "sinistra": 0.3061,
+      "destra": 0.3769,
       "asse_ufficiale": 0.2796
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-07-15",
@@ -5164,17 +5164,17 @@
      },
      "edifici": {
       "asse": 0.2332,
-      "sinistra": 0.3405,
-      "destra": 0.2444,
+      "sinistra": 0.26,
+      "destra": 0.2422,
       "asse_ufficiale": 0.2332
      },
      "con_vegetazione": {
       "asse": 0.304,
-      "sinistra": 0.3801,
-      "destra": 0.3751,
+      "sinistra": 0.3,
+      "destra": 0.3694,
       "asse_ufficiale": 0.304
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-07-15",
@@ -5186,17 +5186,17 @@
      },
      "edifici": {
       "asse": 0.2355,
-      "sinistra": 0.3332,
-      "destra": 0.2444,
+      "sinistra": 0.2543,
+      "destra": 0.2397,
       "asse_ufficiale": 0.2355
      },
      "con_vegetazione": {
       "asse": 0.4796,
-      "sinistra": 0.3803,
-      "destra": 0.3833,
+      "sinistra": 0.3012,
+      "destra": 0.3792,
       "asse_ufficiale": 0.4796
      },
-     "lato_piu_in_ombra": "pari"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-07-15",
@@ -5208,14 +5208,14 @@
      },
      "edifici": {
       "asse": 0.2389,
-      "sinistra": 0.3372,
-      "destra": 0.2849,
+      "sinistra": 0.2603,
+      "destra": 0.2634,
       "asse_ufficiale": 0.2389
      },
      "con_vegetazione": {
       "asse": 0.5636,
-      "sinistra": 0.3819,
-      "destra": 0.4373,
+      "sinistra": 0.3068,
+      "destra": 0.4084,
       "asse_ufficiale": 0.5636
      },
      "lato_piu_in_ombra": "destra"
@@ -5230,14 +5230,14 @@
      },
      "edifici": {
       "asse": 0.2729,
-      "sinistra": 0.3433,
-      "destra": 0.3055,
+      "sinistra": 0.2599,
+      "destra": 0.2989,
       "asse_ufficiale": 0.2729
      },
      "con_vegetazione": {
       "asse": 0.6374,
-      "sinistra": 0.4275,
-      "destra": 0.5385,
+      "sinistra": 0.3875,
+      "destra": 0.5174,
       "asse_ufficiale": 0.6374
      },
      "lato_piu_in_ombra": "destra"
@@ -5252,14 +5252,14 @@
      },
      "edifici": {
       "asse": 0.3149,
-      "sinistra": 0.3624,
-      "destra": 0.4216,
+      "sinistra": 0.2903,
+      "destra": 0.392,
       "asse_ufficiale": 0.3149
      },
      "con_vegetazione": {
       "asse": 0.6773,
-      "sinistra": 0.5556,
-      "destra": 0.637,
+      "sinistra": 0.5737,
+      "destra": 0.614,
       "asse_ufficiale": 0.6773
      },
      "lato_piu_in_ombra": "destra"
@@ -5274,14 +5274,14 @@
      },
      "edifici": {
       "asse": 0.4734,
-      "sinistra": 0.418,
-      "destra": 0.5185,
+      "sinistra": 0.3396,
+      "destra": 0.5141,
       "asse_ufficiale": 0.4734
      },
      "con_vegetazione": {
       "asse": 0.6891,
-      "sinistra": 0.6227,
-      "destra": 0.7024,
+      "sinistra": 0.6277,
+      "destra": 0.7026,
       "asse_ufficiale": 0.6891
      },
      "lato_piu_in_ombra": "destra"
@@ -5296,17 +5296,17 @@
      },
      "edifici": {
       "asse": 0.5025,
-      "sinistra": 0.5154,
-      "destra": 0.5593,
+      "sinistra": 0.4858,
+      "destra": 0.5465,
       "asse_ufficiale": 0.5025
      },
      "con_vegetazione": {
       "asse": 0.6895,
-      "sinistra": 0.7029,
-      "destra": 0.7068,
+      "sinistra": 0.7095,
+      "destra": 0.7006,
       "asse_ufficiale": 0.6895
      },
-     "lato_piu_in_ombra": "pari"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-09-15",
@@ -5318,14 +5318,14 @@
      },
      "edifici": {
       "asse": 0.7632,
-      "sinistra": 0.7644,
-      "destra": 0.7536,
+      "sinistra": 0.7606,
+      "destra": 0.7558,
       "asse_ufficiale": 0.7632
      },
      "con_vegetazione": {
       "asse": 0.8734,
-      "sinistra": 0.9303,
-      "destra": 0.8473,
+      "sinistra": 0.926,
+      "destra": 0.8558,
       "asse_ufficiale": 0.8734
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5340,14 +5340,14 @@
      },
      "edifici": {
       "asse": 0.741,
-      "sinistra": 0.7697,
-      "destra": 0.7221,
+      "sinistra": 0.7658,
+      "destra": 0.7115,
       "asse_ufficiale": 0.741
      },
      "con_vegetazione": {
       "asse": 0.8306,
-      "sinistra": 0.869,
-      "destra": 0.8029,
+      "sinistra": 0.8751,
+      "destra": 0.7948,
       "asse_ufficiale": 0.8306
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5362,14 +5362,14 @@
      },
      "edifici": {
       "asse": 0.6219,
-      "sinistra": 0.6684,
-      "destra": 0.6247,
+      "sinistra": 0.6638,
+      "destra": 0.6268,
       "asse_ufficiale": 0.6219
      },
      "con_vegetazione": {
       "asse": 0.7354,
-      "sinistra": 0.7854,
-      "destra": 0.7022,
+      "sinistra": 0.7999,
+      "destra": 0.6975,
       "asse_ufficiale": 0.7354
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5384,14 +5384,14 @@
      },
      "edifici": {
       "asse": 0.5702,
-      "sinistra": 0.6095,
-      "destra": 0.5594,
+      "sinistra": 0.6084,
+      "destra": 0.557,
       "asse_ufficiale": 0.5702
      },
      "con_vegetazione": {
       "asse": 0.6555,
-      "sinistra": 0.7394,
-      "destra": 0.6399,
+      "sinistra": 0.7419,
+      "destra": 0.6312,
       "asse_ufficiale": 0.6555
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5406,14 +5406,14 @@
      },
      "edifici": {
       "asse": 0.539,
-      "sinistra": 0.579,
-      "destra": 0.5286,
+      "sinistra": 0.5749,
+      "destra": 0.5282,
       "asse_ufficiale": 0.539
      },
      "con_vegetazione": {
       "asse": 0.6081,
-      "sinistra": 0.6958,
-      "destra": 0.6201,
+      "sinistra": 0.6893,
+      "destra": 0.6,
       "asse_ufficiale": 0.6081
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5428,14 +5428,14 @@
      },
      "edifici": {
       "asse": 0.5415,
-      "sinistra": 0.5715,
-      "destra": 0.5035,
+      "sinistra": 0.5714,
+      "destra": 0.5317,
       "asse_ufficiale": 0.5415
      },
      "con_vegetazione": {
       "asse": 0.5903,
-      "sinistra": 0.682,
-      "destra": 0.6599,
+      "sinistra": 0.6773,
+      "destra": 0.627,
       "asse_ufficiale": 0.5903
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5450,17 +5450,17 @@
      },
      "edifici": {
       "asse": 0.5827,
-      "sinistra": 0.6214,
-      "destra": 0.5481,
+      "sinistra": 0.6201,
+      "destra": 0.5473,
       "asse_ufficiale": 0.5827
      },
      "con_vegetazione": {
       "asse": 0.642,
-      "sinistra": 0.7178,
-      "destra": 0.729,
+      "sinistra": 0.7141,
+      "destra": 0.6689,
       "asse_ufficiale": 0.642
      },
-     "lato_piu_in_ombra": "destra"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-09-15",
@@ -5472,17 +5472,17 @@
      },
      "edifici": {
       "asse": 0.5892,
-      "sinistra": 0.6375,
-      "destra": 0.4997,
+      "sinistra": 0.6344,
+      "destra": 0.5355,
       "asse_ufficiale": 0.5892
      },
      "con_vegetazione": {
       "asse": 0.6628,
-      "sinistra": 0.736,
-      "destra": 0.7409,
+      "sinistra": 0.7283,
+      "destra": 0.7052,
       "asse_ufficiale": 0.6628
      },
-     "lato_piu_in_ombra": "pari"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-09-15",
@@ -5494,17 +5494,17 @@
      },
      "edifici": {
       "asse": 0.5908,
-      "sinistra": 0.6452,
-      "destra": 0.372,
+      "sinistra": 0.642,
+      "destra": 0.4369,
       "asse_ufficiale": 0.5908
      },
      "con_vegetazione": {
       "asse": 0.6655,
-      "sinistra": 0.7321,
-      "destra": 0.7292,
+      "sinistra": 0.7334,
+      "destra": 0.7154,
       "asse_ufficiale": 0.6655
      },
-     "lato_piu_in_ombra": "pari"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-09-15",
@@ -5516,14 +5516,14 @@
      },
      "edifici": {
       "asse": 0.5521,
-      "sinistra": 0.6322,
-      "destra": 0.3418,
+      "sinistra": 0.6284,
+      "destra": 0.3417,
       "asse_ufficiale": 0.5521
      },
      "con_vegetazione": {
       "asse": 0.6258,
-      "sinistra": 0.717,
-      "destra": 0.6915,
+      "sinistra": 0.7145,
+      "destra": 0.6826,
       "asse_ufficiale": 0.6258
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5538,14 +5538,14 @@
      },
      "edifici": {
       "asse": 0.4675,
-      "sinistra": 0.6037,
-      "destra": 0.3102,
+      "sinistra": 0.5944,
+      "destra": 0.309,
       "asse_ufficiale": 0.4675
      },
      "con_vegetazione": {
       "asse": 0.5501,
-      "sinistra": 0.6861,
-      "destra": 0.6535,
+      "sinistra": 0.6732,
+      "destra": 0.6614,
       "asse_ufficiale": 0.5501
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5560,14 +5560,14 @@
      },
      "edifici": {
       "asse": 0.3661,
-      "sinistra": 0.5622,
-      "destra": 0.2741,
+      "sinistra": 0.5441,
+      "destra": 0.2738,
       "asse_ufficiale": 0.3661
      },
      "con_vegetazione": {
       "asse": 0.4549,
-      "sinistra": 0.654,
-      "destra": 0.6004,
+      "sinistra": 0.6294,
+      "destra": 0.6208,
       "asse_ufficiale": 0.4549
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5582,17 +5582,17 @@
      },
      "edifici": {
       "asse": 0.242,
-      "sinistra": 0.5339,
+      "sinistra": 0.5135,
       "destra": 0.2667,
       "asse_ufficiale": 0.242
      },
      "con_vegetazione": {
       "asse": 0.3175,
-      "sinistra": 0.6368,
-      "destra": 0.5645,
+      "sinistra": 0.6109,
+      "destra": 0.6159,
       "asse_ufficiale": 0.3175
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-09-15",
@@ -5604,17 +5604,17 @@
      },
      "edifici": {
       "asse": 0.2568,
-      "sinistra": 0.5376,
+      "sinistra": 0.4759,
       "destra": 0.2825,
       "asse_ufficiale": 0.2568
      },
      "con_vegetazione": {
       "asse": 0.3233,
-      "sinistra": 0.642,
-      "destra": 0.5071,
+      "sinistra": 0.5909,
+      "destra": 0.6197,
       "asse_ufficiale": 0.3233
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-09-15",
@@ -5626,17 +5626,17 @@
      },
      "edifici": {
       "asse": 0.2754,
-      "sinistra": 0.3692,
-      "destra": 0.2929,
+      "sinistra": 0.2685,
+      "destra": 0.2923,
       "asse_ufficiale": 0.2754
      },
      "con_vegetazione": {
       "asse": 0.3337,
-      "sinistra": 0.5096,
-      "destra": 0.4397,
+      "sinistra": 0.4041,
+      "destra": 0.5592,
       "asse_ufficiale": 0.3337
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-09-15",
@@ -5648,17 +5648,17 @@
      },
      "edifici": {
       "asse": 0.3088,
-      "sinistra": 0.3832,
-      "destra": 0.3478,
+      "sinistra": 0.2977,
+      "destra": 0.3418,
       "asse_ufficiale": 0.3088
      },
      "con_vegetazione": {
       "asse": 0.3762,
-      "sinistra": 0.4858,
-      "destra": 0.4715,
+      "sinistra": 0.3819,
+      "destra": 0.5068,
       "asse_ufficiale": 0.3762
      },
-     "lato_piu_in_ombra": "sinistra"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-09-15",
@@ -5670,14 +5670,14 @@
      },
      "edifici": {
       "asse": 0.3796,
-      "sinistra": 0.4476,
-      "destra": 0.3928,
+      "sinistra": 0.3649,
+      "destra": 0.3933,
       "asse_ufficiale": 0.3796
      },
      "con_vegetazione": {
       "asse": 0.4501,
-      "sinistra": 0.4973,
-      "destra": 0.5272,
+      "sinistra": 0.4153,
+      "destra": 0.5224,
       "asse_ufficiale": 0.4501
      },
      "lato_piu_in_ombra": "destra"
@@ -5692,17 +5692,17 @@
      },
      "edifici": {
       "asse": 0.3852,
-      "sinistra": 0.4777,
-      "destra": 0.3862,
+      "sinistra": 0.4011,
+      "destra": 0.386,
       "asse_ufficiale": 0.3852
      },
      "con_vegetazione": {
       "asse": 0.6532,
-      "sinistra": 0.518,
-      "destra": 0.5222,
+      "sinistra": 0.4378,
+      "destra": 0.5215,
       "asse_ufficiale": 0.6532
      },
-     "lato_piu_in_ombra": "pari"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-09-15",
@@ -5714,14 +5714,14 @@
      },
      "edifici": {
       "asse": 0.3777,
-      "sinistra": 0.4798,
-      "destra": 0.3949,
+      "sinistra": 0.4017,
+      "destra": 0.3932,
       "asse_ufficiale": 0.3777
      },
      "con_vegetazione": {
       "asse": 0.7192,
-      "sinistra": 0.5517,
-      "destra": 0.612,
+      "sinistra": 0.5205,
+      "destra": 0.5878,
       "asse_ufficiale": 0.7192
      },
      "lato_piu_in_ombra": "destra"
@@ -5736,14 +5736,14 @@
      },
      "edifici": {
       "asse": 0.4098,
-      "sinistra": 0.5088,
-      "destra": 0.5879,
+      "sinistra": 0.4314,
+      "destra": 0.5731,
       "asse_ufficiale": 0.4098
      },
      "con_vegetazione": {
       "asse": 0.7438,
-      "sinistra": 0.6614,
-      "destra": 0.7402,
+      "sinistra": 0.6736,
+      "destra": 0.7386,
       "asse_ufficiale": 0.7438
      },
      "lato_piu_in_ombra": "destra"
@@ -5758,14 +5758,14 @@
      },
      "edifici": {
       "asse": 0.6308,
-      "sinistra": 0.6163,
-      "destra": 0.701,
+      "sinistra": 0.6228,
+      "destra": 0.6919,
       "asse_ufficiale": 0.6308
      },
      "con_vegetazione": {
       "asse": 0.8015,
-      "sinistra": 0.7551,
-      "destra": 0.8215,
+      "sinistra": 0.7688,
+      "destra": 0.8145,
       "asse_ufficiale": 0.8015
      },
      "lato_piu_in_ombra": "destra"
@@ -5780,14 +5780,14 @@
      },
      "edifici": {
       "asse": 0.7841,
-      "sinistra": 0.7822,
-      "destra": 0.8117,
+      "sinistra": 0.7802,
+      "destra": 0.8053,
       "asse_ufficiale": 0.7841
      },
      "con_vegetazione": {
       "asse": 0.9314,
-      "sinistra": 0.957,
-      "destra": 0.9264,
+      "sinistra": 0.9568,
+      "destra": 0.9265,
       "asse_ufficiale": 0.9314
      },
      "lato_piu_in_ombra": "sinistra"
@@ -5836,13 +5836,13 @@
      "edifici": {
       "asse": 0.4328,
       "sinistra": 0.2926,
-      "destra": 0.5366,
+      "destra": 0.5323,
       "asse_ufficiale": 0.4328
      },
      "con_vegetazione": {
       "asse": 0.6376,
       "sinistra": 0.4768,
-      "destra": 0.8504,
+      "destra": 0.8425,
       "asse_ufficiale": 0.6376
      },
      "lato_piu_in_ombra": "destra"
@@ -5858,13 +5858,13 @@
      "edifici": {
       "asse": 0.2312,
       "sinistra": 0.1861,
-      "destra": 0.447,
+      "destra": 0.4342,
       "asse_ufficiale": 0.2312
      },
      "con_vegetazione": {
       "asse": 0.3926,
-      "sinistra": 0.3699,
-      "destra": 0.7289,
+      "sinistra": 0.3703,
+      "destra": 0.7133,
       "asse_ufficiale": 0.3926
      },
      "lato_piu_in_ombra": "destra"
@@ -5880,13 +5880,13 @@
      "edifici": {
       "asse": 0.1619,
       "sinistra": 0.1464,
-      "destra": 0.4212,
+      "destra": 0.4031,
       "asse_ufficiale": 0.1619
      },
      "con_vegetazione": {
       "asse": 0.2627,
-      "sinistra": 0.2858,
-      "destra": 0.684,
+      "sinistra": 0.287,
+      "destra": 0.6444,
       "asse_ufficiale": 0.2627
      },
      "lato_piu_in_ombra": "destra"
@@ -5902,13 +5902,13 @@
      "edifici": {
       "asse": 0.1209,
       "sinistra": 0.0886,
-      "destra": 0.2942,
+      "destra": 0.2667,
       "asse_ufficiale": 0.1209
      },
      "con_vegetazione": {
       "asse": 0.2282,
-      "sinistra": 0.2323,
-      "destra": 0.5733,
+      "sinistra": 0.2334,
+      "destra": 0.5293,
       "asse_ufficiale": 0.2282
      },
      "lato_piu_in_ombra": "destra"
@@ -5924,13 +5924,13 @@
      "edifici": {
       "asse": 0.0475,
       "sinistra": 0.0489,
-      "destra": 0.2598,
+      "destra": 0.2222,
       "asse_ufficiale": 0.0475
      },
      "con_vegetazione": {
       "asse": 0.1635,
       "sinistra": 0.1937,
-      "destra": 0.4906,
+      "destra": 0.4343,
       "asse_ufficiale": 0.1635
      },
      "lato_piu_in_ombra": "destra"
@@ -5946,13 +5946,13 @@
      "edifici": {
       "asse": 0.0397,
       "sinistra": 0.0397,
-      "destra": 0.1487,
+      "destra": 0.1317,
       "asse_ufficiale": 0.0397
      },
      "con_vegetazione": {
       "asse": 0.1548,
       "sinistra": 0.1809,
-      "destra": 0.3287,
+      "destra": 0.2967,
       "asse_ufficiale": 0.1548
      },
      "lato_piu_in_ombra": "destra"
@@ -5968,16 +5968,16 @@
      "edifici": {
       "asse": 0.0384,
       "sinistra": 0.0384,
-      "destra": 0.0493,
+      "destra": 0.039,
       "asse_ufficiale": 0.0384
      },
      "con_vegetazione": {
       "asse": 0.1541,
       "sinistra": 0.1733,
-      "destra": 0.1942,
+      "destra": 0.1765,
       "asse_ufficiale": 0.1541
      },
-     "lato_piu_in_ombra": "destra"
+     "lato_piu_in_ombra": "pari"
     },
     {
      "data": "2026-07-15",
@@ -5990,13 +5990,13 @@
      "edifici": {
       "asse": 0.0409,
       "sinistra": 0.0409,
-      "destra": 0.0505,
+      "destra": 0.0416,
       "asse_ufficiale": 0.0409
      },
      "con_vegetazione": {
       "asse": 0.153,
       "sinistra": 0.1769,
-      "destra": 0.1677,
+      "destra": 0.157,
       "asse_ufficiale": 0.153
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6012,13 +6012,13 @@
      "edifici": {
       "asse": 0.049,
       "sinistra": 0.049,
-      "destra": 0.0578,
+      "destra": 0.0496,
       "asse_ufficiale": 0.049
      },
      "con_vegetazione": {
       "asse": 0.1591,
       "sinistra": 0.1854,
-      "destra": 0.1562,
+      "destra": 0.1492,
       "asse_ufficiale": 0.1591
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6034,13 +6034,13 @@
      "edifici": {
       "asse": 0.0483,
       "sinistra": 0.0483,
-      "destra": 0.0568,
+      "destra": 0.0489,
       "asse_ufficiale": 0.0483
      },
      "con_vegetazione": {
       "asse": 0.1582,
       "sinistra": 0.1854,
-      "destra": 0.1446,
+      "destra": 0.1375,
       "asse_ufficiale": 0.1582
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6056,13 +6056,13 @@
      "edifici": {
       "asse": 0.0468,
       "sinistra": 0.0468,
-      "destra": 0.055,
+      "destra": 0.0475,
       "asse_ufficiale": 0.0468
      },
      "con_vegetazione": {
       "asse": 0.1579,
       "sinistra": 0.1864,
-      "destra": 0.1319,
+      "destra": 0.1249,
       "asse_ufficiale": 0.1579
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6078,13 +6078,13 @@
      "edifici": {
       "asse": 0.0091,
       "sinistra": 0.0091,
-      "destra": 0.0171,
+      "destra": 0.0097,
       "asse_ufficiale": 0.0091
      },
      "con_vegetazione": {
       "asse": 0.1209,
       "sinistra": 0.152,
-      "destra": 0.0863,
+      "destra": 0.0794,
       "asse_ufficiale": 0.1209
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6100,13 +6100,13 @@
      "edifici": {
       "asse": 0.0076,
       "sinistra": 0.0076,
-      "destra": 0.0156,
+      "destra": 0.0083,
       "asse_ufficiale": 0.0076
      },
      "con_vegetazione": {
       "asse": 0.1201,
       "sinistra": 0.1525,
-      "destra": 0.0833,
+      "destra": 0.0766,
       "asse_ufficiale": 0.1201
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6122,13 +6122,13 @@
      "edifici": {
       "asse": 0.0069,
       "sinistra": 0.0069,
-      "destra": 0.0148,
+      "destra": 0.0076,
       "asse_ufficiale": 0.0069
      },
      "con_vegetazione": {
       "asse": 0.1193,
       "sinistra": 0.1537,
-      "destra": 0.0823,
+      "destra": 0.0756,
       "asse_ufficiale": 0.1193
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6144,13 +6144,13 @@
      "edifici": {
       "asse": 0.0063,
       "sinistra": 0.0063,
-      "destra": 0.0142,
+      "destra": 0.0069,
       "asse_ufficiale": 0.0063
      },
      "con_vegetazione": {
       "asse": 0.1217,
       "sinistra": 0.1585,
-      "destra": 0.0856,
+      "destra": 0.079,
       "asse_ufficiale": 0.1217
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6166,13 +6166,13 @@
      "edifici": {
       "asse": 0.0056,
       "sinistra": 0.0056,
-      "destra": 0.0135,
+      "destra": 0.0063,
       "asse_ufficiale": 0.0056
      },
      "con_vegetazione": {
       "asse": 0.12,
       "sinistra": 0.1618,
-      "destra": 0.0863,
+      "destra": 0.0795,
       "asse_ufficiale": 0.12
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6188,13 +6188,13 @@
      "edifici": {
       "asse": 0.0049,
       "sinistra": 0.0049,
-      "destra": 0.0129,
+      "destra": 0.0056,
       "asse_ufficiale": 0.0049
      },
      "con_vegetazione": {
       "asse": 0.1165,
       "sinistra": 0.1616,
-      "destra": 0.0853,
+      "destra": 0.0789,
       "asse_ufficiale": 0.1165
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6210,13 +6210,13 @@
      "edifici": {
       "asse": 0.0302,
       "sinistra": 0.0302,
-      "destra": 0.0382,
+      "destra": 0.0309,
       "asse_ufficiale": 0.0302
      },
      "con_vegetazione": {
       "asse": 0.1471,
       "sinistra": 0.198,
-      "destra": 0.1164,
+      "destra": 0.1116,
       "asse_ufficiale": 0.1471
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6232,13 +6232,13 @@
      "edifici": {
       "asse": 0.0411,
       "sinistra": 0.0415,
-      "destra": 0.0491,
+      "destra": 0.0418,
       "asse_ufficiale": 0.0411
      },
      "con_vegetazione": {
       "asse": 0.161,
       "sinistra": 0.2186,
-      "destra": 0.1341,
+      "destra": 0.1303,
       "asse_ufficiale": 0.161
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6254,13 +6254,13 @@
      "edifici": {
       "asse": 0.0428,
       "sinistra": 0.0514,
-      "destra": 0.0507,
+      "destra": 0.0435,
       "asse_ufficiale": 0.0428
      },
      "con_vegetazione": {
       "asse": 0.1718,
       "sinistra": 0.2416,
-      "destra": 0.155,
+      "destra": 0.1474,
       "asse_ufficiale": 0.1718
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6276,13 +6276,13 @@
      "edifici": {
       "asse": 0.0442,
       "sinistra": 0.0621,
-      "destra": 0.0521,
+      "destra": 0.0448,
       "asse_ufficiale": 0.0442
      },
      "con_vegetazione": {
       "asse": 0.195,
       "sinistra": 0.2819,
-      "destra": 0.2085,
+      "destra": 0.1955,
       "asse_ufficiale": 0.195
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6298,13 +6298,13 @@
      "edifici": {
       "asse": 0.0506,
       "sinistra": 0.0742,
-      "destra": 0.0533,
+      "destra": 0.046,
       "asse_ufficiale": 0.0506
      },
      "con_vegetazione": {
       "asse": 0.2173,
-      "sinistra": 0.3185,
-      "destra": 0.275,
+      "sinistra": 0.3204,
+      "destra": 0.2474,
       "asse_ufficiale": 0.2173
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6320,13 +6320,13 @@
      "edifici": {
       "asse": 0.0528,
       "sinistra": 0.0764,
-      "destra": 0.0941,
+      "destra": 0.0819,
       "asse_ufficiale": 0.0528
      },
      "con_vegetazione": {
       "asse": 0.2276,
       "sinistra": 0.3652,
-      "destra": 0.44,
+      "destra": 0.4177,
       "asse_ufficiale": 0.2276
      },
      "lato_piu_in_ombra": "destra"
@@ -6342,13 +6342,13 @@
      "edifici": {
       "asse": 0.3691,
       "sinistra": 0.3719,
-      "destra": 0.5596,
+      "destra": 0.5529,
       "asse_ufficiale": 0.3691
      },
      "con_vegetazione": {
       "asse": 0.5432,
-      "sinistra": 0.6065,
-      "destra": 0.8563,
+      "sinistra": 0.6085,
+      "destra": 0.83,
       "asse_ufficiale": 0.5432
      },
      "lato_piu_in_ombra": "destra"
@@ -6364,13 +6364,13 @@
      "edifici": {
       "asse": 0.2391,
       "sinistra": 0.2287,
-      "destra": 0.3586,
+      "destra": 0.3264,
       "asse_ufficiale": 0.2391
      },
      "con_vegetazione": {
       "asse": 0.4568,
-      "sinistra": 0.4115,
-      "destra": 0.6879,
+      "sinistra": 0.4176,
+      "destra": 0.6387,
       "asse_ufficiale": 0.4568
      },
      "lato_piu_in_ombra": "destra"
@@ -6386,13 +6386,13 @@
      "edifici": {
       "asse": 0.1013,
       "sinistra": 0.0507,
-      "destra": 0.2607,
+      "destra": 0.2346,
       "asse_ufficiale": 0.1013
      },
      "con_vegetazione": {
       "asse": 0.2579,
       "sinistra": 0.2433,
-      "destra": 0.4919,
+      "destra": 0.4656,
       "asse_ufficiale": 0.2579
      },
      "lato_piu_in_ombra": "destra"
@@ -6408,13 +6408,13 @@
      "edifici": {
       "asse": 0.04,
       "sinistra": 0.04,
-      "destra": 0.1579,
+      "destra": 0.1467,
       "asse_ufficiale": 0.04
      },
      "con_vegetazione": {
       "asse": 0.1806,
       "sinistra": 0.2505,
-      "destra": 0.3336,
+      "destra": 0.317,
       "asse_ufficiale": 0.1806
      },
      "lato_piu_in_ombra": "destra"
@@ -6430,13 +6430,13 @@
      "edifici": {
       "asse": 0.0495,
       "sinistra": 0.0495,
-      "destra": 0.0596,
+      "destra": 0.0502,
       "asse_ufficiale": 0.0495
      },
      "con_vegetazione": {
       "asse": 0.1928,
       "sinistra": 0.2619,
-      "destra": 0.201,
+      "destra": 0.185,
       "asse_ufficiale": 0.1928
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6452,13 +6452,13 @@
      "edifici": {
       "asse": 0.0493,
       "sinistra": 0.0493,
-      "destra": 0.0586,
+      "destra": 0.0499,
       "asse_ufficiale": 0.0493
      },
      "con_vegetazione": {
       "asse": 0.1856,
       "sinistra": 0.2509,
-      "destra": 0.1848,
+      "destra": 0.1747,
       "asse_ufficiale": 0.1856
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6474,13 +6474,13 @@
      "edifici": {
       "asse": 0.049,
       "sinistra": 0.049,
-      "destra": 0.0579,
+      "destra": 0.0497,
       "asse_ufficiale": 0.049
      },
      "con_vegetazione": {
       "asse": 0.1793,
       "sinistra": 0.2493,
-      "destra": 0.1845,
+      "destra": 0.1763,
       "asse_ufficiale": 0.1793
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6496,13 +6496,13 @@
      "edifici": {
       "asse": 0.0486,
       "sinistra": 0.0486,
-      "destra": 0.0573,
+      "destra": 0.0493,
       "asse_ufficiale": 0.0486
      },
      "con_vegetazione": {
       "asse": 0.1734,
       "sinistra": 0.2439,
-      "destra": 0.1866,
+      "destra": 0.1787,
       "asse_ufficiale": 0.1734
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6518,13 +6518,13 @@
      "edifici": {
       "asse": 0.0481,
       "sinistra": 0.0481,
-      "destra": 0.0565,
+      "destra": 0.0487,
       "asse_ufficiale": 0.0481
      },
      "con_vegetazione": {
       "asse": 0.1737,
       "sinistra": 0.2424,
-      "destra": 0.1884,
+      "destra": 0.1806,
       "asse_ufficiale": 0.1737
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6540,13 +6540,13 @@
      "edifici": {
       "asse": 0.0471,
       "sinistra": 0.0471,
-      "destra": 0.0554,
+      "destra": 0.0478,
       "asse_ufficiale": 0.0471
      },
      "con_vegetazione": {
       "asse": 0.1729,
       "sinistra": 0.2462,
-      "destra": 0.1831,
+      "destra": 0.1754,
       "asse_ufficiale": 0.1729
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6562,13 +6562,13 @@
      "edifici": {
       "asse": 0.0498,
       "sinistra": 0.0706,
-      "destra": 0.0532,
+      "destra": 0.0457,
       "asse_ufficiale": 0.0498
      },
      "con_vegetazione": {
       "asse": 0.1755,
       "sinistra": 0.274,
-      "destra": 0.1795,
+      "destra": 0.172,
       "asse_ufficiale": 0.1755
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6584,13 +6584,13 @@
      "edifici": {
       "asse": 0.0681,
       "sinistra": 0.0719,
-      "destra": 0.0488,
+      "destra": 0.0415,
       "asse_ufficiale": 0.0681
      },
      "con_vegetazione": {
       "asse": 0.1954,
       "sinistra": 0.2755,
-      "destra": 0.1742,
+      "destra": 0.1669,
       "asse_ufficiale": 0.1954
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6606,13 +6606,13 @@
      "edifici": {
       "asse": 0.0433,
       "sinistra": 0.0432,
-      "destra": 0.0455,
+      "destra": 0.0382,
       "asse_ufficiale": 0.0433
      },
      "con_vegetazione": {
       "asse": 0.1746,
       "sinistra": 0.2565,
-      "destra": 0.1738,
+      "destra": 0.1666,
       "asse_ufficiale": 0.1746
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6628,13 +6628,13 @@
      "edifici": {
       "asse": 0.0431,
       "sinistra": 0.043,
-      "destra": 0.0514,
+      "destra": 0.0441,
       "asse_ufficiale": 0.0431
      },
      "con_vegetazione": {
       "asse": 0.1812,
       "sinistra": 0.2742,
-      "destra": 0.1841,
+      "destra": 0.1767,
       "asse_ufficiale": 0.1812
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6650,13 +6650,13 @@
      "edifici": {
       "asse": 0.043,
       "sinistra": 0.0432,
-      "destra": 0.0516,
+      "destra": 0.0443,
       "asse_ufficiale": 0.043
      },
      "con_vegetazione": {
       "asse": 0.1961,
       "sinistra": 0.2936,
-      "destra": 0.1911,
+      "destra": 0.1836,
       "asse_ufficiale": 0.1961
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6672,13 +6672,13 @@
      "edifici": {
       "asse": 0.0426,
       "sinistra": 0.0428,
-      "destra": 0.0518,
+      "destra": 0.0445,
       "asse_ufficiale": 0.0426
      },
      "con_vegetazione": {
       "asse": 0.2137,
-      "sinistra": 0.3121,
-      "destra": 0.198,
+      "sinistra": 0.3174,
+      "destra": 0.1903,
       "asse_ufficiale": 0.2137
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6693,14 +6693,14 @@
      },
      "edifici": {
       "asse": 0.0691,
-      "sinistra": 0.11,
-      "destra": 0.076,
+      "sinistra": 0.1089,
+      "destra": 0.0687,
       "asse_ufficiale": 0.0691
      },
      "con_vegetazione": {
       "asse": 0.2697,
-      "sinistra": 0.3995,
-      "destra": 0.2293,
+      "sinistra": 0.3987,
+      "destra": 0.2215,
       "asse_ufficiale": 0.2697
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6716,13 +6716,13 @@
      "edifici": {
       "asse": 0.0924,
       "sinistra": 0.1213,
-      "destra": 0.0904,
+      "destra": 0.0831,
       "asse_ufficiale": 0.0924
      },
      "con_vegetazione": {
       "asse": 0.3249,
       "sinistra": 0.4262,
-      "destra": 0.2543,
+      "destra": 0.2481,
       "asse_ufficiale": 0.3249
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6738,13 +6738,13 @@
      "edifici": {
       "asse": 0.1017,
       "sinistra": 0.1319,
-      "destra": 0.1036,
+      "destra": 0.0963,
       "asse_ufficiale": 0.1017
      },
      "con_vegetazione": {
       "asse": 0.3771,
-      "sinistra": 0.4652,
-      "destra": 0.2795,
+      "sinistra": 0.4658,
+      "destra": 0.273,
       "asse_ufficiale": 0.3771
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6760,13 +6760,13 @@
      "edifici": {
       "asse": 0.0977,
       "sinistra": 0.129,
-      "destra": 0.1053,
+      "destra": 0.098,
       "asse_ufficiale": 0.0977
      },
      "con_vegetazione": {
       "asse": 0.4446,
-      "sinistra": 0.5078,
-      "destra": 0.3175,
+      "sinistra": 0.5064,
+      "destra": 0.3124,
       "asse_ufficiale": 0.4446
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6782,13 +6782,13 @@
      "edifici": {
       "asse": 0.1659,
       "sinistra": 0.2261,
-      "destra": 0.1591,
+      "destra": 0.1518,
       "asse_ufficiale": 0.1659
      },
      "con_vegetazione": {
       "asse": 0.5915,
       "sinistra": 0.601,
-      "destra": 0.4206,
+      "destra": 0.4143,
       "asse_ufficiale": 0.5915
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6804,13 +6804,13 @@
      "edifici": {
       "asse": 0.318,
       "sinistra": 0.4113,
-      "destra": 0.2302,
+      "destra": 0.2393,
       "asse_ufficiale": 0.318
      },
      "con_vegetazione": {
       "asse": 0.7699,
-      "sinistra": 0.6552,
-      "destra": 0.5551,
+      "sinistra": 0.656,
+      "destra": 0.5601,
       "asse_ufficiale": 0.7699
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6844,7 +6844,7 @@
     "destra": 139.3
    },
    "distanza_mediana_m": {
-    "sinistra": 4.01,
+    "sinistra": 3.25,
     "destra": 3.0
    },
    "istanti": [
@@ -6864,8 +6864,8 @@
      },
      "con_vegetazione": {
       "asse": 0.4351,
-      "sinistra": 0.4203,
-      "destra": 0.5764,
+      "sinistra": 0.4125,
+      "destra": 0.5644,
       "asse_ufficiale": 0.4351
      },
      "lato_piu_in_ombra": "destra"
@@ -6881,13 +6881,13 @@
      "edifici": {
       "asse": 0.2698,
       "sinistra": 0.2547,
-      "destra": 0.3325,
+      "destra": 0.3121,
       "asse_ufficiale": 0.2698
      },
      "con_vegetazione": {
       "asse": 0.3744,
-      "sinistra": 0.3733,
-      "destra": 0.4713,
+      "sinistra": 0.383,
+      "destra": 0.4323,
       "asse_ufficiale": 0.3744
      },
      "lato_piu_in_ombra": "destra"
@@ -6903,16 +6903,16 @@
      "edifici": {
       "asse": 0.2572,
       "sinistra": 0.261,
-      "destra": 0.3103,
+      "destra": 0.2876,
       "asse_ufficiale": 0.2572
      },
      "con_vegetazione": {
       "asse": 0.3316,
-      "sinistra": 0.3955,
-      "destra": 0.4169,
+      "sinistra": 0.4098,
+      "destra": 0.3899,
       "asse_ufficiale": 0.3316
      },
-     "lato_piu_in_ombra": "destra"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-07-15",
@@ -6925,13 +6925,13 @@
      "edifici": {
       "asse": 0.2586,
       "sinistra": 0.2696,
-      "destra": 0.3044,
+      "destra": 0.2828,
       "asse_ufficiale": 0.2586
      },
      "con_vegetazione": {
       "asse": 0.2983,
-      "sinistra": 0.4194,
-      "destra": 0.3661,
+      "sinistra": 0.4229,
+      "destra": 0.3413,
       "asse_ufficiale": 0.2983
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6946,14 +6946,14 @@
      },
      "edifici": {
       "asse": 0.231,
-      "sinistra": 0.2485,
-      "destra": 0.2467,
+      "sinistra": 0.2483,
+      "destra": 0.245,
       "asse_ufficiale": 0.231
      },
      "con_vegetazione": {
       "asse": 0.2437,
-      "sinistra": 0.3971,
-      "destra": 0.2855,
+      "sinistra": 0.3961,
+      "destra": 0.282,
       "asse_ufficiale": 0.2437
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6968,14 +6968,14 @@
      },
      "edifici": {
       "asse": 0.2351,
-      "sinistra": 0.2429,
-      "destra": 0.2286,
+      "sinistra": 0.2409,
+      "destra": 0.2268,
       "asse_ufficiale": 0.2351
      },
      "con_vegetazione": {
       "asse": 0.2403,
-      "sinistra": 0.3809,
-      "destra": 0.2562,
+      "sinistra": 0.3801,
+      "destra": 0.2598,
       "asse_ufficiale": 0.2403
      },
      "lato_piu_in_ombra": "sinistra"
@@ -6990,14 +6990,14 @@
      },
      "edifici": {
       "asse": 0.2219,
-      "sinistra": 0.2301,
-      "destra": 0.2284,
+      "sinistra": 0.2253,
+      "destra": 0.2267,
       "asse_ufficiale": 0.2219
      },
      "con_vegetazione": {
       "asse": 0.2271,
-      "sinistra": 0.3573,
-      "destra": 0.2413,
+      "sinistra": 0.3538,
+      "destra": 0.2559,
       "asse_ufficiale": 0.2271
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7012,14 +7012,14 @@
      },
      "edifici": {
       "asse": 0.2169,
-      "sinistra": 0.2262,
-      "destra": 0.2301,
+      "sinistra": 0.2192,
+      "destra": 0.2283,
       "asse_ufficiale": 0.2169
      },
      "con_vegetazione": {
       "asse": 0.2248,
-      "sinistra": 0.3451,
-      "destra": 0.2375,
+      "sinistra": 0.3384,
+      "destra": 0.2554,
       "asse_ufficiale": 0.2248
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7034,17 +7034,17 @@
      },
      "edifici": {
       "asse": 0.2097,
-      "sinistra": 0.1116,
-      "destra": 0.2257,
+      "sinistra": 0.1023,
+      "destra": 0.2239,
       "asse_ufficiale": 0.2097
      },
      "con_vegetazione": {
       "asse": 0.2321,
-      "sinistra": 0.235,
-      "destra": 0.2378,
+      "sinistra": 0.2264,
+      "destra": 0.2566,
       "asse_ufficiale": 0.2321
      },
-     "lato_piu_in_ombra": "pari"
+     "lato_piu_in_ombra": "destra"
     },
     {
      "data": "2026-07-15",
@@ -7056,14 +7056,14 @@
      },
      "edifici": {
       "asse": 0.2189,
-      "sinistra": 0.1735,
-      "destra": 0.2365,
+      "sinistra": 0.1605,
+      "destra": 0.2348,
       "asse_ufficiale": 0.2189
      },
      "con_vegetazione": {
       "asse": 0.2537,
-      "sinistra": 0.3069,
-      "destra": 0.2519,
+      "sinistra": 0.2952,
+      "destra": 0.2711,
       "asse_ufficiale": 0.2537
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7078,14 +7078,14 @@
      },
      "edifici": {
       "asse": 0.1526,
-      "sinistra": 0.1442,
-      "destra": 0.2306,
+      "sinistra": 0.1349,
+      "destra": 0.2289,
       "asse_ufficiale": 0.1526
      },
      "con_vegetazione": {
       "asse": 0.192,
-      "sinistra": 0.2861,
-      "destra": 0.2486,
+      "sinistra": 0.2756,
+      "destra": 0.2679,
       "asse_ufficiale": 0.192
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7100,14 +7100,14 @@
      },
      "edifici": {
       "asse": 0.1456,
-      "sinistra": 0.1723,
-      "destra": 0.2388,
+      "sinistra": 0.1566,
+      "destra": 0.237,
       "asse_ufficiale": 0.1456
      },
      "con_vegetazione": {
       "asse": 0.1904,
-      "sinistra": 0.3173,
-      "destra": 0.2573,
+      "sinistra": 0.306,
+      "destra": 0.2784,
       "asse_ufficiale": 0.1904
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7122,14 +7122,14 @@
      },
      "edifici": {
       "asse": 0.1479,
-      "sinistra": 0.1797,
-      "destra": 0.1687,
+      "sinistra": 0.1654,
+      "destra": 0.1669,
       "asse_ufficiale": 0.1479
      },
      "con_vegetazione": {
       "asse": 0.2018,
-      "sinistra": 0.3375,
-      "destra": 0.1915,
+      "sinistra": 0.3288,
+      "destra": 0.2155,
       "asse_ufficiale": 0.2018
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7144,14 +7144,14 @@
      },
      "edifici": {
       "asse": 0.1517,
-      "sinistra": 0.1838,
-      "destra": 0.1525,
+      "sinistra": 0.1769,
+      "destra": 0.1508,
       "asse_ufficiale": 0.1517
      },
      "con_vegetazione": {
       "asse": 0.2119,
-      "sinistra": 0.3542,
-      "destra": 0.1786,
+      "sinistra": 0.3519,
+      "destra": 0.2055,
       "asse_ufficiale": 0.2119
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7167,13 +7167,13 @@
      "edifici": {
       "asse": 0.1899,
       "sinistra": 0.2459,
-      "destra": 0.1923,
+      "destra": 0.1906,
       "asse_ufficiale": 0.1899
      },
      "con_vegetazione": {
       "asse": 0.2544,
-      "sinistra": 0.4417,
-      "destra": 0.2231,
+      "sinistra": 0.4449,
+      "destra": 0.2531,
       "asse_ufficiale": 0.2544
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7189,13 +7189,13 @@
      "edifici": {
       "asse": 0.215,
       "sinistra": 0.2774,
-      "destra": 0.1941,
+      "destra": 0.1924,
       "asse_ufficiale": 0.215
      },
      "con_vegetazione": {
       "asse": 0.3055,
-      "sinistra": 0.5228,
-      "destra": 0.2289,
+      "sinistra": 0.5258,
+      "destra": 0.2594,
       "asse_ufficiale": 0.3055
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7211,13 +7211,13 @@
      "edifici": {
       "asse": 0.2396,
       "sinistra": 0.3259,
-      "destra": 0.1887,
+      "destra": 0.187,
       "asse_ufficiale": 0.2396
      },
      "con_vegetazione": {
       "asse": 0.3408,
-      "sinistra": 0.5547,
-      "destra": 0.2271,
+      "sinistra": 0.5573,
+      "destra": 0.2582,
       "asse_ufficiale": 0.3408
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7233,13 +7233,13 @@
      "edifici": {
       "asse": 0.2492,
       "sinistra": 0.3403,
-      "destra": 0.204,
+      "destra": 0.2023,
       "asse_ufficiale": 0.2492
      },
      "con_vegetazione": {
       "asse": 0.3804,
-      "sinistra": 0.5834,
-      "destra": 0.2791,
+      "sinistra": 0.5852,
+      "destra": 0.3095,
       "asse_ufficiale": 0.3804
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7255,13 +7255,13 @@
      "edifici": {
       "asse": 0.2822,
       "sinistra": 0.3466,
-      "destra": 0.2078,
+      "destra": 0.2061,
       "asse_ufficiale": 0.2822
      },
      "con_vegetazione": {
       "asse": 0.4095,
-      "sinistra": 0.6051,
-      "destra": 0.3318,
+      "sinistra": 0.605,
+      "destra": 0.3509,
       "asse_ufficiale": 0.4095
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7277,13 +7277,13 @@
      "edifici": {
       "asse": 0.2912,
       "sinistra": 0.3511,
-      "destra": 0.2352,
+      "destra": 0.2335,
       "asse_ufficiale": 0.2912
      },
      "con_vegetazione": {
       "asse": 0.4165,
-      "sinistra": 0.6244,
-      "destra": 0.3801,
+      "sinistra": 0.6202,
+      "destra": 0.3836,
       "asse_ufficiale": 0.4165
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7299,13 +7299,13 @@
      "edifici": {
       "asse": 0.2767,
       "sinistra": 0.3375,
-      "destra": 0.2417,
+      "destra": 0.24,
       "asse_ufficiale": 0.2767
      },
      "con_vegetazione": {
       "asse": 0.4255,
-      "sinistra": 0.6408,
-      "destra": 0.4205,
+      "sinistra": 0.6275,
+      "destra": 0.4106,
       "asse_ufficiale": 0.4255
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7321,13 +7321,13 @@
      "edifici": {
       "asse": 0.2693,
       "sinistra": 0.3193,
-      "destra": 0.2279,
+      "destra": 0.2262,
       "asse_ufficiale": 0.2693
      },
      "con_vegetazione": {
       "asse": 0.4459,
-      "sinistra": 0.6226,
-      "destra": 0.4262,
+      "sinistra": 0.6194,
+      "destra": 0.4316,
       "asse_ufficiale": 0.4459
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7343,16 +7343,16 @@
      "edifici": {
       "asse": 0.3142,
       "sinistra": 0.338,
-      "destra": 0.2975,
+      "destra": 0.2608,
       "asse_ufficiale": 0.3142
      },
      "con_vegetazione": {
       "asse": 0.478,
-      "sinistra": 0.538,
-      "destra": 0.546,
+      "sinistra": 0.5416,
+      "destra": 0.5157,
       "asse_ufficiale": 0.478
      },
-     "lato_piu_in_ombra": "destra"
+     "lato_piu_in_ombra": "sinistra"
     },
     {
      "data": "2026-09-15",
@@ -7365,7 +7365,7 @@
      "edifici": {
       "asse": 0.3763,
       "sinistra": 0.3765,
-      "destra": 0.4245,
+      "destra": 0.3875,
       "asse_ufficiale": 0.3763
      },
      "con_vegetazione": {
@@ -7386,14 +7386,14 @@
      },
      "edifici": {
       "asse": 0.3333,
-      "sinistra": 0.3502,
-      "destra": 0.3423,
+      "sinistra": 0.3499,
+      "destra": 0.3405,
       "asse_ufficiale": 0.3333
      },
      "con_vegetazione": {
       "asse": 0.4549,
-      "sinistra": 0.6305,
-      "destra": 0.4299,
+      "sinistra": 0.6266,
+      "destra": 0.489,
       "asse_ufficiale": 0.4549
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7408,14 +7408,14 @@
      },
      "edifici": {
       "asse": 0.3973,
-      "sinistra": 0.4098,
-      "destra": 0.3952,
+      "sinistra": 0.4091,
+      "destra": 0.3934,
       "asse_ufficiale": 0.3973
      },
      "con_vegetazione": {
       "asse": 0.5537,
-      "sinistra": 0.6553,
-      "destra": 0.4552,
+      "sinistra": 0.6611,
+      "destra": 0.53,
       "asse_ufficiale": 0.5537
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7430,14 +7430,14 @@
      },
      "edifici": {
       "asse": 0.4071,
-      "sinistra": 0.4324,
-      "destra": 0.373,
+      "sinistra": 0.4316,
+      "destra": 0.3712,
       "asse_ufficiale": 0.4071
      },
      "con_vegetazione": {
       "asse": 0.6144,
-      "sinistra": 0.6593,
-      "destra": 0.465,
+      "sinistra": 0.6718,
+      "destra": 0.5113,
       "asse_ufficiale": 0.6144
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7452,14 +7452,14 @@
      },
      "edifici": {
       "asse": 0.4058,
-      "sinistra": 0.413,
-      "destra": 0.4081,
+      "sinistra": 0.4074,
+      "destra": 0.4064,
       "asse_ufficiale": 0.4058
      },
      "con_vegetazione": {
       "asse": 0.5996,
-      "sinistra": 0.5997,
-      "destra": 0.4981,
+      "sinistra": 0.6056,
+      "destra": 0.5214,
       "asse_ufficiale": 0.5996
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7474,14 +7474,14 @@
      },
      "edifici": {
       "asse": 0.3796,
-      "sinistra": 0.4447,
-      "destra": 0.3844,
+      "sinistra": 0.4371,
+      "destra": 0.3826,
       "asse_ufficiale": 0.3796
      },
      "con_vegetazione": {
       "asse": 0.5509,
-      "sinistra": 0.6076,
-      "destra": 0.4712,
+      "sinistra": 0.6082,
+      "destra": 0.4837,
       "asse_ufficiale": 0.5509
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7496,14 +7496,14 @@
      },
      "edifici": {
       "asse": 0.4126,
-      "sinistra": 0.4468,
-      "destra": 0.3702,
+      "sinistra": 0.4377,
+      "destra": 0.3685,
       "asse_ufficiale": 0.4126
      },
      "con_vegetazione": {
       "asse": 0.5707,
-      "sinistra": 0.5979,
-      "destra": 0.4492,
+      "sinistra": 0.5954,
+      "destra": 0.4583,
       "asse_ufficiale": 0.5707
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7518,14 +7518,14 @@
      },
      "edifici": {
       "asse": 0.3784,
-      "sinistra": 0.412,
-      "destra": 0.3812,
+      "sinistra": 0.4008,
+      "destra": 0.3794,
       "asse_ufficiale": 0.3784
      },
      "con_vegetazione": {
       "asse": 0.5396,
-      "sinistra": 0.5617,
-      "destra": 0.4532,
+      "sinistra": 0.5563,
+      "destra": 0.4605,
       "asse_ufficiale": 0.5396
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7540,14 +7540,14 @@
      },
      "edifici": {
       "asse": 0.3698,
-      "sinistra": 0.403,
-      "destra": 0.3843,
+      "sinistra": 0.3889,
+      "destra": 0.3825,
       "asse_ufficiale": 0.3698
      },
      "con_vegetazione": {
       "asse": 0.5342,
-      "sinistra": 0.5529,
-      "destra": 0.4563,
+      "sinistra": 0.5449,
+      "destra": 0.4624,
       "asse_ufficiale": 0.5342
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7562,14 +7562,14 @@
      },
      "edifici": {
       "asse": 0.3581,
-      "sinistra": 0.3862,
-      "destra": 0.3731,
+      "sinistra": 0.3692,
+      "destra": 0.3714,
       "asse_ufficiale": 0.3581
      },
      "con_vegetazione": {
       "asse": 0.5195,
-      "sinistra": 0.5314,
-      "destra": 0.4401,
+      "sinistra": 0.521,
+      "destra": 0.4462,
       "asse_ufficiale": 0.5195
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7584,14 +7584,14 @@
      },
      "edifici": {
       "asse": 0.3505,
-      "sinistra": 0.252,
-      "destra": 0.3627,
+      "sinistra": 0.249,
+      "destra": 0.361,
       "asse_ufficiale": 0.3505
      },
      "con_vegetazione": {
       "asse": 0.517,
-      "sinistra": 0.4129,
-      "destra": 0.4363,
+      "sinistra": 0.4094,
+      "destra": 0.4436,
       "asse_ufficiale": 0.517
      },
      "lato_piu_in_ombra": "destra"
@@ -7606,14 +7606,14 @@
      },
      "edifici": {
       "asse": 0.2627,
-      "sinistra": 0.2139,
-      "destra": 0.351,
+      "sinistra": 0.202,
+      "destra": 0.3492,
       "asse_ufficiale": 0.2627
      },
      "con_vegetazione": {
       "asse": 0.433,
-      "sinistra": 0.3823,
-      "destra": 0.4325,
+      "sinistra": 0.3833,
+      "destra": 0.4373,
       "asse_ufficiale": 0.433
      },
      "lato_piu_in_ombra": "destra"
@@ -7628,14 +7628,14 @@
      },
      "edifici": {
       "asse": 0.2223,
-      "sinistra": 0.2074,
-      "destra": 0.3208,
+      "sinistra": 0.1964,
+      "destra": 0.3191,
       "asse_ufficiale": 0.2223
      },
      "con_vegetazione": {
       "asse": 0.3932,
-      "sinistra": 0.3815,
-      "destra": 0.406,
+      "sinistra": 0.3863,
+      "destra": 0.4097,
       "asse_ufficiale": 0.3932
      },
      "lato_piu_in_ombra": "destra"
@@ -7650,14 +7650,14 @@
      },
      "edifici": {
       "asse": 0.2055,
-      "sinistra": 0.199,
-      "destra": 0.2104,
+      "sinistra": 0.1896,
+      "destra": 0.2086,
       "asse_ufficiale": 0.2055
      },
      "con_vegetazione": {
       "asse": 0.3763,
-      "sinistra": 0.3841,
-      "destra": 0.297,
+      "sinistra": 0.3874,
+      "destra": 0.3,
       "asse_ufficiale": 0.3763
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7673,13 +7673,13 @@
      "edifici": {
       "asse": 0.236,
       "sinistra": 0.2514,
-      "destra": 0.2394,
+      "destra": 0.2377,
       "asse_ufficiale": 0.236
      },
      "con_vegetazione": {
       "asse": 0.4106,
-      "sinistra": 0.4793,
-      "destra": 0.3292,
+      "sinistra": 0.4889,
+      "destra": 0.3324,
       "asse_ufficiale": 0.4106
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7695,13 +7695,13 @@
      "edifici": {
       "asse": 0.2416,
       "sinistra": 0.2827,
-      "destra": 0.2336,
+      "destra": 0.2319,
       "asse_ufficiale": 0.2416
      },
      "con_vegetazione": {
       "asse": 0.457,
-      "sinistra": 0.5504,
-      "destra": 0.326,
+      "sinistra": 0.5606,
+      "destra": 0.329,
       "asse_ufficiale": 0.457
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7717,13 +7717,13 @@
      "edifici": {
       "asse": 0.2663,
       "sinistra": 0.338,
-      "destra": 0.2365,
+      "destra": 0.2348,
       "asse_ufficiale": 0.2663
      },
      "con_vegetazione": {
       "asse": 0.5275,
-      "sinistra": 0.5712,
-      "destra": 0.3501,
+      "sinistra": 0.5824,
+      "destra": 0.3558,
       "asse_ufficiale": 0.5275
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7738,14 +7738,14 @@
      },
      "edifici": {
       "asse": 0.2958,
-      "sinistra": 0.38,
-      "destra": 0.2572,
+      "sinistra": 0.3691,
+      "destra": 0.2555,
       "asse_ufficiale": 0.2958
      },
      "con_vegetazione": {
       "asse": 0.596,
-      "sinistra": 0.6011,
-      "destra": 0.4226,
+      "sinistra": 0.6027,
+      "destra": 0.4265,
       "asse_ufficiale": 0.596
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7760,14 +7760,14 @@
      },
      "edifici": {
       "asse": 0.3151,
-      "sinistra": 0.4134,
-      "destra": 0.2937,
+      "sinistra": 0.4128,
+      "destra": 0.2919,
       "asse_ufficiale": 0.3151
      },
      "con_vegetazione": {
       "asse": 0.6397,
-      "sinistra": 0.6393,
-      "destra": 0.4966,
+      "sinistra": 0.653,
+      "destra": 0.4971,
       "asse_ufficiale": 0.6397
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7782,14 +7782,14 @@
      },
      "edifici": {
       "asse": 0.382,
-      "sinistra": 0.4446,
-      "destra": 0.3715,
+      "sinistra": 0.4456,
+      "destra": 0.3697,
       "asse_ufficiale": 0.382
      },
      "con_vegetazione": {
       "asse": 0.745,
-      "sinistra": 0.684,
-      "destra": 0.6171,
+      "sinistra": 0.6996,
+      "destra": 0.6111,
       "asse_ufficiale": 0.745
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7804,14 +7804,14 @@
      },
      "edifici": {
       "asse": 0.4708,
-      "sinistra": 0.4774,
-      "destra": 0.421,
+      "sinistra": 0.4781,
+      "destra": 0.4193,
       "asse_ufficiale": 0.4708
      },
      "con_vegetazione": {
       "asse": 0.7924,
-      "sinistra": 0.7538,
-      "destra": 0.7232,
+      "sinistra": 0.7712,
+      "destra": 0.7067,
       "asse_ufficiale": 0.7924
      },
      "lato_piu_in_ombra": "sinistra"
@@ -7826,17 +7826,17 @@
      },
      "edifici": {
       "asse": 0.558,
-      "sinistra": 0.5518,
-      "destra": 0.5587,
+      "sinistra": 0.5513,
+      "destra": 0.557,
       "asse_ufficiale": 0.558
      },
      "con_vegetazione": {
       "asse": 0.8408,
-      "sinistra": 0.8192,
-      "destra": 0.8558,
+      "sinistra": 0.8455,
+      "destra": 0.8475,
       "asse_ufficiale": 0.8408
      },
-     "lato_piu_in_ombra": "destra"
+     "lato_piu_in_ombra": "pari"
     },
     {
      "data": "2026-09-15",
@@ -7851,7 +7851,7 @@
   }
  },
  "calcolo": {
-  "secondi": 580,
+  "secondi": 594,
   "memoria_max_gb": 0.37
  }
 }
