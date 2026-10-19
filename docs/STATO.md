@@ -125,6 +125,7 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D62 (19 ottobre): ramo `agente/f7` unito su `main` dopo lint, validate e `make test` verdi sul Mac. Rifatti sul Mac: `lati_strada.json` e `lato_piu_in_ombra` dei rifugi con le stesse impronte del worker; `edifici.json.gz` decompresso identico, quindi D58 chiuso; `make impronte` 56 righe uguali (domanda 3 del report F7).
 - D63 (19 ottobre): alla distanza ricavata dalle aree stradali si toglie un margine fisso di 1,7 m (mediana dello scarto con il marciapiede OSM dove ci sono tutti e due), dichiarato come taratura su pochi tratti; da ricontrollare con le misure del 12 dicembre (domanda 1).
 - D64 (19 ottobre): nella scheda per l'ufficio resta la frase con il limite superiore sul lato più in ombra; il numero è quello sull'asse e va detto a voce (domanda 2).
+- D65 (19 ottobre): sessione breve F8 su [BRIEF-AGENTE-F8.md](BRIEF-AGENTE-F8.md): margine di 1,7 m (D63) e numeri che dipendono dai lati. Dopo F8 le sessioni dell'agente si fermano fino a risposta dell'ufficio, verifica del 12 dicembre o MCP installato sulla macchina di prova.
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
