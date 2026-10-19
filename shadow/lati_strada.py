@@ -4,7 +4,7 @@ Stato: prototipo, da verificare sul posto. Non scrive manifest né job: i risult
 
 Ogni segmento di strada del percorso va a sinistra e a destra nel verso di marcia, della distanza dal marciapiede mappato a parte in OSM (arco pedonale
 parallelo entro 8 m, angolo sotto 30 gradi, dal punto medio del segmento); dove non c'è, della distanza dal bordo dell'area stradale del Comune (F7, D59,
-regola in aree_stradali()); dove nemmeno questa si applica, del valore dichiarato MEZZA_DEFAULT_M. Raccordi e tratti già pedonali (sentieri, piazze) restano sull'asse. Ombra all'istante, motore shadow/ombre.py, casi solo edifici e con vegetazione LiDAR (tipico).
+regola in aree_stradali(), meno il margine MARGINE_AS_M di F8, D63); dove nemmeno questa si applica, del valore dichiarato MEZZA_DEFAULT_M. Raccordi e tratti già pedonali (sentieri, piazze) restano sull'asse. Ombra all'istante, motore shadow/ombre.py, casi solo edifici e con vegetazione LiDAR (tipico).
 Istanti: quelli dei risultati ufficiali di ogni percorso (sintesi: 15 luglio e 15 settembre, 8-19 ogni 30 minuti; esposizione: 14 del 15 luglio),
 più gli orari della verifica del 12 dicembre per R01 (D50).
 
@@ -27,12 +27,15 @@ MEZZA_DEFAULT_M = 3.0      # dichiarata: distanza del lato dove il marciapiede n
 RAGGIO_M, ANGOLO_MAX = 8.0, 30.0
 AREE_STRADALI = O.NORM / "fi_aree_stradali.gpkg"   # src_fi_aree_stradali, fuori baseline (D59)
 AS_MIN_M, AS_MAX_M = 1.0, 25.0   # regola delle aree stradali: bordo trovato fra 1 e 25 m dal punto medio, altrimenti non si applica
+# F8 (D63): margine tolto alla distanza dal bordo. Mediana dello scarto fra bordo e marciapiede OSM dove ci sono tutti e due (243 coppie, report F7):
+# una taratura su pochi tratti, da ricontrollare con le misure della verifica del 12 dicembre. Se dopo il margine resta meno di AS_MIN_M, valgono i 3 m dichiarati.
+MARGINE_AS_M = 1.7
 TIPI_PEDONALI = ("sentiero", "marciapiede_disegnato")
 PARI = 0.005               # sotto mezzo punto di differenza i due lati sono "pari"
 LIMITI = [("prototipo_da_verificare", "Prototipo, da verificare sul posto: nessun lato della strada è stato osservato."),
           ("lato_scelto_da_chi_cammina", "Il lato lo sceglie chi cammina: sinistra e destra sono due linee intere, non un percorso che sceglie il lato più in ombra."),
           ("attraversamenti_non_modellati", "Attraversamenti non modellati: chi cambia lato attraversa, e il percorso più breve sul grafo non sa quale lato usa."),
-          ("aree_stradali_stima", "Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è quella dal bordo dell'area stradale del Comune lungo la normale al segmento: una stima nostra, non una larghezza pubblicata; sui tratti con il marciapiede OSM il bordo sta in mediana circa 1,7 m più lontano del marciapiede, quindi la distanza è più facilmente in eccesso (metri per lato nel campo metri_aree_stradali)."),
+          ("aree_stradali_stima", f"Dove il marciapiede non è mappato a parte in OSM la distanza dall'asse è quella dal bordo dell'area stradale del Comune lungo la normale al segmento, meno un margine di {str(MARGINE_AS_M).replace('.', ',')} m (D63): una stima nostra, non una larghezza pubblicata. Il margine è la mediana dello scarto fra bordo e marciapiede OSM dove ci sono tutti e due, tarato su pochi tratti e da ricontrollare sul posto; se dopo il margine resta meno di {AS_MIN_M:g} m vale il valore dichiarato (metri per lato nel campo metri_aree_stradali)."),
           ("valore_dichiarato", f"Dove non c'è né il marciapiede OSM né l'area stradale la distanza dall'asse è il valore dichiarato di {MEZZA_DEFAULT_M:g} m, non una larghezza misurata (metri per lato nel campo metri_valore_dichiarato)."),
           ("asse_nei_tratti_pedonali", "Raccordi e tratti pedonali (sentieri, piazze) restano sull'asse; ombra a un istante, non lungo il cammino."),
           ("vegetazione_prisma", "Vegetazione LiDAR come prisma opaco pieno: limite superiore dell'ombra; più i limiti del motore d'ombra sull'asse (altezze, portici ignoti).")]
@@ -41,10 +44,11 @@ LIMITI = [("prototipo_da_verificare", "Prototipo, da verificare sul posto: nessu
 _AS = None
 
 
-def aree_stradali(m, v):
+def aree_stradali(m, v, margine=MARGINE_AS_M):
     """F7 (D59), stima nostra: distanza dal punto medio m del segmento (direzione v) al bordo dell'area stradale del Comune, lungo la normale, a sinistra e
     a destra. Vale solo se m sta in un solo poligono di tronco (gli incroci, poligoni senza toponimo, sono scartati) e il bordo è fra AS_MIN_M e AS_MAX_M;
-    altrimenti None per quel lato. Il bordo dell'area stradale non è per forza dove si cammina: a volte comprende il marciapiede, a volte no."""
+    altrimenti None per quel lato. Il bordo dell'area stradale non è per forza dove si cammina: a volte comprende il marciapiede, a volte no.
+    F8 (D63): alla distanza si toglie il margine; se resta meno di AS_MIN_M, None (si torna ai 3 m dichiarati). margine=0 dà il bordo di F7."""
     global _AS
     if _AS is None:
         g = pyogrio.read_dataframe(AREE_STRADALI, columns=["TOPONIMO"]) if AREE_STRADALI.exists() else None
@@ -57,7 +61,7 @@ def aree_stradali(m, v):
     for lato in (1, -1):
         h = shapely.get_parts(LineString([c, c + lato * n * AS_MAX_M]).intersection(P.boundary))
         d = min((float(shapely.distance(m, q)) for q in h), default=None)
-        out[lato] = d if d is not None and d >= AS_MIN_M else None
+        out[lato] = d - margine if d is not None and d >= AS_MIN_M and d - margine >= AS_MIN_M else None
     return out
 
 
@@ -177,7 +181,7 @@ def main():
     R = {"stato": "prototipo, da verificare sul posto", "versione_motore": O.VERSIONE, "baseline_id": O.BASELINE_ID,
          "ricevitore": "due linee parallele all'asse del percorso, a sinistra e a destra nel verso di marcia; l'asse accanto, calcolato allo stesso modo",
          "metodo": {"distanza": f"dal marciapiede mappato a parte in OSM (arco pedonale parallelo entro {RAGGIO_M:g} m, angolo sotto {ANGOLO_MAX:g} gradi, dal punto medio del segmento); "
-                                f"altrimenti dal bordo dell'area stradale del Comune lungo la normale dal punto medio (solo poligoni di tronco, incroci esclusi, bordo fra {AS_MIN_M:g} e {AS_MAX_M:g} m; stima nostra, D59); "
+                                f"altrimenti dal bordo dell'area stradale del Comune lungo la normale dal punto medio (solo poligoni di tronco, incroci esclusi, bordo fra {AS_MIN_M:g} e {AS_MAX_M:g} m; stima nostra, D59), meno {str(MARGINE_AS_M).replace('.', ',')} m (D63; sotto {AS_MIN_M:g} m dopo il margine, valore dichiarato); "
                                 f"altrimenti {MEZZA_DEFAULT_M:g} m dichiarati",
                     "asse": "raccordi e tratti pedonali restano sull'asse", "casi": CASI, "frazione": "metri in ombra della linea all'istante / lunghezza della linea",
                     "asse_ufficiale": "frazione sull'asse dei risultati ufficiali allo stesso istante (sintesi per ora o esposizione), per confronto",

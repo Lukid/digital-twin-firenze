@@ -482,7 +482,7 @@ def _lato_piu_in_ombra(E):
                                       "fonte_distanza": {k: q[c] for k, c in (("marciapiede_osm_m", "metri_marciapiede_osm"), ("aree_stradali_m", "metri_aree_stradali"), ("valore_dichiarato_m", "metri_valore_dichiarato"))},
                                       "nota": "frazione_ombra: quota d'ombra del lato della strada più in ombra, camminando tutto su quel lato senza attraversare; limite_superiore: la maggiore fra questa e l'asse. "
                                               "Si dà accanto a frazione_ombra sull'asse del percorso, che resta il valore. "
-                                              "Distanza del lato dal marciapiede OSM, altrimenti dalle aree stradali del Comune (stima nostra), altrimenti 3 m dichiarati. Dettagli: get_street_side_shade."}
+                                              "Distanza del lato dal marciapiede OSM, altrimenti dal bordo delle aree stradali del Comune meno 1,7 m (stima nostra), altrimenti 3 m dichiarati. Dettagli: get_street_side_shade."}
 
 
 def get_shaded_access(a):

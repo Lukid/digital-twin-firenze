@@ -298,6 +298,24 @@ def test_memoria_misurata():
 TOL_ASSE = 1e-4   # quarta cifra: stesso motore e stessa linea, l'asse deve uscire uguale
 
 
+def test_margine_aree_stradali():
+    # F8 (D63): al bordo dell'area stradale si tolgono 1,7 m; se restano meno di 1 m la regola non vale (3 m dichiarati). Area stradale di prova, larga 10 m
+    import lati_strada as LS
+    vecchio = LS._AS; P = np.array([shapely.geometry.box(-10, -5, 10, 5)], dtype=object); LS._AS = (P, shapely.STRtree(P))
+    try:
+        v = np.array([1.0, 0.0]); d = LS.aree_stradali(shapely.Point(0, 0), v)
+        assert LS.MARGINE_AS_M == 1.7 and abs(d[1] - 3.3) < 1e-9 and abs(d[-1] - 3.3) < 1e-9, d
+        assert LS.aree_stradali(shapely.Point(0, 0), v, margine=0.0) == {1: 5.0, -1: 5.0}           # senza margine: il bordo di F7
+        d = LS.aree_stradali(shapely.Point(0, 3.0), v)                                             # bordo a 2 m a sinistra: 0,3 m dopo il margine
+        assert d[1] is None and abs(d[-1] - 6.3) < 1e-9, d
+        assert LS.aree_stradali(shapely.Point(0, 3.0), v, margine=0.0)[1] == 2.0
+        assert LS.aree_stradali(shapely.Point(0, 4.5), v, margine=0.0)[1] is None                   # sotto 1 m già senza margine: asse sul bordo
+        assert LS.aree_stradali(shapely.Point(0, 20.0), v) == {1: None, -1: None}                 # fuori dalle aree stradali
+    finally:
+        LS._AS = vecchio
+    ok("aree stradali: margine di 1,7 m tolto al bordo, sotto 1 m si torna ai 3 m dichiarati")
+
+
 def test_lati_strada():
     # F6 (D56): i due lati stanno accanto all'asse, non al posto: sull'asse, calcolata allo stesso modo, escono i numeri di sempre (sintesi per ora, esposizione)
     import lati_strada as LS, rete_lib as RL, run as RUN
@@ -322,7 +340,7 @@ def test_lati_strada():
     assert sum(P["metri_aree_stradali"][lato] for P in R["percorsi"].values() for lato in ("sinistra", "destra")) > 0
     RUN.PERCORSI = ["R02"]; G, _ = RL.carica(); seg = LS.lati(shapely.geometry.shape(RUN.ricevitori()[0]["geometry"]), G)
     assert {lato: LS.metri(seg, i, "aree") for i, lato in enumerate(("sinistra", "destra"))} == R["percorsi"]["R02"]["metri_aree_stradali"]
-    assert all(LS.AS_MIN_M <= s[2 + i] <= LS.AS_MAX_M for s in seg for i in (0, 1) if s[4] != "asse" and s[4].split("+")[i] == "aree")
+    assert all(LS.AS_MIN_M <= s[2 + i] <= LS.AS_MAX_M - LS.MARGINE_AS_M for s in seg for i in (0, 1) if s[4] != "asse" and s[4].split("+")[i] == "aree")
     # rifatto adesso: R01 alle 14 del 15 luglio deve ridare il file
     x = LS.percorso("R01", G, {c: O.scena_caso(c) for c in LS.CASI}, [("2026-07-15", "14:00")])["istanti"][0]
     y = next(y for y in R["percorsi"]["R01"]["istanti"] if (y["data"], y["ora"]) == ("2026-07-15", "14:00"))

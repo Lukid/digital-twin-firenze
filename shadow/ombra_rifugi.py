@@ -86,7 +86,7 @@ def solo_riserva():
 CASI_LATI = {"base": "solo_edifici", "veg_lidar_tipico": "con_vegetazione"}   # come shadow/lati_strada.py
 LIMITI_LATI = [("limite_superiore", "Limite superiore: chi cammina sceglie sempre il lato più in ombra per tutto il percorso, senza attraversare; il valore principale resta quello sull'asse."),
                ("da_verificare", "Da verificare sul posto: nessun lato della strada è stato osservato."),
-               ("distanza_del_lato", "Distanza del lato dal marciapiede OSM, altrimenti dal bordo delle aree stradali del Comune (stima nostra), altrimenti 3 m dichiarati (metri per fonte nel campo metri)."),
+               ("distanza_del_lato", "Distanza del lato dal marciapiede OSM, altrimenti dal bordo delle aree stradali del Comune meno un margine di 1,7 m (stima nostra, D63), altrimenti 3 m dichiarati (metri per fonte nel campo metri)."),
                ("attraversamenti_non_modellati", "Attraversamenti non modellati; raccordi e tratti pedonali restano sull'asse.")]
 
 
@@ -182,7 +182,7 @@ def solo_lati(blocco):
                   "Caso con vegetazione; solo edifici a parte.",
         "civici_con_lati_sotto_l_asse": {f"{T} min": sum(1 for o in dentro if civ[o]["minuti"] <= T and max(civ[o][("sinistra", "veg_lidar_tipico")], civ[o][("destra", "veg_lidar_tipico")]) < civ[o][("asse", "veg_lidar_tipico")]) for T in SOGLIE_MIN},
         "controllo_asse": f"ombra sull'asse ricalcolata qui uguale a quella del GeoJSON dei civici (scarto massimo {scarto:.4f})",
-        "fonte_distanza": "marciapiede OSM; altrimenti bordo delle aree stradali del Comune (src_fi_aree_stradali, CC BY 4.0, stima nostra, D59); altrimenti 3 m dichiarati",
+        "fonte_distanza": "marciapiede OSM; altrimenti bordo delle aree stradali del Comune meno 1,7 m (src_fi_aree_stradali, CC BY 4.0, stima nostra, D59 e D63); altrimenti 3 m dichiarati",
         "metri_per_fonte": {"nota": "metri di strada sommati su tutti i percorsi dei civici entro 15 minuti (un tratto conta una volta per ogni civico che lo usa)", **mtot},
         "soglie": soglie, "controllo_RC4": controllo,
         "fonti": [{"source_id": "src_fi_aree_stradali", "licenza": "CC-BY-4.0", "data_del_dato": "2025-05-26"}],

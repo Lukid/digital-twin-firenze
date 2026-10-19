@@ -28,7 +28,7 @@ LIMITI = {
     "src_osm_firenze": ["Rete pedonale solo OSM: lato del marciapiede, larghezze e pendenze ignoti.",
                         "Estratto regionale del 2026-10-08, non più scaricabile da Geofabrik: la baseline non si ricostruisce identica da zero."],
     "src_fi_aree_stradali": ["Fuori dalla baseline congelata (D59): serve solo alla distanza del lato della strada dove il marciapiede non è mappato in OSM (shadow/lati_strada.py).",
-                             "Nessun campo di larghezza: la distanza è dal bordo del poligono lungo la normale, una stima nostra. Il bordo a volte comprende il marciapiede, a volte no: sui tratti con il marciapiede OSM sta in mediana circa 1,7 m più lontano.",
+                             "Nessun campo di larghezza: la distanza è dal bordo del poligono lungo la normale, una stima nostra. Il bordo a volte comprende il marciapiede, a volte no: sui tratti con il marciapiede OSM sta in mediana circa 1,7 m più lontano, e questo margine si toglie alla distanza (D63, taratura su pochi tratti da ricontrollare sul posto).",
                              "Incroci (poligoni senza toponimo) esclusi."],
     "src_fi_civici": ["Civici come punti d'indirizzo, non persone: le quote di accessibilità sono quote di civici."],
     "src_rt_uv_firenze_novoli": ["Unità volumetriche del 2011 con altezze dal LiDAR 2023: edifici nuovi solo dove li ha OSM; portici ignoti trattati come pieni."],
