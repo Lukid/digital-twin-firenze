@@ -128,6 +128,9 @@ Ricerca sui gemelli già esistenti a Firenze: `docs/research/gemelli-firenze.md`
 - D63 (19 ottobre): alla distanza ricavata dalle aree stradali si toglie un margine fisso di 1,7 m (mediana dello scarto con il marciapiede OSM dove ci sono tutti e due), dichiarato come taratura su pochi tratti; da ricontrollare con le misure del 12 dicembre (domanda 1).
 - D64 (19 ottobre): nella scheda per l'ufficio resta la frase con il limite superiore sul lato più in ombra; il numero è quello sull'asse e va detto a voce (domanda 2).
 - D65 (19 ottobre): sessione breve F8 su [BRIEF-AGENTE-F8.md](BRIEF-AGENTE-F8.md): margine di 1,7 m (D63) e numeri che dipendono dai lati. Dopo F8 le sessioni dell'agente si fermano fino a risposta dell'ufficio, verifica del 12 dicembre o MCP installato sulla macchina di prova.
+- D66 (19 ottobre): ramo `agente/f8` unito su `main` dopo lint, validate e `make test` verdi sul Mac; `lati_strada.json` e `lato_piu_in_ombra` dei rifugi rifatti sul Mac con le stesse impronte del worker, le 56 impronte invariate (domanda 1 del report F8).
+- D67 (19 ottobre): dove la distanza dalle aree stradali, tolto il margine, scende sotto 1 m si torna ai 3 m dichiarati (circa 50 m sui percorsi campione) (domanda 2).
+- D68 (19 ottobre): la verifica del 12 dicembre resta su R01; il margine di 1,7 m si ricontrolla solo con R01 e il marciapiede OSM, sapendo che su R01 la regola delle aree stradali non si applica (domanda 3).
 - D15: obiettivo POC sugli open data; Pisa accantonata nel tag `pilota-pisa-z2`; solo fonti riusabili (Life Escapos tolto); ARPAT solo con licenza dichiarata.
 
 ## Decisioni aperte (dell'utente)
@@ -141,7 +144,7 @@ Revisione del codice: R1-R6 chiusi. Due regole emerse dalle correzioni:
 - La cache del servizio si svuota da sola quando cambiano il codice dei motori o i file di dati che leggono (impronta in `service/cache/<area>/impronta.txt`). Gli job_id non cambiano.
 
 1. Altri difetti aperti del servizio emersi da F11 (elenco in `nl/firenze_novoli/REPORT.md`, punti 4-10). I primi tre sono chiusi il 10 ottobre: tool `list_scenarios`, metriche `served_count_*`, accessibilità verso almeno una di più destinazioni (le tre fermate T2 insieme: 53% dei civici entro 10 minuti). Il test del registro NL e i replay sono passati nella revisione; il giro con un nuovo client non è stato rifatto.
-2. D63 applicato in F8 (ramo `agente/f8`): da rifare sul Mac `lati_strada.py` e `ombra_rifugi.py --lati` e confrontare le impronte del report F8 prima del merge. Da chiedere al Comune: costo delle 72 pensiline (D37), voce di piantagione (D41), orari dei rifugi (D55). Alla verifica del 12 dicembre: lato del marciapiede e distanza dal centro strada, su R01 e su un tratto dove vale la regola delle aree stradali (R05 o RC3).
+2. Sessioni dell'agente in pausa (D65) fino a: risposta dell'ufficio, verifica del 12 dicembre, MCP installato sulla macchina di prova. Da chiedere al Comune: costo delle 72 pensiline (D37), voce di piantagione (D41), orari dei rifugi (D55).
 3. Validare sul posto un percorso e un intervento: ingressi, linea effettiva del marciapiede e ombra osservata. Kit pronto per R01 in `docs/verifica-posto/` (F4): sabato 12 dicembre 2026, ore 11:00, 13:00 e 14:30.
 
 ## Come lavora la sessione
