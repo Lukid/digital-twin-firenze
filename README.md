@@ -17,3 +17,12 @@ Il primo pilota su Pisa Z2 è accantonato (D15): il suo stato finale è nel tag 
 5. [Revisione del codice](docs/REVISIONE-CODICE-20261010.md): difetti confermati, priorità, verifiche eseguite e limiti della revisione.
 
 Prossimo lavoro: vedi i prossimi passi in [docs/STATO.md](docs/STATO.md).
+
+## Licenza
+
+- Codice: [EUPL-1.2](LICENSE).
+- Documenti e dati prodotti dal progetto: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it).
+- Dati derivati da OpenStreetMap (rete pedonale, percorsi e risultati calcolati sulla rete, mappa di base della scena): [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/), © OpenStreetMap contributors.
+- Estratto dei costi unitari ANAC (`docs/research/anac-pensiline/`): CC BY-SA 4.0, © Autorità Nazionale Anticorruzione.
+
+Ogni dato derivato riporta anche le licenze e le attribuzioni delle fonti da cui viene: sono nelle schede in `service/schede/` e nei manifest dei calcoli.
