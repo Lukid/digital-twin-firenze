@@ -29,8 +29,7 @@ validate:
 impronte:
 	@bash scripts/impronte.sh
 
-# Quello che gira la CI: solo i controlli che non richiedono data/.
+# Quello che gira la CI: solo i controlli che non richiedono data/ né i file
+# degli edifici, che non sono nel repo pubblico.
 ci: lint validate
-	$(PY) geometry/test_geometrie_firenze.py
-	$(PY) scene/firenze_novoli/test_build.py
 	$(PY) service/test_schede.py

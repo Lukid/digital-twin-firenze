@@ -32,7 +32,9 @@ make lint        # ruff: nomi non definiti ed errori di sintassi
 make validate    # contratti JSON Schema
 ```
 
-Senza `data/` passano solo `geometry/test_geometrie_firenze.py`, `scene/firenze_novoli/test_build.py`, `service/test_schede.py` e `contracts/validate.py`: sono quelli che gira la CI. Gli altri richiedono `data/` locale.
+Senza `data/` passano solo `service/test_schede.py` e `contracts/validate.py`: sono quelli che gira la CI. `geometry/test_geometrie_firenze.py` e `scene/firenze_novoli/test_build.py` leggono anche i file degli edifici, che dal 22 ottobre non sono nel repo (licenza solo per uso interno): si rigenerano in locale. Gli altri richiedono `data/` locale.
+
+Il repo è pubblico: documenti interni, dati da fonti a uso interno e pagine di terzi sono in `.gitignore` e restano solo in locale. Non rimetterli sotto git.
 
 Come vedere la scena: [docs/STATO.md](docs/STATO.md), sezione "Fatto su Firenze".
 

@@ -15,3 +15,28 @@ service/cache/
 *.key
 id_rsa*
 *credentials*
+
+# Fuori dal repo pubblico, restano solo in locale (22/10/2026)
+# Documenti interni
+docs/PIANO-DECOLLO.md
+docs/brief-interlocutore.md
+docs/BRIEF-AGENTE-*.md
+docs/REPORT-AGENTE-*.md
+# Dati da fonti con uso "solo prototipo interno": si rigenerano da data/
+geometry/firenze_novoli/edifici_fp.geojson
+scene/firenze_novoli/assets/edifici.json.gz
+scene/firenze_novoli/assets/aria.json.gz
+# Dati di Pisa da fonti con licenza non dimostrata
+geometry/*_z2*
+network/componenti.json
+network/confronto_iternet.json
+network/correzioni.geojson
+network/destinazioni_ingressi.geojson
+network/destinazioni.json
+network/percorsi_campione.geojson
+network/percorsi_campione.json
+network/snapping_report.json
+# Pagine e risposte scaricate da siti terzi
+docs/audit*/**/campioni/
+docs/research/*.json
+docs/research/*.geojson
