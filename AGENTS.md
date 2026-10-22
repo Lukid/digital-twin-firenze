@@ -2,7 +2,7 @@
 
 Prototipo di gemello digitale di Firenze Novoli - Firenze Nova: accessibilità pedonale, ombra sui percorsi, scenari di intervento, scena 3D statica e server MCP `dt-firenze`. Solo open data con licenza che permette il riuso.
 
-**Prima di tutto leggere [docs/STATO.md](docs/STATO.md)**: stato, decisioni dell'utente (D01-D20), prossimi passi e regole della sessione. Piano, specifiche, fonti e backlog sono in [README.md](README.md).
+**Prima di tutto leggere [docs/STATO.md](docs/STATO.md)**: stato, decisioni dell'utente, prossimi passi e regole per chi modifica i motori. Se esiste `docs/STATO-COMPLETO.md` (solo in locale, ignorato da git), leggere quello: ha il registro delle sessioni e tutte le decisioni D12-D68. Piano, specifiche e fonti sono in [README.md](README.md).
 
 ## Ambiente
 
