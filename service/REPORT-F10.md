@@ -108,4 +108,4 @@ service/.venv/bin/python service/cli.py compute_shadow '{"baseline_id":"bas_fire
 - L'alias di cache delle ombre non identifica tutte le dipendenze (R4).
 - `compare_scenarios` omette le aree di attesa di S5 e S6, sia nei delta sia nel riepilogo. Per queste pensiline non basta leggere i delta dell'area storica di S2 (R5).
 
-Priorità, prove e correzioni proposte nella [revisione del codice](../docs/REVISIONE-CODICE-20261010.md). I difetti sono aperti; il passaggio dei test esistenti non li chiude.
+Priorità, prove e correzioni proposte nella revisione del codice. I difetti sono aperti; il passaggio dei test esistenti non li chiude.

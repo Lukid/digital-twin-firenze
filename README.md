@@ -4,7 +4,7 @@ Prototipo di gemello digitale dell'area Novoli - Firenze Nova (riquadro di 2 km�
 
 Cos'è e a cosa serve: [docs/SINTESI-PROGETTO.md](docs/SINTESI-PROGETTO.md). Come funziona, quali dati usa e quali calcoli fa: [docs/COME-FUNZIONA.md](docs/COME-FUNZIONA.md) (versione estesa in [docs/DOCUMENTO-TECNICO.md](docs/DOCUMENTO-TECNICO.md)).
 
-Riferimento di presentazione: il [gemello di Padova](https://padova-digital-twin.ekore.tech/) (D11, analisi in [docs/RIFERIMENTO-PADOVA.md](docs/RIFERIMENTO-PADOVA.md)).
+Riferimento di presentazione: il [gemello di Padova](https://padova-digital-twin.ekore.tech/) (D11).
 
 ## Come si prova
 
@@ -37,9 +37,7 @@ Il primo pilota su un'area di Pisa è stato accantonato (D15) e i suoi dati non 
 2. [Piano](docs/PIANO.md): scopo, decisioni, fattibilità, architettura, fasi e criteri.
 3. [Specifiche delle analisi e MCP](docs/SPEC_ANALISI.md): metodi, metriche, contratti, limiti e verifiche.
 4. [Fonti](docs/FONTI.md): evidenze raccolte e verifiche mancanti.
-5. [Backlog per agenti](docs/BACKLOG.md): incarichi, dipendenze e consegne.
-6. [Revisione del codice](docs/REVISIONE-CODICE-20261010.md): difetti confermati, priorità, verifiche eseguite e limiti della revisione.
-7. [Servizio remoto](service/INSTALLA-REMOTO.md): come installare il server MCP in sola lettura.
+5. [Servizio remoto](service/INSTALLA-REMOTO.md): come installare il server MCP in sola lettura.
 
 ## Licenza
 

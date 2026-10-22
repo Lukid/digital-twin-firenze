@@ -97,4 +97,4 @@ Limiti:
 - Sole con algoritmo semplificato (circa 0,1 gradi), fuso Europe/Rome.
 - Provato su Chromium emulato, non su un telefono vero. Scheda al clic su alberi e punti non provata.
 
-- Una costruzione interrotta può eliminare gli asset precedenti e lasciare il vecchio indice: problema aperto R6 della [revisione del codice](../../docs/REVISIONE-CODICE-20261010.md). La scena non è stata ricostruita durante questa revisione.
+- Una costruzione interrotta può eliminare gli asset precedenti e lasciare il vecchio indice: problema aperto R6 della revisione del codice. La scena non è stata ricostruita durante questa revisione.

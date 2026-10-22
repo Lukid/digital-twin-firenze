@@ -75,7 +75,7 @@ Snapping del Polo:
 - 40 m: 3112 raggiungibili; 28,2% entro 10 minuti.
 - 60 m: 3141 raggiungibili; 28,7% entro 10 minuti.
 
-Gli intervalli con penalità di attraversamento hanno un difetto distinto dai valori centrali: vedi R3 della [revisione del codice](../docs/REVISIONE-CODICE-20261010.md).
+Gli intervalli con penalità di attraversamento hanno un difetto distinto dai valori centrali: vedi R3 della revisione del codice.
 
 ## Output
 

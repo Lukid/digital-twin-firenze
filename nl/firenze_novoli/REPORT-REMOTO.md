@@ -1,6 +1,6 @@
 # Verifica del prompt con l'MCP via HTTP
 
-Data: 17 ottobre 2026, sul worker VPS. Prova del compito 3 di [BRIEF-AGENTE-F1.md](../../docs/BRIEF-AGENTE-F1.md): le domande di F11 rifatte da un agente nuovo con il testo di [PROMPT-AGENTE.md](../../service/PROMPT-AGENTE.md) e il server `dt-firenze` raggiungibile solo via HTTP. Non validato sul posto.
+Data: 17 ottobre 2026, sul worker VPS. Prova del compito 3 di BRIEF-AGENTE-F1.md: le domande di F11 rifatte da un agente nuovo con il testo di [PROMPT-AGENTE.md](../../service/PROMPT-AGENTE.md) e il server `dt-firenze` raggiungibile solo via HTTP. Non validato sul posto.
 
 ## Come è stata fatta
 
@@ -8,7 +8,7 @@ Data: 17 ottobre 2026, sul worker VPS. Prova del compito 3 di [BRIEF-AGENTE-F1.m
 - Client: un agente nuovo, istruito solo con il prompt (la parte fra le due righe di `PROMPT-AGENTE.md`) e con il divieto di leggere il repository. Chiamava gli strumenti con `nl/firenze_novoli/mcp_client.py` e `DT_MCP_URL`.
 - Domande: le 21 del primo giro di F11 (`giro1.json`) e i 7 seguiti del secondo (`giro2.json`), dati come messaggi successivi dell'utente. 28 voci in tutto.
 - Registro: [giro_remoto.json](giro_remoto.json), con chiamate, argomenti, esito, job_id e risposta per ogni voce. I manifest non sono versionati: i job_id dipendono dai dati del worker (sotto).
-- Dati: quelli ricostruiti sul worker il 17 ottobre ([REPORT-AGENTE-F1.md](../../docs/REPORT-AGENTE-F1.md), compito 0). Stesse metriche della baseline per accessibilità e ombre, job_id diversi, confronto fra scenari rifiutato con `incompatible_baseline`.
+- Dati: quelli ricostruiti sul worker il 17 ottobre (REPORT-AGENTE-F1.md, compito 0). Stesse metriche della baseline per accessibilità e ombre, job_id diversi, confronto fra scenari rifiutato con `incompatible_baseline`.
 
 ## Esito
 

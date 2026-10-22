@@ -40,3 +40,21 @@ network/snapping_report.json
 docs/audit*/**/campioni/
 docs/research/*.json
 docs/research/*.geojson
+# Documenti di lavoro non necessari a capire il progetto (22/10/2026): restano in locale
+docs/*
+!docs/SINTESI-PROGETTO.md
+!docs/COME-FUNZIONA.md
+!docs/DOCUMENTO-TECNICO.md
+!docs/STATO.md
+!docs/PIANO.md
+!docs/SPEC_ANALISI.md
+!docs/FONTI.md
+!docs/research/
+docs/research/*
+!docs/research/anac-pensiline/
+!docs/audit/
+docs/audit/*
+!docs/audit/ZONE.json
+!docs/audit-firenze/
+docs/audit-firenze/*
+!docs/audit-firenze/RIQUADRO.json

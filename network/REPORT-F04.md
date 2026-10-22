@@ -113,5 +113,5 @@ Stesso metodo di `checks.check_3003`: poligoni degli edifici scolastici della Ci
 - 15 civici `forbidden` su 3.296: 13 per tunnel stradale senza marciapiede (potrebbe essere un passaggio pedonale vero), 2 per access=private.
 - Civici rossi (201) inclusi come origini: sono ingressi commerciali, non abitazioni.
 - Il marciapiede "separato" (34 km) è alto: verificare che il profilo di analisi lo tratti come marciapiede presente.
-- I motori F06-F10 sono stati portati su Firenze; rimangono nomi interni storici per compatibilità. I difetti attuali sono nella [revisione del codice](../docs/REVISIONE-CODICE-20261010.md).
+- I motori F06-F10 sono stati portati su Firenze; rimangono nomi interni storici per compatibilità. I difetti attuali sono nella revisione del codice.
 - Scarto CRS: vedi sopra, non è una misura pura. Datum verticale non toccato.

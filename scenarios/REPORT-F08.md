@@ -124,4 +124,4 @@ Nessun punteggio unico: indicatori separati.
 - Ombra binaria, nessuna conversione in comfort. Nessuna crescita degli alberi.
 - Interventi ipotetici, fattibilità ignota. Nessuna validazione sul posto.
 - `contracts/validate.py` valida già `scenarios/firenze_novoli/baseline.json`, verificato con `make test`.
-- Il servizio omette le aree di attesa di S5/S6 (R5); cache concorrente e invalidazione richiedono correzioni (R2/R4). Vedi la [revisione del codice](../docs/REVISIONE-CODICE-20261010.md).
+- Il servizio omette le aree di attesa di S5/S6 (R5); cache concorrente e invalidazione richiedono correzioni (R2/R4). Vedi la revisione del codice.
