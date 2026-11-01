@@ -19,7 +19,7 @@ packaging==26.3
 pandas==3.0.6
 psutil==7.2.2
 pvlib==0.16.1
-py7zr==1.1.3
+py7zr==1.1.4
 pybcj==1.0.8
 pycryptodomex==3.23.0
 pyogrio==0.13.0
